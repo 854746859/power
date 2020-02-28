@@ -12,12 +12,12 @@ img{ border:none;}
 a{text-decoration:none; outline:none;}
 body{ font:14px/1.5; font-family:"Microsoft YaHei";}
 li{ list-style-type:none;}
-html,body{ background-color:#eee;}
+html,body{ background-color:#eee;width: 100%;}
 
 /*公共css部分*/
 /*清除浮动*/
-.fix{*zoom:1;}
-.fix:after{display:table; content:''; clear:both;}
+.fix{*zoom:1;width: 100%;display: flex;flex-direction: row;justify-content: space-between;}
+/*.fix:after{display:table; content:''; clear:both;}*/
 
 .l{ float: left; }
 .r{ float: right; }
@@ -26,22 +26,26 @@ html,body{ background-color:#eee;}
 .vm{vertical-align:middle;}
 .bdb_d{border-bottom:1px solid #ddd;}
 .fc{ color: #005389; }
-.bg{background-color: #005389;}
+.bg{background-color: #005389; width: 100%;}
 .b{font-weight:bold;}
-.bora_5{ border-radius: 5px;}
+.bora_5{ border-radius: 5px; display: flex; flex-direction: row;align-items: center;justify-content: space-around;}
 .ovh{overflow: hidden;}
 
 /*top*/
-.wid_main{ width: 1220px; margin:0 auto; }
+.wid_main{ width: 1220px; margin:0 auto; display: flex; flex-direction: row; align-items: center;justify-content: space-between;padding: 5px 0 5px 0;}
 .topbox{ height: 130px; }
 .topbox .logo{ margin-top: 24px; }
 
-.search_box{ width: 320px;overflow: hidden; margin-top: 43px;  background-color: white;}
-.search_box div{ width: 320px;}
-.search_box input{ float: left; width: 255px; padding:0 10px; height: 44px; color: #333; 
-	font-size:14px;font-family: "微软雅黑";
+.search_box{ width: 500px;overflow: hidden;  background-color: white;}
+.admin{display: flex;align-items: flex-end;}
+.admin_box{width: 180px;overflow: hidden;  background-color: white;}
+.admin_logo{width: 32px; border-radius: 16px;}
+.admin .lever{font-size: 12px; color: #333;}
+/*.search_box div{ width: 320px;}*/
+.search_box input{ float: left; width: 220px; padding:0 10px; height: 44px; 
+	font-size:14px; font-family: "微软雅黑"; background-color: #C7C7C7; color: #fff; border-radius: 25px; margin: 5px 0 5px 0;
 }
-.search_box button{ float: left; width: 44px; height: 44px; cursor: pointer; background: url(../images/search.png) no-repeat center center;}
+.search_box button{ float: left; width: 44px; height: 44px; cursor: pointer; background: url(../images/search.png) no-repeat center center; margin: 5px 0 5px 0;}
 
 /*内容框*/
 .contentbox{ background-color: #fff; margin:20px auto;padding: 10px 0; position: relative;}
@@ -50,8 +54,8 @@ html,body{ background-color:#eee;}
 /*导航*/
 .top_nav{height: 60px;}
 .top_nav ul{ background: url(../images/nav_line.png) no-repeat center right;}
-.top_nav ul li{float: left;line-height: 60px; position: relative; width:150px;
-	background: url(../images/nav_line.png) no-repeat center left;
+.top_nav ul li{float: left;line-height: 60px; position: relative;
+	background: url(../images/nav_line.png) no-repeat center left;width: 100%;
 }
 .top_nav ul li.cur{background: #1a83da;}
 .top_nav ul li.cur+li{ background: none; }
@@ -166,7 +170,7 @@ html,body{ background-color:#eee;}
 .tender ul li:hover b{ color: #005389; }
 
 /*专题轮播*/
-.zhuanti_pic{ overflow:hidden; position:relative; margin-top: 10px;}
+.zhuanti_pic{ overflow:hidden; position:relative; margin: 0 0 10px 0;}
 .zhuanti_pic .hd{ overflow:hidden; position:absolute; bottom:5px; z-index:1;width: 100%; text-align: center;}
 .zhuanti_pic .hd ul{ overflow:hidden; zoom:1; text-align: center; display: inline-block; font-size: 0; }
 .zhuanti_pic .hd ul li{display: inline-block; margin:0 3px;  width:10px; height:10px; background:#fff; border-radius: 100%;}
