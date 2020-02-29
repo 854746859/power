@@ -26,13 +26,13 @@ html,body{ background-color:#eee;width: 100%;}
 .vm{vertical-align:middle;}
 .bdb_d{border-bottom:1px solid #ddd;}
 .fc{ color: #005389; }
-.bg{background-color: #005389; width: 100%;}
+.bg{background-color: #005389; min-width: 1220px;width: 100%;}
 .b{font-weight:bold;}
 .bora_5{ border-radius: 5px; display: flex; flex-direction: row;align-items: center;justify-content: space-around;}
 .ovh{overflow: hidden;}
 
 /*top*/
-.wid_main{ width: 1220px; margin:0 auto; display: flex; flex-direction: row; align-items: center;justify-content: space-between;padding: 5px 0 5px 0;}
+.wid_main{ width: 1220px; margin:0 auto; display: flex; flex-direction: row; align-items: center;justify-content: space-around;padding: 5px 0 5px 0;background-color: #005389;}
 .topbox{ height: 130px; }
 .topbox .logo{ margin-top: 24px; }
 
@@ -52,7 +52,7 @@ html,body{ background-color:#eee;width: 100%;}
 .content{ min-height: 775px; margin:0 10px;}
 
 /*导航*/
-.top_nav{height: 60px;}
+.top_nav{height: 60px;background-color: #005389; width: 100%;}
 .top_nav ul{ background: url(../images/nav_line.png) no-repeat center right;}
 .top_nav ul li{float: left;line-height: 60px; position: relative;
 	background: url(../images/nav_line.png) no-repeat center left;width: 100%;
