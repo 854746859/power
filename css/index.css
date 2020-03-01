@@ -66,7 +66,41 @@ html,body{ background-color:#eee;width: 100%;}
 	font-size: 18px; 
 	font-weight: bold;
 }
-
+.blog_list{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin-left: 10px;
+}
+.news_other{
+	line-height: 16px;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+.news_time span:nth-child(n+2),.news_owner span:nth-child(n+2){
+	margin-left: 20px;
+}
+.news_owner{
+	margin-top: 5px;
+}
+.manager,.owner{
+	height: 160px;
+}
+.share{
+	font-size: 14px;
+	position: relative;
+	margin-left: 300px;
+}
+.share .share_icon{
+	width: 20px;
+	height: 20px;
+}
+.more{
+    font-size: 14px;
+    color: #999;
+    margin-top: 15px;
+}
 /*公告滚动*/
 .gonggao{padding:15px 0;}
 .gonggao .tit{ font-size: 16px; color: #005389; line-height: 30px; }
