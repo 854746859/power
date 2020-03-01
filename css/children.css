@@ -92,22 +92,29 @@
 
 /*右边内容栏*/
 .zy_right_con{ 
-	float: right; 
-	width: 910px; 
+	float: left; 
+	width: 720px; 
 	overflow: hidden;
 }
 /*当前标题*/
 .zy_right_con .zy_title{
+	display: flex;
+	width: 100%;
 	border-bottom: #005389 solid 1px;
 	margin-bottom: 20px;
 }
-.zy_right_con .zy_title h2{
+.selected{
 	font-size:24px;
 	font-weight: bold;
 	color: #e0620d;
 	position: relative;
 	float: left;
 	padding-bottom: 12px;
+	cursor: pointer;
+}
+.zy_right_con .zy_title h2:nth-child(n+2){
+	margin-left: 10PX;
+	cursor: pointer;
 }
 .zy_right_con .zy_title h2 i{
 	position: absolute;
@@ -266,7 +273,11 @@
 .other_page h1{ font-size: 32px; color: #005389; text-align: center; padding: 24px 0; }
 
 /*搜索结果*/
-.news_list ul li{ line-height: 42px; }
+.news_list ul li{ line-height: 42px; display: flex; flex-direction: row;padding: 10px 0;border-bottom: 1px solid #eee;}
+.news_list ul li img{
+	width: 90px;
+	height: 100px;
+}
 .news_list ul li a{ color: #333; transition: all .3s; display: inline-block;vertical-align: middle; max-width: 900px; 
 	white-space: nowrap; text-overflow: ellipsis; overflow: hidden; 
 }
@@ -279,7 +290,7 @@
 .other_page .txt{ line-height: 36px; color: #454545; }
 
 /*执法动态*/
-.zy_listbox ul li a{ max-width: 750px; }
+.zy_listbox ul li a{ max-width: 500px; }
 
 /*新闻详情*/
 .zy_newsxq .xq_tit{

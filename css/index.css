@@ -36,19 +36,25 @@ html,body{ background-color:#eee;width: 100%;}
 .topbox{ height: 130px; }
 .topbox .logo{ margin-top: 24px; }
 
-.search_box{ width: 500px;overflow: hidden;  background-color: white;}
+.search_box{ width: 500px;overflow: hidden;display: flex;flex-direction: row;align-items: center;}
+.search{display: flex;flex-direction: row;align-items: center;}
 .admin{display: flex;align-items: flex-end;}
-.admin_box{width: 180px;overflow: hidden;  background-color: white;}
+.admin_box{width: 280px; color: #fff;}
 .admin_logo{width: 32px; border-radius: 16px;}
 .admin .lever{font-size: 12px; color: #333;}
 /*.search_box div{ width: 320px;}*/
-.search_box input{ float: left; width: 220px; padding:0 10px; height: 44px; 
-	font-size:14px; font-family: "微软雅黑"; background-color: #C7C7C7; color: #fff; border-radius: 25px; margin: 5px 0 5px 0;
+.search_box input{ float: left; width: 220px; padding:0 10px 0 50px; height: 44px; 
+	font-size:14px; font-family: "微软雅黑"; background-color: #fff; color: #333; border-radius: 25px; margin: 5px 0 5px 0;
 }
-.search_box button{ float: left; width: 44px; height: 44px; cursor: pointer; background: url(../images/search.png) no-repeat center center; margin: 5px 0 5px 0;}
-
+.search_box button{ position: relative; width: 44px; height: 44px; cursor: pointer; background: url(../images/search.png) no-repeat center center; margin: 5px 0 5px 0;}
+.search_icon{
+	width: 30px;
+	height: 30px;
+	position: relative;
+	left: 40px;
+}
 /*内容框*/
-.contentbox{ background-color: #fff; margin:20px auto;padding: 10px 0; position: relative;}
+.contentbox{ background-color: #fff; margin:20px auto;padding: 10px 0; position: relative; width: 1220px;}
 .content{ min-height: 775px; margin:0 10px;}
 
 /*导航*/
@@ -87,7 +93,7 @@ html,body{ background-color:#eee;width: 100%;}
 .conbox{ margin-bottom: 30px; }
 
 /*新闻轮播图*/
-.news_banner{ overflow:hidden; position:relative; width: 720px; height: 420px; }
+.news_banner{ overflow:hidden; position:relative; width: 820px; height: 820px; }
 .news_banner .hd{ overflow:hidden; position:absolute; bottom:26px; right: 0; z-index:1;width: 160px; text-align: right;}
 .news_banner .hd ul{ overflow:hidden; zoom:1;text-align: center; display: inline-block; margin-right: 15px; font-size: 0; }
 .news_banner .hd ul li{display: inline-block; margin:0 2px;  width:18px; height:18px; background:#fff; cursor:pointer; font-size: 12px; font-weight: bold;}
@@ -157,11 +163,11 @@ html,body{ background-color:#eee;width: 100%;}
 .sy_title h2{ float: left; }
 .sy_title img{ vertical-align: middle; margin-right: 10px; }
 .tender .sy_title a{ font-size: 14px; color: #999; margin-top: 15px; }
-.tender { width: 460px; }
+.tender { width: 360px; }
 .tender .sy_title a:hover{ color: #005389; }
 .tender ul{ margin-top: 5px;overflow: hidden; height: 300px;}
 .tender ul li{ line-height: 42px; }
-.tender ul li span{ color: #333; transition: all .3s; display: inline-block;vertical-align: middle; max-width: 400px; 
+.tender ul li span{ color: #333; transition: all .3s; display: inline-block;vertical-align: middle; max-width: 300px; 
 	white-space: nowrap; text-overflow: ellipsis; overflow: hidden; 
 }
 .tender ul li b{ color: #666; display:inline-block; margin-right: 7px;vertical-align: middle; }
@@ -285,9 +291,10 @@ html,body{ background-color:#eee;width: 100%;}
 }
 
 /*底部信息*/
-.footerbox{ padding:24px 0; }
-.footerbox .txt{ font-size: 14px; color: #fff; line-height: 30px; margin-left: 24px; }
+.footerbox{ padding:24px 0; display: flex;flex-direction: column;justify-content: center;align-items: center;}
+.footerbox .txt{ font-size: 14px; color: #fff; line-height: 30px; margin-left: 24px; display: flex; flex-direction: row;}
 .footerbox .txt img{ vertical-align: middle; margin-top: -3px; margin-right:5px; }
+.footerbox .other{width: 500px;}
 .footerbox .other li{float: left; color:#fff; font-size: 14px; }
 .footerbox .other li:before{ content: "丨"; margin:0 3px;}
 .footerbox .other a{ color: #fff; font-weight: bold; font-size: 14px; text-decoration: underline;}
