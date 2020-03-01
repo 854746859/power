@@ -89,6 +89,13 @@
 		width: 20px;
 		height: 20px;
 	}
+	.more_list{
+		display: flex;
+		flex-direction: column;
+	}
+	.more_list li a{
+		color: #333;
+	}
 </style>
 </head>
 <body>
@@ -190,7 +197,7 @@
 	                <ul class="fix">
 						<li class="menu-item-has-children cur">
 							<a href="#" title="" itemprop="url">政策法规</a>
-							<ul>
+							<ul class="more_list">
 	                            <li><a href="index.html" title="" itemprop="url">Homepage 1</a></li>
 	                            <li><a href="index2.html" title="" itemprop="url">Homepage 2</a></li>
 	                            <li><a href="index3.html" title="" itemprop="url">Homepage 3</a></li>
@@ -198,9 +205,9 @@
 	                            <li><a href="index5.html" title="" itemprop="url">Homepage 5</a></li>
 	                        </ul>
 						</li>
-						<li>
+						<li class="menu-item-has-children">
 							<a href="#" title="" itemprop="url">项目市场</a>
-							<ul>
+							<ul class="more_list">
 	                            <li><a href="index.html" title="" itemprop="url">Homepage 1</a></li>
 	                            <li><a href="index2.html" title="" itemprop="url">Homepage 2</a></li>
 	                            <li><a href="index3.html" title="" itemprop="url">Homepage 3</a></li>

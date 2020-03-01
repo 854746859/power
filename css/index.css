@@ -59,7 +59,13 @@ html,body{ background-color:#eee;width: 100%;}
 .top_nav ul li{line-height: 60px; position: relative; background: url(../images/nav_line.png) no-repeat center left;flex-grow: 1;}
 .top_nav ul li.cur{background: #1a83da;}
 .top_nav ul li.cur+li{ background: none; }
-.top_nav ul li a{display: block;text-align: center;color: #fff;font-size: 18px; font-weight: bold;}
+.top_nav ul li a:first-child{
+	display: block;
+	text-align: center;
+	/*color: #fff;*/
+	font-size: 18px; 
+	font-weight: bold;
+}
 
 /*公告滚动*/
 .gonggao{padding:15px 0;}
