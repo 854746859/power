@@ -105,7 +105,9 @@ html,body{ background-color:#eee;width: 100%;}
 .gonggao{padding:15px 0;}
 .gonggao .tit{ font-size: 16px; color: #005389; line-height: 30px; }
 .gonggao .tit img{ vertical-align: middle; margin-right:8px; }
-.txtScroll-top{ overflow:hidden; width: 850px;}
+.txtScroll-top{ overflow:hidden; width: 850px;display: flex;
+    flex-direction: row;
+    align-items: center;}
 .txtScroll-top .bd{width:720px; }
 .txtScroll-top .tempWrap{ height: 32px; }
 .txtScroll-top .infoList{ height:32px; line-height:32px; overflow: hidden; }
