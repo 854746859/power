@@ -22,7 +22,7 @@ html,body{ background-color:#eee;width: 100%;}
 .l{ float: left; }
 .r{ float: right; }
 .db{display:block;}
-.dib{display:inline-block;}
+.dib{display:inline-block;width: 70px;font-size: 12px;}
 .vm{vertical-align:middle;}
 .bdb_d{border-bottom:1px solid #ddd;}
 .fc{ color: #005389; }
