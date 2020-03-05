@@ -153,26 +153,70 @@
 	.annex_d{
 		width: 100%;
 		padding: 10px;
-		margin-right: 10px;
-		background-color: #eee;
+		margin-top: 30px;
+		background-color: #E7E7E7;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		border-radius: 5px;
+	}
+	.annex_info{
+		width: 100%;
+		height: 40px;
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
-		align-items: center;
-		border-radius: 5px;
+		border-bottom: 1px solid #fff;
 	}
-	.annex_bt{
+	.annex_info .user_logo{
 		display: flex;
-		flex-direction: column;
-		justify-content: space-around;
-		align-items: center;
+		flex-direction: row;
 	}
-	.annex_bt input{
-		width: 80px;
+	.annex_info .user_logo img{
+		width: 50px;
+		height: 50px;
+		border-radius: 25px;
+		position: relative;
+		top: -30px;
+	}
+	.annex_info .good{
+		width: 50px;
 		height: 30px;
-		color: #fff;
-		background-color: #1a83da;
+		padding-right: 5px;
+		position: relative;
+		top: -25px;
+		background-color: #fff
+	}
+	.annex_info .good img{
+		width: 30px;
+		height: 30px;
+	}
+	.user_reply{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		padding: 0 30px;
+	}
+	.user_reply .reply_dt div{
 		margin-top: 5px;
+	}
+	.user_reply .reply_dt .reply_name{
+		display: flex;
+		flex-direction: row;
+		align-items: flex-end;
+	}
+	.user_reply .reply_dt .reply_name span{
+		margin-left: 10px;
+	}
+	.report{
+		margin-top: 15px;
+	}
+	.report span{
+		cursor: pointer;
+		color: red;
+	}
+	.report span:first-child{
+		margin-right: 10px;
 	}
 	.five_bt{
 		width: 100%;
@@ -215,6 +259,13 @@
 	.other_visitor img{
 		width: 30px;
 		height: 30px;
+	}
+	.other_visitor span:nth-last-child(n+2),img{
+		cursor: pointer;
+		color: red;
+	}
+	.other_visitor span:first-child{
+		margin-right: 5px;
 	}
 	.content_box .visitor .visitor_pic img{
 		width: 50px;
@@ -457,19 +508,29 @@
 				</div>
 				<div class="annex_d">
 					<div class="annex_info">
-						<h3>附件标题</h3>
-						<div class="annex_des">
-							描述:<p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+						<div class="user_logo">
+							<img src="images/manager.jpg"/>
+							<h2>已采纳</h3>
 						</div>
-						<div class="annex_spent">
-							所需：11积分/论坛币
+						<div class="good">
+							<img src="images/good.png"/><span>10</span>
 						</div>
 					</div>
-					<div class="annex_bt">
-						<span>
-							大小：2.33M
-						</span>
-						<input type="button" name="" id="" value="立即下载" />
+					<div class="user_reply">
+						<div class="reply_dt">
+							<div class="reply_name">
+								<h2>用户1</h2><span>3天前</span>
+							</div>
+							<div>
+								综合排名：666
+							</div>
+							<div>
+								xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+							</div>
+						</div>
+						<div class="report">
+							<span>举报</span><span>回复</span>
+						</div>
 					</div>
 				</div>
 				<div class="five_bt">

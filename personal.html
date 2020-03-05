@@ -27,35 +27,9 @@
 	.headLink li{
 		margin: 0 10px 0 10px;
 	}
-	.manager_box{
-		width: 100%;
-		height: 350px;
-		padding: 20px 0;
-		/*background-color: #0044CC;*/
-	}
-	
-	.info{
-		width: 100%;
-		margin-top: 5px;
-		display: flex;
-		flex-direction: row;
-	}
-	.info img{
-		width: 50px;
-		height: 50px;
-		border-radius: 25px;
-	}
-	.description{
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-		margin-left: 10px;
-		width: 80%;
-	}
-	.description p{
-		width: 100%
-		word-wrap: break-word;
-		word-break: break-all;;
+	.marT{
+		position: relative;
+		top: -25px;
 	}
 	.more_list{
 		display: flex;
@@ -64,27 +38,163 @@
 	.more_list li a{
 		color: #333;
 	}
-	.solve{
-		width: 70px;
-		height: 30px;
-		background-color: #eee;
-		font-size: 14px;
+	.classification{
+		width: 100%;
+	}
+	.classification ul{
+		position: relative;
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+		height: 50px;
+		border-bottom: 1px solid #ddd;
+	}
+	.classification ul li{
+		width: 80px;
+		height: 40px;
+		line-height: 40px;
+		text-align: center;
 		color: #333;
-		font-style: normal;
-	}
-	.solved{
-		width: 70px;
-		height: 30px;
-		background-color: #1a83da;
-		font-size: 14px;
-		color: #fff;
-		font-style: normal;
 		border-radius: 3px;
+		cursor: pointer;
 	}
-	.reward{
+	.classification ul li:hover{
+		background-color: #1a83da;
+		color: #fff;
+	}
+	.user_box{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		background-color: #eee;
+		padding: 10px;
+	}
+	.user_box .box_L{
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+	.user_box .box_L .user_loge{
+		display: flex;
+		flex-direction: row;
+	}
+	.user_box .box_L .user_loge img{
+		width: 60px;
+		height: 60px;
+		border-radius: 30px;
+	}
+	.user_box .box_L .user_loge .user_name{
 		margin-left: 10px;
-		color: #005389;
-		font-size: 14px;
+		height: 100%;
+	}
+	.user_box .box_L .user_loge .user_name .user_id span:nth-child(2){
+		margin-left: 10px;
+	}
+	.user_box .box_L .user_loge .user_name .user_des{
+		width: 140px;
+		word-break: break-all;
+	}
+	.user_box .box_L .address,.company{
+		height: 60px;
+		display: flex;
+		margin-left: 25px;
+		flex-direction: row;
+		justify-content: flex-start;
+	}
+	.user_box input{
+		width: 80px;
+		height: 30px;
+		color: #fff;
+		border-radius: 3px;
+		background-color: #1a83da;
+		margin-top: 5px;
+		margin-left: 10px;
+	}
+	.box_one{
+		width: 100%;
+		height: 120px;
+	}
+	.box_one ul{
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+	}
+	.box_one ul li{
+		width: 33%;
+		height: 60px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		border-bottom: 1px solid #eee;
+		border-right: 1px solid #eee;
+	}
+	.box_one ul li:nth-child(3){
+		border-right: 1px solid #FFF;
+	}
+	.box_one ul li span{
+		height: 20px;
+		line-height: 20px;
+		cursor: pointer;
+	}
+	.box_two{
+		width: 100%;
+		margin-top: 20px;
+		background-color: #eee;
+		border-radius: 5px;
+		box-sizing: border-box;
+		padding: 10px;
+		margin-right: 10px;
+	}
+	.new_fan,.recent_visitors{
+		height: 120px;
+		border-bottom: 1px solid #fff;
+	}
+	.title{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: flex-end;
+	}
+	.title span{
+		font-size: 16px;
+		font-weight: 600;
+	}
+	.avatar{
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+	.avatar div{
+		width: 25%;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+	}
+	.avatar div img{
+		width: 80%;
+		height: 80%;
+		border-radius: 40%;
+	}
+	.bc{
+		border-top-left-radius: 3px;
+		border-top-right-radius: 3px;
+		margin-top: 10px;
+		background-color: #eee;
+		padding: 0 10px;
+	}
+	.box_three ul{
+		border: 1px solid #eee;
+		margin: 0;
+		padding: 0 10px;
+	}
+	.box_three ul li{
+		border-bottom: 1px dashed #eee;
 	}
 </style>
 </head>
@@ -180,96 +290,44 @@
             jQuery(".zhuanti_pic").slide({mainCell:".bd ul",autoPlay:true,effect:"fade",mouseOverStop:false,interTime:3000,});
             </script>
         </div>
-		<!-- 导航栏部分 -->
-		<div class="top_nav bora_5">
-			<nav style="width: 100%;">
-	            <div>
-	                <ul class="fix">
-						<li class="menu-item-has-children cur">
-							<a href="#" title="" itemprop="url">政策法规</a>
-							<ul class="more_list">
-	                            <li><a href="index.html" title="" itemprop="url">Homepage 1</a></li>
-	                            <li><a href="index2.html" title="" itemprop="url">Homepage 2</a></li>
-	                            <li><a href="index3.html" title="" itemprop="url">Homepage 3</a></li>
-	                            <li><a href="index4.html" title="" itemprop="url">Homepage 4</a></li>
-	                            <li><a href="index5.html" title="" itemprop="url">Homepage 5</a></li>
-	                        </ul>
-						</li>
-						<li class="menu-item-has-children">
-							<a href="#" title="" itemprop="url">项目市场</a>
-							<ul class="more_list">
-	                            <li><a href="index.html" title="" itemprop="url">Homepage 1</a></li>
-	                            <li><a href="index2.html" title="" itemprop="url">Homepage 2</a></li>
-	                            <li><a href="index3.html" title="" itemprop="url">Homepage 3</a></li>
-	                            <li><a href="index4.html" title="" itemprop="url">Homepage 4</a></li>
-	                            <li><a href="index5.html" title="" itemprop="url">Homepage 5</a></li>
-	                        </ul>
-						</li>
-						<li>
-							<a href="newslist.html">论文数据</a>
-						</li>
-						<li>
-							<a href="info_public.html">建设投产</a>
-						</li>
-						<li>
-							<a href="newslist.html">经营管理</a>
-						</li>
-						<li>
-							<a href="about.html">信息推广</a>
-						</li>
-						<li>
-							<a href="newslist.html">技术交流</a>
-						</li>
-						<li>
-							<a href="newslist.html">项目管理</a>
-						</li>
-						<li>
-							<a href="newslist.html">English</a>
-						</li>
-						<li>
-							<a href="newslist.html">论坛管理</a>
-						</li>
-						<li>
-							<a href="newslist.html">能源杂谈</a>
-						</li>
-					</ul>
+		<!-- 用户信息 -->
+		<div class="user_box">
+			<div class="box_L">
+				<div class="user_loge">
+					<img src="images/manager.jpg"/>
+					<div class="user_name">
+						<div class="user_id">
+							<span>Name</span><span>ID：1241412asd</span>
+						</div>
+						<div class="user_des">
+							<p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+						</div>
+					</div>
 				</div>
-			</nav>
-		</div>
-		<!-- 导航end -->
-		<!-- 需要添加的最新通知或公告滚动部分 -->
-		<div class="gonggao bdb_d fix">
-			<div class="txtScroll-top l fix">
-				<div class="l tit"><img src="images/icon_notice.png"><b class="dib vm">信息公告：</b></div>
-				<div class="bd l">
-					<ul class="infoList">
-						<li><a href="news_xq.html">我局顺利组织2019年xx市第一期渔业安全生产知识培训及应急实操演练</a><span class="date">2019-07-05</span></li>
-						<li><a href="news_xq.html">xx市综合执法局办公大楼新建地块招标项目开发商承建</a><span class="date">2019-07-05</span></li>
-						<li><a href="news_xq.html">我局顺利组织2019年xx市第一期渔业安全生产知识培训及应急实操演练我局顺利组织2019年福泉市第</a><span class="date">2019-07-05</span></li>
-						<li><a href="news_xq.html">xx市综合执法局办公大楼新建地块招标项目开发商承建</a><span class="date">2019-07-05</span></li>
-					</ul>
+				<div class="address">
+					广东省-广州市-ssss
+				</div>
+				<div class="company">
+					广东省广州市某某公司
 				</div>
 			</div>
-			<script type="text/javascript">
-				jQuery(".txtScroll-top").slide({titCell:".hd ul",mainCell:".bd ul",effect:"topLoop",autoPlay:true,vis:1,interTime:4000,});
-			</script>
-
-			<!-- 时间 -->
-			<div class="timebox fc r">
-				<script type="text/javascript" src="js/show_date.js"></script>
-			</div>
+			<input type="button" name="" id="" value="关注+" />
 		</div>
 
 		<div class="conbox fix">
 			<div class="news_banner l bora_5">
 				<!-- 左边内容 -->
-				<div class="zy_right_con">
+				<div class="zy_right_con marT">
+					
 					<!-- 当前位置 -->
-					<div class="zy_title">
-						<h2 class="selected">最新发布<i></i></h2>
-						<h2>已解决<i></i></h2>
-						<h2>未解决<i></i></h2>
-						<h2>筛选<i></i></h2>
+					<div class="classification">
+						<ul>
+							<li>TA的原创</li>
+							<li>TA的问答</li>
+							<li>TA的问答</li>
+							<li>TA的关注</li>
+							<li>TA的粉丝</li>
+						</ul>
 					</div>
 					<!-- 内容展示块-->
 					<div class="news_list zy_listbox">
@@ -279,13 +337,9 @@
 								<img src="News-module1/images/dangzheng.png"/>
 								<div class="blog_list">
 									<div class="news_title">
-										<a href="news_xq.html" style="max-width: 360px;">李克强主持召开国务院常务会议 部署进一步促进社区养老和家政服务工作安排</a>
+										<a href="news_xq.html">李克强主持召开国务院常务会议 部署进一步促进社区养老和家政服务工作安排</a>
 										<i class="red_news">[原创]</i>
 										<i class="red_news">[新闻]</i>
-										<div class="r">
-											<i class="solve">未解决</i>
-											<i class="reward">悬赏 20C</i>
-										</div>
 									</div>
 									<div class="news_time news_other">
 										<span>发布于：2019-07-05 13:12:06</span>
@@ -315,13 +369,9 @@
 								<img src="images/icon_leader.png"/>
 								<div class="blog_list">
 									<div class="news_title">
-										<a href="news_xq.html" style="max-width: 360px;">特勤大队暂扣污染路面车辆</a>
+										<a href="news_xq.html">特勤大队暂扣污染路面车辆</a>
 										<i class="red_news">[原创]</i>
 										<i class="red_news">[新闻]</i>
-										<div class="r">
-											<i class="solve">未解决</i>
-											<i class="reward">悬赏 20C</i>
-										</div>
 									</div>
 									<div class="news_time news_other">
 										<span>发布于：2019-07-05 13:12:06</span>
@@ -351,13 +401,9 @@
 								<img src="images/people01.jpg"/>
 								<div class="blog_list">
 									<div class="news_title">
-										<a href="news_xq.html" style="max-width: 360px;">我局顺利组织2019年福泉市第一期渔业安全生产知识培训及应急实操演练我局顺利组织2019年福泉市第</a>
+										<a href="news_xq.html">我局顺利组织2019年福泉市第一期渔业安全生产知识培训及应急实操演练我局顺利组织2019年福泉市第</a>
 										<i class="red_news">[原创]</i>
 										<i class="red_news">[新闻]</i>
-										<div class="r">
-											<i class="solved">已解决</i>
-											<i class="reward">悬赏 20C</i>
-										</div>
 									</div>
 									<div class="news_time news_other">
 										<span>发布于：2019-07-05 13:12:06</span>
@@ -387,13 +433,9 @@
 								<img src="images/icon_gongshi.png"/>
 								<div class="blog_list">
 									<div class="news_title">
-										<a href="news_xq.html" style="max-width: 360px;">特勤大队暂扣污染路面车辆</a>
+										<a href="news_xq.html">特勤大队暂扣污染路面车辆</a>
 										<i class="red_news">[原创]</i>
 										<i class="red_news">[新闻]</i>
-										<div class="r">
-											<i class="solve">未解决</i>
-											<i class="reward">悬赏 20C</i>
-										</div>
 									</div>
 									<div class="news_time news_other">
 										<span>发布于：2019-07-05 13:12:06</span>
@@ -426,10 +468,6 @@
 										<a href="news_xq.html">特勤大队暂扣污染路面车辆</a>
 										<i class="red_news">[原创]</i>
 										<i class="red_news">[新闻]</i>
-										<div class="r">
-											<i class="solve">未解决</i>
-											<i class="reward">悬赏 20C</i>
-										</div>
 									</div>
 									<div class="news_time news_other">
 										<span>发布于：2019-07-05 13:12:06</span>
@@ -481,41 +519,90 @@
 			<!-- zy_content end -->
 			<!-- 招标公告 -->
 			<div class="tender r">
-				<div class="manager_box">
-					<div class="manager">
-						<h3>版块管理员</h3>
-						<div class="info">
-							<img src="images/manager.jpg"/>
-							<div class="description">
-								<div>XXX</div>
-								<p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
+				<div class="box_one">
+					<ul>
+						<li>
+							<span>发布</span><span>123</span>
+						</li>
+						<li>
+							<span>粉丝</span><span>123</span>
+						</li>
+						<li>
+							<span>关注</span><span>123</span>
+						</li>
+						<li>
+							<span>获赞</span><span>123</span>
+						</li>
+						<li>
+							<span>转发</span><span>123</span>
+						</li>
+					</ul>
+				</div>
+				<div class="box_two">
+					<div class="new_fan">
+						<div class="title">
+							<span>新粉丝</span><a class="more">更多>></a>
+						</div>
+						<div class="avatar">
+							<div>
+								<img src="images/logo.jpg"/>
+							</div>
+							<div>
+								<img src="images/logo.jpg"/>
+							</div>
+							<div>
+								<img src="images/logo.jpg"/>
+							</div>
+							<div>
+								<img src="images/logo.jpg"/>
 							</div>
 						</div>
 					</div>
-					<div class="owner">
-						<h3>板主</h3>
-						<div class="info">
-							<img src="images/owner.jpg"/>
-							<div class="description">
-								<div>XXX</div>
-								<p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
+					<div class="recent_visitors">
+						<div class="title">
+							<span>新粉丝</span><a class="more">更多>></a>
+						</div>
+						<div class="avatar">
+							<div>
+								<img src="images/logo.jpg"/>
+							</div>
+							<div>
+								<img src="images/logo.jpg"/>
+							</div>
+							<div>
+								<img src="images/logo.jpg"/>
+							</div>
+							<div>
+								<img src="images/logo.jpg"/>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="sy_title bdb_d ovh">
-					<h2 class="l"><img src="images/icon_hot.png"><b class="fc">推荐热帖</b></h2>
-					<a href="newslist.html" class="r">查看更多></a>
+				<div class="box_three">
+					<div class="title bc">
+						<span>喜欢的版块</span><a class="more">返回首页</a>
+					</div>
+					<ul>
+						<li>
+							<h3>LNG板块</h3>
+							<span>
+								今日更新：12篇
+							</span>
+						</li>
+						<li>
+							<h3>Oil板块</h3>
+							<span>
+								今日更新：12篇
+							</span>
+						</li>
+						<li>
+							<h3>Gas板块</h3>
+							<span>
+								今日更新：12篇
+							</span>
+						</li>
+					</ul>
 				</div>
-				<ul>
-					<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span><i class="red_news">[新]</i></a></li>
-					<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局办公大楼新建地块招标项目开发商承建福泉市综合执法局办公大楼新建地块招标项目开发商承建</span><i class="red_news">[新]</i></a></li>
-					<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span></a></li>
-					<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局办公大楼新建地块招标项目开发商承建</span></a></li>
-					<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span></a></li>
-					<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局办公大楼新建地块招标项目开发商承建</span></a></li>
-					<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span></a></li>
-				</ul>
 			</div>
         </div>
         <!-- 专题轮播 -->
