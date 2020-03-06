@@ -2,7 +2,7 @@
 /*重置*/
 body,h1,h2,h3,dl,dd,dt,p,ul,li,ol{ margin:0; padding:0;}
 button,input,select,textarea{border:none; margin:0;outline:none; padding:0;background: none;}
-table,tr,td,th,thead,tbody,video{ border:none; margin:0;outline:none; padding:0;}
+table,tr,td,th,thead,tbody,video{ border:none; margin:0;outline:none; padding:0;box-sizing: border-box;}
 table {
     border-collapse: collapse;
     border-spacing: 0;
@@ -223,7 +223,7 @@ html,body{ background-color:#eee;width: 100%;}
 .zhuanti_pic .bd ul img{ width: 1200px; height: 110px; }
 
 /*双公示*/
-.public_list .sy_title{ background-color: #f5f5f5; padding: 0 0 0 10px;}
+.public_list .sy_title{ background-color: #f5f5f5; padding: 0 ;}
 .public_list .sy_title h2{ margin-top: 10px; }
 .public_list .sy_title .more{  line-height: 54px; padding-right: 10px; }
 .public_list .sy_title .more a{ font-size: 14px; color: #999; display: none;}
@@ -231,8 +231,8 @@ html,body{ background-color:#eee;width: 100%;}
 .date_bg{}
 
 .public_list .hd{border-bottom:2px solid #005389; }
-.public_list .hd ul{ height: 54px; line-height: 54px; margin-left: 36px; }
-.public_list .hd ul li{ float:left; padding:0 30px; cursor:pointer; }
+.public_list .hd ul{ height: 54px; line-height: 54px;padding-left: 5px;}
+.public_list .hd ul li{ float:left; padding:0 30px; cursor:pointer; line-height: 50px;}
 .public_list .hd ul li a{ color: #333; font-size: 20px; }
 .public_list .hd ul li.on{ background:#fff; border:2px solid #005389; border-bottom:3px solid #fff; line-height: 50px;}
 .public_list .hd ul li.on a{font-weight: bold; color: #005389; }
