@@ -10,7 +10,18 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 
 <title>能源公社</title>
-
+<!--富文本编辑框-->
+<link href="bootstrap-wysiwyg/external/google-code-prettify/prettify.css" rel="stylesheet">
+<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="bootstrap-wysiwyg/index.css"/>
+<script src="http://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+<!--键盘事件-->
+<script src="bootstrap-wysiwyg/external/jquery.hotkeys.js"></script>
+<script src="http://cdn.bootcss.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+<script src="bootstrap-wysiwyg/bootstrap-wysiwyg.js"></script>
+<!--end-->
 <link rel="stylesheet" href="css/index.css" type="text/css">
 <link rel="stylesheet" type="text/css" href="css/style.css"/>
 <link rel="stylesheet" type="text/css" href="css/children.css"/>
@@ -45,7 +56,6 @@
 		flex-direction: row;
 	}
 	.mine{
-		margin-top: 50px;
 		border-bottom: 1px solid #ddd;
 		background-color: #005389;
 	}
@@ -240,6 +250,97 @@
 		width: 20px;
 		height: 20px;
 	}
+	.select{
+		background-color: #1a83da;
+	}
+	.mine_box{
+		width: 800px;
+		height: 700px;
+		overflow: hidden;
+	}
+	.attention_title{
+		display: flex;
+		flex-direction: row;
+		width: 400px;
+		justify-content: space-between;
+		align-items: center;
+		color: #333;
+	}
+	.attention_title div:first-child{
+		font-size: 20px;
+		font-weight: 600;
+	}
+	.icon_radius{
+		border-radius: 45px;
+	}
+	.about_att{
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		margin-left: 80px;
+		color: #1a83da;
+	}
+	.about_att a{
+		font-size: 14px;
+	}
+	.wallet_title,.detail_title{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		padding: 0 10px;
+		margin-top: 10px;
+		border-bottom: 1px solid #eee;
+		height: 50px;
+	}
+	.detail_box{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		align-items: center;
+		margin-top: 10px;
+	}
+	.detail_box .yesterday,.month,.wallet{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		padding: 10px;
+		width: 28%;
+		height: 140px;
+		background-color: #eee;
+	}
+	.detail_box .yesterday,.month,.wallet div{
+		font-size: 18px;
+		font-weight: 600;
+		
+	}
+	.list_title,.list_body{
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+	}
+	.list_title li{
+		width: 20%;
+	}
+	.list_body li{
+		width: 20%;
+	}
+	.message{
+		display: flex;
+		flex-direction: column;
+		padding: 10px;
+		background-color: #eee;
+		border-radius: 5px;
+		margin-top: 10px;
+	}
+	.message .message_title{
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+	.message .message_detail a{
+		color: #1a83da;
+	}
 </style>
 </head>
 <body>
@@ -359,23 +460,23 @@
 		</div>
 
 		<div class="conbox fix">
-			<div class="news_banner l bora_5">
+			<div class="news_banner l">
 				<!-- 左边内容 -->
-				<div class="zy_right_con marT">
+				<div class="zy_right_con">
 					<div class="classification mine">
-						<ul>
-							<li>我的原创</li>
-							<li>我的问答</li>
-							<li>我的收藏</li>
-							<li>我的关注</li>
-							<li>我的粉丝</li>
-							<li>收益/钱包</li>
-							<li>快速发帖</li>
-							<li>系统通知</li>
+						<ul id="navbar">
+							<li class="select"><a href="#original">我的原创</a></li>
+							<li><a href="#question">我的问答</a></li>
+							<li><a href="#favorite">我的收藏</a></li>
+							<li><a href="#attention">我的关注</a></li>
+							<li><a href="#fan">我的粉丝</a></li>
+							<li><a href="#wallet">收益/钱包</a></li>
+							<li><a href="#post">快速发帖</a></li>
+							<li><a href="#notice">系统通知</a></li>
 						</ul>
 					</div>
 					<!-- 当前位置 -->
-					<div class="classification">
+					<div class="classification" id="hide" style="display:none;">
 						<ul class="ul_bc">
 							<li>已发布</li>
 							<li>草稿</li>
@@ -415,7 +516,7 @@
 
 					</script>
 					<!-- 内容展示块-->
-					<div class="news_list zy_listbox">
+					<div class="news_list zy_listbox mine_box" id="original">
 						<!-- 展示15条数据后出现分页 -->
 						<ul>
 							<li>
@@ -609,6 +710,774 @@
 	                    </div>
 	                    <!-- 通用分页end -->
 					</div>
+					<!--我的问答-->
+					<div class="news_list zy_listbox mine_box" id="question" hidden="hidden">
+						<!-- 展示15条数据后出现分页 -->
+						<ul>
+							<li>
+								<img src="News-module1/images/dangzheng.png"/>
+								<div class="blog_list">
+									<div class="news_title">
+										<a href="news_xq.html">李克强主持召开国务院常务会议 部署进一步促进社区养老和家政服务工作安排</a>
+										<i class="red_news">[原创]</i>
+										<i class="red_news">[新闻]</i>
+									</div>
+									<div class="news_time news_other">
+										<span>发布于：2019-07-05 13:12:06</span>
+										<span id="">
+											阅读数：32564
+										</span>
+										<span id="">
+											点赞：1563
+										</span>
+									</div>
+									<div class="news_owner news_other">
+										<span id="">
+											发帖人：XXX
+										</span>
+										<span id="">
+											最后回复人：XXX
+										</span>
+										<div class="share">
+											分享：
+											<img class="share_icon" src="images/WeChat.png"/>
+											<img class="share_icon" src="images/weibo.png"/>
+										</div>
+									</div>
+								</div>
+								<img style="width: 20px;height: 20px;" src="images/write.png"/>
+								<img style="width: 20px;height: 20px;" src="images/delete.png"/>
+							</li>
+							<li>
+								<img src="images/icon_leader.png"/>
+								<div class="blog_list">
+									<div class="news_title">
+										<a href="news_xq.html">特勤大队暂扣污染路面车辆</a>
+										<i class="red_news">[原创]</i>
+										<i class="red_news">[新闻]</i>
+									</div>
+									<div class="news_time news_other">
+										<span>发布于：2019-07-05 13:12:06</span>
+										<span id="">
+											阅读数：32564
+										</span>
+										<span id="">
+											点赞：1563
+										</span>
+									</div>
+									<div class="news_owner news_other">
+										<span id="">
+											发帖人：XXX
+										</span>
+										<span id="">
+											最后回复人：XXX
+										</span>
+										<div class="share">
+											分享：
+											<img class="share_icon" src="images/WeChat.png"/>
+											<img class="share_icon" src="images/weibo.png"/>
+										</div>
+									</div>
+								</div>
+								<img style="width: 20px;height: 20px;" src="images/write.png"/>
+								<img style="width: 20px;height: 20px;" src="images/delete.png"/>
+							</li>
+							<li>
+								<img src="images/people01.jpg"/>
+								<div class="blog_list">
+									<div class="news_title">
+										<a href="news_xq.html">我局顺利组织2019年福泉市第一期渔业安全生产知识培训及应急实操演练我局顺利组织2019年福泉市第</a>
+										<i class="red_news">[原创]</i>
+										<i class="red_news">[新闻]</i>
+									</div>
+									<div class="news_time news_other">
+										<span>发布于：2019-07-05 13:12:06</span>
+										<span id="">
+											阅读数：32564
+										</span>
+										<span id="">
+											点赞：1563
+										</span>
+									</div>
+									<div class="news_owner news_other">
+										<span id="">
+											发帖人：XXX
+										</span>
+										<span id="">
+											最后回复人：XXX
+										</span>
+										<div class="share">
+											分享：
+											<img class="share_icon" src="images/WeChat.png"/>
+											<img class="share_icon" src="images/weibo.png"/>
+										</div>
+									</div>
+								</div>
+								<img style="width: 20px;height: 20px;" src="images/write.png"/>
+								<img style="width: 20px;height: 20px;" src="images/delete.png"/>
+							</li>
+							<li>
+								<img src="images/icon_gongshi.png"/>
+								<div class="blog_list">
+									<div class="news_title">
+										<a href="news_xq.html">特勤大队暂扣污染路面车辆</a>
+										<i class="red_news">[原创]</i>
+										<i class="red_news">[新闻]</i>
+									</div>
+									<div class="news_time news_other">
+										<span>发布于：2019-07-05 13:12:06</span>
+										<span id="">
+											阅读数：32564
+										</span>
+										<span id="">
+											点赞：1563
+										</span>
+									</div>
+									<div class="news_owner news_other">
+										<span id="">
+											发帖人：XXX
+										</span>
+										<span id="">
+											最后回复人：XXX
+										</span>
+										<div class="share">
+											分享：
+											<img class="share_icon" src="images/WeChat.png"/>
+											<img class="share_icon" src="images/weibo.png"/>
+										</div>
+									</div>
+								</div>
+								<img style="width: 20px;height: 20px;" src="images/write.png"/>
+								<img style="width: 20px;height: 20px;" src="images/delete.png"/>
+							</li>
+							<li>
+								<img src="images/icon_zhaobiao.png"/>
+								<div class="blog_list">
+									<div class="news_title">
+										<a href="news_xq.html">特勤大队暂扣污染路面车辆</a>
+										<i class="red_news">[原创]</i>
+										<i class="red_news">[新闻]</i>
+									</div>
+									<div class="news_time news_other">
+										<span>发布于：2019-07-05 13:12:06</span>
+										<span id="">
+											阅读数：32564
+										</span>
+										<span id="">
+											点赞：1563
+										</span>
+									</div>
+									<div class="news_owner news_other">
+										<span id="">
+											发帖人：XXX
+										</span>
+										<span id="">
+											最后回复人：XXX
+										</span>
+										<div class="share">
+											分享：
+											<img class="share_icon" src="images/WeChat.png"/>
+											<img class="share_icon" src="images/weibo.png"/>
+										</div>
+									</div>
+								</div>
+								<img style="width: 20px;height: 20px;" src="images/write.png"/>
+								<img style="width: 20px;height: 20px;" src="images/delete.png"/>
+							</li>
+						</ul>
+						<!-- 通用分页 -->
+						<div class="fanye" style="text-align: left;">
+	                        <a href="#">上一页</a>
+	                        <div>
+	                            <a href="#" class="current">1</a>
+	                            <a href="#">2</a>
+	                            <a href="#">3</a>
+	                            <a href="#">4</a>
+	                            <a href="#">...</a>
+	                            <a href="#">10</a>
+	                        </div> 
+	                        <a href="#">下一页</a>
+	                        <p>
+	                        	<span>共20页</span>
+	                        	<span>转到第<input type="text" name="" value="2">页</span>
+	                        	<input type="submit" name="" value="确定">
+	                        </p>
+	                    </div>
+	                    <!-- 通用分页end -->
+					</div>
+					<!--我的收藏-->
+					<div class="news_list zy_listbox mine_box" id="favorite" hidden="hidden">
+						<!-- 展示15条数据后出现分页 -->
+						<ul>
+							<li>
+								<img src="News-module1/images/dangzheng.png"/>
+								<div class="blog_list">
+									<div class="news_title">
+										<a href="news_xq.html">李克强主持召开国务院常务会议 部署进一步促进社区养老和家政服务工作安排</a>
+										<i class="red_news">[原创]</i>
+										<i class="red_news">[新闻]</i>
+									</div>
+									<div class="news_time news_other">
+										<span>发布于：2019-07-05 13:12:06</span>
+										<span id="">
+											阅读数：32564
+										</span>
+										<span id="">
+											点赞：1563
+										</span>
+									</div>
+									<div class="news_owner news_other">
+										<span id="">
+											发帖人：XXX
+										</span>
+										<span id="">
+											最后回复人：XXX
+										</span>
+										<div class="share">
+											分享：
+											<img class="share_icon" src="images/WeChat.png"/>
+											<img class="share_icon" src="images/weibo.png"/>
+										</div>
+									</div>
+								</div>
+								<!--<img style="width: 20px;height: 20px;" src="images/write.png"/>-->
+								<img style="width: 20px;height: 20px;" src="images/delete.png"/>
+							</li>
+							<li>
+								<img src="images/icon_leader.png"/>
+								<div class="blog_list">
+									<div class="news_title">
+										<a href="news_xq.html">特勤大队暂扣污染路面车辆</a>
+										<i class="red_news">[原创]</i>
+										<i class="red_news">[新闻]</i>
+									</div>
+									<div class="news_time news_other">
+										<span>发布于：2019-07-05 13:12:06</span>
+										<span id="">
+											阅读数：32564
+										</span>
+										<span id="">
+											点赞：1563
+										</span>
+									</div>
+									<div class="news_owner news_other">
+										<span id="">
+											发帖人：XXX
+										</span>
+										<span id="">
+											最后回复人：XXX
+										</span>
+										<div class="share">
+											分享：
+											<img class="share_icon" src="images/WeChat.png"/>
+											<img class="share_icon" src="images/weibo.png"/>
+										</div>
+									</div>
+								</div>
+								<!--<img style="width: 20px;height: 20px;" src="images/write.png"/>-->
+								<img style="width: 20px;height: 20px;" src="images/delete.png"/>
+							</li>
+							<li>
+								<img src="images/people01.jpg"/>
+								<div class="blog_list">
+									<div class="news_title">
+										<a href="news_xq.html">我局顺利组织2019年福泉市第一期渔业安全生产知识培训及应急实操演练我局顺利组织2019年福泉市第</a>
+										<i class="red_news">[原创]</i>
+										<i class="red_news">[新闻]</i>
+									</div>
+									<div class="news_time news_other">
+										<span>发布于：2019-07-05 13:12:06</span>
+										<span id="">
+											阅读数：32564
+										</span>
+										<span id="">
+											点赞：1563
+										</span>
+									</div>
+									<div class="news_owner news_other">
+										<span id="">
+											发帖人：XXX
+										</span>
+										<span id="">
+											最后回复人：XXX
+										</span>
+										<div class="share">
+											分享：
+											<img class="share_icon" src="images/WeChat.png"/>
+											<img class="share_icon" src="images/weibo.png"/>
+										</div>
+									</div>
+								</div>
+								<!--<img style="width: 20px;height: 20px;" src="images/write.png"/>-->
+								<img style="width: 20px;height: 20px;" src="images/delete.png"/>
+							</li>
+							<li>
+								<img src="images/icon_gongshi.png"/>
+								<div class="blog_list">
+									<div class="news_title">
+										<a href="news_xq.html">特勤大队暂扣污染路面车辆</a>
+										<i class="red_news">[原创]</i>
+										<i class="red_news">[新闻]</i>
+									</div>
+									<div class="news_time news_other">
+										<span>发布于：2019-07-05 13:12:06</span>
+										<span id="">
+											阅读数：32564
+										</span>
+										<span id="">
+											点赞：1563
+										</span>
+									</div>
+									<div class="news_owner news_other">
+										<span id="">
+											发帖人：XXX
+										</span>
+										<span id="">
+											最后回复人：XXX
+										</span>
+										<div class="share">
+											分享：
+											<img class="share_icon" src="images/WeChat.png"/>
+											<img class="share_icon" src="images/weibo.png"/>
+										</div>
+									</div>
+								</div>
+								<!--<img style="width: 20px;height: 20px;" src="images/write.png"/>-->
+								<img style="width: 20px;height: 20px;" src="images/delete.png"/>
+							</li>
+							<li>
+								<img src="images/icon_zhaobiao.png"/>
+								<div class="blog_list">
+									<div class="news_title">
+										<a href="news_xq.html">特勤大队暂扣污染路面车辆</a>
+										<i class="red_news">[原创]</i>
+										<i class="red_news">[新闻]</i>
+									</div>
+									<div class="news_time news_other">
+										<span>发布于：2019-07-05 13:12:06</span>
+										<span id="">
+											阅读数：32564
+										</span>
+										<span id="">
+											点赞：1563
+										</span>
+									</div>
+									<div class="news_owner news_other">
+										<span id="">
+											发帖人：XXX
+										</span>
+										<span id="">
+											最后回复人：XXX
+										</span>
+										<div class="share">
+											分享：
+											<img class="share_icon" src="images/WeChat.png"/>
+											<img class="share_icon" src="images/weibo.png"/>
+										</div>
+									</div>
+								</div>
+								<!--<img style="width: 20px;height: 20px;" src="images/write.png"/>-->
+								<img style="width: 20px;height: 20px;" src="images/delete.png"/>
+							</li>
+						</ul>
+						<!-- 通用分页 -->
+						<div class="fanye" style="text-align: left;">
+	                        <a href="#">上一页</a>
+	                        <div>
+	                            <a href="#" class="current">1</a>
+	                            <a href="#">2</a>
+	                            <a href="#">3</a>
+	                            <a href="#">4</a>
+	                            <a href="#">...</a>
+	                            <a href="#">10</a>
+	                        </div> 
+	                        <a href="#">下一页</a>
+	                        <p>
+	                        	<span>共20页</span>
+	                        	<span>转到第<input type="text" name="" value="2">页</span>
+	                        	<input type="submit" name="" value="确定">
+	                        </p>
+	                    </div>
+	                    <!-- 通用分页end -->
+					</div>
+					<!--我的关注-->
+					<div class="news_list zy_listbox mine_box" id="attention" hidden="hidden">
+						<!-- 展示15条数据后出现分页 -->
+						<ul>
+							<li>
+								<img class="icon_radius" src="images/manager.jpg"/>
+								<div class="blog_list">
+									<div class="attention_title">
+										<div>name</div>
+										<div>ID:xxxxxxx</div>
+										<div>关注时间：2020-3-6 21:13:08</div>
+									</div>
+									<div class="news_time news_other">
+										<span>个人简介：</span>
+										<p>xxxxxxxxxxx</p>
+									</div>
+									<div class="news_owner news_other">
+										<span id="">
+											关注：xxx|粉丝：xxx
+										</span>
+									</div>
+								</div>
+								<div class="about_att">
+									<div class="cansel">
+										取消关注
+									</div>
+									<div class="hispage">
+										<a>TA的个人主页</a>
+									</div>
+								</div>
+							</li>
+							<li>
+								<img class="icon_radius" src="images/manager.jpg"/>
+								<div class="blog_list">
+									<div class="attention_title">
+										<div>name</div>
+										<div>ID:xxxxxxx</div>
+										<div>关注时间：2020-3-6 21:13:08</div>
+									</div>
+									<div class="news_time news_other">
+										<span>个人简介：</span>
+										<p>xxxxxxxxxxx</p>
+									</div>
+									<div class="news_owner news_other">
+										<span id="">
+											关注：xxx|粉丝：xxx
+										</span>
+									</div>
+								</div>
+								<div class="about_att">
+									<div class="cansel">
+										取消关注
+									</div>
+									<div class="hispage">
+										<a>TA的个人主页</a>
+									</div>
+								</div>
+							</li>
+							<li>
+								<img class="icon_radius" src="images/manager.jpg"/>
+								<div class="blog_list">
+									<div class="attention_title">
+										<div>name</div>
+										<div>ID:xxxxxxx</div>
+										<div>关注时间：2020-3-6 21:13:08</div>
+									</div>
+									<div class="news_time news_other">
+										<span>个人简介：</span>
+										<p>xxxxxxxxxxx</p>
+									</div>
+									<div class="news_owner news_other">
+										<span id="">
+											关注：xxx|粉丝：xxx
+										</span>
+									</div>
+								</div>
+								<div class="about_att">
+									<div class="cansel">
+										取消关注
+									</div>
+									<div class="hispage">
+										<a>TA的个人主页</a>
+									</div>
+								</div>
+							</li>
+						</ul>
+						<!-- 通用分页 -->
+						<div class="fanye" style="text-align: left;">
+	                        <a href="#">上一页</a>
+	                        <div>
+	                            <a href="#" class="current">1</a>
+	                            <a href="#">2</a>
+	                            <a href="#">3</a>
+	                            <a href="#">4</a>
+	                            <a href="#">...</a>
+	                            <a href="#">10</a>
+	                        </div> 
+	                        <a href="#">下一页</a>
+	                        <p>
+	                        	<span>共20页</span>
+	                        	<span>转到第<input type="text" name="" value="2">页</span>
+	                        	<input type="submit" name="" value="确定">
+	                        </p>
+	                    </div>
+	                    <!-- 通用分页end -->
+					</div>
+					<!--我的粉丝-->
+					<div class="news_list zy_listbox mine_box" id="fan" hidden="hidden">
+						<!-- 展示15条数据后出现分页 -->
+						<ul>
+							<li>
+								<img class="icon_radius" src="images/manager.jpg"/>
+								<div class="blog_list">
+									<div class="attention_title">
+										<div>name</div>
+										<div>ID:xxxxxxx</div>
+										<div>关注时间：2020-3-6 21:13:08</div>
+									</div>
+									<div class="news_time news_other">
+										<span>个人简介：</span>
+										<p>xxxxxxxxxxx</p>
+									</div>
+									<div class="news_owner news_other">
+										<span id="">
+											关注：xxx|粉丝：xxx
+										</span>
+									</div>
+								</div>
+								<div class="about_att">
+									<div class="cansel">
+										关注+
+									</div>
+									<div class="hispage">
+										<a>TA的个人主页</a>
+									</div>
+								</div>
+							</li>
+							<li>
+								<img class="icon_radius" src="images/manager.jpg"/>
+								<div class="blog_list">
+									<div class="attention_title">
+										<div>name</div>
+										<div>ID:xxxxxxx</div>
+										<div>关注时间：2020-3-6 21:13:08</div>
+									</div>
+									<div class="news_time news_other">
+										<span>个人简介：</span>
+										<p>xxxxxxxxxxx</p>
+									</div>
+									<div class="news_owner news_other">
+										<span id="">
+											关注：xxx|粉丝：xxx
+										</span>
+									</div>
+								</div>
+								<div class="about_att">
+									<div class="cansel">
+										关注+
+									</div>
+									<div class="hispage">
+										<a>TA的个人主页</a>
+									</div>
+								</div>
+							</li>
+							<li>
+								<img class="icon_radius" src="images/manager.jpg"/>
+								<div class="blog_list">
+									<div class="attention_title">
+										<div>name</div>
+										<div>ID:xxxxxxx</div>
+										<div>关注时间：2020-3-6 21:13:08</div>
+									</div>
+									<div class="news_time news_other">
+										<span>个人简介：</span>
+										<p>xxxxxxxxxxx</p>
+									</div>
+									<div class="news_owner news_other">
+										<span id="">
+											关注：xxx|粉丝：xxx
+										</span>
+									</div>
+								</div>
+								<div class="about_att">
+									<div class="cansel">
+										关注+
+									</div>
+									<div class="hispage">
+										<a>TA的个人主页</a>
+									</div>
+								</div>
+							</li>
+						</ul>
+						<!-- 通用分页 -->
+						<div class="fanye" style="text-align: left;">
+	                        <a href="#">上一页</a>
+	                        <div>
+	                            <a href="#" class="current">1</a>
+	                            <a href="#">2</a>
+	                            <a href="#">3</a>
+	                            <a href="#">4</a>
+	                            <a href="#">...</a>
+	                            <a href="#">10</a>
+	                        </div> 
+	                        <a href="#">下一页</a>
+	                        <p>
+	                        	<span>共20页</span>
+	                        	<span>转到第<input type="text" name="" value="2">页</span>
+	                        	<input type="submit" name="" value="确定">
+	                        </p>
+	                    </div>
+	                    <!-- 通用分页end -->
+					</div>
+					<!--收益/钱包-->
+					<div class="news_list zy_listbox mine_box" id="wallet" hidden="hidden">
+						<div class="wallet_title">
+							<h2>整体收益</h2>
+							<a href="">提现须知？</a>
+						</div>
+						<div class="detail_box">
+							<div class="yesterday">
+								<div>昨日收益/元</div>
+								<div>10</div>
+								<div>近7日收益360元</div>
+							</div>
+							<div class="month">
+								<div>昨日收益/元</div>
+								<div>10</div>
+								<div>近7日收益360元</div>
+							</div>
+							<div class="wallet">
+								<div>昨日收益/元</div>
+								<div>10</div>
+								<div>近7日收益360元</div>
+							</div>
+						</div>
+						<div class="detail_title">
+							<h2>收益明细</h2>
+							<div class="time">
+								<span>选择时间：</span>
+								<div class="dib vm laydate-icon" id="startTime01"></div>
+								—
+								<div class="dib vm laydate-icon" id="endTime01"></div>
+							</div>
+						</div>
+						<div class="detail_list">
+							<ul class="list_title">
+								<li>日期</li>
+								<li>收益类型</li>
+								<li>现金收益</li>
+								<li>论坛币收益</li>
+								<li>支付人</li>
+							</ul>
+							<ul>
+								<li>
+									<ul class="list_body">
+										<li>2020-02-19 15:22:20</li>
+										<li>创作激励</li>
+										<li>25.00</li>
+										<li>0</li>
+										<li>平台管理员</li>
+									</ul>
+								</li>
+								<li>
+									<ul class="list_body">
+										<li>2020-02-19 15:22:20</li>
+										<li>创作激励</li>
+										<li>25.00</li>
+										<li>0</li>
+										<li>平台管理员</li>
+									</ul>
+								</li>
+								<li>
+									<ul class="list_body">
+										<li>2020-02-19 15:22:20</li>
+										<li>创作激励</li>
+										<li>25.00</li>
+										<li>0</li>
+										<li>平台管理员</li>
+									</ul>
+								</li>
+								<li>
+									<ul class="list_body">
+										<li>2020-02-19 15:22:20</li>
+										<li>创作激励</li>
+										<li>25.00</li>
+										<li>0</li>
+										<li>平台管理员</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<!--快速发帖-->
+					<div class="news_list zy_listbox mine_box" id="post" hidden="hidden">
+						<div  style="height: 50px;"></div>
+						<!--这里加上是为了让提示信息显示 不然会被遮挡-->
+						<div class="btn-toolbar" data-role="editor-toolbar" data-target="#editor">
+						    <div class="btn-group">
+						        <a class="btn dropdown-toggle" data-toggle="dropdown" title="Font"><i class="icon-font"></i><b class="caret"></b></a>
+						        <ul class="dropdown-menu"> </ul>
+						    </div>
+						    <div class="btn-group">
+						        <a class="btn dropdown-toggle" data-toggle="dropdown" title="Font Size"><i class="icon-text-height"></i> <b class="caret"></b></a>
+						        <ul class="dropdown-menu">
+						            <li><a data-edit="fontSize 5"><font size="5">Huge</font></a></li>
+						            <li><a data-edit="fontSize 3"><font size="3">Normal</font></a></li>
+						            <li><a data-edit="fontSize 1"><font size="1">Small</font></a></li>
+						        </ul>
+						    </div>
+						    <div class="btn-group">
+						        <a class="btn" data-edit="bold" title="Bold (Ctrl/Cmd+B)"><i class="icon-bold"></i></a> <!--加粗-->
+						        <a class="btn" data-edit="italic" title="Italic (Ctrl/Cmd+I)"><i class="icon-italic"></i></a><!-- 斜体-->
+						        <a class="btn" data-edit="strikethrough" title="Strikethrough"><i class="icon-strikethrough"></i></a><!-- 删除线-->
+						        <a class="btn" data-edit="underline" title="Underline (Ctrl/Cmd+U)"><i class="icon-underline"></i></a><!-- 下划线-->
+						    </div>
+						    <div class="btn-group">
+						        <a class="btn" data-edit="insertunorderedlist" title="Bullet list"><i class="icon-list-ul"></i></a><!-- 加点-->
+						        <a class="btn" data-edit="insertorderedlist" title="Number list"><i class="icon-list-ol"></i></a><!-- 数字排序-->
+						        <a class="btn" data-edit="outdent" title="Reduce indent (Shift+Tab)"><i class="icon-indent-left"></i></a><!-- 减少缩进-->
+						        <a class="btn" data-edit="indent" title="Indent (Tab)"><i class="icon-indent-right"></i></a><!--增加缩进-->
+						    </div>
+						    <div class="btn-group">
+						        <a class="btn" data-edit="justifyleft" title="Align Left (Ctrl/Cmd+L)"><i class="icon-align-left"></i></a><!--左对齐-->
+						        <a class="btn" data-edit="justifycenter" title="Center (Ctrl/Cmd+E)"><i class="icon-align-center"></i></a><!--居中-->
+						        <a class="btn" data-edit="justifyright" title="Align Right (Ctrl/Cmd+R)"><i class="icon-align-right"></i></a><!--右对齐-->
+						        <a class="btn" data-edit="justifyfull" title="Justify (Ctrl/Cmd+J)"><i class="icon-align-justify"></i></a><!--垂直对齐-->
+						    </div>
+						    <div class="btn-group">
+						        <a class="btn dropdown-toggle" data-toggle="dropdown" title="Hyperlink"><i class="icon-link"></i></a><!-- 链接-->
+						        <div class="dropdown-menu input-append">
+						            <input class="span2" placeholder="URL" type="text" data-edit="createLink"/>
+						            <button class="btn" type="button">Add</button>
+						        </div>
+						        <a class="btn" data-edit="unlink" title="Remove Hyperlink"><i class="icon-cut"></i></a>
+						    </div>
+						    <div class="btn-group">
+						        <a class="btn" title="Insert picture (or just drag & drop)" id="pictureBtn"><i class="icon-picture"></i></a>
+						        <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" />
+						    </div>
+						    <div class="btn-group">
+						        <a class="btn" data-edit="undo" title="Undo (Ctrl/Cmd+Z)"><i class="icon-undo"></i></a><!--撤销-->
+						        <a class="btn" data-edit="redo" title="Redo (Ctrl/Cmd+Y)"><i class="icon-repeat"></i></a><!--恢复-->
+						    </div>
+						    <input type="text" data-edit="inserttext" id="voiceBtn" x-webkit-speech="">
+						</div>
+						 
+						<div id="editor">
+						    Go ahead…
+						</div>
+						
+					</div>
+					<!--系统通知-->
+					<div class="news_list zy_listbox mine_box" id="notice" hidden="hidden">
+						<div class="message">
+							<div class="message_title">
+								<h3>叮，您的创作激励奖金已到账，请您查收！</h3><span>2020-02-04 01:23:33</span>
+							</div>
+							<div class="message_detail">
+								<span>您的创作激励奖金到账了，前往查看</span><a>网页链接</a>
+							</div>
+						</div>
+						<div class="message">
+							<div class="message_title">
+								<h3>叮，您的创作激励奖金已到账，请您查收！</h3><span>2020-02-04 01:23:33</span>
+							</div>
+							<div class="message_detail">
+								<span>您的创作激励奖金到账了，前往查看</span><a>网页链接</a>
+							</div>
+						</div>
+						<div class="message">
+							<div class="message_title">
+								<h3>叮，您的创作激励奖金已到账，请您查收！</h3><span>2020-02-04 01:23:33</span>
+							</div>
+							<div class="message_detail">
+								<span>您的创作激励奖金到账了，前往查看</span><a>网页链接</a>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 			<!-- zy_content end -->
@@ -760,6 +1629,72 @@
 	</div>
 	<p>版权所有：XX市综合行政执法局&nbsp;&nbsp;&nbsp;地址：XX省XX市工业园区特1号</p>
 </div>
-
+<script type="text/javascript">
+	//页内导航
+	$("#navbar li").click(function(){
+		if($(this).attr("class")!="select"){
+			var nav_a = $(this).find('a')[0];
+			var nav_id = $(nav_a).attr("href");
+			if(nav_id=="#question"){
+				$("#hide").show();
+			}else{
+				$("#hide").hide();
+			}
+			var part_arr = $(".zy_listbox");
+			var li_arr = $("#navbar li");
+			for(var i=0;i<part_arr.length;i++){
+				if($(part_arr[i]).attr("hidden")==undefined){
+					$(part_arr[i]).attr("hidden","hidden");
+				}
+				$(li_arr[i]).removeAttr("class");
+			}
+			console.log(nav_id)
+			$(nav_id).removeAttr("hidden");
+			$(this).attr("class","select");
+		}
+	})
+</script>
+<!--富文本编辑框-->
+<script>
+    $(function(){
+        function initToolbarBootstrapBindings() {
+            var fonts = ['Serif', 'Sans', 'Arial', 'Arial Black', 'Courier',
+                        'Courier New', 'Comic Sans MS', 'Helvetica', 'Impact', 'Lucida Grande', 'Lucida Sans', 'Tahoma', 'Times',
+                        'Times New Roman', 'Verdana'],
+                    fontTarget = $('[title=Font]').siblings('.dropdown-menu');
+            $.each(fonts, function (idx, fontName) {
+                fontTarget.append($('<li><a data-edit="fontName ' + fontName +'" style="font-family:\''+ fontName +'\'">'+fontName + '</a></li>'));
+            });
+//          $('a[title]').tooltip({container:'body'});
+            $('.dropdown-menu input').click(function() {return false;})
+                    .change(function () {$(this).parent('.dropdown-menu').siblings('.dropdown-toggle').dropdown('toggle');})
+                    .keydown('esc', function () {this.value='';$(this).change();});
+ 
+            $('[data-role=magic-overlay]').each(function () {
+                var overlay = $(this), target = $(overlay.data('target'));
+                overlay.css('opacity', 0).css('position', 'absolute').offset(target.offset()).width(target.outerWidth()).height(target.outerHeight());
+            });
+            $('#voiceBtn').hide();
+             if ("onwebkitspeechchange"  in document.createElement("input")) {
+               var editorOffset = $('#editor').offset();
+               $('#voiceBtn').css('position','absolute').offset({top: editorOffset.top, left: editorOffset.left+$('#editor').innerWidth()-35});
+             } else {
+               $('#voiceBtn').hide();
+             }
+        };
+        function showErrorAlert (reason, detail) {
+            var msg='';
+            if (reason==='unsupported-file-type') {
+                msg = "Unsupported format " +detail;
+            } else {
+                console.log("error uploading file", reason, detail);
+            }
+            $('<div class="alert"> <button type="button" class="close" data-dismiss="alert">×</button>'+
+                    '<strong>File upload error</strong> '+msg+' </div>').prependTo('#alerts');
+        };
+        initToolbarBootstrapBindings();
+//      $('#editor').wysiwyg({ fileUploadError: showErrorAlert} );
+    });
+</script>
 </body>
 </html>

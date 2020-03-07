@@ -93,7 +93,7 @@
 /*右边内容栏*/
 .zy_right_con{ 
 	float: left; 
-	width: 720px; 
+	/*width: 720px;*/ 
 	overflow: hidden;
 }
 /*当前标题*/
@@ -276,7 +276,7 @@
 .news_list ul li{ line-height: 42px; display: flex; flex-direction: row;padding: 10px 0;border-bottom: 1px solid #eee;}
 .news_list ul li img{
 	width: 90px;
-	height: 100px;
+	height: 90px;
 }
 .news_list ul li a{ color: #333; transition: all .3s; display: inline-block;vertical-align: middle; max-width: 900px; 
 	white-space: nowrap; text-overflow: ellipsis; overflow: hidden; 

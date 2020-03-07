@@ -17,6 +17,7 @@
 <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
 <script type="text/javascript" src="js/public.js"></script><!-- 菜单js等-->
+<script src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)] type="text/javascript" charset="utf-8"></script><!--百度分享插件-->
 <!-- 时间选择js -->
 <script type="text/javascript" src="js/laydate.js"></script>
 <style>
@@ -276,10 +277,11 @@
 										<span id="">
 											最后回复人：XXX
 										</span>
-										<div class="share">
+										<div class="share bdsharebuttonbox">
 											分享：
-											<img class="share_icon" src="images/WeChat.png"/>
-											<img class="share_icon" src="images/weibo.png"/>
+											<a href="#" class="bds_weixin" data-cmd="weixin"></a>
+											<a href="#" class="bds_tsina" data-cmd="tsina"></a>
+											<a href="#" class="bds_more" data-cmd="weixin">更多</a>
 										</div>
 									</div>
 								</div>
@@ -308,10 +310,10 @@
 										<span id="">
 											最后回复人：XXX
 										</span>
-										<div class="share">
+										<div class="share bdsharebuttonbox">
 											分享：
-											<img class="share_icon" src="images/WeChat.png"/>
-											<img class="share_icon" src="images/weibo.png"/>
+											<a href="#" class="bds_weixin" data-cmd="weixin"></a>
+											<a href="#" class="bds_tsina" data-cmd="tsina"></a>
 										</div>
 									</div>
 								</div>
@@ -340,10 +342,10 @@
 										<span id="">
 											最后回复人：XXX
 										</span>
-										<div class="share">
+										<div class="share bdsharebuttonbox">
 											分享：
-											<img class="share_icon" src="images/WeChat.png"/>
-											<img class="share_icon" src="images/weibo.png"/>
+											<a href="#" class="bds_weixin" data-cmd="weixin"></a>
+											<a href="#" class="bds_tsina" data-cmd="tsina"></a>
 										</div>
 									</div>
 								</div>
@@ -372,10 +374,10 @@
 										<span id="">
 											最后回复人：XXX
 										</span>
-										<div class="share">
+										<div class="share bdsharebuttonbox">
 											分享：
-											<img class="share_icon" src="images/WeChat.png"/>
-											<img class="share_icon" src="images/weibo.png"/>
+											<a href="#" class="bds_weixin" data-cmd="weixin"></a>
+											<a href="#" class="bds_tsina" data-cmd="tsina"></a>
 										</div>
 									</div>
 								</div>
@@ -404,10 +406,10 @@
 										<span id="">
 											最后回复人：XXX
 										</span>
-										<div class="share">
+										<div class="share bdsharebuttonbox">
 											分享：
-											<img class="share_icon" src="images/WeChat.png"/>
-											<img class="share_icon" src="images/weibo.png"/>
+											<a href="#" class="bds_weixin" data-cmd="weixin"></a>
+											<a href="#" class="bds_tsina" data-cmd="tsina"></a>
 										</div>
 									</div>
 								</div>
@@ -535,6 +537,31 @@
 	</div>
 	<p>版权所有：XX市综合行政执法局&nbsp;&nbsp;&nbsp;地址：XX省XX市工业园区特1号</p>
 </div>
-
+<script type="text/javascript">
+window._bd_share_config = {
+    common: {
+        bdText: '分享的内容',
+        bdMini: "2",                // 下拉浮层分享按钮的列数
+        bdMiniList: ['mshare', 'qzone', 'tsina', 'weixin', 'tqq', 'tieba', 'copy', 'print'],   //  下拉浮层显示的内容，默认显示为 false
+        bdPic: '/assets/share.jpg',    // 分享的图片
+        bdStyle: "0",
+        bdSize: "16",
+        bdUrl: 'http://192.168.1.107:8081/power/index.html',                  // 分享的地址
+        onBeforeClick: setConf      // 在用户点击分享按钮时执行代码，更改配置。function(cmd,config){} cmd为分享目标id，config为当前设置，返回值为更新后的设置。
+    },
+    share: []
+};
+function setConf(cmd, config) {
+    if (url) {
+        config.bdUrl = url;
+        config.bdText = title;
+    }
+    return config;
+}
+$('.bdsharebuttonbox a').on('mouseover', function () {
+    title = $(this).data('title');
+    url = window.location.origin+$(this).data('url');
+})
+</script>
 </body>
 </html>
