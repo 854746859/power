@@ -603,17 +603,17 @@
 			$.ajax({
 				url: 'http://114.55.35.82/tp6_forum/public/index.php/sort/select',
 				type: 'post',
-				// 设置的是请求参数
-				contentType： 'application/json',
-				response.addHeader(‘Access-Control-Allow-Origin:*’);
+				beforeSend: function(xhr) {
+                        xhr.setRequestHeader("token:'asdasd'");
+                    },
 				data: {
-					// rows: '10',
-					// page: '1',
-					// serch: '',
-					// plate: '1',
-					// plate_two: '1',
-					// post_type: '1',
-					// order: '1'
+					rows: '10',
+					page: '1',
+					serch: '',
+					plate: '1',
+					plate_two: '1',
+					post_type: '1',
+					order: '1'
 				},
 				// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
 				dataType: 'json',
@@ -623,17 +623,6 @@
 					console.log(res)
 				},
 			})
-
-			axios.post('http://114.55.35.82/tp6_forum/public/index.php/sort/select', {
-					firstName: 'Fred',
-					lastName: 'Flintstone'
-				})
-				.then(function(response) {
-					console.log(response);
-				})
-				.catch(function(error) {
-					console.log(error);
-				});
 		</script>
 
 
