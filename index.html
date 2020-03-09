@@ -82,7 +82,7 @@
 				<nav>
 					<div>
 						<ul>
-							<li><a href="index.html">首页</a></li>
+							<li><a href="index.html?plate=1&two=0">首页</a></li>
 							<li class="menu-item-has-children"><a href="#" title="" itemprop="url">论坛</a>
 								<ul>
 									<li><a href="index.html?plate=1" title="" itemprop="url">LNG版块</a></li>
@@ -696,7 +696,7 @@
 				type: 'post',
 				data: {
 					// token: 'sadafsaf',
-					rows: '10',
+					rows: '8',
 					page: '1',
 					serch: '',
 					plate: json.plate,
@@ -709,7 +709,7 @@
 				success: function(res) {
 					// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
 					// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
-					console.log(res.total)
+					console.log(res)
 					var data = res.data;
 					// 分页函数
 					$(function() {
@@ -728,7 +728,7 @@
 							backClass: b, //选中的页数的背景，也可以不定义使用默认值
 							isFirst: true, //首页按钮是否显示
 							isPre: true, //下一页按钮是否显示
-							showRecordNum: 10, // 一页列表数量
+							showRecordNum: res.per_page, // 一页列表数量
 							totalNum: res.total, // 总列表数量
 							showNum: function(data1, data2) {
 								alert(data1 + "," + data2);
