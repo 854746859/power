@@ -224,8 +224,8 @@
 							rows: ele.option.showRecordNum,
 							page: ele.option.currentPage,
 							serch: '',
-							plate: '1',
-							plate_two: '0',
+							plate: json.plate,
+							plate_two: json.two,
 							post_type: '0',
 							order: '0'
 						},
