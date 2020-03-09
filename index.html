@@ -14,6 +14,7 @@
 		<link rel="stylesheet" href="css/index.css" type="text/css">
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<link rel="stylesheet" type="text/css" href="css/children.css" />
+		<link rel="stylesheet" type="text/css" href="css/paging.css" />
 		<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
 		<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
 		<script type="text/javascript" src="js/public.js"></script><!-- 菜单js等-->
@@ -179,7 +180,7 @@
 						<div>
 							<ul class="fix">
 								<li class="menu-item-has-children cur">
-									<a href="#" title="" itemprop="url">政策法规</a>
+									<a href="index.html?modle=1" title="" itemprop="url">政策法规</a>
 									<ul class="more_list">
 										<li><a href="index.html" title="" itemprop="url">Homepage 1</a></li>
 										<li><a href="index2.html" title="" itemprop="url">Homepage 2</a></li>
@@ -189,7 +190,7 @@
 									</ul>
 								</li>
 								<li class="menu-item-has-children">
-									<a href="#" title="" itemprop="url">项目市场</a>
+									<a href="index.html?modle=2" title="" itemprop="url">项目市场</a>
 									<ul class="more_list">
 										<li><a href="index.html" title="" itemprop="url">Homepage 1</a></li>
 										<li><a href="index2.html" title="" itemprop="url">Homepage 2</a></li>
@@ -199,31 +200,31 @@
 									</ul>
 								</li>
 								<li>
-									<a href="newslist.html">论文数据</a>
+									<a href="index.html?modle=3">论文数据</a>
 								</li>
 								<li>
-									<a href="info_public.html">建设投产</a>
+									<a href="index.html?modle=4">建设投产</a>
 								</li>
 								<li>
-									<a href="newslist.html">经营管理</a>
+									<a href="index.html?modle=5">经营管理</a>
 								</li>
 								<li>
-									<a href="about.html">信息推广</a>
+									<a href="index.html?modle=6">信息推广</a>
 								</li>
 								<li>
-									<a href="newslist.html">技术交流</a>
+									<a href="index.html?modle=7">技术交流</a>
 								</li>
 								<li>
-									<a href="newslist.html">项目管理</a>
+									<a href="index.html?modle=8">项目管理</a>
 								</li>
 								<li>
-									<a href="newslist.html">English</a>
+									<a href="index.html?modle=9">English</a>
 								</li>
 								<li>
-									<a href="newslist.html">论坛管理</a>
+									<a href="index.html?modle=10">论坛管理</a>
 								</li>
 								<li>
-									<a href="newslist.html">能源杂谈</a>
+									<a href="index.html?modle=11">能源杂谈</a>
 								</li>
 							</ul>
 						</div>
@@ -436,7 +437,8 @@
 									</li> -->
 								</ul>
 								<!-- 通用分页 -->
-								<div class="fanye" style="text-align: left;">
+
+								<!-- <div class="fanye" style="text-align: left;">	
 									<a href="#">上一页</a>
 									<div>
 										<a href="#" class="current">1</a>
@@ -446,18 +448,22 @@
 										<a href="#">...</a>
 										<a href="#">10</a>
 									</div>
-									<a href="#">下一页</a>
+									<a href="#" id="btn" class="postlist">下一页</a>
 									<p>
 										<span>共20页</span>
 										<span>转到第<input type="text" name="" value="2">页</span>
 										<input type="submit" name="" value="确定">
 									</p>
-								</div>
+								</div> -->
 								<!-- 通用分页end -->
 							</div>
+
+							<center>
+								<ul class="pagination"></ul>
+							</center>
 						</div>
 					</div>
-					<!-- zy_content end -->
+					<!-- zy_content end
 					<!-- 招标公告 -->
 					<div id="rightinfo" class="tender r">
 						<!-- <div class="manager_box">
@@ -575,8 +581,27 @@
 			</div>
 			<p>版权所有：XX市综合行政执法局&nbsp;&nbsp;&nbsp;地址：XX省XX市工业园区特1号</p>
 		</div>
-		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+		<!-- <script type="text/javascript" src="js/paging/jquery.min.js"></script> -->
+		<script type="text/javascript" src="js/paging/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/paging/paging.js"></script>
 		<script type="text/javascript">
+			function GetRequest() {
+				var url = decodeURI(location.search); //获取url中"?"符后的字串
+				var theRequest = new Object();
+				if (url.indexOf("?") != -1) {
+					var str = url.substr(1);
+					strs = str.split("&");
+					for (var i = 0; i < strs.length; i++) {
+						theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+					}
+				}
+				return theRequest;
+			}
+			var json = GetRequest();
+			console.log(json.modle)
+			
 			window._bd_share_config = {
 				common: {
 					bdText: '分享的内容',
@@ -602,10 +627,39 @@
 				title = $(this).data('title');
 				url = window.location.origin + $(this).data('url');
 			})
-			
+
+
+
+			// 分页函数
+			$(function() {
+				var a = {
+					color: '#blue',
+					sex: 'black',
+					border: '1px solid #ddd'
+				};
+
+				var b = {
+					background: '#005389'
+				};
+
+				$(".pagination").Paging({
+					classStyle: a, //a标签样式的对象,也可以不定义使用默认值
+					backClass: b, //选中的页数的背景，也可以不定义使用默认值
+					isFirst: true, //首页按钮是否显示
+					isPre: true, //下一页按钮是否显示
+					showRecordNum: 10, // 一页列表数量
+					totalNum: 40, // 总列表数量
+					showNum: function(data1, data2) {
+						alert(data1 + "," + data2);
+					}
+				});
+
+			});
+
 			// ajax请求文章列表
 			var post = "";
 			var postlist = document.getElementById("postlist");
+			// alert(ele.option.currentPage)
 			$.ajax({
 				url: 'http://114.55.35.82/tp6_forum/public/index.php/sort/select',
 				type: 'post',
@@ -614,7 +668,7 @@
 					rows: '10',
 					page: '1',
 					serch: '',
-					plate: '1',
+					plate: json.modle,
 					plate_two: '0',
 					post_type: '0',
 					order: '0'
@@ -627,19 +681,26 @@
 					console.log(res)
 					var data = res.data;
 					for (var i = 0; i < data.length; i++) {
-						post += "<li><img src='"+data[i].post_img+"'/><div class='blog_list'>";
-						post += "<div class='news_title'><a href='#'>"+data[i]['post_title']+"</a>";
-						post += "<i class='red_news'>["+data[i]['post_label']+"]</i><i class='red_news'>["+data[i]['post_label']+"]</i></div>";
-						post += "<div class='news_time news_other'><span>发布于："+ data[i]['post_releasetime'] +"</span>";
-						post += "<span id=''>阅读数："+ data[i]['post_readnum'] +" </span><span id=''>点赞："+ data[i]['post_readnum'] +"</span></div>";
-						post += "<div class='news_owner news_other'><span id=''>发帖人："+data[i]['post_user_name']+"</span>";
-						post += "<span id=''>最后回复人："+data[i]['last_user_name']+"</span><div class='share bdsharebuttonbox'>分享：";
-						post += "<a href='#' class='bds_weixin' data-cmd='weixin'></a><a href='#' class='bds_tsina' data-cmd='tsina'></a></div></div></div></li>";
+						post += "<li><img src='" + data[i].post_img + "'/><div class='blog_list'>";
+						post += "<div class='news_title'><a href='qustionDetail.html?postid=" + data[i]['id'] + "''>" + data[i]
+							['post_title'] + "</a>";
+						post += "<i class='red_news'>[" + data[i]['post_label'] + "]</i><i class='red_news'>[" + data[i][
+							'post_label'
+						] + "]</i></div>";
+						post += "<div class='news_time news_other'><span>发布于：" + data[i]['post_releasetime'] + "</span>";
+						post += "<span id=''>阅读数：" + data[i]['post_readnum'] + " </span><span id=''>点赞：" + data[i][
+							'post_readnum'
+						] + "</span></div>";
+						post += "<div class='news_owner news_other'><span id=''>发帖人：" + data[i]['post_user_name'] + "</span>";
+						post += "<span id=''>最后回复人：" + data[i]['last_user_name'] +
+							"</span><div class='share bdsharebuttonbox'>分享：";
+						post +=
+							"<a href='#' class='bds_weixin' data-cmd='weixin'></a><a href='#' class='bds_tsina' data-cmd='tsina'></a></div></div></div></li>";
 						postlist.innerHTML = post;
 					}
 				},
 			})
-			
+
 			// ajax请求右侧数据
 			var info = "";
 			var rightinfo = document.getElementById("rightinfo");
@@ -659,22 +720,25 @@
 					var plate_admin = res.data.plate_admin;
 					var plate_master = res.data.plate_master;
 					var hot_post = res.data.hot_post;
-						info += "<div class='manager_box'><div class='manager'><h3>版块管理员</h3>";
-						info += "<div class='info'><img src='"+plate_admin.user_name+"' /><div class='description'><div>"+plate_admin.user_name+"</div>";
-						info += "<p>"+plate_admin.user_profile+"</p></div></div></div><div class='owner'><h3>板主</h3>";
-						info += "<div class='info'><img src='"+plate_master.user_name+"' /><div class='description'><div>"+plate_master.user_name+"</div>";
-						info += "<p>"+plate_master.user_profile+"</p></div></div></div></div>";
-						info += "<div class='sy_title bdb_d ovh'><h2 class='l'><img src='images/hot.png' width='25px'><b class='fc'>推荐热帖</b></h2>";
-						info += "<a href='#' class='r'>查看更多></a></div><ul>";
-						for (var i = 0; i < hot_post.length; i++) {
-							info += "<li><a href='#'><b>·</b><span>"+hot_post[i]['post_title']+"</span></a></li>";
-						}
-						info += "</ul>";
+					info += "<div class='manager_box'><div class='manager'><h3>版块管理员</h3>";
+					info += "<div class='info'><img src='" + plate_admin.user_name + "' /><div class='description'><div>" +
+						plate_admin.user_name + "</div>";
+					info += "<p>" + plate_admin.user_profile + "</p></div></div></div><div class='owner'><h3>板主</h3>";
+					info += "<div class='info'><img src='" + plate_master.user_name + "' /><div class='description'><div>" +
+						plate_master.user_name + "</div>";
+					info += "<p>" + plate_master.user_profile + "</p></div></div></div></div>";
+					info +=
+						"<div class='sy_title bdb_d ovh'><h2 class='l'><img src='images/hot.png' width='25px'><b class='fc'>推荐热帖</b></h2>";
+					info += "<a href='#' class='r'>查看更多></a></div><ul>";
+					for (var i = 0; i < hot_post.length; i++) {
+						info += "<li><a href='#'><b>·</b><span>" + hot_post[i]['post_title'] + "</span></a></li>";
+					}
+					info += "</ul>";
 
-						rightinfo.innerHTML = info;
+					rightinfo.innerHTML = info;
 				},
 			})
-			</script>
+		</script>
 
 	</body>
 </html>
