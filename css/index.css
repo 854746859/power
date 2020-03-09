@@ -57,8 +57,8 @@ html,body{ background-color:#eee;width: 100%;}
 .top_nav{height: 60px;background-color: #005389; width: 100%;}
 .top_nav ul{ background: url(../images/nav_line.png) no-repeat center right; display: flex;}
 .top_nav ul li{line-height: 60px; position: relative; background: url(../images/nav_line.png) no-repeat center left;flex-grow: 1;}
-.top_nav ul li.cur{background: #1a83da;}
-.top_nav ul li.cur+li{ background: none; }
+.top_nav ul li.selet{background: #1a83da;}
+.top_nav ul li.selet+li{ background: none; }
 .top_nav ul li a:first-child{
 	display: block;
 	text-align: center;
@@ -199,7 +199,7 @@ html,body{ background-color:#eee;width: 100%;}
 .slideTxtBox .bd li a:hover{ color: #005389; text-indent: .3em; text-decoration: underline;}
 
 /*首页公共标题*/
-.sy_title{ padding-bottom: 10px; }
+.sy_title{ margin-top: 10px; }
 .sy_title h2{ float: left; }
 .sy_title img{ vertical-align: middle; margin-right: 10px; }
 .tender .sy_title a{ font-size: 14px; color: #999; margin-top: 15px; }

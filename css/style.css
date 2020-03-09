@@ -1210,7 +1210,7 @@ nav > div > ul > li {
   font-weight: 500;
   line-height: 3.875rem;
 }
-nav > div > ul > li + li {margin-left: 1.4375rem;}
+.topbox nav > div > ul > li + li {margin-left: 1.4375rem;}
 /*=== Dropdown ===*/
 nav > div ul ul {
   position: absolute;
