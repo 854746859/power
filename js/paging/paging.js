@@ -209,7 +209,12 @@
 					// ajax请求文章列表
 					var post = "";
 					var postlist = document.getElementById("postlist");
-					postlist.remove();
+					
+					if(document.getElementById("postlist")){
+					//存在
+						// postlist.remove();
+						document.getElementById("postlist").innerHTML = "";
+					}
 					// alert(ele.option.currentPage)
 					$.ajax({
 						url: 'http://114.55.35.82/tp6_forum/public/index.php/sort/select',
