@@ -273,8 +273,8 @@
 							<!-- 内容展示块-->
 							<div class="news_list zy_listbox">
 								<!-- 展示15条数据后出现分页 -->
-								<ul>
-									<li>
+								<ul id="postlist">
+									<!-- <li>
 										<img src="News-module1/images/dangzheng.png" />
 										<div class="blog_list">
 											<div class="news_title">
@@ -302,7 +302,6 @@
 													分享：
 													<a href="#" class="bds_weixin" data-cmd="weixin"></a>
 													<a href="#" class="bds_tsina" data-cmd="tsina"></a>
-													<!--<a href="#" class="bds_more" data-cmd="weixin">更多</a>-->
 												</div>
 											</div>
 										</div>
@@ -434,7 +433,7 @@
 												</div>
 											</div>
 										</div>
-									</li>
+									</li> -->
 								</ul>
 								<!-- 通用分页 -->
 								<div class="fanye" style="text-align: left;">
@@ -460,8 +459,8 @@
 					</div>
 					<!-- zy_content end -->
 					<!-- 招标公告 -->
-					<div class="tender r">
-						<div class="manager_box">
+					<div id="rightinfo" class="tender r">
+						<!-- <div class="manager_box">
 							<div class="manager">
 								<h3>版块管理员</h3>
 								<div class="info">
@@ -495,7 +494,7 @@
 							<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span></a></li>
 							<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局办公大楼新建地块招标项目开发商承建</span></a></li>
 							<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span></a></li>
-						</ul>
+						</ul> -->
 					</div>
 				</div>
 				<!-- 专题轮播 -->
@@ -603,19 +602,22 @@
 				title = $(this).data('title');
 				url = window.location.origin + $(this).data('url');
 			})
-
+			
+			// ajax请求文章列表
+			var post = "";
+			var postlist = document.getElementById("postlist");
 			$.ajax({
 				url: 'http://114.55.35.82/tp6_forum/public/index.php/sort/select',
 				type: 'post',
 				data: {
-					token:'sadafsaf',
+					// token: 'sadafsaf',
 					rows: '10',
 					page: '1',
 					serch: '',
 					plate: '1',
-					plate_two: '1',
-					post_type: '1',
-					order: '1'
+					plate_two: '0',
+					post_type: '0',
+					order: '0'
 				},
 				// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
 				dataType: 'json',
@@ -623,10 +625,56 @@
 					// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
 					// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
 					console.log(res)
+					var data = res.data;
+					for (var i = 0; i < data.length; i++) {
+						post += "<li><img src='"+data[i].post_img+"'/><div class='blog_list'>";
+						post += "<div class='news_title'><a href='#'>"+data[i]['post_title']+"</a>";
+						post += "<i class='red_news'>["+data[i]['post_label']+"]</i><i class='red_news'>["+data[i]['post_label']+"]</i></div>";
+						post += "<div class='news_time news_other'><span>发布于："+ data[i]['post_releasetime'] +"</span>";
+						post += "<span id=''>阅读数："+ data[i]['post_readnum'] +" </span><span id=''>点赞："+ data[i]['post_readnum'] +"</span></div>";
+						post += "<div class='news_owner news_other'><span id=''>发帖人："+data[i]['post_user_name']+"</span>";
+						post += "<span id=''>最后回复人："+data[i]['last_user_name']+"</span><div class='share bdsharebuttonbox'>分享：";
+						post += "<a href='#' class='bds_weixin' data-cmd='weixin'></a><a href='#' class='bds_tsina' data-cmd='tsina'></a></div></div></div></li>";
+						postlist.innerHTML = post;
+					}
 				},
 			})
-		</script>
+			
+			// ajax请求右侧数据
+			var info = "";
+			var rightinfo = document.getElementById("rightinfo");
+			$.ajax({
+				url: 'http://114.55.35.82/tp6_forum/public/index.php/sort/info',
+				type: 'post',
+				data: {
+					plate: '1',
+				},
+				// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+				dataType: 'json',
+				success: function(res) {
+					// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
+					// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
+					console.log(res)
+					console.log(res.data.plate_admin.user_name)
+					var plate_admin = res.data.plate_admin;
+					var plate_master = res.data.plate_master;
+					var hot_post = res.data.hot_post;
+						info += "<div class='manager_box'><div class='manager'><h3>版块管理员</h3>";
+						info += "<div class='info'><img src='"+plate_admin.user_name+"' /><div class='description'><div>"+plate_admin.user_name+"</div>";
+						info += "<p>"+plate_admin.user_profile+"</p></div></div></div><div class='owner'><h3>板主</h3>";
+						info += "<div class='info'><img src='"+plate_master.user_name+"' /><div class='description'><div>"+plate_master.user_name+"</div>";
+						info += "<p>"+plate_master.user_profile+"</p></div></div></div></div>";
+						info += "<div class='sy_title bdb_d ovh'><h2 class='l'><img src='images/hot.png' width='25px'><b class='fc'>推荐热帖</b></h2>";
+						info += "<a href='#' class='r'>查看更多></a></div><ul>";
+						for (var i = 0; i < hot_post.length; i++) {
+							info += "<li><a href='#'><b>·</b><span>"+hot_post[i]['post_title']+"</span></a></li>";
+						}
+						info += "</ul>";
 
+						rightinfo.innerHTML = info;
+				},
+			})
+			</script>
 
 	</body>
 </html>
