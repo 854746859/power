@@ -225,19 +225,21 @@
 		height: 60px;
 		display: flex;
 		flex-direction: row;
-		justify-content: space-around;
+		justify-content: flex-end;
 		align-items: center;
 		margin-top: 10px;
 		border-bottom: 1px solid #eee;
 		margin-bottom: 20px;
 	}
-	.five_bt input{
-		width: 85px;
-		height: 30px;
-		color: #fff;
-		background-color: #1a83da;
-		margin-top: 5px;
-		border-radius: 5px;
+	.five_bt .post_icon{
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		margin-right: 10px;
+	}
+	.five_bt .post_icon img{
+		width: 35px;
+		height: 35px;
 	}
 	.comment_box,.content_box{
 		width: 100%;
@@ -536,11 +538,21 @@
 					</div>
 				</div>
 				<div class="five_bt">
-					<input type="button" value="点赞1234"/>
-					<input type="button" value="收藏234"/>
-					<input type="button" value="分享/转发135"/>
-					<input type="button" value="打赏"/>
-					<input type="button" value="举报文章"/>
+					<div class="post_icon">
+						<img src="images/good.png"/><span id="postUpnum">0</span>
+					</div>
+					<div class="post_icon">
+						<img src="images/good.png"/><span id="postForwardnum">0</span>
+					</div>
+					<div class="post_icon">
+						<img src="images/good.png"/><span id="postCollectionnum">0</span>
+					</div>
+					<div class="post_icon">
+						<img src="images/good.png"/><span></span>
+					</div>
+					<div class="post_icon">
+						<img src="images/good.png"/><span></span>
+					</div>
 				</div>
 				<div class="comment_box" id="comment_box">
 					<!--<div class="content_box">
@@ -746,9 +758,9 @@
 				$("#postLabel").append('<span>['+label+']</span>');//文章标签，多个“，”隔开
 				$("#time").html(data.data.post_releasetime);//发布时间
 				$("#readNum").html("阅读数："+data.data.post_readnum);//阅读数
-				$("#postUpnum").val('点赞'+data.datapost_upnum);//点赞数
-				$("#postForwardnum").val('转发'+data.data.post_forwardnum);//转发数
-				$("#postCollectionnum").val('收藏'+data.data.post_collectionnum);//收藏数
+				$("#postUpnum").html(data.datapost_upnum);//点赞数
+				$("#postForwardnum").html(data.data.post_forwardnum);//转发数
+				$("#postCollectionnum").html(data.data.post_collectionnum);//收藏数
 				$("#user_head").attr("src",data.data.user_head);
 				$("#user_head").attr("name",data.data.post_userid);
 				$("#user_name").html(data.data.user_name);
