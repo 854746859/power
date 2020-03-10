@@ -117,12 +117,15 @@
 		align-items: center;
 		color: #1a83da;
 		font-size: 14px;
+		position: relative;
+		left: -80px;
 	}
 	.attention input{
 		width: 80px;
 		height: 30px;
 		color: #fff;
 		background-color: #1a83da;
+		border-radius:3px;
 	}
 	.trivial{
 		display: flex;
@@ -135,6 +138,9 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+	}
+	.trivial span{
+		height: 21px;
 	}
 	.post_text{
 		margin: 10px 10px 0 0;
@@ -151,7 +157,6 @@
 		height: 290px;
 	}
 	.annex_d{
-		width: 100%;
 		padding: 10px;
 		margin-right: 10px;
 		background-color: #eee;
@@ -267,7 +272,7 @@
 	}
 	.pic_link img{
 		width: 100%;
-		height: 200px;
+		/*height: 200px;*/
 	}
 	.hot_post{
 		margin-top: 10px;
@@ -389,19 +394,19 @@
 		<!--博客版块-->
 		<div class="blog_box">
 			<div class="blog_left">
-				<div class="blog_title"><h1>央企所属生产型子企业开工率超80%通信等行业已超95%</h1></div>
+				<div class="blog_title"><h1 id="postTitle">央企所属生产型子企业开工率超80%通信等行业已超95%</h1></div>
 				<div class="blog_detail">
-					<div class="post_type">
+					<div class="post_type" id="postLabel">
 						<span>分类专栏：</span>
-						<span>[原创]</span>
-						<span>[闲谈]</span>
+						<!--<span>[原创]</span>
+						<span>[闲谈]</span>-->
 					</div>
 					<div class="public_time">
 						<span>发布于：</span>
-						<span>2020-04-03 14:20:02</span>
+						<span id="time">2020-04-03 14:20:02</span>
 					</div>
 					<div class="read_num">
-						<span >
+						<span id="readNum">
 							阅读数：32524
 						</span>
 					</div>
@@ -412,13 +417,13 @@
 						</span>
 					</div>
 				</div>
-				<div class="state"><span>*</span>版权声明：本文为原创文章，转载请附上原文出处链接和本声明/未经许可不可转载。</div>
+				<div class="state" id="postCopyright"><span>*</span>版权声明：本文为原创文章，转载请附上原文出处链接和本声明/未经许可不可转载。</div>
 				<div class="post_info">
 					<div class="user">
-						<img src="images/manager.jpg"/>
+						<img id="user_head" src="images/manager.jpg"/>
 						<div class="user_name">
-							<h3>张三</h3>
-							<div class="user_intro">
+							<h3 id="user_name">张三</h3>
+							<div class="user_intro" id="user_profile">
 								<p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
 							</div>
 						</div>
@@ -432,7 +437,7 @@
 					<div class="trivial">
 						<div>
 							<span>发布</span>
-							<span>23</span>
+							<span id="user_release_sum">23</span>
 						</div>
 						<div>
 							<span>粉丝</span>
@@ -440,28 +445,28 @@
 						</div>
 						<div>
 							<span>获赞</span>
-							<span>666</span>
+							<span id="post_upnum">666</span>
 						</div>
 						<div>
 							<span>转发</span>
-							<span>888</span>
+							<span id="user_follow_sum">888</span>
 						</div>
-						<div>
+						<!--<div>
 							<span>访问</span>
 							<span>12k</span>
-						</div>
+						</div>-->
 					</div>
 				</div>
-				<div class="post_text">
+				<div class="post_text" id="postContent">
 					<p> 在18日召开的国务院联防联控机制新闻发布会上，国资委副主任任洪斌表示，目前，中央企业所属2万余户生产型子企业开工率已超80%，石油石化、通信、电网、交通运输等行业已超95%，有的已达100%。</p><p> “疫情确实对央企生产经营造成了影响，对个别行业影响还较大，但这种影响是阶段性、暂时性的。”任洪斌表示，国资委不会改变年初制定的生产经营目标和改革任务，并将为此付出更大努力：一是指导央企分类有序带头复工复产，保持生产经营稳定运行;二是加强形势研判，分析企业所涉行业和产业链形势，强化预测预警，及时制定对策;三是加大降本节支、提质增效工作力度，尽力减少疫情造成的损失;四是指导央企用好金融、财税等政策，把握市场机遇，做好结构优化和稳产稳收。</p><img src="images/owner.jpg" /><p>在18日召开的国务院联防联控机制新闻发布会上，国资委副主任任洪斌表示，目前，中央企业所属2万余户生产型子企业开工率已超80%，石油石化、通信、电网、交通运输等行业已超95%，有的已达100%。</p>
 				</div>
-				<div class="annex_d">
+				<div class="annex_d" id="annex_d" style="display: none;">
 					<div class="annex_info">
-						<h3>附件标题</h3>
+						<h3 id="enclosureName">附件标题</h3>
 						<div class="annex_des">
 							描述:<p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
 						</div>
-						<div class="annex_spent">
+						<div class="annex_spent" id="enclosureCoin">
 							所需：11积分/论坛币
 						</div>
 					</div>
@@ -473,73 +478,14 @@
 					</div>
 				</div>
 				<div class="five_bt">
-					<input type="button" value="点赞1234"/>
-					<input type="button" value="收藏234"/>
-					<input type="button" value="分享/转发135"/>
+					<input type="button" id="postUpnum" value="点赞1234"/>
+					<input type="button" id="postCollectionnum" value="收藏234"/>
+					<input type="button" id="postForwardnum" value="分享/转发135"/>
 					<input type="button" value="打赏"/>
 					<input type="button" value="举报文章"/>
 				</div>
-				<div class="comment_box">
-					<div class="content_box">
-						<div class="visitor">
-							<div class="visitor_info">
-								<div class="visitor_pic">
-									<img src="images/owner.jpg"/>
-									<span>
-										用户1
-									</span>
-								</div>
-								<div class="commet_time">
-									<span>
-										3天前
-									</span>
-									<span>
-										【1楼】
-									</span>
-								</div>
-							</div>
-							<div class="other_visitor">
-								<span>举报</span>
-								<span>回复</span>
-								<span>
-									<img src="images/good.png"/>10
-								</span>
-							</div>
-						</div>
-						<div class="comment_text">
-							<p>文章很好，xxxxxxxxxxxxxxx</p>
-						</div>
-					</div>
-					<div class="content_box">
-						<div class="visitor">
-							<div class="visitor_info">
-								<div class="visitor_pic">
-									<img src="images/manager.jpg"/>
-									<span>
-										用户1
-									</span>
-								</div>
-								<div class="commet_time">
-									<span>
-										3天前
-									</span>
-									<span>
-										【1楼】
-									</span>
-								</div>
-							</div>
-							<div class="other_visitor">
-								<span>举报</span>
-								<span>回复</span>
-								<span>
-									<img src="images/good.png"/>10
-								</span>
-							</div>
-						</div>
-						<div class="comment_text">
-							<p>文章很好，xxxxxxxxxxxxxxx</p>
-						</div>
-					</div>
+				<div class="comment_box" id="comment_box">
+					
 				</div>
 				<div></div>
 				<div class="commet">
@@ -561,14 +507,14 @@
 						<h2 class="l"><b class="fc">推荐热帖</b></h2>
 						<a href="newslist.html" class="more r">查看更多></a>
 					</div>
-					<ul>
-						<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span></a></li>
+					<ul id="recommend">
+						<!--<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span></a></li>
 						<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局办公大楼新建地块招标项目开发商承建福泉市综合执法局办公大楼新建地块招标项目开发商承建</span></a></li>
 						<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span></a></li>
 						<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局办公大楼新建地块招标项目开发商承建</span></a></li>
 						<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span></a></li>
 						<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局办公大楼新建地块招标项目开发商承建</span></a></li>
-						<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span></a></li>
+						<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span></a></li>-->
 					</ul>
 				</div>
 				<!--轮播-->
@@ -661,6 +607,79 @@
 	</div>
 	<p>版权所有：XX市综合行政执法局&nbsp;&nbsp;&nbsp;地址：XX省XX市工业园区特1号</p>
 </div>
-
+<script type="text/javascript" src="config.js" ></script>
+<script type="text/javascript">
+	//文章
+	$.ajax({
+		type:"post",
+		url:sever_url+"article/info",
+		async:true,
+		dataType:"json",
+		data:{
+			article_id:2
+		},
+		success:function(data){
+			if(data.code==200){
+				$("#postTitle").html(data.data.post_title);//文章标题
+				$("#postCopyright").html('<span>*</span>版权声明：'+data.data.post_copyright);//版权声明
+				$("#postContent").html("<p>"+data.data.post_content+"</p>");//文章内容
+				var labels = new RegExp(",","g");//g,表示全部替换。
+				var label = data.data.post_label.replace(labels,"]</span><span>[");
+				$("#postLabel").append('<span>['+label+']</span>');//文章标签，多个“，”隔开
+				
+				if(data.data.revise_enclosure_name!=""){
+					$("#annex_d").css("display","block");
+					$("#enclosureName").html(data.data.revise_enclosure_name);//附件名称
+					$("#enclosureCoin").html('所需：'+data.data.revise_enclosure_coin+'积分/论坛币')//附件价格
+				}
+				
+				$("#time").html(data.data.post_releasetime);//发布时间
+				$("#readNum").html("阅读数："+data.data.post_readnum);//阅读数
+				$("#postUpnum").val('点赞'+data.datapost_upnum);//点赞数
+				$("#postForwardnum").val('转发'+data.data.post_forwardnum);//转发数
+				$("#postCollectionnum").val('收藏'+data.data.post_collectionnum);//收藏数
+				$("#user_head").attr("src",data.data.user_head);
+				$("#user_head").attr("name",data.data.post_userid);
+				$("#user_name").html(data.data.user_name);
+				$("#user_profile").html(data.data.user_profile);
+				$("#user_release_sum").html(data.data.user_release_sum);
+				$("#post_upnum").html(data.data.post_upnum);
+				$("#user_follow_sum").html(data.data.user_follow_sum);
+				
+				var num = data.data.recommend.length;
+				for(var i=0;i<num;i++){
+					var arr = data.data.recommend[i];
+					$("#recommend").append('<li><a id="'+arr.id+'" href="news_xq.html"><b>·</b><span>'+arr.post_title+'</span></a></li>')
+				}
+			}
+		},
+		error:function(){
+			console.log("error!");
+		}
+	});
+	//评论
+	$.ajax({
+		type:"post",
+		url:sever_url+"comment/select",
+		async:true,
+		data:{
+			rows:2,
+			page:1,
+			post_id:2
+		},
+		dataType:"json",
+		success:function(data){
+			console.log(data)
+			var length = data.data.length;
+			for(var i=0;i<length;i++){
+				var obj = data.data[i];
+				$("#comment_box").append('<div class="content_box"><div class="visitor"><div class="visitor_info"><div class="visitor_pic"><img id="'+obj.id+'" src="'+obj.user_head+'"/><span >'+obj.user_name+'</span></div><div class="commet_time"><span>'+obj.comment_time+'</span><span>【'+obj.comment_layernum+'楼】</span></div></div><div class="other_visitor"><span>举报</span><span>回复</span><span><img src="images/good.png"/>'+obj.comment_upnum+'</span></div></div><div class="comment_text"><p>'+obj.comment_content+'</p></div></div>');
+			}
+		},
+		error:function(){
+			
+		}
+	});
+</script>
 </body>
 </html>

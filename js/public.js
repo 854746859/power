@@ -13,7 +13,7 @@
 //			$(".top_nav ul li").eq(n).addClass("selet")
 //		}
 //	)
-})
+//})
 
 // 侧边栏
 $(function(){

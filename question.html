@@ -1,0 +1,840 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta content="能源公社" http-equiv="keywords">
+		<meta name="description" content="能源公社">
+		<meta name="applicable-device" content="pc,mobile">
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<meta http-equiv="Cache-Control" content="no-transform" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<title>能源公社</title>
+
+		<link rel="stylesheet" href="css/index.css" type="text/css">
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link rel="stylesheet" type="text/css" href="css/children.css" />
+		<link rel="stylesheet" type="text/css" href="css/paging.css" />
+		<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="js/public.js"></script><!-- 菜单js等-->
+		<!-- 时间选择js -->
+		<script type="text/javascript" src="js/laydate.js"></script>
+		<style>
+			.headLink{
+		display: flex;
+		flex-direction: row;
+	}
+	.headLink li{
+		margin: 0 10px 0 10px;
+	}
+	.manager_box{
+		width: 100%;
+		height: 350px;
+		padding: 20px 0;
+		/*background-color: #0044CC;*/
+	}
+	
+	.info{
+		width: 100%;
+		margin-top: 5px;
+		display: flex;
+		flex-direction: row;
+	}
+	.info img{
+		width: 50px;
+		height: 50px;
+		border-radius: 25px;
+	}
+	.description{
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		margin-left: 10px;
+		width: 80%;
+	}
+	.description p{
+		width: 100%
+		word-wrap: break-word;
+		word-break: break-all;;
+	}
+	.more_list{
+		display: flex;
+		flex-direction: column;
+	}
+	.more_list li a{
+		color: #333;
+	}
+	.solve{
+		width: 70px;
+		height: 30px;
+		background-color: #eee;
+		font-size: 14px;
+		color: #333;
+		font-style: normal;
+	}
+	.solved{
+		width: 70px;
+		height: 30px;
+		background-color: #1a83da;
+		font-size: 14px;
+		color: #fff;
+		font-style: normal;
+		border-radius: 3px;
+	}
+	.reward{
+		margin-left: 10px;
+		color: #005389;
+		font-size: 14px;
+	}
+</style>
+	</head>
+	<body>
+		<!--头部-->
+		<div class="bg">
+			<div class="wid_main topbox fix">
+				<div class="l"><img src="images/logo.png" alt="logo" width="54px" /></div>
+				<nav>
+					<div>
+						<ul>
+							<li><a href="index.html?type=0&plate=0&two=0">首页</a></li>
+							<li class="menu-item-has-children"><a href="#" title="" itemprop="url">论坛</a>
+								<ul>
+									<li><a href="index.html?type=0&plate=1&two=0" title="" itemprop="url">LNG版块</a></li>
+									<li><a href="index.html?type=0&plate=2&two=0" title="" itemprop="url">Oil版块</a></li>
+									<li><a href="index.html?type=0&plate=3&two=0" title="" itemprop="url">Gas版块</a></li>
+									<li><a href="index.html?type=0&plate=4&two=0" title="" itemprop="url">Pipe版块</a></li>
+									<li><a href="index.html?type=0&plate=5&two=0" title="" itemprop="url">Nuclear版块</a></li>
+									<li><a href="index.html?type=0&plate=6&two=0" title="" itemprop="url">Power版块</a></li>
+									<li><a href="index.html?type=0&plate=7&two=0&two=0" title="" itemprop="url">Wind版块</a></li>
+									<li><a href="index.html?type=0&plate=8&two=0" title="" itemprop="url">Solar版块</a></li>
+								</ul>
+							</li>
+							<li class="menu-item-has-children"><a href="#">问答</a>
+								<ul>
+									<li><a href="qusetion.html?type=1&plate=1&two=0" title="" itemprop="url">LNG版块</a></li>
+									<li><a href="#" title="" itemprop="url">Oil版块</a></li>
+									<li><a href="#" title="" itemprop="url">Gas版块</a></li>
+									<li><a href="#" title="" itemprop="url">Pipe版块</a></li>
+									<li><a href="#" title="" itemprop="url">Nuclear版块</a></li>
+									<li><a href="#" title="" itemprop="url">Power版块</a></li>
+									<li><a href="#" title="" itemprop="url">Wind版块</a></li>
+									<li><a href="#" title="" itemprop="url">Solar版块</a></li>
+								</ul>
+							</li>
+							<li><a href="#">专家</a></li>
+							<li><a href="#">课程</a></li>
+							<li><a href="#">前沿</a></li>
+							<li><a href="#">会议</a></li>
+							<li><a href="#">活动</a></li>
+						</ul>
+					</div>
+				</nav>
+				<!-- 搜索 -->
+				<div class="search_box">
+					<div>
+						<button type="submit"><img src="images/search.png"></button>
+						<input type="text" name="" placeholder="请输入关键词检索">
+
+					</div>
+
+				</div>
+				<div class="admin_box">
+					<!--<img src="images/messageIcon.png" width="20px"/>
+			<div class="admin">
+				<img src="images/people03.jpg" class="admin_logo"/>
+				<span class="lever">LV10</span>
+			</div>-->
+					<a href="">登录/注册</a>
+					<a href="">快速发帖</a>
+				</div>
+			</div>
+		</div>
+		<!-- top end -->
+
+		<!-- 主体内容框 -->
+		<div class="contentbox bora_5">
+			<div class="content">
+				<!-- 专题轮播 -->
+				<div class="zhuanti_pic">
+					<div class="hd">
+						<!--轮播点 -->
+						<ul>
+							<li></li>
+							<li></li>
+						</ul>
+					</div>
+					<div class="bd">
+						<ul>
+							<!--专题图片轮播 -->
+							<li>
+								<a href="#"><img src="images/pic01.jpg" /></a>
+							</li>
+							<li>
+								<a href="#"><img src="images/pic01.jpg" /></a>
+							</li>
+						</ul>
+					</div>
+					<!-- 下面是前/后按钮代码，如果不需要删除即可 -->
+					<a class="prev" href="javascript:void(0)"></a>
+					<a class="next" href="javascript:void(0)"></a>
+
+					<script type="text/javascript">
+						jQuery(".zhuanti_pic").slide({
+							mainCell: ".bd ul",
+							autoPlay: true,
+							effect: "fade",
+							mouseOverStop: false,
+							interTime: 3000,
+						});
+					</script>
+				</div>
+				<!-- 导航栏部分 -->
+				<div class="top_nav bora_5">
+					<nav style="width: 100%;">
+						<div>
+							<ul class="fix">
+								<li class="menu-item-has-children cur">
+									<a href="#" title="" itemprop="url">政策法规</a>
+									<ul class="more_list">
+										<li><a href="qusetion.html?type=1&plate=1&two=1" title="" itemprop="url">国内</a></li>
+										<li><a href="qusetion.html?type=1&plate=1&two=2" title="" itemprop="url">国际</a></li>
+									</ul>
+								</li>
+								<li class="menu-item-has-children">
+									<a href="#" title="" itemprop="url">项目市场</a>
+									<ul class="more_list">
+										<li><a href="qusetion.html?type=1&plate=1&two=3" title="" itemprop="url">国内动态</a></li>
+										<li><a href="qusetion.html?type=1&plate=1&two=4" title="" itemprop="url">国际动态</a></li>
+									</ul>
+								</li>
+								<li class="menu-item-has-children">
+									<a href="#">论文数据</a>
+									<ul class="more_list">
+										<li><a href="qusetion.html?type=1&plate=1&two=11" title="" itemprop="url">学术论文</a></li>
+										<li><a href="qusetion.html?type=1&plate=1&two=12" title="" itemprop="url">标准规范</a></li>
+										<li><a href="qusetion.html?type=1&plate=1&two=13" title="" itemprop="url">研究报告</a></li>
+										<li><a href="qusetion.html?type=1&plate=1&two=14" title="" itemprop="url">会议论坛</a></li>
+									</ul>
+								</li>
+								<li class="menu-item-has-children">
+									<a href="#">建设投产</a>
+									<ul class="more_list">
+										<li><a href="qusetion.html?type=1&plate=1&two=21" title="" itemprop="url">前期研究</a></li>
+										<li><a href="qusetion.html?type=1&plate=1&two=22" title="" itemprop="url">设计管理</a></li>
+										<li><a href="qusetion.html?type=1&plate=1&two=23" title="" itemprop="url">设备采办</a></li>
+										<li><a href="qusetion.html?type=1&plate=1&two=24" title="" itemprop="url">建设资源</a></li>
+									</ul>
+								</li>
+								<li class="menu-item-has-children">
+									<a href="#">经营管理</a>
+									<ul class="more_list">
+										<li><a href="qusetion.html?type=1&plate=1&two=31" title="" itemprop="url">生产管理</a></li>
+										<li><a href="qusetion.html?type=1&plate=1&two=32" title="" itemprop="url">技术管理</a></li>
+										<li><a href="qusetion.html?type=1&plate=1&two=33" title="" itemprop="url">维保管理</a></li>
+										<li><a href="qusetion.html?type=1&plate=1&two=34" title="" itemprop="url">资源市场</a></li>
+										<li><a href="qusetion.html?type=1&plate=1&two=35" title="" itemprop="url">公司管理</a></li>
+										<li><a href="qusetion.html?type=1&plate=1&two=36" title="" itemprop="url">财务审计</a></li>
+										<li><a href="qusetion.html?type=1&plate=1&two=437" title="" itemprop="url">人力资源</a></li>
+									</ul>
+								</li>
+								<li class="menu-item-has-children">
+									<a href="#">信息推广</a>
+									<ul class="more_list">
+										<li><a href="qusetion.html?type=1&plate=1&two=41" title="" itemprop="url">展会信息</a></li>
+										<li><a href="qusetion.html?type=1&plate=1&two=42" title="" itemprop="url">采购信息</a></li>
+										<li><a href="qusetion.html?type=1&plate=1&two=43" title="" itemprop="url">招聘信息</a></li>
+									</ul>
+								</li>
+								<li class="menu-item-has-children">
+									<a href="#">技术交流</a>
+									<ul class="more_list">
+										<li><a href="qusetion.html?type=1&plate=1&two=111" title="" itemprop="url">低温设备</a></li>
+										<li><a href="qusetion.html?type=1&plate=1&two=112" title="" itemprop="url">LNG储罐</a></li>
+										<li><a href="qusetion.html?type=1&plate=1&two=113" title="" itemprop="url">总图布置</a></li>
+										<li><a href="qusetion.html?type=1&plate=1&two=114" title="" itemprop="url">工艺系统</a></li>
+										<li><a href="qusetion.html?type=1&plate=1&two=115" title="" itemprop="url">公用系统</a></li>
+										<li><a href="qusetion.html?type=1&plate=1&two=116" title="" itemprop="url">土建结构</a></li>
+										<li><a href="qusetion.html?type=1&plate=1&two=117" title="" itemprop="url">港口航道</a></li>
+										<li><a href="qusetion.html?type=1&plate=1&two=118" title="" itemprop="url">输气站场</a></li>
+									</ul>
+								</li>
+								<li class="menu-item-has-children">
+									<a href="#">项目管理</a>
+									<ul class="more_list">
+										<li><a href="qusetion.html?type=1&plate=1&two=51" title="" itemprop="url">管理知识</a></li>
+										<li><a href="qusetion.html?type=1&plate=1&two=52" title="" itemprop="url">案例交流</a></li>
+									</ul>
+								</li>
+								<li class="menu-item-has-children">
+									<a href="#">English</a>
+									<ul class="more_list">
+										<li><a href="qusetion.html?type=1&plate=1&two=61" title="" itemprop="url">Project Information</a></li>
+										<li><a href="qusetion.html?type=1&plate=1&two=62" title="" itemprop="url">LNG Resource</a></li>
+										<li><a href="qusetion.html?type=1&plate=1&two=63" title="" itemprop="url">Market</a></li>
+										<li><a href="qusetion.html?type=1&plate=1&two=64" title="" itemprop="url">Equipment Purchase</a></li>
+										<li><a href="qusetion.html?type=1&plate=1&two=65" title="" itemprop="url">Engineering</a></li>
+										<li><a href="qusetion.html?type=1&plate=1&two=66" title="" itemprop="url">Construction</a></li>
+										<li><a href="qusetion.html?type=1&plate=1&two=67" title="" itemprop="url">Commission</a></li>
+										<li><a href="qusetion.html?type=1&plate=1&two=68" title="" itemprop="url">Project management</a></li>
+										<li><a href="qusetion.html?type=1&plate=1&two=69" title="" itemprop="url">Project management</a></li>
+										<li><a href="qusetion.html?type=1&plate=1&two=60" title="" itemprop="url">Financial Accounting</a></li>
+									</ul>
+								</li>
+								<li class="menu-item-has-children">
+									<a href="#">论坛管理</a>
+									<ul class="more_list">
+										<li><a href="qusetion.html?type=1&plate=1&two=91" title="" itemprop="url">管理员发布</a></li>
+										<li><a href="qusetion.html?type=1&plate=1&two=92" title="" itemprop="url">用户体验交流</a></li>
+									</ul>
+								</li>
+								<li class="menu-item-has-children">
+									<a href="#">能源杂谈</a>
+									<ul class="more_list">
+										<li><a href="qusetion.html?type=1&plate=1&two=81" title="" itemprop="url">杂谈</a></li>
+										<li><a href="qusetion.html?type=1&plate=1&two=82" title="" itemprop="url">闲谈</a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</nav>
+				</div>
+				<!-- 导航end -->
+				<!-- 需要添加的最新通知或公告滚动部分 -->
+				<div class="gonggao bdb_d fix">
+					<div class="txtScroll-top l fix">
+						<div class="l tit"><img src="images/icon_notice.png"><b class="dib vm">信息公告：</b></div>
+						<div class="bd l">
+							<ul class="infoList">
+								<li><a href="news_xq.html">我局顺利组织2019年xx市第一期渔业安全生产知识培训及应急实操演练</a><span class="date">2019-07-05</span></li>
+								<li><a href="news_xq.html">xx市综合执法局办公大楼新建地块招标项目开发商承建</a><span class="date">2019-07-05</span></li>
+								<li><a href="news_xq.html">我局顺利组织2019年xx市第一期渔业安全生产知识培训及应急实操演练我局顺利组织2019年福泉市第</a><span class="date">2019-07-05</span></li>
+								<li><a href="news_xq.html">xx市综合执法局办公大楼新建地块招标项目开发商承建</a><span class="date">2019-07-05</span></li>
+							</ul>
+						</div>
+					</div>
+					<script type="text/javascript">
+						jQuery(".txtScroll-top").slide({
+							titCell: ".hd ul",
+							mainCell: ".bd ul",
+							effect: "topLoop",
+							autoPlay: true,
+							vis: 1,
+							interTime: 4000,
+						});
+					</script>
+
+					<!-- 时间 -->
+					<div class="timebox fc r">
+						<script type="text/javascript" src="js/show_date.js"></script>
+					</div>
+				</div>
+
+				<div class="conbox fix">
+					<div class="news_banner l bora_5">
+						<!-- 左边内容 -->
+						<div class="zy_right_con">
+							<!-- 当前位置 -->
+							<div id="menu" class="zy_title">
+								<h2 class="selected">最新发布<i></i></h2>
+								<h2>已解决<i></i></h2>
+								<h2>未解决<i></i></h2>
+								<h2>筛选<i></i></h2>
+							</div>
+							<!-- 内容展示块-->
+							<div class="news_list zy_listbox">
+								<!-- 展示15条数据后出现分页 -->
+								<ul id="postlist">
+									<!-- <li>
+										<img src="News-module1/images/dangzheng.png" />
+										<div class="blog_list">
+											<div class="news_title">
+												<a href="news_xq.html" style="max-width: 360px;">李克强主持召开国务院常务会议 部署进一步促进社区养老和家政服务工作安排</a>
+												<i class="red_news">[原创]</i>
+												<i class="red_news">[新闻]</i>
+												<div class="r">
+													<i class="solve">未解决</i>
+													<i class="reward">悬赏 20C</i>
+												</div>
+											</div>
+											<div class="news_time news_other">
+												<span>发布于：2019-07-05 13:12:06</span>
+												<span id="">
+													阅读数：32564
+												</span>
+												<span id="">
+													点赞：1563
+												</span>
+											</div>
+											<div class="news_owner news_other">
+												<span id="">
+													发帖人：XXX
+												</span>
+												<span id="">
+													最后回复人：XXX
+												</span>
+												<div class="share">
+													分享：
+													<img class="share_icon" src="images/WeChat.png" />
+													<img class="share_icon" src="images/weibo.png" />
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<img src="images/icon_leader.png" />
+										<div class="blog_list">
+											<div class="news_title">
+												<a href="news_xq.html" style="max-width: 360px;">特勤大队暂扣污染路面车辆</a>
+												<i class="red_news">[原创]</i>
+												<i class="red_news">[新闻]</i>
+												<div class="r">
+													<i class="solve">未解决</i>
+													<i class="reward">悬赏 20C</i>
+												</div>
+											</div>
+											<div class="news_time news_other">
+												<span>发布于：2019-07-05 13:12:06</span>
+												<span id="">
+													阅读数：32564
+												</span>
+												<span id="">
+													点赞：1563
+												</span>
+											</div>
+											<div class="news_owner news_other">
+												<span id="">
+													发帖人：XXX
+												</span>
+												<span id="">
+													最后回复人：XXX
+												</span>
+												<div class="share">
+													分享：
+													<img class="share_icon" src="images/WeChat.png" />
+													<img class="share_icon" src="images/weibo.png" />
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<img src="images/people01.jpg" />
+										<div class="blog_list">
+											<div class="news_title">
+												<a href="news_xq.html" style="max-width: 360px;">我局顺利组织2019年福泉市第一期渔业安全生产知识培训及应急实操演练我局顺利组织2019年福泉市第</a>
+												<i class="red_news">[原创]</i>
+												<i class="red_news">[新闻]</i>
+												<div class="r">
+													<i class="solved">已解决</i>
+													<i class="reward">悬赏 20C</i>
+												</div>
+											</div>
+											<div class="news_time news_other">
+												<span>发布于：2019-07-05 13:12:06</span>
+												<span id="">
+													阅读数：32564
+												</span>
+												<span id="">
+													点赞：1563
+												</span>
+											</div>
+											<div class="news_owner news_other">
+												<span id="">
+													发帖人：XXX
+												</span>
+												<span id="">
+													最后回复人：XXX
+												</span>
+												<div class="share">
+													分享：
+													<img class="share_icon" src="images/WeChat.png" />
+													<img class="share_icon" src="images/weibo.png" />
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<img src="images/icon_gongshi.png" />
+										<div class="blog_list">
+											<div class="news_title">
+												<a href="news_xq.html" style="max-width: 360px;">特勤大队暂扣污染路面车辆</a>
+												<i class="red_news">[原创]</i>
+												<i class="red_news">[新闻]</i>
+												<div class="r">
+													<i class="solve">未解决</i>
+													<i class="reward">悬赏 20C</i>
+												</div>
+											</div>
+											<div class="news_time news_other">
+												<span>发布于：2019-07-05 13:12:06</span>
+												<span id="">
+													阅读数：32564
+												</span>
+												<span id="">
+													点赞：1563
+												</span>
+											</div>
+											<div class="news_owner news_other">
+												<span id="">
+													发帖人：XXX
+												</span>
+												<span id="">
+													最后回复人：XXX
+												</span>
+												<div class="share">
+													分享：
+													<img class="share_icon" src="images/WeChat.png" />
+													<img class="share_icon" src="images/weibo.png" />
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<img src="images/icon_zhaobiao.png" />
+										<div class="blog_list">
+											<div class="news_title">
+												<a href="news_xq.html">特勤大队暂扣污染路面车辆</a>
+												<i class="red_news">[原创]</i>
+												<i class="red_news">[新闻]</i>
+												<div class="r">
+													<i class="solve">未解决</i>
+													<i class="reward">悬赏 20C</i>
+												</div>
+											</div>
+											<div class="news_time news_other">
+												<span>发布于：2019-07-05 13:12:06</span>
+												<span id="">
+													阅读数：32564
+												</span>
+												<span id="">
+													点赞：1563
+												</span>
+											</div>
+											<div class="news_owner news_other">
+												<span id="">
+													发帖人：XXX
+												</span>
+												<span id="">
+													最后回复人：XXX
+												</span>
+												<div class="share">
+													分享：
+													<img class="share_icon" src="images/WeChat.png" />
+													<img class="share_icon" src="images/weibo.png" />
+												</div>
+											</div>
+										</div>
+									</li> -->
+								</ul>
+								<!-- 通用分页 -->
+								<!-- <div class="fanye" style="text-align: left;">
+									<a href="#">上一页</a>
+									<div>
+										<a href="#" class="current">1</a>
+										<a href="#">2</a>
+										<a href="#">3</a>
+										<a href="#">4</a>
+										<a href="#">...</a>
+										<a href="#">10</a>
+									</div>
+									<a href="#">下一页</a>
+									<p>
+										<span>共20页</span>
+										<span>转到第<input type="text" name="" value="2">页</span>
+										<input type="submit" name="" value="确定">
+									</p>
+								</div> -->
+								<!-- 通用分页end -->
+							</div>
+							<center>
+								<ul class="pagination"></ul>
+							</center>
+						</div>
+					</div>
+					<!-- zy_content end -->
+					<!-- 招标公告 -->
+					<div id="rightinfo" class="tender r">
+						<!-- <div class="manager_box">
+							<div class="manager">
+								<h3>版块管理员</h3>
+								<div class="info">
+									<img src="images/manager.jpg" />
+									<div class="description">
+										<div>XXX</div>
+										<p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
+									</div>
+								</div>
+							</div>
+							<div class="owner">
+								<h3>板主</h3>
+								<div class="info">
+									<img src="images/owner.jpg" />
+									<div class="description">
+										<div>XXX</div>
+										<p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="sy_title bdb_d ovh">
+							<h2 class="l"><img src="images/icon_hot.png"><b class="fc">推荐热帖</b></h2>
+							<a href="newslist.html" class="r">查看更多></a>
+						</div>
+						<ul>
+							<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span><i class="red_news">[新]</i></a></li>
+							<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局办公大楼新建地块招标项目开发商承建福泉市综合执法局办公大楼新建地块招标项目开发商承建</span><i class="red_news">[新]</i></a></li>
+							<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span></a></li>
+							<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局办公大楼新建地块招标项目开发商承建</span></a></li>
+							<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span></a></li>
+							<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局办公大楼新建地块招标项目开发商承建</span></a></li>
+							<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span></a></li>
+						</ul> -->
+					</div>
+				</div>
+				<!-- 专题轮播 -->
+				<div class="zhuanti_pic">
+					<div class="hd">
+						<!--轮播点 -->
+						<ul>
+							<li></li>
+							<li></li>
+						</ul>
+					</div>
+					<div class="bd">
+						<ul>
+							<!--专题图片轮播 -->
+							<li>
+								<a href="news_xq.html"><img src="images/pic01.jpg" /></a>
+							</li>
+							<li>
+								<a href="news_xq.html"><img src="images/pic01.jpg" /></a>
+							</li>
+						</ul>
+					</div>
+					<!-- 下面是前/后按钮代码，如果不需要删除即可 -->
+					<a class="prev" href="javascript:void(0)"></a>
+					<a class="next" href="javascript:void(0)"></a>
+
+					<script type="text/javascript">
+						jQuery(".zhuanti_pic").slide({
+							mainCell: ".bd ul",
+							autoPlay: true,
+							effect: "fade",
+							mouseOverStop: false,
+							interTime: 3000,
+						});
+					</script>
+				</div>
+			</div>
+
+			<style type="text/css">
+				.date_bg {
+					position: absolute;
+					z-index: 999;
+					top: 0;
+					left: 0;
+					width: 100%;
+					background-color: rgba(0, 0, 0, .5);
+				}
+			</style>
+		</div>
+
+		<!-- 返回顶部 -->
+		<div class="side_box">
+			<ul>
+				<li class="sidetop">
+					<span></span>
+				</li>
+			</ul>
+		</div>
+
+		<!-- 底部 -->
+		<div class="footerbox bg">
+			<ul class="other fix">
+				<li><a href="contact.html">联系我们</a></li>
+				<li><a href="about.html">机构概况</a></li>
+				<li><a href="info_public.html">信息公开</a></li>
+				<li><a href="newslist.html">办事指南</a></li>
+			</ul>
+			<div class="l">
+				<a href="http://121.43.68.40/exposure/jiucuo.html?site_code=5200000083&url=www.guizhou.gov.cn" target="blank" class="dib vm"><img
+					 src="images/zhaocuo.png" /></a>
+				<a href="http://bszs.conac.cn/sitename?method=show&id=09D70ADDD9E64427E053022819AC3042" target="blank" class="dib vm"><img
+					 src="images/dangzheng.png"></a>
+			</div>
+			<div class="l txt">
+				<p><img src="images/beian.png">X公网安备
+					5201030200xxxx号&nbsp;&nbsp;&nbsp;XICP备xxxxxxxxx号-2&nbsp;&nbsp;&nbsp;政府网站标识码：520xxxxxxxx</p>
+				<p>XX市综合执法局信息技术处建设和维护</p>
+			</div>
+			<p>版权所有：XX市综合行政执法局&nbsp;&nbsp;&nbsp;地址：XX省XX市工业园区特1号</p>
+		</div>
+
+		<script type="text/javascript" src="js/paging/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/paging/paging.js"></script>
+		<script type="text/javascript">
+			// 获取当前分类
+			function GetRequest() {
+				var url = decodeURI(location.search); //获取url中"?"符后的字串
+				var theRequest = new Object();
+				if (url.indexOf("?") != -1) {
+					var str = url.substr(1);
+					strs = str.split("&");
+					for (var i = 0; i < strs.length; i++) {
+						theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+					}
+				}
+				return theRequest;
+			}
+			var json = GetRequest();
+			console.log(json.plate);
+			localStorage.setItem("plate", json.plate)
+			localStorage.setItem("type",json.type)
+
+			// 分享
+			window._bd_share_config = {
+				common: {
+					bdText: '分享的内容',
+					bdMini: "2", // 下拉浮层分享按钮的列数
+					bdMiniList: ['mshare', 'qzone', 'tsina', 'weixin', 'tqq', 'tieba', 'copy', 'print'], //  下拉浮层显示的内容，默认显示为 false
+					bdPic: '/assets/share.jpg', // 分享的图片
+					bdStyle: "0",
+					bdSize: "16",
+					bdUrl: 'http://192.168.1.107:8081/power/qusetion.html', // 分享的地址
+					onBeforeClick: setConf // 在用户点击分享按钮时执行代码，更改配置。function(cmd,config){} cmd为分享目标id，config为当前设置，返回值为更新后的设置。
+				},
+				share: []
+			};
+
+			function setConf(cmd, config) {
+				if (url) {
+					config.bdUrl = url;
+					config.bdText = title;
+				}
+				return config;
+			}
+			$('.bdsharebuttonbox a').on('mouseover', function() {
+				title = $(this).data('title');
+				url = window.location.origin + $(this).data('url');
+			})
+
+			// ajax请求文章列表
+			var post = "";
+			var postlist = document.getElementById("postlist");
+			var type = localStorage.getItem("type")
+			$.ajax({
+				url: 'http://114.55.35.82/tp6_forum/public/index.php/sort/select',
+				type: 'post',
+				data: {
+					// token: 'sadafsaf',
+					rows: '10',
+					page: '1',
+					serch: '',
+					plate: json.plate,
+					plate_two: json.two,
+					post_type: type,
+					order: '0'
+				},
+				// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+				dataType: 'json',
+				success: function(res) {
+					// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
+					// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
+					console.log(res)
+					var data = res.data;
+					// 分页函数
+					$(function() {
+						var a = {
+							color: '#blue',
+							sex: 'black',
+							border: '1px solid #ddd'
+						};
+
+						var b = {
+							background: '#005389'
+						};
+
+						$(".pagination").Paging({
+							classStyle: a, //a标签样式的对象,也可以不定义使用默认值
+							backClass: b, //选中的页数的背景，也可以不定义使用默认值
+							isFirst: true, //首页按钮是否显示
+							isPre: true, //下一页按钮是否显示
+							showRecordNum: res.per_page, // 一页列表数量
+							totalNum: res.total, // 总列表数量
+							showNum: function(data1, data2) {
+								alert(data1 + "," + data2);
+							}
+						});
+
+					});
+					for (var i = 0; i < data.length; i++) {
+						post += "<li><img src='" + data[i].post_img + "'/><div class='blog_list'>";
+						post += "<div class='news_title'><a href='#'>" + data[i]['post_title'] + "</a>";
+						post += "<i class='red_news'>[" + data[i]['post_label'] + "]</i><i class='red_news'>[" + data[i]['post_label'] +
+							"]</i></div>";
+						post += "<div class='news_time news_other'><span>发布于：" + data[i]['post_releasetime'] + "</span>";
+						post += "<span id=''>阅读数：" + data[i]['post_readnum'] + " </span><span id=''>点赞：" + data[i]['post_readnum'] +
+							"</span></div>";
+						post += "<div class='news_owner news_other'><span id=''>发帖人：" + data[i]['post_user_name'] + "</span>";
+						post += "<span id=''>最后回复人：" + data[i]['last_user_name'] + "</span><div class='share bdsharebuttonbox'>分享：";
+						post +=
+							"<a href='#' class='bds_weixin' data-cmd='weixin'></a><a href='#' class='bds_tsina' data-cmd='tsina'></a></div></div></div></li>";
+						postlist.innerHTML = post;
+					}
+				},
+			})
+
+			// ajax请求右侧数据
+			var info = "";
+			var rightinfo = document.getElementById("rightinfo");
+			$.ajax({
+				url: 'http://114.55.35.82/tp6_forum/public/index.php/sort/info',
+				type: 'post',
+				data: {
+					plate: json.plate,
+				},
+				// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+				dataType: 'json',
+				success: function(res) {
+					// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
+					// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
+					console.log(res)
+					console.log(res.data.plate_admin.user_name)
+					var plate_admin = res.data.plate_admin;
+					var plate_master = res.data.plate_master;
+					var hot_post = res.data.hot_post;
+					info += "<div class='manager_box'><div class='manager'><h3>版块管理员</h3>";
+					info += "<div class='info'><img src='" + plate_admin.user_name + "' /><div class='description'><div>" +
+						plate_admin.user_name + "</div>";
+					info += "<p>" + plate_admin.user_profile + "</p></div></div></div><div class='owner'><h3>板主</h3>";
+					info += "<div class='info'><img src='" + plate_master.user_name + "' /><div class='description'><div>" +
+						plate_master.user_name + "</div>";
+					info += "<p>" + plate_master.user_profile + "</p></div></div></div></div>";
+					info +=
+						"<div class='sy_title bdb_d ovh'><h2 class='l'><img src='images/hot.png' width='25px'><b class='fc'>推荐热帖</b></h2>";
+					info += "<a href='#' class='r'>查看更多></a></div><ul>";
+					for (var i = 0; i < hot_post.length; i++) {
+						info += "<li><a href='#'><b>·</b><span>" + hot_post[i]['post_title'] + "</span></a></li>";
+					}
+					info += "</ul>";
+
+					rightinfo.innerHTML = info;
+				},
+			})
+			
+			function h2() {
+				var menu = document.getElementById('menu');
+				var h2s = menu.getElementsByTagName('h2');
+				for (var i = 0; i < h2s.length; i++) {
+					h2s[i].onclick = function() {
+						for (var i = 0; i < h2s.length; i++) {
+							h2s[i].className = '';
+						}
+						this.className = 'selected';
+					}
+				}
+			};
+			h2();
+		</script>
+	</body>
+</html>
