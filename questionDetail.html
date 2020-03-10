@@ -235,11 +235,12 @@
 		display: flex;
 		flex-direction: row;
 		align-items: center;
-		margin-right: 10px;
+		margin-right: 20px;
 	}
 	.five_bt .post_icon img{
-		width: 35px;
-		height: 35px;
+		width: 25px;
+		height: 25px;
+		margin-right: 5px;
 	}
 	.comment_box,.content_box{
 		width: 100%;
@@ -539,19 +540,19 @@
 				</div>
 				<div class="five_bt">
 					<div class="post_icon">
-						<img src="images/good.png"/><span id="postUpnum">0</span>
+						<img src="images/like.png"/><span id="postUpnum">0</span>
 					</div>
 					<div class="post_icon">
-						<img src="images/good.png"/><span id="postForwardnum">0</span>
+						<img src="images/forwarded.png"/><span id="postForwardnum">0</span>
 					</div>
 					<div class="post_icon">
-						<img src="images/good.png"/><span id="postCollectionnum">0</span>
+						<img src="images/save.png"/><span id="postCollectionnum">0</span>
 					</div>
 					<div class="post_icon">
-						<img src="images/good.png"/><span></span>
+						<img src="images/rewarded.png"/><span></span>
 					</div>
 					<div class="post_icon">
-						<img src="images/good.png"/><span></span>
+						<img src="images/report.png"/><span></span>
 					</div>
 				</div>
 				<div class="comment_box" id="comment_box">
@@ -748,7 +749,7 @@
 			article_id:2
 		},
 		success:function(data){
-			console.log(data)
+//			console.log(data)
 			if(data.code==200){
 				$("#postTitle").html(data.data.post_title);//文章标题
 				$("#postCopyright").html('<span>*</span>版权声明：'+data.data.post_copyright);//版权声明
@@ -801,7 +802,7 @@
 		},
 		dataType:"json",
 		success:function(data){
-			console.log(data)
+//			console.log(data)
 			var length = data.data.length;
 			for(var i=0;i<length;i++){
 				var obj = data.data[i];
