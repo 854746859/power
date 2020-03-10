@@ -209,7 +209,7 @@
 					// ajax请求文章列表
 					var post = "";
 					var postlist = document.getElementById("postlist");
-					
+					var type = localStorage.getItem("type")
 					if(document.getElementById("postlist")){
 					//存在
 						// postlist.remove();
@@ -226,7 +226,7 @@
 							serch: '',
 							plate: json.plate,
 							plate_two: json.two,
-							post_type: '0',
+							post_type: type,
 							order: '0'
 						},
 						// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
