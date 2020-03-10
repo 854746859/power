@@ -779,7 +779,8 @@
 						} else {
 							for (var i = 0; i < data.length; i++) {
 								post += "<li><img src='" + data[i].post_img + "'/><div class='blog_list'>";
-								post += "<div class='news_title'><a href='#'>" + data[i]['post_title'] + "</a>";
+								post += "<div class='news_title'><a href='questionDetail.html?postid=" + data[i]['id'] + "&plate=" + json.plate +
+									"&plate_two=" + json.two + "''>" + data[i]['post_title'] + "</a>";
 								post += "<i class='red_news'>[" + data[i]['post_label'] + "]</i><i class='red_news'>[" + data[i][
 										'post_label'
 									] +
