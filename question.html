@@ -719,10 +719,11 @@
 			})
 
 			// ajax请求文章列表
-			function post(order) {
+			function post(orders) {
 				var post = "";
-				alert(order)
+				// alert(order)
 				var order = "0";
+				(orders == undefined) ? order = '0': order = orders;
 				// alert(order)
 				var postlist = document.getElementById("postlist");
 				var type = localStorage.getItem("type")
@@ -845,13 +846,13 @@
 							h2s[i].className = '';
 						}
 						this.className = 'selected';
-						order = this.id
+						orders = this.id
 						// alert(order)
 						if (document.getElementById("postlist")) {
 							//存在
 							// postlist.remove();
 							document.getElementById("postlist").innerHTML = "";
-							post(order);
+							post(orders);
 						}
 					}
 				}
