@@ -318,18 +318,19 @@
 				<div class="conbox fix">
 					<div class="news_banner l bora_5">
 						<!-- 左边内容 -->
-						<div class="zy_right_con">
+						<div id="content" class="zy_right_con">
 							<!-- 当前位置 -->
 							<div id="menu" class="zy_title">
-								<h2 class="selected" >最新发布<i></i></h2>
+								<h2 class="selected">最新发布<i></i></h2>
 								<h2>最后回复<i></i></h2>
 								<h2>类别筛选<i></i></h2>
 							</div>
 							<!-- 内容展示块-->
-							<div class="news_list zy_listbox">
+							<div  class="news_list zy_listbox">
 								<!-- 展示15条数据后出现分页 -->
 								<ul id="postlist">
-									<li>
+
+									<!-- <li>
 										<img src="News-module1/images/dangzheng.png" />
 										<div class="blog_list">
 											<div class="news_title">
@@ -360,7 +361,7 @@
 												</div>
 											</div>
 										</div>
-									</li>
+									</li> -->
 									<!--<li>
 										<img src="images/icon_leader.png" />
 										<div class="blog_list">
@@ -690,6 +691,7 @@
 			// ajax请求文章列表
 			var post = "";
 			var postlist = document.getElementById("postlist");
+			var content = document.getElementById("content");
 			// alert(localStorage.getItem("type"))
 			var type = localStorage.getItem("type")
 			$.ajax({
@@ -710,8 +712,9 @@
 				success: function(res) {
 					// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
 					// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
-					console.log(res)
+					console.log(res.data.length)
 					var data = res.data;
+
 					// 分页函数
 					$(function() {
 						var a = {
@@ -737,27 +740,29 @@
 						});
 
 					});
-					for (var i = 0; i < data.length; i++) {
-						post += "<li><img src='" + data[i].post_img + "'/><div class='blog_list'>";
-						post += "<div class='news_title'><a href='qustionDetail.html?postid=" + data[i]['id'] + "''>" + data[i][
-							'post_title'
-						] + "</a>";
-						post += "<i class='red_news'>[" + data[i]['post_label'] + "]</i><i class='red_news'>[" + data[i]['post_label'] +
-							"]</i></div>";
-						post += "<div class='news_time news_other'><span>发布于：" + data[i]['post_releasetime'] + "</span>";
-						post += "<span id=''>阅读数：" + data[i]['post_readnum'] + " </span><span id=''>点赞：" + data[i]['post_readnum'] +
-							"</span></div>";
-						post += "<div class='news_owner news_other'><span id=''>发帖人：" + data[i]['post_user_name'] + "</span>";
-						post += "<span id=''>最后回复人：" + data[i]['last_user_name'] + "</span><div class='share bdsharebuttonbox'>分享：";
-						post +=
-							"<a href='#' class='bds_weixin' data-cmd='weixin'></a><a href='#' class='bds_tsina' data-cmd='tsina'></a></div></div></div></li>";
-						postlist.innerHTML = post;
+					if (data.length === 0) {
+						post += "<h3>暂无数据</h3>";
+						content.innerHTML = post;
+
+					} else {
+						for (var i = 0; i < data.length; i++) {
+							post += "<li><img src='" + data[i].post_img + "'/><div class='blog_list'>";
+							post += "<div class='news_title'><a href='forum.html?postid=" + data[i]['id'] + "&plate=" + json.plate + "&plate_two=" + json.two + "''>" + data[i][
+								'post_title'
+							] + "</a>";
+							post += "<i class='red_news'>[" + data[i]['post_label'] + "]</i><i class='red_news'>[" + data[i]['post_label'] +
+								"]</i></div>";
+							post += "<div class='news_time news_other'><span>发布于：" + data[i]['post_releasetime'] + "</span>";
+							post += "<span id=''>阅读数：" + data[i]['post_readnum'] + " </span><span id=''>点赞：" + data[i]['post_readnum'] +
+								"</span></div>";
+							post += "<div class='news_owner news_other'><span id=''>发帖人：" + data[i]['post_user_name'] + "</span>";
+							post += "<span id=''>最后回复人：" + data[i]['last_user_name'] + "</span><div class='share bdsharebuttonbox'>分享：";
+							post +=
+								"<a href='#' class='bds_weixin' data-cmd='weixin'></a><a href='#' class='bds_tsina' data-cmd='tsina'></a></div></div></div></li>";
+							postlist.innerHTML = post;
+						}
 					}
-					// if (data.length < 5) {
-					// 	for ( i = 5; i < data.length ; i++) {
-					// 		Things[i]
-					// 	}
-					// }
+
 				},
 			})
 
