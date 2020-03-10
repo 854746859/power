@@ -25,7 +25,7 @@
 		flex-direction: row;
 		justify-content: space-between;
 		align-items: center;
-		background-color: #eee;
+		/* background-color: #eee; */
 		padding: 10px;
 	}
 	.user_box .box_L{
@@ -71,11 +71,12 @@
 	}
 	.selecter{
 		width: 100%;
+		display: flex;
 	}
 	.selecter .sle_part{
 		display: flex;
 		flex-direction: row;
-		margin: 10px 0 10px 10px;
+		margin: 10px 20px 10px 10px;
 	}
 	select{
 		border: 1px solid #333;
@@ -85,7 +86,7 @@
 		margin-left: 20px;
 	}
 	td{
-		border: 1px solid #333;
+		border-bottom: 1px solid #000000;
     	box-sizing: border-box;
 	}
 	.sort{
@@ -129,6 +130,13 @@
 	.sort .sort_type .time{
 		width: 220px;
 		font-size: 14px;
+	}
+
+	h3{
+		font-family: PingFang SC;
+		font-size: 24px;
+		font-weight: 500;
+		color: #000000;
 	}
 </style>
 </head>
@@ -263,19 +271,19 @@
 					<div>
 						<div class="selecter">
 							<div class="sle_part">
-								<h3>选择需要设置的板块封面：</h3>
+								<h3>板块封面：</h3>
 								<select name="">
 									<option value="">总封面</option>
-									<option value="">xx版块</option>
-									<option value="">xx版块</option>
+									<option value="">LNG版块</option>
+									<option value="">Gas版块</option>
 								</select>
 							</div>
 							<div class="sle_part">
-								<h3>热点区域文章筛选：板块区域：</h3>
+								<h3>板块热贴：</h3>
 								<select name="">
 									<option value="">全部文章</option>
 									<option value="">综合热点区</option>
-									<option value="">xx版块</option>
+									<option value="">LNG版块</option>
 								</select>
 								<div class="time">
 									<span>选择时间：</span>
@@ -430,19 +438,19 @@
 					<div>
 						<div class="selecter">
 							<div class="sle_part">
-								<h3>选择需要设置的板块封面：</h3>
+								<h3>板块封面：</h3>
 								<select name="">
 									<option value="">总封面</option>
-									<option value="">xx版块</option>
-									<option value="">xx版块</option>
+									<option value="">LNG版块</option>
+									<option value="">Gas版块</option>
 								</select>
 							</div>
 							<div class="sle_part">
-								<h3>热点区域文章筛选：板块区域：</h3>
+								<h3>板块热帖：</h3>
 								<select name="">
 									<option value="">全部文章</option>
 									<option value="">综合热点区</option>
-									<option value="">xx版块</option>
+									<option value="">LNG版块</option>
 								</select>
 								<div class="time">
 									<span>选择时间：</span>

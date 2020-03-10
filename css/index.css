@@ -226,18 +226,18 @@ html,body{ background-color:#eee;width: 100%;}
 .zhuanti_pic .bd ul img{ width: 1200px; height: 110px; }
 
 /*双公示*/
-.public_list .sy_title{ background-color: #f5f5f5; padding: 0 ;}
+.public_list .sy_title{ padding: 0 ;}
 .public_list .sy_title h2{ margin-top: 10px; }
 .public_list .sy_title .more{  line-height: 54px; padding-right: 10px; }
 .public_list .sy_title .more a{ font-size: 14px; color: #999; display: none;}
 .public_list .sy_title .more a:hover{ color: #005389; }
 .date_bg{}
 
-.public_list .hd{border-bottom:2px solid #005389; }
+/* .public_list .hd{border-bottom:2px solid #005389; } */
 .public_list .hd ul{ height: 54px; line-height: 54px;padding-left: 5px;}
 .public_list .hd ul li{ float:left; padding:0 30px; cursor:pointer; line-height: 50px;}
 .public_list .hd ul li a{ color: #333; font-size: 20px; }
-.public_list .hd ul li.on{ background:#fff; border:2px solid #005389; border-bottom:3px solid #fff; line-height: 50px;}
+.public_list .hd ul li.on{ background:#fff;border-bottom:2px solid #005389; line-height: 50px;}
 .public_list .hd ul li.on a{font-weight: bold; color: #005389; }
 
 .public_list .bd{ border:#ddd solid 1px;  margin-top: 10px;}
@@ -275,12 +275,12 @@ html,body{ background-color:#eee;width: 100%;}
 	line-height: 42px;
 }
 .table_list tbody{
-	height:336px;display:block;overflow-y:scroll;
+	display:block;
 	background-color: #fff;
 }
 .table_list tbody tr {
 	display:table; 
-	width:100%; 
+	width: 1180px; 
 	table-layout:fixed;
 	text-align: center;
 	height: 42px;
