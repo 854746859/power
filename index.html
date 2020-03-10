@@ -320,8 +320,8 @@
 						<!-- 左边内容 -->
 						<div class="zy_right_con">
 							<!-- 当前位置 -->
-							<div class="zy_title">
-								<h2 class="selected">最新发布<i></i></h2>
+							<div id="menu" class="zy_title">
+								<h2 class="selected" >最新发布<i></i></h2>
 								<h2>最后回复<i></i></h2>
 								<h2>类别筛选<i></i></h2>
 							</div>
@@ -329,7 +329,7 @@
 							<div class="news_list zy_listbox">
 								<!-- 展示15条数据后出现分页 -->
 								<ul id="postlist">
-									 <li>
+									<li>
 										<img src="News-module1/images/dangzheng.png" />
 										<div class="blog_list">
 											<div class="news_title">
@@ -641,7 +641,6 @@
 		<script type="text/javascript" src="js/paging/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/paging/paging.js"></script>
 		<script type="text/javascript">
-			
 			// 获取当前分类
 			function GetRequest() {
 				var url = decodeURI(location.search); //获取url中"?"符后的字串
@@ -657,9 +656,9 @@
 			}
 			var json = GetRequest();
 			console.log(json);
-			localStorage.setItem("plate",json.plate)
-			localStorage.setItem("type",json.type)
-			
+			localStorage.setItem("plate", json.plate)
+			localStorage.setItem("type", json.type)
+
 			window._bd_share_config = {
 				common: {
 					bdText: '分享的内容',
@@ -686,7 +685,7 @@
 				url = window.location.origin + $(this).data('url');
 			})
 
-			
+
 
 			// ajax请求文章列表
 			var post = "";
@@ -720,11 +719,11 @@
 							sex: 'black',
 							border: '1px solid #ddd'
 						};
-					
+
 						var b = {
 							background: '#005389'
 						};
-					
+
 						$(".pagination").Paging({
 							classStyle: a, //a标签样式的对象,也可以不定义使用默认值
 							backClass: b, //选中的页数的背景，也可以不定义使用默认值
@@ -736,17 +735,22 @@
 								alert(data1 + "," + data2);
 							}
 						});
-					
+
 					});
 					for (var i = 0; i < data.length; i++) {
 						post += "<li><img src='" + data[i].post_img + "'/><div class='blog_list'>";
-						post += "<div class='news_title'><a href='qustionDetail.html?postid=" + data[i]['id'] + "''>" + data[i]['post_title'] + "</a>";
-						post += "<i class='red_news'>[" + data[i]['post_label'] + "]</i><i class='red_news'>[" + data[i]['post_label'] + "]</i></div>";
+						post += "<div class='news_title'><a href='qustionDetail.html?postid=" + data[i]['id'] + "''>" + data[i][
+							'post_title'
+						] + "</a>";
+						post += "<i class='red_news'>[" + data[i]['post_label'] + "]</i><i class='red_news'>[" + data[i]['post_label'] +
+							"]</i></div>";
 						post += "<div class='news_time news_other'><span>发布于：" + data[i]['post_releasetime'] + "</span>";
-						post += "<span id=''>阅读数：" + data[i]['post_readnum'] + " </span><span id=''>点赞：" + data[i]['post_readnum'] + "</span></div>";
+						post += "<span id=''>阅读数：" + data[i]['post_readnum'] + " </span><span id=''>点赞：" + data[i]['post_readnum'] +
+							"</span></div>";
 						post += "<div class='news_owner news_other'><span id=''>发帖人：" + data[i]['post_user_name'] + "</span>";
 						post += "<span id=''>最后回复人：" + data[i]['last_user_name'] + "</span><div class='share bdsharebuttonbox'>分享：";
-						post += "<a href='#' class='bds_weixin' data-cmd='weixin'></a><a href='#' class='bds_tsina' data-cmd='tsina'></a></div></div></div></li>";
+						post +=
+							"<a href='#' class='bds_weixin' data-cmd='weixin'></a><a href='#' class='bds_tsina' data-cmd='tsina'></a></div></div></div></li>";
 						postlist.innerHTML = post;
 					}
 					// if (data.length < 5) {
@@ -794,6 +798,20 @@
 					rightinfo.innerHTML = info;
 				},
 			})
+
+			function h2() {
+				var menu = document.getElementById('menu');
+				var h2s = menu.getElementsByTagName('h2');
+				for (var i = 0; i < h2s.length; i++) {
+					h2s[i].onclick = function() {
+						for (var i = 0; i < h2s.length; i++) {
+							h2s[i].className = '';
+						}
+						this.className = 'selected';
+					}
+				}
+			};
+			h2();
 		</script>
 
 	</body>

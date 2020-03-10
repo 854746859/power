@@ -14,6 +14,7 @@
 		<link rel="stylesheet" href="css/index.css" type="text/css">
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<link rel="stylesheet" type="text/css" href="css/children.css" />
+		<link rel="stylesheet" type="text/css" href="css/paging.css" />
 		<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
 		<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
 		<script type="text/javascript" src="js/public.js"></script><!-- 菜单js等-->
@@ -99,14 +100,14 @@
 							<li><a href="index.html?type=0&plate=0&two=0">首页</a></li>
 							<li class="menu-item-has-children"><a href="#" title="" itemprop="url">论坛</a>
 								<ul>
-									<li><a href="qusetion.html?type=0&plate=1" title="" itemprop="url">LNG版块</a></li>
-									<li><a href="qusetion.html?type=0&plate=2" title="" itemprop="url">Oil版块</a></li>
-									<li><a href="qusetion.html?type=0&plate=3" title="" itemprop="url">Gas版块</a></li>
-									<li><a href="qusetion.html?type=0&plate=4" title="" itemprop="url">Pipe版块</a></li>
-									<li><a href="qusetion.html?type=0&plate=5" title="" itemprop="url">Nuclear版块</a></li>
-									<li><a href="qusetion.html?type=0&plate=6" title="" itemprop="url">Power版块</a></li>
-									<li><a href="qusetion.html?type=0&plate=7" title="" itemprop="url">Wind版块</a></li>
-									<li><a href="qusetion.html?type=0&plate=8" title="" itemprop="url">Solar版块</a></li>
+									<li><a href="index.html?type=0&plate=1&two=0" title="" itemprop="url">LNG版块</a></li>
+									<li><a href="index.html?type=0&plate=2&two=0" title="" itemprop="url">Oil版块</a></li>
+									<li><a href="index.html?type=0&plate=3&two=0" title="" itemprop="url">Gas版块</a></li>
+									<li><a href="index.html?type=0&plate=4&two=0" title="" itemprop="url">Pipe版块</a></li>
+									<li><a href="index.html?type=0&plate=5&two=0" title="" itemprop="url">Nuclear版块</a></li>
+									<li><a href="index.html?type=0&plate=6&two=0" title="" itemprop="url">Power版块</a></li>
+									<li><a href="index.html?type=0&plate=7&two=0&two=0" title="" itemprop="url">Wind版块</a></li>
+									<li><a href="index.html?type=0&plate=8&two=0" title="" itemprop="url">Solar版块</a></li>
 								</ul>
 							</li>
 							<li class="menu-item-has-children"><a href="#">问答</a>
@@ -334,7 +335,7 @@
 						<!-- 左边内容 -->
 						<div class="zy_right_con">
 							<!-- 当前位置 -->
-							<div class="zy_title">
+							<div id="menu" class="zy_title">
 								<h2 class="selected">最新发布<i></i></h2>
 								<h2>已解决<i></i></h2>
 								<h2>未解决<i></i></h2>
@@ -344,7 +345,7 @@
 							<div class="news_list zy_listbox">
 								<!-- 展示15条数据后出现分页 -->
 								<ul id="postlist">
-									<li>
+									<!-- <li>
 										<img src="News-module1/images/dangzheng.png" />
 										<div class="blog_list">
 											<div class="news_title">
@@ -523,10 +524,10 @@
 												</div>
 											</div>
 										</div>
-									</li>
+									</li> -->
 								</ul>
 								<!-- 通用分页 -->
-								<div class="fanye" style="text-align: left;">
+								<!-- <div class="fanye" style="text-align: left;">
 									<a href="#">上一页</a>
 									<div>
 										<a href="#" class="current">1</a>
@@ -542,9 +543,12 @@
 										<span>转到第<input type="text" name="" value="2">页</span>
 										<input type="submit" name="" value="确定">
 									</p>
-								</div>
+								</div> -->
 								<!-- 通用分页end -->
 							</div>
+							<center>
+								<ul class="pagination"></ul>
+							</center>
 						</div>
 					</div>
 					<!-- zy_content end -->
@@ -817,6 +821,20 @@
 					rightinfo.innerHTML = info;
 				},
 			})
+			
+			function h2() {
+				var menu = document.getElementById('menu');
+				var h2s = menu.getElementsByTagName('h2');
+				for (var i = 0; i < h2s.length; i++) {
+					h2s[i].onclick = function() {
+						for (var i = 0; i < h2s.length; i++) {
+							h2s[i].className = '';
+						}
+						this.className = 'selected';
+					}
+				}
+			};
+			h2();
 		</script>
 	</body>
 </html>
