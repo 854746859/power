@@ -921,6 +921,12 @@
 					}else{
 						var obj = sessionStorage.getItem("data");
 						obj = JSON.parse(obj);
+						var rewardCoinnum = "";
+						var rewardMoney = "";
+						var reprotContent = "";
+						if(name=="reward"){
+							
+						}
 						$.ajax({
 							type:"post",
 							url:sever_url+"post/"+name,
