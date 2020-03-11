@@ -29,7 +29,7 @@ html,body{ background-color:#eee;width: 100%;}
 .bg{background-color: #005389; min-width: 1220px;width: 100%;}
 .b{font-weight:bold;}
 /* .bora_5{ border-radius: 5px; display: flex; flex-direction: row;align-items: center;justify-content: space-around;} */
-.bora_5{margin-top: 20px; border-radius: 5px; display: flex; flex-direction: row;justify-content: space-around;}
+.bora_5{ border-radius: 5px; display: flex; flex-direction: row;justify-content: space-around;}
 .ovh{overflow: hidden;}
 
 /*top*/
