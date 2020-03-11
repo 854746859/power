@@ -275,6 +275,9 @@
 .other_page h1{ font-size: 32px; color: #005389; text-align: center; padding: 24px 0; }
 
 /*搜索结果*/
+.news_list{
+	height: 500px;
+}
 .news_list ul li{ line-height: 42px; display: flex; flex-direction: row;padding: 10px 0;border-bottom: 1px solid #eee;}
 .news_list ul li img{
 	width: 90px;
