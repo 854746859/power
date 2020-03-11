@@ -150,13 +150,13 @@
 				<span id="code">发送验证码</span>
 				<div class="more">
 					<div class="protocol">
-						<input type="checkbox" name="" id="" value="" />我已阅读并同意服务条款点击阅读<a href="">注册协议</a>
+						<input type="checkbox" name="" id="" value="" id="check" />我已阅读并同意服务条款点击阅读<a href="">注册协议</a>
 					</div>
 					<div class="tips">
 						tips：实名注册可获得论坛币、可发起提问，能更好体验哦
 					</div>
 				</div>
-				<input type="button" name="" id="submit" value="登录" />
+				<input type="button" name="" id="submit" value="确定" disabled="disabled" style="opacity: 0.5;"/>
 			</div>
 		</div>
 		<script src="config.js" type="text/javascript" charset="utf-8"></script>
@@ -164,21 +164,35 @@
 		<script type="text/javascript" src="js/pop_ups/MiniDialog-es5.min.js" ></script>
 		<script type="text/javascript">
 			$(document).ready(function(){
+				$(":checkbox").on("change",function(){
+			        var $checkbox = $(this)[0];
+			        if($checkbox.checked){
+			        	$("#submit").removeAttr("disabled");
+			        	$("#submit").removeAttr("style");
+			        }else{
+			        	$("#submit").attr("disabled","disabled");
+			        	$("#submit").css("opacity","0.5");
+			        }
+			    });
 				$("#submit").click(function(){
 					if($("#user_password").val()==$("#user_password_again").val()){
 						$.ajax({
 							type:"post",
-							url:server_url+"reg",
+							url:sever_url+"reg",
 							async:true,
 							data:{
 								user_account:$("#user_account").val(),
 								user_password:$("#user_password").val(),
 								user_mailbox:$("#user_mailbox").val(),
 								user_phone:$("#user_phone").val(),
-								code:$("the_code").val()
+								code:$("#the_code").val()
 							},
+							dataType:"json",
 							success:function(data){
-								console.log()
+								console.log(data)
+								if(data.code=="200"){
+									window.location.href="login.html";
+								}
 							},
 							error:function(){
 								
