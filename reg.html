@@ -24,10 +24,16 @@
 		}
 		.contain{
 			float: right;
-			margin-top: 120px;
+			margin-top: 30px;
+			width: 400px;
 			min-width: 400px;
 			width: 30%;
-			height: 600px;
+			position: relative;
+		}
+		.login_box{
+			display: flex;
+			flex-direction: column;
+			position: relative;
 		}
 		.title{
 			display: flex;
@@ -47,6 +53,13 @@
 			color: #707070;
 			margin-top: 30px;
 		}
+		.input_box{
+			display: flex;
+			flex-direction: column;
+			align-items: flex-end;
+			position: relative;
+			left: -45%;
+		}
 		.put_in{
 			display: flex;
 			flex-direction: row;
@@ -65,17 +78,23 @@
 			padding-left: 5px;
 		}
 		.more{
-			width:273px;
+			width:100%;
 			display: flex;
-			flex-direction: row;
-			justify-content: space-between;
+			flex-direction: column;
 			margin: 10px 0 0 50px;
+			font-size: 12px;
 		}
 		.more a{
 			font-size:12px;
 			line-height:13px;
 			color:rgba(15,114,232,1);
 			text-decoration: none;
+		}
+		.tips{
+			width: 100%;
+			position: relative;
+			left: -30px;
+			margin-top: 5px;
 		}
 		#submit{
 			width:206px;
@@ -86,6 +105,17 @@
 			color: #fff;
 			margin: 30px 0 0 80px;
 		}
+		#code{
+			position: relative;
+			right: -330px;
+			top: -88px;
+			font-size:14px;
+			color:rgba(112,112,112,1);
+		}
+		#code:hover{
+			color: rgba(29,188,184,1);
+			cursor: pointer;
+		}
 	</style>
 	<body>
 		<div class="contain">
@@ -95,17 +125,36 @@
 					<div class="min">欢迎你</div>
 				</div>
 				<div class="title_second">
-					用户登录
+					用户注册
 				</div>
-				<div class="put_in">
-					<span>账号：</span><input type="text" value=""/>
+				<div class="input_box">
+					<div class="put_in">
+						<span>账号：</span><input type="text" value=""/>
+					</div>
+					<div class="put_in">
+						<span>密码：</span><input type="password" value=""/>
+					</div>
+					<div class="put_in">
+						<span>确认密码：</span><input type="password" value=""/>
+					</div>
+					<div class="put_in">
+						<span>邮箱：</span><input type="email" value=""/>
+					</div>
+					<div class="put_in">
+						<span>手机号码：</span><input type="number" value=""/>
+					</div>
+					<div class="put_in">
+						<span>验证码：</span><input type="text" value=""/>
+					</div>
 				</div>
-				<div class="put_in">
-					<span>密码：</span><input type="password" value=""/>
-				</div>
+				<span id="code">发送验证码</span>
 				<div class="more">
-					<a href="reg.html">注册账号</a>
-					<a href="">手机快速登录</a>
+					<div class="protocol">
+						<input type="checkbox" name="" id="" value="" />我已阅读并同意服务条款点击阅读<a href="">注册协议</a>
+					</div>
+					<div class="tips">
+						tips：实名注册可获得论坛币、可发起提问，能更好体验哦
+					</div>
 				</div>
 				<input type="button" name="" id="submit" value="登录" />
 			</div>
