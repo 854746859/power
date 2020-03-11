@@ -92,6 +92,7 @@
 
 /*右边内容栏*/
 .zy_right_con{ 
+    margin-top: 30px;
 	float: left; 
 	/*width: 720px;*/ 
 	overflow: hidden;
