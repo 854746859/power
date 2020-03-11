@@ -691,11 +691,15 @@
 			// ajax请求文章列表
 			function post(orders) {
 				var post = "";
-				console.log(orders)
+				// console.log(orders)
+				console.log(json.plate)
 				var order = '0';
 				(orders == undefined) ? order = '0': order = orders;
-				console.log(order)
-				console.log(orders)
+				(json.plate == undefined) ? plate = '1': plate = json.plate;
+				(json.two == undefined) ? two = '0': two = json.two;
+				// console.log(order)
+				console.log(json.plate)
+				console.log(plate)
 				var postlist = document.getElementById("postlist");
 				var content = document.getElementById("content");
 				// alert(localStorage.getItem("type"))
@@ -708,8 +712,8 @@
 						rows: '8',
 						page: '1',
 						serch: '',
-						plate: json.plate,
-						plate_two: json.two,
+						plate: plate,
+						plate_two: two,
 						post_type: type,
 						order: order
 					},
@@ -779,11 +783,12 @@
 			// ajax请求右侧数据
 			var info = "";
 			var rightinfo = document.getElementById("rightinfo");
+			(json.plate == undefined) ? plate = '1': plate = json.plate;
 			$.ajax({
 				url: 'http://114.55.35.82/tp6_forum/public/index.php/sort/info',
 				type: 'post',
 				data: {
-					plate: json.plate,
+					plate: plate,
 				},
 				// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
 				dataType: 'json',
