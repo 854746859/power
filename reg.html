@@ -129,22 +129,22 @@
 				</div>
 				<div class="input_box">
 					<div class="put_in">
-						<span>账号：</span><input type="text" value=""/>
+						<span>账号：</span><input id="user_account" type="text" value=""/>
 					</div>
 					<div class="put_in">
-						<span>密码：</span><input type="password" value=""/>
+						<span>密码：</span><input id="user_password" type="password" value=""/>
 					</div>
 					<div class="put_in">
-						<span>确认密码：</span><input type="password" value=""/>
+						<span>确认密码：</span><input id="user_password_again" type="password" value=""/>
 					</div>
 					<div class="put_in">
-						<span>邮箱：</span><input type="email" value=""/>
+						<span>邮箱：</span><input id="user_mailbox" type="email" value=""/>
 					</div>
 					<div class="put_in">
-						<span>手机号码：</span><input type="number" value=""/>
+						<span>手机号码：</span><input id="user_phone" type="number" value=""/>
 					</div>
 					<div class="put_in">
-						<span>验证码：</span><input type="text" value=""/>
+						<span>验证码：</span><input id="the_code" type="text" value=""/>
 					</div>
 				</div>
 				<span id="code">发送验证码</span>
@@ -159,5 +159,36 @@
 				<input type="button" name="" id="submit" value="登录" />
 			</div>
 		</div>
+		<script src="config.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="js/pop_ups/MiniDialog-es5.min.js" ></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$("#submit").click(function(){
+					if($("#user_password").val()==$("#user_password_again").val()){
+						$.ajax({
+							type:"post",
+							url:server_url+"reg",
+							async:true,
+							data:{
+								user_account:$("#user_account").val(),
+								user_password:$("#user_password").val(),
+								user_mailbox:$("#user_mailbox").val(),
+								user_phone:$("#user_phone").val(),
+								code:$("the_code").val()
+							},
+							success:function(data){
+								console.log()
+							},
+							error:function(){
+								
+							}
+						});
+					}else{
+						Dialog.error( "错误", "两次密码输入不一致！" );
+					}
+				})
+			})
+		</script>
 	</body>
 </html>

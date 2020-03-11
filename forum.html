@@ -533,7 +533,7 @@
 						</span>
 							</div>
 							<div class="collect">
-								<img src="images/collect.png" />
+								<img src="images/collection.png" />
 								<span>
 							收藏
 						</span>
@@ -604,13 +604,13 @@
 						</div>
 						<div class="five_bt" id="do_something">
 							<div class="post_icon" name="support">
-								<img id="support" src="images/like.png" /><span id="postUpnum">0</span>
+								<img id="support" src="images/support.png" /><span id="postUpnum">0</span>
 							</div>
 							<div class="post_icon" name="forword">
 								<img id="forword" src="images/forworded.png" /><span id="postForwardnum">0</span>
 							</div>
-							<div class="post_icon" name="collect">
-								<img id="collect" src="images/save.png" /><span id="postCollectionnum">0</span>
+							<div class="post_icon" name="collection">
+								<img id="collection" src="images/collection.png" /><span id="postCollectionnum">0</span>
 							</div>
 							<div class="post_icon" name="reward">
 								<img id="reward" src="images/rewarded.png" /><span></span>
@@ -624,12 +624,12 @@
 						</div>
 						<div></div>
 						<div class="commet">
-							<textarea name="" rows="" cols="" placeholder="评论"></textarea>
+							<textarea name="" rows="" cols="" id="comment_content" placeholder="评论"></textarea>
 							<div class="push_bt">
 								<span id="">
 							最多输入1000个字
 						</span>
-								<input type="button" name="" id="" value="发表" />
+								<input type="button" name="" id="publish" value="发表" />
 							</div>
 						</div>
 					</div>
@@ -807,7 +807,7 @@
 
 							$("#time").html(data.data.post_releasetime); //发布时间
 							$("#readNum").html("阅读数：" + data.data.post_readnum); //阅读数
-							$("#postUpnum").html(data.datapost_upnum); //点赞数
+							$("#postUpnum").html(data.data.post_upnum); //点赞数
 							$("#postForwardnum").html(data.data.post_forwardnum); //转发数
 							$("#postCollectionnum").html(data.data.post_collectionnum); //收藏数
 							$("#user_head").attr("src", data.data.user_head);
@@ -830,31 +830,37 @@
 					}
 				});
 				//评论
-				$.ajax({
-					type: "post",
-					url: sever_url + "comment/select",
-					async: true,
-					data: {
-						rows: 2,
-						page: 1,
-						post_id: post_id
-					},
-					dataType: "json",
-					success: function(data) {
-						console.log(data)
-						var length = data.data.length;
-						for(var i = 0; i < length; i++) {
-							var obj = data.data[i];
-							$("#comment_box").append('<div class="content_box"><div class="visitor"><div class="visitor_info"><div class="visitor_pic"><img id="' + obj.id + '" src="' + obj.user_head + '"/><span >' + obj.user_name + '</span></div><div class="commet_time"><span>' + obj.comment_time + '</span><span>【' + obj.comment_layernum + '楼】</span></div></div><div class="other_visitor"><span>举报</span><span>回复</span><span><img src="images/good.png"/>' + obj.comment_upnum + '</span></div></div><div class="comment_text"><p>' + obj.comment_content + '</p></div></div>');
+				GetComment();
+				function GetComment(){
+					$.ajax({
+						type: "post",
+						url: sever_url + "comment/select",
+						async: true,
+						data: {
+							rows: 6,
+							page: 1,
+							post_id: post_id
+						},
+						dataType: "json",
+						success: function(data) {
+							console.log(data)
+							var length = data.data.length;
+							$("#comment_box").empty();
+							for(var i = 0; i < length; i++) {
+								var obj = data.data[i];
+								$("#comment_box").append('<div class="content_box"><div class="visitor"><div class="visitor_info"><div class="visitor_pic"><img id="' + obj.id + '" src="' + obj.user_head + '"/><span >' + obj.user_name + '</span></div><div class="commet_time"><span>' + obj.comment_time + '</span><span>【' + obj.comment_layernum + '楼】</span></div></div><div class="other_visitor"><span>举报</span><span>回复</span><span><img src="images/good.png"/>' + obj.comment_upnum + '</span></div></div><div class="comment_text"><p>' + obj.comment_content + '</p></div></div>');
+							}
+						},
+						error: function() {
+	
 						}
-					},
-					error: function() {
-
-					}
-				});
+					});
+				}
+				
 				//点赞、转发、打赏、、、、
 				$("#do_something div").click(function(){
-					var name = $(this).attr("name");
+					var that = this;
+					var name = $(that).attr("name");
 					if(sessionStorage.getItem("data")==null){
 						Dialog({
 							title: "请登录！",
@@ -880,12 +886,99 @@
 							data:{
 								token: obj.token,
 								post_id: post_id,
-								comment_id:""
+								comment_id:"",
+								reprot_content:"",
+								reward_coinnum:"",
+								reward_money:""
 							},
 							success: function(data){
+								var upNumber = parseInt($("#postUpnum").html());
+								var coNumber = parseInt($("#postCollectionnum").html());
+								var fwNumber = parseInt($("#postForwardnum").html());
+								console.log(upNumber)
 								if(data.code=="200"){
-									$("#"+name).attr("src","images/"+name+"ed.png")
+									if(name=="support"||name=="collection"){
+										$("#"+name).attr("src","images/"+name+"ed.png");
+										$(that).attr("name",name+"del");
+										$("#"+name).attr("id",name+"del");
+										if(name=="support"){
+											$("#postUpnum").html(upNumber+1);
+										}else if(name=="collection"){
+											$("#postCollectionnum").html(coNumber+1);
+										}
+									}else if(name=="supportdel"||name=="collectiondel"){
+										var named = name.substr(0, name.length - 3);
+										$("#"+name).attr("src","images/"+named+".png");
+										$(that).attr("name",named);
+										$("#"+name).attr("id",named);
+										if(name=="supportdel"){
+											$("#postUpnum").html(upNumber-1);
+										}else if(name=="collectiondel"){
+											$("#postCollectionnum").html(coNumber-1);
+										}
+									}else if(name=="forword"){
+										$("#postForwardnum").html(fwNumber+1)
+									}
+									
+								}else if(data.code=="2"){
+									Dialog({
+										title: "请登录！",
+										content: "您的登录已过期，是否重新登录？",
+										ok: {
+											callback: function() {
+												window.location.href='login.html';
+											}
+										},
+										cancel: {
+											callback: function() {
+												Dialog.close();
+											}
+										}
+									});
 								}
+							}
+						});
+					}
+				})
+				//发表
+				$("#publish").click(function(){
+					var obj = sessionStorage.getItem("data");
+					obj = JSON.parse(obj);
+					DoAjax();
+					function DoAjax(){
+						$.ajax({
+							type:"post",
+							url:sever_url+"comment/publish",
+							async:true,
+							data:{
+								token: obj.token,
+								post_id: post_id,
+								comment_content: $("#comment_content").val()
+							},
+							success:function(data){
+								console.log(data)
+								if(data.code=="2"){
+									Dialog({
+										title: "请登录！",
+										content: "您的登录已过期，是否重新登录？",
+										ok: {
+											callback: function() {
+												window.location.href='login.html';
+											}
+										},
+										cancel: {
+											callback: function() {
+												Dialog.close();
+											}
+										}
+									});
+								}else if(data.code=="200"){
+									GetComment();
+									$("#comment_content").val("");
+								}
+							},
+							error:function(){
+								
 							}
 						});
 					}

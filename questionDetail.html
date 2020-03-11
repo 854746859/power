@@ -472,7 +472,7 @@
 								</span>
 							</div>
 							<div class="collect">
-								<img src="images/collect.png" />
+								<img src="images/collection.png" />
 								<span>
 									收藏
 								</span>
@@ -552,21 +552,21 @@
 								</div>
 							</div>
 						</div>
-						<div class="five_bt">
-							<div class="post_icon">
-								<img src="images/like.png" /><span id="postUpnum">0</span>
+						<div class="five_bt" id="do_something">
+							<div class="post_icon" name="support">
+								<img id="support" src="images/support.png" /><span id="postUpnum">0</span>
 							</div>
-							<div class="post_icon">
-								<img src="images/forwarded.png" /><span id="postForwardnum">0</span>
+							<div class="post_icon" name="forword">
+								<img id="forword" src="images/forworded.png" /><span id="postForwardnum">0</span>
 							</div>
-							<div class="post_icon">
-								<img src="images/save.png" /><span id="postCollectionnum">0</span>
+							<div class="post_icon" name="collection">
+								<img id="collection" src="images/collection.png" /><span id="postCollectionnum">0</span>
 							</div>
-							<div class="post_icon">
-								<img src="images/rewarded.png" /><span></span>
+							<div class="post_icon" name="reward">
+								<img id="reward" src="images/rewarded.png" /><span></span>
 							</div>
-							<div class="post_icon">
-								<img src="images/report.png" /><span></span>
+							<div class="post_icon" name="report">
+								<img id="report" src="images/report.png" /><span></span>
 							</div>
 						</div>
 						<div class="comment_box" id="comment_box">
@@ -633,12 +633,12 @@
 						</div>
 						<div></div>
 						<div class="commet">
-							<textarea name="" rows="" cols="" placeholder="评论"></textarea>
+							<textarea name="" rows="" cols="" placeholder="评论" id="comment"></textarea>
 							<div class="push_bt">
 								<span id="">
 									最多输入1000个字
 								</span>
-								<input type="button" name="" id="" value="发表" />
+								<input type="button" name="" value="发表" id="publish"/>
 							</div>
 						</div>
 					</div>
@@ -778,87 +778,217 @@
 			<p>版权所有：XX市综合行政执法局&nbsp;&nbsp;&nbsp;地址：XX省XX市工业园区特1号</p>
 		</div>
 		<script type="text/javascript" src="config.js"></script>
+		<script type="text/javascript" src="js/pop_ups/MiniDialog-es5.min.js" ></script>
 		<script type="text/javascript">
-			//文章
-			$.ajax({
-				type: "post",
-				url: sever_url + "article/info",
-				async: true,
-				dataType: "json",
-				data: {
-					article_id: 2
-				},
-				success: function(data) {
-					//			console.log(data)
-					if (data.code == 200) {
-						$("#postTitle").html(data.data.post_title); //文章标题
-						$("#postCopyright").html('<span>*</span>版权声明：' + data.data.post_copyright); //版权声明
-						$("#postContent").html("<p>" + data.data.post_content + "</p>"); //文章内容
-						var labels = new RegExp(",", "g"); //g,表示全部替换。
-						var label = data.data.post_label.replace(labels, "]</span><span>[");
-						$("#postLabel").append('<span>[' + label + ']</span>'); //文章标签，多个“，”隔开
-						$("#time").html(data.data.post_releasetime); //发布时间
-						$("#readNum").html("阅读数：" + data.data.post_readnum); //阅读数
-						$("#postUpnum").html(data.datapost_upnum); //点赞数
-						$("#postForwardnum").html(data.data.post_forwardnum); //转发数
-						$("#postCollectionnum").html(data.data.post_collectionnum); //收藏数
-						$("#user_head").attr("src", data.data.user_head);
-						$("#user_head").attr("name", data.data.post_userid);
-						$("#user_name").html(data.data.user_name);
-						$("#user_profile").html(data.data.user_profile);
-						$("#user_release_sum").html(data.data.user_release_sum);
-						$("#post_upnum").html(data.data.post_upnum);
-						$("#user_follow_sum").html(data.data.user_follow_sum);
-						//悬赏
-						if (data.data.hasOwnProperty("adopd")) {
-							$("#annex_d").css("display", "block");
-							$("#user_logo").attr("src", data.data.adopd.user_head);
-							$("#user_logo").attr("name", data.data.adopd.comment_userid);
-							$("#user_name").html(data.data.adopd.user_name);
-							$("#comment_content").html(data.data.adopd.comment_content);
-							$("#comment_upnum").html(data.data.adopd.comment_upnum);
+			$(document).ready(function() {
+				//获取URL传值
+				var post_id = getUrldata('postid'); //文章id
+				//文章
+				$.ajax({
+					type: "post",
+					url: sever_url + "article/info",
+					async: true,
+					dataType: "json",
+					data: {
+						article_id: post_id,
+						token: ""
+					},
+					success: function(data) {
+						//			console.log(data)
+						if (data.code == 200) {
+							$("#postTitle").html(data.data.post_title); //文章标题
+							$("#postCopyright").html('<span>*</span>版权声明：' + data.data.post_copyright); //版权声明
+							$("#postContent").html("<p>" + data.data.post_content + "</p>"); //文章内容
+							var labels = new RegExp(",", "g"); //g,表示全部替换。
+							var label = data.data.post_label.replace(labels, "]</span><span>[");
+							$("#postLabel").append('<span>[' + label + ']</span>'); //文章标签，多个“，”隔开
+							$("#time").html(data.data.post_releasetime); //发布时间
+							$("#readNum").html("阅读数：" + data.data.post_readnum); //阅读数
+							$("#postUpnum").html(data.datapost_upnum); //点赞数
+							$("#postForwardnum").html(data.data.post_forwardnum); //转发数
+							$("#postCollectionnum").html(data.data.post_collectionnum); //收藏数
+							$("#user_head").attr("src", data.data.user_head);
+							$("#user_head").attr("name", data.data.post_userid);
+							$("#user_name").html(data.data.user_name);
+							$("#user_profile").html(data.data.user_profile);
+							$("#user_release_sum").html(data.data.user_release_sum);
+							$("#post_upnum").html(data.data.post_upnum);
+							$("#user_follow_sum").html(data.data.user_follow_sum);
+							//悬赏
+							if (data.data.hasOwnProperty("adopd")) {
+								$("#annex_d").css("display", "block");
+								$("#user_logo").attr("src", data.data.adopd.user_head);
+								$("#user_logo").attr("name", data.data.adopd.comment_userid);
+								$("#user_name").html(data.data.adopd.user_name);
+								$("#comment_content").html(data.data.adopd.comment_content);
+								$("#comment_upnum").html(data.data.adopd.comment_upnum);
+							}
+							//推荐热帖
+							var num = data.data.recommend.length;
+							for (var i = 0; i < num; i++) {
+								var arr = data.data.recommend[i];
+								$("#recommend").append('<li><a id="' + arr.id + '" href="news_xq.html"><b>·</b><span>' + arr.post_title +
+									'</span></a></li>')
+							}
 						}
-						//推荐热帖
-						var num = data.data.recommend.length;
-						for (var i = 0; i < num; i++) {
-							var arr = data.data.recommend[i];
-							$("#recommend").append('<li><a id="' + arr.id + '" href="news_xq.html"><b>·</b><span>' + arr.post_title +
-								'</span></a></li>')
+					},
+					error: function() {
+						console.log("error!");
+					}
+				});
+				//评论
+				GetComment();
+				function GetComment(){
+					$.ajax({
+						type: "post",
+						url: sever_url + "comment/select",
+						async: true,
+						data: {
+							rows: 6,
+							page: 1,
+							post_id: post_id
+						},
+						dataType: "json",
+						success: function(data) {
+							console.log(data)
+							var length = data.data.length;
+							$("#comment_box").empty();
+							for(var i = 0; i < length; i++) {
+								var obj = data.data[i];
+								$("#comment_box").append('<div class="content_box"><div class="visitor"><div class="visitor_info"><div class="visitor_pic"><img id="' + obj.id + '" src="' + obj.user_head + '"/><span >' + obj.user_name + '</span></div><div class="commet_time"><span>' + obj.comment_time + '</span><span>【' + obj.comment_layernum + '楼】</span></div></div><div class="other_visitor"><span>举报</span><span>回复</span><span><img src="images/good.png"/>' + obj.comment_upnum + '</span></div></div><div class="comment_text"><p>' + obj.comment_content + '</p></div></div>');
+							}
+						},
+						error: function() {
+	
 						}
-					}
-				},
-				error: function() {
-					console.log("error!");
+					});
 				}
-			});
-			//评论
-			$.ajax({
-				type: "post",
-				url: sever_url + "comment/select",
-				async: true,
-				data: {
-					rows: 2,
-					page: 1,
-					post_id: 2
-				},
-				dataType: "json",
-				success: function(data) {
-					//			console.log(data)
-					var length = data.data.length;
-					for (var i = 0; i < length; i++) {
-						var obj = data.data[i];
-						$("#comment_box").append(
-							'<div class="content_box"><div class="visitor"><div class="visitor_info"><div class="visitor_pic"><img id="' +
-							obj.id + '" src="' + obj.user_head + '"/><span >' + obj.user_name +
-							'</span></div><div class="commet_time"><span>' + obj.comment_time + '</span><span>【' + obj.comment_layernum +
-							'楼】</span></div></div><div class="other_visitor"><span>举报</span><span>回复</span><span><img src="images/good.png"/>' +
-							obj.comment_upnum + '</span></div></div><div class="comment_text"><p>' + obj.comment_content +
-							'</p></div></div>');
+				//点赞、转发、打赏、、、、
+				$("#do_something div").click(function(){
+					var that = this;
+					var name = $(that).attr("name");
+					if(sessionStorage.getItem("data")==null){
+						Dialog({
+							title: "请登录！",
+							content: "您还未登录，是否登录？",
+							ok: {
+								callback: function() {
+									window.location.href='login.html';
+								}
+							},
+							cancel: {
+								callback: function() {
+									Dialog.close();
+								}
+							}
+						});
+					}else{
+						var obj = sessionStorage.getItem("data");
+						obj = JSON.parse(obj);
+						$.ajax({
+							type:"post",
+							url:sever_url+"post/"+name,
+							async:true,
+							data:{
+								token: obj.token,
+								post_id: post_id,
+								comment_id:"",
+								reprot_content:"",
+								reward_coinnum:"",
+								reward_money:""
+							},
+							success: function(data){
+								var upNumber = parseInt($("#postUpnum").html());
+								var coNumber = parseInt($("#postCollectionnum").html());
+								var fwNumber = parseInt($("#postForwardnum").html());
+								console.log(upNumber)
+								if(data.code=="200"){
+									if(name=="support"||name=="collection"){
+										$("#"+name).attr("src","images/"+name+"ed.png");
+										$(that).attr("name",name+"del");
+										$("#"+name).attr("id",name+"del");
+										if(name=="support"){
+											$("#postUpnum").html(upNumber+1);
+										}else if(name=="collection"){
+											$("#postCollectionnum").html(coNumber+1);
+										}
+									}else if(name=="supportdel"||name=="collectiondel"){
+										var named = name.substr(0, name.length - 3);
+										$("#"+name).attr("src","images/"+named+".png");
+										$(that).attr("name",named);
+										$("#"+name).attr("id",named);
+										if(name=="supportdel"){
+											$("#postUpnum").html(upNumber-1);
+										}else if(name=="collectiondel"){
+											$("#postCollectionnum").html(coNumber-1);
+										}
+									}else if(name=="forword"){
+										$("#postForwardnum").html(fwNumber+1)
+									}
+									
+								}else if(data.code=="2"){
+									Dialog({
+										title: "请登录！",
+										content: "您的登录已过期，是否重新登录？",
+										ok: {
+											callback: function() {
+												window.location.href='login.html';
+											}
+										},
+										cancel: {
+											callback: function() {
+												Dialog.close();
+											}
+										}
+									});
+								}
+							}
+						});
 					}
-				},
-				error: function() {
-
-				}
+				})
+				//发表
+				$("#publish").click(function(){
+					var obj = sessionStorage.getItem("data");
+					obj = JSON.parse(obj);
+					DoAjax();
+					function DoAjax(){
+						$.ajax({
+							type:"post",
+							url:sever_url+"comment/publish",
+							async:true,
+							data:{
+								token: obj.token,
+								post_id: post_id,
+								comment_content: $("#comment").val()
+							},
+							success:function(data){
+								console.log(data)
+								if(data.code=="2"){
+									Dialog({
+										title: "请登录！",
+										content: "您的登录已过期，是否重新登录？",
+										ok: {
+											callback: function() {
+												window.location.href='login.html';
+											}
+										},
+										cancel: {
+											callback: function() {
+												Dialog.close();
+											}
+										}
+									});
+								}else if(data.code=="200"){
+									GetComment();
+									$("#comment").val("");
+								}
+							},
+							error:function(){
+								
+							}
+						});
+					}
+				})
 			});
 		</script>
 	</body>
