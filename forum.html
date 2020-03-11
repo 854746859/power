@@ -775,6 +775,48 @@
 		<script type="text/javascript" src="config.js"></script>
 		<script type="text/javascript" src="js/pop_ups/MiniDialog-es5.min.js" ></script>
 		<script type="text/javascript">
+			//评论点赞
+			function commentSupport(commentId){
+				console.log(commentId);
+				if(sessionStorage.getItem("data")==null){
+					Dialog({
+						title: "请登录！",
+						content: "您还未登录，是否登录？",
+						ok: {
+							callback: function() {
+								window.location.href='login.html';
+							}
+						},
+						cancel: {
+							callback: function() {
+								Dialog.close();
+							}
+						}
+					});
+				}else{
+					var obj = sessionStorage.getItem("data");
+					obj = JSON.parse(obj);
+					$.ajax({
+						type:"post",
+						url:sever_url+"post/support",
+						async:true,
+						data:{
+							token:obj.token,
+							post_id:getUrldata('postid'),
+							comment_id:commentId
+						},
+						dataType:"json",
+						success:function(data){
+//							console.log(data)
+							var num = Number($("#comment"+commentId).html());
+							$("#comment"+commentId).html(num+1);
+						},
+						error:function(){
+							
+						}
+					});
+				}
+			}
 			$(document).ready(function() {
 				//获取URL传值
 				var post_id = getUrldata('postid'); //文章id
@@ -848,7 +890,7 @@
 							$("#comment_box").empty();
 							for(var i = 0; i < length; i++) {
 								var obj = data.data[i];
-								$("#comment_box").append('<div class="content_box"><div class="visitor"><div class="visitor_info"><div class="visitor_pic"><img id="' + obj.id + '" src="' + obj.user_head + '"/><span >' + obj.user_name + '</span></div><div class="commet_time"><span>' + obj.comment_time + '</span><span>【' + obj.comment_layernum + '楼】</span></div></div><div class="other_visitor"><span>举报</span><span>回复</span><span><img src="images/good.png"/>' + obj.comment_upnum + '</span></div></div><div class="comment_text"><p>' + obj.comment_content + '</p></div></div>');
+								$("#comment_box").append('<div class="content_box"><div class="visitor"><div class="visitor_info"><div class="visitor_pic"><img id="' + obj.id + '" src="' + obj.user_head + '"/><span >' + obj.user_name + '</span></div><div class="commet_time"><span>' + obj.comment_time + '</span><span>【' + obj.comment_layernum + '楼】</span></div></div><div class="other_visitor"><span>举报</span><span>回复</span><span><img onclick=commentSupport('+obj.id+') src="images/good.png"/><span id="comment'+obj.id+'">' + Number(obj.comment_upnum) + '</span></span></div></div><div class="comment_text"><p>' + obj.comment_content + '</p></div></div>');
 							}
 						},
 						error: function() {
