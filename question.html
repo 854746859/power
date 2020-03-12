@@ -139,7 +139,7 @@
 					</div>
 
 				</div>
-				<div class="admin_box">
+				<div id="admin_box" class="admin_box">
 					<!--<img src="images/messageIcon.png" width="20px"/>
 			<div class="admin">
 				<img src="images/people03.jpg" class="admin_logo"/>
@@ -342,7 +342,7 @@
 								<h2 id="4">筛选<i></i></h2>
 							</div>
 							<!-- 内容展示块-->
-							<div class="news_list zy_listbox">
+							<div class="news_list zy_listbox" style="height: 900px;">
 								<!-- 展示15条数据后出现分页 -->
 								<ul id="postlist">
 									<!-- <li>
@@ -673,6 +673,21 @@
 		<script type="text/javascript" src="js/paging/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/paging/paging.js"></script>
 		<script type="text/javascript">
+			
+			// 获取我的信息
+			var data = sessionStorage.getItem("data");
+			var infodata = eval('(' + data + ')');
+			console.log(infodata.user_head);
+			
+			var admin_box_head = '';
+			var infodatatoken = infodata.token
+			var admin_box = document.getElementById("admin_box");
+			
+			if( infodatatoken.length > 1){
+				admin_box_head += "<div class='admin'><a href='mine.html'><img class='admin_logo' src='" + infodata.user_head + "'  /></a><a href=''>快速发帖</a></div>";
+				admin_box.innerHTML = admin_box_head;
+			}
+			
 			// 获取当前分类
 			function GetRequest() {
 				var url = decodeURI(location.search); //获取url中"?"符后的字串

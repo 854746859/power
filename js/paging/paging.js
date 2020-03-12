@@ -3,7 +3,7 @@
 	// 定义类
 	function paging(element, option) {
 		this.element = element;
-		// console.log(option)
+		console.log(option)
 		this.option = {
 			currentPage: 1,
 			classStyle: option.classStyle,
@@ -207,9 +207,9 @@
 				ele.createPage();
 				if (ele.option.showNum) {
 					ele.option.showNum(ele.option.currentPage, ele.option.showRecordNum);
-					
+					console.log(ele.option.pages)
 					// 首页文章分页
-					if(ele.option.pages = 'post'){
+					if(ele.option.pages = "post"){
 						// ajax请求文章列表
 						var post = "";
 						var postlist = document.getElementById("postlist");
@@ -244,9 +244,7 @@
 									post += "<li><img src='" + data[i].post_img + "'/><div class='blog_list'>";
 									post += "<div class='news_title'><a href='qustionDetail.html?postid=" + data[i]['id'] + "''>" + data[i]
 										['post_title'] + "</a>";
-									post += "<i class='red_news'>[" + data[i]['post_label'] + "]</i><i class='red_news'>[" + data[i][
-										'post_label'
-									] + "]</i></div>";
+									post += "<i class='red_news'>[" + data[i]['post_label'] + "]</i></div>";
 									post += "<div class='news_time news_other'><span>发布于：" + data[i]['post_releasetime'] + "</span>";
 									post += "<span id=''>阅读数：" + data[i]['post_readnum'] + " </span><span id=''>点赞：" + data[i][
 										'post_readnum'
