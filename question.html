@@ -145,7 +145,7 @@
 				<img src="images/people03.jpg" class="admin_logo"/>
 				<span class="lever">LV10</span>
 			</div>-->
-					<a href="">登录/注册</a>
+					<a href="login.html">登录/注册</a>
 					<a href="">快速发帖</a>
 				</div>
 			</div>
@@ -301,7 +301,7 @@
 				</div>
 				<!-- 导航end -->
 				<!-- 需要添加的最新通知或公告滚动部分 -->
-				<div class="gonggao bdb_d fix">
+				<!-- <div class="gonggao bdb_d fix">
 					<div class="txtScroll-top l fix">
 						<div class="l tit"><img src="images/icon_notice.png"><b class="dib vm">信息公告：</b></div>
 						<div class="bd l">
@@ -322,13 +322,13 @@
 							vis: 1,
 							interTime: 4000,
 						});
-					</script>
+					</script> -->
 
-					<!-- 时间 -->
-					<div class="timebox fc r">
+				<!-- 时间 -->
+				<!-- <div class="timebox fc r">
 						<script type="text/javascript" src="js/show_date.js"></script>
 					</div>
-				</div>
+				</div> -->
 
 				<div class="conbox fix">
 					<div class="news_banner l bora_5">
@@ -721,10 +721,14 @@
 			// ajax请求文章列表
 			function post(orders) {
 				var post = "";
-				// alert(order)
-				var order = "0";
+
+				// 没有排序信息 ？默认为 0 ：获取Url值
 				(orders == undefined) ? order = '0': order = orders;
-				// alert(order)
+				// 没有板块信息 ？默认为 1 ：获取Url值
+				(json.plate == undefined) ? plate = '1': plate = json.plate;
+				// 没有板块二级// 没有板块信息 ？默认为 1 ：获取Url值信息 ？默认为 1 ：获取Url值
+				(json.two == undefined) ? two = '0': two = json.two;
+
 				var postlist = document.getElementById("postlist");
 				var type = localStorage.getItem("type")
 				$.ajax({
@@ -732,7 +736,7 @@
 					type: 'post',
 					data: {
 						// token: 'sadafsaf',
-						rows: '10',
+						rows: '8',
 						page: '1',
 						serch: '',
 						plate: json.plate,
@@ -768,7 +772,8 @@
 								totalNum: res.total, // 总列表数量
 								showNum: function(data1, data2) {
 									alert(data1 + "," + data2);
-								}
+								},
+								pages: 'post'
 							});
 
 						});
@@ -814,8 +819,8 @@
 				success: function(res) {
 					// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
 					// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
-					console.log(res)
-					console.log(res.data.plate_admin.user_name)
+					// console.log(res)
+					// console.log(res.data.plate_admin.user_name)
 					var plate_admin = res.data.plate_admin;
 					var plate_master = res.data.plate_master;
 					var hot_post = res.data.hot_post;
@@ -830,7 +835,8 @@
 						"<div class='sy_title bdb_d ovh'><h2 class='l'><img src='images/hot.png' width='25px'><b class='fc'>推荐热帖</b></h2>";
 					info += "<a href='#' class='r'>查看更多></a></div><ul>";
 					for (var i = 0; i < hot_post.length; i++) {
-						info += "<li><a href='#'><b>·</b><span>" + hot_post[i]['post_title'] + "</span></a></li>";
+						info += "<li><a href='forum.html?postid=" + hot_post[i]['id'] + "&plate=" + json.plate + "&plate_two=" + json.two +
+							"'<b>·</b><span>" + hot_post[i]['post_title'] + "</span></a></li>";
 					}
 					info += "</ul>";
 
