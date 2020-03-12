@@ -230,7 +230,7 @@
 		        	<div class="left">
 						<div class="sy_title bdb_d ovh">
 							<h2 class="l"><b class="fc">综合热点区</b></h2>
-							<a href="newslist.html" class="r">查看更多></a>
+							<a href="index.html?type=0&plate=1&two=0" class="r">查看更多></a>
 						</div>
 						<ul id="hotpost">
 							
@@ -238,7 +238,7 @@
 						
 						<div class="sy_title bdb_d ovh">
 							<h2 class="l"><b class="fc">最热悬赏区</b></h2>
-							<a href="newslist.html" class="r">查看更多></a>
+							<a href="question.html?type=2&plate=1&two=0" class="r">查看更多></a>
 						</div>
 						<ul id="hotreward">
 							
@@ -373,7 +373,7 @@
 									<img src="News-module1/images/dangzheng.png"/>
 									<div class="blog_list">
 										<div class="news_title">
-											<a href="news_xq.html" style="max-width: 360px;">李克强主持召开国务院常务会议 部署进一步促进社区养老和家政服务工作安排</a>
+											<a href="#" style="max-width: 360px;">李克强主持召开国务院常务会议 部署进一步促进社区养老和家政服务工作安排</a>
 											<i class="red_news">[原创]</i>
 											<i class="red_news">[新闻]</i>
 										</div>
@@ -528,6 +528,9 @@
 
 		<script type="text/javascript" src="config.js"></script><!-- 服务器地址-->
 		<script type="text/javascript">
+			// 获取我的信息
+			var data = sessionStorage.getItem("data");
+			var infodata = eval('(' + data + ')');
 			//获取网页信息
 			$.ajax({
 				url: sever_url+'/coverinfo/webinfo',
@@ -793,7 +796,7 @@
 				$('h2').removeClass("selected");
 				$(this).attr('class','selected');
 				var index = $('#top_list h2').index(this);//获取当前选中下标，0-3
-				var token = '';
+				var token = infodata.token;
 				//后端判断
 				$.ajax({
 					url: sever_url+'coverinfo/chooselist',
