@@ -680,7 +680,7 @@
 						var li = $('<li></li>');
 						var a = $('<a></a>');
 						a.attr('id',res.data.hot_post[index].id);
-						a.attr('href','forum.html?postid='+res.data.hot_post[index].id);
+						a.attr('href','forum.html?post_id='+res.data.hot_post[index].id);
 						var b = $('<b>·</b>');
 						var span = $('<span>'+res.data.hot_post[index].post_title+'</span>');
 						li.append(a);
@@ -694,7 +694,7 @@
 						var li = $('<li></li>');
 						var a = $('<a></a>');
 						a.attr('id',res.data.hot_reward[index].id);
-						a.attr('href','forum.html?postid='+res.data.hot_reward[index].id);
+						a.attr('href','forum.html?post_id='+res.data.hot_reward[index].id);
 						var b = $('<b>·</b>');
 						var span = $('<span>'+res.data.hot_reward[index].post_title+'</span>');
 						li.append(a);
