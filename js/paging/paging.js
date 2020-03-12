@@ -208,7 +208,7 @@
 				ele.createPage();
 				if (ele.option.showNum) {
 					ele.option.showNum(ele.option.currentPage, ele.option.showRecordNum);
-					console.log(ele.option.pages)
+					// console.log(ele.option.pages)
 					// 首页文章分页
 					if (ele.option.pages == "post") {
 						// ajax请求文章列表
@@ -239,7 +239,7 @@
 							success: function(res) {
 								// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
 								// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
-								console.log(res)
+								// console.log(res)
 								var data = res.data;
 								for (var i = 0; i < data.length; i++) {
 									post += "<li><img src='" + data[i].post_img + "'/><div class='blog_list'>";
