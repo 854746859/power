@@ -366,7 +366,7 @@
 							<a href="" class="more">更多>></a>
 						</div>
 						<!-- 内容展示块-->
-						<div class="new_list zy_listbox">
+						<div class="news_list zy_listbox">
 							<!-- 展示15条数据后出现分页 -->
 							<ul>
 								<li>
@@ -680,7 +680,7 @@
 						var li = $('<li></li>');
 						var a = $('<a></a>');
 						a.attr('id',res.data.hot_post[index].id);
-						a.attr('href','forum.html?post_id='+res.data.hot_post[index].id);
+						a.attr('href','forum.html?postid='+res.data.hot_post[index].id);
 						var b = $('<b>·</b>');
 						var span = $('<span>'+res.data.hot_post[index].post_title+'</span>');
 						li.append(a);
@@ -694,7 +694,7 @@
 						var li = $('<li></li>');
 						var a = $('<a></a>');
 						a.attr('id',res.data.hot_reward[index].id);
-						a.attr('href','forum.html?post_id='+res.data.hot_reward[index].id);
+						a.attr('href','forum.html?postid='+res.data.hot_reward[index].id);
 						var b = $('<b>·</b>');
 						var span = $('<span>'+res.data.hot_reward[index].post_title+'</span>');
 						li.append(a);
@@ -716,7 +716,7 @@
 					for(var index in res.data.original){
 						var li = $('<li></li>');
 						var a = $('<a></a>');
-						a.attr('href','forum.html?post_id='+res.data.original[index].id);
+						a.attr('href','forum.html?postid='+res.data.original[index].id);
 						var b = $('<b>·</b>');
 						li.append(a);
 						a.append(b);
@@ -729,7 +729,7 @@
 						var li = $('<li></li>');
 						var a = $('<a></a>');
 						a.attr('id',res.data.recommend[index].id);
-						a.attr('href','forum.html?post_id='+res.data.recommend[index].id);
+						a.attr('href','forum.html?postid='+res.data.recommend[index].id);
 						var b = $('<b>·</b>');
 						var span = $('<span>'+res.data.recommend[index].post_title+'</span>');
 						li.append(a);
@@ -819,7 +819,7 @@
 							var li = $('<li></li>');
 							var a = $('<a></a>');
 							a.attr('id',res.data[index].id);
-							a.attr('href','forum.html?post_id='+res.data[index].id);
+							a.attr('href','forum.html?postid='+res.data[index].id);
 							var b = $('<b>·</b>');
 							var span = $('<span>'+res.data[index].post_title+'</span>');
 							li.append(a);
