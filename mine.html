@@ -13,6 +13,7 @@
 		<link rel="stylesheet" href="css/index.css" type="text/css">
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<link rel="stylesheet" type="text/css" href="css/children.css" />
+		<link rel="stylesheet" type="text/css" href="css/paging.css" />
 		<!--富文本编辑框-->
 		<script type="text/javascript" charset="utf-8" src="./ueditor/ueditor.config.js"></script>
 		<script type="text/javascript" charset="utf-8" src="./ueditor/ueditor.all.min.js"> </script>
@@ -455,7 +456,7 @@
 				<img src="images/people03.jpg" class="admin_logo"/>
 				<span class="lever">LV10</span>
 			</div>-->
-					<a href="">登录/注册</a>
+					<a href="login.html">登录/注册</a>
 					<a href="">快速发帖</a>
 				</div>
 			</div>
@@ -501,8 +502,8 @@
 				</div>
 				<!-- 用户信息 -->
 				<div class="user_box">
-					<div class="box_L">
-						<div class="user_loge">
+					<div id="infolist" class="box_L">
+						<!-- <div class="user_loge">
 							<img src="images/manager.jpg" />
 							<div class="user_name">
 								<div class="user_id">
@@ -518,7 +519,7 @@
 						</div>
 						<div class="company">
 							广东省广州市某某公司
-						</div>
+						</div> -->
 					</div>
 					<input type="button" name="" id="" value="关注+" />
 				</div>
@@ -557,10 +558,10 @@
 					</div>-->
 							<!-- 当前位置 -->
 							<div class="classification" id="hide" style="display:none;">
-								<ul class="ul_bc">
-									<li>已发布</li>
-									<li>草稿</li>
-									<li>退回</li>
+								<ul id="menu" class="ul_bc">
+									<li onclick="question(1)">已发布</li>
+									<li onclick="question(2)">草稿</li>
+									<li onclick="question(3)">退回</li>
 								</ul>
 								<div class="sort">
 									<div class="sort_type">
@@ -596,8 +597,8 @@
 							<!-- 内容展示块-->
 							<div class="news_list zy_listbox mine_box" id="original">
 								<!-- 展示15条数据后出现分页 -->
-								<ul>
-									<li>
+								<ul id="postlist">
+									<!-- <li>
 										<img src="News-module1/images/dangzheng.png" />
 										<div class="blog_list">
 											<div class="news_title">
@@ -630,146 +631,11 @@
 										</div>
 										<img style="width: 20px;height: 20px;" src="images/write.png" />
 										<img style="width: 20px;height: 20px;" src="images/delete.png" />
-									</li>
-									<li>
-										<img src="images/icon_leader.png" />
-										<div class="blog_list">
-											<div class="news_title">
-												<a href="news_xq.html">特勤大队暂扣污染路面车辆</a>
-												<i class="red_news">[原创]</i>
-												<i class="red_news">[新闻]</i>
-											</div>
-											<div class="news_time news_other">
-												<span>发布于：2019-07-05 13:12:06</span>
-												<span id="">
-													阅读数：32564
-												</span>
-												<span id="">
-													点赞：1563
-												</span>
-											</div>
-											<div class="news_owner news_other">
-												<span id="">
-													发帖人：XXX
-												</span>
-												<span id="">
-													最后回复人：XXX
-												</span>
-												<div class="share">
-													分享：
-													<img class="share_icon" src="images/WeChat.png" />
-													<img class="share_icon" src="images/weibo.png" />
-												</div>
-											</div>
-										</div>
-										<img style="width: 20px;height: 20px;" src="images/write.png" />
-										<img style="width: 20px;height: 20px;" src="images/delete.png" />
-									</li>
-									<li>
-										<img src="images/people01.jpg" />
-										<div class="blog_list">
-											<div class="news_title">
-												<a href="news_xq.html">我局顺利组织2019年福泉市第一期渔业安全生产知识培训及应急实操演练我局顺利组织2019年福泉市第</a>
-												<i class="red_news">[原创]</i>
-												<i class="red_news">[新闻]</i>
-											</div>
-											<div class="news_time news_other">
-												<span>发布于：2019-07-05 13:12:06</span>
-												<span id="">
-													阅读数：32564
-												</span>
-												<span id="">
-													点赞：1563
-												</span>
-											</div>
-											<div class="news_owner news_other">
-												<span id="">
-													发帖人：XXX
-												</span>
-												<span id="">
-													最后回复人：XXX
-												</span>
-												<div class="share">
-													分享：
-													<img class="share_icon" src="images/WeChat.png" />
-													<img class="share_icon" src="images/weibo.png" />
-												</div>
-											</div>
-										</div>
-										<img style="width: 20px;height: 20px;" src="images/write.png" />
-										<img style="width: 20px;height: 20px;" src="images/delete.png" />
-									</li>
-									<li>
-										<img src="images/icon_gongshi.png" />
-										<div class="blog_list">
-											<div class="news_title">
-												<a href="news_xq.html">特勤大队暂扣污染路面车辆</a>
-												<i class="red_news">[原创]</i>
-												<i class="red_news">[新闻]</i>
-											</div>
-											<div class="news_time news_other">
-												<span>发布于：2019-07-05 13:12:06</span>
-												<span id="">
-													阅读数：32564
-												</span>
-												<span id="">
-													点赞：1563
-												</span>
-											</div>
-											<div class="news_owner news_other">
-												<span id="">
-													发帖人：XXX
-												</span>
-												<span id="">
-													最后回复人：XXX
-												</span>
-												<div class="share">
-													分享：
-													<img class="share_icon" src="images/WeChat.png" />
-													<img class="share_icon" src="images/weibo.png" />
-												</div>
-											</div>
-										</div>
-										<img style="width: 20px;height: 20px;" src="images/write.png" />
-										<img style="width: 20px;height: 20px;" src="images/delete.png" />
-									</li>
-									<li>
-										<img src="images/icon_zhaobiao.png" />
-										<div class="blog_list">
-											<div class="news_title">
-												<a href="news_xq.html">特勤大队暂扣污染路面车辆</a>
-												<i class="red_news">[原创]</i>
-												<i class="red_news">[新闻]</i>
-											</div>
-											<div class="news_time news_other">
-												<span>发布于：2019-07-05 13:12:06</span>
-												<span id="">
-													阅读数：32564
-												</span>
-												<span id="">
-													点赞：1563
-												</span>
-											</div>
-											<div class="news_owner news_other">
-												<span id="">
-													发帖人：XXX
-												</span>
-												<span id="">
-													最后回复人：XXX
-												</span>
-												<div class="share">
-													分享：
-													<img class="share_icon" src="images/WeChat.png" />
-													<img class="share_icon" src="images/weibo.png" />
-												</div>
-											</div>
-										</div>
-										<img style="width: 20px;height: 20px;" src="images/write.png" />
-										<img style="width: 20px;height: 20px;" src="images/delete.png" />
-									</li>
+									</li> -->
+
 								</ul>
 								<!-- 通用分页 -->
-								<div class="fanye" style="text-align: left;">
+								<!-- <div class="fanye" style="text-align: left;">
 									<a href="#">上一页</a>
 									<div>
 										<a href="#" class="current">1</a>
@@ -785,14 +651,14 @@
 										<span>转到第<input type="text" name="" value="2">页</span>
 										<input type="submit" name="" value="确定">
 									</p>
-								</div>
+								</div> -->
 								<!-- 通用分页end -->
 							</div>
 							<!--我的问答-->
 							<div class="news_list zy_listbox mine_box" id="question" hidden="hidden">
 								<!-- 展示15条数据后出现分页 -->
-								<ul>
-									<li>
+								<ul id="qusetionlist">
+									<!-- <li>
 										<img src="News-module1/images/dangzheng.png" />
 										<div class="blog_list">
 											<div class="news_title">
@@ -961,10 +827,10 @@
 										</div>
 										<img style="width: 20px;height: 20px;" src="images/write.png" />
 										<img style="width: 20px;height: 20px;" src="images/delete.png" />
-									</li>
+									</li> -->
 								</ul>
 								<!-- 通用分页 -->
-								<div class="fanye" style="text-align: left;">
+								<!-- <div class="fanye" style="text-align: left;">
 									<a href="#">上一页</a>
 									<div>
 										<a href="#" class="current">1</a>
@@ -980,14 +846,14 @@
 										<span>转到第<input type="text" name="" value="2">页</span>
 										<input type="submit" name="" value="确定">
 									</p>
-								</div>
+								</div> -->
 								<!-- 通用分页end -->
 							</div>
 							<!--我的收藏-->
 							<div class="news_list zy_listbox mine_box" id="favorite" hidden="hidden">
 								<!-- 展示15条数据后出现分页 -->
-								<ul>
-									<li>
+								<ul id="collectionlist">
+									<!-- <li>
 										<img src="News-module1/images/dangzheng.png" />
 										<div class="blog_list">
 											<div class="news_title">
@@ -1018,148 +884,11 @@
 												</div>
 											</div>
 										</div>
-										<!--<img style="width: 20px;height: 20px;" src="images/write.png"/>-->
 										<img style="width: 20px;height: 20px;" src="images/delete.png" />
-									</li>
-									<li>
-										<img src="images/icon_leader.png" />
-										<div class="blog_list">
-											<div class="news_title">
-												<a href="news_xq.html">特勤大队暂扣污染路面车辆</a>
-												<i class="red_news">[原创]</i>
-												<i class="red_news">[新闻]</i>
-											</div>
-											<div class="news_time news_other">
-												<span>发布于：2019-07-05 13:12:06</span>
-												<span id="">
-													阅读数：32564
-												</span>
-												<span id="">
-													点赞：1563
-												</span>
-											</div>
-											<div class="news_owner news_other">
-												<span id="">
-													发帖人：XXX
-												</span>
-												<span id="">
-													最后回复人：XXX
-												</span>
-												<div class="share">
-													分享：
-													<img class="share_icon" src="images/WeChat.png" />
-													<img class="share_icon" src="images/weibo.png" />
-												</div>
-											</div>
-										</div>
-										<!--<img style="width: 20px;height: 20px;" src="images/write.png"/>-->
-										<img style="width: 20px;height: 20px;" src="images/delete.png" />
-									</li>
-									<li>
-										<img src="images/people01.jpg" />
-										<div class="blog_list">
-											<div class="news_title">
-												<a href="news_xq.html">我局顺利组织2019年福泉市第一期渔业安全生产知识培训及应急实操演练我局顺利组织2019年福泉市第</a>
-												<i class="red_news">[原创]</i>
-												<i class="red_news">[新闻]</i>
-											</div>
-											<div class="news_time news_other">
-												<span>发布于：2019-07-05 13:12:06</span>
-												<span id="">
-													阅读数：32564
-												</span>
-												<span id="">
-													点赞：1563
-												</span>
-											</div>
-											<div class="news_owner news_other">
-												<span id="">
-													发帖人：XXX
-												</span>
-												<span id="">
-													最后回复人：XXX
-												</span>
-												<div class="share">
-													分享：
-													<img class="share_icon" src="images/WeChat.png" />
-													<img class="share_icon" src="images/weibo.png" />
-												</div>
-											</div>
-										</div>
-										<!--<img style="width: 20px;height: 20px;" src="images/write.png"/>-->
-										<img style="width: 20px;height: 20px;" src="images/delete.png" />
-									</li>
-									<li>
-										<img src="images/icon_gongshi.png" />
-										<div class="blog_list">
-											<div class="news_title">
-												<a href="news_xq.html">特勤大队暂扣污染路面车辆</a>
-												<i class="red_news">[原创]</i>
-												<i class="red_news">[新闻]</i>
-											</div>
-											<div class="news_time news_other">
-												<span>发布于：2019-07-05 13:12:06</span>
-												<span id="">
-													阅读数：32564
-												</span>
-												<span id="">
-													点赞：1563
-												</span>
-											</div>
-											<div class="news_owner news_other">
-												<span id="">
-													发帖人：XXX
-												</span>
-												<span id="">
-													最后回复人：XXX
-												</span>
-												<div class="share">
-													分享：
-													<img class="share_icon" src="images/WeChat.png" />
-													<img class="share_icon" src="images/weibo.png" />
-												</div>
-											</div>
-										</div>
-										<!--<img style="width: 20px;height: 20px;" src="images/write.png"/>-->
-										<img style="width: 20px;height: 20px;" src="images/delete.png" />
-									</li>
-									<li>
-										<img src="images/icon_zhaobiao.png" />
-										<div class="blog_list">
-											<div class="news_title">
-												<a href="news_xq.html">特勤大队暂扣污染路面车辆</a>
-												<i class="red_news">[原创]</i>
-												<i class="red_news">[新闻]</i>
-											</div>
-											<div class="news_time news_other">
-												<span>发布于：2019-07-05 13:12:06</span>
-												<span id="">
-													阅读数：32564
-												</span>
-												<span id="">
-													点赞：1563
-												</span>
-											</div>
-											<div class="news_owner news_other">
-												<span id="">
-													发帖人：XXX
-												</span>
-												<span id="">
-													最后回复人：XXX
-												</span>
-												<div class="share">
-													分享：
-													<img class="share_icon" src="images/WeChat.png" />
-													<img class="share_icon" src="images/weibo.png" />
-												</div>
-											</div>
-										</div>
-										<!--<img style="width: 20px;height: 20px;" src="images/write.png"/>-->
-										<img style="width: 20px;height: 20px;" src="images/delete.png" />
-									</li>
+									</li> -->
 								</ul>
 								<!-- 通用分页 -->
-								<div class="fanye" style="text-align: left;">
+								<!-- <div class="fanye" style="text-align: left;">
 									<a href="#">上一页</a>
 									<div>
 										<a href="#" class="current">1</a>
@@ -1175,14 +904,15 @@
 										<span>转到第<input type="text" name="" value="2">页</span>
 										<input type="submit" name="" value="确定">
 									</p>
-								</div>
+								</div> -->
 								<!-- 通用分页end -->
 							</div>
 							<!--我的关注-->
 							<div class="news_list zy_listbox mine_box" id="attention" hidden="hidden">
 								<!-- 展示15条数据后出现分页 -->
-								<ul>
-									<li>
+								<ul id="followslist">
+
+									<!-- <li>
 										<img class="icon_radius" src="images/manager.jpg" />
 										<div class="blog_list">
 											<div class="attention_title">
@@ -1208,64 +938,10 @@
 												<a>TA的个人主页</a>
 											</div>
 										</div>
-									</li>
-									<li>
-										<img class="icon_radius" src="images/manager.jpg" />
-										<div class="blog_list">
-											<div class="attention_title">
-												<div>name</div>
-												<div>ID:xxxxxxx</div>
-												<div>关注时间：2020-3-6 21:13:08</div>
-											</div>
-											<div class="news_time news_other">
-												<span>个人简介：</span>
-												<p>xxxxxxxxxxx</p>
-											</div>
-											<div class="news_owner news_other">
-												<span id="">
-													关注：xxx|粉丝：xxx
-												</span>
-											</div>
-										</div>
-										<div class="about_att">
-											<div class="cansel">
-												取消关注
-											</div>
-											<div class="hispage">
-												<a>TA的个人主页</a>
-											</div>
-										</div>
-									</li>
-									<li>
-										<img class="icon_radius" src="images/manager.jpg" />
-										<div class="blog_list">
-											<div class="attention_title">
-												<div>name</div>
-												<div>ID:xxxxxxx</div>
-												<div>关注时间：2020-3-6 21:13:08</div>
-											</div>
-											<div class="news_time news_other">
-												<span>个人简介：</span>
-												<p>xxxxxxxxxxx</p>
-											</div>
-											<div class="news_owner news_other">
-												<span id="">
-													关注：xxx|粉丝：xxx
-												</span>
-											</div>
-										</div>
-										<div class="about_att">
-											<div class="cansel">
-												取消关注
-											</div>
-											<div class="hispage">
-												<a>TA的个人主页</a>
-											</div>
-										</div>
-									</li>
+									</li> -->
 								</ul>
 								<!-- 通用分页 -->
-								<div class="fanye" style="text-align: left;">
+								<!-- <div class="fanye" style="text-align: left;">
 									<a href="#">上一页</a>
 									<div>
 										<a href="#" class="current">1</a>
@@ -1281,14 +957,16 @@
 										<span>转到第<input type="text" name="" value="2">页</span>
 										<input type="submit" name="" value="确定">
 									</p>
-								</div>
+								</div> -->
 								<!-- 通用分页end -->
+
 							</div>
 							<!--我的粉丝-->
 							<div class="news_list zy_listbox mine_box" id="fan" hidden="hidden">
 								<!-- 展示15条数据后出现分页 -->
-								<ul>
-									<li>
+								<ul id="fanslist">
+
+									<!-- <li>
 										<img class="icon_radius" src="images/manager.jpg" />
 										<div class="blog_list">
 											<div class="attention_title">
@@ -1314,64 +992,10 @@
 												<a>TA的个人主页</a>
 											</div>
 										</div>
-									</li>
-									<li>
-										<img class="icon_radius" src="images/manager.jpg" />
-										<div class="blog_list">
-											<div class="attention_title">
-												<div>name</div>
-												<div>ID:xxxxxxx</div>
-												<div>关注时间：2020-3-6 21:13:08</div>
-											</div>
-											<div class="news_time news_other">
-												<span>个人简介：</span>
-												<p>xxxxxxxxxxx</p>
-											</div>
-											<div class="news_owner news_other">
-												<span id="">
-													关注：xxx|粉丝：xxx
-												</span>
-											</div>
-										</div>
-										<div class="about_att">
-											<div class="cansel">
-												关注+
-											</div>
-											<div class="hispage">
-												<a>TA的个人主页</a>
-											</div>
-										</div>
-									</li>
-									<li>
-										<img class="icon_radius" src="images/manager.jpg" />
-										<div class="blog_list">
-											<div class="attention_title">
-												<div>name</div>
-												<div>ID:xxxxxxx</div>
-												<div>关注时间：2020-3-6 21:13:08</div>
-											</div>
-											<div class="news_time news_other">
-												<span>个人简介：</span>
-												<p>xxxxxxxxxxx</p>
-											</div>
-											<div class="news_owner news_other">
-												<span id="">
-													关注：xxx|粉丝：xxx
-												</span>
-											</div>
-										</div>
-										<div class="about_att">
-											<div class="cansel">
-												关注+
-											</div>
-											<div class="hispage">
-												<a>TA的个人主页</a>
-											</div>
-										</div>
-									</li>
+									</li> -->
 								</ul>
 								<!-- 通用分页 -->
-								<div class="fanye" style="text-align: left;">
+								<!-- div class="fanye" style="text-align: left;">
 									<a href="#">上一页</a>
 									<div>
 										<a href="#" class="current">1</a>
@@ -1387,9 +1011,12 @@
 										<span>转到第<input type="text" name="" value="2">页</span>
 										<input type="submit" name="" value="确定">
 									</p>
-								</div>
+								</div> -->
 								<!-- 通用分页end -->
 							</div>
+							<center>
+								<ul class="pagination"></ul>
+							</center>
 							<!--收益/钱包-->
 							<div class="news_list zy_listbox mine_box" id="wallet" hidden="hidden">
 								<div class="wallet_title">
@@ -1773,7 +1400,208 @@
 			</div>
 			<p>版权所有：XX市综合行政执法局&nbsp;&nbsp;&nbsp;地址：XX省XX市工业园区特1号</p>
 		</div>
+
+
+		<script type="text/javascript" src="js/paging/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/paging/paging.js"></script>
 		<script type="text/javascript">
+			// 获取当前时间
+			var day2 = new Date();
+			day2.setTime(day2.getTime());
+			var s2 = day2.getFullYear() + "-" + (day2.getMonth() + 1) + "-" + day2.getDate();
+			// console.log(s2)
+
+			// 获取我的信息
+			var data = sessionStorage.getItem("data");
+			var infodata = eval('(' + data + ')');
+			console.log(infodata);
+			var info = ''
+			var infolist = document.getElementById("infolist");
+
+			info += "<div class='user_loge'><img src='" + infodata.user_head +
+				" ' /><div class='user_name'><div class='user_id'>";
+			info += "<span>" + infodata.user_name + "</span><span>ID：</span></div><div class='user_des'><p>" + infodata.user_profile +
+				"</p>";
+			info += "</div></div></div><div class='address'>广东省-广州市-ssss</div><div class='company'>" + infodata.user_company +
+				"</div>";
+			infolist.innerHTML = info;
+
+			// 获取我的原创
+			$.ajax({
+				url: 'http://114.55.35.82/tp6_forum/public/index.php/my/article',
+				type: 'post',
+				data: {
+					token: infodata.token,
+					article_type: '0',
+					rows: '8',
+					page: '1',
+					state: '1',
+					order: '1',
+					star_time: '2020-1-1',
+					end_time: s2,
+				},
+				// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+				dataType: 'json',
+				success: function(res) {
+					// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
+					// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
+					console.log(res)
+					var postdata = res.data;
+
+					$(function() {
+						var a = {
+							color: '#blue',
+							sex: 'black',
+							border: '1px solid #ddd'
+						};
+
+						var b = {
+							background: '#005389'
+						};
+
+						$(".pagination").Paging({
+							classStyle: a, //a标签样式的对象,也可以不定义使用默认值
+							backClass: b, //选中的页数的背景，也可以不定义使用默认值
+							isFirst: true, //首页按钮是否显示
+							isPre: true, //下一页按钮是否显示
+							showRecordNum: 10, // 一页列表数量
+							totalNum: postdata.length, // 总列表数量
+							showNum: function(data1, data2) {
+								alert(data1 + "," + data2);
+							},
+							pages: 'infopost'
+						});
+
+					});
+					// console.log(followdata)
+					var post = '';
+					var postlist = document.getElementById("postlist");
+					if (postdata.length === 0) {
+						follows += "<h3>暂无数据</h3>";
+						content.innerHTML = follows;
+
+					} else {
+						for (var i = 0; i < postdata.length; i++) {
+							post += "<li><img src='" + postdata[i].post_img + "'/><div class='blog_list'>";
+							post += "<div class='news_title'><a href='forum.html?postid=" + postdata[i]['id'] + "'>" + postdata[i][
+								'post_title'
+							] + "</a>";
+							post += "<i class='red_news'>[" + postdata[i]['post_label'] + "]</i><i class='red_news'>[" + postdata[i][
+									'post_label'
+								] +
+								"]</i></div>";
+							post += "<div class='news_time news_other'><span>发布于：" + postdata[i]['post_releasetime'] + "</span>";
+							post += "<span id=''>阅读数：" + postdata[i]['post_readnum'] + " </span><span id=''>点赞：" + postdata[i][
+									'post_readnum'
+								] +
+								"</span></div>";
+							post += "<div class='news_owner news_other'><span id=''>发帖人：" + postdata[i]['post_user_name'] + "</span>";
+							post += "<span id=''>最后回复人：" + postdata[i]['last_user_name'] +
+								"</span><div class='share bdsharebuttonbox'>分享：";
+							post +=
+								"<a href='#' class='bds_weixin' data-cmd='weixin'></a><a href='#' class='bds_tsina' data-cmd='tsina'></a></div></div></div><img style='width: 20px;height: 20px;' src='images/write.png' /><img style='width: 20px;height: 20px;' src='images/delete.png' /></li>";
+							postlist.innerHTML = post;
+						}
+					}
+
+
+				},
+			})
+			
+			// 获取我的问答
+			function question(order) {
+				console.log(order)
+				if (document.getElementById("postlist")) {
+					//存在
+					// postlist.remove();
+					document.getElementById("postlist").innerHTML = "";
+				}
+
+				$.ajax({
+					url: 'http://114.55.35.82/tp6_forum/public/index.php/my/article',
+					type: 'post',
+					data: {
+						token: infodata.token,
+						article_type: '1',
+						rows: '8',
+						page: '1',
+						state: '1',
+						order: order,
+						star_time: '2020-1-1',
+						end_time: s2,
+					},
+					// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+					dataType: 'json',
+					success: function(res) {
+						// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
+						// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
+						console.log(res)
+						var postdata = res.data;
+
+
+						$(function() {
+							var a = {
+								color: '#blue',
+								sex: 'black',
+								border: '1px solid #ddd'
+							};
+
+							var b = {
+								background: '#005389'
+							};
+
+							$(".pagination").Paging({
+								classStyle: a, //a标签样式的对象,也可以不定义使用默认值
+								backClass: b, //选中的页数的背景，也可以不定义使用默认值
+								isFirst: true, //首页按钮是否显示
+								isPre: true, //下一页按钮是否显示
+								showRecordNum: 10, // 一页列表数量
+								totalNum: postdata.length, // 总列表数量
+								showNum: function(data1, data2) {
+									alert(data1 + "," + data2);
+								},
+								pages: 'infopost'
+							});
+
+						});
+						// console.log(followdata)
+						var post = '';
+						var qusetionlist = document.getElementById("qusetionlist");
+						if (postdata.length === 0) {
+							post += "<h3>暂无数据</h3>";
+							qusetionlist.innerHTML = post;
+
+						} else {
+							for (var i = 0; i < postdata.length; i++) {
+								post += "<li><img src='" + postdata[i].post_img + "'/><div class='blog_list'>";
+								post += "<div class='news_title'><a href='forum.html?postid=" + postdata[i]['id'] + "'>" + postdata[i][
+									'post_title'
+								] + "</a>";
+								post += "<i class='red_news'>[" + postdata[i]['post_label'] + "]</i><i class='red_news'>[" + postdata[i]
+									[
+										'post_label'
+									] +
+									"]</i></div>";
+								post += "<div class='news_time news_other'><span>发布于：" + postdata[i]['post_releasetime'] + "</span>";
+								post += "<span id=''>阅读数：" + postdata[i]['post_readnum'] + " </span><span id=''>点赞：" + postdata[i][
+										'post_readnum'
+									] +
+									"</span></div>";
+								post += "<div class='news_owner news_other'><span id=''>发帖人：" + postdata[i]['post_user_name'] +
+									"</span>";
+								post += "<span id=''>最后回复人：" + postdata[i]['last_user_name'] +
+									"</span><div class='share bdsharebuttonbox'>分享：";
+								post +=
+									"<a href='#' class='bds_weixin' data-cmd='weixin'></a><a href='#' class='bds_tsina' data-cmd='tsina'></a></div></div></div><img style='width: 20px;height: 20px;' src='images/write.png' /><img style='width: 20px;height: 20px;' src='images/delete.png' /></li>";
+								qusetionlist.innerHTML = post;
+							}
+						}
+
+
+					},
+				})
+			}
+
 			//页内导航
 			$("#navbar li").click(function() {
 				if ($(this).attr("class") != "select") {
@@ -1792,14 +1620,250 @@
 						}
 						$(li_arr[i]).removeAttr("class");
 					}
-					console.log(nav_id)
+					// console.log(nav_id)
 					$(nav_id).removeAttr("hidden");
 					$(this).attr("class", "select");
+					// 问答
+					if (nav_id === "#question") {
+						question(1);
+						// 收藏
+					} else if (nav_id === "#favorite") {
+						$.ajax({
+							url: 'http://114.55.35.82/tp6_forum/public/index.php/my/collection/select',
+							type: 'post',
+							data: {
+								token: infodata.token,
+								article_type: '1',
+								rows: '8',
+								page: '1',
+								state: '1',
+								order: '1',
+								star_time: '2020-1-1',
+								end_time: s2,
+							},
+							// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+							dataType: 'json',
+							success: function(res) {
+								// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
+								// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
+								console.log(res)
+								var collectiondata = res.data;
+
+								$(function() {
+									var a = {
+										color: '#blue',
+										sex: 'black',
+										border: '1px solid #ddd'
+									};
+
+									var b = {
+										background: '#005389'
+									};
+
+									$(".pagination").Paging({
+										classStyle: a, //a标签样式的对象,也可以不定义使用默认值
+										backClass: b, //选中的页数的背景，也可以不定义使用默认值
+										isFirst: true, //首页按钮是否显示
+										isPre: true, //下一页按钮是否显示
+										showRecordNum: 10, // 一页列表数量
+										totalNum: collectiondata.length, // 总列表数量
+										showNum: function(data1, data2) {
+											alert(data1 + "," + data2);
+										},
+										pages: 'infopost'
+									});
+
+								});
+								// console.log(followdata)
+								var post = '';
+								var collectionlist = document.getElementById("collectionlist");
+								if (collectiondata.length === 0) {
+									post += "<h3>暂无数据</h3>";
+									collectionlist.innerHTML = post;
+
+								} else {
+									for (var i = 0; i < collectiondata.length; i++) {
+										post += "<li><img src='" + collectiondata[i].post_img + "'/><div class='blog_list'>";
+										post += "<div class='news_title'><a href='forum.html?postid=" + collectiondata[i]['id'] + "'>" +
+											collectiondata[i][
+												'post_title'
+											] + "</a>";
+										post += "<i class='red_news'>[" + collectiondata[i]['post_label'] + "]</i><i class='red_news'>[" +
+											collectiondata[i]
+											[
+												'post_label'
+											] +
+											"]</i></div>";
+										post += "<div class='news_time news_other'><span>发布于：" + collectiondata[i]['post_releasetime'] +
+											"</span>";
+										post += "<span id=''>阅读数：" + collectiondata[i]['post_readnum'] + " </span><span id=''>点赞：" +
+											collectiondata[i][
+												'post_readnum'
+											] +
+											"</span></div>";
+										post += "<div class='news_owner news_other'><span id=''>发帖人：" + collectiondata[i]['post_user_name'] +
+											"</span>";
+										post += "<span id=''>最后回复人：" + collectiondata[i]['last_user_name'] +
+											"</span><div class='share bdsharebuttonbox'>分享：";
+										post +=
+											"<a href='#' class='bds_weixin' data-cmd='weixin'></a><a href='#' class='bds_tsina' data-cmd='tsina'></a></div></div></div><img style='width: 20px;height: 20px;' src='images/write.png' /><img style='width: 20px;height: 20px;' src='images/delete.png' /></li>";
+										collectionlist.innerHTML = post;
+									}
+								}
+
+
+							},
+						})
+						// 关注
+					} else if (nav_id === "#attention") {
+						$.ajax({
+							url: 'http://114.55.35.82/tp6_forum/public/index.php/my/follows',
+							type: 'post',
+							data: {
+								token: infodata.token,
+								rows: '8',
+								page: '1',
+								order: '1',
+								star_time: '',
+								end_time: s2,
+							},
+							// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+							dataType: 'json',
+							success: function(res) {
+								// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
+								// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
+								console.log(res)
+								var followsdata = res.data;
+
+								$(function() {
+									var a = {
+										color: '#blue',
+										sex: 'black',
+										border: '1px solid #ddd'
+									};
+
+									var b = {
+										background: '#005389'
+									};
+
+									$(".pagination").Paging({
+										classStyle: a, //a标签样式的对象,也可以不定义使用默认值
+										backClass: b, //选中的页数的背景，也可以不定义使用默认值
+										isFirst: true, //首页按钮是否显示
+										isPre: true, //下一页按钮是否显示
+										showRecordNum: 10, // 一页列表数量
+										totalNum: followsdata.length, // 总列表数量
+										showNum: function(data1, data2) {
+											alert(data1 + "," + data2);
+										},
+										pages: 'follows'
+									});
+
+								});
+								// console.log(fansdata)
+								var follows = '';
+								var followslist = document.getElementById("followslist");
+								if (followsdata.length === 0) {
+									follows += "<h3>暂无数据</h3>";
+									followslist.innerHTML = follows;
+
+								} else {
+									for (var i = 0; i < followsdata.length; i++) {
+										follows += "<li><img class='icon_radius' src='" + followsdata[i].user_head +
+											" ' /><div class='blog_list'>";
+										follows += "<div class='attention_title'><div>" + followsdata[i]['user_name'] + "</div><div>ID:" +
+											followsdata[i][
+												'id'
+											] + "</div><div>关注时间：" + followsdata[i]['follow_time'] + "</div>";
+										follows += "</div><div class='news_time news_other'><span>个人简介：</span><p>" + followsdata[i][
+												'user_profile'
+											] +
+											"</p>";
+										follows += "</div><div class='news_owner news_other'><span id=''>关注：" + followsdata[i]['user_follow_sum'] +
+											"|粉丝：" + followsdata[i]['user_fans_sum'] + "</span>";
+										follows +=
+											"</div></div><div class='about_att'><div class='cansel'>关注+</div><div class='hispage'><a>TA的个人主页</a></div></div></li>";
+										followslist.innerHTML = follows;
+									}
+								}
+							},
+						})
+						// 粉丝
+					} else if (nav_id === "#fan") {
+						$.ajax({
+							url: 'http://114.55.35.82/tp6_forum/public/index.php/my/fans',
+							type: 'post',
+							data: {
+								token: infodata.token,
+								rows: '8',
+								page: '1',
+								order: '1',
+								star_time: '',
+								end_time: s2,
+							},
+							// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+							dataType: 'json',
+							success: function(res) {
+								// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
+								// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
+								console.log(res)
+								var fansdata = res.data;
+
+								$(function() {
+									var a = {
+										color: '#blue',
+										sex: 'black',
+										border: '1px solid #ddd'
+									};
+
+									var b = {
+										background: '#005389'
+									};
+
+									$(".pagination").Paging({
+										classStyle: a, //a标签样式的对象,也可以不定义使用默认值
+										backClass: b, //选中的页数的背景，也可以不定义使用默认值
+										isFirst: true, //首页按钮是否显示
+										isPre: true, //下一页按钮是否显示
+										showRecordNum: 10, // 一页列表数量
+										totalNum: fansdata.length, // 总列表数量
+										showNum: function(data1, data2) {
+											alert(data1 + "," + data2);
+										},
+										pages: 'fans'
+									});
+
+								});
+								// console.log(fansdata)
+								var fans = '';
+								var fanslist = document.getElementById("fanslist");
+								if (fansdata.length === 0) {
+									fans += "<h3>暂无数据</h3>";
+									fanslist.innerHTML = fans;
+
+								} else {
+									for (var i = 0; i < fansdata.length; i++) {
+										fans += "<li><img class='icon_radius' src='" + fansdata[i].user_head + " ' /><div class='blog_list'>";
+										fans += "<div class='attention_title'><div>" + fansdata[i]['user_name'] + "</div><div>ID:" + fansdata[i]
+											[
+												'id'
+											] + "</div><div>关注时间：" + fansdata[i]['follow_time'] + "</div>";
+										fans += "</div><div class='news_time news_other'><span>个人简介：</span><p>" + fansdata[i]['user_profile'] +
+											"</p>";
+										fans += "</div><div class='news_owner news_other'><span id=''>关注：" + fansdata[i]['user_follow_sum'] +
+											"|粉丝：" + fansdata[i]['user_fans_sum'] + "</span>";
+										fans +=
+											"</div></div><div class='about_att'><div class='cansel'>关注+</div><div class='hispage'><a>TA的个人主页</a></div></div></li>";
+										fanslist.innerHTML = fans;
+									}
+								}
+							},
+						})
+					}
 				}
 			})
-		</script>
-		<!--富文本编辑框-->
 
+			<!--富文本编辑框-->
 		</script>
 	</body>
 </html>

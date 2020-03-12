@@ -276,7 +276,7 @@
 
 /*搜索结果*/
 .news_list{
-	height: 500px;
+	height: 900px;
 }
 .news_list ul li{ line-height: 42px; display: flex; flex-direction: row;padding: 10px 0;border-bottom: 1px solid #eee;}
 .news_list ul li img{
