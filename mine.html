@@ -2052,7 +2052,8 @@
 						})
 						
 						$("#push").click(function(){
-							var picfile = document.getElementById("picFile").files[0];
+							var picfile = $("#picFile").get(0).files[0];
+							console.log(picfile)
 							var formData = new FormData();
      						formData.append("imgFile",picfile);
      						formData.append("token",infodata.token);                                    
