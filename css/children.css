@@ -93,7 +93,7 @@
 /*右边内容栏*/
 .zy_right_con{ 
 	
-    margin-top: 30px;
+    /*margin-top: 30px;*/
 	float: left; 
 	/*width: 720px;*/ 
 	overflow: hidden;
@@ -276,7 +276,7 @@
 
 /*搜索结果*/
 .news_list{
-	height: 900px;
+	height: 750px;
 }
 .news_list ul li{ line-height: 42px; display: flex; flex-direction: row;padding: 10px 0;border-bottom: 1px solid #eee;}
 .news_list ul li img{

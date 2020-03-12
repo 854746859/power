@@ -330,9 +330,23 @@
 	}
 	.list_title li{
 		width: 20%;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
 	}
 	.list_body li{
 		width: 20%;
+	}
+	.list_title li:first-child{
+		width: 200px;
+	}
+	.list_body li:first-child{
+		width: 200px;
+	}
+	.list_body li:nth-child(n+2){
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
 	}
 	.message{
 		display: flex;
@@ -363,6 +377,15 @@
 		padding-left: 10px;
 		margin-left: 10px;
 		border-radius: 5px;
+	}
+	.reward_money{
+		display: flex;
+		flex-direction: row;
+	}
+	.reward_money span{
+		color: red;
+		font-size: 14px;
+		margin-left: 5px;
 	}
 	.description_post,.checkbox{
 		display: flex;
@@ -397,6 +420,23 @@
 		background-color: #1a83da;
 		color: #fff;
 		line-height: 30px;
+	}
+	#wallet_money,#wallet_coin{
+		font-size: 14px !important;
+	}
+	.rechange{
+		width: 60%;
+		margin: 10px auto;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+	}
+	.rechange a{
+		color: #1a83da;
+		font-size: 14px;
+	}
+	#post{
+		height: auto !important;
 	}
 </style>
 	</head>
@@ -546,18 +586,6 @@
 									</div>
 								</nav>
 							</div>
-							<!--<div class="classification mine">
-						<ul id="navbar">
-							<li class="select"><a href="#original">我的原创</a></li>
-							<li><a href="#question">我的问答</a></li>
-							<li><a href="#favorite">我的收藏</a></li>
-							<li><a href="#attention">我的关注</a></li>
-							<li><a href="#fan">我的粉丝</a></li>
-							<li><a href="#wallet">收益/钱包</a></li>
-							<li><a href="#post">快速发帖</a></li>
-							<li><a href="#notice">系统通知</a></li>
-						</ul>
-					</div>-->
 							<!-- 当前位置 -->
 							<div class="classification" id="hide" style="display:none;">
 								<ul id="menu" class="ul_bc">
@@ -1025,18 +1053,24 @@
 								<div class="detail_box">
 									<div class="yesterday">
 										<div>昨日收益/元</div>
-										<div id="yesterday_money">10</div>
-										<div id="week_money">近7日收益360元</div>
+										<div id="yesterday_money">0</div>
+										<div id="week_money">近7日收益0元</div>
 									</div>
 									<div class="month">
-										<div>昨日收益/元</div>
-										<div id="month_money">10</div>
-										<div id="money_sum">近7日收益360元</div>
+										<div>本月收益/元</div>
+										<div id="month_money">0</div>
+										<div id="money_sum">总收益0元</div>
 									</div>
 									<div class="wallet">
 										<div>钱包</div>
-										<div id="wallet_coin">论坛币：</div>
-										<div id="wallet_money">余额：</div>
+										<div class="wallet_money">
+											<div id="wallet_coin">论坛币：0</div>
+											<div id="wallet_money">余额：0元</div>
+										</div>
+										<div class="rechange">
+											<a href="">充值</a>
+											<a href="">提现</a>
+										</div>
 									</div>
 								</div>
 								<div class="detail_title">
@@ -1056,8 +1090,8 @@
 										<li>论坛币收益</li>
 										<li>支付人</li>
 									</ul>
-									<ul>
-										<li>
+									<ul id="listBody">
+										<!--<li>
 											<ul class="list_body">
 												<li>2020-02-19 15:22:20</li>
 												<li>创作激励</li>
@@ -1092,58 +1126,126 @@
 												<li>0</li>
 												<li>平台管理员</li>
 											</ul>
-										</li>
+										</li>-->
 									</ul>
 								</div>
 							</div>
 							<!--快速发帖-->
 							<div class="news_list zy_listbox mine_box" id="post" hidden="hidden">
 								<div class="post_title">
-									<h4>文章标题：</h4><input type="text" name="" id="" value="" placeholder="请输入文章标题" />
+									<h4>文章标题：</h4><input type="text" name="" id="postTitle" value="" placeholder="请输入文章标题" />
 								</div>
 								<h4>文章内容：</h4>
 								<script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>
 								<div id="btns">
 									<div class="description_post">
 										<h4>发布版块：</h4>
-										<select>
-											<option></option>
+										<select id="Section">
+											<option value="1">LNG板块</option>
+											<option value="2">Oil板块</option>
+											<option value="3">Gas板块</option>
+											<option value="4">Pipe板块</option>
+											<option value="5">Power板块</option>
+											<option value="6">Nuclear板块</option>
+											<option value="7">Wind板块</option>
+											<option value="8">Solar板块</option>
 										</select>
 									</div>
-									<div class="description_post">
+									<div class="description_post post_title">
 										<h4>文章标签：</h4>
-										<input type="text" name="" id="" value="" placeholder="标签" />
+										<input type="text" name="" id="Tag" value="" placeholder="标签" />
 									</div>
 									<div class="description_post">
 										<h4>文章类型：</h4>
-										<select>
-											<option></option>
+										<select id="postType">
+											<option value="0">普通</option>
+											<option value="1">问答</option>
+											<option value="2">悬赏</option>
+											<option value="3">投票</option>
 										</select>
+										<div class="post_title reward_money" style="display: none;">
+											<input type="number" name="" id="rewardmoney" value="0" placeholder="悬赏额度" />
+											<span>*必填</span>
+										</div>
+									</div>
+									<div class="description_post">
+										<h4>二级分类：</h4>
+										<select id="Classification">
+											<option value="1">政策法规-国内</option>
+											<option value="2">政策法规-国际</option>
+											<option value="3">项目市场-国内</option>
+											<option value="4">项目市场-国际</option>
+											<option value="11">论文数据-学术论文</option>
+											<option value="12">论文数据-标准规范</option>
+											<option value="13">论文数据-研究报告</option>
+											<option value="14">论文数据-会议论坛</option>
+											<option value="21">建设投产-前期研究</option>
+											<option value="22">建设投产-设计管理</option>
+											<option value="23">建设投产-设备采办</option>
+											<option value="24">建设投产-建设资源</option>
+											<option value="25">建设投产-施工建设</option>
+											<option value="26">建设投产-调试投产</option>
+											<option value="31">经营管理-生产管理</option>
+											<option value="32">经营管理-技术管理</option>
+											<option value="33">经营管理-维保管理</option>
+											<option value="34">经营管理-资源市场</option>
+											<option value="35">经营管理-公司管理</option>
+											<option value="36">经营管理-财务审计</option>
+											<option value="37">经营管理-人力资源</option>
+											<option value="41">信息推广-信息推广</option>
+											<option value="42">信息推广-采购信息</option>
+											<option value="43">信息推广-招聘信息</option>
+											<option value="51">项目管理-管理知识</option>
+											<option value="52">项目管理-管理知识</option>
+											<option value="61">English Version-Project Information</option>
+											<option value="62">English Version-LNG Resource</option>
+											<option value="63">English Version-Market</option>
+											<option value="64">English Version-Financial Accounting</option>
+											<option value="65">English Version-Engineering</option>
+											<option value="66">English Version-Construction</option>
+											<option value="67">English Version-Commission</option>
+											<option value="68">English Version-Project management</option>
+											<option value="69">English Version-Human Resource</option>
+											<option value="60">English Version-Financial Accounting</option>
+											<option value="71">论坛管理-论坛管理</option>
+											<option value="72">论坛管理-论坛管理</option>
+											<option value="81">能源杂谈-杂谈</option>
+											<option value="82">能源杂谈-休闲</option>
+											<option value="111">技术交流-低温设备</option>
+											<option value="112">技术交流-LNG储罐</option>
+											<option value="113">技术交流-工艺系统</option>
+											<option value="114">技术交流-公用系统</option>
+											<option value="115">技术交流-公用系统</option>
+											<option value="116">技术交流-港口航道</option>
+											<option value="117">技术交流-输气站场</option>
+										</select>
+										<span style="color: #1a83da;margin-left: 5px;font-size: 12px;">*可不选</span>
+											
 									</div>
 									<div class="description_post">
 										<h4>发布形式：</h4>
-										<div class="checkbox">
+										<div class="checkbox" id="Form">
+											<label>
+												<input type="radio" name="form" id="" value="0" /><span>公开</span>
+											</label>
+											<label>
+												<input type="radio" name="form" id="" value="1" /><span>粉丝可见</span>
+											</label>
+											<label>
+												<input type="radio" name="form" id="" value="2" /><span>私密</span>
+											</label>
 											<div>
-												<input type="checkbox" name="" id="" value="" /><span>公开</span>
-											</div>
-											<div>
-												<input type="checkbox" name="" id="" value="" /><span>粉丝可见</span>
-											</div>
-											<div>
-												<input type="checkbox" name="" id="" value="" /><span>私密</span>
-											</div>
-											<div>
-												<input type="checkbox" name="" id="" value="" /><span>悬赏</span>
-											</div>
-											<div>
-												<input type="number" name="" id="" value="" placeholder="悬赏额度" />
+												<input type="text" name="radioForm" id="radioForm" value="0" hidden="hidden"/>
 											</div>
 										</div>
 									</div>
+									<div class="description_post">
+										<h4>封面图上传：</h4><input type="file" name="" id="picFile" value="" />
+									</div>
 									<div class="description_post button_box">
-										<input type="button" value="发布" />
-										<input type="button" value="保存草稿" />
-										<input type="button" value="返回" />
+										<input type="button" id="push" value="发布" />
+										<input type="button" id="save" value="保存草稿" />
+										<input type="button" id="back" value="返回" />
 									</div>
 								</div>
 								<script type="text/javascript">
@@ -1205,7 +1307,7 @@
 							</div>
 							<!--系统通知-->
 							<div class="news_list zy_listbox mine_box" id="notice" hidden="hidden">
-								<div class="message">
+								<!--<div class="message">
 									<div class="message_title">
 										<h3>叮，您的创作激励奖金已到账，请您查收！</h3><span>2020-02-04 01:23:33</span>
 									</div>
@@ -1228,10 +1330,10 @@
 									<div class="message_detail">
 										<span>您的创作激励奖金到账了，前往查看</span><a>网页链接</a>
 									</div>
-								</div>
+								</div>-->
 							</div>
 
-							<center>
+							<center id="pagiNation">
 								<ul class="pagination"></ul>
 							</center>
 						</div>
@@ -1374,7 +1476,8 @@
 			<p>版权所有：XX市综合行政执法局&nbsp;&nbsp;&nbsp;地址：XX省XX市工业园区特1号</p>
 		</div>
 
-
+		<script type="text/javascript" src="config.js" ></script>
+		<script type="text/javascript" src="js/pop_ups/MiniDialog-es5.min.js" ></script>
 		<script type="text/javascript" src="js/paging/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/paging/paging.js"></script>
 		<script type="text/javascript">
@@ -1391,7 +1494,7 @@
 
 			// 获取我的信息
 			$.ajax({
-				url: 'http://114.55.35.82/tp6_forum/public/index.php/my/info',
+				url: sever_url+'my/info',
 				type: 'post',
 				data: {
 					token: infodata.token,
@@ -1460,7 +1563,7 @@
 
 			// 获取我的原创
 			$.ajax({
-				url: 'http://114.55.35.82/tp6_forum/public/index.php/my/article',
+				url: sever_url+'my/article',
 				type: 'post',
 				data: {
 					token: infodata.token,
@@ -1541,7 +1644,7 @@
 
 			// 获取我的问答
 			function question(order) {
-				console.log(order)
+//				console.log(order)
 				if (document.getElementById("postlist")) {
 					//存在
 					// postlist.remove();
@@ -1549,7 +1652,7 @@
 				}
 
 				$.ajax({
-					url: 'http://114.55.35.82/tp6_forum/public/index.php/my/article',
+					url: sever_url+'my/article',
 					type: 'post',
 					data: {
 						token: infodata.token,
@@ -1647,7 +1750,7 @@
 						}
 						$(li_arr[i]).removeAttr("class");
 					}
-					console.log(nav_id)
+//					console.log(nav_id)
 					$(nav_id).removeAttr("hidden");
 					$(this).attr("class", "select");
 					// 问答
@@ -1656,7 +1759,7 @@
 						// 收藏
 					} else if (nav_id === "#favorite") {
 						$.ajax({
-							url: 'http://114.55.35.82/tp6_forum/public/index.php/my/collection/select',
+							url: sever_url+'my/collection/select',
 							type: 'post',
 							data: {
 								token: infodata.token,
@@ -1673,7 +1776,7 @@
 							success: function(res) {
 								// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
 								// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
-								console.log(res)
+//								console.log(res)
 								var collectiondata = res.data;
 
 								$(function() {
@@ -1744,7 +1847,7 @@
 						// 关注
 					} else if (nav_id === "#attention") {
 						$.ajax({
-							url: 'http://114.55.35.82/tp6_forum/public/index.php/my/follows',
+							url: sever_url+'my/follows',
 							type: 'post',
 							data: {
 								token: infodata.token,
@@ -1759,7 +1862,7 @@
 							success: function(res) {
 								// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
 								// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
-								console.log(res)
+//								console.log(res)
 								var followsdata = res.data;
 
 								$(function() {
@@ -1818,7 +1921,7 @@
 						// 粉丝
 					} else if (nav_id === "#fan") {
 						$.ajax({
-							url: 'http://114.55.35.82/tp6_forum/public/index.php/my/fans',
+							url: sever_url+'my/fans',
 							type: 'post',
 							data: {
 								token: infodata.token,
@@ -1833,7 +1936,7 @@
 							success: function(res) {
 								// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
 								// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
-								console.log(res)
+//								console.log(res)
 								var fansdata = res.data;
 
 								$(function() {
@@ -1887,116 +1990,135 @@
 							},
 						})
 					} else if (nav_id === "#wallet") {
-						// 钱包
+						//收益/钱包
 						$.ajax({
-							url: 'http://114.55.35.82/tp6_forum/public/index.php/my/walletinfo',
+							url: sever_url+'my/walletinfo',
 							type: 'post',
 							data: {
-								token: infodata.token,
+								token: infodata.token
 							},
 							// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
 							dataType: 'json',
-							success: function(res) {
-								// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
-								// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
-								// console.log(res.data)
-								var data = res.data;
-
-
-								// 数量
-								var wallet_coin = document.getElementById("wallet_coin");
-								wallet_coin.innerHTML = "论坛币:  " + data.wallet_coin + " ";
-								var wallet_money = document.getElementById("wallet_money");
-								wallet_money.innerHTML = "金额:  " + data.wallet_money + " ";
-								var yesterday_money = document.getElementById("yesterday_money");
-								yesterday_money.innerHTML = data.yesterday_money;
-								var week_money = document.getElementById("week_money");
-								week_money.innerHTML = "近7日收益  " + data.week_money + " 元";
-								var month_money = document.getElementById("month_money");
-								month_money.innerHTML = data.month_money;
-
-							},
+							success:function(data){
+//								console.log(data)
+								if(data.code=="200"){
+									$("#yesterday_money").html(data.data.yesterday_money);
+									$("#week_money").html("近7日收益"+data.data.week_money+"元");
+									$("#month_money").html(data.data.month_money);
+									$("#money_sum").html("总收益"+data.data.money_sum+"元")
+									$("#wallet_coin").html("论坛币："+data.data.wallet_coin);
+									$("#wallet_money").html("余额："+data.data.wallet_money+"元");
+								}
+							}
+						});
+						getList();
+						function getList(){
+							$.ajax({
+								url: sever_url+'my/business',
+								type: 'post',
+								data: {
+									token: infodata.token,
+									star_time:"",
+									end_time:"",
+									rows:5,
+									page:1
+								},
+								// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+								dataType: 'json',
+								success:function(data){
+									console.log(data)
+									$("#listBody").empty();
+									var length = data.data.length;
+									for(var i=0;i<length;i++){
+										var obj = data.data[i];
+										$("#listBody").append('<li><ul class="list_body"><li>'+obj.business_time+'</li><li>'+obj.business_type+'</li><li>'+obj.business_money+'</li><li>'+obj.business_coin+'</li><li>'+obj.pay_user+'</li></ul></li>');
+									}
+								}
+							});
+						}
+						
+					}else if(nav_id == "#post"){
+						$("#pagiNation").attr("hidden","hidden");
+						$("#Form :radio").on('click', function () {
+					        var item= $(this).val();
+					        $("#radioForm").val(item)
 						})
-						// 获取我的交易记录
+						$("#postType").change(() => {
+							if($("#postType").val()=='2'){
+								$(".reward_money").css("display","flex");
+							}else{
+								$(".reward_money").css("display","none");
+							}
+						})
+						
+						$("#push").click(function(){
+							var picfile = document.getElementById("picFile").files[0];
+							var formData = new FormData();
+     						formData.append("imgFile",picfile);
+     						formData.append("token",infodata.token);                                    
+     						formData.append("post_title",$("#postTitle").val());
+     						formData.append("post_copyright","");
+     						formData.append("post_content",UE.getEditor('editor').getContent());
+     						formData.append("post_plate",Number($('#Section option:selected').val()));
+     						formData.append("post_label",$("#Tag").val());
+     						formData.append("post_plate_two",Number($('#Classification option:selected').val()));
+     						formData.append("post_articletype",Number($('#postType option:selected').val()));
+     						formData.append("post_rewardmoney",Number($("#rewardmoney").val()));
+							$.ajax({
+								url: sever_url+'release',
+								type: 'post',
+								processData: false,
+								contentType: false,
+								data: formData,
+								// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+								dataType: 'json',
+								success:function(data){
+									console.log(data)
+								}
+							});
+						})
+					}else if(nav_id == "#notice"){
 						$.ajax({
-							url: 'http://114.55.35.82/tp6_forum/public/index.php/my/business',
-							type: 'post',
-							data: {
+							type:"post",
+							url:sever_url+"my/natice",
+							async:true,
+							data:{
 								token: infodata.token,
-								rows: '8',
-								page: '1',
-								star_time: '2020-1-1',
-								end_time: s2,
+								rows:6,
+								page:1
 							},
-							// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
-							dataType: 'json',
-							success: function(res) {
-								// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
-								// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
-								console.log(res)
-								var businessdata = res.data;
-
-								$(function() {
-									var a = {
-										color: '#blue',
-										sex: 'black',
-										border: '1px solid #ddd'
-									};
-
-									var b = {
-										background: '#005389'
-									};
-
-									$(".pagination").Paging({
-										classStyle: a, //a标签样式的对象,也可以不定义使用默认值
-										backClass: b, //选中的页数的背景，也可以不定义使用默认值
-										isFirst: true, //首页按钮是否显示
-										isPre: true, //下一页按钮是否显示
-										showRecordNum: 8, // 一页列表数量
-										totalNum: businessdata.length, // 总列表数量
-										showNum: function(data1, data2) {
-											// alert(data1 + "," + data2);
+							dataType:"json",
+							success:function(data){
+								if(data.code=='200'){
+									$("#notice").empty();
+									var length = data.data.data.length;
+									for(var i=0;i<length;i++){
+										var obj = data.data.data[i];
+										$("#notice").append('<div class="message"><div class="message_title"><h3>'+obj.notice_title+'</h3><span>'+obj.notice_time+'</span></div><div class="message_detail"><span>'+obj.notice_content+'</span><a>网页链接</a></div></div>');
+									}
+								}else if(data.code=='2'){
+									Dialog({
+										title: "请登录！",
+										content: "您的登录已过期，是否重新登录？",
+										ok: {
+											callback: function() {
+												window.location.href='login.html';
+											}
 										},
-										pages: 'infopost'
+										cancel: {
+											callback: function() {
+												Dialog.close();
+											}
+										}
 									});
-
-								});
-								// console.log(followdata)
-								// var post = '';
-								// var postlist = document.getElementById("postlist");
-								// if (postdata.length === 0) {
-								// 	follows += "<h3>暂无数据</h3>";
-								// 	content.innerHTML = follows;
-
-								// } else {
-								// 	for (var i = 0; i < postdata.length; i++) {
-								// 		post += "<li><img src='" + postdata[i].post_img + "'/><div class='blog_list'>";
-								// 		post += "<div class='news_title'><a href='forum.html?postid=" + postdata[i]['id'] + "'>" + postdata[i][
-								// 			'post_title'
-								// 		] + "</a>";
-								// 		post += "<i class='red_news'>[" + postdata[i]['post_label'] + "]</i></div>";
-								// 		post += "<div class='news_time news_other'><span>发布于：" + postdata[i]['post_releasetime'] + "</span>";
-								// 		post += "<span id=''>阅读数：" + postdata[i]['post_readnum'] + " </span><span id=''>点赞：" + postdata[i][
-								// 				'post_readnum'
-								// 			] +
-								// 			"</span></div>";
-								// 		post += "<div class='news_owner news_other'><span id=''>发帖人：" + postdata[i]['post_user_name'] + "</span>";
-								// 		post += "<span id=''>最后回复人：" + postdata[i]['last_user_name'] +
-								// 			"</span><div class='share bdsharebuttonbox'>分享：";
-								// 		post +=
-								// 			"<a href='#' class='bds_weixin' data-cmd='weixin'></a><a href='#' class='bds_tsina' data-cmd='tsina'></a></div></div></div><img style='width: 20px;height: 20px;' src='images/write.png' /><img style='width: 20px;height: 20px;' src='images/delete.png' /></li>";
-								// 		postlist.innerHTML = post;
-								// 	}
-								// }
-
-
-							},
-						})
+								}
+								
+							}
+						});
 					}
 				}
 			})
 
-			<!--富文本编辑框-->
 		</script>
 	</body>
 </html>
