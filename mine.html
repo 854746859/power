@@ -2063,10 +2063,12 @@
      						formData.append("post_plate",Number($('#Section option:selected').val()));
      						formData.append("post_label",$("#Tag").val());
      						formData.append("post_plate_two",Number($('#Classification option:selected').val()));
+     						formData.append("post_releasetype",0);
      						formData.append("post_articletype",Number($('#postType option:selected').val()));
      						formData.append("post_rewardmoney",Number($("#rewardmoney").val()));
+     						console.log(formData)
 							$.ajax({
-								url: sever_url+'release',
+								url: 'http://127.0.0.1:8000/release',
 								type: 'post',
 								processData: false,
 								contentType: false,
@@ -2075,6 +2077,9 @@
 								dataType: 'json',
 								success:function(data){
 									console.log(data)
+								},
+								error:function(XMLHttpRequest,msg,res){
+									console.log(msg);
 								}
 							});
 						})

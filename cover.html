@@ -130,7 +130,7 @@
 				<nav>
 		            <div>
 		                <ul>
-		                    <li><a href="index.html">首页</a></li>
+		                    <li><a href="index.html?type=0&plate=1&two=0">首页</a></li>
 							<li class="menu-item-has-children"><a href="#" title="" itemprop="url">论坛</a>
 								<ul>
 		                            <li><a href="#" title="" itemprop="url">LNG版块</a></li>
@@ -145,14 +145,14 @@
 							</li>
 							<li class="menu-item-has-children"><a href="#">问答</a>
 								<ul>
-		                            <li><a href="#" title="" itemprop="url">LNG版块</a></li>
-		                            <li><a href="#" title="" itemprop="url">Oil版块</a></li>
-		                            <li><a href="#" title="" itemprop="url">Gas版块</a></li>
-		                            <li><a href="#" title="" itemprop="url">Pipe版块</a></li>
-									<li><a href="#" title="" itemprop="url">Nuclear版块</a></li>
-									<li><a href="#" title="" itemprop="url">Power版块</a></li>
-		                            <li><a href="#" title="" itemprop="url">Wind版块</a></li>
-		                            <li><a href="#" title="" itemprop="url">Solar版块</a></li>
+									<li><a href="question.html?type=1&plate=1&two=0" title="" itemprop="url">LNG版块</a></li>
+									<li><a href="question.html?type=1&plate=2&two=0" title="" itemprop="url">Oil版块</a></li>
+									<li><a href="question.html?type=1&plate=3&two=0" title="" itemprop="url">Gas版块</a></li>
+									<li><a href="question.html?type=1&plate=4&two=0" title="" itemprop="url">Pipe版块</a></li>
+									<li><a href="question.html?type=1&plate=5&two=0" title="" itemprop="url">Nuclear版块</a></li>
+									<li><a href="question.html?type=1&plate=6&two=0" title="" itemprop="url">Power版块</a></li>
+									<li><a href="question.html?type=1&plate=7&two=0" title="" itemprop="url">Wind版块</a></li>
+									<li><a href="question.html?type=1&plate=8&two=0" title="" itemprop="url">Solar版块</a></li>
 								</ul>
 							</li>
 							<li><a href="#">专家</a></li>
@@ -178,7 +178,7 @@
 						<img src="images/people03.jpg" class="admin_logo"/>
 						<span class="lever">LV10</span>
 					</div>-->
-					<a href="">登录/注册</a>
+					<a href="login.html">登录/注册</a>
 					<a href="">快速发帖</a>
 				</div>
 			</div>
@@ -252,7 +252,7 @@
 							<h2>最新<i></i></h2>
 						</div>
 						<!-- 内容展示块-->
-						<div class="news_list zy_listbox">
+						<div class="new_list zy_listbox">
 							<!-- 展示15条数据后出现分页 -->
 							<ul id="recommend">
 								<li><b>·</b><a href="news_xq.html">李克强主持召开国务院常务会议 部署进一步促进社区养老和家政服务工作安排</a></li>
@@ -366,7 +366,7 @@
 							<a href="" class="more">更多>></a>
 						</div>
 						<!-- 内容展示块-->
-						<div class="news_list zy_listbox">
+						<div class="new_list zy_listbox">
 							<!-- 展示15条数据后出现分页 -->
 							<ul>
 								<li>
@@ -457,7 +457,7 @@
 							<a href="" class="more">更多>></a>
 						</div>
 						<!-- 外部文章-->
-						<div class="news_list zy_listbox">
+						<div class="new_list zy_listbox">
 							<ul id="outweb">
 								
 							</ul>
@@ -468,7 +468,7 @@
 							<a href="" class="more">更多>></a>
 						</div>
 						<!-- 原创文章-->
-						<div class="news_list zy_listbox">
+						<div class="new_list zy_listbox">
 							<ul id="original">
 								
 							</ul>
@@ -677,7 +677,7 @@
 						var li = $('<li></li>');
 						var a = $('<a></a>');
 						a.attr('id',res.data.hot_post[index].id);
-						a.attr('href','tz?post_id='+res.data.hot_post[index].id);
+						a.attr('href','forum.html?post_id='+res.data.hot_post[index].id);
 						var b = $('<b>·</b>');
 						var span = $('<span>'+res.data.hot_post[index].post_title+'</span>');
 						li.append(a);
@@ -691,7 +691,7 @@
 						var li = $('<li></li>');
 						var a = $('<a></a>');
 						a.attr('id',res.data.hot_reward[index].id);
-						a.attr('href','tz?post_id='+res.data.hot_reward[index].id);
+						a.attr('href','forum.html?post_id='+res.data.hot_reward[index].id);
 						var b = $('<b>·</b>');
 						var span = $('<span>'+res.data.hot_reward[index].post_title+'</span>');
 						li.append(a);
@@ -713,7 +713,7 @@
 					for(var index in res.data.original){
 						var li = $('<li></li>');
 						var a = $('<a></a>');
-						a.attr('href','tz?post_id='+res.data.original[index].id);
+						a.attr('href','forum.html?post_id='+res.data.original[index].id);
 						var b = $('<b>·</b>');
 						li.append(a);
 						a.append(b);
@@ -726,7 +726,7 @@
 						var li = $('<li></li>');
 						var a = $('<a></a>');
 						a.attr('id',res.data.recommend[index].id);
-						a.attr('href','tz?post_id='+res.data.recommend[index].id);
+						a.attr('href','forum.html?post_id='+res.data.recommend[index].id);
 						var b = $('<b>·</b>');
 						var span = $('<span>'+res.data.recommend[index].post_title+'</span>');
 						li.append(a);
@@ -806,13 +806,17 @@
 					// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
 					dataType: 'json',
 					success: function(res) {
+						console.log(res)
+						if(res.code==2){
+							alert('您未登陆，无法查看关注信息，请登陆后查看')
+						}
 						//推荐
 						$("#recommend").html('');
 						for(var index in res.data){
 							var li = $('<li></li>');
 							var a = $('<a></a>');
 							a.attr('id',res.data[index].id);
-							a.attr('href','tz?post_id='+res.data[index].id);
+							a.attr('href','forum.html?post_id='+res.data[index].id);
 							var b = $('<b>·</b>');
 							var span = $('<span>'+res.data[index].post_title+'</span>');
 							li.append(a);
