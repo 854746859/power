@@ -3,7 +3,7 @@
 	// 定义类
 	function paging(element, option) {
 		this.element = element;
-		console.log(option)
+		// console.log(option)
 		this.option = {
 			currentPage: 1,
 			classStyle: option.classStyle,
@@ -279,11 +279,8 @@
 							success: function(res) {
 								// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
 								// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
-								console.log(res.data)
+								// console.log(res.data)
 								var postdata = res.data;
-
-								$(function() {});
-								// console.log(followdata)
 								var post = '';
 								var postlist = document.getElementById("postlist");
 								if (postdata.length === 0) {

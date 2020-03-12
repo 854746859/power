@@ -677,7 +677,7 @@
 			// 获取我的信息
 			var data = sessionStorage.getItem("data");
 			var infodata = eval('(' + data + ')');
-			console.log(infodata.user_head);
+			// console.log(infodata.user_head);
 			
 			var admin_box_head = '';
 			var infodatatoken = infodata.token
@@ -702,7 +702,7 @@
 				return theRequest;
 			}
 			var json = GetRequest();
-			console.log(json.plate);
+			// console.log(json.plate);
 			localStorage.setItem("plate", json.plate)
 			localStorage.setItem("type", json.type)
 
@@ -764,7 +764,7 @@
 					success: function(res) {
 						// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
 						// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
-						console.log(res)
+						// console.log(res)
 						var data = res.data;
 						// 分页函数
 						$(function() {

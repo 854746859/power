@@ -645,7 +645,7 @@
 			// 获取我的信息
 			var data = sessionStorage.getItem("data");
 			var infodata = eval('(' + data + ')');
-			console.log(infodata.user_head);
+			// console.log(infodata.user_head);
 			
 			var admin_box_head = '';
 			var infodatatoken = infodata.token
@@ -670,7 +670,7 @@
 				return theRequest;
 			}
 			var json = GetRequest();
-			console.log(json);
+			// console.log(json);
 			localStorage.setItem("plate", json.plate)
 			localStorage.setItem("type", json.type)
 
@@ -714,8 +714,8 @@
 				(json.two == undefined) ? two = '0': two = json.two;
 
 				// console.log(order)
-				console.log(json.plate)
-				console.log(plate)
+				// console.log(json.plate)
+				// console.log(plate)
 				var postlist = document.getElementById("postlist");
 				var content = document.getElementById("content");
 				// alert(localStorage.getItem("type"))
