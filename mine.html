@@ -503,23 +503,25 @@
 				<!-- 用户信息 -->
 				<div class="user_box">
 					<div id="infolist" class="box_L">
-						<!-- <div class="user_loge">
-							<img src="images/manager.jpg" />
+						<div class="user_loge">
+							<div id="user_head">
+								<!-- <img id="user_head"  src="" /> -->
+							</div>
 							<div class="user_name">
 								<div class="user_id">
-									<span>Name</span><span>ID：1241412asd</span>
+									<span id="user_name"></span><span id="id"></span>
 								</div>
 								<div class="user_des">
-									<p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+									<p id="user_profile"></p>
 								</div>
 							</div>
 						</div>
-						<div class="address">
-							广东省-广州市-ssss
+						<div id="user_address" class="address">
+
 						</div>
 						<div class="company">
-							广东省广州市某某公司
-						</div> -->
+
+						</div>
 					</div>
 					<input type="button" name="" id="" value="关注+" />
 				</div>
@@ -995,7 +997,7 @@
 									</li> -->
 								</ul>
 								<!-- 通用分页 -->
-								<!-- div class="fanye" style="text-align: left;">
+								<!-- <div class="fanye" style="text-align: left;">
 									<a href="#">上一页</a>
 									<div>
 										<a href="#" class="current">1</a>
@@ -1014,9 +1016,6 @@
 								</div> -->
 								<!-- 通用分页end -->
 							</div>
-							<center>
-								<ul class="pagination"></ul>
-							</center>
 							<!--收益/钱包-->
 							<div class="news_list zy_listbox mine_box" id="wallet" hidden="hidden">
 								<div class="wallet_title">
@@ -1026,18 +1025,18 @@
 								<div class="detail_box">
 									<div class="yesterday">
 										<div>昨日收益/元</div>
-										<div>10</div>
-										<div>近7日收益360元</div>
+										<div id="yesterday_money">10</div>
+										<div id="week_money">近7日收益360元</div>
 									</div>
 									<div class="month">
 										<div>昨日收益/元</div>
-										<div>10</div>
-										<div>近7日收益360元</div>
+										<div id="month_money">10</div>
+										<div id="money_sum">近7日收益360元</div>
 									</div>
 									<div class="wallet">
-										<div>昨日收益/元</div>
-										<div>10</div>
-										<div>近7日收益360元</div>
+										<div>钱包</div>
+										<div id="wallet_coin">论坛币：</div>
+										<div id="wallet_money">余额：</div>
 									</div>
 								</div>
 								<div class="detail_title">
@@ -1231,6 +1230,10 @@
 									</div>
 								</div>
 							</div>
+
+							<center>
+								<ul class="pagination"></ul>
+							</center>
 						</div>
 					</div>
 					<!-- zy_content end -->
@@ -1239,19 +1242,19 @@
 						<div class="box_one">
 							<ul>
 								<li>
-									<span>发布</span><span>123</span>
+									<span>发布</span><span id="user_release_sum">123</span>
 								</li>
 								<li>
-									<span>粉丝</span><span>123</span>
+									<span>粉丝</span><span id="user_fans_sum">123</span>
 								</li>
 								<li>
-									<span>关注</span><span>123</span>
+									<span>关注</span><span id="user_follow_sum">123</span>
 								</li>
 								<li>
-									<span>获赞</span><span>123</span>
+									<span>获赞</span><span id="user_laid_sum">123</span>
 								</li>
 								<li>
-									<span>转发</span><span>123</span>
+									<span>转发</span><span id="user_forward_sum">123</span>
 								</li>
 							</ul>
 						</div>
@@ -1260,35 +1263,17 @@
 								<div class="title">
 									<span>新粉丝</span><a class="more">更多>></a>
 								</div>
-								<div class="avatar">
-									<div>
+								<div id="new_fans_list" class="avatar">
+									<!-- <div>
 										<img src="images/logo.jpg" />
-									</div>
-									<div>
-										<img src="images/logo.jpg" />
-									</div>
-									<div>
-										<img src="images/logo.jpg" />
-									</div>
-									<div>
-										<img src="images/logo.jpg" />
-									</div>
+									</div> -->
 								</div>
 							</div>
 							<div class="recent_visitors">
 								<div class="title">
-									<span>新粉丝</span><a class="more">更多>></a>
+									<span>最近访客</span><a class="more">更多>></a>
 								</div>
-								<div class="avatar">
-									<div>
-										<img src="images/logo.jpg" />
-									</div>
-									<div>
-										<img src="images/logo.jpg" />
-									</div>
-									<div>
-										<img src="images/logo.jpg" />
-									</div>
+								<div id="new_visitor_list" class="avatar">
 									<div>
 										<img src="images/logo.jpg" />
 									</div>
@@ -1299,25 +1284,13 @@
 							<div class="title bc">
 								<span>喜欢的版块</span><a class="more">返回首页</a>
 							</div>
-							<ul>
-								<li>
+							<ul id="lng_todaycount_list">
+								<!-- <li>
 									<h3>LNG板块</h3>
 									<span>
 										今日更新：12篇
 									</span>
-								</li>
-								<li>
-									<h3>Oil板块</h3>
-									<span>
-										今日更新：12篇
-									</span>
-								</li>
-								<li>
-									<h3>Gas板块</h3>
-									<span>
-										今日更新：12篇
-									</span>
-								</li>
+								</li> -->
 							</ul>
 						</div>
 					</div>
@@ -1414,17 +1387,76 @@
 			// 获取我的信息
 			var data = sessionStorage.getItem("data");
 			var infodata = eval('(' + data + ')');
-			console.log(infodata);
-			var info = ''
-			var infolist = document.getElementById("infolist");
+			// console.log(infodata.token);
 
-			info += "<div class='user_loge'><img src='" + infodata.user_head +
-				" ' /><div class='user_name'><div class='user_id'>";
-			info += "<span>" + infodata.user_name + "</span><span>ID：</span></div><div class='user_des'><p>" + infodata.user_profile +
-				"</p>";
-			info += "</div></div></div><div class='address'>广东省-广州市-ssss</div><div class='company'>" + infodata.user_company +
-				"</div>";
-			infolist.innerHTML = info;
+			// 获取我的信息
+			$.ajax({
+				url: 'http://114.55.35.82/tp6_forum/public/index.php/my/info',
+				type: 'post',
+				data: {
+					token: infodata.token,
+				},
+				// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+				dataType: 'json',
+				success: function(res) {
+					// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
+					// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
+					// console.log(res)
+					var data = res.data;
+					var new_fans = data.new_fans;
+					var new_visitor = data.new_visitor;
+					var lng_todaycount = data.lng_todaycount;
+
+					// 顶部个人信息
+					var user_head = document.getElementById("user_head");
+					user_head.innerHTML = "<img src='" + data.user_head + "'>";
+					var user_name = document.getElementById("user_name");
+					user_name.innerHTML = data.user_name;
+					var id = document.getElementById("id");
+					id.innerHTML = "ID:  " + data.id + " ";
+					var user_profile = document.getElementById("user_profile");
+					user_profile.innerHTML = data.user_profile;
+					var user_address = document.getElementById("user_address");
+					user_address.innerHTML = data.user_address;
+
+					// 右边数量
+					var user_release_sum = document.getElementById("user_release_sum");
+					user_release_sum.innerHTML = data.user_release_sum;
+					var user_follow_sum = document.getElementById("user_follow_sum");
+					user_follow_sum.innerHTML = data.user_follow_sum;
+					var user_fans_sum = document.getElementById("user_fans_sum");
+					user_fans_sum.innerHTML = data.user_fans_sum;
+					var user_laid_sum = document.getElementById("user_laid_sum");
+					user_laid_sum.innerHTML = data.user_laid_sum;
+					var user_forward_sum = document.getElementById("user_forward_sum");
+					user_forward_sum.innerHTML = data.user_forward_sum;
+
+					// 新粉丝
+					var new_fans_img = '';
+					var new_fans_list = document.getElementById("new_fans_list");
+					for (var i = 0; i < new_fans.length; i++) {
+						new_fans_img += "<div><img src='" + new_fans[i].user_head + "'/></div>";
+						new_fans_list.innerHTML = new_fans_img;
+					}
+
+					// 最近访客
+					var new_visitor_img = '';
+					var new_visitor_list = document.getElementById("new_visitor_list");
+					for (var i = 0; i < new_visitor.length; i++) {
+						new_visitor_img += "<div><img src='" + new_visitor[i].user_head + "'/></div>";
+						new_visitor_list.innerHTML = new_visitor_img;
+					}
+
+					// 喜欢
+					var lng_todaycounts = '';
+					var lng_todaycount_list = document.getElementById("lng_todaycount_list");
+					// for (var i = 0; i < lng_todaycount.length; i++) {
+					lng_todaycounts += "<li><h3>" + lng_todaycount.name + "</h3><span>今日更新：" + lng_todaycount.today_count +
+						"篇</span></li>";
+					lng_todaycount_list.innerHTML = lng_todaycounts;
+					// }
+				},
+			})
 
 			// 获取我的原创
 			$.ajax({
@@ -1445,7 +1477,7 @@
 				success: function(res) {
 					// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
 					// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
-					console.log(res)
+					// console.log(res.data)
 					var postdata = res.data;
 
 					$(function() {
@@ -1464,10 +1496,10 @@
 							backClass: b, //选中的页数的背景，也可以不定义使用默认值
 							isFirst: true, //首页按钮是否显示
 							isPre: true, //下一页按钮是否显示
-							showRecordNum: 10, // 一页列表数量
+							showRecordNum: 8, // 一页列表数量
 							totalNum: postdata.length, // 总列表数量
 							showNum: function(data1, data2) {
-								alert(data1 + "," + data2);
+								// alert(data1 + "," + data2);
 							},
 							pages: 'infopost'
 						});
@@ -1486,10 +1518,7 @@
 							post += "<div class='news_title'><a href='forum.html?postid=" + postdata[i]['id'] + "'>" + postdata[i][
 								'post_title'
 							] + "</a>";
-							post += "<i class='red_news'>[" + postdata[i]['post_label'] + "]</i><i class='red_news'>[" + postdata[i][
-									'post_label'
-								] +
-								"]</i></div>";
+							post += "<i class='red_news'>[" + postdata[i]['post_label'] + "]</i></div>";
 							post += "<div class='news_time news_other'><span>发布于：" + postdata[i]['post_releasetime'] + "</span>";
 							post += "<span id=''>阅读数：" + postdata[i]['post_readnum'] + " </span><span id=''>点赞：" + postdata[i][
 									'post_readnum'
@@ -1507,7 +1536,9 @@
 
 				},
 			})
-			
+
+
+
 			// 获取我的问答
 			function question(order) {
 				console.log(order)
@@ -1535,7 +1566,7 @@
 					success: function(res) {
 						// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
 						// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
-						console.log(res)
+						// console.log(res)
 						var postdata = res.data;
 
 
@@ -1555,10 +1586,10 @@
 								backClass: b, //选中的页数的背景，也可以不定义使用默认值
 								isFirst: true, //首页按钮是否显示
 								isPre: true, //下一页按钮是否显示
-								showRecordNum: 10, // 一页列表数量
+								showRecordNum: 8, // 一页列表数量
 								totalNum: postdata.length, // 总列表数量
 								showNum: function(data1, data2) {
-									alert(data1 + "," + data2);
+									// alert(data1 + "," + data2);
 								},
 								pages: 'infopost'
 							});
@@ -1577,11 +1608,7 @@
 								post += "<div class='news_title'><a href='forum.html?postid=" + postdata[i]['id'] + "'>" + postdata[i][
 									'post_title'
 								] + "</a>";
-								post += "<i class='red_news'>[" + postdata[i]['post_label'] + "]</i><i class='red_news'>[" + postdata[i]
-									[
-										'post_label'
-									] +
-									"]</i></div>";
+								post += "<i class='red_news'>[" + postdata[i]['post_label'] + "]</i></div>";
 								post += "<div class='news_time news_other'><span>发布于：" + postdata[i]['post_releasetime'] + "</span>";
 								post += "<span id=''>阅读数：" + postdata[i]['post_readnum'] + " </span><span id=''>点赞：" + postdata[i][
 										'post_readnum'
@@ -1620,7 +1647,7 @@
 						}
 						$(li_arr[i]).removeAttr("class");
 					}
-					// console.log(nav_id)
+					console.log(nav_id)
 					$(nav_id).removeAttr("hidden");
 					$(this).attr("class", "select");
 					// 问答
@@ -1665,10 +1692,10 @@
 										backClass: b, //选中的页数的背景，也可以不定义使用默认值
 										isFirst: true, //首页按钮是否显示
 										isPre: true, //下一页按钮是否显示
-										showRecordNum: 10, // 一页列表数量
+										showRecordNum: 8, // 一页列表数量
 										totalNum: collectiondata.length, // 总列表数量
 										showNum: function(data1, data2) {
-											alert(data1 + "," + data2);
+											// alert(data1 + "," + data2);
 										},
 										pages: 'infopost'
 									});
@@ -1751,10 +1778,10 @@
 										backClass: b, //选中的页数的背景，也可以不定义使用默认值
 										isFirst: true, //首页按钮是否显示
 										isPre: true, //下一页按钮是否显示
-										showRecordNum: 10, // 一页列表数量
+										showRecordNum: 8, // 一页列表数量
 										totalNum: followsdata.length, // 总列表数量
 										showNum: function(data1, data2) {
-											alert(data1 + "," + data2);
+											// alert(data1 + "," + data2);
 										},
 										pages: 'follows'
 									});
@@ -1825,10 +1852,10 @@
 										backClass: b, //选中的页数的背景，也可以不定义使用默认值
 										isFirst: true, //首页按钮是否显示
 										isPre: true, //下一页按钮是否显示
-										showRecordNum: 10, // 一页列表数量
+										showRecordNum: 8, // 一页列表数量
 										totalNum: fansdata.length, // 总列表数量
 										showNum: function(data1, data2) {
-											alert(data1 + "," + data2);
+											// alert(data1 + "," + data2);
 										},
 										pages: 'fans'
 									});
@@ -1857,6 +1884,112 @@
 										fanslist.innerHTML = fans;
 									}
 								}
+							},
+						})
+					} else if (nav_id === "#wallet") {
+						// 钱包
+						$.ajax({
+							url: 'http://114.55.35.82/tp6_forum/public/index.php/my/walletinfo',
+							type: 'post',
+							data: {
+								token: infodata.token,
+							},
+							// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+							dataType: 'json',
+							success: function(res) {
+								// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
+								// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
+								// console.log(res.data)
+								var data = res.data;
+
+
+								// 数量
+								var wallet_coin = document.getElementById("wallet_coin");
+								wallet_coin.innerHTML = "论坛币:  " + data.wallet_coin + " ";
+								var wallet_money = document.getElementById("wallet_money");
+								wallet_money.innerHTML = "金额:  " + data.wallet_money + " ";
+								var yesterday_money = document.getElementById("yesterday_money");
+								yesterday_money.innerHTML = data.yesterday_money;
+								var week_money = document.getElementById("week_money");
+								week_money.innerHTML = "近7日收益  " + data.week_money + " 元";
+								var month_money = document.getElementById("month_money");
+								month_money.innerHTML = data.month_money;
+
+							},
+						})
+						// 获取我的交易记录
+						$.ajax({
+							url: 'http://114.55.35.82/tp6_forum/public/index.php/my/business',
+							type: 'post',
+							data: {
+								token: infodata.token,
+								rows: '8',
+								page: '1',
+								star_time: '2020-1-1',
+								end_time: s2,
+							},
+							// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+							dataType: 'json',
+							success: function(res) {
+								// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
+								// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
+								console.log(res)
+								var businessdata = res.data;
+
+								$(function() {
+									var a = {
+										color: '#blue',
+										sex: 'black',
+										border: '1px solid #ddd'
+									};
+
+									var b = {
+										background: '#005389'
+									};
+
+									$(".pagination").Paging({
+										classStyle: a, //a标签样式的对象,也可以不定义使用默认值
+										backClass: b, //选中的页数的背景，也可以不定义使用默认值
+										isFirst: true, //首页按钮是否显示
+										isPre: true, //下一页按钮是否显示
+										showRecordNum: 8, // 一页列表数量
+										totalNum: businessdata.length, // 总列表数量
+										showNum: function(data1, data2) {
+											// alert(data1 + "," + data2);
+										},
+										pages: 'infopost'
+									});
+
+								});
+								// console.log(followdata)
+								// var post = '';
+								// var postlist = document.getElementById("postlist");
+								// if (postdata.length === 0) {
+								// 	follows += "<h3>暂无数据</h3>";
+								// 	content.innerHTML = follows;
+
+								// } else {
+								// 	for (var i = 0; i < postdata.length; i++) {
+								// 		post += "<li><img src='" + postdata[i].post_img + "'/><div class='blog_list'>";
+								// 		post += "<div class='news_title'><a href='forum.html?postid=" + postdata[i]['id'] + "'>" + postdata[i][
+								// 			'post_title'
+								// 		] + "</a>";
+								// 		post += "<i class='red_news'>[" + postdata[i]['post_label'] + "]</i></div>";
+								// 		post += "<div class='news_time news_other'><span>发布于：" + postdata[i]['post_releasetime'] + "</span>";
+								// 		post += "<span id=''>阅读数：" + postdata[i]['post_readnum'] + " </span><span id=''>点赞：" + postdata[i][
+								// 				'post_readnum'
+								// 			] +
+								// 			"</span></div>";
+								// 		post += "<div class='news_owner news_other'><span id=''>发帖人：" + postdata[i]['post_user_name'] + "</span>";
+								// 		post += "<span id=''>最后回复人：" + postdata[i]['last_user_name'] +
+								// 			"</span><div class='share bdsharebuttonbox'>分享：";
+								// 		post +=
+								// 			"<a href='#' class='bds_weixin' data-cmd='weixin'></a><a href='#' class='bds_tsina' data-cmd='tsina'></a></div></div></div><img style='width: 20px;height: 20px;' src='images/write.png' /><img style='width: 20px;height: 20px;' src='images/delete.png' /></li>";
+								// 		postlist.innerHTML = post;
+								// 	}
+								// }
+
+
 							},
 						})
 					}
