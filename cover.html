@@ -36,6 +36,11 @@
 				margin-top: 10px;
 				height: 110px;
 			}
+			.rightgg{
+				width: 300px;
+				height: auto;
+			}
+			
 			.middle_banner img{
 				width: 100%;
 				height: 110px;
@@ -76,7 +81,7 @@
 			}
 			.online_lesson .lesson_box{
 				width: 25%;
-				height: 220px;
+				height: auto;
 				/*padding: 5px;*/
 				display: flex;
 				flex-direction: column;
@@ -87,6 +92,10 @@
 				width: 90%;
 				height: 90%;
 				/*background-color: blue;*/
+			}
+			.online_lesson .lesson_box .lesson img{
+				width: 100%
+				height:auto;
 			}
 			.vote{
 				height: 150px;
@@ -181,18 +190,12 @@
 				<div class="zhuanti_pic">
 		            <div class="hd"><!--轮播点 -->
 		                <ul id="topbanner_d">
-		                	<li></li>
-		                	<li></li>
+		                	
 		                </ul>
 		            </div>
 		            <div class="bd">
 		                <ul id="topbanner"><!--专题图片轮播 -->
-		                	<li>
-		                        <a href="#"><img src="images/pic01.jpg" /></a>
-		                    </li>
-		                    <li>
-		                        <a href="#"><img src="images/pic01.jpg" /></a>
-		                    </li>
+		                	
 		                </ul>
 		            </div>
 		            <!-- 下面是前/后按钮代码，如果不需要删除即可 -->
@@ -238,17 +241,11 @@
 							<a href="newslist.html" class="r">查看更多></a>
 						</div>
 						<ul id="hotreward">
-							<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span></a></li>
-							<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局办公大楼新建地块招标项目开发商承建福泉市综合执法局办公大楼新建地块招标项目开发商承建</span></a></li>
-							<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span></a></li>
-							<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局办公大楼新建地块招标项目开发商承建</span></a></li>
-							<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span></a></li>
-							<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局办公大楼新建地块招标项目开发商承建</span></a></li>
-							<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span></a></li>
+							
 						</ul>
 		        	</div>
 		        	<div class="middle zy_right_con">
-		        		<div class="zy_title">
+		        		<div class="zy_title" id="top_list">
 							<h2 class="selected">推荐<i></i></h2>
 							<h2>关注<i></i></h2>
 							<h2>悬赏<i></i></h2>
@@ -346,33 +343,21 @@
 							<h2 class="l"><b class="fc">发帖总排名</b></h2>
 						</div>
 						<ol id="release_total">
-							<li class="ranking"><span>1.张三</span><span>1234篇</span></li>
-							<li class="ranking"><span>2.李四</span><span>1234篇</span></li>
-							<li class="ranking"><span>3.赵一</span><span>1234篇</span></li>
-							<li class="ranking"><span>4.钱二</span><span>1234篇</span></li>
-							<li class="ranking"><span>5.周五</span><span>1234篇</span></li>
+							<!-- 发帖总排名 -->
 						</ol>
 						
 						<div class="sy_title bdb_d ovh">
 							<h2 class="l"><b class="fc">积分总排名</b></h2>
 						</div>
 						<ol id='coin_total'>
-							<li class="ranking"><span>1.张三</span><span>1234分</span></li>
-							<li class="ranking"><span>2.李四</span><span>1234分</span></li>
-							<li class="ranking"><span>3.赵一</span><span>1234分</span></li>
-							<li class="ranking"><span>4.钱二</span><span>1234分</span></li>
-							<li class="ranking"><span>5.周五</span><span>1234分</span></li>
+							<!-- 积分总排名 -->
 						</ol>
 						
 						<div class="sy_title bdb_d ovh">
 							<h2 class="l"><b class="fc">获赞总排名</b></h2>
 						</div>
 						<ol id="support_total">
-							<li class="ranking"><span>1.张三</span><span>1234赞</span></li>
-							<li class="ranking"><span>2.李四</span><span>1234赞</span></li>
-							<li class="ranking"><span>3.赵一</span><span>1234赞</span></li>
-							<li class="ranking"><span>4.钱二</span><span>1234赞</span></li>
-							<li class="ranking"><span>5.周五</span><span>1234赞</span></li>
+							<!-- 获赞总排名 -->
 						</ol>
 		        	</div>
 		        	<div class="middle zy_right_con">
@@ -418,123 +403,32 @@
 								</li>
 							</ul>
 						</div>
-						
-						<div class="zy_title layout">
-							<h2 class="selected">项目市场<i></i></h2>
-							<a href="" class="more">更多>></a>
-						</div>
-						<!-- 内容展示块-->
-						<div class="news_list zy_listbox">
-							<!-- 展示15条数据后出现分页 -->
-							<ul>
-								<li>
-									<img src="News-module1/images/dangzheng.png"/>
-									<div class="blog_list">
-										<div class="news_title">
-											<a href="news_xq.html" style="max-width: 360px;">李克强主持召开国务院常务会议 部署进一步促进社区养老和家政服务工作安排</a>
-											<i class="red_news">[原创]</i>
-											<i class="red_news">[新闻]</i>
-										</div>
-										<div class="news_time news_other">
-											<span>发布于：2019-07-05 13:12:06</span>
-											<span id="">
-												阅读数：32564
-											</span>
-											<span id="">
-												点赞：1563
-											</span>
-										</div>
-										<div class="news_owner news_other">
-											<span id="">
-												发帖人：XXX
-											</span>
-											<span id="">
-												最后回复人：XXX
-											</span>
-											<div class="share" style="margin-left: 150px;">
-												分享：
-												<img class="share_icon" src="images/WeChat.png"/>
-												<img class="share_icon" src="images/weibo.png"/>
-											</div>
-										</div>
-									</div>
-								</li>
-							</ul>
-						</div>
-						
-						<div class="zy_title layout">
-							<h2 class="selected">论文数据<i></i></h2>
-							<a href="" class="more">更多>></a>
-						</div>
-						<!-- 内容展示块-->
-						<div class="news_list zy_listbox">
-							<!-- 展示15条数据后出现分页 -->
-							<ul>
-								<li>
-									<img src="News-module1/images/dangzheng.png"/>
-									<div class="blog_list">
-										<div class="news_title">
-											<a href="news_xq.html" style="max-width: 360px;">李克强主持召开国务院常务会议 部署进一步促进社区养老和家政服务工作安排</a>
-											<i class="red_news">[原创]</i>
-											<i class="red_news">[新闻]</i>
-										</div>
-										<div class="news_time news_other">
-											<span>发布于：2019-07-05 13:12:06</span>
-											<span id="">
-												阅读数：32564
-											</span>
-											<span id="">
-												点赞：1563
-											</span>
-										</div>
-										<div class="news_owner news_other">
-											<span id="">
-												发帖人：XXX
-											</span>
-											<span id="">
-												最后回复人：XXX
-											</span>
-											<div class="share" style="margin-left: 150px;">
-												分享：
-												<img class="share_icon" src="images/WeChat.png"/>
-												<img class="share_icon" src="images/weibo.png"/>
-											</div>
-										</div>
-									</div>
-								</li>
-							</ul>
-						</div>
+						<!-- 往后添加 -->
 		        	</div>
 		        	<div class="right">
 		        		<!-- 投票专区 -->
 		        		<div class="sy_title bdb_d ovh">
 							<h2 class="l"><b class="fc">投票区</b></h2>
 						</div>
-						<div class="vote">
+						<!-- <div class="vote">
 							<p>经济危机也就跌30%，这轮已经20%，应该区域触底了</p>
 							<div class="btn">
 								<button>支持</button>
 								<button>反对</button>
 							</div>
-						</div>
+						</div> -->
 		        	</div>
 		        </div>
 		        <!--专家专题轮播-->
 				<div class="zhuanti_pic middle_banner">
 		            <div class="hd"><!--轮播点 -->
 		                <ul id="expertbanner_d">
-		                	<li></li>
-		                	<li></li>
+		                	
 		                </ul>
 		            </div>
 		            <div class="bd">
 		                <ul id="expertbanner"><!--专题图片轮播 -->
-		                	<li>
-		                        <a href="news_xq.html"><img src="images/pic01.jpg" /></a>
-		                    </li>
-		                    <li>
-		                        <a href="news_xq.html"><img src="images/pic01.jpg" /></a>
-		                    </li>
+		                	
 		                </ul>
 		            </div>
 		            <!-- 下面是前/后按钮代码，如果不需要删除即可 -->
@@ -562,7 +456,7 @@
 							<h2 class="selected">外网信息<i></i></h2>
 							<a href="" class="more">更多>></a>
 						</div>
-						<!-- 内容展示块-->
+						<!-- 外部文章-->
 						<div class="news_list zy_listbox">
 							<ul id="outweb">
 								
@@ -573,71 +467,44 @@
 							<h2 class="selected">原创文章<i></i></h2>
 							<a href="" class="more">更多>></a>
 						</div>
-						<!-- 内容展示块-->
+						<!-- 原创文章-->
 						<div class="news_list zy_listbox">
 							<ul id="original">
-								<li><b>·</b><a href="news_xq.html">李克强主持召开国务院常务会议 部署进一步促进社区养老和家政服务工作安排</a></li>
-								<li><b>·</b><a href="news_xq.html">特勤大队暂扣污染路面车辆</a></li>
-								<li><b>·</b><a href="news_xq.html">我局顺利组织2019年福泉市第一期渔业安全生产知识培训及应急实操演练我局顺利组织2019年福泉市第</a></li>
-								<li><b>·</b><a href="news_xq.html">特勤大队暂扣污染路面车辆</a></li>
-								<li><b>·</b><a href="news_xq.html">李克强主持召开国务院常务会议 部署进一步促进社区养老和家政服务工作安排</a></li>
-								<li><b>·</b><a href="news_xq.html">特勤大队暂扣污染路面车辆</a></li>
+								
 							</ul>
 						</div>
 		        	</div>
 		        	<div class="right">
-		        		<div class="plugins"></div>
-		        		<div class="plugins"></div>
-		        		<div class="plugins"></div>
+		        		<!-- 右侧广告 -->
+		        		<div class="zhuanti_pic rightgg">
+				            <div class="hd"><!--轮播点 -->
+				                <ul id="rightgg_d">
+				                	
+				                </ul>
+				            </div>
+				            <div class="bd">
+				                <ul id="rightgg"><!--专题图片轮播 -->
+				                	
+				                </ul>
+				            </div>
+				            <!-- 下面是前/后按钮代码，如果不需要删除即可 -->
+				            <a class="prev" href="javascript:void(0)"></a>
+				            <a class="next" href="javascript:void(0)"></a>
+				
+				            <script type="text/javascript">
+				            jQuery(".zhuanti_pic").slide({mainCell:".bd ul",autoPlay:true,effect:"fade",mouseOverStop:false,interTime:3000,});
+				            </script>
+				        </div>
 		        	</div>
 		        </div>
 		        <!--网课展区-->
-		        <div class="online_lesson">
-		        	<div class="lesson_box">
-		        		<div class="lesson">
-		        			
-		        		</div>
-		        	</div>
-		        	<div class="lesson_box">
-		        		<div class="lesson">
-		        			
-		        		</div>
-		        	</div>
-		        	<div class="lesson_box">
-		        		<div class="lesson">
-		        			
-		        		</div>
-		        	</div>
-		        	<div class="lesson_box">
-		        		<div class="lesson">
-		        			
-		        		</div>
-		        	</div>
-		        	<div class="lesson_box">
-		        		<div class="lesson">
-		        			
-		        		</div>
-		        	</div>
-		        	<div class="lesson_box">
-		        		<div class="lesson">
-		        			
-		        		</div>
-		        	</div>
-		        	<div class="lesson_box">
-		        		<div class="lesson">
-		        			
-		        		</div>
-		        	</div>
-		        	<div class="lesson_box">
-		        		<div class="lesson">
-		        			
-		        		</div>
-		        	</div>
+		        <div class="online_lesson" id="network">
+		        	
 		        </div>
 		        
-		        <!--横幅-->
+		        <!--底部广告-->
 	        	<div class="middle_banner">
-	        		<img id="bottombanner" src="images/pic01.jpg"/>
+	        		<img id="bottombanner" src=""/>
 	        	</div><br />
 			</div>
 		</div>
@@ -649,10 +516,9 @@
 				<li><a href="info_public.html">信息公开</a></li>
 				<li><a href="newslist.html">办事指南</a></li>
 			</ul>
-			<div class="l">
-				<a href="http://121.43.68.40/exposure/jiucuo.html?site_code=5200000083&url=www.guizhou.gov.cn" target="blank" class="dib vm"><img src="images/zhaocuo.png" /></a>
-				<a href="http://bszs.conac.cn/sitename?method=show&id=09D70ADDD9E64427E053022819AC3042" target="blank" class="dib vm"><img src="images/dangzheng.png"></a>
-			</div>
+			<div class="l" id="outlogo">
+				<!-- 外部公司logo -->
+			</div><br/>
 			<div class="l txt">
 				<p><img src="images/beian.png">X公网安备 5201030200xxxx号&nbsp;&nbsp;&nbsp;XICP备xxxxxxxxx号-2&nbsp;&nbsp;&nbsp;政府网站标识码：520xxxxxxxx</p>
 				<p>XX市综合执法局信息技术处建设和维护</p>
@@ -742,6 +608,51 @@
 					$('#expo_a').attr('src',res.data.exhibition.cover_href);
 					//lng接受部
 					$('#lngjsb').attr('src',res.data.lng_outchart.cover_posterurl);
+					//右侧广告rightgg
+					$('#rightgg').html('');
+					$('#rightgg_d').html('');
+					for(var index in res.data.right_roll_poster){
+						//创建轮播图
+						var li = $('<li></li>');
+						var a = $('<a></a>');
+						var img = $('<img>');
+						img.attr('src',res.data.right_roll_poster[index].cover_posterurl);
+						a.attr('href',res.data.right_roll_poster[index].cover_href);
+						li.append(a);
+						a.append(img);
+						$('#rightgg').append(li);
+						//创建轮播点
+						var li1 = $('<li></li>');
+						$('#rightgg_d').append(li1);
+					}
+					//网络课程
+					$('#network').html('');
+					for(var index in res.data.network){
+						//创建轮播图
+						var div1 = $('<div class="lesson_box"></div>');
+						var div2 = $('<div class="lesson"></div>');
+						var img = $('<img>');
+						var a = $('<a></a>');
+						img.attr('src',res.data.network[index].cover_posterurl);
+						a.attr('href',res.data.network[index].cover_href);
+						div1.append(div2);
+						div2.append(a);
+						a.append(img);
+						$('#network').append(div1);
+					}
+					//外部公司logo
+					$('#outlogo').html('');
+					for(var index in res.data.company_logo){
+						//创建轮播图
+						var a = $('<a></a>');
+						var img = $('<img>');
+						img.attr('src',res.data.company_logo[index].cover_posterurl);
+						a.attr('href',res.data.company_logo[index].cover_href);
+						a.attr('target','blank');
+						a.attr('class','dib vm');
+						a.append(img);
+						$('#outlogo').append(a);
+					}
 				},
 				error:function(XMLHttpRequest,msg,res){
 					console.log(msg);
@@ -876,6 +787,44 @@
 				error:function(XMLHttpRequest,msg,res){
 					console.log(msg);
 				}
+			});
+			//监听头部菜单
+			$('#top_list').on('click','h2',function(){
+				$('h2').removeClass("selected");
+				$(this).attr('class','selected');
+				var index = $('#top_list h2').index(this);//获取当前选中下标，0-3
+				var token = '';
+				//后端判断
+				$.ajax({
+					url: sever_url+'coverinfo/chooselist',
+					type: 'post',
+					data: {
+						cover_plate: 1,
+						list:index,
+						token:token
+					},
+					// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+					dataType: 'json',
+					success: function(res) {
+						//推荐
+						$("#recommend").html('');
+						for(var index in res.data){
+							var li = $('<li></li>');
+							var a = $('<a></a>');
+							a.attr('id',res.data[index].id);
+							a.attr('href','tz?post_id='+res.data[index].id);
+							var b = $('<b>·</b>');
+							var span = $('<span>'+res.data[index].post_title+'</span>');
+							li.append(a);
+							a.append(b);
+							a.append(span);
+							$("#recommend").append(li);
+						}
+					},
+					error:function(XMLHttpRequest,msg,res){
+						console.log(msg);
+					}
+				});
 			});
 		</script>
 	</body>
