@@ -497,7 +497,7 @@
 				<span class="lever">LV10</span>
 			</div>-->
 					<a href="login.html">登录/注册</a>
-					<a href="">快速发帖</a>
+					<a href="mine.html?fast=1">快速发帖</a>
 				</div>
 			</div>
 		</div>
@@ -1486,6 +1486,20 @@
 			day2.setTime(day2.getTime());
 			var s2 = day2.getFullYear() + "-" + (day2.getMonth() + 1) + "-" + day2.getDate();
 			// console.log(s2)
+			if(getUrldata("fast")==1){
+				var part_arr = $(".zy_listbox");
+				var li_arr = $("#navbar li");
+				for (var i = 0; i < part_arr.length; i++) {
+					if ($(part_arr[i]).attr("id") == "post") {
+						$(part_arr[i]).removeAttr("hidden");
+						$(li_arr[i]).attr("class", "select");
+						$("#pagiNation").attr("hidden","hidden");
+					}else{
+						$(part_arr[i]).attr("hidden", "hidden");
+						$(li_arr[i]).removeAttr("class");
+					}
+				}
+			}
 
 			// 获取我的信息
 			var data = sessionStorage.getItem("data");
@@ -1502,6 +1516,21 @@
 						"'  /></a><a href=''>快速发帖</a></div>";
 					admin_box.innerHTML = admin_box_head;
 				}
+			}else{
+				Dialog({
+					title: "请登录！",
+					content: "您还未登录，是登录？",
+					ok: {
+						callback: function() {
+							window.location.href = 'login.html';
+						}
+					},
+					cancel: {
+						callback: function() {
+							Dialog.close();
+						}
+					}
+				});
 			}
 
 			// 获取我的信息
@@ -2101,7 +2130,11 @@
 								$(".reward_money").css("display", "none");
 							}
 						})
-
+						
+						$("#back").click(function() {
+							self.location = document.referrer;
+						})
+						
 						$("#push").click(function() {
 							var picfile = $("#picFile").get(0).files[0];
 							console.log(picfile)
@@ -2127,7 +2160,34 @@
 								// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
 								dataType: 'json',
 								success: function(data) {
-									console.log(data)
+									if(data.code=="200"){
+										for (var i = 0; i < part_arr.length; i++) {
+											if ($(part_arr[i]).attr("id") == "original") {
+												$(part_arr[i]).removeAttr("hidden");
+												$(li_arr[i]).attr("class", "select");
+											}else{
+												$(part_arr[i]).attr("hidden", "hidden");
+												$(li_arr[i]).removeAttr("class");
+											}
+										}
+										$("#pagiNation").removeAttr("hidden");
+										original();
+									}else if(data.code=="2"){
+										Dialog({
+											title: "请登录！",
+											content: "您的登录已过期，是否重新登录？",
+											ok: {
+												callback: function() {
+													window.location.href = 'login.html';
+												}
+											},
+											cancel: {
+												callback: function() {
+													Dialog.close();
+												}
+											}
+										});
+									}
 								},
 								error: function(XMLHttpRequest, msg, res) {
 									console.log(msg);

@@ -130,7 +130,7 @@
 							if(data.code=='200'){
 								var obj = JSON.stringify(data.data);
 								sessionStorage.setItem("data",obj);
-								self.location = document.referrer;
+								window.history.go(-1);
 							}
 						}
 					});
