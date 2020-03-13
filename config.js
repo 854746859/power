@@ -29,3 +29,18 @@ function GetToken(){
 		}
 	});
 }
+// 获取我的信息
+var data = sessionStorage.getItem("data");
+var infodata = eval('(' + data + ')');
+console.log(infodata);
+
+if(infodata != null){
+	var admin_box_head = '';
+	var infodatatoken = infodata.token
+	var admin_box = document.getElementById("admin_box");
+	
+	if( infodatatoken.length > 1){
+		admin_box_head += "<div class='admin'><a href='mine.html'><img class='admin_logo' src='" + infodata.user_head + "'  /></a><a href=''>快速发帖</a></div>";
+		admin_box.innerHTML = admin_box_head;
+	}
+}

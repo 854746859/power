@@ -449,7 +449,7 @@
 					</div>
 
 				</div>
-				<div class="admin_box">
+				<div class="admin_box" id="admin_box">
 					<!--<img src="images/messageIcon.png" width="20px"/>
 			<div class="admin">
 				<img src="images/people03.jpg" class="admin_logo"/>
@@ -563,7 +563,7 @@
 								</div>
 								<div>
 									<span>粉丝</span>
-									<span>0</span>
+									<span id="user_fans_sum">0</span>
 								</div>
 								<div>
 									<span>获赞</span>
@@ -848,17 +848,18 @@
 							}
 
 							$("#time").html(data.data.post_releasetime); //发布时间
-							$("#readNum").html("阅读数：" + data.data.post_readnum); //阅读数
-							$("#postUpnum").html(data.data.post_upnum); //点赞数
-							$("#postForwardnum").html(data.data.post_forwardnum); //转发数
-							$("#postCollectionnum").html(data.data.post_collectionnum); //收藏数
+							$("#readNum").html("阅读数：" + Number(data.data.post_readnum)); //阅读数
+							$("#postUpnum").html(Number(data.data.post_upnum)); //点赞数
+							$("#postForwardnum").html(Number(data.data.post_forwardnum)); //转发数
+							$("#postCollectionnum").html(Number(data.data.post_collectionnum)); //收藏数
 							$("#user_head").attr("src", data.data.user_head);
 							$("#user_head").attr("name", data.data.post_userid);
 							$("#user_name").html(data.data.user_name);
 							$("#user_profile").html(data.data.user_profile);
-							$("#user_release_sum").html(data.data.user_release_sum);
-							$("#post_upnum").html(data.data.post_upnum);
-							$("#user_follow_sum").html(data.data.user_follow_sum);
+							$("#user_release_sum").html(Number(data.data.user_release_sum));
+							$("#post_upnum").html(Number(data.data.post_upnum));
+							$("#user_follow_sum").html(Number(data.data.user_follow_sum));
+							$("#user_fans_sum").html(Number(data.data.user_fans_sum));
 
 							var num = data.data.recommend.length;
 							for(var i = 0; i < num; i++) {

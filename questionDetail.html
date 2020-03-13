@@ -388,7 +388,7 @@
 					</div>
 
 				</div>
-				<div class="admin_box">
+				<div class="admin_box" id="admin_box">
 					<!--<img src="images/messageIcon.png" width="20px"/>
 			<div class="admin">
 				<img src="images/people03.jpg" class="admin_logo"/>
@@ -442,7 +442,7 @@
 				<div class="gonggao bdb_d fix">
 					<div class="txtScroll-top l zy_cur">
 						<div class="l tit"><img src="images/icon_location.png"><b class="dib vm">当前位置：</b></div>
-						<p class="l"><a href="index.html">首页</a><a href="about.html"></a><span></span></p>
+						<p class="l"><a href="" id="post_plate"></a><span id="post_plate_two"></span></p>
 					</div>
 
 					<!-- 时间 -->
@@ -502,7 +502,7 @@
 								</div>
 								<div>
 									<span>粉丝</span>
-									<span>0</span>
+									<span id="user_fans_sum">0</span>
 								</div>
 								<div>
 									<span>获赞</span>
@@ -780,6 +780,7 @@
 		<script type="text/javascript" src="config.js"></script>
 		<script type="text/javascript" src="js/pop_ups/MiniDialog-es5.min.js" ></script>
 		<script type="text/javascript">
+			
 			//评论点赞
 			function commentSupport(commentId){
 				console.log(commentId);
@@ -836,7 +837,7 @@
 						token: ""
 					},
 					success: function(data) {
-						//			console.log(data)
+									console.log(data)
 						if (data.code == 200) {
 							$("#postTitle").html(data.data.post_title); //文章标题
 							$("#postCopyright").html('<span>*</span>版权声明：' + data.data.post_copyright); //版权声明
@@ -844,6 +845,8 @@
 							var labels = new RegExp(",", "g"); //g,表示全部替换。
 							var label = data.data.post_label.replace(labels, "]</span><span>[");
 							$("#postLabel").append('<span>[' + label + ']</span>'); //文章标签，多个“，”隔开
+							$("#post_plate").html(data.data.post_plate);
+							$("#post_plate_two").html(data.data.post_plate_two);
 							$("#time").html(data.data.post_releasetime); //发布时间
 							$("#readNum").html("阅读数：" + data.data.post_readnum); //阅读数
 							$("#postUpnum").html(data.datapost_upnum); //点赞数
@@ -853,9 +856,10 @@
 							$("#user_head").attr("name", data.data.post_userid);
 							$("#user_name").html(data.data.user_name);
 							$("#user_profile").html(data.data.user_profile);
-							$("#user_release_sum").html(data.data.user_release_sum);
-							$("#post_upnum").html(data.data.post_upnum);
-							$("#user_follow_sum").html(data.data.user_follow_sum);
+							$("#user_release_sum").html(Number(data.data.user_release_sum));
+							$("#post_upnum").html(Number(data.data.post_upnum));
+							$("#user_follow_sum").html(Number(data.data.user_follow_sum));
+							$("#user_fans_sum").html(Number(data.data.user_fans_sum));
 							//悬赏
 							if (data.data.hasOwnProperty("adopd")) {
 								$("#annex_d").css("display", "block");
@@ -863,7 +867,7 @@
 								$("#user_logo").attr("name", data.data.adopd.comment_userid);
 								$("#user_name").html(data.data.adopd.user_name);
 								$("#comment_content").html(data.data.adopd.comment_content);
-								$("#comment_upnum").html(data.data.adopd.comment_upnum);
+								$("#comment_upnum").html(Number(data.data.adopd.comment_upnum));
 							}
 							//推荐热帖
 							var num = data.data.recommend.length;

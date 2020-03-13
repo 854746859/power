@@ -1758,6 +1758,9 @@
 					} else {
 						$("#hide").hide();
 					}
+					if (nav_id != "#post") {
+						$("#pagiNation").removeAttr("hidden");
+					}
 					var part_arr = $(".zy_listbox");
 					var li_arr = $("#navbar li");
 					for (var i = 0; i < part_arr.length; i++) {
@@ -2047,8 +2050,34 @@
 								dataType: 'json',
 								success: function(data) {
 									console.log(data)
-									$("#listBody").empty();
 									var length = data.data.length;
+									$(function() {
+										var a = {
+											color: '#blue',
+											sex: 'black',
+											border: '1px solid #ddd'
+										};
+	
+										var b = {
+											background: '#005389'
+										};
+	
+										$(".pagination").Paging({
+											classStyle: a, //a标签样式的对象,也可以不定义使用默认值
+											backClass: b, //选中的页数的背景，也可以不定义使用默认值
+											isFirst: true, //首页按钮是否显示
+											isPre: true, //下一页按钮是否显示
+											showRecordNum: 5, // 一页列表数量
+											totalNum: length, // 总列表数量
+											showNum: function(data1, data2) {
+												// alert(data1 + "," + data2);
+											},
+											pages: 'follows'
+										});
+	
+									});
+									
+									$("#listBody").empty();
 									for (var i = 0; i < length; i++) {
 										var obj = data.data[i];
 										$("#listBody").append('<li><ul class="list_body"><li>' + obj.business_time + '</li><li>' + obj.business_type +
@@ -2120,6 +2149,32 @@
 								if (data.code == '200') {
 									$("#notice").empty();
 									var length = data.data.data.length;
+									$(function() {
+										var a = {
+											color: '#blue',
+											sex: 'black',
+											border: '1px solid #ddd'
+										};
+	
+										var b = {
+											background: '#005389'
+										};
+	
+										$(".pagination").Paging({
+											classStyle: a, //a标签样式的对象,也可以不定义使用默认值
+											backClass: b, //选中的页数的背景，也可以不定义使用默认值
+											isFirst: true, //首页按钮是否显示
+											isPre: true, //下一页按钮是否显示
+											showRecordNum: 6, // 一页列表数量
+											totalNum: length, // 总列表数量
+											showNum: function(data1, data2) {
+												// alert(data1 + "," + data2);
+											},
+											pages: 'follows'
+										});
+	
+									});
+									
 									for (var i = 0; i < length; i++) {
 										var obj = data.data.data[i];
 										$("#notice").append('<div class="message"><div class="message_title"><h3>' + obj.notice_title +
