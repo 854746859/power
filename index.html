@@ -357,9 +357,8 @@
 						<div id="content" class="zy_right_con">
 							<!-- 当前位置 -->
 							<div id="menu" class="zy_title">
-								<h2 id="1" class="selected">最新发布<i></i></h2>
-								<h2 id="2">最后回复<i></i></h2>
-								<h2 id="3">类别筛选<i></i></h2>
+								<h2 id="0" class="selected">最新发布</h2>
+								<h2 id="1">最后回复</h2>
 							</div>
 							<!-- 内容展示块-->
 							<div class="news_list zy_listbox" style="height: 900px;">
@@ -717,7 +716,6 @@
 			// ajax请求文章列表
 			function post(orders) {
 				var post = "";
-
 				// 没有排序信息 ？默认为 0 ：获取Url值
 				(orders == undefined) ? order = '0': order = orders;
 				// 没有板块信息 ？默认为 1 ：获取Url值
@@ -857,7 +855,7 @@
 				var menu = document.getElementById('menu');
 				var h2s = menu.getElementsByTagName('h2');
 				for (var i = 0; i < h2s.length; i++) {
-					h2s[i].onclick = function() {
+					h2s[i].onclick = function(e) {
 						for (var i = 0; i < h2s.length; i++) {
 							h2s[i].className = '';
 						}
