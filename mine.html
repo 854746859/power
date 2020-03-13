@@ -1585,7 +1585,7 @@
 						rows: '8',
 						page: '1',
 						state: '1',
-						order: '1',
+						order: '0',
 						star_time: '2020-1-1',
 						end_time: s2,
 					},
@@ -1594,7 +1594,7 @@
 					success: function(res) {
 						// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
 						// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
-						// console.log(res.data)
+						console.log(res)
 						var postdata = res.data;
 
 						$(function() {
@@ -1614,7 +1614,7 @@
 								isFirst: true, //首页按钮是否显示
 								isPre: true, //下一页按钮是否显示
 								showRecordNum: 8, // 一页列表数量
-								totalNum: postdata.length, // 总列表数量
+								totalNum: res.total, // 总列表数量
 								showNum: function(data1, data2) {
 									// alert(data1 + "," + data2);
 								},
@@ -1706,7 +1706,7 @@
 								isFirst: true, //首页按钮是否显示
 								isPre: true, //下一页按钮是否显示
 								showRecordNum: 8, // 一页列表数量
-								totalNum: postdata.length, // 总列表数量
+								totalNum: res.total, // 总列表数量
 								showNum: function(data1, data2) {
 									// alert(data1 + "," + data2);
 								},
@@ -1789,7 +1789,7 @@
 								rows: '8',
 								page: '1',
 								state: '1',
-								order: '1',
+								order: '0',
 								star_time: '2020-1-1',
 								end_time: s2,
 							},
@@ -1818,7 +1818,7 @@
 										isFirst: true, //首页按钮是否显示
 										isPre: true, //下一页按钮是否显示
 										showRecordNum: 8, // 一页列表数量
-										totalNum: collectiondata.length, // 总列表数量
+										totalNum: res.total, // 总列表数量
 										showNum: function(data1, data2) {
 											// alert(data1 + "," + data2);
 										},
@@ -1875,7 +1875,7 @@
 								token: infodata.token,
 								rows: '8',
 								page: '1',
-								order: '1',
+								order: '0',
 								star_time: '',
 								end_time: s2,
 							},
@@ -1904,7 +1904,7 @@
 										isFirst: true, //首页按钮是否显示
 										isPre: true, //下一页按钮是否显示
 										showRecordNum: 8, // 一页列表数量
-										totalNum: followsdata.length, // 总列表数量
+										totalNum: res.total, // 总列表数量
 										showNum: function(data1, data2) {
 											// alert(data1 + "," + data2);
 										},
@@ -1949,7 +1949,7 @@
 								token: infodata.token,
 								rows: '8',
 								page: '1',
-								order: '1',
+								order: '0',
 								star_time: '',
 								end_time: s2,
 							},
@@ -1978,7 +1978,7 @@
 										isFirst: true, //首页按钮是否显示
 										isPre: true, //下一页按钮是否显示
 										showRecordNum: 8, // 一页列表数量
-										totalNum: fansdata.length, // 总列表数量
+										totalNum: res.total, // 总列表数量
 										showNum: function(data1, data2) {
 											// alert(data1 + "," + data2);
 										},
@@ -2068,7 +2068,7 @@
 											isFirst: true, //首页按钮是否显示
 											isPre: true, //下一页按钮是否显示
 											showRecordNum: 5, // 一页列表数量
-											totalNum: length, // 总列表数量
+											totalNum: data.total, // 总列表数量
 											showNum: function(data1, data2) {
 												// alert(data1 + "," + data2);
 											},
@@ -2146,6 +2146,7 @@
 							},
 							dataType: "json",
 							success: function(data) {
+								console.log(data)
 								if (data.code == '200') {
 									$("#notice").empty();
 									var length = data.data.data.length;
@@ -2166,7 +2167,7 @@
 											isFirst: true, //首页按钮是否显示
 											isPre: true, //下一页按钮是否显示
 											showRecordNum: 6, // 一页列表数量
-											totalNum: length, // 总列表数量
+											totalNum: data.total, // 总列表数量
 											showNum: function(data1, data2) {
 												// alert(data1 + "," + data2);
 											},
