@@ -172,7 +172,7 @@
 					</div>
 					
 				</div>
-				<div class="admin_box">
+				<div id="admin_box" class="admin_box">
 					<!--<img src="images/messageIcon.png" width="20px"/>
 					<div class="admin">
 						<img src="images/people03.jpg" class="admin_logo"/>
@@ -531,6 +531,19 @@
 			// 获取我的信息
 			var data = sessionStorage.getItem("data");
 			var infodata = eval('(' + data + ')');
+			// console.log(infodata.token);
+			
+			if (infodata != null) {
+				var admin_box_head = '';
+				var infodatatoken = infodata.token
+				var admin_box = document.getElementById("admin_box");
+			
+				if (infodatatoken.length > 1) {
+					admin_box_head += "<div class='admin'><a href='mine.html'><img class='admin_logo' src='" + infodata.user_head +
+						"'  /></a><a href=''>快速发帖</a></div>";
+					admin_box.innerHTML = admin_box_head;
+				}
+			}
 			//获取网页信息
 			$.ajax({
 				url: sever_url+'/coverinfo/webinfo',
