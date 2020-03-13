@@ -3,7 +3,7 @@
 	// 定义类
 	function paging(element, option) {
 		this.element = element;
-		// console.log(option)
+		console.log(option)
 		this.option = {
 			currentPage: 1,
 			classStyle: option.classStyle,
@@ -47,8 +47,11 @@
 			}
 
 			var currentPage = parseInt(ele.option.currentPage);
+			console.log('currentPage:' + currentPage);
 			var totalPage = parseInt(ele.option.totalPage);
+			console.log('totalPage:' + totalPage);
 			var totalNum = parseInt(ele.option.totalNum);
+			console.log('totalNum:' + totalNum);
 			if (isNaN(currentPage) || isNaN(totalPage) || isNaN(totalNum)) {
 				alert("分页插件不能正常工作，请输入正确的数字");
 			} else {
@@ -116,10 +119,10 @@
 						arr.push(str);
 					} else {
 						if ((totalPage - 1) <= currentPage) {
-							str = '<li><a  href="javascript:void(0)" style="' + string1 + '">' + (totalPage - 8) + '</a></li>';
-							arr.push(str);
-							str = '<li><a  href="javascript:void(0)" style="' + string1 + '">' + (totalPage - 7) + '</a></li>';
-							arr.push(str);
+							// str = '<li><a  href="javascript:void(0)" style="' + string1 + '">' + (totalPage - 8) + '</a></li>';
+							// arr.push(str);
+							// str = '<li><a  href="javascript:void(0)" style="' + string1 + '">' + (totalPage - 7) + '</a></li>';
+							// arr.push(str);
 							str = '<li><span style="' + string1 + '">...</span></li>';
 							arr.push(str);
 							for (var i = totalPage - 2; i <= totalPage; i++) {
@@ -132,13 +135,11 @@
 								arr.push(str);
 							}
 						} else {
-							str = '<li><a  href="javascript:void(0)" style="' + string1 + '">' + (currentPage - 8) + '</a></li>';
-							arr.push(str);
-							str = '<li><a  href="javascript:void(0)" style="' + string1 + '">' + (currentPage - 7) + '</a></li>';
-							arr.push(str);
-							str = '<li><span style="' + string1 + '">...</span></li>';
-							arr.push(str);
-							for (var i = currentPage - 1; i <= currentPage + 1; i++) {
+							// str = '<li><a  href="javascript:void(0)" style="' + string1 + '">' + (currentPage - 8) + '</a></li>';
+							// arr.push(str);
+							// str = '<li><a  href="javascript:void(0)" style="' + string1 + '">' + (currentPage - 7) + '</a></li>';
+							// arr.push(str);
+							for (var i = currentPage - 0; i <= currentPage + 1; i++) {
 								if (i == currentPage) {
 									str = '<li class="active"><a  href="javascript:void(0)" style="' + string1 + string2 + '">' + (i) +
 										'</a></li>';
@@ -147,6 +148,9 @@
 								}
 								arr.push(str);
 							}
+							
+							str = '<li><span style="' + string1 + '">...</span></li>';
+							arr.push(str);
 						}
 					}
 
