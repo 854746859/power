@@ -253,7 +253,7 @@
 									] + "</a>";
 								post += "<i class='red_news'>[" + data[i]['post_label'] + "]</i></div>";
 								post += "<div class='news_time news_other'><span>发布于：" + data[i]['post_releasetime'] + "</span>";
-								post += "<span id=''>阅读数：" + data[i]['post_readnum'] + " </span><span id=''>点赞：" + data[i]['post_readnum'] +
+								post += "<span id=''>阅读数：" + data[i]['post_readnum'] + " </span><span id=''>点赞：" + data[i]['post_upnum'] +
 									"</span></div>";
 								post += "<div class='news_owner news_other'><span id=''>发帖人：" + data[i]['post_user_name'] + "</span>";
 								post += "<span id=''>最后回复人：" + data[i]['last_user_name'] + "</span><div class='share bdsharebuttonbox'>分享：";
@@ -301,7 +301,7 @@
 										post += "<i class='red_news'>[" + postdata[i]['post_label'] + "]</i></div>";
 										post += "<div class='news_time news_other'><span>发布于：" + postdata[i]['post_releasetime'] + "</span>";
 										post += "<span id=''>阅读数：" + postdata[i]['post_readnum'] + " </span><span id=''>点赞：" + postdata[i][
-												'post_readnum'
+												'post_upnum'
 											] +
 											"</span></div>";
 										post += "<div class='news_owner news_other'><span id=''>发帖人：" + postdata[i]['post_user_name'] +
