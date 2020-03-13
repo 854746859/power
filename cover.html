@@ -809,7 +809,11 @@
 				$('h2').removeClass("selected");
 				$(this).attr('class','selected');
 				var index = $('#top_list h2').index(this);//获取当前选中下标，0-3
-				var token = infodata.token;
+				if(infodata){
+                    var token = infodata.token;
+                }else{
+                    var token = '';
+                }
 				//后端判断
 				$.ajax({
 					url: sever_url+'coverinfo/chooselist',
