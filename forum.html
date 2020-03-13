@@ -455,7 +455,7 @@
 				<img src="images/people03.jpg" class="admin_logo"/>
 				<span class="lever">LV10</span>
 			</div>-->
-					<a href="">登录/注册</a>
+					<a href="login.html">登录/注册</a>
 					<a href="">快速发帖</a>
 				</div>
 			</div>
@@ -882,7 +882,7 @@
 							var num = data.data.recommend.length;
 							for(var i = 0; i < num; i++) {
 								var arr = data.data.recommend[i];
-								$("#recommend").append('<li><a id="' + arr.id + '" href="news_xq.html"><b>·</b><span>' + arr.post_title + '</span></a></li>')
+								$("#recommend").append('<li><a id="' + arr.id + '" href="forum.html?postid=' + arr.id + ' " ><b>·</b><span>' + arr.post_title + '</span></a></li>')
 							}
 						}
 					},
