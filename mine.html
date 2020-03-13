@@ -23,6 +23,8 @@
 		<!--end-->
 		<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
 		<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
+		<script src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)]
+		 type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" src="js/public.js"></script><!-- 菜单js等-->
 		<!-- 时间选择js -->
 		<script type="text/javascript" src="js/laydate.js"></script>
@@ -1475,7 +1477,7 @@
 			</div>
 			<p>版权所有：XX市综合行政执法局&nbsp;&nbsp;&nbsp;地址：XX省XX市工业园区特1号</p>
 		</div>
-
+		<input type="text" name="share_url" id="share_url" value="" hidden="hidden"/>
 		<script type="text/javascript" src="config.js"></script>
 		<script type="text/javascript" src="js/pop_ups/MiniDialog-es5.min.js"></script>
 		<script type="text/javascript" src="js/paging/bootstrap.min.js"></script>
@@ -1623,7 +1625,7 @@
 					success: function(res) {
 						// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
 						// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
-						console.log(res)
+//						console.log(res)
 						var postdata = res.data;
 
 						$(function() {
@@ -1674,9 +1676,14 @@
 								post += "<span id=''>最后回复人：" + postdata[i]['last_user_name'] +
 									"</span><div class='share bdsharebuttonbox'>分享：";
 								post +=
-									"<a href='#' class='bds_weixin' data-cmd='weixin'></a><a href='#' class='bds_tsina' data-cmd='tsina'></a></div></div></div><img style='width: 20px;height: 20px;' src='images/write.png' /><img style='width: 20px;height: 20px;' src='images/delete.png' /></li>";
+									"<a url='forum.html?postid=" + postdata[i]['id'] + "' class='bds_weixin' data-cmd='weixin'></a><a url='forum.html?postid=" + postdata[i]['id'] + "' class='bds_tsina' data-cmd='tsina'></a></div></div></div><img style='width: 20px;height: 20px;' src='images/write.png' /><img style='width: 20px;height: 20px;' src='images/delete.png' /></li>";
 								postlist.innerHTML = post;
 							}
+							$('.bdsharebuttonbox a').on('mousemove',function() {
+								var title = $(this).attr('title');
+								var Url = $(this).attr('url');
+								$("#share_url").val(title+"||"+Url);
+							})
 						}
 
 
@@ -1767,9 +1774,14 @@
 								post += "<span id=''>最后回复人：" + postdata[i]['last_user_name'] +
 									"</span><div class='share bdsharebuttonbox'>分享：";
 								post +=
-									"<a href='#' class='bds_weixin' data-cmd='weixin'></a><a href='#' class='bds_tsina' data-cmd='tsina'></a></div></div></div><img style='width: 20px;height: 20px;' src='images/write.png' /><img style='width: 20px;height: 20px;' src='images/delete.png' /></li>";
+									"<a url='forum.html?postid=" + postdata[i]['id'] + "' class='bds_weixin' data-cmd='weixin'></a><a url='forum.html?postid=" + postdata[i]['id'] + "' class='bds_tsina' data-cmd='tsina'></a></div></div></div><img style='width: 20px;height: 20px;' src='images/write.png' /><img style='width: 20px;height: 20px;' src='images/delete.png' /></li>";
 								qusetionlist.innerHTML = post;
 							}
+							$('.bdsharebuttonbox a').on('mousemove',function() {
+								var title = $(this).attr('title');
+								var Url = $(this).attr('url');
+								$("#share_url").val(title+"||"+Url);
+							})
 						}
 
 
@@ -1887,9 +1899,14 @@
 										post += "<span id=''>最后回复人：" + collectiondata[i]['last_user_name'] +
 											"</span><div class='share bdsharebuttonbox'>分享：";
 										post +=
-											"<a href='#' class='bds_weixin' data-cmd='weixin'></a><a href='#' class='bds_tsina' data-cmd='tsina'></a></div></div></div><img style='width: 20px;height: 20px;' src='images/write.png' /><img style='width: 20px;height: 20px;' src='images/delete.png' /></li>";
+											"<a url='forum.html?postid=" + collectiondata[i]['id'] + "' class='bds_weixin' data-cmd='weixin'></a><a url='forum.html?postid=" + collectiondata[i]['id'] + "' class='bds_tsina' data-cmd='tsina'></a></div></div></div><img style='width: 20px;height: 20px;' src='images/write.png' /><img style='width: 20px;height: 20px;' src='images/delete.png' /></li>";
 										collectionlist.innerHTML = post;
 									}
+									$('.bdsharebuttonbox a').on('mousemove',function() {
+										var title = $(this).attr('title');
+										var Url = $(this).attr('url');
+										$("#share_url").val(title+"||"+Url);
+									})
 								}
 
 

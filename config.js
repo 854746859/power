@@ -44,3 +44,27 @@ if(infodata != null){
 		admin_box.innerHTML = admin_box_head;
 	}
 }
+//分享
+window._bd_share_config = {
+	common: {
+		bdText: '分享的内容',
+		bdMini: "2", // 下拉浮层分享按钮的列数
+		bdMiniList: ['mshare', 'qzone', 'tsina', 'weixin', 'tqq', 'tieba', 'copy', 'print'], //  下拉浮层显示的内容，默认显示为 false
+		bdPic: '/assets/share.jpg', // 分享的图片
+		bdStyle: "0",
+		bdSize: "16",
+		bdUrl: 'http://192.168.1.107:8081/power/index.html', // 分享的地址
+		onBeforeClick: setConf // 在用户点击分享按钮时执行代码，更改配置。function(cmd,config){} cmd为分享目标id，config为当前设置，返回值为更新后的设置。
+	},
+	share: []
+};
+
+function setConf(cmd, config) {
+	var info = $("#share_url").val().split("||");
+//				info = info.split("||");
+	
+	config.bdUrl = 'http://114.55.35.82/power/'+info[1];
+	config.bdText = info[0];
+	console.log(config)
+	return config;
+}

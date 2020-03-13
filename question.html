@@ -18,6 +18,8 @@
 		<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
 		<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
 		<script type="text/javascript" src="js/public.js"></script><!-- 菜单js等-->
+		<script src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)]
+		 type="text/javascript" charset="utf-8"></script>
 		<!-- 时间选择js -->
 		<script type="text/javascript" src="js/laydate.js"></script>
 		<style>
@@ -664,6 +666,7 @@
 			</div>
 			<p>版权所有：XX市综合行政执法局&nbsp;&nbsp;&nbsp;地址：XX省XX市工业园区特1号</p>
 		</div>
+		<input type="text" name="share_url" id="share_url" value="" hidden="hidden"/>
 		<script type="text/javascript" src="config.js" ></script>
 		<script type="text/javascript" src="js/paging/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/paging/paging.js"></script>
@@ -686,33 +689,6 @@
 			// console.log(json.plate);
 			localStorage.setItem("plate", json.plate)
 			localStorage.setItem("type", json.type)
-
-			// 分享
-			window._bd_share_config = {
-				common: {
-					bdText: '分享的内容',
-					bdMini: "2", // 下拉浮层分享按钮的列数
-					bdMiniList: ['mshare', 'qzone', 'tsina', 'weixin', 'tqq', 'tieba', 'copy', 'print'], //  下拉浮层显示的内容，默认显示为 false
-					bdPic: '/assets/share.jpg', // 分享的图片
-					bdStyle: "0",
-					bdSize: "16",
-					bdUrl: 'http://192.168.1.107:8081/power/question.html', // 分享的地址
-					onBeforeClick: setConf // 在用户点击分享按钮时执行代码，更改配置。function(cmd,config){} cmd为分享目标id，config为当前设置，返回值为更新后的设置。
-				},
-				share: []
-			};
-
-			function setConf(cmd, config) {
-				if (url) {
-					config.bdUrl = url;
-					config.bdText = title;
-				}
-				return config;
-			}
-			$('.bdsharebuttonbox a').on('mouseover', function() {
-				title = $(this).data('title');
-				url = window.location.origin + $(this).data('url');
-			})
 
 			// ajax请求文章列表
 			function post(orders) {
@@ -789,9 +765,16 @@
 								post += "<div class='news_owner news_other'><span id=''>发帖人：" + data[i]['post_user_name'] + "</span>";
 								post += "<span id=''>最后回复人：" + data[i]['last_user_name'] + "</span><div class='share bdsharebuttonbox'>分享：";
 								post +=
-									"<a href='#' class='bds_weixin' data-cmd='weixin'></a><a href='#' class='bds_tsina' data-cmd='tsina'></a></div></div></div></li>";
+									"<a url='questionDetail.html?postid=" + data[i]['id'] + "&plate=" + json.plate +
+									"&plate_two=" + json.two + "' class='bds_weixin' data-cmd='weixin'></a><a url='questionDetail.html?postid=" + data[i]['id'] + "&plate=" + json.plate +
+									"&plate_two=" + json.two + "' class='bds_tsina' data-cmd='tsina'></a></div></div></div></li>";
 								postlist.innerHTML = post;
 							}
+							$('.bdsharebuttonbox a').on('mousemove',function() {
+								var title = $(this).attr('title');
+								var Url = $(this).attr('url');
+								$("#share_url").val(title+"||"+Url);
+							})
 						}
 					},
 				})
