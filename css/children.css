@@ -95,27 +95,33 @@
 	
     /*margin-top: 30px;*/
 	float: left; 
-	/*width: 720px;*/ 
+	width: 760px; 
 	overflow: hidden;
 }
 /*当前标题*/
 .zy_right_con .zy_title{
 	display: flex;
 	width: 100%;
-	border-bottom: #005389 solid 1px;
-	margin-bottom: 20px;
+	border-bottom: #dbdbdb solid 1px;
 }
 .selected{
-	font-size:24px;
+	font-size:20px;
 	font-weight: bold;
 	color: #e0620d;
 	position: relative;
-	float: left;
-	padding-bottom: 12px;
+	font-family: PingFang SC;
+	/* float: left; */
+	margin-bottom: 12px;
+	/* cursor: pointer; */
+}
+.zy_right_con .zy_title h2{
+	font-size:18px;
+	margin-right: 10px;
 	cursor: pointer;
 }
 .zy_right_con .zy_title h2:nth-child(n+2){
-	margin-left: 10PX;
+	font-size:18px;
+	/* margin-left: 10px; */
 	cursor: pointer;
 }
 .zy_right_con .zy_title h2 i{
@@ -278,7 +284,7 @@
 .news_list{
 	height: 750px;
 }
-.news_list ul li{ line-height: 42px; display: flex; flex-direction: row;padding: 10px 0;border-bottom: 1px solid #eee;}
+.news_list ul li{ line-height: 38px; display: flex; flex-direction: row;padding: 10px 0;border-bottom: 1px solid #eee;}
 .news_list ul li img{
 	width: 90px;
 	height: 90px;
@@ -287,7 +293,7 @@
 	white-space: nowrap; text-overflow: ellipsis; overflow: hidden; 
 }
 .news_list ul li b{ color: #666; display:inline-block; margin-right: 7px;vertical-align: middle; }
-.news_list ul li span{ float: right; color: #999;font-size: 14px; }
+.news_list ul li span{ float: right; color:rgba(0,0,0,0.6); font-size: 14px; }
 .news_list ul li a:hover{ color: #005389; text-indent: .3em; text-decoration: underline; font-weight: bold;}
 .news_list ul li:hover b{ color: #005389; }
 
