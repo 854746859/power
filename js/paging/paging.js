@@ -246,21 +246,21 @@
 								// console.log(res)
 								var data = res.data;
 								for (var i = 0; i < data.length; i++) {
-									post += "<li><img src='" + data[i].post_img + "'/><div class='blog_list'>";
-									post += "<div class='news_title'><a href='qustionDetail.html?postid=" + data[i]['id'] + "''>" + data[i]
-										['post_title'] + "</a>";
-									post += "<i class='red_news'>[" + data[i]['post_label'] + "]</i></div>";
-									post += "<div class='news_time news_other'><span>发布于：" + data[i]['post_releasetime'] + "</span>";
-									post += "<span id=''>阅读数：" + data[i]['post_readnum'] + " </span><span id=''>点赞：" + data[i][
-										'post_readnum'
-									] + "</span></div>";
-									post += "<div class='news_owner news_other'><span id=''>发帖人：" + data[i]['post_user_name'] + "</span>";
-									post += "<span id=''>最后回复人：" + data[i]['last_user_name'] +
-										"</span><div class='share bdsharebuttonbox'>分享：";
-									post +=
-										"<a href='#' class='bds_weixin' data-cmd='weixin'></a><a href='#' class='bds_tsina' data-cmd='tsina'></a></div></div></div></li>";
-									postlist.innerHTML = post;
-								}
+								post += "<li><img src='" + data[i].post_img + "'/><div class='blog_list'>";
+								post += "<div class='news_title'><a href='forum.html?postid=" + data[i]['id'] + "&plate=" + json.plate +
+									"&plate_two=" + json.two + "''>" + data[i][
+										'post_title'
+									] + "</a>";
+								post += "<i class='red_news'>[" + data[i]['post_label'] + "]</i></div>";
+								post += "<div class='news_time news_other'><span>发布于：" + data[i]['post_releasetime'] + "</span>";
+								post += "<span id=''>阅读数：" + data[i]['post_readnum'] + " </span><span id=''>点赞：" + data[i]['post_readnum'] +
+									"</span></div>";
+								post += "<div class='news_owner news_other'><span id=''>发帖人：" + data[i]['post_user_name'] + "</span>";
+								post += "<span id=''>最后回复人：" + data[i]['last_user_name'] + "</span><div class='share bdsharebuttonbox'>分享：";
+								post +=
+									"<a href='#' class='bds_weixin' data-cmd='weixin'></a><a href='#' class='bds_tsina' data-cmd='tsina'></a></div></div></div></li>";
+								postlist.innerHTML = post;
+							}
 							},
 						})
 						// 我的文章分页
