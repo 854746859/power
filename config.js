@@ -40,7 +40,7 @@ if(infodata != null){
 	var admin_box = document.getElementById("admin_box");
 	
 	if( infodatatoken.length > 1){
-		admin_box_head += "<div class='admin'><a href='mine.html'><img class='admin_logo' src='" + infodata.user_head + "'  /></a><a href=''>快速发帖</a></div>";
+		admin_box_head += "<div class='admin'><a href='mine.html'><img class='admin_logo' src='" + infodata.user_head + "'  /></a><a href='mine.html'>快速发帖</a></div>";
 		admin_box.innerHTML = admin_box_head;
 	}
 }
