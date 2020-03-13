@@ -350,6 +350,29 @@
 				width: 100%;
 				height: 300px;
 			}
+			/*鼠标移入菜单*/
+			.hiden_list{
+				width: 120px;
+				position: absolute;
+				right: -220px;
+				top:60px;
+				background-color: rgb(255,255,255);
+				z-index: 9;
+			}
+			.hiden_list ul li{
+				border-bottom:1px dotted;
+			}
+			.hiden_list_w{
+				width: 120px;
+				position: absolute;
+				right: -220px;
+				top:60px;
+				background-color: rgb(255,255,255);
+				z-index: 9;
+			}
+			.hiden_list_w ul li{
+				border-bottom:1px dotted;
+			}
 		</style>
 	</head>
 
@@ -459,6 +482,20 @@
 					<a href="">快速发帖</a>
 				</div>
 			</div>
+		</div>
+		<!-- 鼠标移入显示的菜单 -->
+		<div class="hiden_list">
+			<ul>
+				<li><a href="mine.html">个人中心</a></li>
+				<li><a href="http://114.55.35.82/dist/index.html">管理员中心</a></li>
+				<li><a href="login.html">退出登陆</a></li>
+			</ul>
+		</div>
+		<div class="hiden_list_w">
+			<ul>
+				<li><a href="mine.html">个人中心</a></li>
+				<li><a href="login.html">退出登陆</a></li>
+			</ul>
 		</div>
 		<!-- top end -->
 
@@ -787,11 +824,29 @@
 				var admin_box = document.getElementById("admin_box");
 			
 				if (infodatatoken.length > 1) {
-					admin_box_head += "<div class='admin'><a href='mine.html'><img class='admin_logo' src='" + infodata.user_head +
+					admin_box_head += "<div class='admin'><a href='mine.html'><img id='head'  class='admin_logo' src='" + infodata.user_head +
 						"'  /></a><a href=''>快速发帖</a></div>";
 					admin_box.innerHTML = admin_box_head;
 				}
 			}
+
+			$('.hiden_list').hide();
+			$('.hiden_list_w').hide();
+			//监听头像鼠标移入事件
+			$("#head").mouseover(function(){
+				if(infodata.user_power_num==4){
+					$('.hiden_list_w').show();
+				}else{
+					$('.hiden_list').show();
+				}
+			});
+			$(".bd").mouseover(function(){
+				if(infodata.user_power_num==4){
+					$('.hiden_list_w').hide();
+				}else{
+					$('.hiden_list').hide();
+				}
+			});
 			
 			//评论点赞
 			function commentSupport(commentId){
