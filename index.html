@@ -577,9 +577,14 @@
 				return theRequest;
 			}
 			var json = GetRequest();
-			// console.log(json);
+			console.log(json);
 			localStorage.setItem("plate", json.plate)
 			localStorage.setItem("type", json.type)
+			localStorage.setItem("searchv", json.searchv)
+			// localStorage.setItem("type", json.type)
+			if (json.search == '1') {
+				searchlist();
+			}
 
 			// ajax请求文章列表
 			function postlist(orders) {
@@ -764,8 +769,9 @@
 			// 搜索
 			var search = document.getElementById("search");
 			var btn = document.getElementById("btn");
-			btn.addEventListener('click', function() {
-				// alert(search.value);
+			function searchlist() {
+			var plate = localStorage.getItem("plate")
+			var searchv = localStorage.getItem("searchv")
 				$.ajax({
 					url: 'http://114.55.35.82/tp6_forum/public/index.php/search/plate',
 					type: 'post',
@@ -773,7 +779,7 @@
 						plate: plate,
 						rows: '8',
 						page: '1',
-						search: search.value,
+						search: searchv,
 						order: '0'
 					},
 					// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
@@ -792,11 +798,11 @@
 								sex: 'black',
 								border: '1px solid #ddd'
 							};
-
+			
 							var b = {
 								background: '#005389'
 							};
-
+			
 							$(".pagination").Paging({
 								classStyle: a, //a标签样式的对象,也可以不定义使用默认值
 								backClass: b, //选中的页数的背景，也可以不定义使用默认值
@@ -809,12 +815,12 @@
 								},
 								pages: "post",
 							});
-
+			
 						});
 						if (data.length === 0) {
 							post += "<h3>暂无数据</h3>";
 							content.innerHTML = post;
-
+			
 						} else {
 							if (document.getElementById("postlist")) {
 								//存在
@@ -837,23 +843,35 @@
 									"</span><div class='share bdsharebuttonbox'>分享：";
 								post +=
 									"<a url='forum.html?postid=" + data[i]['id'] + "&plate=" + json.plate +
-									"&plate_two=" + json.two + "' class='bds_weixin' data-cmd='weixin'></a><a url='forum.html?postid=" + data[
+									"&plate_two=" + json.two + "' class='bds_weixin' data-cmd='weixin'></a><a url='forum.html?postid=" +
+									data[
 										i]
 									['id'] + "&plate=" + json.plate +
 									"&plate_two=" + json.two + "' class='bds_tsina' data-cmd='tsina'></a></div></div></div></li>";
 								postlist.innerHTML = post;
 							}
-							
+			
 							$('.bdsharebuttonbox a').on('mousemove', function() {
 								var title = $(this).attr('title');
 								var Url = $(this).attr('url');
 								$("#share_url").val(title + "||" + Url);
 							})
 						}
-
+			
 					},
 				})
+			}
+			btn.addEventListener('click', function() {
+				localStorage.setItem("searchv", search.value)
+				searchlist();
 			})
+			// 其他页面
+			// var search = document.getElementById("search");
+			// var btn = document.getElementById("btn");
+			// btn.addEventListener('click', function() {
+			// 	window.location.href = "/power/index.html?type=0&plate=1&two=0&search=1&searchv=标题";
+			
+			// })
 		</script>
 
 	</body>
