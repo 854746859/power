@@ -1612,6 +1612,34 @@
 						$(li_arr[i]).removeAttr("class");
 					}
 				}
+			}else if(getUrldata("fast") == 2){
+				var part_arr = $(".zy_listbox");
+				var li_arr = $("#navbar li");
+				for(var i = 0; i < part_arr.length; i++) {
+					if($(part_arr[i]).attr("id") == "original") {
+						$(part_arr[i]).removeAttr("hidden");
+						$(li_arr[i]).attr("class", "select");
+						$("#pagiNation").attr("hidden", "hidden");
+					} else {
+						$(part_arr[i]).attr("hidden", "hidden");
+						$(li_arr[i]).removeAttr("class");
+					}
+				}
+				original();
+			}else if(getUrldata("fast") == 3){
+				var part_arr = $(".zy_listbox");
+				var li_arr = $("#navbar li");
+				for(var i = 0; i < part_arr.length; i++) {
+					if($(part_arr[i]).attr("id") == "question") {
+						$(part_arr[i]).removeAttr("hidden");
+						$(li_arr[i]).attr("class", "select");
+						$("#pagiNation").attr("hidden", "hidden");
+					} else {
+						$(part_arr[i]).attr("hidden", "hidden");
+						$(li_arr[i]).removeAttr("class");
+					}
+				}
+				question(1);
 			}
 			$(function(){
 				//第一种方法
@@ -2101,10 +2129,10 @@
 					$(this).attr("class", "select");
 					// 原创
 					if(nav_id === "#original") {
-						original();
+						window.location.href = "mine.html?fast=2";
 					} else // 问答
 						if(nav_id === "#question") {
-							question(1);
+							window.location.href = "mine.html?fast=3";
 							// 收藏
 						} else if(nav_id === "#favorite") {
 						$.ajax({
