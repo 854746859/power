@@ -1146,7 +1146,7 @@
 					dataType: "json",
 					data: {
 						article_id: post_id,
-						token: obj.token
+						token: obj?obj.token:""
 					},
 					success: function(data) {
 						console.log(data)
@@ -1349,7 +1349,7 @@
 							url:sever_url+"comment/publish",
 							async:true,
 							data:{
-								token: obj.token,
+								token: obj?obj.token:"",
 								post_id: post_id,
 								comment_content: $("#comment_content").val()
 							},

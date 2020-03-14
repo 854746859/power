@@ -984,7 +984,7 @@
 						url:sever_url+"post/support",
 						async:true,
 						data:{
-							token:obj.token,
+							token:obj?obj.token:"",
 							post_id:getUrldata('postid'),
 							comment_id:commentId
 						},
@@ -1010,7 +1010,7 @@
 						url:sever_url+"follow/add",
 						async:true,
 						data:{
-							token:obj.token,
+							token:obj?obj.token:"",
 							user_id:$("#user_head").attr("name")
 						},
 						dataType:"json",
@@ -1030,7 +1030,7 @@
 						url:sever_url+"my/follow/del",
 						async:true,
 						data:{
-							token:obj.token,
+							token:obj?obj.token:"",
 							user_id:$("#user_head").attr("name")
 						},
 						dataType:"json",
@@ -1053,7 +1053,7 @@
 					dataType: "json",
 					data: {
 						article_id: post_id,
-						token: obj.token
+						token: obj?obj.token:""
 					},
 					success: function(data) {
 									console.log(data)
@@ -1164,7 +1164,7 @@
 					}else{
 						var obj = sessionStorage.getItem("data");
 						obj = JSON.parse(obj);
-						var token = obj.token;
+						var token = obj?obj.token:"";
 						var comment_id = "";
 						var reprot_content = "";
 						var reward_coinnum = "";
@@ -1259,7 +1259,7 @@
 							url:sever_url+"comment/publish",
 							async:true,
 							data:{
-								token: obj.token,
+								token: obj?obj.token:"",
 								post_id: post_id,
 								comment_content: $("#comment").val()
 							},
