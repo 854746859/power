@@ -172,6 +172,7 @@
 		</div>
 		<script type="text/javascript" src="config.js" ></script>
 		<script type="text/javascript" src="js/jquery-1.11.0.min.js" ></script>
+		<script type="text/javascript" src="js/pop_ups/MiniDialog-es5.min.js" ></script>
 		<script type="text/javascript">
 			$(document).ready(function(){
 				$(":checkbox").on("change",function(){
@@ -223,6 +224,8 @@
 										}
 									});
 									window.history.go(-2);
+								}else{
+									Dialog.error( "错误", data.msg );
 								}
 							},
 							error:function(){

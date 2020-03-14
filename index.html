@@ -18,8 +18,7 @@
 		<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
 		<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
 		<script type="text/javascript" src="js/public.js"></script><!-- 菜单js等-->
-		<script src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)]
-		 type="text/javascript" charset="utf-8"></script>
+		
 		<!--百度分享插件-->
 		<!-- 时间选择js -->
 		<script type="text/javascript" src="js/laydate.js"></script>
@@ -541,11 +540,15 @@
 		</div>
 
 		<input type="text" name="share_url" id="share_url" value="" hidden="hidden" />
-		<!-- <script type="text/javascript" src="js/paging/jquery.min.js"></script> -->
+		<script id="baidu_share" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" src="config.js"></script>
 		<script type="text/javascript" src="js/paging/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/paging/paging.js"></script>
 		<script type="text/javascript">
+			window.onload = BaiduShare();
+			function BaiduShare(){
+				$("#baidu_share").attr("src",'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5));
+			}
 			// 获取我的信息
 			var data = sessionStorage.getItem("data");
 			var infodata = eval('(' + data + ')');
