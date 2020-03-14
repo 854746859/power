@@ -957,19 +957,19 @@
 							<form action="">
 								<div class="txt-fld">
 									<label for="">头像</label>
-									<input id="user_realname" name="" type="file" />
+									<input id="imageFile" name="" type="file" />
 								</div>
 								<div class="txt-fld">
 									<label for="">用户名</label>
-									<input id="user_company" name="" type="text" />
+									<input id="userName" name="" type="text" />
 								</div>
 								<div class="txt-fld">
 									<label for="">地址</label>
-									<input id="user_number" name="" type="text" />
+									<input id="userAddress" name="" type="text" />
 								</div>
 								<div class="txt-fld">
 									<label for="">个人简介</label>
-									<textarea name="" rows="" cols=""></textarea>
+									<textarea id="userProfile" name="" rows="" cols=""></textarea>
 								</div>
 								<div class="submit">
 									<input type="button" name="" id="edit" value="确认" />
@@ -1982,16 +1982,32 @@
 			})
 			//编辑
 			$("#edit").click(function() {
+				var picfile = $("#imageFile").get(0).files[0];
+				var formData = new FormData();
+				formData.append("imgFile", picfile);
+				formData.append("token", infodata.token);
+				formData.append("user_name", $("#userName").val());
+				formData.append("user_profile", $("#userProfile").val());
+				formData.append("user_address", $("#userAddress").val());
 				$.ajax({
 					type:"post",
-					url:sever_url+"reg/perfect",
+					url:sever_url+"/perfect",
 					async:true,
-					data:{
-						
-					},
+					processData: false,
+					contentType: false,
+					data:formData,
 					dataType:"json",
 					success:function(data){
-						
+						console.log(data)
+						if(data.code=="200"){
+							var obj = JSON.stringify(data.data);
+							sessionStorage.setItem("data",obj);
+							$("#head").attr("src",data.data.user_head);
+							$("#user_head img").attr("src",data.data.user_head);
+							$("#user_name").html(data.data.user_name);
+							$("#user_profile").html(data.data.user_profile);
+							$("#user_address").html(data.data.user_address);
+						}
 					}
 				});
 			})
