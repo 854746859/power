@@ -1267,6 +1267,7 @@ nav > div ul ul li a {
   font-size:  24px;
   font-family:PingFangSC-Regular,PingFang SC;
   font-weight: 400;
+  line-height: 32px;
 }
 
 nav > div ul ul li a:before {
