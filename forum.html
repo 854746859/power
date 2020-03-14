@@ -48,7 +48,10 @@
 			}
 			
 			.blog_detail {
-				width: 100%;
+				width: 96%;
+				padding-left: 2%;
+				padding-right: 2%;
+				padding-bottom: 8px;
 				border-bottom: 1px solid #eee;
 				margin-top: 5px;
 				font-size: 14px;
@@ -56,7 +59,10 @@
 				flex-direction: row;
 				justify-content: space-between;
 			}
-			
+			#time{
+				font-family:HelveticaNeue;
+				color:rgba(0,0,0,0.65);
+			}
 			.post_type {
 				display: flex;
 				flex-direction: row;
@@ -85,6 +91,7 @@
 			}
 			
 			.state span {
+				line-height: 18px;
 				font-size: 18px;
 				color: red;
 				margin-right: 5px;
@@ -146,6 +153,10 @@
 				color: #fff;
 				background-color: #1a83da;
 				border-radius: 3px;
+				margin-bottom: 8px;
+			}
+			#user_release_sum,#user_fans_sum,#post_upnum,#user_follow_sum{
+				margin-top: 8px;
 			}
 			
 			.trivial {
@@ -229,8 +240,8 @@
 			}
 			
 			.five_bt .post_icon img {
-				width: 25px;
-				height: 25px;
+				width: 18px;
+				height: 18px;
 				margin-right: 5px;
 			}
 			
@@ -261,8 +272,8 @@
 			}
 			
 			.other_visitor img {
-				width: 30px;
-				height: 30px;
+				width: 18px;
+				height: 18px;
 			}
 			
 			.other_visitor span:nth-last-child(n+2),
@@ -309,6 +320,10 @@
 				height: 120px;
 				border: 2px solid #eee;
 				font-size: 18px;
+			}
+			#readNum{
+				font-family:HelveticaNeue;
+				color:rgba(0,0,0,0.85);
 			}
 			
 			.commet .push_bt {
@@ -380,30 +395,29 @@
 				padding-bottom: 2px;
 				display: none;
 				background: #FFF;
-				border-radius: 5px;
-				-moz-border-radius: 5px;
-				-webkit-border-radius: 5px;
-				box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.7);
-				-webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
-				-moz-box-shadow: 0 0px 4px rgba(0, 0, 0, 0.7);
+				border-radius: 6px;
+				-moz-border-radius: 6px;
+				-webkit-border-radius: 6px;
+				/* box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.7); */
+				/* -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+				-moz-box-shadow: 0 0px 4px rgba(0, 0, 0, 0.7); */
 			}
 			#signup-header {
-				background: url(LeanModal/css/img/hd-bg.png);
-				padding: 18px 18px 14px 18px;
-				border-bottom: 1px solid #CCC;
-				border-top-left-radius: 5px;
-				-moz-border-radius-topleft: 5px;
-				-webkit-border-top-left-radius: 5px;
-				border-top-right-radius: 5px;
-				-moz-border-radius-topright: 5px;
-				-webkit-border-top-right-radius: 5px;
+				/* background: url(LeanModal/css/img/hd-bg.png); */
+				padding: 8px 18px 8px 12px;
+				background: #1a83da;
+				border-top-left-radius: 6px;
+				-moz-border-radius-topleft: 6px;
+				-webkit-border-top-left-radius: 6px;
+				border-top-right-radius: 6px;
+				-moz-border-radius-topright: 6px;
+				-webkit-border-top-right-radius: 6px;
 			}
 			#signup-header h2 {
-				color: #444;
-				font-size: 2em;
-				font-weight: 700;
-				margin-bottom: 3px;
-				text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+				font-size:24px;
+				font-family:PingFangSC-Regular,PingFang SC;
+				font-weight:400;
+				color:#fff;
 			}
 			#signup-header p {
 				color: #444;
@@ -422,13 +436,6 @@
 				background: url(LeanModal/css/img/modal_close.png);
 				z-index: 2;
 			}
-			#signup-header h2 {
-				color: #444;
-				font-size: 2em;
-				font-weight: 700;
-				margin-bottom: 3px;
-				text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
-			}
 			#signup-header p {
 				color: #444;
 				font-size: 1.3em;
@@ -437,6 +444,8 @@
 				text-shadow: none;
 			}
 			.txt-fld {
+				display: flex;
+				align-items: center;
 				position: relative;
 				width: 364px;
 				padding: 14px 20px;
@@ -453,10 +462,11 @@
 				display: block;
 				float: left;
 				width: 90px;
-				padding-top: 8px;
-				color: #222;
-				font-size: 1.3em;
 				text-align: left;
+				font-size:18px;
+				font-family:PingFangSC-Regular,PingFang SC;
+				font-weight:400;
+				color:rgba(0,0,0,0.85);
 			}
 			
 			.txt-fld input,textarea {
@@ -497,6 +507,7 @@
 				display: flex;
 				flex-direction: row;
 				justify-content: flex-end;
+				padding: 8px 0px;
 			}
 			.submit input{
 				margin-right: 10px;
@@ -504,6 +515,7 @@
 				height: 30px;
 				color: #fff;
 				background-color: #1a83da;
+				border-radius: 3px;
 			}
 		</style>
 	</head>
@@ -700,11 +712,12 @@
 							</div>
 							<div class="public_time">
 								<span>发布于：</span>
-								<span id="time">0000-00-00 00:00:00</span>
+								<span id="time"></span>
 							</div>
 							<div class="read_num">
+								<span>阅读数：</span>
 								<span id="readNum">
-									阅读数：0
+									
 								</span>
 							</div>
 							<!--<div class="collect">
@@ -816,17 +829,17 @@
 							<div id="signup-ct">
 								<div id="signup-header">
 									<h2>打赏金额</h2>
-									<a class="modal_close" href="#"></a>
+									<!-- <a class="modal_close" href="#"></a> -->
 								</div>
 								<form action="">
 									<div class="txt-fld">
 										<label for="">论坛币</label>
-										<input id="reward_coinnum" name="" type="text" />
+										<input id="reward_coinnum" name="" type="text" placeholder="请输入打赏的论坛币"/>
 									</div>
-									<div class="txt-fld">
+									<!-- <div class="txt-fld">
 										<label for="">人民币</label>
-										<input id="reward_money" name="" type="text" />
-									</div>
+										<input id="reward_money" name="" type="text" placeholder="请点击扫码"/>
+									</div> -->
 									<div class="submit">
 										<input type="button" name="" id="check" value="确认" />
 									</div>
@@ -1000,11 +1013,11 @@
 				var infodatatoken = infodata.token
 				var admin_box = document.getElementById("admin_box");
 			
-				if (infodatatoken.length > 1) {
-					admin_box_head += "<div class='admin'><a href='mine.html'><img id='head'  class='admin_logo' src='" + infodata.user_head +
-						"'  /></a><a href=''>快速发帖</a></div>";
-					admin_box.innerHTML = admin_box_head;
-				}
+				// if (infodatatoken.length > 1) {
+				// 	admin_box_head += "<div class='admin'><a href='mine.html'><img id='head'  class='admin_logo' src='" + infodata.user_head +
+				// 		"'  /></a><a href=''>快速发帖</a></div>";
+				// 	admin_box.innerHTML = admin_box_head;
+				// }
 			}
 
 			$('.hiden_list').hide();
@@ -1140,7 +1153,7 @@
 							}
 
 							$("#time").html(data.data.post_releasetime); //发布时间
-							$("#readNum").html("阅读数：" + Number(data.data.post_readnum)); //阅读数
+							$("#readNum").html(Number(data.data.post_readnum)); //阅读数
 							$("#postUpnum").html(Number(data.data.post_upnum)); //点赞数
 							$("#postForwardnum").html(Number(data.data.post_forwardnum)); //转发数
 							$("#postCollectionnum").html(Number(data.data.post_collectionnum)); //收藏数
@@ -1197,7 +1210,7 @@
 							$("#comment_box").empty();
 							for(var i = 0; i < length; i++) {
 								var obj = data.data[i];
-								$("#comment_box").append('<div class="content_box"><div class="visitor"><div class="visitor_info"><div class="visitor_pic"><img id="' + obj.id + '" src="' + obj.user_head + '"/><span >' + obj.user_name + '</span></div><div class="commet_time"><span>' + obj.comment_time + '</span><span>【' + obj.comment_layernum + '楼】</span></div></div><div class="other_visitor"><span>举报</span><span>回复</span><span><img onclick=commentSupport('+obj.id+') src="images/good.png"/><span id="comment'+obj.id+'">' + Number(obj.comment_upnum) + '</span></span></div></div><div class="comment_text"><p>' + obj.comment_content + '</p></div></div>');
+								$("#comment_box").append('<div class="content_box"><div class="visitor"><div class="visitor_info"><div class="visitor_pic"><img id="' + obj.id + '" src="' + obj.user_head + '"/><span >' + obj.user_name + '</span></div><div class="commet_time"><span>' + obj.comment_time + '</span><span>【' + obj.comment_layernum + '楼】</span></div></div><div class="other_visitor"><span>举报</span><span>回复</span><span style="display:flex;align-items: center;"><img onclick=commentSupport('+obj.id+') src="images/support.png"/><span id="comment'+obj.id+'">' + Number(obj.comment_upnum) + '</span></span></div></div><div class="comment_text"><p>' + obj.comment_content + '</p></div></div>');
 							}
 						},
 						error: function() {
