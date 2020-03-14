@@ -27,7 +27,6 @@
 		<!--end-->
 		<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
 		<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
-		<script src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)] type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" src="js/public.js"></script>
 		<!-- 菜单js等-->
 		<script type="text/javascript" src="LeanModal/js/jquery.leanModal.min.js"></script>
@@ -1589,7 +1588,12 @@
 		<script type="text/javascript" src="js/pop_ups/MiniDialog-es5.min.js"></script>
 		<script type="text/javascript" src="js/paging/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/paging/paging.js"></script>
+		<script id="baidu_share" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
+			window.onload = BaiduShare();
+			function BaiduShare(){
+				$("#baidu_share").attr("src",'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5));
+			}
 			// 获取当前时间
 			var day2 = new Date();
 			day2.setTime(day2.getTime());
@@ -1818,7 +1822,6 @@
 
 			// 获取我的原创
 			function original() {
-
 				$.ajax({
 					url: sever_url + 'my/article',
 					type: 'post',

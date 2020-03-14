@@ -299,7 +299,7 @@
 	white-space: nowrap; text-overflow: ellipsis; overflow: hidden; 
 }
 .news_list ul li b{ color: #666; display:inline-block; margin-right: 7px;vertical-align: middle; }
-.news_list ul li span{ float: right; color:rgba(0,0,0,0.6); font-size: 14px; }
+.news_list ul li span{ float: right; color:rgba(0,0,0,0.6); font-size: 14px; min-width: 80px;}
 .news_list ul li a:hover{ color: #005389; text-indent: .3em; text-decoration: underline; font-weight: bold;}
 .news_list ul li:hover b{ color: #005389; }
 
