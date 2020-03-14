@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>jQuery简单弹出遮罩层插件带关闭|www.bootstrapmb.com</title>
+		<meta name="description" content="leanModal - a JQuery modal plugin that works with your CSS" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('a[rel*=leanModal]').leanModal({
+					top: 200,
+					closeButton: ".modal_close"
+				});
+			});
+		</script>
+
+	</head>
+
+	<body>
+
+		<p id="examples" class="section box">
+			<strong>例子:</strong>
+			<a id="go" rel="leanModal" name="test" href="#test">点击这里</a> |
+			<a id="go" rel="leanModal" name="signup" href="#signup">带关闭</a>
+		</p>
+		<div id="signup">
+			<div id="signup-ct">
+				<div id="signup-header">
+					<h2>创建一个新账号</h2>
+
+					<a class="modal_close" href="#"></a>
+				</div>
+
+				<form action="">
+
+					<div class="txt-fld">
+						<label for="">用户名</label>
+						<input id="" class="good_input" name="" type="text" />
+
+					</div>
+					<div class="txt-fld">
+						<label for="">Email</label>
+						<input id="" name="" type="text" />
+					</div>
+					<div class="txt-fld">
+						<label for="">密码</label>
+						<input id="" name="" type="text" />
+
+					</div>
+					<div class="btn-fld">
+						<button type="submit">注册 &raquo;</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div id="test">
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum libero purus, convallis nec vestibulum eget, luctus vitae purus. Vestibulum non mauris et sem vulputate pellentesque ac a turpis. Ut vel lacus vitae justo vestibulum lobortis. Nunc ipsum ipsum, laoreet id dictum nec, fermentum vel purus. Maecenas nisl felis, faucibus non rutrum eu, sollicitudin sed ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent dignissim lacinia tempus. Nulla facilisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla facilisi. Nulla accumsan pellentesque velit, a malesuada diam tristique a. Fusce eleifend magna erat, et imperdiet orci. Quisque sapien mauris, malesuada eu tristique pulvinar, placerat id ligula. Vivamus vitae viverra nulla. Donec eget turpis vel erat malesuada sodales.</p>
+		</div>
+	</body>
+
+</html>

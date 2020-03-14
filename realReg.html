@@ -24,7 +24,6 @@
 		}
 		.contain{
 			float: right;
-			margin-top: 30px;
 			min-width: 400px;
 			width: 30%;
 			height: 600px;
@@ -45,7 +44,7 @@
 		.title_second{
 			font-size: 30px;
 			color: #707070;
-			margin-top: 30px;
+			margin-top: 20px;
 		}
 		.login_body{
 			display: flex;
@@ -64,7 +63,7 @@
 			display: flex;
 			flex-direction: row;
 			align-items: center;
-			margin-top: 25px;
+			margin-top: 15px;
 		}
 		.put_in span{
 			font-size: 16px;
@@ -96,7 +95,7 @@
 		#code{
 			position: relative;
 			min-width: 50px;
-			top: -8px;
+			top: -205px;
 			margin-left: 5px;
 			font-size:14px;
 			color:rgba(112,112,112,1);
@@ -113,7 +112,7 @@
 			justify-content: space-around;
 		}
 		.bt_box input{
-			width:60%;
+			width:30%;
 			height:40px;
 			background:rgba(29,188,184,1);
 			opacity:1;
@@ -129,10 +128,27 @@
 					<div class="min">欢迎你</div>
 				</div>
 				<div class="title_second">
-					用户注册
+					实名注册
 				</div>
 				<div class="login_body">
 					<div class="input_box">
+						<div class="put_in">
+							<span>真实姓名：</span><input id="user_realname" type="text" value=""/>
+						</div>
+						<div class="put_in">
+							<span>身份证号：</span><input id="idcard_number" type="number" value=""/>
+						</div><div class="put_in">
+							<span>单位/学校：</span><input id="user_company" type="text" value=""/>
+						</div>
+						<div class="put_in">
+							<span>工号/学号：</span><input id="user_number" type="text" value=""/>
+						</div>
+						<div class="put_in">
+							<span>手机号码：</span><input id="user_phone" type="number" value=""/>
+						</div>
+						<div class="put_in">
+							<span>验证码：</span><input id="the_code" type="text" value=""/>
+						</div>
 						<div class="put_in">
 							<span>账号：</span><input id="user_account" type="text" value=""/>
 						</div>
@@ -145,12 +161,6 @@
 						<div class="put_in">
 							<span>邮箱：</span><input id="user_mailbox" type="email" value=""/>
 						</div>
-						<div class="put_in">
-							<span>手机号码：</span><input id="user_phone" type="number" value=""/>
-						</div>
-						<div class="put_in">
-							<span>验证码：</span><input id="the_code" type="text" value=""/>
-						</div>
 					</div>
 					<div id="code">
 						验证码
@@ -160,12 +170,9 @@
 					<div class="protocol">
 						<input type="checkbox" name="" id="" value="" id="check" />我已阅读并同意服务条款点击阅读<a href="">注册协议</a>
 					</div>
-					<div class="tips">
-						tips：实名注册可获得论坛币、可发起提问，能更好体验哦
-					</div>
 				</div>
 				<div class="bt_box">
-					<!--<input type="button" name="" id="realReg" value="实名注册"/>-->
+					<input type="button" name="" id="back" value="返回快速注册"/>
 					<input type="button" name="" id="submit" value="确定" disabled="disabled" style="opacity: 0.5;"/>
 				</div>
 			</div>
@@ -184,16 +191,20 @@
 			        	$("#submit").css("opacity","0.5");
 			        }
 			    });
-			    $("#realReg").click(function(){
-			    	window.location.href="realReg.html";
+			    $("#back").click(function(){
+			    	window.history.go(-1);
 			    })
 				$("#submit").click(function(){
 					if($("#user_password").val()==$("#user_password_again").val()){
 						$.ajax({
 							type:"post",
-							url:sever_url+"reg",
+							url:sever_url+"reg/realreg",
 							async:true,
 							data:{
+								user_realname:$("#user_realname").val(),
+								user_company:$("#user_company").val(),
+								user_number:$("#user_number").val(),
+								idcard_number:$("#idcard_number").val(),
 								user_account:$("#user_account").val(),
 								user_password:$("#user_password").val(),
 								user_mailbox:$("#user_mailbox").val(),
@@ -203,27 +214,9 @@
 							dataType:"json",
 							success:function(data){
 								console.log(data)
-								if(data.code=="200"){
-									$.ajax({
-										type:"post",
-										url:sever_url+"login",
-										async:true,
-										data:{
-											user_account: $("#user_account").val(),
-											user_password: $("#user_password").val()
-										},
-										dataType:"json",
-										success:function(data){
-											console.log(data)
-											if(data.code=='200'){
-												var obj = JSON.stringify(data.data);
-												sessionStorage.setItem("data",obj);
-												window.location.href="mine.html";
-											}
-										}
-									});
-									window.history.go(-2);
-								}
+//								if(data.code=="200"){
+//									window.history.go(-2);
+//								}
 							},
 							error:function(){
 								

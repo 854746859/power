@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
 	<head>
 		<meta charset="utf-8">
 		<meta content="能源公社" http-equiv="keywords">
@@ -14,461 +15,711 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<link rel="stylesheet" type="text/css" href="css/children.css" />
 		<link rel="stylesheet" type="text/css" href="css/paging.css" />
+		<!--<link rel="stylesheet" type="text/css" href="LeanModal/css/style.css" />-->
+
 		<!--富文本编辑框-->
 		<script type="text/javascript" charset="utf-8" src="./ueditor/ueditor.config.js"></script>
-		<script type="text/javascript" charset="utf-8" src="./ueditor/ueditor.all.min.js"> </script>
+		<script type="text/javascript" charset="utf-8" src="./ueditor/ueditor.all.min.js">
+		</script>
 		<!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
 		<!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
 		<script type="text/javascript" charset="utf-8" src="./ueditor/lang/zh-cn/zh-cn.js"></script>
 		<!--end-->
 		<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
 		<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
-		<script src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)]
-		 type="text/javascript" charset="utf-8"></script>
-		<script type="text/javascript" src="js/public.js"></script><!-- 菜单js等-->
+		<script src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)] type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="js/public.js"></script>
+		<!-- 菜单js等-->
+		<script type="text/javascript" src="LeanModal/js/jquery.leanModal.min.js"></script>
 		<!-- 时间选择js -->
 		<script type="text/javascript" src="js/laydate.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('a[rel*=leanModal]').leanModal({
+					top: 200,
+					closeButton: ".modal_close"
+				});
+			});
+		</script>
 		<style>
-			.headLink{
-		display: flex;
-		flex-direction: row;
-	}
-	.headLink li{
-		margin: 0 10px 0 10px;
-	}
-	.marT{
-		position: relative;
-		top: -25px;
-	}
-	.more_list{
-		display: flex;
-		flex-direction: column;
-	}
-	.more_list li a{
-		color: #333;
-	}
-	.classification{
-		width: 100%;
-		margin-top: 10px;
-		display: flex;
-		flex-direction: row;
-	}
-	.mine{
-		border-bottom: 1px solid #ddd;
-		background-color: #005389;
-	}
-	.classification ul{
-		position: relative;
-		display: flex;
-		flex-direction: row;
-		/*width: 100%;*/
-		/*height: 40px;*/
-		border-radius: 5px;
-	}
-	.ul_bc{
-		background-color: #eee;
-		width: 200px;
-	}
-	.sort{
-		width: 600px;
-		display: flex;
-		flex-direction: row;
-		background-color: #eee;
-		justify-content: space-between;
-		align-items: center;
-	}
-	.sort .sort_type{
-		display: flex;
-		flex-direction: row;
-	}
-	.sort .sort_type .type_box{
-		display: flex;
-		flex-direction: row;
-	}
-	.sort .sort_type .type_box div{
-		margin-right: 5px;
-		font-size: 14px;
-	}
-	.sort .sort_type .time{
-		width: 220px;
-		font-size: 14px;
-	}
-	.ul_bc li{
-		border-right: 1px solid #fff;
-		background-color: #005389;
-	}
-	.classification ul li{
-		width:100px;
-		height: 40px;
-		line-height: 40px;
-		text-align: center;
-		color: #fff;
-		border-radius: 3px;
-		cursor: pointer;
-	}
-	.classification ul>li:before{
-		content: "";
-		position: absolute;
-		right: -0.15625rem;
-		height: 0.0625rem;
-		width: 0;
-		-webkit-transition: width 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
-		-ms-transition: width 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
-		-o-transition: width 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
-		transition: width 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
-		top: 50%;
-		margin-top: -.0.03125rem;
-	}
-	#navbar ul li:hover{
-		background-color: #1a83da;
-		color: #fff;
-	}
-	.user_box{
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: center;
-		background-color: #eee;
-		padding: 10px;
-	}
-	.user_box .box_L{
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-	}
-	.user_box .box_L .user_loge{
-		display: flex;
-		flex-direction: row;
-	}
-	.user_box .box_L .user_loge img{
-		width: 60px;
-		height: 60px;
-		border-radius: 30px;
-	}
-	.user_box .box_L .user_loge .user_name{
-		margin-left: 10px;
-		height: 100%;
-	}
-	.user_box .box_L .user_loge .user_name .user_id span:nth-child(2){
-		margin-left: 10px;
-	}
-	.user_box .box_L .user_loge .user_name .user_des{
-		width: 140px;
-		word-break: break-all;
-	}
-	.user_box .box_L .address,.company{
-		height: 60px;
-		display: flex;
-		margin-left: 25px;
-		flex-direction: row;
-		justify-content: flex-start;
-	}
-	.user_box input{
-		width: 80px;
-		height: 30px;
-		color: #fff;
-		border-radius: 3px;
-		background-color: #1a83da;
-		margin-top: 5px;
-		margin-left: 10px;
-	}
-	.box_one{
-		width: 100%;
-		height: 120px;
-	}
-	.box_one ul{
-		width: 100%;
-		height: 100%;
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: flex-start;
-	}
-	.box_one ul li{
-		width: 33%;
-		height: 60px;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		border-bottom: 1px solid #eee;
-		border-right: 1px solid #eee;
-	}
-	.box_one ul li:nth-child(3){
-		border-right: 1px solid #FFF;
-	}
-	.box_one ul li span{
-		height: 20px;
-		line-height: 20px;
-		cursor: pointer;
-	}
-	.box_two{
-		width: 100%;
-		margin-top: 20px;
-		background-color: #eee;
-		border-radius: 5px;
-		box-sizing: border-box;
-		padding: 10px;
-		margin-right: 10px;
-	}
-	.new_fan,.recent_visitors{
-		height: 120px;
-		border-bottom: 1px solid #fff;
-	}
-	.title{
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: flex-end;
-	}
-	.title span{
-		font-size: 16px;
-		font-weight: 600;
-	}
-	.avatar{
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-	}
-	.avatar div{
-		width: 25%;
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		align-items: center;
-	}
-	.avatar div img{
-		width: 80%;
-		height: 80%;
-		border-radius: 40%;
-	}
-	.bc{
-		border-top-left-radius: 3px;
-		border-top-right-radius: 3px;
-		margin-top: 10px;
-		background-color: #eee;
-		padding: 0 10px;
-	}
-	.box_three ul{
-		border: 1px solid #eee;
-		margin: 0;
-		padding: 0 10px;
-	}
-	.box_three ul li{
-		border-bottom: 1px dashed #eee;
-	}
-	.icon{
-		width: 20px;
-		height: 20px;
-	}
-	.select{
-		background: #1a83da !important;
-	} 
-	.mine_box{
-		width: 800px;
-		/*height: 700px;
+			.headLink {
+				display: flex;
+				flex-direction: row;
+			}
+			
+			.headLink li {
+				margin: 0 10px 0 10px;
+			}
+			
+			.marT {
+				position: relative;
+				top: -25px;
+			}
+			
+			.more_list {
+				display: flex;
+				flex-direction: column;
+			}
+			
+			.more_list li a {
+				color: #333;
+			}
+			
+			.classification {
+				width: 100%;
+				margin-top: 10px;
+				display: flex;
+				flex-direction: row;
+			}
+			
+			.mine {
+				border-bottom: 1px solid #ddd;
+				background-color: #005389;
+			}
+			
+			.classification ul {
+				position: relative;
+				display: flex;
+				flex-direction: row;
+				/*width: 100%;*/
+				/*height: 40px;*/
+				border-radius: 5px;
+			}
+			
+			.ul_bc {
+				background-color: #eee;
+				width: 200px;
+			}
+			
+			.sort {
+				width: 600px;
+				display: flex;
+				flex-direction: row;
+				background-color: #eee;
+				justify-content: space-between;
+				align-items: center;
+			}
+			
+			.sort .sort_type {
+				display: flex;
+				flex-direction: row;
+			}
+			
+			.sort .sort_type .type_box {
+				display: flex;
+				flex-direction: row;
+			}
+			
+			.sort .sort_type .type_box div {
+				margin-right: 5px;
+				font-size: 14px;
+			}
+			
+			.sort .sort_type .time {
+				width: 220px;
+				font-size: 14px;
+			}
+			
+			.ul_bc li {
+				border-right: 1px solid #fff;
+				background-color: #005389;
+			}
+			
+			.classification ul li {
+				width: 100px;
+				height: 40px;
+				line-height: 40px;
+				text-align: center;
+				color: #fff;
+				border-radius: 3px;
+				cursor: pointer;
+			}
+			
+			.classification ul>li:before {
+				content: "";
+				position: absolute;
+				right: -0.15625rem;
+				height: 0.0625rem;
+				width: 0;
+				-webkit-transition: width 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+				-ms-transition: width 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+				-o-transition: width 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+				transition: width 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+				top: 50%;
+				margin-top: -.0.03125rem;
+			}
+			
+			#navbar ul li:hover {
+				background-color: #1a83da;
+				color: #fff;
+			}
+			
+			.user_box {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				align-items: center;
+				background-color: #eee;
+				padding: 10px;
+			}
+			
+			.user_box .box_L {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+			}
+			
+			.user_box .box_L .user_loge {
+				display: flex;
+				flex-direction: row;
+			}
+			
+			.user_box .box_L .user_loge img {
+				width: 60px;
+				height: 60px;
+				border-radius: 30px;
+			}
+			
+			.user_box .box_L .user_loge .user_name {
+				margin-left: 10px;
+				height: 100%;
+			}
+			
+			.user_box .box_L .user_loge .user_name .user_id span:nth-child(2) {
+				margin-left: 10px;
+			}
+			
+			.user_box .box_L .user_loge .user_name .user_des {
+				width: 140px;
+				word-break: break-all;
+			}
+			
+			.user_box .box_L .address,
+			.company {
+				height: 60px;
+				display: flex;
+				margin-left: 25px;
+				flex-direction: row;
+				justify-content: flex-start;
+			}
+			
+			.user_box input {
+				width: 80px;
+				height: 30px;
+				color: #fff;
+				border-radius: 3px;
+				background-color: #1a83da;
+				margin-top: 5px;
+				margin-left: 10px;
+			}
+			
+			.box_one {
+				width: 100%;
+				height: 120px;
+			}
+			
+			.box_one ul {
+				width: 100%;
+				height: 100%;
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+				justify-content: flex-start;
+			}
+			
+			.box_one ul li {
+				width: 33%;
+				height: 60px;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				border-bottom: 1px solid #eee;
+				border-right: 1px solid #eee;
+			}
+			
+			.box_one ul li:nth-child(3) {
+				border-right: 1px solid #FFF;
+			}
+			
+			.box_one ul li span {
+				height: 20px;
+				line-height: 20px;
+				cursor: pointer;
+			}
+			
+			.box_two {
+				width: 100%;
+				margin-top: 20px;
+				background-color: #eee;
+				border-radius: 5px;
+				box-sizing: border-box;
+				padding: 10px;
+				margin-right: 10px;
+			}
+			
+			.new_fan,
+			.recent_visitors {
+				height: 120px;
+				border-bottom: 1px solid #fff;
+			}
+			
+			.title {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				align-items: flex-end;
+			}
+			
+			.title span {
+				font-size: 16px;
+				font-weight: 600;
+			}
+			
+			.avatar {
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+			}
+			
+			.avatar div {
+				width: 25%;
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+			}
+			
+			.avatar div img {
+				width: 80%;
+				height: 80%;
+				border-radius: 40%;
+			}
+			
+			.bc {
+				border-top-left-radius: 3px;
+				border-top-right-radius: 3px;
+				margin-top: 10px;
+				background-color: #eee;
+				padding: 0 10px;
+			}
+			
+			.box_three ul {
+				border: 1px solid #eee;
+				margin: 0;
+				padding: 0 10px;
+			}
+			
+			.box_three ul li {
+				border-bottom: 1px dashed #eee;
+			}
+			
+			.icon {
+				width: 20px;
+				height: 20px;
+			}
+			
+			.select {
+				background: #1a83da !important;
+			}
+			
+			.mine_box {
+				width: 800px;
+				/*height: 700px;
 		overflow: hidden;*/
-	}
-	.attention_title{
-		display: flex;
-		flex-direction: row;
-		width: 400px;
-		justify-content: space-between;
-		align-items: center;
-		color: #333;
-	}
-	.attention_title div:first-child{
-		font-size: 20px;
-		font-weight: 600;
-	}
-	.icon_radius{
-		border-radius: 45px;
-	}
-	.about_att{
-		display: flex;
-		flex-direction: column;
-		justify-content: space-around;
-		margin-left: 80px;
-		color: #1a83da;
-	}
-	.about_att a{
-		font-size: 14px;
-	}
-	.wallet_title,.detail_title{
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		padding: 0 10px;
-		margin-top: 10px;
-		border-bottom: 1px solid #eee;
-		height: 50px;
-	}
-	.detail_box{
-		display: flex;
-		flex-direction: row;
-		justify-content: space-around;
-		align-items: center;
-		margin-top: 10px;
-	}
-	.detail_box .yesterday,.month,.wallet{
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 10px;
-		width: 28%;
-		height: 140px;
-		background-color: #eee;
-	}
-	.detail_box .yesterday,.month,.wallet div{
-		font-size: 18px;
-		font-weight: 600;
-		
-	}
-	.list_title,.list_body{
-		width: 100%;
-		display: flex;
-		flex-direction: row;
-	}
-	.list_title li{
-		width: 20%;
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-	}
-	.list_body li{
-		width: 20%;
-	}
-	.list_title li:first-child{
-		width: 200px;
-	}
-	.list_body li:first-child{
-		width: 200px;
-	}
-	.list_body li:nth-child(n+2){
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-	}
-	.message{
-		display: flex;
-		flex-direction: column;
-		padding: 10px;
-		background-color: #eee;
-		border-radius: 5px;
-		margin-top: 10px;
-	}
-	.message .message_title{
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-	}
-	.message .message_detail a{
-		color: #1a83da;
-	}
-	.post_title{
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		margin: 10px 0;
-	}
-	.post_title input{
-		width: 260px;
-		height: 40px;
-		background-color: #eee;
-		padding-left: 10px;
-		margin-left: 10px;
-		border-radius: 5px;
-	}
-	.reward_money{
-		display: flex;
-		flex-direction: row;
-	}
-	.reward_money span{
-		color: red;
-		font-size: 14px;
-		margin-left: 5px;
-	}
-	.description_post,.checkbox{
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-	}
-	.description_post select{
-		width: 80px;
-		height: 30px;
-		border: 1px solid #E0E0E0;
-	}
-	.description_post .checkbox input{
-		margin-left: 10px;
-	}
-	.description_post .checkbox input[type="number"]{
-		border: 1px solid #E0E0E0;
-		width: 70px;
-		height: 25px;
-		color: #333;
-	}
-	.button_box{
-		width: 500px;
-		margin: 0 auto;
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-	}
-	.button_box input[type="button"]{
-		width: 120px;
-		height: 40px;
-		border-radius: 5px;
-		background-color: #1a83da;
-		color: #fff;
-		line-height: 30px;
-	}
-	#wallet_money,#wallet_coin{
-		font-size: 14px !important;
-	}
-	.rechange{
-		width: 60%;
-		margin: 10px auto;
-		display: flex;
-		flex-direction: row;
-		justify-content: space-around;
-	}
-	.rechange a{
-		color: #1a83da;
-		font-size: 14px;
-	}
-	#post{
-		height: auto !important;
-	}
-	/*鼠标移入菜单*/
-	.hiden_list{
-		width: 120px;
-		position: absolute;
-		right: -220px;
-		top:60px;
-		background-color: rgb(255,255,255);
-		z-index: 9;
-	}
-	.hiden_list ul li{
-		border-bottom:1px dotted;
-	}
-	.hiden_list_w{
-		width: 120px;
-		position: absolute;
-		right: -220px;
-		top:60px;
-		background-color: rgb(255,255,255);
-		z-index: 9;
-	}
-	.hiden_list_w ul li{
-		border-bottom:1px dotted;
-	}
-	
-	.share_right {
-		margin-left: 200px;margin-right: 50px;display: flex;flex-direction: column;justify-content: space-between;align-items: center;
-	}
-</style>
+			}
+			
+			.attention_title {
+				display: flex;
+				flex-direction: row;
+				width: 400px;
+				justify-content: space-between;
+				align-items: center;
+				color: #333;
+			}
+			
+			.attention_title div:first-child {
+				font-size: 20px;
+				font-weight: 600;
+			}
+			
+			.icon_radius {
+				border-radius: 45px;
+			}
+			
+			.about_att {
+				display: flex;
+				flex-direction: column;
+				justify-content: space-around;
+				margin-left: 80px;
+				color: #1a83da;
+			}
+			
+			.about_att a {
+				font-size: 14px;
+			}
+			
+			.wallet_title,
+			.detail_title {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				padding: 0 10px;
+				margin-top: 10px;
+				border-bottom: 1px solid #eee;
+				height: 50px;
+			}
+			
+			.detail_box {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-around;
+				align-items: center;
+				margin-top: 10px;
+			}
+			
+			.detail_box .yesterday,
+			.month,
+			.wallet {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				padding: 10px;
+				width: 28%;
+				height: 140px;
+				background-color: #eee;
+			}
+			
+			.detail_box .yesterday,
+			.month,
+			.wallet div {
+				font-size: 18px;
+				font-weight: 600;
+			}
+			
+			.list_title,
+			.list_body {
+				width: 100%;
+				display: flex;
+				flex-direction: row;
+			}
+			
+			.list_title li {
+				width: 20%;
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+			}
+			
+			.list_body li {
+				width: 20%;
+			}
+			
+			.list_title li:first-child {
+				width: 200px;
+			}
+			
+			.list_body li:first-child {
+				width: 200px;
+			}
+			
+			.list_body li:nth-child(n+2) {
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+			}
+			
+			.message {
+				display: flex;
+				flex-direction: column;
+				padding: 10px;
+				background-color: #eee;
+				border-radius: 5px;
+				margin-top: 10px;
+			}
+			
+			.message .message_title {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+			}
+			
+			.message .message_detail a {
+				color: #1a83da;
+			}
+			
+			.post_title {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				margin: 10px 0;
+			}
+			
+			.post_title input {
+				width: 260px;
+				height: 40px;
+				background-color: #eee;
+				padding-left: 10px;
+				margin-left: 10px;
+				border-radius: 5px;
+			}
+			
+			.reward_money {
+				display: flex;
+				flex-direction: row;
+			}
+			
+			.reward_money span {
+				color: red;
+				font-size: 14px;
+				margin-left: 5px;
+			}
+			
+			.description_post,
+			.checkbox {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+			}
+			
+			.description_post select {
+				width: 80px;
+				height: 30px;
+				border: 1px solid #E0E0E0;
+			}
+			
+			.description_post .checkbox input {
+				margin-left: 10px;
+			}
+			
+			.description_post .checkbox input[type="number"] {
+				border: 1px solid #E0E0E0;
+				width: 70px;
+				height: 25px;
+				color: #333;
+			}
+			
+			.button_box {
+				width: 500px;
+				margin: 0 auto;
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+			}
+			
+			.button_box input[type="button"] {
+				width: 120px;
+				height: 40px;
+				border-radius: 5px;
+				background-color: #1a83da;
+				color: #fff;
+				line-height: 30px;
+			}
+			
+			#wallet_money,
+			#wallet_coin {
+				font-size: 14px !important;
+			}
+			
+			.rechange {
+				width: 60%;
+				margin: 10px auto;
+				display: flex;
+				flex-direction: row;
+				justify-content: space-around;
+			}
+			
+			.rechange a {
+				color: #1a83da;
+				font-size: 14px;
+			}
+			
+			#post {
+				height: auto !important;
+			}
+			/*鼠标移入菜单*/
+			
+			.hiden_list {
+				width: 120px;
+				position: absolute;
+				right: -220px;
+				top: 60px;
+				background-color: rgb(255, 255, 255);
+				z-index: 9;
+			}
+			
+			.hiden_list ul li {
+				border-bottom: 1px dotted;
+			}
+			
+			.hiden_list_w {
+				width: 120px;
+				position: absolute;
+				right: -220px;
+				top: 60px;
+				background-color: rgb(255, 255, 255);
+				z-index: 9;
+			}
+			
+			.hiden_list_w ul li {
+				border-bottom: 1px dotted;
+			}
+			
+			.share_right {
+				margin-left: 200px;
+				margin-right: 50px;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				align-items: center;
+			}
+			
+			.edit_info {
+				display: flex;
+				flex-direction: column;
+				margin-right: 20px;
+			}
+			.edit_info a{
+				font-size: 14px;
+				color: #1a83da;
+				font-weight: 700;
+				margin: 5px 0;
+			}
+			
+			#signup,#test {
+				width: 404px;
+				padding-bottom: 2px;
+				display: none;
+				background: #FFF;
+				border-radius: 5px;
+				-moz-border-radius: 5px;
+				-webkit-border-radius: 5px;
+				box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.7);
+				-webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+				-moz-box-shadow: 0 0px 4px rgba(0, 0, 0, 0.7);
+			}
+			#signup-header {
+				background: url(LeanModal/css/img/hd-bg.png);
+				padding: 18px 18px 14px 18px;
+				border-bottom: 1px solid #CCC;
+				border-top-left-radius: 5px;
+				-moz-border-radius-topleft: 5px;
+				-webkit-border-top-left-radius: 5px;
+				border-top-right-radius: 5px;
+				-moz-border-radius-topright: 5px;
+				-webkit-border-top-right-radius: 5px;
+			}
+			#signup-header h2 {
+				color: #444;
+				font-size: 2em;
+				font-weight: 700;
+				margin-bottom: 3px;
+				text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+			}
+			#signup-header p {
+				color: #444;
+				font-size: 1.3em;
+				margin: 0;
+				text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+				text-shadow: none;
+			}
+			.modal_close {
+				position: absolute;
+				top: 12px;
+				right: 12px;
+				display: block;
+				width: 14px;
+				height: 14px;
+				background: url(LeanModal/css/img/modal_close.png);
+				z-index: 2;
+			}
+			#signup-header h2 {
+				color: #444;
+				font-size: 2em;
+				font-weight: 700;
+				margin-bottom: 3px;
+				text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+			}
+			#signup-header p {
+				color: #444;
+				font-size: 1.3em;
+				margin: 0;
+				text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+				text-shadow: none;
+			}
+			.txt-fld {
+				position: relative;
+				width: 364px;
+				padding: 14px 20px;
+				border-bottom: 1px solid #EEE;
+				text-align: right;
+			}
+			.txt-fld input[type="file"]{
+				background: none;
+				border: none;
+			}
+			.btn-fld {
+				width: 254px;
+				overflow: hidden;
+				padding: 12px 20px 12px 130px;
+			}
+			
+			.txt-fld label {
+				display: block;
+				float: left;
+				width: 90px;
+				padding-top: 8px;
+				color: #222;
+				font-size: 1.3em;
+				text-align: left;
+			}
+			
+			.txt-fld input,textarea {
+				width: 244px;
+				padding: 8px;
+				border-radius: 4px;
+				-moz-border-radius: 4px;
+				-webkit-border-radius: 4px;
+				font-size: 1.2em;
+				color: #222;
+				background: #F7F7F7;
+				font-family: "Helvetica Neue";
+				outline: none;
+				border-top: 1px solid #CCC;
+				border-left: 1px solid #CCC;
+				border-right: 1px solid #E7E6E6;
+				border-bottom: 1px solid #E7E6E6;
+			}
+			
+			.txt-fld input.error_input {
+				background: #FDE0E0;
+			}
+			.txt-fld input:focus,
+			.txt-fld textarea:focus {
+				background-color: #FAF9DC;
+			}
+			#lean_overlay {
+			    position: fixed;
+			    z-index: 10000;
+			    top: 0px;
+			    left: 0px;
+			    height:100%;
+			    width:100%;
+			    background: #000;
+			    display: none;
+			}
+			.submit{
+				display: flex;
+				flex-direction: row;
+				justify-content: flex-end;
+			}
+			.submit input{
+				margin-right: 10px;
+			}
+		</style>
 	</head>
+
 	<body>
 		<!--头部-->
 		<div class="bg">
@@ -477,36 +728,82 @@
 				<nav>
 					<div>
 						<ul>
-							<li><a href="index.html?type=0&plate=1&two=0">首页</a></li>
-							<li class="menu-item-has-children"><a href="#" title="" itemprop="url">论坛</a>
+							<li>
+								<a href="index.html?type=0&plate=1&two=0">首页</a>
+							</li>
+							<li class="menu-item-has-children">
+								<a href="#" title="" itemprop="url">论坛</a>
 								<ul>
-									<li><a href="index.html?type=0&plate=1&two=0" title="" itemprop="url">LNG版块</a></li>
-									<li><a href="index.html?type=0&plate=2&two=0" title="" itemprop="url">Oil版块</a></li>
-									<li><a href="index.html?type=0&plate=3&two=0" title="" itemprop="url">Gas版块</a></li>
-									<li><a href="index.html?type=0&plate=4&two=0" title="" itemprop="url">Pipe版块</a></li>
-									<li><a href="index.html?type=0&plate=5&two=0" title="" itemprop="url">Nuclear版块</a></li>
-									<li><a href="index.html?type=0&plate=6&two=0" title="" itemprop="url">Power版块</a></li>
-									<li><a href="index.html?type=0&plate=7&two=0" title="" itemprop="url">Wind版块</a></li>
-									<li><a href="index.html?type=0&plate=8&two=0" title="" itemprop="url">Solar版块</a></li>
+									<li>
+										<a href="index.html?type=0&plate=1&two=0" title="" itemprop="url">LNG版块</a>
+									</li>
+									<li>
+										<a href="index.html?type=0&plate=2&two=0" title="" itemprop="url">Oil版块</a>
+									</li>
+									<li>
+										<a href="index.html?type=0&plate=3&two=0" title="" itemprop="url">Gas版块</a>
+									</li>
+									<li>
+										<a href="index.html?type=0&plate=4&two=0" title="" itemprop="url">Pipe版块</a>
+									</li>
+									<li>
+										<a href="index.html?type=0&plate=5&two=0" title="" itemprop="url">Nuclear版块</a>
+									</li>
+									<li>
+										<a href="index.html?type=0&plate=6&two=0" title="" itemprop="url">Power版块</a>
+									</li>
+									<li>
+										<a href="index.html?type=0&plate=7&two=0" title="" itemprop="url">Wind版块</a>
+									</li>
+									<li>
+										<a href="index.html?type=0&plate=8&two=0" title="" itemprop="url">Solar版块</a>
+									</li>
 								</ul>
 							</li>
-							<li class="menu-item-has-children"><a href="#">问答</a>
+							<li class="menu-item-has-children">
+								<a href="#">问答</a>
 								<ul>
-									<li><a href="question.html?type=1&plate=1&two=0" title="" itemprop="url">LNG版块</a></li>
-									<li><a href="question.html?type=1&plate=2&two=0" title="" itemprop="url">Oil版块</a></li>
-									<li><a href="question.html?type=1&plate=3&two=0" title="" itemprop="url">Gas版块</a></li>
-									<li><a href="question.html?type=1&plate=4&two=0" title="" itemprop="url">Pipe版块</a></li>
-									<li><a href="question.html?type=1&plate=5&two=0" title="" itemprop="url">Nuclear版块</a></li>
-									<li><a href="question.html?type=1&plate=6&two=0" title="" itemprop="url">Power版块</a></li>
-									<li><a href="question.html?type=1&plate=7&two=0" title="" itemprop="url">Wind版块</a></li>
-									<li><a href="question.html?type=1&plate=8&two=0" title="" itemprop="url">Solar版块</a></li>
+									<li>
+										<a href="question.html?type=1&plate=1&two=0" title="" itemprop="url">LNG版块</a>
+									</li>
+									<li>
+										<a href="question.html?type=1&plate=2&two=0" title="" itemprop="url">Oil版块</a>
+									</li>
+									<li>
+										<a href="question.html?type=1&plate=3&two=0" title="" itemprop="url">Gas版块</a>
+									</li>
+									<li>
+										<a href="question.html?type=1&plate=4&two=0" title="" itemprop="url">Pipe版块</a>
+									</li>
+									<li>
+										<a href="question.html?type=1&plate=5&two=0" title="" itemprop="url">Nuclear版块</a>
+									</li>
+									<li>
+										<a href="question.html?type=1&plate=6&two=0" title="" itemprop="url">Power版块</a>
+									</li>
+									<li>
+										<a href="question.html?type=1&plate=7&two=0" title="" itemprop="url">Wind版块</a>
+									</li>
+									<li>
+										<a href="question.html?type=1&plate=8&two=0" title="" itemprop="url">Solar版块</a>
+									</li>
 								</ul>
 							</li>
-							<li><a href="#">专家</a></li>
-							<li><a href="#">课程</a></li>
-							<li><a href="#">前沿</a></li>
-							<li><a href="#">会议</a></li>
-							<li><a href="#">活动</a></li>
+							<li>
+								<a href="#">专家</a>
+							</li>
+							<li>
+								<a href="#">课程</a>
+							</li>
+							<li>
+								<a href="#">前沿</a>
+							</li>
+							<li>
+								<a href="#">会议</a>
+							</li>
+							<li>
+								<a href="#">活动</a>
+							</li>
 						</ul>
 					</div>
 				</nav>
@@ -533,15 +830,25 @@
 		<!-- 鼠标移入显示的菜单 -->
 		<div class="hiden_list">
 			<ul>
-				<li><a href="mine.html">个人中心</a></li>
-				<li><a href="http://114.55.35.82/dist/index.html">管理员中心</a></li>
-				<li><a href="login.html">退出登陆</a></li>
+				<li>
+					<a href="mine.html">个人中心</a>
+				</li>
+				<li>
+					<a href="http://114.55.35.82/dist/index.html">管理员中心</a>
+				</li>
+				<li>
+					<a href="login.html">退出登陆</a>
+				</li>
 			</ul>
 		</div>
 		<div class="hiden_list_w">
 			<ul>
-				<li><a href="mine.html">个人中心</a></li>
-				<li><a href="login.html">退出登陆</a></li>
+				<li>
+					<a href="mine.html">个人中心</a>
+				</li>
+				<li>
+					<a href="login.html">退出登陆</a>
+				</li>
 			</ul>
 		</div>
 		<!-- top end -->
@@ -606,7 +913,70 @@
 
 						</div>
 					</div>
-					<input type="button" name="" id="edit" value="编辑" />
+					<div class="edit_info">
+						<!--<input type="button" name="" id="check" value="认证" />
+						<input type="button" name="" id="edit" value="编辑" />-->
+						<a rel="leanModal" name="test" href="#test">编辑信息</a>
+						<a  rel="leanModal" name="signup" href="#signup">实名认证</a>
+					</div>
+					<div id="signup">
+						<div id="signup-ct">
+							<div id="signup-header">
+								<h2>实名认证</h2>
+								<a class="modal_close" href="#"></a>
+							</div>
+							<form action="">
+								<div class="txt-fld">
+									<label for="">真实姓名</label>
+									<input id="user_realname" name="" type="text" />
+								</div>
+								<div class="txt-fld">
+									<label for="">单位/学校</label>
+									<input id="user_company" name="" type="text" />
+								</div>
+								<div class="txt-fld">
+									<label for="">工号/学号</label>
+									<input id="user_number" name="" type="text" />
+								</div>
+								<div class="txt-fld">
+									<label for="">身份证号</label>
+									<input id="idcard_number" name="" type="number" />
+								</div>
+								<div class="submit">
+									<input type="button" name="" id="check" value="确认" />
+								</div>
+							</form>
+						</div>
+					</div>
+					<div id="test">
+						<div id="signup-ct">
+							<div id="signup-header">
+								<h2>信息编辑</h2>
+								<a class="modal_close" href="#"></a>
+							</div>
+							<form action="">
+								<div class="txt-fld">
+									<label for="">头像</label>
+									<input id="user_realname" name="" type="file" />
+								</div>
+								<div class="txt-fld">
+									<label for="">用户名</label>
+									<input id="user_company" name="" type="text" />
+								</div>
+								<div class="txt-fld">
+									<label for="">地址</label>
+									<input id="user_number" name="" type="text" />
+								</div>
+								<div class="txt-fld">
+									<label for="">个人简介</label>
+									<textarea name="" rows="" cols=""></textarea>
+								</div>
+								<div class="submit">
+									<input type="button" name="" id="edit" value="确认" />
+								</div>
+							</form>
+						</div>
+					</div>
 				</div>
 
 				<div class="conbox fix">
@@ -617,14 +987,30 @@
 								<nav style="width: 100%;">
 									<div>
 										<ul id="navbar" class="fix">
-											<li class="select"><a href="#original">我的原创</a></li>
-											<li><a href="#question">我的问答</a></li>
-											<li><a href="#favorite">我的收藏</a></li>
-											<li><a href="#attention">我的关注</a></li>
-											<li><a href="#fan">我的粉丝</a></li>
-											<li><a href="#wallet">收益/钱包</a></li>
-											<li><a href="#post">快速发帖</a></li>
-											<li><a href="#notice">系统通知</a></li>
+											<li class="select">
+												<a href="#original">我的原创</a>
+											</li>
+											<li>
+												<a href="#question">我的问答</a>
+											</li>
+											<li>
+												<a href="#favorite">我的收藏</a>
+											</li>
+											<li>
+												<a href="#attention">我的关注</a>
+											</li>
+											<li>
+												<a href="#fan">我的粉丝</a>
+											</li>
+											<li>
+												<a href="#wallet">收益/钱包</a>
+											</li>
+											<li>
+												<a href="#post">快速发帖</a>
+											</li>
+											<li>
+												<a href="#notice">系统通知</a>
+											</li>
 										</ul>
 									</div>
 								</nav>
@@ -1406,7 +1792,8 @@
 						<div class="box_two">
 							<div class="new_fan">
 								<div class="title">
-									<span>新粉丝</span><a id="fanmore" class="more">更多>></a>
+									<span>新粉丝</span>
+									<a id="fanmore" class="more">更多>></a>
 								</div>
 								<div id="new_fans_list" class="avatar">
 									<!-- <div>
@@ -1416,7 +1803,8 @@
 							</div>
 							<div class="recent_visitors">
 								<div class="title">
-									<span>最近访客</span><a href="javascript:void(0)" class="more"></a>
+									<span>最近访客</span>
+									<a href="javascript:void(0)" class="more"></a>
 								</div>
 								<div id="new_visitor_list" class="avatar">
 									<!-- <div>
@@ -1501,20 +1889,26 @@
 		<!-- 底部 -->
 		<div class="footerbox bg">
 			<ul class="other fix">
-				<li><a href="contact.html">联系我们</a></li>
-				<li><a href="about.html">机构概况</a></li>
-				<li><a href="info_public.html">信息公开</a></li>
-				<li><a href="newslist.html">办事指南</a></li>
+				<li>
+					<a href="contact.html">联系我们</a>
+				</li>
+				<li>
+					<a href="about.html">机构概况</a>
+				</li>
+				<li>
+					<a href="info_public.html">信息公开</a>
+				</li>
+				<li>
+					<a href="newslist.html">办事指南</a>
+				</li>
 			</ul>
 			<div class="l">
-				<a href="http://121.43.68.40/exposure/jiucuo.html?site_code=5200000083&url=www.guizhou.gov.cn" target="blank" class="dib vm"><img
-					 src="images/zhaocuo.png" /></a>
-				<a href="http://bszs.conac.cn/sitename?method=show&id=09D70ADDD9E64427E053022819AC3042" target="blank" class="dib vm"><img
-					 src="images/dangzheng.png"></a>
+				<a href="http://121.43.68.40/exposure/jiucuo.html?site_code=5200000083&url=www.guizhou.gov.cn" target="blank" class="dib vm"><img src="images/zhaocuo.png" /></a>
+				<a href="http://bszs.conac.cn/sitename?method=show&id=09D70ADDD9E64427E053022819AC3042" target="blank" class="dib vm"><img src="images/dangzheng.png"></a>
 			</div>
 			<div class="l txt">
-				<p><img src="images/beian.png">X公网安备
-					5201030200xxxx号&nbsp;&nbsp;&nbsp;XICP备xxxxxxxxx号-2&nbsp;&nbsp;&nbsp;政府网站标识码：520xxxxxxxx</p>
+				<p><img src="images/beian.png">X公网安备 5201030200xxxx号&nbsp;&nbsp;&nbsp;XICP备xxxxxxxxx号-2&nbsp;&nbsp;&nbsp;政府网站标识码：520xxxxxxxx
+				</p>
 				<p>XX市综合执法局信息技术处建设和维护</p>
 			</div>
 			<p>版权所有：XX市综合行政执法局&nbsp;&nbsp;&nbsp;地址：XX省XX市工业园区特1号</p>
@@ -1530,11 +1924,11 @@
 			day2.setTime(day2.getTime());
 			var s2 = day2.getFullYear() + "-" + (day2.getMonth() + 1) + "-" + day2.getDate();
 			// console.log(s2)
-			if (getUrldata("fast") == 1) {
+			if(getUrldata("fast") == 1) {
 				var part_arr = $(".zy_listbox");
 				var li_arr = $("#navbar li");
-				for (var i = 0; i < part_arr.length; i++) {
-					if ($(part_arr[i]).attr("id") == "post") {
+				for(var i = 0; i < part_arr.length; i++) {
+					if($(part_arr[i]).attr("id") == "post") {
 						$(part_arr[i]).removeAttr("hidden");
 						$(li_arr[i]).attr("class", "select");
 						$("#pagiNation").attr("hidden", "hidden");
@@ -1544,13 +1938,13 @@
 					}
 				}
 			}
-
+			
 			// 新粉丝跳转
 			$("#fanmore").click(function() {
 				var part_arr = $(".zy_listbox");
 				var li_arr = $("#navbar li");
-				for (var i = 0; i < part_arr.length; i++) {
-					if ($(part_arr[i]).attr("id") == "fan") {
+				for(var i = 0; i < part_arr.length; i++) {
+					if($(part_arr[i]).attr("id") == "fan") {
 						$(part_arr[i]).removeAttr("hidden");
 						$(li_arr[i]).attr("class", "select");
 						$("#pagiNation").attr("hidden", "hidden");
@@ -1566,13 +1960,47 @@
 			var data = sessionStorage.getItem("data");
 			var infodata = eval('(' + data + ')');
 			// console.log(infodata.token);
-
-			if (infodata != null) {
+			//认证
+			$("#check").click(function() {
+				$.ajax({
+					type:"post",
+					url:sever_url+"real/iden",
+					async:true,
+					data:{
+						token:infodata.token,
+						user_realname:$("#user_realname").val(),
+						user_company:$("#user_company").val(),
+						user_number:$("#user_number").val(),
+						idcard_number:$("#idcard_number").val(),
+						idcard:""
+					},
+					dataType:"json",
+					success:function(data){
+						console.log(data)
+					}
+				});
+			})
+			//编辑
+			$("#edit").click(function() {
+				$.ajax({
+					type:"post",
+					url:sever_url+"reg/perfect",
+					async:true,
+					data:{
+						
+					},
+					dataType:"json",
+					success:function(data){
+						
+					}
+				});
+			})
+			if(infodata != null) {
 				var admin_box_head = '';
 				var infodatatoken = infodata.token
 				var admin_box = document.getElementById("admin_box");
 
-				if (infodatatoken.length > 1) {
+				if(infodatatoken.length > 1) {
 					admin_box_head += "<div class='admin'><a href='mine.html'><img id='head' class='admin_logo' src='" + infodata.user_head +
 						"'  /></a><a href=''>快速发帖</a></div>";
 					admin_box.innerHTML = admin_box_head;
@@ -1598,14 +2026,14 @@
 			$('.hiden_list_w').hide();
 			//监听头像鼠标移入事件
 			$("#head").mouseover(function() {
-				if (infodata.user_power_num == 4) {
+				if(infodata.user_power_num == 4) {
 					$('.hiden_list_w').show();
 				} else {
 					$('.hiden_list').show();
 				}
 			});
 			$(".bd").mouseover(function() {
-				if (infodata.user_power_num == 4) {
+				if(infodata.user_power_num == 4) {
 					$('.hiden_list_w').hide();
 				} else {
 					$('.hiden_list').hide();
@@ -1656,7 +2084,7 @@
 					// 新粉丝
 					var new_fans_img = '';
 					var new_fans_list = document.getElementById("new_fans_list");
-					for (var i = 0; i < new_fans.length; i++) {
+					for(var i = 0; i < new_fans.length; i++) {
 						new_fans_img += "<div><img  style='width:70px; height:70px; border-radius:50%; ' src='" + new_fans[i].user_head +
 							"'/></div>";
 						new_fans_list.innerHTML = new_fans_img;
@@ -1665,7 +2093,7 @@
 					// 最近访客
 					var new_visitor_img = '';
 					var new_visitor_list = document.getElementById("new_visitor_list");
-					for (var i = 0; i < new_visitor.length; i++) {
+					for(var i = 0; i < new_visitor.length; i++) {
 						new_visitor_img += "<div><img style='width:70px; height:70px; border-radius:50%; ' src='" + new_visitor[i].user_head +
 							"'/></div>";
 						new_visitor_list.innerHTML = new_visitor_img;
@@ -1735,12 +2163,12 @@
 						// console.log(followdata)
 						var post = '';
 						var postlist = document.getElementById("postlist");
-						if (postdata.length === 0) {
+						if(postdata.length === 0) {
 							follows += "<h3>暂无数据</h3>";
 							content.innerHTML = follows;
 
 						} else {
-							for (var i = 0; i < postdata.length; i++) {
+							for(var i = 0; i < postdata.length; i++) {
 								post += "<li><img src='" + postdata[i].post_img + "'/><div class='blog_list'>";
 								post += "<div class='news_title'><a href='forum.html?postid=" + postdata[i]['id'] + "'>" + postdata[i][
 									'post_title'
@@ -1755,8 +2183,8 @@
 								post += "<span id=''>最后回复人：" + postdata[i]['last_user_name'] +
 									"</span>";
 								post += "</div></div><div class='share_right share bdsharebuttonbox'><div><img style='width: 20px;height: 20px;' src='images/write.png' />";
-								post += "<img style='width: 20px;height: 20px;' src='images/delete.png' /></div><div><p style='float:left;margin-top: 15px;width: 60px;'>分享：</p>";
-								post += "<a url='forum.html?postid=" + postdata[i]['id'] +"' class='bds_weixin' data-cmd='weixin'></a><a url='forum.html?postid=" + postdata[i]['id'] +"' class='bds_tsina' data-cmd='tsina'></a></div></div></li>";
+								post += "<img style='width: 20px;height: 20px;' src='images/delete.png' /></div><div style='display:flex;flex-direction:row;align-items:center;'><p style='float:left;width: 60px;'>分享：</p>";
+								post += "<a url='forum.html?postid=" + postdata[i]['id'] + "' class='bds_weixin' data-cmd='weixin'></a><a url='forum.html?postid=" + postdata[i]['id'] + "' class='bds_tsina' data-cmd='tsina'></a></div></div></li>";
 								postlist.innerHTML = post;
 							}
 							$('.bdsharebuttonbox a').on('mousemove', function() {
@@ -1766,18 +2194,15 @@
 							})
 						}
 
-
 					},
 				})
 			}
 			original();
 
-
-
 			// 获取我的问答
 			function question(state) {
 				//				console.log(order)
-				if (document.getElementById("postlist")) {
+				if(document.getElementById("postlist")) {
 					//存在
 					// postlist.remove();
 					document.getElementById("postlist").innerHTML = "";
@@ -1803,7 +2228,6 @@
 						// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
 						// console.log(res)
 						var postdata = res.data;
-
 
 						$(function() {
 							var a = {
@@ -1833,12 +2257,12 @@
 						// console.log(followdata)
 						var post = '';
 						var qusetionlist = document.getElementById("qusetionlist");
-						if (postdata.length === 0) {
+						if(postdata.length === 0) {
 							post += "<h3>暂无数据</h3>";
 							qusetionlist.innerHTML = post;
 
 						} else {
-							for (var i = 0; i < postdata.length; i++) {
+							for(var i = 0; i < postdata.length; i++) {
 								post += "<li><img src='" + postdata[i].post_img + "'/><div class='blog_list'>";
 								post += "<div class='news_title'><a href='forum.html?postid=" + postdata[i]['id'] + "'>" + postdata[i][
 									'post_title'
@@ -1865,7 +2289,6 @@
 								$("#share_url").val(title + "||" + Url);
 							})
 						}
-
 
 					},
 				})
@@ -1920,12 +2343,12 @@
 						// console.log(fansdata)
 						var fans = '';
 						var fanslist = document.getElementById("fanslist");
-						if (fansdata.length === 0) {
+						if(fansdata.length === 0) {
 							fans += "<h3>暂无数据</h3>";
 							fanslist.innerHTML = fans;
 
 						} else {
-							for (var i = 0; i < fansdata.length; i++) {
+							for(var i = 0; i < fansdata.length; i++) {
 								fans += "<li><img class='icon_radius' src='" + fansdata[i].user_head + " ' /><div class='blog_list'>";
 								fans += "<div class='attention_title'><div>" + fansdata[i]['user_name'] + "</div><div>ID:" + fansdata[i]
 									[
@@ -1946,21 +2369,21 @@
 
 			//页内导航
 			$("#navbar li").click(function() {
-				if ($(this).attr("class") != "select") {
+				if($(this).attr("class") != "select") {
 					var nav_a = $(this).find('a')[0];
 					var nav_id = $(nav_a).attr("href");
-					if (nav_id == "#question") {
+					if(nav_id == "#question") {
 						$("#hide").show();
 					} else {
 						$("#hide").hide();
 					}
-					if (nav_id != "#post") {
+					if(nav_id != "#post") {
 						$("#pagiNation").removeAttr("hidden");
 					}
 					var part_arr = $(".zy_listbox");
 					var li_arr = $("#navbar li");
-					for (var i = 0; i < part_arr.length; i++) {
-						if ($(part_arr[i]).attr("hidden") == undefined) {
+					for(var i = 0; i < part_arr.length; i++) {
+						if($(part_arr[i]).attr("hidden") == undefined) {
 							$(part_arr[i]).attr("hidden", "hidden");
 						}
 						$(li_arr[i]).removeAttr("class");
@@ -1969,13 +2392,13 @@
 					$(nav_id).removeAttr("hidden");
 					$(this).attr("class", "select");
 					// 原创
-					if (nav_id === "#original") {
+					if(nav_id === "#original") {
 						original();
 					} else // 问答
-						if (nav_id === "#question") {
+						if(nav_id === "#question") {
 							question(1);
 							// 收藏
-						} else if (nav_id === "#favorite") {
+						} else if(nav_id === "#favorite") {
 						$.ajax({
 							url: sever_url + 'my/collection/select',
 							type: 'post',
@@ -2025,12 +2448,12 @@
 								// console.log(followdata)
 								var post = '';
 								var collectionlist = document.getElementById("collectionlist");
-								if (collectiondata.length === 0) {
+								if(collectiondata.length === 0) {
 									post += "<h3>暂无数据</h3>";
 									collectionlist.innerHTML = post;
 
 								} else {
-									for (var i = 0; i < collectiondata.length; i++) {
+									for(var i = 0; i < collectiondata.length; i++) {
 										post += "<li><img src='" + collectiondata[i].post_img + "'/><div class='blog_list'>";
 										post += "<div class='news_title'><a href='forum.html?postid=" + collectiondata[i]['id'] + "'>" +
 											collectiondata[i][
@@ -2066,11 +2489,10 @@
 									})
 								}
 
-
 							},
 						})
 						// 关注
-					} else if (nav_id === "#attention") {
+					} else if(nav_id === "#attention") {
 						$.ajax({
 							url: sever_url + 'my/follows',
 							type: 'post',
@@ -2118,12 +2540,12 @@
 								// console.log(fansdata)
 								var follows = '';
 								var followslist = document.getElementById("followslist");
-								if (followsdata.length === 0) {
+								if(followsdata.length === 0) {
 									follows += "<h3>暂无数据</h3>";
 									followslist.innerHTML = follows;
 
 								} else {
-									for (var i = 0; i < followsdata.length; i++) {
+									for(var i = 0; i < followsdata.length; i++) {
 										follows += "<li><img class='icon_radius' src='" + followsdata[i].user_head +
 											" ' /><div class='blog_list'>";
 										follows += "<div class='attention_title'><div>" + followsdata[i]['user_name'] + "</div><div>ID:" +
@@ -2144,9 +2566,9 @@
 							},
 						})
 						// 粉丝
-					} else if (nav_id === "#fan") {
+					} else if(nav_id === "#fan") {
 						fan();
-					} else if (nav_id === "#wallet") {
+					} else if(nav_id === "#wallet") {
 						//收益/钱包
 						$.ajax({
 							url: sever_url + 'my/walletinfo',
@@ -2158,7 +2580,7 @@
 							dataType: 'json',
 							success: function(data) {
 								//								console.log(data)
-								if (data.code == "200") {
+								if(data.code == "200") {
 									$("#yesterday_money").html(data.data.yesterday_money);
 									$("#week_money").html("近7日收益" + data.data.week_money + "元");
 									$("#month_money").html(data.data.month_money);
@@ -2213,7 +2635,7 @@
 									});
 
 									$("#listBody").empty();
-									for (var i = 0; i < length; i++) {
+									for(var i = 0; i < length; i++) {
 										var obj = data.data[i];
 										$("#listBody").append('<li><ul class="list_body"><li>' + obj.business_time + '</li><li>' + obj.business_type +
 											'</li><li>' + obj.business_money + '</li><li>' + obj.business_coin + '</li><li>' + obj.pay_user +
@@ -2223,14 +2645,14 @@
 							});
 						}
 
-					} else if (nav_id == "#post") {
+					} else if(nav_id == "#post") {
 						$("#pagiNation").attr("hidden", "hidden");
 						$("#Form :radio").on('click', function() {
 							var item = $(this).val();
 							$("#radioForm").val(item)
 						})
 						$("#postType").change(() => {
-							if ($("#postType").val() == '2') {
+							if($("#postType").val() == '2') {
 								$(".reward_money").css("display", "flex");
 							} else {
 								$(".reward_money").css("display", "none");
@@ -2266,9 +2688,9 @@
 								// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
 								dataType: 'json',
 								success: function(data) {
-									if (data.code == "200") {
-										for (var i = 0; i < part_arr.length; i++) {
-											if ($(part_arr[i]).attr("id") == "original") {
+									if(data.code == "200") {
+										for(var i = 0; i < part_arr.length; i++) {
+											if($(part_arr[i]).attr("id") == "original") {
 												$(part_arr[i]).removeAttr("hidden");
 												$(li_arr[i]).attr("class", "select");
 											} else {
@@ -2278,7 +2700,7 @@
 										}
 										$("#pagiNation").removeAttr("hidden");
 										original();
-									} else if (data.code == "2") {
+									} else if(data.code == "2") {
 										Dialog({
 											title: "请登录！",
 											content: "您的登录已过期，是否重新登录？",
@@ -2301,7 +2723,7 @@
 							});
 						})
 						// 系统通知
-					} else if (nav_id == "#notice") {
+					} else if(nav_id == "#notice") {
 						$.ajax({
 							type: "post",
 							url: sever_url + "my/natice",
@@ -2314,7 +2736,7 @@
 							dataType: "json",
 							success: function(data) {
 								console.log(data)
-								if (data.code == '200') {
+								if(data.code == '200') {
 									$("#notice").empty();
 									var length = data.data.data.length;
 									$(function() {
@@ -2343,13 +2765,13 @@
 
 									});
 
-									for (var i = 0; i < length; i++) {
+									for(var i = 0; i < length; i++) {
 										var obj = data.data.data[i];
 										$("#notice").append('<div class="message"><div class="message_title"><h3>' + obj.notice_title +
 											'</h3><span>' + obj.notice_time + '</span></div><div class="message_detail"><span>' + obj.notice_content +
 											'</span><a>网页链接</a></div></div>');
 									}
-								} else if (data.code == '2') {
+								} else if(data.code == '2') {
 									Dialog({
 										title: "请登录！",
 										content: "您的登录已过期，是否重新登录？",
@@ -2373,4 +2795,5 @@
 			})
 		</script>
 	</body>
+
 </html>
