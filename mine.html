@@ -1606,7 +1606,6 @@
 					if($(part_arr[i]).attr("id") == "post") {
 						$(part_arr[i]).removeAttr("hidden");
 						$(li_arr[i]).attr("class", "select");
-						$("#pagiNation").attr("hidden", "hidden");
 					} else {
 						$(part_arr[i]).attr("hidden", "hidden");
 						$(li_arr[i]).removeAttr("class");
@@ -1619,7 +1618,6 @@
 					if($(part_arr[i]).attr("id") == "original") {
 						$(part_arr[i]).removeAttr("hidden");
 						$(li_arr[i]).attr("class", "select");
-						$("#pagiNation").attr("hidden", "hidden");
 					} else {
 						$(part_arr[i]).attr("hidden", "hidden");
 						$(li_arr[i]).removeAttr("class");
@@ -1633,7 +1631,6 @@
 					if($(part_arr[i]).attr("id") == "question") {
 						$(part_arr[i]).removeAttr("hidden");
 						$(li_arr[i]).attr("class", "select");
-						$("#pagiNation").attr("hidden", "hidden");
 					} else {
 						$(part_arr[i]).attr("hidden", "hidden");
 						$(li_arr[i]).removeAttr("class");
@@ -1647,13 +1644,14 @@
 					if($(part_arr[i]).attr("id") == "favorite") {
 						$(part_arr[i]).removeAttr("hidden");
 						$(li_arr[i]).attr("class", "select");
-						$("#pagiNation").attr("hidden", "hidden");
 					} else {
 						$(part_arr[i]).attr("hidden", "hidden");
 						$(li_arr[i]).removeAttr("class");
 					}
 				}
 				favorite();
+			}else{
+				original();
 			}
 			$(function(){
 				//第一种方法
@@ -1947,7 +1945,6 @@
 					},
 				})
 			}
-			original();
 
 			// 获取我的问答
 			function question(state) {
