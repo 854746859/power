@@ -2161,7 +2161,7 @@
 							});
 
 						});
-						// console.log(followdata)
+						console.log(collectiondata)
 						var post = '';
 						var collectionlist = document.getElementById("collectionlist");
 						if(collectiondata.length === 0) {
@@ -2175,12 +2175,7 @@
 									collectiondata[i][
 										'post_title'
 									] + "</a>";
-								post += "<i class='red_news'>[" + collectiondata[i]['post_label'] + "]</i><i class='red_news'>[" +
-									collectiondata[i]
-									[
-										'post_label'
-									] +
-									"]</i></div>";
+								post += "<i class='red_news'>[" + collectiondata[i]['post_label'] + "]</i></div>";
 								post += "<div class='news_time news_other'><span>发布于：" + collectiondata[i]['post_releasetime'] +
 									"</span>";
 								post += "<span id=''>阅读数：" + collectiondata[i]['post_readnum'] + " </span><span id=''>点赞：" +
@@ -2379,7 +2374,7 @@
 											showNum: function(data1, data2) {
 												// alert(data1 + "," + data2);
 											},
-											pages: 'follows'
+											pages: 'business'
 										});
 
 									});
@@ -2510,7 +2505,7 @@
 											showNum: function(data1, data2) {
 												// alert(data1 + "," + data2);
 											},
-											pages: 'follows'
+											pages: 'natice'
 										});
 
 									});
