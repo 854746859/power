@@ -148,7 +148,7 @@
 								}
 								arr.push(str);
 							}
-							
+
 							str = '<li><span style="' + string1 + '">...</span></li>';
 							arr.push(str);
 						}
@@ -246,21 +246,24 @@
 								// console.log(res)
 								var data = res.data;
 								for (var i = 0; i < data.length; i++) {
-								post += "<li><img src='" + data[i].post_img + "'/><div class='blog_list'>";
-								post += "<div class='news_title'><a href='forum.html?postid=" + data[i]['id'] + "&plate=" + json.plate +
-									"&plate_two=" + json.two + "''>" + data[i][
-										'post_title'
-									] + "</a>";
-								post += "<i class='red_news'>[" + data[i]['post_label'] + "]</i></div>";
-								post += "<div class='news_time news_other'><span>发布于：" + data[i]['post_releasetime'] + "</span>";
-								post += "<span id=''>阅读数：" + data[i]['post_readnum'] + " </span><span id=''>点赞：" + data[i]['post_upnum'] +
-									"</span></div>";
-								post += "<div class='news_owner news_other'><span id=''>发帖人：" + data[i]['post_user_name'] + "</span>";
-								post += "<span id=''>最后回复人：" + data[i]['last_user_name'] + "</span><div class='share bdsharebuttonbox'>分享：";
-								post +=
-									"<a href='#' class='bds_weixin' data-cmd='weixin'></a><a href='#' class='bds_tsina' data-cmd='tsina'></a></div></div></div></li>";
-								postlist.innerHTML = post;
-							}
+									post += "<li><img src='" + data[i].post_img + "'/><div class='blog_list'>";
+									post += "<div class='news_title'><a href='forum.html?postid=" + data[i]['id'] + "&plate=" + json.plate +
+										"&plate_two=" + json.two + "''>" + data[i][
+											'post_title'
+										] + "</a>";
+									post += "<i class='red_news'>[" + data[i]['post_label'] + "]</i></div>";
+									post += "<div class='news_time news_other'><span>发布于：" + data[i]['post_releasetime'] + "</span>";
+									post += "<span id=''>阅读数：" + data[i]['post_readnum'] + " </span><span id=''>点赞：" + data[i][
+											'post_upnum'
+										] +
+										"</span></div>";
+									post += "<div class='news_owner news_other'><span id=''>发帖人：" + data[i]['post_user_name'] + "</span>";
+									post += "<span id=''>最后回复人：" + data[i]['last_user_name'] +
+										"</span><div class='share bdsharebuttonbox'>分享：";
+									post +=
+										"<a href='#' class='bds_weixin' data-cmd='weixin'></a><a href='#' class='bds_tsina' data-cmd='tsina'></a></div></div></div></li>";
+									postlist.innerHTML = post;
+								}
 							},
 						})
 						// 我的文章分页
@@ -315,6 +318,77 @@
 								}
 
 
+							},
+						})
+					} else if (ele.option.pages == "fan") {
+						$.ajax({
+							url: sever_url + 'my/fans',
+							type: 'post',
+							data: {
+								token: infodata.token,
+								rows: '8',
+								page: '1',
+								order: '0',
+								star_time: '',
+								end_time: s2,
+							},
+							// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+							dataType: 'json',
+							success: function(res) {
+								// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
+								// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
+								//								console.log(res)
+								var fansdata = res.data;
+
+								$(function() {
+									var a = {
+										color: '#blue',
+										sex: 'black',
+										border: '1px solid #ddd'
+									};
+
+									var b = {
+										background: '#005389'
+									};
+
+									$(".pagination").Paging({
+										classStyle: a, //a标签样式的对象,也可以不定义使用默认值
+										backClass: b, //选中的页数的背景，也可以不定义使用默认值
+										isFirst: true, //首页按钮是否显示
+										isPre: true, //下一页按钮是否显示
+										showRecordNum: 8, // 一页列表数量
+										totalNum: res.total, // 总列表数量
+										showNum: function(data1, data2) {
+											// alert(data1 + "," + data2);
+										},
+										pages: 'fans'
+									});
+
+								});
+								// console.log(fansdata)
+								var fans = '';
+								var fanslist = document.getElementById("fanslist");
+								if (fansdata.length === 0) {
+									fans += "<h3>暂无数据</h3>";
+									fanslist.innerHTML = fans;
+
+								} else {
+									for (var i = 0; i < fansdata.length; i++) {
+										fans += "<li><img class='icon_radius' src='" + fansdata[i].user_head + " ' /><div class='blog_list'>";
+										fans += "<div class='attention_title'><div>" + fansdata[i]['user_name'] + "</div><div>ID:" + fansdata[
+												i]
+											[
+												'id'
+											] + "</div><div>关注时间：" + fansdata[i]['follow_time'] + "</div>";
+										fans += "</div><div class='news_time news_other'><span>个人简介：</span><p>" + fansdata[i]['user_profile'] +
+											"</p>";
+										fans += "</div><div class='news_owner news_other'><span id=''>关注：" + fansdata[i]['user_follow_sum'] +
+											"|粉丝：" + fansdata[i]['user_fans_sum'] + "</span>";
+										fans +=
+											"</div></div><div class='about_att'><div class='cansel'>关注+</div><div class='hispage'><a>TA的个人主页</a></div></div></li>";
+										fanslist.innerHTML = fans;
+									}
+								}
 							},
 						})
 					}

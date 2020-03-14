@@ -546,15 +546,6 @@
 		<script type="text/javascript" src="js/paging/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/paging/paging.js"></script>
 		<script type="text/javascript">
-			
-			// 搜索
-			var search = document.getElementById("search");
-			var btn = document.getElementById("btn");
-			btn.addEventListener('click', function() {
-				alert(search.value);
-
-			})
-			
 			// 获取我的信息
 			var data = sessionStorage.getItem("data");
 			var infodata = eval('(' + data + ')');
@@ -591,7 +582,7 @@
 			localStorage.setItem("type", json.type)
 
 			// ajax请求文章列表
-			function post(orders) {
+			function postlist(orders) {
 				var post = "";
 				// 没有排序信息 ？默认为 0 ：获取Url值
 				(orders == undefined) ? order = '0': order = orders;
@@ -687,7 +678,7 @@
 					},
 				})
 			}
-			post();
+			postlist();
 
 			// ajax请求右侧数据
 			var info = "";
@@ -744,7 +735,7 @@
 							//存在
 							// postlist.remove();
 							document.getElementById("postlist").innerHTML = "";
-							post(orders);
+							postlist(orders);
 						}
 					}
 				}
@@ -768,6 +759,101 @@
 					$('.hiden_list').hide();
 				}
 			});
+
+
+			// 搜索
+			var search = document.getElementById("search");
+			var btn = document.getElementById("btn");
+			btn.addEventListener('click', function() {
+				// alert(search.value);
+				$.ajax({
+					url: 'http://114.55.35.82/tp6_forum/public/index.php/search/plate',
+					type: 'post',
+					data: {
+						plate: plate,
+						rows: '8',
+						page: '1',
+						search: search.value,
+						order: '0'
+					},
+					// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+					dataType: 'json',
+					success: function(res) {
+						// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
+						// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
+						console.log(res)
+						var data = res.data;
+						var post = "";
+						var postlist = document.getElementById("postlist");
+						// 分页函数
+						$(function() {
+							var a = {
+								color: '#blue',
+								sex: 'black',
+								border: '1px solid #ddd'
+							};
+
+							var b = {
+								background: '#005389'
+							};
+
+							$(".pagination").Paging({
+								classStyle: a, //a标签样式的对象,也可以不定义使用默认值
+								backClass: b, //选中的页数的背景，也可以不定义使用默认值
+								isFirst: true, //首页按钮是否显示
+								isPre: true, //下一页按钮是否显示
+								showRecordNum: res.per_page, // 一页列表数量
+								totalNum: res.total, // 总列表数量
+								showNum: function(data1, data2) {
+									// alert(data1 + "," + data2);
+								},
+								pages: "post",
+							});
+
+						});
+						if (data.length === 0) {
+							post += "<h3>暂无数据</h3>";
+							content.innerHTML = post;
+
+						} else {
+							if (document.getElementById("postlist")) {
+								//存在
+								// postlist.remove();
+								document.getElementById("postlist").innerHTML = "";
+								document.getElementById("menu").style.display = "none";
+							}
+							for (var i = 0; i < data.length; i++) {
+								post += "<li><img src='" + data[i].post_img + "'/><div class='blog_list'>";
+								post += "<div class='news_title'><a href='forum.html?postid=" + data[i]['id'] + "&plate=" + json.plate +
+									"&plate_two=" + json.two + "''>" + data[i][
+										'post_title'
+									] + "</a>";
+								post += "<i class='red_news'>[" + data[i]['post_label'] + "]</i></div>";
+								post += "<div class='news_time news_other'><span>发布于：" + data[i]['post_releasetime'] + "</span>";
+								post += "<span id=''>阅读数：" + data[i]['post_readnum'] + " </span><span id=''>点赞：" + data[i]['post_upnum'] +
+									"</span></div>";
+								post += "<div class='news_owner news_other'><span id=''>发帖人：" + data[i]['post_user_name'] + "</span>";
+								post += "<span id=''>最后回复人：" + data[i]['last_user_name'] +
+									"</span><div class='share bdsharebuttonbox'>分享：";
+								post +=
+									"<a url='forum.html?postid=" + data[i]['id'] + "&plate=" + json.plate +
+									"&plate_two=" + json.two + "' class='bds_weixin' data-cmd='weixin'></a><a url='forum.html?postid=" + data[
+										i]
+									['id'] + "&plate=" + json.plate +
+									"&plate_two=" + json.two + "' class='bds_tsina' data-cmd='tsina'></a></div></div></div></li>";
+								postlist.innerHTML = post;
+							}
+							
+							$('.bdsharebuttonbox a').on('mousemove', function() {
+								var title = $(this).attr('title');
+								var Url = $(this).attr('url');
+								$("#share_url").val(title + "||" + Url);
+							})
+						}
+
+					},
+				})
+			})
 		</script>
 
 	</body>
