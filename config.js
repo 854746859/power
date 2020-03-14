@@ -32,7 +32,7 @@ function GetToken(){
 // 获取我的信息
 var data = sessionStorage.getItem("data");
 var infodata = eval('(' + data + ')');
-console.log(infodata);
+//console.log(infodata);
 
 if(infodata != null){
 	var admin_box_head = '';
