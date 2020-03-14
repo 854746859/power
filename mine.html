@@ -67,9 +67,11 @@
 			
 			.classification {
 				width: 100%;
-				margin-top: 10px;
 				display: flex;
 				flex-direction: row;
+				padding: 10px 5px;
+				background-color: #fff;
+				border-bottom: 1px solid #dbdbdb;
 			}
 			
 			.mine {
@@ -81,28 +83,28 @@
 				position: relative;
 				display: flex;
 				flex-direction: row;
-				/*width: 100%;*/
-				/*height: 40px;*/
 				border-radius: 5px;
 			}
 			
 			.ul_bc {
-				background-color: #eee;
+
 				width: 200px;
 			}
 			
 			.sort {
-				width: 600px;
+				width: 562px;
 				display: flex;
 				flex-direction: row;
-				background-color: #eee;
 				justify-content: space-between;
 				align-items: center;
+				padding-left: 16px;
+				padding-right: 16px;
 			}
 			
 			.sort .sort_type {
 				display: flex;
 				flex-direction: row;
+				align-items: center;
 			}
 			
 			.sort .sort_type .type_box {
@@ -113,27 +115,53 @@
 			.sort .sort_type .type_box div {
 				margin-right: 5px;
 				font-size: 14px;
+				color:#3399ea;
 			}
 			
 			.sort .sort_type .time {
+				display: flex;
+				align-self: center;
 				width: 220px;
 				font-size: 14px;
 			}
 			
 			.ul_bc li {
-				border-right: 1px solid #fff;
-				background-color: #005389;
+				
 			}
 			
 			.classification ul li {
 				width: 100px;
 				height: 40px;
-				line-height: 40px;
 				text-align: center;
-				color: #fff;
-				border-radius: 3px;
-				cursor: pointer;
+				line-height: 40px;
+				font-size:18px;
+				font-family:PingFangSC-Regular,PingFang SC;
+				font-weight:400;
+				color:#3399ea;
 			}
+			.classification ul li:hover{
+				width: 100px;
+				height: 40px;
+				text-align: center;
+				line-height: 40px;
+				font-size:18px;
+				font-family:PingFangSC-Regular,PingFang SC;
+				font-weight:400;
+				color:#3399ea;
+				border-bottom: 3px solid rgb(9, 91, 185);
+			}
+			.navClicked{
+				width: 100px;
+				height: 40px;
+				text-align: center;
+				line-height: 40px;
+				font-size:18px;
+				font-family:PingFangSC-Regular,PingFang SC;
+				font-weight:400;
+				color:#3399ea;
+				border-bottom: 3px solid rgb(9, 91, 185);
+			}
+
 			
 			.classification ul>li:before {
 				content: "";
@@ -159,7 +187,7 @@
 				flex-direction: row;
 				justify-content: space-between;
 				align-items: center;
-				background-color: #eee;
+				background-color: #F5F6F7;
 				padding: 10px;
 			}
 			
@@ -172,12 +200,13 @@
 			.user_box .box_L .user_loge {
 				display: flex;
 				flex-direction: row;
+				align-items: center;
 			}
 			
 			.user_box .box_L .user_loge img {
-				width: 60px;
-				height: 60px;
-				border-radius: 30px;
+				width: 88px;
+				height: 88px;
+				border-radius: 50%;
 			}
 			
 			.user_box .box_L .user_loge .user_name {
@@ -185,22 +214,62 @@
 				height: 100%;
 			}
 			
-			.user_box .box_L .user_loge .user_name .user_id span:nth-child(2) {
+			.user_box .box_L .user_loge .user_name .user_id #user_name{
 				margin-left: 10px;
+				font-size:32px;
+				font-family:PingFangSC-Regular,PingFang SC;
+				font-weight:400;
+				color:rgba(0,0,0,0.85);
+			}
+			.user_id span:nth-child(2){
+				margin-left: 10px;
+				font-size:24px;
+				font-family:PingFangSC-Regular,PingFang SC;
+				font-weight:400;
+				color:rgba(0,0,0,0.85);
 			}
 			
 			.user_box .box_L .user_loge .user_name .user_des {
-				width: 140px;
+				/* width: 140px; */
 				word-break: break-all;
+				margin-left: 10px;
+				margin-top: 8px;
+				display: flex;
+				align-items: center;
+				font-size:18px;
+				font-family:PingFangSC-Regular,PingFang SC;
+				font-weight:400;
+				color:rgba(0,0,0,0.65);
+			}
+			#user_profile{
+				display: flex;
+				margin-left: 8px;
+				flex-direction: row;
+				font-size:18px;
+				font-family:PingFangSC-Regular,PingFang SC;
+				font-weight:400;
+				color:rgba(0,0,0,0.65);
+			}
+
+			.user_address_box{
+				display: flex;
+				align-items: center;
+				margin-left: 10px;
+				font-size:18px;
+				font-family:PingFangSC-Regular,PingFang SC;
+				font-weight:400;
+				color:rgba(0,0,0,0.65);
 			}
 			
 			.user_box .box_L .address,
 			.company {
-				height: 60px;
 				display: flex;
-				margin-left: 25px;
+				margin-left: 8px;
 				flex-direction: row;
-				justify-content: flex-start;
+				font-size:18px;
+				font-family:PingFangSC-Regular,PingFang SC;
+				font-weight:400;
+				color:rgba(0,0,0,0.65);
 			}
 			
 			.user_box input {
@@ -216,6 +285,7 @@
 			.box_one {
 				width: 100%;
 				height: 120px;
+				margin-top: 10px;
 			}
 			
 			.box_one ul {
@@ -242,17 +312,23 @@
 				border-right: 1px solid #FFF;
 			}
 			
-			.box_one ul li span {
-				height: 20px;
-				line-height: 20px;
-				cursor: pointer;
+			.box_one ul li span{
+				font-size:18px;
+				font-family:PingFangSC-Regular,PingFang SC;
+				color:rgba(0,0,0,0.85);
+			}
+
+			.box_one ul li p{
+				margin-top: 6px;
+				font-size:18px;
+				font-family:HelveticaNeue;
+				color:rgba(0,0,0,0.65);
 			}
 			
 			.box_two {
 				width: 100%;
-				margin-top: 20px;
-				background-color: #eee;
-				border-radius: 5px;
+				margin-top: 10px;
+				border-top: 1px solid #dbdbdd;
 				box-sizing: border-box;
 				padding: 10px;
 				margin-right: 10px;
@@ -268,12 +344,20 @@
 				display: flex;
 				flex-direction: row;
 				justify-content: space-between;
-				align-items: flex-end;
+				/* align-items: flex-end; */
+				border-bottom: 1px solid #dedede;
 			}
 			
 			.title span {
 				font-size: 16px;
 				font-weight: 600;
+				font-family: PingFangSC-Regular,PingFang SC;
+			}
+			.recent_visitors .title{
+				padding-bottom: 8px;
+			}
+			.title a{
+				margin-top: px;
 			}
 			
 			.avatar {
@@ -297,11 +381,17 @@
 			}
 			
 			.bc {
-				border-top-left-radius: 3px;
-				border-top-right-radius: 3px;
+				border-top-left-radius: 4px;
+				border-top-right-radius: 4px;
 				margin-top: 10px;
 				background-color: #eee;
-				padding: 0 10px;
+				padding: 8px 10px;
+			}
+
+			#lng_todaycount_list li h3{
+				font-size: 14px;
+				font-weight: 500;
+				font-family: PingFangSC-Regular,PingFang SC;
 			}
 			
 			.box_three ul {
@@ -361,6 +451,7 @@
 			
 			.wallet_title,
 			.detail_title {
+				width: 740px;
 				display: flex;
 				flex-direction: row;
 				justify-content: space-between;
@@ -368,6 +459,12 @@
 				margin-top: 10px;
 				border-bottom: 1px solid #eee;
 				height: 50px;
+			}
+
+			.detail_title div{
+				display: flex;
+				flex-direction: row;
+				align-self: center;
 			}
 			
 			.detail_box {
@@ -577,18 +674,20 @@
 			
 			.edit_info {
 				display: flex;
-				flex-direction: column;
+				flex-direction: row;
+				align-self: flex-start;
 				margin-right: 20px;
 			}
 			.edit_info a{
-				font-size: 14px;
-				color: #1a83da;
-				font-weight: 700;
-				margin: 5px 0;
+				font-family: 'Microsoft YaHei','SF Pro Display',Roboto,Noto,Arial,'PingFang SC',sans-serif;
+				font-size: 18px;
+				color: #3399ea;
+				cursor: pointer;
+				margin-right: 8px;
 			}
 			
 			#signup,#test {
-				width: 404px;
+				width: 500px;
 				padding-bottom: 2px;
 				display: none;
 				background: #FFF;
@@ -599,10 +698,17 @@
 				-webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
 				-moz-box-shadow: 0 0px 4px rgba(0, 0, 0, 0.7);
 			}
+
+			form{
+				display: flex;
+				flex-direction: column;
+			}
+			#signup-ct{
+				border: none;
+			}
 			#signup-header {
-				background: url(LeanModal/css/img/hd-bg.png);
-				padding: 18px 18px 14px 18px;
-				border-bottom: 1px solid #CCC;
+				background-color: #1a83da;
+				padding: 8px 10px 8px 12px;
 				border-top-left-radius: 5px;
 				-moz-border-radius-topleft: 5px;
 				-webkit-border-top-left-radius: 5px;
@@ -610,12 +716,22 @@
 				-moz-border-radius-topright: 5px;
 				-webkit-border-top-right-radius: 5px;
 			}
+			#qusetionlist h3,#collectionlist h3,#followslist h3{
+				font-size:18px;
+				font-family:PingFangSC-Regular,PingFang SC;
+				font-weight:600;
+				color:rgba(0,0,0,0.85);
+				text-align: center;
+    			margin-top: 20px;
+			}
+			#signup-header a{
+				background-color: #1a83da;
+			}
 			#signup-header h2 {
-				color: #444;
-				font-size: 2em;
-				font-weight: 700;
-				margin-bottom: 3px;
-				text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+				color: #fff ;
+				font-size: 24px ;
+				font-weight: 500 ;
+				text-shadow:none ;
 			}
 			#signup-header p {
 				color: #444;
@@ -624,7 +740,7 @@
 				text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
 				text-shadow: none;
 			}
-			.modal_close {
+			/* .modal_close {
 				position: absolute;
 				top: 12px;
 				right: 12px;
@@ -633,14 +749,7 @@
 				height: 14px;
 				background: url(LeanModal/css/img/modal_close.png);
 				z-index: 2;
-			}
-			#signup-header h2 {
-				color: #444;
-				font-size: 2em;
-				font-weight: 700;
-				margin-bottom: 3px;
-				text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
-			}
+			} */
 			#signup-header p {
 				color: #444;
 				font-size: 1.3em;
@@ -649,10 +758,13 @@
 				text-shadow: none;
 			}
 			.txt-fld {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
 				position: relative;
 				width: 364px;
-				padding: 14px 20px;
-				border-bottom: 1px solid #EEE;
+				padding: 8px 12px;
+				/* border-bottom: 1px solid #EEE; */
 				text-align: right;
 			}
 			.txt-fld input[type="file"]{
@@ -669,27 +781,25 @@
 				display: block;
 				float: left;
 				width: 90px;
-				padding-top: 8px;
-				color: #222;
-				font-size: 1.3em;
 				text-align: left;
+				font-size:18px;
+				font-family:PingFangSC-Regular,PingFang SC;
+				font-weight:400;
+				color:rgba(0,0,0,0.85);
 			}
 			
 			.txt-fld input,textarea {
 				width: 244px;
-				padding: 8px;
+				padding: 2px 8px;
 				border-radius: 4px;
 				-moz-border-radius: 4px;
 				-webkit-border-radius: 4px;
 				font-size: 1.2em;
 				color: #222;
-				background: #F7F7F7;
-				font-family: "Helvetica Neue";
+				font-family: PingFangSC-Regular,PingFang SC;
 				outline: none;
-				border-top: 1px solid #CCC;
-				border-left: 1px solid #CCC;
-				border-right: 1px solid #E7E6E6;
-				border-bottom: 1px solid #E7E6E6;
+				border: 1px solid #dbdbdb;
+				background-color: #fff;
 			}
 			
 			.txt-fld input.error_input {
@@ -713,6 +823,8 @@
 				display: flex;
 				flex-direction: row;
 				justify-content: flex-end;
+				padding: 4px 0px;
+				border-top: 1px solid #dbdbdb;
 			}
 			.submit input{
 				margin-right: 10px;
@@ -899,16 +1011,21 @@
 							</div>
 							<div class="user_name">
 								<div class="user_id">
-									<span id="user_name"></span><span id="id"></span>
+									<span id="user_name"></span>
+									<span id="id"></span>
+								</div>
+								<div class="user_address_box">
+									地址：
+									<p id="user_address" class="address"></p>
 								</div>
 								<div class="user_des">
+									个人简介：
 									<p id="user_profile"></p>
 								</div>
+								
 							</div>
 						</div>
-						<div id="user_address" class="address">
-
-						</div>
+						
 						<div class="company">
 
 						</div>
@@ -926,21 +1043,23 @@
 								<a class="modal_close" href="#"></a>
 							</div>
 							<form action="">
-								<div class="txt-fld">
-									<label for="">真实姓名</label>
-									<input id="user_realname" name="" type="text" />
-								</div>
-								<div class="txt-fld">
-									<label for="">单位/学校</label>
-									<input id="user_company" name="" type="text" />
-								</div>
-								<div class="txt-fld">
-									<label for="">工号/学号</label>
-									<input id="user_number" name="" type="text" />
-								</div>
-								<div class="txt-fld">
-									<label for="">身份证号</label>
-									<input id="idcard_number" name="" type="number" />
+								<div style="display: flex; flex-direction: column; align-items: center;">
+									<div class="txt-fld">
+										<label for="">真实姓名</label>
+										<input id="user_realname" name="" type="text" />
+									</div>
+									<div class="txt-fld">
+										<label for="">单位/学校</label>
+										<input id="user_company" name="" type="text" />
+									</div>
+									<div class="txt-fld">
+										<label for="">工号/学号</label>
+										<input id="user_number" name="" type="text" />
+									</div>
+									<div class="txt-fld">
+										<label for="">身份证号</label>
+										<input id="idcard_number" name="" type="number" />
+									</div>
 								</div>
 								<div class="submit">
 									<input type="button" name="" id="check" value="确认" />
@@ -955,22 +1074,25 @@
 								<a class="modal_close" href="#"></a>
 							</div>
 							<form action="">
-								<div class="txt-fld">
-									<label for="">头像</label>
-									<input id="imageFile" name="" type="file" />
+								<div style="display: flex; flex-direction: column; align-items: center;">
+									<div class="txt-fld">
+										<label for="">头像</label>
+										<input id="imageFile" name="" type="file" />
+									</div>
+									<div class="txt-fld">
+										<label for="">用户名</label>
+										<input id="userName" name="" type="text" />
+									</div>
+									<div class="txt-fld">
+										<label for="">地址</label>
+										<input id="userAddress" name="" type="text" />
+									</div>
+									<div class="txt-fld">
+										<label for="">个人简介</label>
+										<textarea id="userProfile" name="" rows="" cols=""></textarea>
+									</div>
 								</div>
-								<div class="txt-fld">
-									<label for="">用户名</label>
-									<input id="userName" name="" type="text" />
-								</div>
-								<div class="txt-fld">
-									<label for="">地址</label>
-									<input id="userAddress" name="" type="text" />
-								</div>
-								<div class="txt-fld">
-									<label for="">个人简介</label>
-									<textarea id="userProfile" name="" rows="" cols=""></textarea>
-								</div>
+								
 								<div class="submit">
 									<input type="button" name="" id="edit" value="确认" />
 								</div>
@@ -1057,367 +1179,29 @@
 							<div class="news_list zy_listbox mine_box" style="height: 900px;" id="original">
 								<!-- 展示15条数据后出现分页 -->
 								<ul id="postlist">
-									<!-- <li>
-										<img src="News-module1/images/dangzheng.png" />
-										<div class="blog_list">
-											<div class="news_title">
-												<a href="news_xq.html">李克强主持召开国务院常务会议 部署进一步促进社区养老和家政服务工作安排</a>
-												<i class="red_news">[原创]</i>
-												<i class="red_news">[新闻]</i>
-											</div>
-											<div class="news_time news_other">
-												<span>发布于：2019-07-05 13:12:06</span>
-												<span id="">
-													阅读数：32564
-												</span>
-												<span id="">
-													点赞：1563
-												</span>
-											</div>
-											<div class="news_owner news_other">
-												<span id="">
-													发帖人：XXX
-												</span>
-												<span id="">
-													最后回复人：XXX
-												</span>
-												<div class="share">
-													分享：
-													<img class="share_icon" src="images/WeChat.png" />
-													<img class="share_icon" src="images/weibo.png" />
-												</div>
-											</div>
-										</div>
-										<img style="width: 20px;height: 20px;" src="images/write.png" />
-										<img style="width: 20px;height: 20px;" src="images/delete.png" />
-									</li> -->
 
 								</ul>
-								<!-- 通用分页 -->
-								<!-- <div class="fanye" style="text-align: left;">
-									<a href="#">上一页</a>
-									<div>
-										<a href="#" class="current">1</a>
-										<a href="#">2</a>
-										<a href="#">3</a>
-										<a href="#">4</a>
-										<a href="#">...</a>
-										<a href="#">10</a>
-									</div>
-									<a href="#">下一页</a>
-									<p>
-										<span>共20页</span>
-										<span>转到第<input type="text" name="" value="2">页</span>
-										<input type="submit" name="" value="确定">
-									</p>
-								</div> -->
-								<!-- 通用分页end -->
 							</div>
 							<!--我的问答-->
 							<div class="news_list zy_listbox mine_box" id="question" hidden="hidden">
 								<!-- 展示15条数据后出现分页 -->
 								<ul id="qusetionlist">
-									<!-- <li>
-										<img src="News-module1/images/dangzheng.png" />
-										<div class="blog_list">
-											<div class="news_title">
-												<a href="news_xq.html">李克强主持召开国务院常务会议 部署进一步促进社区养老和家政服务工作安排</a>
-												<i class="red_news">[原创]</i>
-												<i class="red_news">[新闻]</i>
-											</div>
-											<div class="news_time news_other">
-												<span>发布于：2019-07-05 13:12:06</span>
-												<span id="">
-													阅读数：32564
-												</span>
-												<span id="">
-													点赞：1563
-												</span>
-											</div>
-											<div class="news_owner news_other">
-												<span id="">
-													发帖人：XXX
-												</span>
-												<span id="">
-													最后回复人：XXX
-												</span>
-												<div class="share">
-													分享：
-													<img class="share_icon" src="images/WeChat.png" />
-													<img class="share_icon" src="images/weibo.png" />
-												</div>
-											</div>
-										</div>
-										<img style="width: 20px;height: 20px;" src="images/write.png" />
-										<img style="width: 20px;height: 20px;" src="images/delete.png" />
-									</li>
-									<li>
-										<img src="images/icon_leader.png" />
-										<div class="blog_list">
-											<div class="news_title">
-												<a href="news_xq.html">特勤大队暂扣污染路面车辆</a>
-												<i class="red_news">[原创]</i>
-												<i class="red_news">[新闻]</i>
-											</div>
-											<div class="news_time news_other">
-												<span>发布于：2019-07-05 13:12:06</span>
-												<span id="">
-													阅读数：32564
-												</span>
-												<span id="">
-													点赞：1563
-												</span>
-											</div>
-											<div class="news_owner news_other">
-												<span id="">
-													发帖人：XXX
-												</span>
-												<span id="">
-													最后回复人：XXX
-												</span>
-												<div class="share">
-													分享：
-													<img class="share_icon" src="images/WeChat.png" />
-													<img class="share_icon" src="images/weibo.png" />
-												</div>
-											</div>
-										</div>
-										<img style="width: 20px;height: 20px;" src="images/write.png" />
-										<img style="width: 20px;height: 20px;" src="images/delete.png" />
-									</li>
-									<li>
-										<img src="images/people01.jpg" />
-										<div class="blog_list">
-											<div class="news_title">
-												<a href="news_xq.html">我局顺利组织2019年福泉市第一期渔业安全生产知识培训及应急实操演练我局顺利组织2019年福泉市第</a>
-												<i class="red_news">[原创]</i>
-												<i class="red_news">[新闻]</i>
-											</div>
-											<div class="news_time news_other">
-												<span>发布于：2019-07-05 13:12:06</span>
-												<span id="">
-													阅读数：32564
-												</span>
-												<span id="">
-													点赞：1563
-												</span>
-											</div>
-											<div class="news_owner news_other">
-												<span id="">
-													发帖人：XXX
-												</span>
-												<span id="">
-													最后回复人：XXX
-												</span>
-												<div class="share">
-													分享：
-													<img class="share_icon" src="images/WeChat.png" />
-													<img class="share_icon" src="images/weibo.png" />
-												</div>
-											</div>
-										</div>
-										<img style="width: 20px;height: 20px;" src="images/write.png" />
-										<img style="width: 20px;height: 20px;" src="images/delete.png" />
-									</li>
-									<li>
-										<img src="images/icon_gongshi.png" />
-										<div class="blog_list">
-											<div class="news_title">
-												<a href="news_xq.html">特勤大队暂扣污染路面车辆</a>
-												<i class="red_news">[原创]</i>
-												<i class="red_news">[新闻]</i>
-											</div>
-											<div class="news_time news_other">
-												<span>发布于：2019-07-05 13:12:06</span>
-												<span id="">
-													阅读数：32564
-												</span>
-												<span id="">
-													点赞：1563
-												</span>
-											</div>
-											<div class="news_owner news_other">
-												<span id="">
-													发帖人：XXX
-												</span>
-												<span id="">
-													最后回复人：XXX
-												</span>
-												<div class="share">
-													分享：
-													<img class="share_icon" src="images/WeChat.png" />
-													<img class="share_icon" src="images/weibo.png" />
-												</div>
-											</div>
-										</div>
-										<img style="width: 20px;height: 20px;" src="images/write.png" />
-										<img style="width: 20px;height: 20px;" src="images/delete.png" />
-									</li>
-									<li>
-										<img src="images/icon_zhaobiao.png" />
-										<div class="blog_list">
-											<div class="news_title">
-												<a href="news_xq.html">特勤大队暂扣污染路面车辆</a>
-												<i class="red_news">[原创]</i>
-												<i class="red_news">[新闻]</i>
-											</div>
-											<div class="news_time news_other">
-												<span>发布于：2019-07-05 13:12:06</span>
-												<span id="">
-													阅读数：32564
-												</span>
-												<span id="">
-													点赞：1563
-												</span>
-											</div>
-											<div class="news_owner news_other">
-												<span id="">
-													发帖人：XXX
-												</span>
-												<span id="">
-													最后回复人：XXX
-												</span>
-												<div class="share">
-													分享：
-													<img class="share_icon" src="images/WeChat.png" />
-													<img class="share_icon" src="images/weibo.png" />
-												</div>
-											</div>
-										</div>
-										<img style="width: 20px;height: 20px;" src="images/write.png" />
-										<img style="width: 20px;height: 20px;" src="images/delete.png" />
-									</li> -->
+
 								</ul>
-								<!-- 通用分页 -->
-								<!-- <div class="fanye" style="text-align: left;">
-									<a href="#">上一页</a>
-									<div>
-										<a href="#" class="current">1</a>
-										<a href="#">2</a>
-										<a href="#">3</a>
-										<a href="#">4</a>
-										<a href="#">...</a>
-										<a href="#">10</a>
-									</div>
-									<a href="#">下一页</a>
-									<p>
-										<span>共20页</span>
-										<span>转到第<input type="text" name="" value="2">页</span>
-										<input type="submit" name="" value="确定">
-									</p>
-								</div> -->
-								<!-- 通用分页end -->
 							</div>
 							<!--我的收藏-->
 							<div class="news_list zy_listbox mine_box" style="height: 900px;" id="favorite" hidden="hidden">
 								<!-- 展示15条数据后出现分页 -->
 								<ul id="collectionlist">
-									<!-- <li>
-										<img src="News-module1/images/dangzheng.png" />
-										<div class="blog_list">
-											<div class="news_title">
-												<a href="news_xq.html">李克强主持召开国务院常务会议 部署进一步促进社区养老和家政服务工作安排</a>
-												<i class="red_news">[原创]</i>
-												<i class="red_news">[新闻]</i>
-											</div>
-											<div class="news_time news_other">
-												<span>发布于：2019-07-05 13:12:06</span>
-												<span id="">
-													阅读数：32564
-												</span>
-												<span id="">
-													点赞：1563
-												</span>
-											</div>
-											<div class="news_owner news_other">
-												<span id="">
-													发帖人：XXX
-												</span>
-												<span id="">
-													最后回复人：XXX
-												</span>
-												<div class="share">
-													分享：
-													<img class="share_icon" src="images/WeChat.png" />
-													<img class="share_icon" src="images/weibo.png" />
-												</div>
-											</div>
-										</div>
-										<img style="width: 20px;height: 20px;" src="images/delete.png" />
-									</li> -->
+
 								</ul>
-								<!-- 通用分页 -->
-								<!-- <div class="fanye" style="text-align: left;">
-									<a href="#">上一页</a>
-									<div>
-										<a href="#" class="current">1</a>
-										<a href="#">2</a>
-										<a href="#">3</a>
-										<a href="#">4</a>
-										<a href="#">...</a>
-										<a href="#">10</a>
-									</div>
-									<a href="#">下一页</a>
-									<p>
-										<span>共20页</span>
-										<span>转到第<input type="text" name="" value="2">页</span>
-										<input type="submit" name="" value="确定">
-									</p>
-								</div> -->
-								<!-- 通用分页end -->
 							</div>
 							<!--我的关注-->
 							<div class="news_list zy_listbox mine_box" style="height: 900px;" id="attention" hidden="hidden">
 								<!-- 展示15条数据后出现分页 -->
 								<ul id="followslist">
 
-									<!-- <li>
-										<img class="icon_radius" src="images/manager.jpg" />
-										<div class="blog_list">
-											<div class="attention_title">
-												<div>name</div>
-												<div>ID:xxxxxxx</div>
-												<div>关注时间：2020-3-6 21:13:08</div>
-											</div>
-											<div class="news_time news_other">
-												<span>个人简介：</span>
-												<p>xxxxxxxxxxx</p>
-											</div>
-											<div class="news_owner news_other">
-												<span id="">
-													关注：xxx|粉丝：xxx
-												</span>
-											</div>
-										</div>
-										<div class="about_att">
-											<div class="cansel">
-												取消关注
-											</div>
-											<div class="hispage">
-												<a>TA的个人主页</a>
-											</div>
-										</div>
-									</li> -->
 								</ul>
-								<!-- 通用分页 -->
-								<!-- <div class="fanye" style="text-align: left;">
-									<a href="#">上一页</a>
-									<div>
-										<a href="#" class="current">1</a>
-										<a href="#">2</a>
-										<a href="#">3</a>
-										<a href="#">4</a>
-										<a href="#">...</a>
-										<a href="#">10</a>
-									</div>
-									<a href="#">下一页</a>
-									<p>
-										<span>共20页</span>
-										<span>转到第<input type="text" name="" value="2">页</span>
-										<input type="submit" name="" value="确定">
-									</p>
-								</div> -->
-								<!-- 通用分页end -->
 
 							</div>
 							<!--我的粉丝-->
@@ -1425,53 +1209,7 @@
 								<!-- 展示15条数据后出现分页 -->
 								<ul id="fanslist">
 
-									<!-- <li>
-										<img class="icon_radius" src="images/manager.jpg" />
-										<div class="blog_list">
-											<div class="attention_title">
-												<div>name</div>
-												<div>ID:xxxxxxx</div>
-												<div>关注时间：2020-3-6 21:13:08</div>
-											</div>
-											<div class="news_time news_other">
-												<span>个人简介：</span>
-												<p>xxxxxxxxxxx</p>
-											</div>
-											<div class="news_owner news_other">
-												<span id="">
-													关注：xxx|粉丝：xxx
-												</span>
-											</div>
-										</div>
-										<div class="about_att">
-											<div class="cansel">
-												关注+
-											</div>
-											<div class="hispage">
-												<a>TA的个人主页</a>
-											</div>
-										</div>
-									</li> -->
 								</ul>
-								<!-- 通用分页 -->
-								<!-- <div class="fanye" style="text-align: left;">
-									<a href="#">上一页</a>
-									<div>
-										<a href="#" class="current">1</a>
-										<a href="#">2</a>
-										<a href="#">3</a>
-										<a href="#">4</a>
-										<a href="#">...</a>
-										<a href="#">10</a>
-									</div>
-									<a href="#">下一页</a>
-									<p>
-										<span>共20页</span>
-										<span>转到第<input type="text" name="" value="2">页</span>
-										<input type="submit" name="" value="确定">
-									</p>
-								</div> -->
-								<!-- 通用分页end -->
 							</div>
 							<!--收益/钱包-->
 							<div class="news_list zy_listbox mine_box" id="wallet" hidden="hidden">
@@ -1520,42 +1258,7 @@
 										<li>支付人</li>
 									</ul>
 									<ul id="listBody">
-										<!--<li>
-											<ul class="list_body">
-												<li>2020-02-19 15:22:20</li>
-												<li>创作激励</li>
-												<li>25.00</li>
-												<li>0</li>
-												<li>平台管理员</li>
-											</ul>
-										</li>
-										<li>
-											<ul class="list_body">
-												<li>2020-02-19 15:22:20</li>
-												<li>创作激励</li>
-												<li>25.00</li>
-												<li>0</li>
-												<li>平台管理员</li>
-											</ul>
-										</li>
-										<li>
-											<ul class="list_body">
-												<li>2020-02-19 15:22:20</li>
-												<li>创作激励</li>
-												<li>25.00</li>
-												<li>0</li>
-												<li>平台管理员</li>
-											</ul>
-										</li>
-										<li>
-											<ul class="list_body">
-												<li>2020-02-19 15:22:20</li>
-												<li>创作激励</li>
-												<li>25.00</li>
-												<li>0</li>
-												<li>平台管理员</li>
-											</ul>
-										</li>-->
+										
 									</ul>
 								</div>
 							</div>
@@ -1563,6 +1266,9 @@
 							<div class="news_list zy_listbox mine_box" id="post" hidden="hidden">
 								<div class="post_title">
 									<h4>文章标题：</h4><input type="text" name="" id="postTitle" value="" placeholder="请输入文章标题" />
+								</div>
+								<div class="description_post">
+									<h4>封面图上传：</h4><input type="file" name="" id="picFile" value="" />
 								</div>
 								<h4>文章内容：</h4>
 								<script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>
@@ -1736,30 +1442,7 @@
 							</div>
 							<!--系统通知-->
 							<div class="news_list zy_listbox mine_box" id="notice" hidden="hidden">
-								<!--<div class="message">
-									<div class="message_title">
-										<h3>叮，您的创作激励奖金已到账，请您查收！</h3><span>2020-02-04 01:23:33</span>
-									</div>
-									<div class="message_detail">
-										<span>您的创作激励奖金到账了，前往查看</span><a>网页链接</a>
-									</div>
-								</div>
-								<div class="message">
-									<div class="message_title">
-										<h3>叮，您的创作激励奖金已到账，请您查收！</h3><span>2020-02-04 01:23:33</span>
-									</div>
-									<div class="message_detail">
-										<span>您的创作激励奖金到账了，前往查看</span><a>网页链接</a>
-									</div>
-								</div>
-								<div class="message">
-									<div class="message_title">
-										<h3>叮，您的创作激励奖金已到账，请您查收！</h3><span>2020-02-04 01:23:33</span>
-									</div>
-									<div class="message_detail">
-										<span>您的创作激励奖金到账了，前往查看</span><a>网页链接</a>
-									</div>
-								</div>-->
+								
 							</div>
 
 							<center id="pagiNation">
@@ -1773,19 +1456,19 @@
 						<div class="box_one">
 							<ul>
 								<li>
-									<span>发布</span><span id="user_release_sum">123</span>
+									<span>发布</span><p id="user_release_sum">0</p>
 								</li>
 								<li>
-									<span>粉丝</span><span id="user_fans_sum">123</span>
+									<span>粉丝</span><p id="user_fans_sum">0</p>
 								</li>
 								<li>
-									<span>关注</span><span id="user_follow_sum">123</span>
+									<span>关注</span><p id="user_follow_sum">0</p>
 								</li>
 								<li>
-									<span>获赞</span><span id="user_laid_sum">123</span>
+									<span>获赞</span><p id="user_laid_sum">0</p>
 								</li>
 								<li>
-									<span>转发</span><span id="user_forward_sum">123</span>
+									<span>转发</span><p id="user_forward_sum">0</p>
 								</li>
 							</ul>
 						</div>
@@ -1819,12 +1502,7 @@
 								<!-- <a class="more">返回首页</a> -->
 							</div>
 							<ul id="lng_todaycount_list">
-								<!-- <li>
-									<h3>LNG板块</h3>
-									<span>
-										今日更新：12篇
-									</span>
-								</li> -->
+
 							</ul>
 						</div>
 					</div>
@@ -1938,6 +1616,14 @@
 					}
 				}
 			}
+			$(function(){
+				//第一种方法
+				$(".classification ul li").each(function(index) {
+					$(this).click(function() {
+						$(".classification ul li").eq(index).addClass("navClicked").siblings().removeClass("navClicked");
+					})
+				})
+			});
 			
 			// 新粉丝跳转
 			$("#fanmore").click(function() {
@@ -2101,7 +1787,7 @@
 					var new_fans_img = '';
 					var new_fans_list = document.getElementById("new_fans_list");
 					for(var i = 0; i < new_fans.length; i++) {
-						new_fans_img += "<div><img  style='width:70px; height:70px; border-radius:50%; ' src='" + new_fans[i].user_head +
+						new_fans_img += "<div><img  style='width:70px; height:70px; border-radius:50%; margin-top:8px;' src='" + new_fans[i].user_head +
 							"'/></div>";
 						new_fans_list.innerHTML = new_fans_img;
 					}
@@ -2110,7 +1796,7 @@
 					var new_visitor_img = '';
 					var new_visitor_list = document.getElementById("new_visitor_list");
 					for(var i = 0; i < new_visitor.length; i++) {
-						new_visitor_img += "<div><img style='width:70px; height:70px; border-radius:50%; ' src='" + new_visitor[i].user_head +
+						new_visitor_img += "<div><img style='width:70px; height:70px; border-radius:50%;margin-top:8px; ' src='" + new_visitor[i].user_head +
 							"'/></div>";
 						new_visitor_list.innerHTML = new_visitor_img;
 					}
