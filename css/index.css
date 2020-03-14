@@ -137,7 +137,7 @@ html,body{ background-color:#eee;width: 100%;}
 .conbox{ margin-bottom: 30px; }
 
 /*新闻轮播图*/
-.news_banner{ overflow:hidden; position:relative; width: 820px; }
+.news_banner{ overflow:hidden; position:relative; width: 820px; display: block;}
 .news_banner .hd{ overflow:hidden; position:absolute; bottom:26px; right: 0; z-index:1;width: 160px; text-align: right;}
 .news_banner .hd ul{ overflow:hidden; zoom:1;text-align: center; display: inline-block; margin-right: 15px; font-size: 0; }
 .news_banner .hd ul li{display: inline-block; margin:0 2px;  width:18px; height:18px; background:#fff; cursor:pointer; font-size: 12px; font-weight: bold;}
