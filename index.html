@@ -173,9 +173,8 @@
 				<!-- 搜索 -->
 				<div class="search_box">
 					<div>
-						<button type="submit"><img src="images/search.png"></button>
-						<input type="text" name="" placeholder="请输入关键词检索">
-
+						<input id="search" type="text" name="" placeholder="请输入关键词检索">
+						<button id="btn" style="float: right;margin-left: 30px;" type="submit"><img src="images/search.png"></button>
 					</div>
 
 				</div>
@@ -184,8 +183,8 @@
 						<img src="images/people03.jpg" class="admin_logo" />
 						<a href="">快速发帖</a>
 					</div> -->
-						<a href="login.html">登录/注册</a>
-						<a href="mine.html?fast=1">快速发帖</a>
+					<a href="login.html">登录/注册</a>
+					<a href="mine.html?fast=1">快速发帖</a>
 				</div>
 			</div>
 		</div>
@@ -385,21 +384,21 @@
 
 				<div class="conbox fix">
 					<div class="news_banner l bora_5">
-						<div style="display: flex; flex-direction: column;">
+						<div id="content" style="display: flex; flex-direction: column;">
 							<div id="menu" class="zy_title" style="display: flex; flex-direction: row;margin-left: -22px;border-bottom: 1px solid #dbdbdb;">
 								<h2 id="0" class="selected">最新发布</h2>
 								<h2 id="1">最后回复</h2>
 							</div>
-<!-- 左边内容 -->
-							<div id="content" class="zy_right_con">
+							<!-- 左边内容 -->
+							<div class="zy_right_con">
 								<!-- 当前位置 -->
-								
+
 								<!-- 内容展示块-->
 								<div class="news_list zy_listbox" style="height: 900px;">
 									<!-- 展示15条数据后出现分页 -->
 									<ul id="postlist">
 
-										
+
 									</ul>
 									<!-- 通用分页 -->
 									<!-- 通用分页end -->
@@ -411,7 +410,7 @@
 							</div>
 						</div>
 
-						
+
 					</div>
 					<!-- zy_content end
 					<!-- 招标公告 -->
@@ -532,29 +531,38 @@
 			<p>版权所有：XX市综合行政执法局&nbsp;&nbsp;&nbsp;地址：XX省XX市工业园区特1号</p>
 		</div>
 
-		<input type="text" name="share_url" id="share_url" value="" hidden="hidden"/>
+		<input type="text" name="share_url" id="share_url" value="" hidden="hidden" />
 		<!-- <script type="text/javascript" src="js/paging/jquery.min.js"></script> -->
-		<script type="text/javascript" src="config.js" ></script>
+		<script type="text/javascript" src="config.js"></script>
 		<script type="text/javascript" src="js/paging/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/paging/paging.js"></script>
 		<script type="text/javascript">
 			
+			// 搜索
+			var search = document.getElementById("search");
+			var btn = document.getElementById("btn");
+			btn.addEventListener('click', function() {
+				alert(search.value);
+
+			})
+			
 			// 获取我的信息
 			var data = sessionStorage.getItem("data");
 			var infodata = eval('(' + data + ')');
-			
-			if(infodata != null){
+
+			if (infodata != null) {
 				var admin_box_head = '';
 				var infodatatoken = infodata.token
 				var admin_box = document.getElementById("admin_box");
-				
-				if( infodatatoken.length > 1){
-					admin_box_head += "<div class='admin'><a href='mine.html'><img id='head'  class='admin_logo' src='" + infodata.user_head + "'  /></a><a href='mine.html?fast=1'>快速发帖</a></div>";
+
+				if (infodatatoken.length > 1) {
+					admin_box_head += "<div class='admin'><a href='mine.html'><img id='head'  class='admin_logo' src='" + infodata.user_head +
+						"'  /></a><a href='mine.html?fast=1'>快速发帖</a></div>";
 					admin_box.innerHTML = admin_box_head;
 				}
 			}
-			
-			
+
+
 			// 获取当前分类
 			function GetRequest() {
 				var url = decodeURI(location.search); //获取url中"?"符后的字串
@@ -608,7 +616,7 @@
 					success: function(res) {
 						// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
 						// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
-//						console.log(res)
+						//						console.log(res)
 						var data = res.data;
 						// 分页函数
 						$(function() {
@@ -654,15 +662,16 @@
 								post += "<div class='news_owner news_other'><span id=''>发帖人：" + data[i]['post_user_name'] + "</span>";
 								post += "<span id=''>最后回复人：" + data[i]['last_user_name'] + "</span><div class='share bdsharebuttonbox'>分享：";
 								post +=
-									"<a url='forum.html?postid="+data[i]['id'] + "&plate=" + json.plate +
-									"&plate_two=" + json.two +"' class='bds_weixin' data-cmd='weixin'></a><a url='forum.html?postid="+data[i]['id'] + "&plate=" + json.plate +
-									"&plate_two=" + json.two +"' class='bds_tsina' data-cmd='tsina'></a></div></div></div></li>";
+									"<a url='forum.html?postid=" + data[i]['id'] + "&plate=" + json.plate +
+									"&plate_two=" + json.two + "' class='bds_weixin' data-cmd='weixin'></a><a url='forum.html?postid=" + data[i]
+									['id'] + "&plate=" + json.plate +
+									"&plate_two=" + json.two + "' class='bds_tsina' data-cmd='tsina'></a></div></div></div></li>";
 								postlist.innerHTML = post;
 							}
-							$('.bdsharebuttonbox a').on('mousemove',function() {
+							$('.bdsharebuttonbox a').on('mousemove', function() {
 								var title = $(this).attr('title');
 								var Url = $(this).attr('url');
-								$("#share_url").val(title+"||"+Url);
+								$("#share_url").val(title + "||" + Url);
 							})
 						}
 
@@ -736,17 +745,17 @@
 			$('.hiden_list').hide();
 			$('.hiden_list_w').hide();
 			//监听头像鼠标移入事件
-			$("#head").mouseover(function(){
-				if(infodata.user_power_num==4){
+			$("#head").mouseover(function() {
+				if (infodata.user_power_num == 4) {
 					$('.hiden_list_w').show();
-				}else{
+				} else {
 					$('.hiden_list').show();
 				}
 			});
-			$(".bd").mouseover(function(){
-				if(infodata.user_power_num==4){
+			$(".bd").mouseover(function() {
+				if (infodata.user_power_num == 4) {
 					$('.hiden_list_w').hide();
-				}else{
+				} else {
 					$('.hiden_list').hide();
 				}
 			});
