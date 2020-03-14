@@ -922,9 +922,8 @@
 				<!-- 搜索 -->
 				<div class="search_box">
 					<div>
-						<button type="submit"><img src="images/search.png"></button>
-						<input type="text" name="" placeholder="请输入关键词检索" style="border: none;">
-
+						<input id="search" type="text" name="" placeholder="请输入关键词检索">
+						<button id="btn" style="float: right;margin-left: 30px;" type="submit"><img src="images/search.png"></button>
 					</div>
 
 				</div>
@@ -1014,10 +1013,10 @@
 									个人简介：
 									<p id="user_profile"></p>
 								</div>
-								
+
 							</div>
 						</div>
-						
+
 						<div class="company">
 
 						</div>
@@ -1026,7 +1025,7 @@
 						<!--<input type="button" name="" id="check" value="认证" />
 						<input type="button" name="" id="edit" value="编辑" />-->
 						<a rel="leanModal" name="test" href="#test">编辑信息</a>
-						<a  rel="leanModal" name="signup" href="#signup">实名认证</a>
+						<a rel="leanModal" name="signup" href="#signup">实名认证</a>
 					</div>
 					<div id="signup">
 						<div id="signup-ct">
@@ -1084,7 +1083,7 @@
 										<textarea id="userProfile" name="" rows="" cols=""></textarea>
 									</div>
 								</div>
-								
+
 								<div class="submit">
 									<input type="button" name="" id="edit" value="确认" />
 								</div>
@@ -1250,7 +1249,7 @@
 										<li>支付人</li>
 									</ul>
 									<ul id="listBody">
-										
+
 									</ul>
 								</div>
 							</div>
@@ -1434,7 +1433,7 @@
 							</div>
 							<!--系统通知-->
 							<div class="news_list zy_listbox mine_box" id="notice" hidden="hidden">
-								
+
 							</div>
 
 							<center id="pagiNation">
@@ -1448,19 +1447,24 @@
 						<div class="box_one">
 							<ul>
 								<li>
-									<span>发布</span><p id="user_release_sum">0</p>
+									<span>发布</span>
+									<p id="user_release_sum">0</p>
 								</li>
 								<li>
-									<span>粉丝</span><p id="user_fans_sum">0</p>
+									<span>粉丝</span>
+									<p id="user_fans_sum">0</p>
 								</li>
 								<li>
-									<span>关注</span><p id="user_follow_sum">0</p>
+									<span>关注</span>
+									<p id="user_follow_sum">0</p>
 								</li>
 								<li>
-									<span>获赞</span><p id="user_laid_sum">0</p>
+									<span>获赞</span>
+									<p id="user_laid_sum">0</p>
 								</li>
 								<li>
-									<span>转发</span><p id="user_forward_sum">0</p>
+									<span>转发</span>
+									<p id="user_forward_sum">0</p>
 								</li>
 							</ul>
 						</div>
@@ -1573,11 +1577,14 @@
 				</li>
 			</ul>
 			<div class="l">
-				<a href="http://121.43.68.40/exposure/jiucuo.html?site_code=5200000083&url=www.guizhou.gov.cn" target="blank" class="dib vm"><img src="images/zhaocuo.png" /></a>
-				<a href="http://bszs.conac.cn/sitename?method=show&id=09D70ADDD9E64427E053022819AC3042" target="blank" class="dib vm"><img src="images/dangzheng.png"></a>
+				<a href="http://121.43.68.40/exposure/jiucuo.html?site_code=5200000083&url=www.guizhou.gov.cn" target="blank" class="dib vm"><img
+					 src="images/zhaocuo.png" /></a>
+				<a href="http://bszs.conac.cn/sitename?method=show&id=09D70ADDD9E64427E053022819AC3042" target="blank" class="dib vm"><img
+					 src="images/dangzheng.png"></a>
 			</div>
 			<div class="l txt">
-				<p><img src="images/beian.png">X公网安备 5201030200xxxx号&nbsp;&nbsp;&nbsp;XICP备xxxxxxxxx号-2&nbsp;&nbsp;&nbsp;政府网站标识码：520xxxxxxxx
+				<p><img src="images/beian.png">X公网安备
+					5201030200xxxx号&nbsp;&nbsp;&nbsp;XICP备xxxxxxxxx号-2&nbsp;&nbsp;&nbsp;政府网站标识码：520xxxxxxxx
 				</p>
 				<p>XX市综合执法局信息技术处建设和维护</p>
 			</div>
@@ -1591,19 +1598,21 @@
 		<script id="baidu_share" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			window.onload = BaiduShare();
-			function BaiduShare(){
-				$("#baidu_share").attr("src",'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5));
+
+			function BaiduShare() {
+				$("#baidu_share").attr("src", 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-
+					new Date() / 36e5));
 			}
 			// 获取当前时间
 			var day2 = new Date();
 			day2.setTime(day2.getTime());
 			var s2 = day2.getFullYear() + "-" + (day2.getMonth() + 1) + "-" + day2.getDate();
 			// console.log(s2)
-			if(getUrldata("fast") == 1) {
+			if (getUrldata("fast") == 1) {
 				var part_arr = $(".zy_listbox");
 				var li_arr = $("#navbar li");
-				for(var i = 0; i < part_arr.length; i++) {
-					if($(part_arr[i]).attr("id") == "post") {
+				for (var i = 0; i < part_arr.length; i++) {
+					if ($(part_arr[i]).attr("id") == "post") {
 						$(part_arr[i]).removeAttr("hidden");
 						$(li_arr[i]).attr("class", "select");
 					} else {
@@ -1611,11 +1620,11 @@
 						$(li_arr[i]).removeAttr("class");
 					}
 				}
-			}else if(getUrldata("fast") == 2){
+			} else if (getUrldata("fast") == 2) {
 				var part_arr = $(".zy_listbox");
 				var li_arr = $("#navbar li");
-				for(var i = 0; i < part_arr.length; i++) {
-					if($(part_arr[i]).attr("id") == "original") {
+				for (var i = 0; i < part_arr.length; i++) {
+					if ($(part_arr[i]).attr("id") == "original") {
 						$(part_arr[i]).removeAttr("hidden");
 						$(li_arr[i]).attr("class", "select");
 					} else {
@@ -1624,11 +1633,11 @@
 					}
 				}
 				original();
-			}else if(getUrldata("fast") == 3){
+			} else if (getUrldata("fast") == 3) {
 				var part_arr = $(".zy_listbox");
 				var li_arr = $("#navbar li");
-				for(var i = 0; i < part_arr.length; i++) {
-					if($(part_arr[i]).attr("id") == "question") {
+				for (var i = 0; i < part_arr.length; i++) {
+					if ($(part_arr[i]).attr("id") == "question") {
 						$(part_arr[i]).removeAttr("hidden");
 						$(li_arr[i]).attr("class", "select");
 					} else {
@@ -1637,11 +1646,11 @@
 					}
 				}
 				question(1);
-			}else if(getUrldata("fast") == 4){
+			} else if (getUrldata("fast") == 4) {
 				var part_arr = $(".zy_listbox");
 				var li_arr = $("#navbar li");
-				for(var i = 0; i < part_arr.length; i++) {
-					if($(part_arr[i]).attr("id") == "favorite") {
+				for (var i = 0; i < part_arr.length; i++) {
+					if ($(part_arr[i]).attr("id") == "favorite") {
 						$(part_arr[i]).removeAttr("hidden");
 						$(li_arr[i]).attr("class", "select");
 					} else {
@@ -1650,10 +1659,10 @@
 					}
 				}
 				favorite();
-			}else{
+			} else {
 				original();
 			}
-			$(function(){
+			$(function() {
 				//第一种方法
 				$(".classification ul li").each(function(index) {
 					$(this).click(function() {
@@ -1661,13 +1670,13 @@
 					})
 				})
 			});
-			
+
 			// 新粉丝跳转
 			$("#fanmore").click(function() {
 				var part_arr = $(".zy_listbox");
 				var li_arr = $("#navbar li");
-				for(var i = 0; i < part_arr.length; i++) {
-					if($(part_arr[i]).attr("id") == "fan") {
+				for (var i = 0; i < part_arr.length; i++) {
+					if ($(part_arr[i]).attr("id") == "fan") {
 						$(part_arr[i]).removeAttr("hidden");
 						$(li_arr[i]).attr("class", "select");
 						$("#pagiNation").attr("hidden", "hidden");
@@ -1679,6 +1688,18 @@
 				fan();
 			})
 
+			// 其他页面
+			var btn = document.getElementById("btn");
+			
+			btn.addEventListener('click', function() {
+				
+				var search = document.getElementById("search");
+				var searchv = search.value
+				console.log(searchv)
+				window.location.href = "/power/index.html?type=0&plate=1&two=0&search=1&searchv="+searchv
+
+			})
+
 			// 获取我的信息
 			var data = sessionStorage.getItem("data");
 			var infodata = eval('(' + data + ')');
@@ -1686,19 +1707,19 @@
 			//认证
 			$("#check").click(function() {
 				$.ajax({
-					type:"post",
-					url:sever_url+"real/iden",
-					async:true,
-					data:{
-						token:infodata.token,
-						user_realname:$("#user_realname").val(),
-						user_company:$("#user_company").val(),
-						user_number:$("#user_number").val(),
-						idcard_number:$("#idcard_number").val(),
-						idcard:""
+					type: "post",
+					url: sever_url + "real/iden",
+					async: true,
+					data: {
+						token: infodata.token,
+						user_realname: $("#user_realname").val(),
+						user_company: $("#user_company").val(),
+						user_number: $("#user_number").val(),
+						idcard_number: $("#idcard_number").val(),
+						idcard: ""
 					},
-					dataType:"json",
-					success:function(data){
+					dataType: "json",
+					success: function(data) {
 						console.log(data)
 					}
 				});
@@ -1713,20 +1734,20 @@
 				formData.append("user_profile", $("#userProfile").val());
 				formData.append("user_address", $("#userAddress").val());
 				$.ajax({
-					type:"post",
-					url:sever_url+"/perfect",
-					async:true,
+					type: "post",
+					url: sever_url + "/perfect",
+					async: true,
 					processData: false,
 					contentType: false,
-					data:formData,
-					dataType:"json",
-					success:function(data){
+					data: formData,
+					dataType: "json",
+					success: function(data) {
 						console.log(data)
-						if(data.code=="200"){
+						if (data.code == "200") {
 							var obj = JSON.stringify(data.data);
-							sessionStorage.setItem("data",obj);
-							$("#head").attr("src",data.data.user_head);
-							$("#user_head img").attr("src",data.data.user_head);
+							sessionStorage.setItem("data", obj);
+							$("#head").attr("src", data.data.user_head);
+							$("#user_head img").attr("src", data.data.user_head);
 							$("#user_name").html(data.data.user_name);
 							$("#user_profile").html(data.data.user_profile);
 							$("#user_address").html(data.data.user_address);
@@ -1734,12 +1755,12 @@
 					}
 				});
 			})
-			if(infodata != null) {
+			if (infodata != null) {
 				var admin_box_head = '';
 				var infodatatoken = infodata.token
 				var admin_box = document.getElementById("admin_box");
 
-				if(infodatatoken.length > 1) {
+				if (infodatatoken.length > 1) {
 					admin_box_head += "<div class='admin'><a href='mine.html'><img id='head' class='admin_logo' src='" + infodata.user_head +
 						"'  /></a><a href='mine.html?fast=1'>快速发帖</a></div>";
 					admin_box.innerHTML = admin_box_head;
@@ -1765,27 +1786,27 @@
 			$('.hiden_list_w').hide();
 			//监听头像鼠标移入事件
 			$("#head").mouseover(function() {
-				if(!infodata){
+				if (!infodata) {
 					return;
 				}
-				if(infodata.user_power_num == 4) {
+				if (infodata.user_power_num == 4) {
 					$('.hiden_list_w').show();
 				} else {
 					$('.hiden_list').show();
 				}
 			});
 			$(".bd").mouseover(function() {
-				if(!infodata){
+				if (!infodata) {
 					return;
 				}
-				if(infodata.user_power_num == 4) {
+				if (infodata.user_power_num == 4) {
 					$('.hiden_list_w').hide();
 				} else {
 					$('.hiden_list').hide();
 				}
 			});
 			//退出登陆清除数据
-			function delsession(){
+			function delsession() {
 				sessionStorage.clear();
 			}
 			// 获取我的信息
@@ -1833,8 +1854,9 @@
 					// 新粉丝
 					var new_fans_img = '';
 					var new_fans_list = document.getElementById("new_fans_list");
-					for(var i = 0; i < new_fans.length; i++) {
-						new_fans_img += "<div><img  style='width:70px; height:70px; border-radius:50%; margin-top:8px;' src='" + new_fans[i].user_head +
+					for (var i = 0; i < new_fans.length; i++) {
+						new_fans_img += "<div><img  style='width:70px; height:70px; border-radius:50%; margin-top:8px;' src='" +
+							new_fans[i].user_head +
 							"'/></div>";
 						new_fans_list.innerHTML = new_fans_img;
 					}
@@ -1842,8 +1864,9 @@
 					// 最近访客
 					var new_visitor_img = '';
 					var new_visitor_list = document.getElementById("new_visitor_list");
-					for(var i = 0; i < new_visitor.length; i++) {
-						new_visitor_img += "<div><img style='width:70px; height:70px; border-radius:50%;margin-top:8px; ' src='" + new_visitor[i].user_head +
+					for (var i = 0; i < new_visitor.length; i++) {
+						new_visitor_img += "<div><img style='width:70px; height:70px; border-radius:50%;margin-top:8px; ' src='" +
+							new_visitor[i].user_head +
 							"'/></div>";
 						new_visitor_list.innerHTML = new_visitor_img;
 					}
@@ -1911,12 +1934,12 @@
 						// console.log(followdata)
 						var post = '';
 						var postlist = document.getElementById("postlist");
-						if(postdata.length === 0) {
+						if (postdata.length === 0) {
 							follows += "<h3>暂无数据</h3>";
 							content.innerHTML = follows;
 
 						} else {
-							for(var i = 0; i < postdata.length; i++) {
+							for (var i = 0; i < postdata.length; i++) {
 								post += "<li><img src='" + postdata[i].post_img + "'/><div class='blog_list'>";
 								post += "<div class='news_title'><a href='forum.html?postid=" + postdata[i]['id'] + "'>" + postdata[i][
 									'post_title'
@@ -1930,9 +1953,13 @@
 								post += "<div class='news_owner news_other'><span id=''>发帖人：" + postdata[i]['post_user_name'] + "</span>";
 								post += "<span id=''>最后回复人：" + postdata[i]['last_user_name'] +
 									"</span>";
-								post += "</div></div><div class='share_right share bdsharebuttonbox'><div><img style='width: 20px;height: 20px;' src='images/write.png' />";
-								post += "<img style='width: 20px;height: 20px;' src='images/delete.png' /></div><div style='display:flex;flex-direction:row;align-items:center;'><p style='float:left;width: 60px;'>分享：</p>";
-								post += "<a url='forum.html?postid=" + postdata[i]['id'] + "' class='bds_weixin' data-cmd='weixin'></a><a url='forum.html?postid=" + postdata[i]['id'] + "' class='bds_tsina' data-cmd='tsina'></a></div></div></li>";
+								post +=
+									"</div></div><div class='share_right share bdsharebuttonbox'><div><img style='width: 20px;height: 20px;' src='images/write.png' />";
+								post +=
+									"<img style='width: 20px;height: 20px;' src='images/delete.png' /></div><div style='display:flex;flex-direction:row;align-items:center;'><p style='float:left;width: 60px;'>分享：</p>";
+								post += "<a url='forum.html?postid=" + postdata[i]['id'] +
+									"' class='bds_weixin' data-cmd='weixin'></a><a url='forum.html?postid=" + postdata[i]['id'] +
+									"' class='bds_tsina' data-cmd='tsina'></a></div></div></li>";
 								postlist.innerHTML = post;
 							}
 							$('.bdsharebuttonbox a').on('mousemove', function() {
@@ -1949,7 +1976,7 @@
 			// 获取我的问答
 			function question(state) {
 				//				console.log(order)
-				if(document.getElementById("postlist")) {
+				if (document.getElementById("postlist")) {
 					//存在
 					// postlist.remove();
 					document.getElementById("postlist").innerHTML = "";
@@ -2004,12 +2031,12 @@
 						// console.log(followdata)
 						var post = '';
 						var qusetionlist = document.getElementById("qusetionlist");
-						if(postdata.length === 0) {
+						if (postdata.length === 0) {
 							post += "<h3>暂无数据</h3>";
 							qusetionlist.innerHTML = post;
 
 						} else {
-							for(var i = 0; i < postdata.length; i++) {
+							for (var i = 0; i < postdata.length; i++) {
 								post += "<li><img src='" + postdata[i].post_img + "'/><div class='blog_list'>";
 								post += "<div class='news_title'><a href='forum.html?postid=" + postdata[i]['id'] + "'>" + postdata[i][
 									'post_title'
@@ -2090,12 +2117,12 @@
 						// console.log(fansdata)
 						var fans = '';
 						var fanslist = document.getElementById("fanslist");
-						if(fansdata.length === 0) {
+						if (fansdata.length === 0) {
 							fans += "<h3>暂无数据</h3>";
 							fanslist.innerHTML = fans;
 
 						} else {
-							for(var i = 0; i < fansdata.length; i++) {
+							for (var i = 0; i < fansdata.length; i++) {
 								fans += "<li><img class='icon_radius' src='" + fansdata[i].user_head + " ' /><div class='blog_list'>";
 								fans += "<div class='attention_title'><div>" + fansdata[i]['user_name'] + "</div><div>ID:" + fansdata[i]
 									[
@@ -2114,7 +2141,7 @@
 				})
 			}
 			//我的收藏
-			function favorite(){
+			function favorite() {
 				$.ajax({
 					url: sever_url + 'my/collection/select',
 					type: 'post',
@@ -2164,12 +2191,12 @@
 						console.log(collectiondata)
 						var post = '';
 						var collectionlist = document.getElementById("collectionlist");
-						if(collectiondata.length === 0) {
+						if (collectiondata.length === 0) {
 							post += "<h3>暂无数据</h3>";
 							collectionlist.innerHTML = post;
 
 						} else {
-							for(var i = 0; i < collectiondata.length; i++) {
+							for (var i = 0; i < collectiondata.length; i++) {
 								post += "<li><img src='" + collectiondata[i].post_img + "'/><div class='blog_list'>";
 								post += "<div class='news_title'><a href='forum.html?postid=" + collectiondata[i]['id'] + "'>" +
 									collectiondata[i][
@@ -2205,21 +2232,21 @@
 			}
 			//页内导航
 			$("#navbar li").click(function() {
-				if($(this).attr("class") != "select") {
+				if ($(this).attr("class") != "select") {
 					var nav_a = $(this).find('a')[0];
 					var nav_id = $(nav_a).attr("href");
-					if(nav_id == "#question") {
+					if (nav_id == "#question") {
 						$("#hide").show();
 					} else {
 						$("#hide").hide();
 					}
-					if(nav_id != "#post") {
+					if (nav_id != "#post") {
 						$("#pagiNation").removeAttr("hidden");
 					}
 					var part_arr = $(".zy_listbox");
 					var li_arr = $("#navbar li");
-					for(var i = 0; i < part_arr.length; i++) {
-						if($(part_arr[i]).attr("hidden") == undefined) {
+					for (var i = 0; i < part_arr.length; i++) {
+						if ($(part_arr[i]).attr("hidden") == undefined) {
 							$(part_arr[i]).attr("hidden", "hidden");
 						}
 						$(li_arr[i]).removeAttr("class");
@@ -2228,16 +2255,16 @@
 					$(nav_id).removeAttr("hidden");
 					$(this).attr("class", "select");
 					// 原创
-					if(nav_id === "#original") {
+					if (nav_id === "#original") {
 						window.location.href = "mine.html?fast=2";
 					} else // 问答
-						if(nav_id === "#question") {
+						if (nav_id === "#question") {
 							window.location.href = "mine.html?fast=3";
 							// 收藏
-						} else if(nav_id === "#favorite") {
-							window.location.href = "mine.html?fast=4";
+						} else if (nav_id === "#favorite") {
+						window.location.href = "mine.html?fast=4";
 						// 关注
-					} else if(nav_id === "#attention") {
+					} else if (nav_id === "#attention") {
 						$.ajax({
 							url: sever_url + 'my/follows',
 							type: 'post',
@@ -2285,12 +2312,12 @@
 								// console.log(fansdata)
 								var follows = '';
 								var followslist = document.getElementById("followslist");
-								if(followsdata.length === 0) {
+								if (followsdata.length === 0) {
 									follows += "<h3>暂无数据</h3>";
 									followslist.innerHTML = follows;
 
 								} else {
-									for(var i = 0; i < followsdata.length; i++) {
+									for (var i = 0; i < followsdata.length; i++) {
 										follows += "<li><img class='icon_radius' src='" + followsdata[i].user_head +
 											" ' /><div class='blog_list'>";
 										follows += "<div class='attention_title'><div>" + followsdata[i]['user_name'] + "</div><div>ID:" +
@@ -2311,9 +2338,9 @@
 							},
 						})
 						// 粉丝
-					} else if(nav_id === "#fan") {
+					} else if (nav_id === "#fan") {
 						fan();
-					} else if(nav_id === "#wallet") {
+					} else if (nav_id === "#wallet") {
 						//收益/钱包
 						$.ajax({
 							url: sever_url + 'my/walletinfo',
@@ -2325,7 +2352,7 @@
 							dataType: 'json',
 							success: function(data) {
 								//								console.log(data)
-								if(data.code == "200") {
+								if (data.code == "200") {
 									$("#yesterday_money").html(data.data.yesterday_money);
 									$("#week_money").html("近7日收益" + data.data.week_money + "元");
 									$("#month_money").html(data.data.month_money);
@@ -2380,7 +2407,7 @@
 									});
 
 									$("#listBody").empty();
-									for(var i = 0; i < length; i++) {
+									for (var i = 0; i < length; i++) {
 										var obj = data.data[i];
 										$("#listBody").append('<li><ul class="list_body"><li>' + obj.business_time + '</li><li>' + obj.business_type +
 											'</li><li>' + obj.business_money + '</li><li>' + obj.business_coin + '</li><li>' + obj.pay_user +
@@ -2390,14 +2417,14 @@
 							});
 						}
 
-					} else if(nav_id == "#post") {
+					} else if (nav_id == "#post") {
 						$("#pagiNation").attr("hidden", "hidden");
 						$("#Form :radio").on('click', function() {
 							var item = $(this).val();
 							$("#radioForm").val(item)
 						})
 						$("#postType").change(() => {
-							if($("#postType").val() == '2') {
+							if ($("#postType").val() == '2') {
 								$(".reward_money").css("display", "flex");
 							} else {
 								$(".reward_money").css("display", "none");
@@ -2433,9 +2460,9 @@
 								// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
 								dataType: 'json',
 								success: function(data) {
-									if(data.code == "200") {
-										for(var i = 0; i < part_arr.length; i++) {
-											if($(part_arr[i]).attr("id") == "original") {
+									if (data.code == "200") {
+										for (var i = 0; i < part_arr.length; i++) {
+											if ($(part_arr[i]).attr("id") == "original") {
 												$(part_arr[i]).removeAttr("hidden");
 												$(li_arr[i]).attr("class", "select");
 											} else {
@@ -2445,7 +2472,7 @@
 										}
 										$("#pagiNation").removeAttr("hidden");
 										original();
-									} else if(data.code == "2") {
+									} else if (data.code == "2") {
 										Dialog({
 											title: "请登录！",
 											content: "您的登录已过期，是否重新登录？",
@@ -2468,7 +2495,7 @@
 							});
 						})
 						// 系统通知
-					} else if(nav_id == "#notice") {
+					} else if (nav_id == "#notice") {
 						$.ajax({
 							type: "post",
 							url: sever_url + "my/natice",
@@ -2481,7 +2508,7 @@
 							dataType: "json",
 							success: function(data) {
 								console.log(data)
-								if(data.code == '200') {
+								if (data.code == '200') {
 									$("#notice").empty();
 									var length = data.data.data.length;
 									$(function() {
@@ -2510,13 +2537,13 @@
 
 									});
 
-									for(var i = 0; i < length; i++) {
+									for (var i = 0; i < length; i++) {
 										var obj = data.data.data[i];
 										$("#notice").append('<div class="message"><div class="message_title"><h3>' + obj.notice_title +
 											'</h3><span>' + obj.notice_time + '</span></div><div class="message_detail"><span>' + obj.notice_content +
 											'</span><a>网页链接</a></div></div>');
 									}
-								} else if(data.code == '2') {
+								} else if (data.code == '2') {
 									Dialog({
 										title: "请登录！",
 										content: "您的登录已过期，是否重新登录？",
