@@ -1216,7 +1216,7 @@ nav > div ul ul {
   position: absolute;
   left: 0;
   top: 100%;
-  min-width: 15rem;
+  min-width: 10rem;
   line-height: initial;
   opacity: 0;
   visibility: hidden;
@@ -1240,25 +1240,41 @@ nav > div ul ul ul:before {
   z-index: 1;
 }
 nav > div ul ul li {
-  font-size: 0.875rem;
-  font-family: Rubik;
+  font-size:  0.875rem;
+  font-family:PingFangSC-Regular,PingFang SC;
   font-weight: 400;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   opacity: 0;
   visibility: hidden;
 }
 nav > div ul ul li a {
   display: block;
   background-color: #fff;
-  padding: 0.625rem 1.875rem;
+  padding: 8px 16px;
   position: relative;
 }
+.top_nav ul li a:first-child{
+  font-size:  18px;
+  font-family:PingFangSC-Regular,PingFang SC;
+  font-weight: 400;
+}
+.second-menu a{
+  font-size:  28px;
+  font-family:PingFangSC-Regular,PingFang SC;
+  font-weight: 400;
+}
+.second-menu ul li{
+  font-size:  24px;
+  font-family:PingFangSC-Regular,PingFang SC;
+  font-weight: 400;
+}
+
 nav > div ul ul li a:before {
   content: "\f0da";
   font-family: fontawesome;
   background-color: transparent;
   right: auto;
-  left: 1.25rem;
+  left: .85rem;
   top: 0.5rem;
   position: absolute;
   opacity: 0;
@@ -1266,7 +1282,7 @@ nav > div ul ul li a:before {
 nav > div ul ul li a:hover, 
 nav > div ul ul li a:focus {
   background-color: #f7f7f7;
-  padding-left: 3.125rem;
+  padding-left: 2.125rem;
 }
 nav > div ul ul li a:hover:before, 
 nav > div ul ul li a:focus:before {
