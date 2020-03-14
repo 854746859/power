@@ -526,8 +526,8 @@
 				<img src="images/people03.jpg" class="admin_logo"/>
 				<span class="lever">LV10</span>
 			</div>-->
-					<a href="">登录/注册</a>
-					<a href="">快速发帖</a>
+					<a href="login.html">登录/注册</a>
+					<a href="mine.html?fast=1">快速发帖</a>
 				</div>
 			</div>
 		</div>
@@ -609,12 +609,12 @@
 									阅读数：0
 								</span>
 							</div>
-							<div class="collect">
+							<!--<div class="collect">
 								<img src="images/collection.png" />
 								<span>
 									收藏
 								</span>
-							</div>
+							</div>-->
 						</div>
 						<div class="state" id="postCopyright"><span>*</span>版权声明：本文为原创文章，转载请附上原文出处链接和本声明/未经许可不可转载。</div>
 						<div class="post_info">
@@ -628,7 +628,8 @@
 								</div>
 							</div>
 							<div class="attention">
-								<input type="button" name="" id="" value="关注" />
+								<input type="button" name="" id="attention" value="关注" />
+								<input type="button" name="" id="attentioned" value="取消关注" hidden="hidden"/>
 								<span>
 									Ta的关注>
 								</span>
@@ -1000,6 +1001,48 @@
 				}
 			}
 			$(document).ready(function() {
+				var obj = sessionStorage.getItem("data");
+					obj = JSON.parse(obj);
+					//关注
+				$("#attention").click(function(){
+					$.ajax({
+						type:"post",
+						url:sever_url+"follow/add",
+						async:true,
+						data:{
+							token:obj.token,
+							user_id:$("#user_head").attr("name")
+						},
+						dataType:"json",
+						success:function(data){
+							console.log(data)
+							if(data.code=="200"){
+								$("#attention").attr("hidden","hidden");
+								$("#attentioned").removeAttr("hidden");
+							}
+						}
+					});
+				})
+				//取关
+				$("#attentioned").click(function(){
+					$.ajax({
+						type:"post",
+						url:sever_url+"my/follow/del",
+						async:true,
+						data:{
+							token:obj.token,
+							user_id:$("#user_head").attr("name")
+						},
+						dataType:"json",
+						success:function(data){
+							console.log(data)
+							if(data.code=="200"){
+								$("#attentioned").attr("hidden","hidden");
+								$("#attention").removeAttr("hidden");
+							}
+						}
+					});
+				})
 				//获取URL传值
 				var post_id = getUrldata('postid'); //文章id
 				//文章
@@ -1010,7 +1053,7 @@
 					dataType: "json",
 					data: {
 						article_id: post_id,
-						token: ""
+						token: obj.token
 					},
 					success: function(data) {
 									console.log(data)
@@ -1025,7 +1068,7 @@
 							$("#post_plate_two").html(data.data.post_plate_two);
 							$("#time").html(data.data.post_releasetime); //发布时间
 							$("#readNum").html("阅读数：" + data.data.post_readnum); //阅读数
-							$("#postUpnum").html(data.datapost_upnum); //点赞数
+							$("#postUpnum").html(data.data.post_upnum); //点赞数
 							$("#postForwardnum").html(data.data.post_forwardnum); //转发数
 							$("#postCollectionnum").html(data.data.post_collectionnum); //收藏数
 							$("#user_head").attr("src", data.data.user_head);
@@ -1036,6 +1079,20 @@
 							$("#post_upnum").html(Number(data.data.post_upnum));
 							$("#user_follow_sum").html(Number(data.data.user_follow_sum));
 							$("#user_fans_sum").html(Number(data.data.user_fans_sum));
+							if(data.data.fabulous){
+								$("#support").attr("src","images/supported.png");
+								$("#support").parent().attr("name","supportdel");
+								$("#support").attr("id","supportdel");
+							}
+							if(data.data.collect){
+								$("#collection").attr("src","images/collectioned.png");
+								$("#collection").parent().attr("name","collectiondel");
+								$("#collection").attr("id","collectiondel");
+							}
+							if(data.data.follow){
+								$("#attention").attr("hidden","hidden");
+								$("#attentioned").removeAttr("hidden","hidden");
+							}
 							//悬赏
 							if (data.data.hasOwnProperty("adopd")) {
 								$("#annex_d").css("display", "block");

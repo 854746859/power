@@ -704,15 +704,15 @@
 							</div>
 							<div class="read_num">
 								<span id="readNum">
-							阅读数：0
-						</span>
+									阅读数：0
+								</span>
 							</div>
-							<div class="collect">
+							<!--<div class="collect">
 								<img src="images/collection.png" />
 								<span>
-							收藏
-						</span>
-							</div>
+									收藏
+								</span>
+							</div>-->
 						</div>
 						<div class="state" id="postCopyright"><span>*</span>版权声明：本文为原创文章，转载请附上原文出处链接和本声明/未经许可不可转载。</div>
 						<div class="post_info">
@@ -726,10 +726,11 @@
 								</div>
 							</div>
 							<div class="attention">
-								<input type="button" name="" id="" value="关注" />
+								<input type="button" name="" id="attention" value="关注" />
+								<input type="button" name="" id="attentioned" value="取消关注" hidden="hidden" />
 								<span>
-							Ta的关注>
-						</span>
+									Ta的关注>
+								</span>
 							</div>
 							<div class="trivial">
 								<div>
@@ -1056,7 +1057,7 @@
 						},
 						dataType:"json",
 						success:function(data){
-//							console.log(data)
+							console.log(data)
 							var num = Number($("#comment"+commentId).html());
 							$("#comment"+commentId).html(num+1);
 						},
@@ -1067,6 +1068,48 @@
 				}
 			}
 			$(document).ready(function() {
+				var obj = sessionStorage.getItem("data");
+					obj = JSON.parse(obj);
+					//关注
+				$("#attention").click(function(){
+					$.ajax({
+						type:"post",
+						url:sever_url+"follow/add",
+						async:true,
+						data:{
+							token:obj.token,
+							user_id:$("#user_head").attr("name")
+						},
+						dataType:"json",
+						success:function(data){
+							console.log(data)
+							if(data.code=="200"){
+								$("#attention").attr("hidden","hidden");
+								$("#attentioned").removeAttr("hidden");
+							}
+						}
+					});
+				})
+				//取关
+				$("#attentioned").click(function(){
+					$.ajax({
+						type:"post",
+						url:sever_url+"my/follow/del",
+						async:true,
+						data:{
+							token:obj.token,
+							user_id:$("#user_head").attr("name")
+						},
+						dataType:"json",
+						success:function(data){
+							console.log(data)
+							if(data.code=="200"){
+								$("#attentioned").attr("hidden","hidden");
+								$("#attention").removeAttr("hidden");
+							}
+						}
+					});
+				})
 				//获取URL传值
 				var post_id = getUrldata('postid'); //文章id
 				//文章
@@ -1077,7 +1120,7 @@
 					dataType: "json",
 					data: {
 						article_id: post_id,
-						token: ""
+						token: obj.token
 					},
 					success: function(data) {
 						console.log(data)
@@ -1109,7 +1152,21 @@
 							$("#post_upnum").html(Number(data.data.post_upnum));
 							$("#user_follow_sum").html(Number(data.data.user_follow_sum));
 							$("#user_fans_sum").html(Number(data.data.user_fans_sum));
-
+							
+							if(data.data.fabulous){
+								$("#support").attr("src","images/supported.png");
+								$("#support").parent().attr("name","supportdel");
+								$("#support").attr("id","supportdel");
+							}
+							if(data.data.collect){
+								$("#collection").attr("src","images/collectioned.png");
+								$("#collection").parent().attr("name","collectiondel");
+								$("#collection").attr("id","collectiondel");
+							}
+							if(data.data.follow){
+								$("#attention").attr("hidden","hidden");
+								$("#attentioned").removeAttr("hidden","hidden");
+							}
 							var num = data.data.recommend.length;
 							for(var i = 0; i < num; i++) {
 								var arr = data.data.recommend[i];
