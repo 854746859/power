@@ -261,9 +261,17 @@
 									post += "<span id=''>最后回复人：" + data[i]['last_user_name'] +
 										"</span><div class='share bdsharebuttonbox'>分享：";
 									post +=
-										"<a href='#' class='bds_weixin' data-cmd='weixin'></a><a href='#' class='bds_tsina' data-cmd='tsina'></a></div></div></div></li>";
+										"<a url='forum.html?postid=" + data[i]['id'] + "&plate=" + json.plate +
+									"&plate_two=" + json.two + "' class='bds_weixin' data-cmd='weixin'></a><a url='forum.html?postid=" + data[i]['id'] + "&plate=" + json.plate +
+									"&plate_two=" + json.two + "' class='bds_tsina' data-cmd='tsina'></a></div></div></div></li>";
 									postlist.innerHTML = post;
 								}
+								$('.bdsharebuttonbox a').on('mousemove', function() {
+									var title = $(this).attr('title');
+									var Url = $(this).attr('url');
+									$("#share_url").val(title + "||" + Url);
+								})
+								window._bd_share_main.init();
 							},
 						})
 						// 我的文章分页
@@ -312,12 +320,16 @@
 										post += "<span id=''>最后回复人：" + postdata[i]['last_user_name'] +
 											"</span><div class='share bdsharebuttonbox'>分享：";
 										post +=
-											"<a href='#' class='bds_weixin' data-cmd='weixin'></a><a href='#' class='bds_tsina' data-cmd='tsina'></a></div></div></div><img style='width: 20px;height: 20px;' src='images/write.png' /><img style='width: 20px;height: 20px;' src='images/delete.png' /></li>";
+											"<a url='forum.html?postid=" + postdata[i]['id'] + "' class='bds_weixin' data-cmd='weixin'></a><a url='forum.html?postid=" + postdata[i]['id'] + "' class='bds_tsina' data-cmd='tsina'></a></div></div></div><img style='width: 20px;height: 20px;' src='images/write.png' /><img style='width: 20px;height: 20px;' src='images/delete.png' /></li>";
 										postlist.innerHTML = post;
 									}
+									$('.bdsharebuttonbox a').on('mousemove', function() {
+										var title = $(this).attr('title');
+										var Url = $(this).attr('url');
+										$("#share_url").val(title + "||" + Url);
+									})
+									window._bd_share_main.init();
 								}
-
-
 							},
 						})
 					} else if (ele.option.pages == "fan") {
