@@ -132,13 +132,12 @@
 				</nav>
 				<!-- 搜索 -->
 				<div class="search_box">
-					<div>
-						<button type="submit"><img src="images/search.png"></button>
-						<input type="text" name="" placeholder="请输入关键词检索">
-
-					</div>
-
-				</div>
+									<div>
+										<input id="search" type="text" name="" placeholder="请输入关键词检索">
+										<button id="btn" style="float: right;margin-left: 30px;" type="submit"><img src="images/search.png"></button>
+									</div>
+				
+								</div>
 				<div id="admin_box" class="admin_box">
 					<a href="login.html">登录/注册</a>
 					<a href="">快速发帖</a>
@@ -674,6 +673,15 @@
 			function BaiduShare(){
 				$("#baidu_share").attr("src",'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5));
 			}
+			
+			// 其他页面搜索
+			var search = document.getElementById("search");
+			var btn = document.getElementById("btn");
+			btn.addEventListener('click', function() {
+				window.location.href = "/power/index.html?type=0&plate=1&two=0&search=1&searchv="+ search.value;
+			
+			})
+			
 			// 获取当前分类
 			function GetRequest() {
 				var url = decodeURI(location.search); //获取url中"?"符后的字串

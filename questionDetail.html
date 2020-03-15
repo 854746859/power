@@ -338,7 +338,7 @@
 		height: 300px;
 	}
 	
-	#Report,#test,#Reported {
+	#Report,#test,#reply {
 				width: 404px;
 				padding-bottom: 2px;
 				display: none;
@@ -513,13 +513,12 @@
 				</nav>
 				<!-- 搜索 -->
 				<div class="search_box">
-					<div>
-						<button type="submit"><img src="images/search.png"></button>
-						<input type="text" name="" placeholder="请输入关键词检索">
-
-					</div>
-
-				</div>
+									<div>
+										<input id="search" type="text" name="" placeholder="请输入关键词检索">
+										<button id="btn" style="float: right;margin-left: 30px;" type="submit"><img src="images/search.png"></button>
+									</div>
+				
+								</div>
 				<div class="admin_box" id="admin_box">
 					<!--<img src="images/messageIcon.png" width="20px"/>
 			<div class="admin">
@@ -742,6 +741,27 @@
 									</div>
 									<div class="submit">
 										<input type="button" name="" id="check" value="确认" />
+									</div>
+								</form>
+							</div>
+						</div>
+						<div id="reply">
+							<div id="signup-ct">
+								<div id="signup-header">
+									<h2>回复</h2>
+									<!-- <a class="modal_close" href="#"></a> -->
+								</div>
+								<form action="">
+									<div class="txt-fld">
+										<label for="">回复</label>
+										<input id="reply_content" name="" type="text" placeholder="请输入回复的内容" />
+									</div>
+									<!-- <div class="txt-fld">
+										<label for="">人民币</label>
+										<input id="reward_money" name="" type="text" placeholder="请点击扫码"/>
+									</div> -->
+									<div class="submit">
+										<input type="button" name="" id="checked" value="确认" />
 									</div>
 								</form>
 							</div>
@@ -975,6 +995,120 @@
 		<script type="text/javascript" src="js/pop_ups/MiniDialog-es5.min.js" ></script>
 		<script type="text/javascript">
 			
+			// 其他页面搜索
+			var search = document.getElementById("search");
+			var btn = document.getElementById("btn");
+			btn.addEventListener('click', function() {
+				window.location.href = "/power/index.html?type=0&plate=1&two=0&search=1&searchv="+ search.value;
+			
+			})
+			
+			// 举报
+			function Reported(commentId) {
+				console.log(commentId);
+				$("#edit").click(function() {
+					reprot_content = $("#report_text").val();
+					console.log(reprot_content);
+					doSomething(reprot_content)
+				})
+				if (sessionStorage.getItem("data") == null) {
+					Dialog({
+						title: "请登录！",
+						content: "您还未登录，是否登录？",
+						ok: {
+							callback: function() {
+								window.location.href = 'login.html';
+							}
+						},
+						cancel: {
+							callback: function() {
+								Dialog.close();
+							}
+						}
+					});
+				} else {
+					function doSomething(reprot_content) {
+						var obj = sessionStorage.getItem("data");
+						obj = JSON.parse(obj);
+						$.ajax({
+							type: "post",
+							url: sever_url + "post/report",
+							async: true,
+							data: {
+								token: obj.token,
+								post_id: getUrldata('postid'),
+								comment_id: commentId,
+								reprot_content: reprot_content
+							},
+							dataType: "json",
+							success: function(data) {
+			
+								// $("#Reported").css("display","none");
+								console.log(data)
+			
+								// var num = Number($("#comment" + commentId).html());
+								// $("#comment" + commentId).html(num + 1);
+							},
+							error: function() {
+								console.log('error')
+							}
+						});
+					}
+				}
+			}
+			
+			// 回复
+			function reply(commentId, user_name) {
+				// console.log(commentId,user_name);
+				$("#checked").click(function() {
+					reply_content = $("#reply_content").val();
+					var content = "@" + user_name + "  " + reply_content
+					console.log(content);
+					doSomething(content);
+				})
+				if (sessionStorage.getItem("data") == null) {
+					Dialog({
+						title: "请登录！",
+						content: "您还未登录，是否登录？",
+						ok: {
+							callback: function() {
+								window.location.href = 'login.html';
+							}
+						},
+						cancel: {
+							callback: function() {
+								Dialog.close();
+							}
+						}
+					});
+				} else {
+					function doSomething(reply_content) {
+						var obj = sessionStorage.getItem("data");
+						obj = JSON.parse(obj);
+						$.ajax({
+							type: "post",
+							url: sever_url + "comment/publish",
+							async: true,
+							data: {
+								token: obj.token,
+								post_id: getUrldata('postid'),
+								// comment_id: commentId,
+								comment_content: reply_content
+							},
+							dataType: "json",
+							success: function(data) {
+			
+								console.log(data)
+								location.reload()
+							},
+							error: function() {
+								console.log('error')
+							}
+						});
+					}
+				}
+			}
+			
 			//评论点赞
 			function commentSupport(commentId){
 				console.log(commentId);
@@ -1151,7 +1285,16 @@
 							$("#comment_box").empty();
 							for(var i = 0; i < length; i++) {
 								var obj = data.data[i];
-								$("#comment_box").append('<div class="content_box"><div class="visitor"><div class="visitor_info"><div class="visitor_pic"><img id="' + obj.id + '" src="' + obj.user_head + '"/><span >' + obj.user_name + '</span></div><div class="commet_time"><span>' + obj.comment_time + '</span><span>【' + obj.comment_layernum + '楼】</span></div></div><div class="other_visitor"><a rel="leanModal" name="Reported" href="#Reported"><span>举报</span></a><span>回复</span><span><img onclick=commentSupport('+obj.id+') src="images/good.png"/><span id="comment'+obj.id+'">' + Number(obj.comment_upnum) + '</span></span></div></div><div class="comment_text"><p>' + obj.comment_content + '</p></div></div>');
+								$("#comment_box").append(
+									'<div class="content_box"><div class="visitor"><div class="visitor_info"><div class="visitor_pic"><img id="' +
+									obj.id + '" src="' + obj.user_head + '"/><span >' + obj.user_name +
+									'</span></div><div class="commet_time"><span>' + obj.comment_time + '</span><span>【' + obj.comment_layernum +
+									'楼】</span></div></div><div class="other_visitor"><a rel="leanModal" name="Report" href="#Report"><span onclick=Reported(' +
+									obj.id + ')>举报</span></a><a rel="leanModal" name="reply" href="#reply"><span onclick=reply(' + obj.id +
+									',"' + obj.user_name +
+									'")>回复</span></a><span style="display:flex;align-items: center;"><img onclick=commentSupport(' +
+									obj.id + ') src="images/support.png"/><span id="comment' + obj.id + '">' + Number(obj.comment_upnum) +
+									'</span></span></div></div><div class="comment_text"><p>' + obj.comment_content + '</p></div></div>');
 							}
 							$('a[rel*=leanModal]').leanModal({
 								top: 200,

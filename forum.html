@@ -610,13 +610,12 @@
 				</nav>
 				<!-- 搜索 -->
 				<div class="search_box">
-					<div>
-						<button type="submit"><img src="images/search.png"></button>
-						<input type="text" name="" placeholder="请输入关键词检索">
-
-					</div>
-
-				</div>
+									<div>
+										<input id="search" type="text" name="" placeholder="请输入关键词检索">
+										<button id="btn" style="float: right;margin-left: 30px;" type="submit"><img src="images/search.png"></button>
+									</div>
+				
+								</div>
 				<div class="head_div">
 					<div id="admin_box" class="admin_box">
 						<!--<img src="images/messageIcon.png" width="20px"/>
@@ -1030,6 +1029,14 @@
 		<script type="text/javascript" src="config.js"></script>
 		<script type="text/javascript" src="js/pop_ups/MiniDialog-es5.min.js"></script>
 		<script type="text/javascript">
+		
+			// 其他页面搜索
+			var search = document.getElementById("search");
+			var btn = document.getElementById("btn");
+			btn.addEventListener('click', function() {
+				window.location.href = "/power/index.html?type=0&plate=1&two=0&search=1&searchv="+ search.value;
+			
+			})
 			// 获取我的信息
 			var data = sessionStorage.getItem("data");
 			var infodata = eval('(' + data + ')');
