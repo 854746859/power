@@ -388,7 +388,7 @@
 				border-bottom:1px dotted;
 			}
 			
-			#Report,#test {
+			#Report,#test,#reply {
 				width: 404px;
 				padding-bottom: 2px;
 				display: none;
@@ -706,7 +706,8 @@
 				<div class="blog_box">
 					<div class="blog_left">
 						<div class="blog_title">
-							<h1 id="postTitle"></h1></div>
+							<h1 id="postTitle"></h1>
+						</div>
 						<div class="blog_detail">
 							<div class="post_type" id="postLabel">
 								<span>分类专栏：</span>
@@ -720,7 +721,7 @@
 							<div class="read_num">
 								<span>阅读数：</span>
 								<span id="readNum">
-									
+
 								</span>
 							</div>
 							<!--<div class="collect">
@@ -789,8 +790,8 @@
 							</div>
 							<div class="annex_bt">
 								<span>
-							大小：0M
-						</span>
+									大小：0M
+								</span>
 								<input type="button" name="" id="" value="立即下载" />
 							</div>
 						</div>
@@ -837,7 +838,7 @@
 								<form action="">
 									<div class="txt-fld">
 										<label for="">论坛币</label>
-										<input id="reward_coinnum" name="" type="text" placeholder="请输入打赏的论坛币"/>
+										<input id="reward_coinnum" name="" type="text" placeholder="请输入打赏的论坛币" />
 									</div>
 									<!-- <div class="txt-fld">
 										<label for="">人民币</label>
@@ -845,6 +846,27 @@
 									</div> -->
 									<div class="submit">
 										<input type="button" name="" id="check" value="确认" />
+									</div>
+								</form>
+							</div>
+						</div>
+						<div id="reply">
+							<div id="signup-ct">
+								<div id="signup-header">
+									<h2>回复</h2>
+									<!-- <a class="modal_close" href="#"></a> -->
+								</div>
+								<form action="">
+									<div class="txt-fld">
+										<label for="">回复</label>
+										<input id="comment_content" name="" type="text" placeholder="请输入回复的内容" />
+									</div>
+									<!-- <div class="txt-fld">
+										<label for="">人民币</label>
+										<input id="reward_money" name="" type="text" placeholder="请点击扫码"/>
+									</div> -->
+									<div class="submit">
+										<input type="button" name="" id="checked" value="确认" />
 									</div>
 								</form>
 							</div>
@@ -857,8 +879,8 @@
 							<textarea name="" rows="" cols="" id="comment_content" placeholder="评论"></textarea>
 							<div class="push_bt">
 								<span id="">
-							最多输入1000个字
-						</span>
+									最多输入1000个字
+								</span>
 								<input type="button" name="" id="publish" value="发表" />
 							</div>
 						</div>
@@ -993,29 +1015,31 @@
 				</li>
 			</ul>
 			<div class="l">
-				<a href="http://121.43.68.40/exposure/jiucuo.html?site_code=5200000083&url=www.guizhou.gov.cn" target="blank" class="dib vm"><img src="images/zhaocuo.png" /></a>
-				<a href="http://bszs.conac.cn/sitename?method=show&id=09D70ADDD9E64427E053022819AC3042" target="blank" class="dib vm"><img src="images/dangzheng.png"></a>
+				<a href="http://121.43.68.40/exposure/jiucuo.html?site_code=5200000083&url=www.guizhou.gov.cn" target="blank" class="dib vm"><img
+					 src="images/zhaocuo.png" /></a>
+				<a href="http://bszs.conac.cn/sitename?method=show&id=09D70ADDD9E64427E053022819AC3042" target="blank" class="dib vm"><img
+					 src="images/dangzheng.png"></a>
 			</div>
 			<div class="l txt">
-				<p><img src="images/beian.png">X公网安备 5201030200xxxx号&nbsp;&nbsp;&nbsp;XICP备xxxxxxxxx号-2&nbsp;&nbsp;&nbsp;政府网站标识码：520xxxxxxxx</p>
+				<p><img src="images/beian.png">X公网安备
+					5201030200xxxx号&nbsp;&nbsp;&nbsp;XICP备xxxxxxxxx号-2&nbsp;&nbsp;&nbsp;政府网站标识码：520xxxxxxxx</p>
 				<p>XX市综合执法局信息技术处建设和维护</p>
 			</div>
 			<p>版权所有：XX市综合行政执法局&nbsp;&nbsp;&nbsp;地址：XX省XX市工业园区特1号</p>
 		</div>
 		<script type="text/javascript" src="config.js"></script>
-		<script type="text/javascript" src="js/pop_ups/MiniDialog-es5.min.js" ></script>
+		<script type="text/javascript" src="js/pop_ups/MiniDialog-es5.min.js"></script>
 		<script type="text/javascript">
-			
 			// 获取我的信息
 			var data = sessionStorage.getItem("data");
 			var infodata = eval('(' + data + ')');
 			// console.log(infodata.token);
-			
+
 			if (infodata != null) {
 				var admin_box_head = '';
 				var infodatatoken = infodata.token
 				var admin_box = document.getElementById("admin_box");
-			
+
 				if (infodatatoken.length > 1) {
 					admin_box_head += "<div class='admin'><a href='mine.html'><img id='head'  class='admin_logo' src='" + infodata.user_head +
 						"'  /></a><a href=''>快速发帖</a></div>";
@@ -1026,41 +1050,46 @@
 			$('.hiden_list').hide();
 			$('.hiden_list_w').hide();
 			//监听头像鼠标移入事件
-			$("#head").mouseover(function(){
-				if(!infodata){
+			$("#head").mouseover(function() {
+				if (!infodata) {
 					return;
 				}
-				if(infodata.user_power_num==4){
+				if (infodata.user_power_num == 4) {
 					$('.hiden_list_w').show();
-				}else{
+				} else {
 					$('.hiden_list').show();
 				}
 			});
-			$(".bd").mouseover(function(){
-				if(!infodata){
+			$(".bd").mouseover(function() {
+				if (!infodata) {
 					return;
 				}
-				if(infodata.user_power_num==4){
+				if (infodata.user_power_num == 4) {
 					$('.hiden_list_w').hide();
-				}else{
+				} else {
 					$('.hiden_list').hide();
 				}
 			});
 			//退出登陆清除数据
-			function delsession(){
+			function delsession() {
 				sessionStorage.clear();
 			}
-			
-			//评论点赞
-			function commentSupport(commentId){
+
+			// 举报
+			function Reported(commentId) {
 				console.log(commentId);
-				if(sessionStorage.getItem("data")==null){
+				$("#edit").click(function() {
+					reprot_content = $("#report_text").val();
+					console.log(reprot_content);
+					doSomething(reprot_content)
+				})
+				if (sessionStorage.getItem("data") == null) {
 					Dialog({
 						title: "请登录！",
 						content: "您还未登录，是否登录？",
 						ok: {
 							callback: function() {
-								window.location.href='login.html';
+								window.location.href = 'login.html';
 							}
 						},
 						cancel: {
@@ -1069,68 +1098,169 @@
 							}
 						}
 					});
-				}else{
+				} else {
+					function doSomething(reprot_content) {
+						var obj = sessionStorage.getItem("data");
+						obj = JSON.parse(obj);
+						$.ajax({
+							type: "post",
+							url: sever_url + "post/report",
+							async: true,
+							data: {
+								token: obj.token,
+								post_id: getUrldata('postid'),
+								comment_id: commentId,
+								reprot_content: reprot_content
+							},
+							dataType: "json",
+							success: function(data) {
+
+								// $("#Reported").css("display","none");
+								console.log(data)
+
+								// var num = Number($("#comment" + commentId).html());
+								// $("#comment" + commentId).html(num + 1);
+							},
+							error: function() {
+								console.log('error')
+							}
+						});
+					}
+				}
+			}
+
+			// 回复
+			function reply(commentId, user_name) {
+				// console.log(commentId,user_name);
+				$("#checked").click(function() {
+					comment_content = $("#comment_content").val();
+					var content = "@" + user_name + "  " + comment_content
+					console.log(content);
+					doSomething(content);
+				})
+				if (sessionStorage.getItem("data") == null) {
+					Dialog({
+						title: "请登录！",
+						content: "您还未登录，是否登录？",
+						ok: {
+							callback: function() {
+								window.location.href = 'login.html';
+							}
+						},
+						cancel: {
+							callback: function() {
+								Dialog.close();
+							}
+						}
+					});
+				} else {
+					function doSomething(comment_content) {
+						var obj = sessionStorage.getItem("data");
+						obj = JSON.parse(obj);
+						$.ajax({
+							type: "post",
+							url: sever_url + "comment/publish",
+							async: true,
+							data: {
+								token: obj.token,
+								post_id: getUrldata('postid'),
+								// comment_id: commentId,
+								comment_content: comment_content
+							},
+							dataType: "json",
+							success: function(data) {
+
+								console.log(data)
+								location.reload()
+							},
+							error: function() {
+								console.log('error')
+							}
+						});
+					}
+				}
+			}
+
+			//评论点赞
+			function commentSupport(commentId) {
+				console.log(commentId);
+				if (sessionStorage.getItem("data") == null) {
+					Dialog({
+						title: "请登录！",
+						content: "您还未登录，是否登录？",
+						ok: {
+							callback: function() {
+								window.location.href = 'login.html';
+							}
+						},
+						cancel: {
+							callback: function() {
+								Dialog.close();
+							}
+						}
+					});
+				} else {
 					var obj = sessionStorage.getItem("data");
 					obj = JSON.parse(obj);
 					$.ajax({
-						type:"post",
-						url:sever_url+"post/support",
-						async:true,
-						data:{
-							token:obj.token,
-							post_id:getUrldata('postid'),
-							comment_id:commentId
+						type: "post",
+						url: sever_url + "post/support",
+						async: true,
+						data: {
+							token: obj.token,
+							post_id: getUrldata('postid'),
+							comment_id: commentId
 						},
-						dataType:"json",
-						success:function(data){
+						dataType: "json",
+						success: function(data) {
 							console.log(data)
-							var num = Number($("#comment"+commentId).html());
-							$("#comment"+commentId).html(num+1);
+							var num = Number($("#comment" + commentId).html());
+							$("#comment" + commentId).html(num + 1);
 						},
-						error:function(){
-							
+						error: function() {
+
 						}
 					});
 				}
 			}
 			$(document).ready(function() {
 				var obj = sessionStorage.getItem("data");
-					obj = JSON.parse(obj);
-					//关注
-				$("#attention").click(function(){
+				obj = JSON.parse(obj);
+				//关注
+				$("#attention").click(function() {
 					$.ajax({
-						type:"post",
-						url:sever_url+"follow/add",
-						async:true,
-						data:{
-							token:obj.token,
-							user_id:$("#user_head").attr("name")
+						type: "post",
+						url: sever_url + "follow/add",
+						async: true,
+						data: {
+							token: obj.token,
+							user_id: $("#user_head").attr("name")
 						},
-						dataType:"json",
-						success:function(data){
+						dataType: "json",
+						success: function(data) {
 							console.log(data)
-							if(data.code=="200"){
-								$("#attention").attr("hidden","hidden");
+							if (data.code == "200") {
+								$("#attention").attr("hidden", "hidden");
 								$("#attentioned").removeAttr("hidden");
 							}
 						}
 					});
 				})
 				//取关
-				$("#attentioned").click(function(){
+				$("#attentioned").click(function() {
 					$.ajax({
-						type:"post",
-						url:sever_url+"my/follow/del",
-						async:true,
-						data:{
-							token:obj.token,
-							user_id:$("#user_head").attr("name")
+						type: "post",
+						url: sever_url + "my/follow/del",
+						async: true,
+						data: {
+							token: obj.token,
+							user_id: $("#user_head").attr("name")
 						},
-						dataType:"json",
-						success:function(data){
+						dataType: "json",
+						success: function(data) {
 							console.log(data)
-							if(data.code=="200"){
-								$("#attentioned").attr("hidden","hidden");
+							if (data.code == "200") {
+								$("#attentioned").attr("hidden", "hidden");
 								$("#attention").removeAttr("hidden");
 							}
 						}
@@ -1146,11 +1276,11 @@
 					dataType: "json",
 					data: {
 						article_id: post_id,
-						token: obj?obj.token:""
+						token: obj ? obj.token : ""
 					},
 					success: function(data) {
 						console.log(data)
-						if(data.code == 200) {
+						if (data.code == 200) {
 							$("#postTitle").html(data.data.post_title); //文章标题
 							$("#postCopyright").html('<span>*</span>版权声明：' + data.data.post_copyright); //版权声明
 							$("#postContent").html("<p>" + data.data.post_content + "</p>"); //文章内容
@@ -1159,7 +1289,7 @@
 							$("#postLabel").append('<span>[' + label + ']</span>'); //文章标签，多个“，”隔开
 							$("#post_plate").html(data.data.post_plate);
 							$("#post_plate_two").html(data.data.post_plate_two);
-							if(data.data.revise_enclosure_name != null) {
+							if (data.data.revise_enclosure_name != null) {
 								$("#annex_d").css("display", "flex");
 								$("#enclosureName").html(data.data.revise_enclosure_name); //附件名称
 								$("#enclosureCoin").html('所需：' + data.data.revise_enclosure_coin + '积分/论坛币') //附件价格
@@ -1178,25 +1308,26 @@
 							$("#post_upnum").html(Number(data.data.post_upnum));
 							$("#user_follow_sum").html(Number(data.data.user_follow_sum));
 							$("#user_fans_sum").html(Number(data.data.user_fans_sum));
-							
-							if(data.data.fabulous){
-								$("#support").attr("src","images/supported.png");
-								$("#support").parent().attr("name","supportdel");
-								$("#support").attr("id","supportdel");
+
+							if (data.data.fabulous) {
+								$("#support").attr("src", "images/supported.png");
+								$("#support").parent().attr("name", "supportdel");
+								$("#support").attr("id", "supportdel");
 							}
-							if(data.data.collect){
-								$("#collection").attr("src","images/collectioned.png");
-								$("#collection").parent().attr("name","collectiondel");
-								$("#collection").attr("id","collectiondel");
+							if (data.data.collect) {
+								$("#collection").attr("src", "images/collectioned.png");
+								$("#collection").parent().attr("name", "collectiondel");
+								$("#collection").attr("id", "collectiondel");
 							}
-							if(data.data.follow){
-								$("#attention").attr("hidden","hidden");
-								$("#attentioned").removeAttr("hidden","hidden");
+							if (data.data.follow) {
+								$("#attention").attr("hidden", "hidden");
+								$("#attentioned").removeAttr("hidden", "hidden");
 							}
 							var num = data.data.recommend.length;
-							for(var i = 0; i < num; i++) {
+							for (var i = 0; i < num; i++) {
 								var arr = data.data.recommend[i];
-								$("#recommend").append('<li><a id="' + arr.id + '" href="forum.html?postid=' + arr.id + ' " ><b>·</b><span>' + arr.post_title + '</span></a></li>')
+								$("#recommend").append('<li><a id="' + arr.id + '" href="forum.html?postid=' + arr.id +
+									' " ><b>·</b><span>' + arr.post_title + '</span></a></li>')
 							}
 						}
 					},
@@ -1206,7 +1337,8 @@
 				});
 				//评论
 				GetComment();
-				function GetComment(){
+
+				function GetComment() {
 					$.ajax({
 						type: "post",
 						url: sever_url + "comment/select",
@@ -1221,28 +1353,41 @@
 							console.log(data)
 							var length = data.data.length;
 							$("#comment_box").empty();
-							for(var i = 0; i < length; i++) {
+							for (var i = 0; i < length; i++) {
 								var obj = data.data[i];
-								$("#comment_box").append('<div class="content_box"><div class="visitor"><div class="visitor_info"><div class="visitor_pic"><img id="' + obj.id + '" src="' + obj.user_head + '"/><span >' + obj.user_name + '</span></div><div class="commet_time"><span>' + obj.comment_time + '</span><span>【' + obj.comment_layernum + '楼】</span></div></div><div class="other_visitor"><span>举报</span><span>回复</span><span style="display:flex;align-items: center;"><img onclick=commentSupport('+obj.id+') src="images/support.png"/><span id="comment'+obj.id+'">' + Number(obj.comment_upnum) + '</span></span></div></div><div class="comment_text"><p>' + obj.comment_content + '</p></div></div>');
+								$("#comment_box").append(
+									'<div class="content_box"><div class="visitor"><div class="visitor_info"><div class="visitor_pic"><img id="' +
+									obj.id + '" src="' + obj.user_head + '"/><span >' + obj.user_name +
+									'</span></div><div class="commet_time"><span>' + obj.comment_time + '</span><span>【' + obj.comment_layernum +
+									'楼】</span></div></div><div class="other_visitor"><a rel="leanModal" name="Report" href="#Report"><span onclick=Reported(' +
+									obj.id + ')>举报</span></a><a rel="leanModal" name="reply" href="#reply"><span onclick=reply(' + obj.id +
+									',"' + obj.user_name +
+									'")>回复</span></a><span style="display:flex;align-items: center;"><img onclick=commentSupport(' +
+									obj.id + ') src="images/support.png"/><span id="comment' + obj.id + '">' + Number(obj.comment_upnum) +
+									'</span></span></div></div><div class="comment_text"><p>' + obj.comment_content + '</p></div></div>');
 							}
+							$('a[rel*=leanModal]').leanModal({
+								top: 200,
+								closeButton: ".modal_close"
+							});
 						},
 						error: function() {
-	
+
 						}
 					});
 				}
-				
+
 				//点赞、转发、打赏、、、、
-				$("#do_something div").click(function(){
+				$("#do_something div").click(function() {
 					var that = this;
 					var name = $(that).attr("name");
-					if(sessionStorage.getItem("data")==null){
+					if (sessionStorage.getItem("data") == null) {
 						Dialog({
 							title: "请登录！",
 							content: "您还未登录，是否登录？",
 							ok: {
 								callback: function() {
-									window.location.href='login.html';
+									window.location.href = 'login.html';
 								}
 							},
 							cancel: {
@@ -1251,7 +1396,7 @@
 								}
 							}
 						});
-					}else{
+					} else {
 						var obj = sessionStorage.getItem("data");
 						obj = JSON.parse(obj);
 						var token = obj.token;
@@ -1260,27 +1405,27 @@
 						var reward_coinnum = "";
 						var reward_money = "";
 						console.log(name)
-						if(name=="reward"){
-							$("#check").click(function(){
+						if (name == "reward") {
+							$("#check").click(function() {
 								reward_coinnum = $("#reward_coinnum").val();
 								reward_money = $("#reward_money").val();
-								doSomething(token,post_id,comment_id,reprot_content,reward_coinnum,reward_money);
+								doSomething(token, post_id, comment_id, reprot_content, reward_coinnum, reward_money);
 							})
-						}else if(name=="report"){
-							$("#edit").click(function(){
+						} else if (name == "report") {
+							$("#edit").click(function() {
 								reprot_content = $("#report_text").val();
-								doSomething(token,post_id,comment_id,reprot_content,reward_coinnum,reward_money);
+								doSomething(token, post_id, comment_id, reprot_content, reward_coinnum, reward_money);
 							})
-						}else{
-							doSomething(token,post_id,comment_id,reprot_content,reward_coinnum,reward_money);
+						} else {
+							doSomething(token, post_id, comment_id, reprot_content, reward_coinnum, reward_money);
 						}
-						
-						function doSomething(token,post_id,comment_id,reprot_content,reward_coinnum,reward_money){
+
+						function doSomething(token, post_id, comment_id, reprot_content, reward_coinnum, reward_money) {
 							$.ajax({
-								type:"post",
-								url:sever_url+"post/"+name,
-								async:true,
-								data:{
+								type: "post",
+								url: sever_url + "post/" + name,
+								async: true,
+								data: {
 									token: token,
 									post_id: post_id,
 									comment_id: comment_id,
@@ -1288,42 +1433,42 @@
 									reward_coinnum: reward_coinnum,
 									reward_money: reward_money
 								},
-								success: function(data){
+								success: function(data) {
 									var upNumber = parseInt($("#postUpnum").html());
 									var coNumber = parseInt($("#postCollectionnum").html());
 									var fwNumber = parseInt($("#postForwardnum").html());
 									console.log(data)
-									if(data.code=="200"){
-										if(name=="support"||name=="collection"){
-											$("#"+name).attr("src","images/"+name+"ed.png");
-											$(that).attr("name",name+"del");
-											$("#"+name).attr("id",name+"del");
-											if(name=="support"){
-												$("#postUpnum").html(upNumber+1);
-											}else if(name=="collection"){
-												$("#postCollectionnum").html(coNumber+1);
+									if (data.code == "200") {
+										if (name == "support" || name == "collection") {
+											$("#" + name).attr("src", "images/" + name + "ed.png");
+											$(that).attr("name", name + "del");
+											$("#" + name).attr("id", name + "del");
+											if (name == "support") {
+												$("#postUpnum").html(upNumber + 1);
+											} else if (name == "collection") {
+												$("#postCollectionnum").html(coNumber + 1);
 											}
-										}else if(name=="supportdel"||name=="collectiondel"){
+										} else if (name == "supportdel" || name == "collectiondel") {
 											var named = name.substr(0, name.length - 3);
-											$("#"+name).attr("src","images/"+named+".png");
-											$(that).attr("name",named);
-											$("#"+name).attr("id",named);
-											if(name=="supportdel"){
-												$("#postUpnum").html(upNumber-1);
-											}else if(name=="collectiondel"){
-												$("#postCollectionnum").html(coNumber-1);
+											$("#" + name).attr("src", "images/" + named + ".png");
+											$(that).attr("name", named);
+											$("#" + name).attr("id", named);
+											if (name == "supportdel") {
+												$("#postUpnum").html(upNumber - 1);
+											} else if (name == "collectiondel") {
+												$("#postCollectionnum").html(coNumber - 1);
 											}
-										}else if(name=="forword"){
-											$("#postForwardnum").html(fwNumber+1)
+										} else if (name == "forword") {
+											$("#postForwardnum").html(fwNumber + 1)
 										}
-										
-									}else if(data.code=="2"){
+
+									} else if (data.code == "2") {
 										Dialog({
 											title: "请登录！",
 											content: "您的登录已过期，是否重新登录？",
 											ok: {
 												callback: function() {
-													window.location.href='login.html';
+													window.location.href = 'login.html';
 												}
 											},
 											cancel: {
@@ -1339,29 +1484,30 @@
 					}
 				})
 				//发表
-				$("#publish").click(function(){
+				$("#publish").click(function() {
 					var obj = sessionStorage.getItem("data");
 					obj = JSON.parse(obj);
 					DoAjax();
-					function DoAjax(){
+
+					function DoAjax() {
 						$.ajax({
-							type:"post",
-							url:sever_url+"comment/publish",
-							async:true,
-							data:{
-								token: obj?obj.token:"",
+							type: "post",
+							url: sever_url + "comment/publish",
+							async: true,
+							data: {
+								token: obj ? obj.token : "",
 								post_id: post_id,
 								comment_content: $("#comment_content").val()
 							},
-							success:function(data){
+							success: function(data) {
 								console.log(data)
-								if(data.code=="2"){
+								if (data.code == "2") {
 									Dialog({
 										title: "请登录！",
 										content: "您的登录已过期，是否重新登录？",
 										ok: {
 											callback: function() {
-												window.location.href='login.html';
+												window.location.href = 'login.html';
 											}
 										},
 										cancel: {
@@ -1370,13 +1516,13 @@
 											}
 										}
 									});
-								}else if(data.code=="200"){
+								} else if (data.code == "200") {
 									GetComment();
 									$("#comment_content").val("");
 								}
 							},
-							error:function(){
-								
+							error: function() {
+
 							}
 						});
 					}
