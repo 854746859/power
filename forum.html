@@ -1133,8 +1133,8 @@
 			function reply(commentId, user_name) {
 				// console.log(commentId,user_name);
 				$("#checked").click(function() {
-					reply = $("#reply").val();
-					var content = "@" + user_name + "  " + reply
+					reply_content = $("#reply_content").val();
+					var content = "@" + user_name + "  " + reply_content
 					console.log(content);
 					doSomething(content);
 				})
@@ -1154,7 +1154,7 @@
 						}
 					});
 				} else {
-					function doSomething(reply) {
+					function doSomething(reply_content) {
 						var obj = sessionStorage.getItem("data");
 						obj = JSON.parse(obj);
 						$.ajax({
@@ -1165,7 +1165,7 @@
 								token: obj.token,
 								post_id: getUrldata('postid'),
 								// comment_id: commentId,
-								comment_content: reply
+								comment_content: reply_content
 							},
 							dataType: "json",
 							success: function(data) {
