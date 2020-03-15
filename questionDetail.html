@@ -338,7 +338,7 @@
 		height: 300px;
 	}
 	
-	#Report,#test {
+	#Report,#test,#Reported {
 				width: 404px;
 				padding-bottom: 2px;
 				display: none;
@@ -808,6 +808,23 @@
 						</div>
 					</div>-->
 						</div>
+						<div id="Reported">
+							<div id="signup-ct">
+								<div id="signup-header">
+									<h2>举报</h2>
+									<a class="modal_close" href="#"></a>
+								</div>
+								<form action="">
+									<div class="txt-fld">
+										<label for="">举报内容</label>
+										<textarea id="report_text" name="" rows="" cols=""></textarea>
+									</div>
+									<div class="submit">
+										<input type="button" name="" id="edit" value="确认" />
+									</div>
+								</form>
+							</div>
+						</div>
 						<div></div>
 						<div class="commet">
 							<textarea name="" rows="" cols="" placeholder="评论" id="comment"></textarea>
@@ -1134,8 +1151,12 @@
 							$("#comment_box").empty();
 							for(var i = 0; i < length; i++) {
 								var obj = data.data[i];
-								$("#comment_box").append('<div class="content_box"><div class="visitor"><div class="visitor_info"><div class="visitor_pic"><img id="' + obj.id + '" src="' + obj.user_head + '"/><span >' + obj.user_name + '</span></div><div class="commet_time"><span>' + obj.comment_time + '</span><span>【' + obj.comment_layernum + '楼】</span></div></div><div class="other_visitor"><span>举报</span><span>回复</span><span><img onclick=commentSupport('+obj.id+') src="images/good.png"/><span id="comment'+obj.id+'">' + Number(obj.comment_upnum) + '</span></span></div></div><div class="comment_text"><p>' + obj.comment_content + '</p></div></div>');
+								$("#comment_box").append('<div class="content_box"><div class="visitor"><div class="visitor_info"><div class="visitor_pic"><img id="' + obj.id + '" src="' + obj.user_head + '"/><span >' + obj.user_name + '</span></div><div class="commet_time"><span>' + obj.comment_time + '</span><span>【' + obj.comment_layernum + '楼】</span></div></div><div class="other_visitor"><a rel="leanModal" name="Reported" href="#Reported"><span>举报</span></a><span>回复</span><span><img onclick=commentSupport('+obj.id+') src="images/good.png"/><span id="comment'+obj.id+'">' + Number(obj.comment_upnum) + '</span></span></div></div><div class="comment_text"><p>' + obj.comment_content + '</p></div></div>');
 							}
+							$('a[rel*=leanModal]').leanModal({
+								top: 200,
+								closeButton: ".modal_close"
+							});
 						},
 						error: function() {
 	
