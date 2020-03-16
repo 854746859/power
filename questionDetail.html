@@ -338,7 +338,7 @@
 		height: 300px;
 	}
 	
-	#Report,#test,#reply {
+	#Report,#test,#reply,#Reported {
 				width: 404px;
 				padding-bottom: 2px;
 				display: none;
@@ -828,7 +828,7 @@
 						</div>
 					</div>-->
 						</div>
-						<!-- <div id="Reported">
+						<div id="Reported">
 							<div id="signup-ct">
 								<div id="signup-header">
 									<h2>举报</h2>
@@ -837,14 +837,14 @@
 								<form action="">
 									<div class="txt-fld">
 										<label for="">举报内容</label>
-										<textarea id="report_text" name="" rows="" cols=""></textarea>
+										<textarea id="report_texted" name="" rows="" cols=""></textarea>
 									</div>
 									<div class="submit">
-										<input type="button" name="" id="edit" value="确认" />
+										<input type="button" name="" id="edited" value="确认" />
 									</div>
 								</form>
 							</div>
-						</div> -->
+						</div>
 						<div></div>
 						<div class="commet">
 							<textarea name="" rows="" cols="" placeholder="评论" id="comment"></textarea>
@@ -1006,8 +1006,8 @@
 			// 举报
 			function Reported(commentId) {
 				console.log(commentId);
-				$("#edit").click(function() {
-					reprot_content = $("#report_text").val();
+				$("#edited").click(function() {
+					reprot_content = $("#report_texted").val();
 					console.log(reprot_content);
 					doSomething(reprot_content)
 				})
@@ -1045,7 +1045,7 @@
 			
 								// $("#Reported").css("display","none");
 								console.log(data)
-			
+								location.reload()
 								// var num = Number($("#comment" + commentId).html());
 								// $("#comment" + commentId).html(num + 1);
 							},
@@ -1289,7 +1289,7 @@
 									'<div class="content_box"><div class="visitor"><div class="visitor_info"><div class="visitor_pic"><img id="' +
 									obj.id + '" src="' + obj.user_head + '"/><span >' + obj.user_name +
 									'</span></div><div class="commet_time"><span>' + obj.comment_time + '</span><span>【' + obj.comment_layernum +
-									'楼】</span></div></div><div class="other_visitor"><a rel="leanModal" name="Report" href="#Report"><span onclick=Reported(' +
+									'楼】</span></div></div><div class="other_visitor"><a rel="leanModal" name="Reported" href="#Reported"><span onclick=Reported(' +
 									obj.id + ')>举报</span></a><a rel="leanModal" name="reply" href="#reply"><span onclick=reply(' + obj.id +
 									',"' + obj.user_name +
 									'")>回复</span></a><span style="display:flex;align-items: center;"><img onclick=commentSupport(' +
