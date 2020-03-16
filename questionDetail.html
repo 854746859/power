@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
 	<head>
 		<meta charset="utf-8">
 		<meta content="能源公社" http-equiv="keywords">
@@ -17,328 +18,397 @@
 		<link rel="stylesheet" type="text/css" href="css/index.css" />
 		<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
 		<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
-		<script type="text/javascript" src="js/public.js"></script><!-- 菜单js等-->
+		<!--富文本编辑框-->
+		<script type="text/javascript" charset="utf-8" src="./ueditor/ueditor.config.js"></script>
+		<script type="text/javascript" charset="utf-8" src="./ueditor/ueditor.all.min.js"></script>
+		<script type="text/javascript" src="js/public.js"></script>
+		<!-- 菜单js等-->
 		<script src="LeanModal/js/jquery.leanModal.min.js" type="text/javascript" charset="utf-8"></script>
 		<!-- 时间选择js -->
 		<script type="text/javascript" src="js/laydate.js"></script>
 		<style>
-			.blog_box{
-		width: 100%;
-		margin-top: 10px;
-		display: flex;
-		flex-direction: row;
-	}
-	.blog_box .blog_left{
-		width: 65%;
-		display: flex;
-		flex-direction: column;
-	}
-	.blog_box .blog_detail .blog_left div:nth-child(n+2){
-		width: 25%;
-		margin-top: 5px;
-	}
-	.blog_title{
-		font-size: 16px;
-		font-weight: 700;
-	}
-	.blog_detail{
-		width: 100%;
-		border-bottom: 1px solid #eee;
-		margin-top: 5px;
-		font-size: 14px;
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-	}
-	.post_type{
-		display: flex;
-		flex-direction: row;
-	}
-	.post_type span:nth-child(n+2){
-		margin-left: 5px;
-		color: red;
-	}
-	.collect{
-		display: flex;
-		flex-direction: row;
-		margin-right: 10px;
-	}
-	.collect img{
-		width: 20px;
-		height: 20px;
-	}
-	.state{
-		font-size: 12px;
-		margin-top: 5px;
-		line-height: 18px;
-	}
-	.state span{
-		font-size: 18px;
-		color: red;
-		margin-right: 5px;
-	}
-	.post_info{
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		margin-top: 5px;
-		align-items: center;
-		background-color: #eee;
-		padding: 10px;
-		margin-right: 10px;
-		border-radius: 5px;
-	}
-	.post_info .user{
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-	}
-	.post_info .user img{
-		width: 60px;
-		height: 60px;
-		border-radius: 30px;
-	}
-	.post_info .user .user_name{
-		display: flex;
-		flex-direction: column;
-		margin-left: 5px;
-		height: 60px;
-		text-overflow: ellipsis;
-		overflow: hidden;
-	}
-	.post_info .user .user_name .user_intro{
-		width: 120px;
-		overflow-wrap: break-word;
-		line-height: 16px;
-	}
-	.attention{
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		color: #1a83da;
-		font-size: 14px;
-		position: relative;
-		left: -80px;
-	}
-	.attention input{
-		width: 80px;
-		height: 30px;
-		color: #fff;
-		background-color: #1a83da;
-		border-radius:3px;
-	}
-	.trivial{
-		display: flex;
-		flex-direction: row;
-		width: 40%;
-		justify-content: space-between;
-	}
-	.trivial div{
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
-	.post_text{
-		margin: 10px 10px 0 0;
-	}
-	.post_text p{
-		text-align: justify;
-    	text-indent: 2em;
-    	color: #333;
-    	line-height: 1.6;
-    	margin-top: 5px;
-	}
-	.post_text img{
-		width: 420px;
-		height: 290px;
-	}
-	.annex_d{
-		padding: 10px;
-		margin-top: 30px;
-		background-color: #E7E7E7;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		border-radius: 5px;
-	}
-	.annex_info{
-		width: 100%;
-		height: 40px;
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		border-bottom: 1px solid #fff;
-	}
-	.annex_info .user_logo{
-		display: flex;
-		flex-direction: row;
-	}
-	.annex_info .user_logo img{
-		width: 50px;
-		height: 50px;
-		border-radius: 25px;
-		position: relative;
-		top: -30px;
-	}
-	.annex_info .good{
-		width: 50px;
-		height: 30px;
-		padding-right: 5px;
-		position: relative;
-		top: -25px;
-		background-color: #fff
-	}
-	.annex_info .good img{
-		width: 30px;
-		height: 30px;
-	}
-	.user_reply{
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		padding: 0 30px;
-	}
-	.user_reply .reply_dt div{
-		margin-top: 5px;
-	}
-	.user_reply .reply_dt .reply_name{
-		display: flex;
-		flex-direction: row;
-		align-items: flex-end;
-	}
-	.user_reply .reply_dt .reply_name span{
-		margin-left: 10px;
-	}
-	.report{
-		margin-top: 15px;
-	}
-	.report span{
-		cursor: pointer;
-		color: red;
-	}
-	.report span:first-child{
-		margin-right: 10px;
-	}
-	.five_bt{
-		width: 100%;
-		height: 60px;
-		display: flex;
-		flex-direction: row;
-		justify-content: flex-end;
-		align-items: center;
-		margin-top: 10px;
-		border-bottom: 1px solid #eee;
-		margin-bottom: 20px;
-	}
-	.five_bt .post_icon{
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		margin-right: 20px;
-	}
-	.five_bt .post_icon img{
-		width: 25px;
-		height: 25px;
-		margin-right: 5px;
-	}
-	.comment_box,.content_box{
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-	}
-	.content_box{
-		border-bottom: 1px dashed #B9B9B9;
-		margin-bottom: 5px;
-	}
-	.content_box .visitor{
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-	}
-	.visitor_info,.visitor_pic,.other_visitor{
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-	}
-	.other_visitor img{
-		width: 30px;
-		height: 30px;
-	}
-	.other_visitor span:nth-last-child(n+2),img{
-		cursor: pointer;
-		color: red;
-	}
-	.other_visitor span:first-child{
-		margin-right: 5px;
-	}
-	.content_box .visitor .visitor_pic img{
-		width: 50px;
-		height: 50px;
-		border-radius: 25px;
-		margin-right: 5px;
-	}
-	.commet_time{
-		margin-left: 10px;
-	}
-	.comment_text{
-		padding: 10px 30px 10px 10px;
-		margin-bottom: 5px;
-	}
-	.comment_text p{
-		text-align: justify;
-    	text-indent: 2em;
-    	color: #333;
-    	line-height: 1.6;
-    	margin-top: 5px;
-	}
-	.commet{
-		width: 100%;
-		margin-bottom: 20px;
-	}
-	.commet textarea{
-		width: 100%;
-		height: 120px;
-		border: 2px solid #eee;
-		font-size: 18px;
-	}
-	.commet .push_bt{
-		width: 100%;
-		display: flex;
-		flex-direction: row;
-		justify-content: flex-end;
-		align-items: center;
-	}
-	.commet .push_bt input{
-		width: 80px;
-		height: 30px;
-		color: #fff;
-		background-color: #1a83da;
-		margin-top: 5px;
-		margin-left: 10px;
-	}
-	.blog_box .blog_right{
-		width: 34%;
-		margin-left: 1%;
-	}
-	.pic_link img{
-		width: 100%;
-		/*height: 200px;*/
-	}
-	.hot_post{
-		margin-top: 10px;
-	}
-	.carousel{
-		width: 100%;
-		height: 300px;
-	}
-	.carousel img{
-		width: 100%;
-		height: 300px;
-	}
-	
-	#Report,#test,#reply,#Reported {
+			.blog_box {
+				width: 100%;
+				margin-top: 10px;
+				display: flex;
+				flex-direction: row;
+			}
+			
+			.blog_box .blog_left {
+				width: 65%;
+				display: flex;
+				flex-direction: column;
+			}
+			
+			.blog_box .blog_detail .blog_left div:nth-child(n+2) {
+				width: 25%;
+				margin-top: 5px;
+			}
+			
+			.blog_title {
+				font-size: 16px;
+				font-weight: 700;
+			}
+			
+			.blog_detail {
+				width: 100%;
+				border-bottom: 1px solid #eee;
+				margin-top: 5px;
+				font-size: 14px;
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+			}
+			
+			.post_type {
+				display: flex;
+				flex-direction: row;
+			}
+			
+			.post_type span:nth-child(n+2) {
+				margin-left: 5px;
+				color: red;
+			}
+			
+			.collect {
+				display: flex;
+				flex-direction: row;
+				margin-right: 10px;
+			}
+			
+			.collect img {
+				width: 20px;
+				height: 20px;
+			}
+			
+			.state {
+				font-size: 12px;
+				margin-top: 5px;
+				line-height: 18px;
+			}
+			
+			.state span {
+				font-size: 18px;
+				color: red;
+				margin-right: 5px;
+			}
+			
+			.post_info {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				margin-top: 5px;
+				align-items: center;
+				background-color: #eee;
+				padding: 10px;
+				margin-right: 10px;
+				border-radius: 5px;
+			}
+			
+			.post_info .user {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+			}
+			
+			.post_info .user img {
+				width: 60px;
+				height: 60px;
+				border-radius: 30px;
+			}
+			
+			.post_info .user .user_name {
+				display: flex;
+				flex-direction: column;
+				margin-left: 5px;
+				height: 60px;
+				text-overflow: ellipsis;
+				overflow: hidden;
+			}
+			
+			.post_info .user .user_name .user_intro {
+				width: 120px;
+				overflow-wrap: break-word;
+				line-height: 16px;
+			}
+			
+			.attention {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				color: #1a83da;
+				font-size: 14px;
+				position: relative;
+				left: -80px;
+			}
+			
+			.attention input {
+				width: 80px;
+				height: 30px;
+				color: #fff;
+				background-color: #1a83da;
+				border-radius: 3px;
+			}
+			
+			.trivial {
+				display: flex;
+				flex-direction: row;
+				width: 40%;
+				justify-content: space-between;
+			}
+			
+			.trivial div {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+			}
+			
+			.post_text {
+				margin: 10px 10px 0 0;
+			}
+			
+			.post_text p {
+				text-align: justify;
+				text-indent: 2em;
+				color: #333;
+				line-height: 1.6;
+				margin-top: 5px;
+			}
+			
+			.post_text img {
+				width: 420px;
+				height: 290px;
+			}
+			
+			.annex_d {
+				padding: 10px;
+				margin-top: 30px;
+				background-color: #E7E7E7;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				border-radius: 5px;
+			}
+			
+			.annex_info {
+				width: 100%;
+				height: 40px;
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				border-bottom: 1px solid #fff;
+			}
+			
+			.annex_info .user_logo {
+				display: flex;
+				flex-direction: row;
+			}
+			
+			.annex_info .user_logo img {
+				width: 50px;
+				height: 50px;
+				border-radius: 25px;
+				position: relative;
+				top: -30px;
+			}
+			
+			.annex_info .good {
+				width: 50px;
+				height: 30px;
+				padding-right: 5px;
+				position: relative;
+				top: -25px;
+				background-color: #fff
+			}
+			
+			.annex_info .good img {
+				width: 30px;
+				height: 30px;
+			}
+			
+			.user_reply {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				padding: 0 30px;
+			}
+			
+			.user_reply .reply_dt div {
+				margin-top: 5px;
+			}
+			
+			.user_reply .reply_dt .reply_name {
+				display: flex;
+				flex-direction: row;
+				align-items: flex-end;
+			}
+			
+			.user_reply .reply_dt .reply_name span {
+				margin-left: 10px;
+			}
+			
+			.report {
+				margin-top: 15px;
+			}
+			
+			.report span {
+				cursor: pointer;
+				color: red;
+			}
+			
+			.report span:first-child {
+				margin-right: 10px;
+			}
+			
+			.five_bt {
+				width: 100%;
+				height: 60px;
+				display: flex;
+				flex-direction: row;
+				justify-content: flex-end;
+				align-items: center;
+				margin-top: 10px;
+				border-bottom: 1px solid #eee;
+				margin-bottom: 20px;
+			}
+			
+			.five_bt .post_icon {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				margin-right: 20px;
+			}
+			
+			.five_bt .post_icon img {
+				width: 18px;
+				height: 18px;
+				margin-right: 5px;
+			}
+			
+			.comment_box,
+			.content_box {
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+			}
+			
+			.content_box {
+				border-bottom: 1px dashed #B9B9B9;
+				margin-bottom: 5px;
+			}
+			
+			.content_box .visitor {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+			}
+			
+			.visitor_info,
+			.visitor_pic,
+			.other_visitor {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+			}
+			
+			.other_visitor img {
+				width: 18px;
+				height: 18px;
+			}
+			
+			.other_visitor span:nth-last-child(n+2),
+			img {
+				cursor: pointer;
+				color: red;
+			}
+			
+			.other_visitor span:first-child {
+				margin-right: 5px;
+			}
+			
+			.content_box .visitor .visitor_pic img {
+				width: 50px;
+				height: 50px;
+				border-radius: 25px;
+				margin-right: 5px;
+			}
+			
+			.commet_time {
+				margin-left: 10px;
+			}
+			
+			.comment_text {
+				padding: 10px 30px 10px 10px;
+				margin-bottom: 5px;
+			}
+			
+			.comment_text p {
+				text-align: justify;
+				text-indent: 2em;
+				color: #333;
+				line-height: 1.6;
+				margin-top: 5px;
+			}
+			
+			.commet {
+				width: 100%;
+				margin-bottom: 20px;
+			}
+			
+			.commet textarea {
+				width: 100%;
+				height: 120px;
+				border: 2px solid #eee;
+				font-size: 18px;
+			}
+			
+			.commet .push_bt {
+				width: 100%;
+				display: flex;
+				flex-direction: row;
+				justify-content: flex-end;
+				align-items: center;
+			}
+			
+			.commet .push_bt input {
+				width: 80px;
+				height: 30px;
+				color: #fff;
+				background-color: #1a83da;
+				margin-top: 5px;
+				margin-left: 10px;
+			}
+			
+			.blog_box .blog_right {
+				width: 34%;
+				margin-left: 1%;
+			}
+			
+			.pic_link img {
+				width: 100%;
+				/*height: 200px;*/
+			}
+			
+			.hot_post {
+				margin-top: 10px;
+			}
+			
+			.carousel {
+				width: 100%;
+				height: 300px;
+			}
+			
+			.carousel img {
+				width: 100%;
+				height: 300px;
+			}
+			
+			#Report,
+			#test,
+			#reply,
+			#Reported {
 				width: 404px;
 				padding-bottom: 2px;
 				display: none;
@@ -346,28 +416,31 @@
 				border-radius: 5px;
 				-moz-border-radius: 5px;
 				-webkit-border-radius: 5px;
-				box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.7);
+				/*box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.7);
 				-webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
-				-moz-box-shadow: 0 0px 4px rgba(0, 0, 0, 0.7);
+				-moz-box-shadow: 0 0px 4px rgba(0, 0, 0, 0.7);*/
 			}
+			
 			#signup-header {
-				background: url(LeanModal/css/img/hd-bg.png);
-				padding: 18px 18px 14px 18px;
-				border-bottom: 1px solid #CCC;
-				border-top-left-radius: 5px;
-				-moz-border-radius-topleft: 5px;
-				-webkit-border-top-left-radius: 5px;
-				border-top-right-radius: 5px;
-				-moz-border-radius-topright: 5px;
-				-webkit-border-top-right-radius: 5px;
+				/* background: url(LeanModal/css/img/hd-bg.png); */
+				height: 31px;
+				padding: 8px 18px 8px 12px;
+				background: #1a83da;
+				border-top-left-radius: 6px;
+				-moz-border-radius-topleft: 6px;
+				-webkit-border-top-left-radius: 6px;
+				border-top-right-radius: 6px;
+				-moz-border-radius-topright: 6px;
+				-webkit-border-top-right-radius: 6px;
 			}
+			
 			#signup-header h2 {
-				color: #444;
-				font-size: 2em;
-				font-weight: 700;
-				margin-bottom: 3px;
-				text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+				font-size:24px;
+				font-family:PingFangSC-Regular,PingFang SC;
+				font-weight:400;
+				color:#fff;
 			}
+			
 			#signup-header p {
 				color: #444;
 				font-size: 1.3em;
@@ -375,6 +448,7 @@
 				text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
 				text-shadow: none;
 			}
+			
 			.modal_close {
 				position: absolute;
 				top: 12px;
@@ -385,27 +459,16 @@
 				background: url(LeanModal/css/img/modal_close.png);
 				z-index: 2;
 			}
-			#signup-header h2 {
-				color: #444;
-				font-size: 2em;
-				font-weight: 700;
-				margin-bottom: 3px;
-				text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
-			}
-			#signup-header p {
-				color: #444;
-				font-size: 1.3em;
-				margin: 0;
-				text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
-				text-shadow: none;
-			}
 			.txt-fld {
+				display: flex;
+				align-items: center;
 				position: relative;
 				width: 364px;
 				padding: 14px 20px;
 				border-bottom: 1px solid #EEE;
 				text-align: right;
 			}
+			
 			.btn-fld {
 				width: 254px;
 				overflow: hidden;
@@ -416,13 +479,15 @@
 				display: block;
 				float: left;
 				width: 90px;
-				padding-top: 8px;
-				color: #222;
-				font-size: 1.3em;
 				text-align: left;
+				font-size:18px;
+				font-family:PingFangSC-Regular,PingFang SC;
+				font-weight:400;
+				color:rgba(0,0,0,0.85);
 			}
 			
-			.txt-fld input,textarea {
+			.txt-fld input,
+			textarea {
 				width: 244px;
 				padding: 8px;
 				border-radius: 4px;
@@ -442,34 +507,103 @@
 			.txt-fld input.error_input {
 				background: #FDE0E0;
 			}
+			
 			.txt-fld input:focus,
 			.txt-fld textarea:focus {
 				background-color: #FAF9DC;
 			}
+			
 			#lean_overlay {
-			    position: fixed;
-			    z-index: 10000;
-			    top: 0px;
-			    left: 0px;
-			    height:100%;
-			    width:100%;
-			    background: #000;
-			    display: none;
+				position: fixed;
+				z-index: 10000;
+				top: 0px;
+				left: 0px;
+				height: 100%;
+				width: 100%;
+				background: #000;
+				display: none;
 			}
-			.submit{
+			
+			.submit {
 				display: flex;
 				flex-direction: row;
 				justify-content: flex-end;
+				padding: 8px 0px;
 			}
-			.submit input{
+			
+			.submit input {
 				margin-right: 10px;
 				width: 80px;
 				height: 30px;
 				color: #fff;
 				background-color: #1a83da;
 			}
-</style>
+			/*鼠标移入菜单*/
+			
+			.hiden_list {
+				width: 120px;
+				position: absolute;
+				top: 40px;
+				background-color: rgb(255, 255, 255);
+				z-index: 9;
+			}
+			
+			.hiden_list ul li {
+				border-bottom: 1px dotted;
+			}
+			
+			.hiden_list_w {
+				width: 120px;
+				position: absolute;
+				top: 40px;
+				background-color: rgb(255, 255, 255);
+				z-index: 9;
+			}
+			
+			.hiden_list_w ul li {
+				border-bottom: 1px dotted;
+			}
+			
+			.head_div {
+				position: relative;
+			}
+			
+			#edui1_iframeholder {
+				height: 200px !important;
+			}
+			
+			.edit_type {
+				display: flex;
+				flex-direction: row;
+				font-size: 14px;
+				color: #1a83da;
+				margin-bottom: 10px;
+			}
+			
+			.edit_type span {
+				cursor: pointer;
+			}
+			
+			#more_edit {
+				margin-left: 10px;
+			}
+			
+			.comment_area {
+				font-size: 16px;
+				font-weight: 600;
+				color: #333;
+				margin: 10px 0;
+				padding: 10px 0;
+				border-top: 1px solid #B9B9B9;
+				border-bottom: 1px dashed #B9B9B9;
+			}
+			
+			#edui1 {
+				width: 780px !important;
+			}
+		</style>
 	</head>
+
 	<body>
 		<!--头部-->
 		<div class="bg">
@@ -478,55 +612,121 @@
 				<nav>
 					<div>
 						<ul>
-							<li><a href="index.html?type=0&plate=1&two=0">首页</a></li>
-							<li class="menu-item-has-children"><a href="#" title="" itemprop="url">论坛</a>
+							<li>
+								<a href="index.html?type=0&plate=1&two=0">首页</a>
+							</li>
+							<li class="menu-item-has-children">
+								<a href="#" title="" itemprop="url">论坛</a>
 								<ul>
-									<li><a href="index.html?type=0&plate=1&two=0" title="" itemprop="url">LNG版块</a></li>
-									<li><a href="index.html?type=0&plate=2&two=0" title="" itemprop="url">Oil版块</a></li>
-									<li><a href="index.html?type=0&plate=3&two=0" title="" itemprop="url">Gas版块</a></li>
-									<li><a href="index.html?type=0&plate=4&two=0" title="" itemprop="url">Pipe版块</a></li>
-									<li><a href="index.html?type=0&plate=5&two=0" title="" itemprop="url">Nuclear版块</a></li>
-									<li><a href="index.html?type=0&plate=6&two=0" title="" itemprop="url">Power版块</a></li>
-									<li><a href="index.html?type=0&plate=7&two=0" title="" itemprop="url">Wind版块</a></li>
-									<li><a href="index.html?type=0&plate=8&two=0" title="" itemprop="url">Solar版块</a></li>
+									<li>
+										<a href="index.html?type=0&plate=1&two=0" title="" itemprop="url">LNG版块</a>
+									</li>
+									<li>
+										<a href="index.html?type=0&plate=2&two=0" title="" itemprop="url">Oil版块</a>
+									</li>
+									<li>
+										<a href="index.html?type=0&plate=3&two=0" title="" itemprop="url">Gas版块</a>
+									</li>
+									<li>
+										<a href="index.html?type=0&plate=4&two=0" title="" itemprop="url">Pipe版块</a>
+									</li>
+									<li>
+										<a href="index.html?type=0&plate=5&two=0" title="" itemprop="url">Nuclear版块</a>
+									</li>
+									<li>
+										<a href="index.html?type=0&plate=6&two=0" title="" itemprop="url">Power版块</a>
+									</li>
+									<li>
+										<a href="index.html?type=0&plate=7&two=0" title="" itemprop="url">Wind版块</a>
+									</li>
+									<li>
+										<a href="index.html?type=0&plate=8&two=0" title="" itemprop="url">Solar版块</a>
+									</li>
 								</ul>
 							</li>
-							<li class="menu-item-has-children"><a href="#">问答</a>
+							<li class="menu-item-has-children">
+								<a href="#">问答</a>
 								<ul>
-									<li><a href="question.html?type=1&plate=1&two=0" title="" itemprop="url">LNG版块</a></li>
-									<li><a href="question.html?type=1&plate=2&two=0" title="" itemprop="url">Oil版块</a></li>
-									<li><a href="question.html?type=1&plate=3&two=0" title="" itemprop="url">Gas版块</a></li>
-									<li><a href="question.html?type=1&plate=4&two=0" title="" itemprop="url">Pipe版块</a></li>
-									<li><a href="question.html?type=1&plate=5&two=0" title="" itemprop="url">Nuclear版块</a></li>
-									<li><a href="question.html?type=1&plate=6&two=0" title="" itemprop="url">Power版块</a></li>
-									<li><a href="question.html?type=1&plate=7&two=0" title="" itemprop="url">Wind版块</a></li>
-									<li><a href="question.html?type=1&plate=8&two=0" title="" itemprop="url">Solar版块</a></li>
+									<li>
+										<a href="question.html?type=1&plate=1&two=0" title="" itemprop="url">LNG版块</a>
+									</li>
+									<li>
+										<a href="question.html?type=1&plate=2&two=0" title="" itemprop="url">Oil版块</a>
+									</li>
+									<li>
+										<a href="question.html?type=1&plate=3&two=0" title="" itemprop="url">Gas版块</a>
+									</li>
+									<li>
+										<a href="question.html?type=1&plate=4&two=0" title="" itemprop="url">Pipe版块</a>
+									</li>
+									<li>
+										<a href="question.html?type=1&plate=5&two=0" title="" itemprop="url">Nuclear版块</a>
+									</li>
+									<li>
+										<a href="question.html?type=1&plate=6&two=0" title="" itemprop="url">Power版块</a>
+									</li>
+									<li>
+										<a href="question.html?type=1&plate=7&two=0" title="" itemprop="url">Wind版块</a>
+									</li>
+									<li>
+										<a href="question.html?type=1&plate=8&two=0" title="" itemprop="url">Solar版块</a>
+									</li>
 								</ul>
 							</li>
-							<li><a href="#">专家</a></li>
-							<li><a href="#">课程</a></li>
-							<li><a href="#">前沿</a></li>
-							<li><a href="#">会议</a></li>
-							<li><a href="#">活动</a></li>
+							<li>
+								<a href="#">专家</a>
+							</li>
+							<li>
+								<a href="#">课程</a>
+							</li>
+							<li>
+								<a href="#">前沿</a>
+							</li>
+							<li>
+								<a href="#">会议</a>
+							</li>
+							<li>
+								<a href="#">活动</a>
+							</li>
 						</ul>
 					</div>
 				</nav>
 				<!-- 搜索 -->
 				<div class="search_box">
-									<div>
-										<input id="search" type="text" name="" placeholder="请输入关键词检索">
-										<button id="btn" style="float: right;margin-left: 30px;" type="submit"><img src="images/search.png"></button>
-									</div>
-				
-								</div>
-				<div class="admin_box" id="admin_box">
-					<!--<img src="images/messageIcon.png" width="20px"/>
-			<div class="admin">
-				<img src="images/people03.jpg" class="admin_logo"/>
-				<span class="lever">LV10</span>
-			</div>-->
-					<a href="login.html">登录/注册</a>
-					<a href="mine.html?fast=1">快速发帖</a>
+					<div>
+						<input id="search" type="text" name="" placeholder="请输入关键词检索">
+						<button id="btn" style="float: right;margin-left: 30px;" type="submit"><img src="images/search.png"></button>
+					</div>
+				</div>
+				<div class="head_div">
+					<div id="admin_box" class="admin_box">
+						<a href="login.html">登录/注册</a>
+						<a href="">快速发帖</a>
+					</div>
+					<!-- 鼠标移入显示的菜单 -->
+					<div class="hiden_list">
+						<ul>
+							<li>
+								<a href="mine.html">个人中心</a>
+							</li>
+							<li>
+								<a href="http://114.55.35.82/dist/index.html">管理员中心</a>
+							</li>
+							<li>
+								<a onclick="delsession()" href="login.html">退出登陆</a>
+							</li>
+						</ul>
+					</div>
+					<div class="hiden_list_w">
+						<ul>
+							<li>
+								<a href="mine.html">个人中心</a>
+							</li>
+							<li>
+								<a onclick="delsession()" href="login.html">退出登陆</a>
+							</li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -579,7 +779,8 @@
 				<div class="gonggao bdb_d fix">
 					<div class="txtScroll-top l zy_cur">
 						<div class="l tit"><img src="images/icon_location.png"><b class="dib vm">当前位置：</b></div>
-						<p class="l"><a href="" id="post_plate"></a><span id="post_plate_two"></span></p>
+						<p class="l">
+							<a href="" id="post_plate"></a><span id="post_plate_two"></span></p>
 					</div>
 
 					<!-- 时间 -->
@@ -628,7 +829,7 @@
 							</div>
 							<div class="attention">
 								<input type="button" name="" id="attention" value="关注" />
-								<input type="button" name="" id="attentioned" value="取消关注" hidden="hidden"/>
+								<input type="button" name="" id="attentioned" value="取消关注" hidden="hidden" />
 								<span>
 									Ta的关注>
 								</span>
@@ -677,288 +878,276 @@
 								<div class="reply_dt">
 									<div class="reply_name">
 										<h2 id="user_name">xx</h2><span>xx</span>
-									</div>
-									<div>
-										综合排名：0
-									</div>
-									<div id="comment_content">
-										xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-									</div>
 								</div>
-								<div class="report">
-									<span>举报</span><span>回复</span>
+								<div>
+									综合排名：0
 								</div>
+								<div id="comment_content">
+									xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+								</div>
+							</div>
+							<div class="report">
+								<span>举报</span><span>回复</span>
 							</div>
 						</div>
-						<div class="five_bt" id="do_something">
-							<div class="post_icon" name="support">
-								<img id="support" src="images/support.png" /><span id="postUpnum">0</span>
-							</div>
-							<div class="post_icon" name="forword">
-								<img id="forword" src="images/forworded.png" /><span id="postForwardnum">0</span>
-							</div>
-							<div class="post_icon" name="collection">
-								<img id="collection" src="images/collection.png" /><span id="postCollectionnum">0</span>
-							</div>
-							<div class="post_icon" name="reward">
-								<a rel="leanModal" name="test" href="#test"><img id="reward" src="images/rewarded.png" /><span></span></a>
-							</div>
-							<div class="post_icon" name="report">
-								<a rel="leanModal" name="Report" href="#Report"><img id="report" src="images/report.png" /><span></span></a>
-							</div>
+					</div>
+					<div class="five_bt" id="do_something">
+						<div class="post_icon" name="support">
+							<img id="support" src="images/support.png" /><span id="postUpnum">0</span>
 						</div>
-						<div id="Report">
-							<div id="signup-ct">
-								<div id="signup-header">
-									<h2>举报</h2>
-									<a class="modal_close" href="#"></a>
-								</div>
-								<form action="">
-									<div class="txt-fld">
-										<label for="">举报内容</label>
-										<textarea id="report_text" name="" rows="" cols=""></textarea>
-									</div>
-									<div class="submit">
-										<input type="button" name="" id="edit" value="确认" />
-									</div>
-								</form>
-							</div>
+						<div class="post_icon" name="forword">
+							<img id="forword" src="images/forworded.png" /><span id="postForwardnum">0</span>
 						</div>
-						<div id="test">
-							<div id="signup-ct">
-								<div id="signup-header">
-									<h2>打赏金额</h2>
-									<a class="modal_close" href="#"></a>
-								</div>
-								<form action="">
-									<div class="txt-fld">
-										<label for="">论坛币</label>
-										<input id="reward_coinnum" name="" type="text" />
-									</div>
-									<div class="txt-fld">
-										<label for="">人民币</label>
-										<input id="reward_money" name="" type="text" />
-									</div>
-									<div class="submit">
-										<input type="button" name="" id="check" value="确认" />
-									</div>
-								</form>
-							</div>
+						<div class="post_icon" name="collection">
+							<img id="collection" src="images/collection.png" /><span id="postCollectionnum">0</span>
 						</div>
-						<div id="reply">
-							<div id="signup-ct">
-								<div id="signup-header">
-									<h2>回复</h2>
-									<!-- <a class="modal_close" href="#"></a> -->
+						<div class="post_icon" name="reward">
+							<a rel="leanModal" name="test" href="#test"><img id="reward" src="images/rewarded.png" /><span></span></a>
+						</div>
+						<div class="post_icon" name="report">
+							<a rel="leanModal" name="Report" href="#Report"><img id="report" src="images/report.png" /><span></span></a>
+						</div>
+					</div>
+					<div id="Report">
+						<div id="signup-ct">
+							<div id="signup-header">
+								<h2>举报</h2>
+								<a class="modal_close" href="#"></a>
+							</div>
+							<form action="">
+								<div class="txt-fld">
+									<label for="">举报内容</label>
+									<textarea id="report_text" name="" rows="" cols=""></textarea>
 								</div>
-								<form action="">
-									<div class="txt-fld">
-										<label for="">回复</label>
-										<input id="reply_content" name="" type="text" placeholder="请输入回复的内容" />
-									</div>
-									<!-- <div class="txt-fld">
+								<div class="submit">
+									<input type="button" name="" id="edit" value="确认" />
+								</div>
+							</form>
+						</div>
+					</div>
+					<div id="test">
+						<div id="signup-ct">
+							<div id="signup-header">
+								<h2>打赏金额</h2>
+								<a class="modal_close" href="#"></a>
+							</div>
+							<form action="">
+								<div class="txt-fld">
+									<label for="">论坛币</label>
+									<input id="reward_coinnum" name="" type="text" />
+								</div>
+								<div class="txt-fld">
+									<label for="">人民币</label>
+									<input id="reward_money" name="" type="text" />
+								</div>
+								<div class="submit">
+									<input type="button" name="" id="check" value="确认" />
+								</div>
+							</form>
+						</div>
+					</div>
+					<div id="reply">
+						<div id="signup-ct">
+							<div id="signup-header">
+								<h2>回复</h2>
+								<!-- <a class="modal_close" href="#"></a> -->
+							</div>
+							<form action="">
+								<div class="txt-fld">
+									<label for="">回复</label>
+									<input id="reply_content" name="" type="text" placeholder="请输入回复的内容" />
+								</div>
+								<!-- <div class="txt-fld">
 										<label for="">人民币</label>
 										<input id="reward_money" name="" type="text" placeholder="请点击扫码"/>
 									</div> -->
-									<div class="submit">
-										<input type="button" name="" id="checked" value="确认" />
-									</div>
-								</form>
-							</div>
-						</div>
-						<div class="comment_box" id="comment_box">
-							<!--<div class="content_box">
-						<div class="visitor">
-							<div class="visitor_info">
-								<div class="visitor_pic">
-									<img src="images/owner.jpg"/>
-									<span>
-										用户1
-									</span>
+								<div class="submit">
+									<input type="button" name="" id="checked" value="确认" />
 								</div>
-								<div class="commet_time">
-									<span>
-										3天前
-									</span>
-									<span>
-										【1楼】
-									</span>
-								</div>
-							</div>
-							<div class="other_visitor">
-								<span>举报</span>
-								<span>回复</span>
-								<span>
-									<img src="images/good.png"/>10
-								</span>
-							</div>
-						</div>
-						<div class="comment_text">
-							<p>文章很好，xxxxxxxxxxxxxxx</p>
+							</form>
 						</div>
 					</div>
-					<div class="content_box">
-						<div class="visitor">
-							<div class="visitor_info">
-								<div class="visitor_pic">
-									<img src="images/manager.jpg"/>
-									<span>
-										用户1
-									</span>
-								</div>
-								<div class="commet_time">
-									<span>
-										3天前
-									</span>
-									<span>
-										【1楼】
-									</span>
-								</div>
+
+					<div id="Reported">
+						<div id="signup-ct">
+							<div id="signup-header">
+								<h2>举报</h2>
+								<a class="modal_close" href="#"></a>
 							</div>
-							<div class="other_visitor">
-								<span>举报</span>
-								<span>回复</span>
-								<span>
-									<img src="images/good.png"/>10
-								</span>
-							</div>
-						</div>
-						<div class="comment_text">
-							<p>文章很好，xxxxxxxxxxxxxxx</p>
-						</div>
-					</div>-->
-						</div>
-						<div id="Reported">
-							<div id="signup-ct">
-								<div id="signup-header">
-									<h2>举报</h2>
-									<a class="modal_close" href="#"></a>
+							<form action="">
+								<div class="txt-fld">
+									<label for="">举报内容</label>
+									<textarea id="report_texted" name="" rows="" cols=""></textarea>
 								</div>
-								<form action="">
-									<div class="txt-fld">
-										<label for="">举报内容</label>
-										<textarea id="report_texted" name="" rows="" cols=""></textarea>
-									</div>
-									<div class="submit">
-										<input type="button" name="" id="edited" value="确认" />
-									</div>
-								</form>
-							</div>
+								<div class="submit">
+									<input type="button" name="" id="edited" value="确认" />
+								</div>
+							</form>
 						</div>
-						<div></div>
-						<div class="commet">
-							<textarea name="" rows="" cols="" placeholder="评论" id="comment"></textarea>
-							<div class="push_bt">
-								<span id="">
+					</div>
+					<div></div>
+					<div class="commet">
+						<div class="edit_type">
+							<span id="fast_edit">快速回复</span><span id="more_edit">富文本编辑</span>
+						</div>
+						<textarea name="" rows="" cols="" placeholder="评论" id="comment"></textarea>
+						<script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>
+						<script type="text/javascript">
+							//实例化编辑器
+							//建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+							var ue = UE.getEditor('editor', {
+								toolbars: [
+									[
+										'undo', //撤销
+										'redo', //重做
+										'inserttitle', //插入标题
+										'simpleupload', //单图上传
+										'bold', //加粗
+										'indent', //首行缩进
+										'italic', //斜体
+										'underline', //下划线
+										'strikethrough', //删除线
+										'subscript', //下标
+										'superscript', //上标
+										'unlink', //取消链接
+										'insertrow', //前插入行
+										'link', //超链接
+										'emotion', //表情
+										'justifyleft', //居左对齐
+										'justifyright', //居右对齐
+										'justifycenter', //居中对齐
+										'justifyjustify', //两端对齐
+										'forecolor', //字体颜色
+										'backcolor', //背景色
+										'insertorderedlist', //有序列表
+										'insertunorderedlist', //无序列表
+										'imageleft', //左浮动
+										'imageright', //右浮动
+										'attachment', //附件
+										'edittip ', //编辑提示
+									]
+								],
+								autoHeightEnabled: true,
+								autoFloatEnabled: true
+							});
+						</script>
+						<div class="push_bt">
+							<span id="">
 									最多输入1000个字
 								</span>
-								<input type="button" name="" value="发表" id="publish"/>
-							</div>
+							<input type="button" name="" value="发表" id="publish" />
+							<input type="button" name="" id="more_publish" value="发表" />
+							<input type="button" name="" id="reply_push" value="回复" />
+						</div>
+						<div class="comment_area">
+							评论区
+						</div>
+						<div class="comment_box" id="comment_box">
 						</div>
 					</div>
-					<div class="blog_right">
-						<div class="pic_link">
-							<img src="images/owner.jpg" />
+				</div>
+				<div class="blog_right">
+					<div class="pic_link">
+						<img src="images/owner.jpg" />
+					</div>
+					<div class="hot_post">
+						<div class="sy_title bdb_d ovh">
+							<h2 class="l"><b class="fc">推荐热帖</b></h2>
+							<a href="newslist.html" class="more r">查看更多></a>
 						</div>
-						<div class="hot_post">
-							<div class="sy_title bdb_d ovh">
-								<h2 class="l"><b class="fc">推荐热帖</b></h2>
-								<a href="newslist.html" class="more r">查看更多></a>
-							</div>
-							<ul id="recommend">
-								<!--<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span></a></li>
+						<ul id="recommend">
+							<!--<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span></a></li>
 						<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局办公大楼新建地块招标项目开发商承建福泉市综合执法局办公大楼新建地块招标项目开发商承建</span></a></li>
 						<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span></a></li>
 						<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局办公大楼新建地块招标项目开发商承建</span></a></li>
 						<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span></a></li>
 						<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局办公大楼新建地块招标项目开发商承建</span></a></li>
 						<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span></a></li>-->
+						</ul>
+					</div>
+					<!--轮播-->
+					<div class="zhuanti_pic">
+						<div class="hd">
+							<!--轮播点 -->
+							<ul>
+								<li></li>
+								<li></li>
 							</ul>
 						</div>
-						<!--轮播-->
-						<div class="zhuanti_pic">
-							<div class="hd">
-								<!--轮播点 -->
-								<ul>
-									<li></li>
-									<li></li>
-								</ul>
-							</div>
-							<div class="bd">
-								<ol class="carousel">
-									<!--专题图片轮播 -->
-									<li>
-										<a href="news_xq.html"><img src="images/owner.jpg" /></a>
-									</li>
-									<li>
-										<a href="news_xq.html"><img src="images/owner.jpg" /></a>
-									</li>
-								</ol>
-							</div>
-							<!-- 下面是前/后按钮代码，如果不需要删除即可 -->
-							<a class="prev" href="javascript:void(0)"></a>
-							<a class="next" href="javascript:void(0)"></a>
-
-							<script type="text/javascript">
-								jQuery(".zhuanti_pic").slide({
-									mainCell: ".bd ul",
-									autoPlay: true,
-									effect: "fade",
-									mouseOverStop: false,
-									interTime: 3000,
-								});
-							</script>
+						<div class="bd">
+							<ol class="carousel">
+								<!--专题图片轮播 -->
+								<li>
+									<a href="news_xq.html"><img src="images/owner.jpg" /></a>
+								</li>
+								<li>
+									<a href="news_xq.html"><img src="images/owner.jpg" /></a>
+								</li>
+							</ol>
 						</div>
-					</div>
-				</div>
+						<!-- 下面是前/后按钮代码，如果不需要删除即可 -->
+						<a class="prev" href="javascript:void(0)"></a>
+						<a class="next" href="javascript:void(0)"></a>
 
-
-				<!-- 专题轮播 -->
-				<div class="zhuanti_pic">
-					<div class="hd">
-						<!--轮播点 -->
-						<ul>
-							<li></li>
-							<li></li>
-						</ul>
+						<script type="text/javascript">
+							jQuery(".zhuanti_pic").slide({
+								mainCell: ".bd ul",
+								autoPlay: true,
+								effect: "fade",
+								mouseOverStop: false,
+								interTime: 3000,
+							});
+						</script>
 					</div>
-					<div class="bd">
-						<ul>
-							<!--专题图片轮播 -->
-							<li>
-								<a href="news_xq.html"><img src="images/pic01.jpg" /></a>
-							</li>
-							<li>
-								<a href="news_xq.html"><img src="images/pic01.jpg" /></a>
-							</li>
-						</ul>
-					</div>
-					<!-- 下面是前/后按钮代码，如果不需要删除即可 -->
-					<a class="prev" href="javascript:void(0)"></a>
-					<a class="next" href="javascript:void(0)"></a>
-
-					<script type="text/javascript">
-						jQuery(".zhuanti_pic").slide({
-							mainCell: ".bd ul",
-							autoPlay: true,
-							effect: "fade",
-							mouseOverStop: false,
-							interTime: 3000,
-						});
-					</script>
 				</div>
 			</div>
 
-			<style type="text/css">
-				.date_bg {
-					position: absolute;
-					z-index: 999;
-					top: 0;
-					left: 0;
-					width: 100%;
-					background-color: rgba(0, 0, 0, .5);
-				}
-			</style>
+			<!-- 专题轮播 -->
+			<div class="zhuanti_pic">
+				<div class="hd">
+					<!--轮播点 -->
+					<ul>
+						<li></li>
+						<li></li>
+					</ul>
+				</div>
+				<div class="bd">
+					<ul>
+						<!--专题图片轮播 -->
+						<li>
+							<a href="news_xq.html"><img src="images/pic01.jpg" /></a>
+						</li>
+						<li>
+							<a href="news_xq.html"><img src="images/pic01.jpg" /></a>
+						</li>
+					</ul>
+				</div>
+				<!-- 下面是前/后按钮代码，如果不需要删除即可 -->
+				<a class="prev" href="javascript:void(0)"></a>
+				<a class="next" href="javascript:void(0)"></a>
+
+				<script type="text/javascript">
+					jQuery(".zhuanti_pic").slide({
+						mainCell: ".bd ul",
+						autoPlay: true,
+						effect: "fade",
+						mouseOverStop: false,
+						interTime: 3000,
+					});
+				</script>
+			</div>
+		</div>
+
+		<style type="text/css">
+			.date_bg {
+				position: absolute;
+				z-index: 999;
+				top: 0;
+				left: 0;
+				width: 100%;
+				background-color: rgba(0, 0, 0, .5);
+			}
+		</style>
 		</div>
 
 		<!-- 返回顶部 -->
@@ -973,36 +1162,58 @@
 		<!-- 底部 -->
 		<div class="footerbox bg">
 			<ul class="other fix">
-				<li><a href="contact.html">联系我们</a></li>
-				<li><a href="about.html">机构概况</a></li>
-				<li><a href="info_public.html">信息公开</a></li>
-				<li><a href="newslist.html">办事指南</a></li>
+				<li>
+					<a href="contact.html">联系我们</a>
+				</li>
+				<li>
+					<a href="about.html">机构概况</a>
+				</li>
+				<li>
+					<a href="info_public.html">信息公开</a>
+				</li>
+				<li>
+					<a href="newslist.html">办事指南</a>
+				</li>
 			</ul>
 			<div class="l">
-				<a href="http://121.43.68.40/exposure/jiucuo.html?site_code=5200000083&url=www.guizhou.gov.cn" target="blank" class="dib vm"><img
-					 src="images/zhaocuo.png" /></a>
-				<a href="http://bszs.conac.cn/sitename?method=show&id=09D70ADDD9E64427E053022819AC3042" target="blank" class="dib vm"><img
-					 src="images/dangzheng.png"></a>
+				<a href="http://121.43.68.40/exposure/jiucuo.html?site_code=5200000083&url=www.guizhou.gov.cn" target="blank" class="dib vm"><img src="images/zhaocuo.png" /></a>
+				<a href="http://bszs.conac.cn/sitename?method=show&id=09D70ADDD9E64427E053022819AC3042" target="blank" class="dib vm"><img src="images/dangzheng.png"></a>
 			</div>
 			<div class="l txt">
-				<p><img src="images/beian.png">X公网安备
-					5201030200xxxx号&nbsp;&nbsp;&nbsp;XICP备xxxxxxxxx号-2&nbsp;&nbsp;&nbsp;政府网站标识码：520xxxxxxxx</p>
+				<p><img src="images/beian.png">X公网安备 5201030200xxxx号&nbsp;&nbsp;&nbsp;XICP备xxxxxxxxx号-2&nbsp;&nbsp;&nbsp;政府网站标识码：520xxxxxxxx
+				</p>
 				<p>XX市综合执法局信息技术处建设和维护</p>
 			</div>
 			<p>版权所有：XX市综合行政执法局&nbsp;&nbsp;&nbsp;地址：XX省XX市工业园区特1号</p>
 		</div>
 		<script type="text/javascript" src="config.js"></script>
-		<script type="text/javascript" src="js/pop_ups/MiniDialog-es5.min.js" ></script>
+		<script type="text/javascript" src="js/pop_ups/MiniDialog-es5.min.js"></script>
 		<script type="text/javascript">
-			
 			// 其他页面搜索
 			var search = document.getElementById("search");
 			var btn = document.getElementById("btn");
 			btn.addEventListener('click', function() {
-				window.location.href = "/power/index.html?type=0&plate=1&two=0&search=1&searchv="+ search.value;
-			
+				window.location.href = "/power/index.html?type=0&plate=1&two=0&search=1&searchv=" + search.value;
+
 			})
-			
+			//回复编辑方式
+			$("#comment").hide();
+			$("#publish").hide();
+			$("#reply_push").hide();
+			$("#fast_edit").click(function() {
+				$("#comment").show();
+				$("#publish").show();
+				$("#more_publish").hide();
+				$("#edui1").hide();
+				$("#reply_push").hide();
+			})
+			$("#more_edit").click(function() {
+				$("#comment").hide();
+				$("#publish").hide();
+				$("#more_publish").show();
+				$("#edui1").show();
+				$("#reply_push").hide();
+			})
 			// 举报
 			function Reported(commentId) {
 				console.log(commentId);
@@ -1011,7 +1222,7 @@
 					console.log(reprot_content);
 					doSomething(reprot_content)
 				})
-				if (sessionStorage.getItem("data") == null) {
+				if(sessionStorage.getItem("data") == null) {
 					Dialog({
 						title: "请登录！",
 						content: "您还未登录，是否登录？",
@@ -1042,7 +1253,7 @@
 							},
 							dataType: "json",
 							success: function(data) {
-			
+
 								// $("#Reported").css("display","none");
 								console.log(data)
 								location.reload()
@@ -1056,17 +1267,20 @@
 					}
 				}
 			}
-			
+
 			// 回复
 			function reply(commentId, user_name) {
 				// console.log(commentId,user_name);
-				$("#checked").click(function() {
-					reply_content = $("#reply_content").val();
-					var content = "@" + user_name + "  " + reply_content
-					console.log(content);
+				UE.getEditor('editor').execCommand('insertHtml', "@" + user_name + "  ")
+				$("#publish").hide();
+				$("#more_publish").hide();
+				$("#reply_push").show();
+				$("#fast_edit").attr("disabled", "disabled");
+				$("#reply_push").click(function() {
+					var content = UE.getEditor('editor').getContent();
 					doSomething(content);
 				})
-				if (sessionStorage.getItem("data") == null) {
+				if(sessionStorage.getItem("data") == null) {
 					Dialog({
 						title: "请登录！",
 						content: "您还未登录，是否登录？",
@@ -1097,7 +1311,7 @@
 							},
 							dataType: "json",
 							success: function(data) {
-			
+
 								console.log(data)
 								location.reload()
 							},
@@ -1108,17 +1322,17 @@
 					}
 				}
 			}
-			
+
 			//评论点赞
-			function commentSupport(commentId){
+			function commentSupport(commentId) {
 				console.log(commentId);
-				if(sessionStorage.getItem("data")==null){
+				if(sessionStorage.getItem("data") == null) {
 					Dialog({
 						title: "请登录！",
 						content: "您还未登录，是否登录？",
 						ok: {
 							callback: function() {
-								window.location.href='login.html';
+								window.location.href = 'login.html';
 							}
 						},
 						cancel: {
@@ -1127,68 +1341,68 @@
 							}
 						}
 					});
-				}else{
+				} else {
 					var obj = sessionStorage.getItem("data");
 					obj = JSON.parse(obj);
 					$.ajax({
-						type:"post",
-						url:sever_url+"post/support",
-						async:true,
-						data:{
-							token:obj?obj.token:"",
-							post_id:getUrldata('postid'),
-							comment_id:commentId
+						type: "post",
+						url: sever_url + "post/support",
+						async: true,
+						data: {
+							token: obj ? obj.token : "",
+							post_id: getUrldata('postid'),
+							comment_id: commentId
 						},
-						dataType:"json",
-						success:function(data){
-//							console.log(data)
-							var num = Number($("#comment"+commentId).html());
-							$("#comment"+commentId).html(num+1);
+						dataType: "json",
+						success: function(data) {
+							//							console.log(data)
+							var num = Number($("#comment" + commentId).html());
+							$("#comment" + commentId).html(num + 1);
 						},
-						error:function(){
-							
+						error: function() {
+
 						}
 					});
 				}
 			}
 			$(document).ready(function() {
 				var obj = sessionStorage.getItem("data");
-					obj = JSON.parse(obj);
-					//关注
-				$("#attention").click(function(){
+				obj = JSON.parse(obj);
+				//关注
+				$("#attention").click(function() {
 					$.ajax({
-						type:"post",
-						url:sever_url+"follow/add",
-						async:true,
-						data:{
-							token:obj?obj.token:"",
-							user_id:$("#user_head").attr("name")
+						type: "post",
+						url: sever_url + "follow/add",
+						async: true,
+						data: {
+							token: obj ? obj.token : "",
+							user_id: $("#user_head").attr("name")
 						},
-						dataType:"json",
-						success:function(data){
+						dataType: "json",
+						success: function(data) {
 							console.log(data)
-							if(data.code=="200"){
-								$("#attention").attr("hidden","hidden");
+							if(data.code == "200") {
+								$("#attention").attr("hidden", "hidden");
 								$("#attentioned").removeAttr("hidden");
 							}
 						}
 					});
 				})
 				//取关
-				$("#attentioned").click(function(){
+				$("#attentioned").click(function() {
 					$.ajax({
-						type:"post",
-						url:sever_url+"my/follow/del",
-						async:true,
-						data:{
-							token:obj?obj.token:"",
-							user_id:$("#user_head").attr("name")
+						type: "post",
+						url: sever_url + "my/follow/del",
+						async: true,
+						data: {
+							token: obj ? obj.token : "",
+							user_id: $("#user_head").attr("name")
 						},
-						dataType:"json",
-						success:function(data){
+						dataType: "json",
+						success: function(data) {
 							console.log(data)
-							if(data.code=="200"){
-								$("#attentioned").attr("hidden","hidden");
+							if(data.code == "200") {
+								$("#attentioned").attr("hidden", "hidden");
 								$("#attention").removeAttr("hidden");
 							}
 						}
@@ -1204,11 +1418,11 @@
 					dataType: "json",
 					data: {
 						article_id: post_id,
-						token: obj?obj.token:""
+						token: obj ? obj.token : ""
 					},
 					success: function(data) {
-									console.log(data)
-						if (data.code == 200) {
+						console.log(data)
+						if(data.code == 200) {
 							$("#postTitle").html(data.data.post_title); //文章标题
 							$("#postCopyright").html('<span>*</span>版权声明：' + data.data.post_copyright); //版权声明
 							$("#postContent").html("<p>" + data.data.post_content + "</p>"); //文章内容
@@ -1230,22 +1444,22 @@
 							$("#post_upnum").html(Number(data.data.post_upnum));
 							$("#user_follow_sum").html(Number(data.data.user_follow_sum));
 							$("#user_fans_sum").html(Number(data.data.user_fans_sum));
-							if(data.data.fabulous){
-								$("#support").attr("src","images/supported.png");
-								$("#support").parent().attr("name","supportdel");
-								$("#support").attr("id","supportdel");
+							if(data.data.fabulous) {
+								$("#support").attr("src", "images/supported.png");
+								$("#support").parent().attr("name", "supportdel");
+								$("#support").attr("id", "supportdel");
 							}
-							if(data.data.collect){
-								$("#collection").attr("src","images/collectioned.png");
-								$("#collection").parent().attr("name","collectiondel");
-								$("#collection").attr("id","collectiondel");
+							if(data.data.collect) {
+								$("#collection").attr("src", "images/collectioned.png");
+								$("#collection").parent().attr("name", "collectiondel");
+								$("#collection").attr("id", "collectiondel");
 							}
-							if(data.data.follow){
-								$("#attention").attr("hidden","hidden");
-								$("#attentioned").removeAttr("hidden","hidden");
+							if(data.data.follow) {
+								$("#attention").attr("hidden", "hidden");
+								$("#attentioned").removeAttr("hidden", "hidden");
 							}
 							//悬赏
-							if (data.data.hasOwnProperty("adopd")) {
+							if(data.data.hasOwnProperty("adopd")) {
 								$("#annex_d").css("display", "block");
 								$("#user_logo").attr("src", data.data.adopd.user_head);
 								$("#user_logo").attr("name", data.data.adopd.comment_userid);
@@ -1255,7 +1469,7 @@
 							}
 							//推荐热帖
 							var num = data.data.recommend.length;
-							for (var i = 0; i < num; i++) {
+							for(var i = 0; i < num; i++) {
 								var arr = data.data.recommend[i];
 								$("#recommend").append('<li><a id="' + arr.id + '" href="news_xq.html"><b>·</b><span>' + arr.post_title +
 									'</span></a></li>')
@@ -1268,13 +1482,14 @@
 				});
 				//评论
 				GetComment();
-				function GetComment(){
+
+				function GetComment() {
 					$.ajax({
 						type: "post",
 						url: sever_url + "comment/select",
 						async: true,
 						data: {
-							rows: 6,
+							rows: 100,
 							page: 1,
 							post_id: post_id
 						},
@@ -1290,7 +1505,7 @@
 									obj.id + '" src="' + obj.user_head + '"/><span >' + obj.user_name +
 									'</span></div><div class="commet_time"><span>' + obj.comment_time + '</span><span>【' + obj.comment_layernum +
 									'楼】</span></div></div><div class="other_visitor"><a rel="leanModal" name="Reported" href="#Reported"><span onclick=Reported(' +
-									obj.id + ')>举报</span></a><a rel="leanModal" name="reply" href="#reply"><span onclick=reply(' + obj.id +
+									obj.id + ')>举报</span></a><a href="#editor"><span onclick=reply(' + obj.id +
 									',"' + obj.user_name +
 									'")>回复</span></a><span style="display:flex;align-items: center;"><img onclick=commentSupport(' +
 									obj.id + ') src="images/support.png"/><span id="comment' + obj.id + '">' + Number(obj.comment_upnum) +
@@ -1302,21 +1517,21 @@
 							});
 						},
 						error: function() {
-	
+
 						}
 					});
 				}
 				//点赞、转发、打赏、、、、
-				$("#do_something div").click(function(){
+				$("#do_something div").click(function() {
 					var that = this;
 					var name = $(that).attr("name");
-					if(sessionStorage.getItem("data")==null){
+					if(sessionStorage.getItem("data") == null) {
 						Dialog({
 							title: "请登录！",
 							content: "您还未登录，是否登录？",
 							ok: {
 								callback: function() {
-									window.location.href='login.html';
+									window.location.href = 'login.html';
 								}
 							},
 							cancel: {
@@ -1325,36 +1540,36 @@
 								}
 							}
 						});
-					}else{
+					} else {
 						var obj = sessionStorage.getItem("data");
 						obj = JSON.parse(obj);
-						var token = obj?obj.token:"";
+						var token = obj ? obj.token : "";
 						var comment_id = "";
 						var reprot_content = "";
 						var reward_coinnum = "";
 						var reward_money = "";
 						console.log(name)
-						if(name=="reward"){
-							$("#check").click(function(){
+						if(name == "reward") {
+							$("#check").click(function() {
 								reward_coinnum = $("#reward_coinnum").val();
 								reward_money = $("#reward_money").val();
-								doSomething(token,post_id,comment_id,reprot_content,reward_coinnum,reward_money);
+								doSomething(token, post_id, comment_id, reprot_content, reward_coinnum, reward_money);
 							})
-						}else if(name=="report"){
-							$("#edit").click(function(){
+						} else if(name == "report") {
+							$("#edit").click(function() {
 								reprot_content = $("#report_text").val();
-								doSomething(token,post_id,comment_id,reprot_content,reward_coinnum,reward_money);
+								doSomething(token, post_id, comment_id, reprot_content, reward_coinnum, reward_money);
 							})
-						}else{
-							doSomething(token,post_id,comment_id,reprot_content,reward_coinnum,reward_money);
+						} else {
+							doSomething(token, post_id, comment_id, reprot_content, reward_coinnum, reward_money);
 						}
-						
-						function doSomething(token,post_id,comment_id,reprot_content,reward_coinnum,reward_money){
+
+						function doSomething(token, post_id, comment_id, reprot_content, reward_coinnum, reward_money) {
 							$.ajax({
-								type:"post",
-								url:sever_url+"post/"+name,
-								async:true,
-								data:{
+								type: "post",
+								url: sever_url + "post/" + name,
+								async: true,
+								data: {
 									token: token,
 									post_id: post_id,
 									comment_id: comment_id,
@@ -1362,42 +1577,42 @@
 									reward_coinnum: reward_coinnum,
 									reward_money: reward_money
 								},
-								success: function(data){
+								success: function(data) {
 									var upNumber = parseInt($("#postUpnum").html());
 									var coNumber = parseInt($("#postCollectionnum").html());
 									var fwNumber = parseInt($("#postForwardnum").html());
 									console.log(data)
-									if(data.code=="200"){
-										if(name=="support"||name=="collection"){
-											$("#"+name).attr("src","images/"+name+"ed.png");
-											$(that).attr("name",name+"del");
-											$("#"+name).attr("id",name+"del");
-											if(name=="support"){
-												$("#postUpnum").html(upNumber+1);
-											}else if(name=="collection"){
-												$("#postCollectionnum").html(coNumber+1);
+									if(data.code == "200") {
+										if(name == "support" || name == "collection") {
+											$("#" + name).attr("src", "images/" + name + "ed.png");
+											$(that).attr("name", name + "del");
+											$("#" + name).attr("id", name + "del");
+											if(name == "support") {
+												$("#postUpnum").html(upNumber + 1);
+											} else if(name == "collection") {
+												$("#postCollectionnum").html(coNumber + 1);
 											}
-										}else if(name=="supportdel"||name=="collectiondel"){
+										} else if(name == "supportdel" || name == "collectiondel") {
 											var named = name.substr(0, name.length - 3);
-											$("#"+name).attr("src","images/"+named+".png");
-											$(that).attr("name",named);
-											$("#"+name).attr("id",named);
-											if(name=="supportdel"){
-												$("#postUpnum").html(upNumber-1);
-											}else if(name=="collectiondel"){
-												$("#postCollectionnum").html(coNumber-1);
+											$("#" + name).attr("src", "images/" + named + ".png");
+											$(that).attr("name", named);
+											$("#" + name).attr("id", named);
+											if(name == "supportdel") {
+												$("#postUpnum").html(upNumber - 1);
+											} else if(name == "collectiondel") {
+												$("#postCollectionnum").html(coNumber - 1);
 											}
-										}else if(name=="forword"){
-											$("#postForwardnum").html(fwNumber+1)
+										} else if(name == "forword") {
+											$("#postForwardnum").html(fwNumber + 1)
 										}
-										
-									}else if(data.code=="2"){
+
+									} else if(data.code == "2") {
 										Dialog({
 											title: "请登录！",
 											content: "您的登录已过期，是否重新登录？",
 											ok: {
 												callback: function() {
-													window.location.href='login.html';
+													window.location.href = 'login.html';
 												}
 											},
 											cancel: {
@@ -1413,49 +1628,82 @@
 					}
 				})
 				//发表
-				$("#publish").click(function(){
-					var obj = sessionStorage.getItem("data");
-					obj = JSON.parse(obj);
-					DoAjax();
-					function DoAjax(){
-						$.ajax({
-							type:"post",
-							url:sever_url+"comment/publish",
-							async:true,
-							data:{
-								token: obj?obj.token:"",
-								post_id: post_id,
-								comment_content: $("#comment").val()
-							},
-							success:function(data){
-								console.log(data)
-								if(data.code=="2"){
-									Dialog({
-										title: "请登录！",
-										content: "您的登录已过期，是否重新登录？",
-										ok: {
-											callback: function() {
-												window.location.href='login.html';
-											}
-										},
-										cancel: {
-											callback: function() {
-												Dialog.close();
-											}
-										}
-									});
-								}else if(data.code=="200"){
-									GetComment();
-									$("#comment").val("");
-								}
-							},
-							error:function(){
-								
-							}
-						});
-					}
+				$("#publish").click(function() {
+					var comment_content = $("#comment_content").val();
+					DoAjax(comment_content);
 				})
+				$("#more_publish").click(function() {
+					var comment_content = UE.getEditor('editor').getContent();
+					DoAjax(comment_content);
+				})
+
+				function DoAjax(comment_content) {
+
+					$.ajax({
+						type: "post",
+						url: sever_url + "comment/publish",
+						async: true,
+						data: {
+							token: obj ? obj.token : "",
+							post_id: post_id,
+							comment_content: $("#comment").val()
+						},
+						success: function(data) {
+							console.log(data)
+							if(data.code == "2") {
+								Dialog({
+									title: "请登录！",
+									content: "您的登录已过期，是否重新登录？",
+									ok: {
+										callback: function() {
+											window.location.href = 'login.html';
+										}
+									},
+									cancel: {
+										callback: function() {
+											Dialog.close();
+										}
+									}
+								});
+							} else if(data.code == "200") {
+								GetComment();
+								$("#comment").val("");
+							}
+						},
+						error: function() {
+
+						}
+					});
+				}
+				$('.hiden_list').hide();
+				$('.hiden_list_w').hide();
+				//监听头像鼠标移入事件
+				$("#head").mouseover(function() {
+					if(!infodata) {
+						return;
+					}
+					if(infodata.user_power_num == 4) {
+						$('.hiden_list_w').show();
+					} else {
+						$('.hiden_list').show();
+					}
+				});
+				$(".bd").mouseover(function() {
+					if(!infodata) {
+						return;
+					}
+					if(infodata.user_power_num == 4) {
+						$('.hiden_list_w').hide();
+					} else {
+						$('.hiden_list').hide();
+					}
+				});
+				//退出登陆清除数据
+				function delsession() {
+					sessionStorage.clear();
+				}
 			});
 		</script>
 	</body>
+
 </html>

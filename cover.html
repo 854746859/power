@@ -50,6 +50,10 @@
 				flex-direction: row;
 				justify-content: space-between;
 			}
+			.post_list{
+				height: 600px;
+				overflow-y: scroll !important;
+			}
 			.shares{
 				display: flex;
 				flex-direction: row;
@@ -61,6 +65,12 @@
 				border-right-width: 0;
 				border-bottom-width: 1px;
 				border-left-width: 0;
+			}
+			.postStyle{
+				max-width:460px !important;
+			}
+			.share_ml{
+				margin-left: 0 !important;
 			}
 			.color-red{
 				color:red;
@@ -144,6 +154,9 @@
 			.head_div{
 				position: relative;
 			}
+			.zy_listbox{
+				height: auto !important;
+			}
 		</style>
 	</head>
 	<body>
@@ -204,13 +217,13 @@
 							<span class="lever">LV10</span>
 						</div>-->
 						<a href="login.html">登录/注册</a>
-						<a href="">快速发帖</a>
+						<a href="mine.html?fast=1">快速发帖</a>
 					</div>
 					<!-- 鼠标移入显示的菜单 -->
 					<div class="hiden_list">
 						<ul>
 							<li><a href="mine.html">个人中心</a></li>
-							<li><a href="http://114.55.35.82/dist/index.html">管理员中心</a></li>
+							<li id="manager" hidden="hidden"><a href="http://114.55.35.82/dist/index.html">管理员中心</a></li>
 							<li><a onclick="delsession()" href="login.html">退出登陆</a></li>
 						</ul>
 					</div>
@@ -311,8 +324,8 @@
 	        			<div class="sy_title bdb_d ovh">
 							<h2 class="l"><b class="fc">股票</b></h2>
 						</div>
-	        			<ul>
-	        				<li class="shares color-red">
+	        			<ul id="stock">
+	        				<!--<li class="shares color-red">
 	        					<span>DOW J</span>
 								<span>285.34</span>
 								<span>+4.98%</span>
@@ -336,14 +349,14 @@
 	        					<span>SSEC</span>
 								<span>2852.34</span>
 								<span>-0.98%</span>
-	        				</li>
+	        				</li>-->
 	        			</ul>
 						<!-- 全球油价 -->
 						<div class="sy_title bdb_d ovh">
 							<h2 class="l"><b class="fc">全球油价</b></h2>
 						</div>
-	        			<ul>
-	        				<li class="shares color-red">
+	        			<ul id="oil">
+	        				<!--<li class="shares color-red">
 	        					<span>DOW J</span>
 								<span>285.34</span>
 								<span>+4.98%</span>
@@ -367,7 +380,7 @@
 	        					<span>SSEC</span>
 								<span>2852.34</span>
 								<span>-0.98%</span>
-	        				</li>
+	        				</li>-->
 	        			</ul>
 	        			<div>
 	        				<img id="lngimg" src="" alt="">
@@ -402,15 +415,13 @@
 							<!-- 获赞总排名 -->
 						</ol>
 		        	</div>
-		        	<div class="middle zy_right_con">
-		        		<div class="zy_title layout">
+		        	<div class="middle zy_right_con post_list" id="postList">
+		        		<!--<div class="zy_title layout">
 							<h2 class="selected">政策法规<i></i></h2>
 							<a href="" class="more">更多>></a>
 						</div>
-						<!-- 内容展示块-->
 						<div class="news_list zy_listbox">
-							<!-- 展示15条数据后出现分页 -->
-							<ul>
+							<ul id="regulations">
 								<li>
 									<img src="News-module1/images/dangzheng.png"/>
 									<div class="blog_list">
@@ -444,7 +455,7 @@
 									</div>
 								</li>
 							</ul>
-						</div>
+						</div>-->
 						<!-- 往后添加 -->
 		        	</div>
 		        	<div class="right">
@@ -567,25 +578,19 @@
 			</div>
 			<p>版权所有：XX市综合行政执法局&nbsp;&nbsp;&nbsp;地址：XX省XX市工业园区特1号</p>
 		</div>
-
+		<input type="text" name="share_url" id="share_url" value="" hidden="hidden" />
+		<script id="baidu_share" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" src="config.js"></script><!-- 服务器地址-->
 		<script type="text/javascript">
+		window.onload = BaiduShare();
+		function BaiduShare(){
+			$("#baidu_share").attr("src",'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5));
+		}
 			// 获取我的信息
 			var data = sessionStorage.getItem("data");
 			var infodata = eval('(' + data + ')');
 			// console.log(infodata.token);
 			
-			if (infodata != null) {
-				var admin_box_head = '';
-				var infodatatoken = infodata.token
-				var admin_box = document.getElementById("admin_box");
-			
-				if (infodatatoken.length > 1) {
-					admin_box_head += "<div class='admin'><a href='mine.html'><img id='head' class='admin_logo' src='" + infodata.user_head +
-						"'  /></a><a href=''>快速发帖</a></div>";
-					admin_box.innerHTML = admin_box_head;
-				}
-			}
 			//获取网页信息
 			$.ajax({
 				url: sever_url+'/coverinfo/webinfo',
@@ -620,7 +625,7 @@
 				// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
 				dataType: 'json',
 				success: function(res) {
-					console.log(res);
+//					console.log(res);
 					//顶部banner
 					$('#topbanner').html('');
 					$('#topbanner_d').html('');
@@ -717,7 +722,51 @@
 				}
 			});
 			//获取股票、油价、投票信息
-			
+			$.ajax({
+				type:"post",
+				url:sever_url+"coverinfo/rightinfo",
+				async:true,
+				data:{
+					cover_plate:1
+				},
+				dataType:"json",
+				success:function(data){
+					console.log(data)
+					if(data.code=="200"){
+						//股票
+						var stock = data.data.shares;
+						for(var i=0;i<stock.length;i++){
+							var Class = "";
+							var the_range = "";
+							if(stock[i].shares_range>0){
+								Class = "color-red";
+								the_range = "+"+stock[i].shares_range;
+							}else if(stock[i].shares_range<0){
+								Class = "color-blue";
+								the_range = stock[i].shares_range;
+							}
+							$("#stock").append('<li class="shares '+Class+'"><span>'+stock[i].shares_name+'</span><span>'+stock[i].shares_money+'</span><span>'+the_range+'%</span></li>')
+						}
+						//油价
+						var oil = data.data.oil;
+						for(var j=0;j<oil.length;j++){
+							var Class = "";
+							var the_range = "";
+							if(oil[j].shares_range>0){
+								Class = "color-red";
+								the_range = "+"+oil[j].shares_range;
+							}else if(oil[j].shares_range<0){
+								Class = "color-blue";
+								the_range = oil[j].shares_range;
+							}
+							$("#oil").append('<li class="shares '+Class+'"><span>'+oil[j].shares_name+'</span><span>'+oil[j].shares_money+'</span><span>'+the_range+'%</span></li>')
+						}
+					}
+				},
+				error:function(XMLHttpRequest,msg,res){
+					console.log(msg);
+				}
+			});
 			//获取文章
 			$.ajax({
 				url: sever_url+'/coverinfo/article',
@@ -728,7 +777,7 @@
 				// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
 				dataType: 'json',
 				success: function(res) {
-					console.log(res)
+//					console.log(res)
 					//热点文章
 					$("#hotpost").html('');
 					for(var index in res.data.hot_post){
@@ -797,6 +846,69 @@
 					console.log(msg);
 				}
 			});
+			
+			//文章分类
+			$.ajax({
+				type:"post",
+				url:sever_url+"coverinfo/middle",
+				async:true,
+				data:{
+					cover_plate:1
+				},
+				dataType:"json",
+				success:function(data){
+					console.log(data)
+					if(data.code=="200"){
+						for(var key in data.data){
+							var obj = data.data;
+							var type = "政策法规";
+							var postUrl = "index.html?type=0&plate=1&two=1";
+							if(key=="policy"){
+								type = "政策法规";
+								postUrl = "index.html?type=0&plate=1&two=1";
+							}else if(key=="project"){
+								type = "项目市场";
+								postUrl = "index.html?type=0&plate=1&two=3";
+							}else if(key=="paper"){
+								type = "论文数据";
+								postUrl = "index.html?type=0&plate=1&two=11";
+							}else if(key=="build"){
+								type = "建设投产";
+								postUrl = "index.html?type=0&plate=1&two=21";
+							}else if(key=="management"){
+								type = "经营管理";
+								postUrl = "index.html?type=0&plate=1&two=31";
+							}else if(key=="information"){
+								type = "信息推广";
+								postUrl = "index.html?type=0&plate=1&two=41";
+							}else if(key=="admin"){
+								type = "项目管理";
+								postUrl = "index.html?type=0&plate=1&two=51";
+							}else if(key=="english"){
+								type = "English";
+								postUrl = "index.html?type=0&plate=1&two=61";
+							}
+							if(obj[key].length){
+								$("#postList").append('<div class="zy_title layout"><h2 class="selected">'+type+'<i></i></h2><a href="'+postUrl+'" class="more">更多>></a></div>');
+								var div_dom = $('<div class="news_list zy_listbox"></div>');
+								var dom = $('<ul></ul>');
+								var Arr = obj[key];
+								for(var i=0;i<Arr.length;i++){
+									$(dom).append('<li><img src="'+Arr[i].post_photo+'"/><div class="blog_list postStyle"><div class="news_title"><a href="forum.html?postid='+Arr[i].id+'&plate='+Arr[i].post_label+'" style="max-width: 360px;">'+Arr[i].post_title+'</a><i class="red_news">['+Arr[i].post_label+']</i></div><div class="news_time news_other"><span>发布于：'+Arr[i].post_releasetime+'</span><span id="">阅读数：'+Arr[i].post_readnum+'</span></div><div class="news_owner news_other"><span id="">发帖人：'+Arr[i].last_user_name+'</span><span id="">最后回复人：'+Arr[i].post_user_name+'</span><div class="share share_ml bdsharebuttonbox">分享：<a url="forum.html?postid='+Arr[i].id+'&plate='+Arr[i].post_label+'" class="bds_weixin" data-cmd="weixin"></a><a url="forum.html?postid='+Arr[i].id+'&plate='+Arr[i].post_label+'" class="bds_tsina" data-cmd="tsina"></a></div></div></div></li>');
+								}
+								$(div_dom).html(dom);
+								$("#postList").append(div_dom);
+								$('.bdsharebuttonbox a').on('mousemove', function() {
+									var title = $(this).attr('title');
+									var Url = $(this).attr('url');
+									$("#share_url").val(title + "||" + Url);
+								})
+							}
+						}
+						window._bd_share_main.init();
+					}
+				}
+			});
 			//用户排行榜
 			$.ajax({
 				url: sever_url+'/statistic/user/rank',
@@ -804,7 +916,7 @@
 				// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
 				dataType: 'json',
 				success: function(res) {
-					console.log(res);
+//					console.log(res);
 					//发帖总排名
 					$("#release_total").html('');
 					for(var index in res.data.rank_release_total){
@@ -868,7 +980,7 @@
 					// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
 					dataType: 'json',
 					success: function(res) {
-						console.log(res)
+//						console.log(res)
 						if(res.code==2){
 							alert('您未登陆，无法查看关注信息，请登陆后查看')
 						}

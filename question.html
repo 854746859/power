@@ -87,6 +87,30 @@
 		color: #005389;
 		font-size: 14px;
 	}
+	/*鼠标移入菜单*/
+	.hiden_list{
+		width: 120px;
+		position: absolute;
+		top:40px;
+		background-color: rgb(255,255,255);
+		z-index: 9;
+	}
+	.hiden_list ul li{
+		border-bottom:1px dotted;
+	}
+	.hiden_list_w{
+		width: 120px;
+		position: absolute;
+		top:40px;
+		background-color: rgb(255,255,255);
+		z-index: 9;
+	}
+	.hiden_list_w ul li{
+		border-bottom:1px dotted;
+	}
+	.head_div{
+		position: relative;
+	}
 </style>
 	</head>
 	<body>
@@ -132,15 +156,31 @@
 				</nav>
 				<!-- 搜索 -->
 				<div class="search_box">
-									<div>
-										<input id="search" type="text" name="" placeholder="请输入关键词检索">
-										<button id="btn" style="float: right;margin-left: 30px;" type="submit"><img src="images/search.png"></button>
-									</div>
-				
-								</div>
-				<div id="admin_box" class="admin_box">
-					<a href="login.html">登录/注册</a>
-					<a href="">快速发帖</a>
+					<div>
+						<input id="search" type="text" name="" placeholder="请输入关键词检索">
+						<button id="btn" style="float: right;margin-left: 30px;" type="submit"><img src="images/search.png"></button>
+					</div>
+
+				</div>
+				<div class="head_div">
+					<div id="admin_box" class="admin_box">
+						<a href="login.html">登录/注册</a>
+						<a href="">快速发帖</a>
+					</div>
+					<!-- 鼠标移入显示的菜单 -->
+					<div class="hiden_list">
+						<ul>
+							<li><a href="mine.html">个人中心</a></li>
+							<li><a href="http://114.55.35.82/dist/index.html">管理员中心</a></li>
+							<li><a onclick="delsession()" href="login.html">退出登陆</a></li>
+						</ul>
+					</div>
+					<div class="hiden_list_w">
+						<ul>
+							<li><a href="mine.html">个人中心</a></li>
+							<li><a onclick="delsession()" href="login.html">退出登陆</a></li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -852,6 +892,34 @@
 				}
 			};
 			h2();
+			
+			$('.hiden_list').hide();
+			$('.hiden_list_w').hide();
+			//监听头像鼠标移入事件
+			$("#head").mouseover(function(){
+				if(!infodata){
+					return;
+				}
+				if(infodata.user_power_num==4){
+					$('.hiden_list_w').show();
+				}else{
+					$('.hiden_list').show();
+				}
+			});
+			$(".bd").mouseover(function() {
+				if(!infodata){
+					return;
+				}
+				if (infodata.user_power_num == 4) {
+					$('.hiden_list_w').hide();
+				} else {
+					$('.hiden_list').hide();
+				}
+			});
+			//退出登陆清除数据
+			function delsession(){
+				sessionStorage.clear();
+			}
 		</script>
 	</body>
 </html>
