@@ -224,7 +224,7 @@
 			}
 			
 			.five_bt {
-				width: 100%;
+				width: 99%;
 				height: 60px;
 				display: flex;
 				flex-direction: row;
@@ -314,7 +314,7 @@
 			}
 			
 			.commet {
-				width: 100%;
+				width: 99%;
 				margin-bottom: 20px;
 			}
 			
@@ -547,7 +547,7 @@
 				border-bottom: 1px dashed #B9B9B9;
 			}
 			#edui1{
-				width: 780px !important;
+				width: 770px !important;
 			}
 		</style>
 	</head>
@@ -821,7 +821,7 @@
 								<span>
 									大小：0M
 								</span>
-								<input type="button" name="" id="" value="立即下载" />
+								<input type="button" name="" id="dowmload" value="立即下载" />
 							</div>
 						</div>
 						<div class="five_bt" id="do_something">
@@ -1155,6 +1155,44 @@
 					$('.hiden_list').hide();
 				}
 			});
+			//附件下载
+			$("#dowmload").click(function(){
+				if (sessionStorage.getItem("data") == null) {
+					Dialog({
+						title: "请登录！",
+						content: "您还未登录，是否登录？",
+						ok: {
+							callback: function() {
+								window.location.href = 'login.html';
+							}
+						},
+						cancel: {
+							callback: function() {
+								Dialog.close();
+							}
+						}
+					});
+				} else {
+					$.ajax({
+						type:"post",
+						url:sever_url+"file/dowmload",
+						async:true,
+						data:{
+							token:infodata.token,
+							post_id:$("#postTitle").attr("name")
+						},
+						dataType:"json",
+						success:function(data){
+//							console.log(data)
+							var $eleForm = $("<form method='get'></form>");
+				            $eleForm.attr("action",data.file_url);
+				            $(document.body).append($eleForm);
+				            //提交表单，实现下载
+				            $eleForm.submit();
+						}
+					});
+				}
+			})
 			//退出登陆清除数据
 			function delsession() {
 				sessionStorage.clear();
@@ -1370,6 +1408,7 @@
 						console.log(data)
 						if (data.code == 200) {
 							$("#postTitle").html(data.data.post_title); //文章标题
+							$("#postTitle").attr("name",data.data.id);
 							$("#postCopyright").html('<span>*</span>版权声明：' + data.data.post_copyright); //版权声明
 							$("#postContent").html("<p>" + data.data.post_content + "</p>"); //文章内容
 							var labels = new RegExp(",", "g"); //g,表示全部替换。
