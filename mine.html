@@ -962,20 +962,20 @@
 				<div class="zhuanti_pic">
 					<div class="hd">
 						<!--轮播点 -->
-						<ul>
-							<li></li>
-							<li></li>
+						<ul id="top_point">
+							<!--<li></li>
+							<li></li>-->
 						</ul>
 					</div>
 					<div class="bd">
-						<ul>
+						<ul id="top_banner">
 							<!--专题图片轮播 -->
-							<li>
+							<!--<li>
 								<a href="#"><img src="images/pic01.jpg" /></a>
 							</li>
 							<li>
 								<a href="#"><img src="images/pic01.jpg" /></a>
-							</li>
+							</li>-->
 						</ul>
 					</div>
 					<!-- 下面是前/后按钮代码，如果不需要删除即可 -->
@@ -1501,20 +1501,20 @@
 				<div class="zhuanti_pic">
 					<div class="hd">
 						<!--轮播点 -->
-						<ul>
-							<li></li>
-							<li></li>
+						<ul id="bottom_point">
+							<!--<li></li>
+							<li></li>-->
 						</ul>
 					</div>
 					<div class="bd">
-						<ul>
+						<ul id="bottom_banner">
 							<!--专题图片轮播 -->
-							<li>
+							<!--<li>
 								<a href="news_xq.html"><img src="images/pic01.jpg" /></a>
 							</li>
 							<li>
 								<a href="news_xq.html"><img src="images/pic01.jpg" /></a>
-							</li>
+							</li>-->
 						</ul>
 					</div>
 					<!-- 下面是前/后按钮代码，如果不需要删除即可 -->
@@ -1588,6 +1588,7 @@
 		<script type="text/javascript" src="js/paging/paging.js"></script>
 		<script id="baidu_share" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
+			adConfig();
 			window.onload = BaiduShare();
 			function BaiduShare(){
 				$("#baidu_share").attr("src",'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5));

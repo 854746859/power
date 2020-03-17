@@ -641,12 +641,11 @@
 				</nav>
 				<!-- 搜索 -->
 				<div class="search_box">
-									<div>
-										<input id="search" type="text" name="" placeholder="请输入关键词检索">
-										<button id="btn" style="float: right;margin-left: 30px;" type="submit"><img src="images/search.png"></button>
-									</div>
-				
-								</div>
+					<div>
+						<input id="search" type="text" name="" placeholder="请输入关键词检索">
+						<button id="btn" style="float: right;margin-left: 30px;" type="submit"><img src="images/search.png"></button>
+					</div>
+				</div>
 				<div class="head_div">
 					<div id="admin_box" class="admin_box">
 						<!--<img src="images/messageIcon.png" width="20px"/>
@@ -683,20 +682,20 @@
 				<div class="zhuanti_pic">
 					<div class="hd">
 						<!--轮播点 -->
-						<ul>
-							<li></li>
-							<li></li>
+						<ul id="top_point">
+							<!--<li></li>
+							<li></li>-->
 						</ul>
 					</div>
 					<div class="bd">
-						<ul>
+						<ul id="top_banner">
 							<!--专题图片轮播 -->
-							<li>
+							<!--<li>
 								<a href="#"><img src="images/pic01.jpg" /></a>
 							</li>
 							<li>
 								<a href="#"><img src="images/pic01.jpg" /></a>
-							</li>
+							</li>-->
 						</ul>
 					</div>
 					<!-- 下面是前/后按钮代码，如果不需要删除即可 -->
@@ -1018,20 +1017,20 @@
 				<div class="zhuanti_pic">
 					<div class="hd">
 						<!--轮播点 -->
-						<ul>
-							<li></li>
-							<li></li>
+						<ul id="bottom_point">
+							<!--<li></li>
+							<li></li>-->
 						</ul>
 					</div>
 					<div class="bd">
-						<ul>
+						<ul id="bottom_banner">
 							<!--专题图片轮播 -->
-							<li>
+							<!--<li>
 								<a href="news_xq.html"><img src="images/pic01.jpg" /></a>
 							</li>
 							<li>
 								<a href="news_xq.html"><img src="images/pic01.jpg" /></a>
-							</li>
+							</li>-->
 						</ul>
 					</div>
 					<!-- 下面是前/后按钮代码，如果不需要删除即可 -->
@@ -1620,6 +1619,8 @@
 						}
 					});
 				}
+				//广告
+				adConfig();
 			})
 		</script>
 	</body>

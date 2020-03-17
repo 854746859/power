@@ -65,6 +65,44 @@ function setConf(cmd, config) {
 	
 	config.bdUrl = 'http://114.55.35.82/power/'+info[1];
 	config.bdText = info[0];
-	console.log(config)
+//	console.log(config)
 	return config;
+}
+//站内广告图配置（除封面）
+function adConfig(){
+	$.ajax({
+		type:"post",
+		url:sever_url+"coverinfo/poster",
+		async:true,
+		data:{
+			cover_plate: 1
+		},
+		dtaType:"json",
+		success:function(data){
+			console.log(data)
+			if(data.code=="200"){
+				var bottomBanner = data.data.bottom_banner;
+				var topBanner = data.data.top_banner;
+				if(Object.prototype.toString.call(bottomBanner)== '[object Array]'){
+					for(var i=0;i<bottomBanner.length;i++){
+						$("#bottom_banner").append('<li><a href="'+bottomBanner[i].cover_href+'"><img src="'+bottomBanner[i].cover_posterurl+'" /></a></li>');
+						$("#bottom_point").append('<li></li>');
+					}
+				}else{
+					$("#bottom_banner").append('<li><a href="'+bottomBanner.cover_href+'"><img src="'+bottomBanner.cover_posterurl+'" /></a></li>')
+				}
+				if(Object.prototype.toString.call(topBanner)== '[object Array]'){
+					for(var i=0;i<topBanner.length;i++){
+						$("#top_banner").append('<li><a href="'+topBanner[i].cover_href+'"><img src="'+topBanner[i].cover_posterurl+'" /></a></li>');
+						$("#top_point").append('<li></li>');
+					}
+				}else{
+					$("#top_banner").append('<li><a href="'+topBanner.cover_href+'"><img src="'+topBanner.cover_posterurl+'" /></a></li>')
+				}
+			}
+		},
+		error:function(XMLHttpRequest,msg,res){
+			console.log(msg);
+		}
+	});
 }
