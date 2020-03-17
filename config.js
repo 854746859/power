@@ -69,7 +69,7 @@ function setConf(cmd, config) {
 	return config;
 }
 //站内广告图配置（除封面）
-function adConfig(){
+function adConfig(Position){
 	$.ajax({
 		type:"post",
 		url:sever_url+"coverinfo/poster",
@@ -83,6 +83,7 @@ function adConfig(){
 			if(data.code=="200"){
 				var bottomBanner = data.data.bottom_banner;
 				var topBanner = data.data.top_banner;
+				var rightBanner = data.data.right_roll_poster;
 				if(Object.prototype.toString.call(bottomBanner)== '[object Array]'){
 					for(var i=0;i<bottomBanner.length;i++){
 						$("#bottom_banner").append('<li><a href="'+bottomBanner[i].cover_href+'"><img src="'+bottomBanner[i].cover_posterurl+'" /></a></li>');
@@ -98,6 +99,17 @@ function adConfig(){
 					}
 				}else{
 					$("#top_banner").append('<li><a href="'+topBanner.cover_href+'"><img src="'+topBanner.cover_posterurl+'" /></a></li>')
+				}
+				if(Position=="right"){
+					console.log(Position)
+					if(Object.prototype.toString.call(rightBanner)== '[object Array]'){
+						for(var i=0;i<rightBanner.length;i++){
+							$("#right_ad").append('<li><a href="'+rightBanner[i].cover_href+'"><img src="'+rightBanner[i].cover_posterurl+'" /></a></li>');
+							$("#right_point").append('<li></li>');
+						}
+					}else{
+						$("#right_ad").append('<li><a href="'+rightBanner.cover_href+'"><img src="'+rightBanner.cover_posterurl+'" /></a></li>')
+					}
 				}
 			}
 		},
