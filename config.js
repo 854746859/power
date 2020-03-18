@@ -43,6 +43,9 @@ if(infodata != null){
 		admin_box_head += "<div class='admin' ><a href='mine.html'><img id='head' class='admin_logo' src='" + infodata.user_head + "'  /></a><a href='mine.html?fast=1'>快速发帖</a></div>";
 		admin_box.innerHTML = admin_box_head;
 	}
+	if(infodata.user_power!="管理员"&&infodata.user_power!="超级管理员"){
+		$("#manager").hide();
+	}
 }
 //分享
 window._bd_share_config = {
