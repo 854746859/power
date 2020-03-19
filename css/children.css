@@ -113,7 +113,7 @@
 .selected{
 	font-size:20px;
 	font-weight: bold;
-	color: #e0620d;
+	color: #333;
 	position: relative;
 	font-family: PingFang SC;
 	/* float: left; */
