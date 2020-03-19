@@ -137,12 +137,14 @@
 			.head_div{
 				position: relative;
 			}
-
 			.border li{
 				background: #3dc0f2;
 				border-left: 2px solid #fff;
 				border-image: linear-gradient(to top, #3dc0f2,rgba(255,255,255,1), #3dc0f2);
 				border-image-slice: 10;
+			}
+			.more_list li{
+				border: none;
 			}
 		</style>
 	</head>
@@ -539,9 +541,9 @@
 			</ul>
 			<div class="l">
 				<a href="http://121.43.68.40/exposure/jiucuo.html?site_code=5200000083&url=www.guizhou.gov.cn" target="blank" class="dib vm"><img
-					 src="images/zhaocuo.png" /></a>
+					 src="" /></a>
 				<a href="http://bszs.conac.cn/sitename?method=show&id=09D70ADDD9E64427E053022819AC3042" target="blank" class="dib vm"><img
-					 src="images/dangzheng.png"></a>
+					 src=""></a>
 			</div>
 			<div class="l txt">
 				<p><img src="images/beian.png">X公网安备
@@ -833,7 +835,7 @@
 					info += "<a href='#' class='r'>查看更多></a></div><ul>";
 					for (var i = 0; i < hot_post.length; i++) {
 						info += "<li><a href='forum.html?postid=" + hot_post[i]['id'] + "&plate=" + json.plate + "&plate_two=" + json.two +
-							"'<b>·</b><span>" + hot_post[i]['post_title'] + "</span></a></li>";
+							"'><b>·</b><span>" + hot_post[i]['post_title'] + "</span></a></li>";
 					}
 					info += "</ul>";
 

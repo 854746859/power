@@ -61,11 +61,6 @@ html,body{ background-color:#eee;width: 100%;}
 .top_nav ul li{line-height: 60px; position: relative; 
 /*background: url(../images/nav_line.png) no-repeat center left;*/
 flex-grow: 1;
-background: #3dc0f2;
-        border-left: 1px solid #fff;
-        border-image: linear-gradient(to top, #3dc0f2,rgba(255,255,255,1), #3dc0f2);
-        border-image-slice: 10;
-        border-radius:50%;
 }
 .top_nav ul li.selet{background: #1a83da;}
 .top_nav ul li.selet+li{ background: none; }
@@ -228,7 +223,7 @@ background: #3dc0f2;
 }
 .tender ul li b{ color: #666; display:inline-block; margin-right: 7px;vertical-align: middle; }
 .red_news{ color: #f00; display: inline-block; margin-left: 5px; font-style: normal; font-size:16px;}
-.tender ul li:hover span{ color: #005389; text-indent: .3em; text-decoration: underline; }
+.tender ul li:hover span{ color: #3bc0f2; text-indent: .3em; text-decoration: underline; }
 .tender ul li:hover b{ color: #005389; }
 
 /*专题轮播*/
