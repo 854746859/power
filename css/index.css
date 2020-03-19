@@ -26,13 +26,13 @@ html,body{ background-color:#eee;width: 100%;}
 .vm{vertical-align:middle;}
 .bdb_d{border-bottom:1px solid #ddd;}
 .fc{ color: #333; font-family:PingFangSC-Regular,PingFang SC; font-size: 20px;}
-.bg{background-color: #3bc0f2; min-width: 1220px;width: 100%;}
+.bg{background-color: #0084ff; min-width: 1220px;width: 100%;}
 .b{font-weight:bold;}
 .bora_5{  margin-top: 30px; border-radius: 5px; display: flex; flex-direction: row;justify-content: space-around;}
 .ovh{overflow: hidden;}
 
 /*top*/
-.wid_main{ width: 1220px; margin:0 auto; display: flex; flex-direction: row; align-items: center;justify-content: space-around;padding: 5px 0 5px 0;background-color: #3bc0f2;}
+.wid_main{ width: 1220px; margin:0 auto; display: flex; flex-direction: row; align-items: center;justify-content: space-around;padding: 5px 0 5px 0;background-color: #0084ff;}
 .topbox{ height: 60px; }
 .topbox .logo{ margin-top: 24px; }
 
@@ -54,7 +54,7 @@ html,body{ background-color:#eee;width: 100%;}
 .content{ min-height: 775px; margin:0 10px;}
 
 /*导航*/
-.top_nav{height: 60px;background-color: #3bc0f2; width: 100%;}
+.top_nav{height: 60px;background-color: #0084ff; width: 100%;}
 .top_nav ul{ 
 	/*background: url(../images/nav_line.png) no-repeat center right;*/
 	 display: flex;}
@@ -62,7 +62,7 @@ html,body{ background-color:#eee;width: 100%;}
 /*background: url(../images/nav_line.png) no-repeat center left;*/
 flex-grow: 1;
 }
-.top_nav ul li.selet{background: #1a83da;}
+.top_nav ul li.selet{background: #0084ff;}
 .top_nav ul li.selet+li{ background: none; }
 .top_nav ul li a:first-child{
 	display: block;
@@ -223,7 +223,7 @@ flex-grow: 1;
 }
 .tender ul li b{ color: #666; display:inline-block; margin-right: 7px;vertical-align: middle; }
 .red_news{ color: #f00; display: inline-block; margin-left: 5px; font-style: normal; font-size:16px;}
-.tender ul li:hover span{ color: #3bc0f2; text-indent: .3em; text-decoration: underline; }
+.tender ul li:hover span{ color: #0084ff; text-indent: .3em; text-decoration: underline; }
 .tender ul li:hover b{ color: #005389; }
 
 /*专题轮播*/
