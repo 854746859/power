@@ -25,26 +25,26 @@ html,body{ background-color:#eee;width: 100%;}
 .dib{display:inline-block;width: 70px;font-size: 12px;}
 .vm{vertical-align:middle;}
 .bdb_d{border-bottom:1px solid #ddd;}
-.fc{ color: #005389; font-family:PingFangSC-Regular,PingFang SC; font-size: 20px;}
-.bg{background-color: #fff; min-width: 1220px;width: 100%;}
+.fc{ color: #333; font-family:PingFangSC-Regular,PingFang SC; font-size: 20px;}
+.bg{background-color: #3bc0f2; min-width: 1220px;width: 100%;}
 .b{font-weight:bold;}
 .bora_5{  margin-top: 30px; border-radius: 5px; display: flex; flex-direction: row;justify-content: space-around;}
 .ovh{overflow: hidden;}
 
 /*top*/
-.wid_main{ width: 1220px; margin:0 auto; display: flex; flex-direction: row; align-items: center;justify-content: space-around;padding: 5px 0 5px 0;background-color: #fff;}
+.wid_main{ width: 1220px; margin:0 auto; display: flex; flex-direction: row; align-items: center;justify-content: space-around;padding: 5px 0 5px 0;background-color: #3bc0f2;}
 .topbox{ height: 60px; }
 .topbox .logo{ margin-top: 24px; }
 
-.search_box{ width: 280px;overflow: hidden; display: flex; align-items: center; background-color: #eee; border-radius: 45px;}
+.search_box{ width: 280px;overflow: hidden; display: flex; align-items: center; background-color: #fff; border-radius: 45px;}
 .admin{display: flex;align-items: flex-end;}
 .admin_box{width: 180px;overflow: hidden; }
-.admin_box a{font-size: 14px; color: #333; margin-left: 14px;}
+.admin_box a{font-size: 14px; color: #fff; margin-left: 14px;}
 .admin_logo{width: 32px; border-radius: 16px;}
 .admin .lever{font-size: 12px; color: #333;}
 /*.search_box div{ width: 320px;}*/
 .search_box input{ float: left; width: 180px; padding:0 10px; height: 44px; 
-	font-size:14px; font-family: "微软雅黑"; background-color: #eee; border-radius: 25px; margin: 5px 0 5px 0;
+	font-size:14px; font-family: "微软雅黑"; background-color: #fff; border-radius: 25px; margin: 5px 0 5px 0;
 }
 .search_box button{ float: left; width: 44px; height: 44px; cursor: pointer; background: url(../images/search.png) no-repeat center center; margin: 5px 0 5px 0; display: flex; align-items: center; justify-content: center;}
 .search_box button img{ width: 24px; height: 24px; }
@@ -54,17 +54,19 @@ html,body{ background-color:#eee;width: 100%;}
 .content{ min-height: 775px; margin:0 10px;}
 
 /*导航*/
-.top_nav{height: 60px;background-color: #fff; width: 100px;}
-.top_nav ul{
-	 /*background: url(../images/nav_line.png) no-repeat center right;*/ 
-	 display: flex;
-	 flex-direction: column;
-	 box-shadow: 0 2px 4px 0 rgba(0,0,0,.06);
-	 }
-.top_nav ul li{line-height: 60px; position: relative;
-border-top: 1px solid #eee;
- /*background: url(../images/nav_line.png) no-repeat center left;flex-grow: 1;*/
- }
+.top_nav{height: 60px;background-color: #3bc0f2; width: 100%;}
+.top_nav ul{ 
+	/*background: url(../images/nav_line.png) no-repeat center right;*/
+	 display: flex;}
+.top_nav ul li{line-height: 60px; position: relative; 
+/*background: url(../images/nav_line.png) no-repeat center left;*/
+flex-grow: 1;
+background: #3dc0f2;
+        border-left: 1px solid #fff;
+        border-image: linear-gradient(to top, #3dc0f2,rgba(255,255,255,1), #3dc0f2);
+        border-image-slice: 10;
+        border-radius:50%;
+}
 .top_nav ul li.selet{background: #1a83da;}
 .top_nav ul li.selet+li{ background: none; }
 .top_nav ul li a:first-child{
@@ -102,7 +104,7 @@ border-top: 1px solid #eee;
 .share{
 	font-size: 14px;
 	position: relative;
-	left: -120px;
+	margin-left: 300px;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -146,7 +148,7 @@ border-top: 1px solid #eee;
 .conbox{ margin-bottom: 30px; }
 
 /*新闻轮播图*/
-.news_banner{ overflow:hidden; position:relative; width: 730px; display: block;}
+.news_banner{ overflow:hidden; position:relative; width: 820px; display: block;}
 .news_banner .hd{ overflow:hidden; position:absolute; bottom:26px; right: 0; z-index:1;width: 160px; text-align: right;}
 .news_banner .hd ul{ overflow:hidden; zoom:1;text-align: center; display: inline-block; margin-right: 15px; font-size: 0; }
 .news_banner .hd ul li{display: inline-block; margin:0 2px;  width:18px; height:18px; background:#fff; cursor:pointer; font-size: 12px; font-weight: bold;}
@@ -216,7 +218,7 @@ border-top: 1px solid #eee;
 .sy_title h2{ float: left; }
 .sy_title img{ vertical-align: middle; margin-right: 10px; }
 .tender .sy_title a{ font-size: 14px; color: #999; margin-top: 15px; }
-.tender { width: 200px; }
+.tender { width: 360px; }
 .tender .sy_title a:hover{ color: #005389; }
 .tender ul{ margin-top: 5px;overflow: hidden; height: 300px; padding-left: 3%;}
 .tender ul li{ line-height: 28px; font-size:14px; font-family:PingFangSC-Regular,PingFang SC;font-weight:400;
@@ -345,7 +347,7 @@ border-top: 1px solid #eee;
 }
 
 /*底部信息*/
-.footerbox{ padding:24px 0; display: flex;flex-direction: column;justify-content: center;align-items: center;background-color: #333;}
+.footerbox{ padding:24px 0; display: flex;flex-direction: column;justify-content: center;align-items: center;}
 .footerbox .txt{ font-size: 14px; color: #fff; line-height: 30px; margin-left: 24px; display: flex; flex-direction: row;}
 .footerbox .txt img{ vertical-align: middle; margin-top: -3px; margin-right:5px; }
 .footerbox .other{width: 500px;}
