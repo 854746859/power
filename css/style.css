@@ -437,10 +437,10 @@ nav > div > ul > li,
 .rspns-lnks-lst > a span,
 .rspns-mnu
 {
-  -webkit-transition: all .4s linear;
+  /*-webkit-transition: all .4s linear;
   -ms-transition: all .4s linear;
   -o-transition: all .4s linear;
-  transition: all .4s linear;
+  transition: all .4s linear;*/
 }
 
 
@@ -1254,7 +1254,7 @@ nav > div ul ul li a {
   position: relative;
 }
 .top_nav ul li a:first-child{
-  font-size:  18px;
+  font-size:  16px;
   font-family:PingFangSC-Regular,PingFang SC;
   font-weight: 400;
 }

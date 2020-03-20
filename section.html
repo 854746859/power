@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta content="能源公社" http-equiv="keywords">
+		<meta name="description" content="能源公社">
+		<meta name="applicable-device" content="pc,mobile">
+		<meta http-equiv="Cache-Control" content="no-siteapp"/>
+		<meta http-equiv="Cache-Control" content="no-transform" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<title>能源公社</title>
+		<link rel="stylesheet" href="css/index.css" type="text/css">
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<link rel="stylesheet" type="text/css" href="css/children.css"/>
+		<link rel="stylesheet" type="text/css" href="css/cover.css"/>
+		<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="js/public.js"></script><!-- 菜单js等-->
+		<style type="text/css">
+			.contant_title{
+				display: flex;
+				flex-direction: row;
+				margin: 0 auto;
+				height: 40px;
+				font-size: 16px;
+				align-items: center;
+				padding-left: 10px;
+				background-color: #f5f5f5;
+				border-bottom: 1px solid #999;
+			}
+			.contant_title span:nth-child(n+2){
+				margin-left: 30px;
+			}
+			.middle_banner{
+				width: 100%;
+				margin-top: 10px;
+				height: 110px;
+			}
+			.rightgg{
+				width: 300px;
+				height: auto;
+			}
+			
+			.middle_banner img{
+				width: 100%;
+				height: 110px;
+			}
+			.ranking{
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+			}
+			.post_list{
+				height: 600px;
+				overflow-y: scroll !important;
+			}
+			.shares{
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				align-items: center;
+				height: 30px;
+				border-style: solid;
+				border-top-width: 0;
+				border-right-width: 0;
+				border-bottom-width: 1px;
+				border-left-width: 0;
+			}
+			.postStyle{
+				max-width:460px !important;
+			}
+			.share_ml{
+				margin-left: 0 !important;
+			}
+			.color-red{
+				color:red;
+			}
+			.color-blue{
+				color: #2fb334;
+			}
+			.layout{
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				align-items: flex-end;
+			}
+			.online_lesson{
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+			}
+			.online_lesson .lesson_box{
+				width: 25%;
+				height: auto;
+				/*padding: 5px;*/
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+			}
+			.online_lesson .lesson_box .lesson{
+				width: 90%;
+				height: 90%;
+				/*background-color: blue;*/
+			}
+			.online_lesson .lesson_box .lesson img{
+				width: 100%
+				height:auto;
+			}
+			.vote{
+				height: 150px;
+				margin: 5px;
+				padding: 5px;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				border-radius: 5%; 
+  				box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.5); 
+			}
+			.vote .btn{
+				display: flex;
+				justify-content: center;
+			}
+			.vote .btn button{
+				height: 30px;
+				width: 50px;
+				margin-left: 20px;
+				margin-right: 20px;
+				border-radius: 5%; 
+				box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.2);
+				background-color: #59c34aba;
+			}
+			/*鼠标移入菜单*/
+			.hiden_list{
+				width: 120px;
+				position: absolute;
+				top:40px;
+				background-color: rgb(255,255,255);
+				z-index: 9;
+			}
+			.hiden_list ul li{
+				border-bottom:1px dotted;
+			}
+			.hiden_list_w{
+				width: 120px;
+				position: absolute;
+				top:40px;
+				background-color: rgb(255,255,255);
+				z-index: 9;
+			}
+			.hiden_list_w ul li{
+				border-bottom:1px dotted;
+			}
+			.head_div{
+				position: relative;
+			}
+			.zy_listbox{
+				height: auto !important;
+			}
+		</style>
+	</head>
+	<body>
+		<!--头部-->
+		<div class="bg">
+			<div class="wid_main topbox fix">
+				<div class="l"><img src="images/6.png" alt="logo" width="140px"/></div>
+				<nav>
+		            <div>
+		                <ul>
+		                    <li><a href="index.html?type=0&plate=1&two=0">首页</a></li>
+							<li class="menu-item-has-children"><a href="#" title="" itemprop="url">论坛</a>
+								<ul>
+		                            <li><a href="index.html?type=0&plate=1&two=0" title="" itemprop="url">LNG版块</a></li>
+		                            <li><a href="#" title="" itemprop="url">Oil版块</a></li>
+		                            <li><a href="#" title="" itemprop="url">Gas版块</a></li>
+		                            <li><a href="#" title="" itemprop="url">Pipe版块</a></li>
+									<li><a href="#" title="" itemprop="url">Nuclear版块</a></li>
+									<li><a href="#" title="" itemprop="url">Power版块</a></li>
+		                            <li><a href="#" title="" itemprop="url">Wind版块</a></li>
+		                            <li><a href="#" title="" itemprop="url">Solar版块</a></li>
+		                        </ul>
+							</li>
+							<li class="menu-item-has-children"><a href="#">问答</a>
+								<ul>
+									<li><a href="question.html?type=1&plate=1&two=0" title="" itemprop="url">LNG版块</a></li>
+									<li><a href="question.html?type=1&plate=2&two=0" title="" itemprop="url">Oil版块</a></li>
+									<li><a href="question.html?type=1&plate=3&two=0" title="" itemprop="url">Gas版块</a></li>
+									<li><a href="question.html?type=1&plate=4&two=0" title="" itemprop="url">Pipe版块</a></li>
+									<li><a href="question.html?type=1&plate=5&two=0" title="" itemprop="url">Nuclear版块</a></li>
+									<li><a href="question.html?type=1&plate=6&two=0" title="" itemprop="url">Power版块</a></li>
+									<li><a href="question.html?type=1&plate=7&two=0" title="" itemprop="url">Wind版块</a></li>
+									<li><a href="question.html?type=1&plate=8&two=0" title="" itemprop="url">Solar版块</a></li>
+								</ul>
+							</li>
+							<li><a href="#">专家</a></li>
+							<li><a href="#">课程</a></li>
+							<li><a href="#">前沿</a></li>
+							<li><a href="#">会议</a></li>
+							<li><a href="#">活动</a></li>
+		                </ul>
+		            </div>
+		        </nav>
+				<!-- 搜索 -->
+				<div class="search_box" style="height: 40px; border-radius: 20px;">
+					<div>
+						<button type="submit"><img src="images/search.png"></button>
+						<input type="text" name="" placeholder="请输入关键词检索" >
+						
+					</div>
+					
+				</div>
+				<div class="head_div">
+					<div id="admin_box" class="admin_box">
+						<!--<img src="images/messageIcon.png" width="20px"/>
+						<div class="admin">
+							<img src="images/people03.jpg" class="admin_logo"/>
+							<span class="lever">LV10</span>
+						</div>-->
+						<a href="login.html">登录/注册</a>
+						<a href="mine.html?fast=1">快速发帖</a>
+					</div>
+					<!-- 鼠标移入显示的菜单 -->
+					<div class="hiden_list">
+						<ul>
+							<li><a href="mine.html">个人中心</a></li>
+							<li id="manager" hidden="hidden"><a href="http://114.55.35.82/dist/index.html#/easay">管理员中心</a></li>
+							<li><a onclick="delsession()" href="login.html">退出登陆</a></li>
+						</ul>
+					</div>
+					<div class="hiden_list_w">
+						<ul>
+							<li><a href="mine.html">个人中心</a></li>
+							<li><a onclick="delsession()" href="login.html">退出登陆</a></li>
+						</ul>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		
+		<!-- 主体内容框 -->
+		<div class="contentbox bora_5">
+			<div class="content">
+				<!-- 专题轮播 -->
+				<div class="zhuanti_pic">
+		            <div class="hd"><!--轮播点 -->
+		                <ul id="topbanner_d">
+		                	
+		                </ul>
+		            </div>
+		            <div class="bd">
+		                <ul id="topbanner"><!--专题图片轮播 -->
+		                	
+		                </ul>
+		            </div>
+		            <!-- 下面是前/后按钮代码，如果不需要删除即可 -->
+		            <a class="prev" href="javascript:void(0)"></a>
+		            <a class="next" href="javascript:void(0)"></a>
+		
+		            <script type="text/javascript">
+		            jQuery(".zhuanti_pic").slide({mainCell:".bd ul",autoPlay:true,effect:"fade",mouseOverStop:false,interTime:3000,});
+		            </script>
+		        </div>
+		        
+		        
+		        <!--主题内容-->
+		        <div class="contant_title">
+					<span id="online">
+						<!-- 在线人数：999人	 -->
+					</span>
+					<span id="count_post">
+						<!-- 总帖数：123144篇 -->
+					</span>
+					<span id="today_post">
+						<!-- 今日贴数：1827篇 -->
+					</span>
+					<span id="today_reg">
+						<!-- 今日注册：543人 -->
+					</span>
+					<span id="last_name">
+						<!-- 最新发帖：张三 -->
+					</span>
+				</div>
+		        <div class="contant">
+		        	<div class="left">
+						<div class="sy_title bdb_d ovh">
+							<h2 class="l"><b class="fc">综合热点区</b></h2>
+							<a href="index.html?type=0&plate=1&two=0" class="r">查看更多></a>
+						</div>
+						<ul id="hotpost">
+							
+						</ul>
+						
+						<div class="sy_title bdb_d ovh">
+							<h2 class="l"><b class="fc">最热悬赏区</b></h2>
+							<a href="question.html?type=2&plate=1&two=0" class="r">查看更多></a>
+						</div>
+						<ul id="hotreward">
+							
+						</ul>
+		        	</div>
+		        	<div class="middle zy_right_con">
+		        		<div class="zy_title" id="top_list">
+							<h2 class="selected">推荐<i></i></h2>
+							<h2>关注<i></i></h2>
+							<h2>悬赏<i></i></h2>
+							<h2>最新<i></i></h2>
+						</div>
+						<!-- 内容展示块-->
+						<div class="new_list zy_listbox">
+							<!-- 展示15条数据后出现分页 -->
+							<ul id="recommend">
+								<li><b>·</b><a href="news_xq.html">李克强主持召开国务院常务会议 部署进一步促进社区养老和家政服务工作安排</a></li>
+								<li><b>·</b><a href="news_xq.html">特勤大队暂扣污染路面车辆</a></li>
+								<li><b>·</b><a href="news_xq.html">我局顺利组织2019年福泉市第一期渔业安全生产知识培训及应急实操演练我局顺利组织2019年福泉市第</a></li>
+								<li><b>·</b><a href="news_xq.html">特勤大队暂扣污染路面车辆</a></li>
+								<li><b>·</b><a href="news_xq.html">李克强主持召开国务院常务会议 部署进一步促进社区养老和家政服务工作安排</a></li>
+								<li><b>·</b><a href="news_xq.html">特勤大队暂扣污染路面车辆</a></li>
+							</ul>
+						</div>
+		        	</div>
+		        	<div class="right">
+		        		<!-- 股票信息 -->
+	        			<div class="sy_title bdb_d ovh">
+							<h2 class="l"><b class="fc">股票</b></h2>
+						</div>
+	        			<ul id="stock">
+	        				<!--<li class="shares color-red">
+	        					<span>DOW J</span>
+								<span>285.34</span>
+								<span>+4.98%</span>
+	        				</li>
+	        				<li class="shares color-blue">
+	        					<span>SSEC</span>
+								<span>2852.34</span>
+								<span>-0.98%</span>
+	        				</li>
+	        				<li class="shares color-red">
+	        					<span>DOW J</span>
+								<span>285.34</span>
+								<span>+4.98%</span>
+	        				</li>
+	        				<li class="shares color-blue">
+	        					<span>SSEC</span>
+								<span>2852.34</span>
+								<span>-0.98%</span>
+	        				</li>
+	        				<li class="shares color-blue">
+	        					<span>SSEC</span>
+								<span>2852.34</span>
+								<span>-0.98%</span>
+	        				</li>-->
+	        			</ul>
+						<!-- 全球油价 -->
+						<div class="sy_title bdb_d ovh">
+							<h2 class="l"><b class="fc">全球油价</b></h2>
+						</div>
+	        			<ul id="oil">
+	        				<!--<li class="shares color-red">
+	        					<span>DOW J</span>
+								<span>285.34</span>
+								<span>+4.98%</span>
+	        				</li>
+	        				<li class="shares color-blue">
+	        					<span>SSEC</span>
+								<span>2852.34</span>
+								<span>-0.98%</span>
+	        				</li>
+	        				<li class="shares color-red">
+	        					<span>DOW J</span>
+								<span>285.34</span>
+								<span>+4.98%</span>
+	        				</li>
+	        				<li class="shares color-blue">
+	        					<span>SSEC</span>
+								<span>2852.34</span>
+								<span>-0.98%</span>
+	        				</li>
+	        				<li class="shares color-blue">
+	        					<span>SSEC</span>
+								<span>2852.34</span>
+								<span>-0.98%</span>
+	        				</li>-->
+	        			</ul>
+	        			<div>
+	        				<img id="lngimg" src="" alt="">
+	        			</div>
+		        	</div>
+		        </div>
+		        <!--网页展示图-->
+	        	<div class="middle_banner">
+	        		<img id="webbanner" src="images/pic01.jpg"/>
+	        	</div><br />
+	        	<!--内容部分二-->
+		        <div class="contant">
+		        	<div class="left">
+						<div class="sy_title bdb_d ovh">
+							<h2 class="l"><b class="fc">发帖总排名</b></h2>
+						</div>
+						<ol id="release_total">
+							<!-- 发帖总排名 -->
+						</ol>
+						
+						<div class="sy_title bdb_d ovh">
+							<h2 class="l"><b class="fc">积分总排名</b></h2>
+						</div>
+						<ol id='coin_total'>
+							<!-- 积分总排名 -->
+						</ol>
+						
+						<div class="sy_title bdb_d ovh">
+							<h2 class="l"><b class="fc">获赞总排名</b></h2>
+						</div>
+						<ol id="support_total">
+							<!-- 获赞总排名 -->
+						</ol>
+		        	</div>
+		        	<div class="middle zy_right_con post_list" id="postList">
+		        		<!--<div class="zy_title layout">
+							<h2 class="selected">政策法规<i></i></h2>
+							<a href="" class="more">更多>></a>
+						</div>
+						<div class="news_list zy_listbox">
+							<ul id="regulations">
+								<li>
+									<img src="News-module1/images/dangzheng.png"/>
+									<div class="blog_list">
+										<div class="news_title">
+											<a href="#" style="max-width: 360px;">李克强主持召开国务院常务会议 部署进一步促进社区养老和家政服务工作安排</a>
+											<i class="red_news">[原创]</i>
+											<i class="red_news">[新闻]</i>
+										</div>
+										<div class="news_time news_other">
+											<span>发布于：2019-07-05 13:12:06</span>
+											<span id="">
+												阅读数：32564
+											</span>
+											<span id="">
+												点赞：1563
+											</span>
+										</div>
+										<div class="news_owner news_other">
+											<span id="">
+												发帖人：XXX
+											</span>
+											<span id="">
+												最后回复人：XXX
+											</span>
+											<div class="share" style="margin-left: 150px;">
+												分享：
+												<img class="share_icon" src="images/WeChat.png"/>
+												<img class="share_icon" src="images/weibo.png"/>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>-->
+						<!-- 往后添加 -->
+		        	</div>
+		        	<div class="right">
+		        		<!-- 投票专区 -->
+		        		<div class="sy_title bdb_d ovh">
+							<h2 class="l"><b class="fc">投票区</b></h2>
+						</div>
+						<!-- <div class="vote">
+							<p>经济危机也就跌30%，这轮已经20%，应该区域触底了</p>
+							<div class="btn">
+								<button>支持</button>
+								<button>反对</button>
+							</div>
+						</div> -->
+		        	</div>
+		        </div>
+		        <!--专家专题轮播-->
+				<div class="zhuanti_pic middle_banner">
+		            <div class="hd"><!--轮播点 -->
+		                <ul id="expertbanner_d">
+		                	
+		                </ul>
+		            </div>
+		            <div class="bd">
+		                <ul id="expertbanner"><!--专题图片轮播 -->
+		                	
+		                </ul>
+		            </div>
+		            <!-- 下面是前/后按钮代码，如果不需要删除即可 -->
+		            <a class="prev" href="javascript:void(0)"></a>
+		            <a class="next" href="javascript:void(0)"></a>
+		
+		            <script type="text/javascript">
+		            jQuery(".zhuanti_pic").slide({mainCell:".bd ul",autoPlay:true,effect:"fade",mouseOverStop:false,interTime:3000,});
+		            </script>
+		        </div>
+		        <!--内容部分三-->
+		        <div class="contant">
+		        	<div class="left">
+		        		<!-- 展会 -->
+						<div style="margin-top: 10px">
+	        				<a id="expo_a"><img id="expo" src="" alt=""></a>
+	        			</div>
+	        			<!-- LNG接受部 -->
+	        			<div style="margin-top: 10px">
+	        				<img id="lngjsb" src="" alt="">
+	        			</div>
+		        	</div>
+		        	<div class="middle zy_right_con">
+		        		<div class="zy_title layout">
+							<h2 class="selected">外网信息<i></i></h2>
+							<a href="" class="more">更多>></a>
+						</div>
+						<!-- 外部文章-->
+						<div class="new_list zy_listbox">
+							<ul id="outweb">
+								
+							</ul>
+						</div>
+						
+						<div class="zy_title layout">
+							<h2 class="selected">原创文章<i></i></h2>
+							<a href="" class="more">更多>></a>
+						</div>
+						<!-- 原创文章-->
+						<div class="new_list zy_listbox">
+							<ul id="original">
+								
+							</ul>
+						</div>
+		        	</div>
+		        	<div class="right">
+		        		<!-- 右侧广告 -->
+		        		<div class="zhuanti_pic rightgg">
+				            <div class="hd"><!--轮播点 -->
+				                <ul id="rightgg_d">
+				                	
+				                </ul>
+				            </div>
+				            <div class="bd">
+				                <ul id="rightgg"><!--专题图片轮播 -->
+				                	
+				                </ul>
+				            </div>
+				            <!-- 下面是前/后按钮代码，如果不需要删除即可 -->
+				            <a class="prev" href="javascript:void(0)"></a>
+				            <a class="next" href="javascript:void(0)"></a>
+				
+				            <script type="text/javascript">
+				            jQuery(".zhuanti_pic").slide({mainCell:".bd ul",autoPlay:true,effect:"fade",mouseOverStop:false,interTime:3000,});
+				            </script>
+				        </div>
+		        	</div>
+		        </div>
+		        <!--网课展区-->
+		        <div class="online_lesson" id="network">
+		        	
+		        </div>
+		        
+		        <!--底部广告-->
+	        	<div class="middle_banner">
+	        		<img id="bottombanner" src=""/>
+	        	</div><br />
+			</div>
+		</div>
+		<!-- 底部 -->
+		<div class="footerbox bg">
+			<ul class="other fix">
+				<li><a href="contact.html">联系我们</a></li>
+				<li><a href="about.html">机构概况</a></li>
+				<li><a href="info_public.html">信息公开</a></li>
+				<li><a href="newslist.html">办事指南</a></li>
+			</ul>
+			<div class="l" id="outlogo">
+				<!-- 外部公司logo -->
+			</div><br/>
+			<div class="l txt">
+				<p><img src="images/beian.png">X公网安备 5201030200xxxx号&nbsp;&nbsp;&nbsp;XICP备xxxxxxxxx号-2&nbsp;&nbsp;&nbsp;政府网站标识码：520xxxxxxxx</p>
+				<p>XX市综合执法局信息技术处建设和维护</p>
+			</div>
+			<p>版权所有：XX市综合行政执法局&nbsp;&nbsp;&nbsp;地址：XX省XX市工业园区特1号</p>
+		</div>
+		<input type="text" name="share_url" id="share_url" value="" hidden="hidden" />
+		<script id="baidu_share" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="config.js"></script><!-- 服务器地址-->
+		<script type="text/javascript">
+		window.onload = BaiduShare();
+		function BaiduShare(){
+			$("#baidu_share").attr("src",'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5));
+		}
+			// 获取我的信息
+			var data = sessionStorage.getItem("data");
+			var infodata = eval('(' + data + ')');
+			// console.log(infodata.token);
+			
+			//获取网页信息
+			$.ajax({
+				url: sever_url+'/coverinfo/webinfo',
+				type: 'post',
+				data: {
+					cover_plate: 1,
+				},
+				// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+				dataType: 'json',
+				success: function(res) {
+					if(res.code==200){
+						$("#online").html('在线人数：'+res.data.online_people);
+						$("#count_post").html('总帖数：'+res.data.count_post);
+						$("#today_post").html('今日帖数：'+res.data.today_post);
+						$("#today_reg").html('今日注册：'+res.data.today_reg);
+						$("#last_name").html('最后回复：'+res.data.user_name);
+					}else{
+						alert(res.msg);
+					}
+				},
+				error:function(XMLHttpRequest,msg,res){
+					console.log(msg);
+				}
+			});
+			//获取广告
+			$.ajax({
+				url: sever_url+'/coverinfo/poster',
+				type: 'post',
+				data: {
+					cover_plate: 1,
+				},
+				// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+				dataType: 'json',
+				success: function(res) {
+//					console.log(res);
+					//顶部banner
+					$('#topbanner').html('');
+					$('#topbanner_d').html('');
+					for(var index in res.data.top_banner){
+						//创建轮播图
+						var li = $('<li></li>');
+						var a = $('<a></a>');
+						var img = $('<img>');
+						img.attr('src',res.data.top_banner[index].cover_posterurl);
+						a.attr('href',res.data.top_banner[index].cover_href);
+						li.append(a);
+						a.append(img);
+						$('#topbanner').append(li);
+						//创建轮播点
+						var li1 = $('<li></li>');
+						$('#topbanner_d').append(li1);
+					}
+					//网页展示图
+					$('#webbanner').attr('src',res.data.display_banner.cover_posterurl)
+					//专家滚动区
+					$('#expertbanner').html('');
+					$('#expertbanner_d').html('');
+					for(var index in res.data.expert_rotation){
+						//创建轮播图
+						var li = $('<li></li>');
+						var a = $('<a></a>');
+						var img = $('<img>');
+						img.attr('src',res.data.expert_rotation[index].cover_posterurl);
+						a.attr('href',res.data.expert_rotation[index].cover_href);
+						li.append(a);
+						a.append(img);
+						$('#expertbanner').append(li);
+						//创建轮播点
+						var li1 = $('<li></li>');
+						$('#expertbanner_d').append(li1);
+					}
+					//底部横幅
+					$('#bottombanner').attr('src',res.data.bottom_banner.cover_posterurl);
+					//LNG指数图
+					$('#lngimg').attr('src',res.data.lng_chart.cover_posterurl);
+					//展会图文
+					$('#expo').attr('src',res.data.exhibition.cover_posterurl);
+					$('#expo_a').attr('src',res.data.exhibition.cover_href);
+					//lng接受部
+					$('#lngjsb').attr('src',res.data.lng_outchart.cover_posterurl);
+					//右侧广告rightgg
+					$('#rightgg').html('');
+					$('#rightgg_d').html('');
+					for(var index in res.data.right_roll_poster){
+						//创建轮播图
+						var li = $('<li></li>');
+						var a = $('<a></a>');
+						var img = $('<img>');
+						img.attr('src',res.data.right_roll_poster[index].cover_posterurl);
+						a.attr('href',res.data.right_roll_poster[index].cover_href);
+						li.append(a);
+						a.append(img);
+						$('#rightgg').append(li);
+						//创建轮播点
+						var li1 = $('<li></li>');
+						$('#rightgg_d').append(li1);
+					}
+					//网络课程
+					$('#network').html('');
+					for(var index in res.data.network){
+						//创建轮播图
+						var div1 = $('<div class="lesson_box"></div>');
+						var div2 = $('<div class="lesson"></div>');
+						var img = $('<img>');
+						var a = $('<a></a>');
+						img.attr('src',res.data.network[index].cover_posterurl);
+						a.attr('href',res.data.network[index].cover_href);
+						div1.append(div2);
+						div2.append(a);
+						a.append(img);
+						$('#network').append(div1);
+					}
+					//外部公司logo
+					$('#outlogo').html('');
+					for(var index in res.data.company_logo){
+						//创建轮播图
+						var a = $('<a></a>');
+						var img = $('<img>');
+						img.attr('src',res.data.company_logo[index].cover_posterurl);
+						a.attr('href',res.data.company_logo[index].cover_href);
+						a.attr('target','blank');
+						a.attr('class','dib vm');
+						a.append(img);
+						$('#outlogo').append(a);
+					}
+				},
+				error:function(XMLHttpRequest,msg,res){
+					console.log(msg);
+				}
+			});
+			//获取股票、油价、投票信息
+			$.ajax({
+				type:"post",
+				url:sever_url+"coverinfo/rightinfo",
+				async:true,
+				data:{
+					cover_plate:1
+				},
+				dataType:"json",
+				success:function(data){
+					console.log(data)
+					if(data.code=="200"){
+						//股票
+						var stock = data.data.shares;
+						for(var i=0;i<stock.length;i++){
+							var Class = "";
+							var the_range = "";
+							if(stock[i].shares_range>0){
+								Class = "color-red";
+								the_range = "+"+stock[i].shares_range;
+							}else if(stock[i].shares_range<0){
+								Class = "color-blue";
+								the_range = stock[i].shares_range;
+							}
+							$("#stock").append('<li class="shares '+Class+'"><span>'+stock[i].shares_name+'</span><span>'+stock[i].shares_money+'</span><span>'+the_range+'%</span></li>')
+						}
+						//油价
+						var oil = data.data.oil;
+						for(var j=0;j<oil.length;j++){
+							var Class = "";
+							var the_range = "";
+							if(oil[j].shares_range>0){
+								Class = "color-red";
+								the_range = "+"+oil[j].shares_range;
+							}else if(oil[j].shares_range<0){
+								Class = "color-blue";
+								the_range = oil[j].shares_range;
+							}
+							$("#oil").append('<li class="shares '+Class+'"><span>'+oil[j].shares_name+'</span><span>'+oil[j].shares_money+'</span><span>'+the_range+'%</span></li>')
+						}
+					}
+				},
+				error:function(XMLHttpRequest,msg,res){
+					console.log(msg);
+				}
+			});
+			//获取文章
+			$.ajax({
+				url: sever_url+'/coverinfo/article',
+				type: 'post',
+				data: {
+					cover_plate: 1,
+				},
+				// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+				dataType: 'json',
+				success: function(res) {
+//					console.log(res)
+					//热点文章
+					$("#hotpost").html('');
+					for(var index in res.data.hot_post){
+						var li = $('<li></li>');
+						var a = $('<a></a>');
+						a.attr('id',res.data.hot_post[index].id);
+						a.attr('href','forum.html?post_id='+res.data.hot_post[index].id);
+						var b = $('<b>·</b>');
+						var span = $('<span>'+res.data.hot_post[index].post_title+'</span>');
+						li.append(a);
+						a.append(b);
+						a.append(span);
+						$("#hotpost").append(li);
+					}
+					//最热悬赏hot_reward
+					$("#hotreward").html('');
+					for(var index in res.data.hot_reward){
+						var li = $('<li></li>');
+						var a = $('<a></a>');
+						a.attr('id',res.data.hot_reward[index].id);
+						a.attr('href','forum.html?post_id='+res.data.hot_reward[index].id);
+						var b = $('<b>·</b>');
+						var span = $('<span>'+res.data.hot_reward[index].post_title+'</span>');
+						li.append(a);
+						a.append(b);
+						a.append(span);
+						$("#hotreward").append(li);
+					}
+					//外网信息
+					$("#outweb").html('');
+					for(var index in res.data.out_post){
+						var li = $('<li></li>');
+						var a = $('<a>'+res.data.out_post[index].out_title+'</a>');
+						a.attr('href',res.data.out_post[index].out_url);
+						li.append(a);
+						$("#outweb").append(li);
+					}
+					//原创original
+					$("#original").html('');
+					for(var index in res.data.original){
+						var li = $('<li></li>');
+						var a = $('<a></a>');
+						a.attr('href','forum.html?postid='+res.data.original[index].id);
+						var b = $('<b>·</b>');
+						li.append(a);
+						a.append(b);
+						a.append(res.data.original[index].post_title);
+						$("#original").append(li);
+					}
+					//推荐
+					$("#recommend").html('');
+					for(var index in res.data.recommend){
+						var li = $('<li></li>');
+						var a = $('<a></a>');
+						a.attr('id',res.data.recommend[index].id);
+						a.attr('href','forum.html?postid='+res.data.recommend[index].id);
+						var b = $('<b>·</b>');
+						var span = $('<span>'+res.data.recommend[index].post_title+'</span>');
+						li.append(a);
+						a.append(b);
+						a.append(span);
+						$("#recommend").append(li);
+					}
+				},
+				error:function(XMLHttpRequest,msg,res){
+					console.log(msg);
+				}
+			});
+			
+			//文章分类
+			$.ajax({
+				type:"post",
+				url:sever_url+"coverinfo/middle",
+				async:true,
+				data:{
+					cover_plate:1
+				},
+				dataType:"json",
+				success:function(data){
+					console.log(data)
+					if(data.code=="200"){
+						for(var key in data.data){
+							var obj = data.data;
+							var type = "政策法规";
+							var postUrl = "index.html?type=0&plate=1&two=1";
+							if(key=="policy"){
+								type = "政策法规";
+								postUrl = "index.html?type=0&plate=1&two=1";
+							}else if(key=="project"){
+								type = "项目市场";
+								postUrl = "index.html?type=0&plate=1&two=3";
+							}else if(key=="paper"){
+								type = "论文数据";
+								postUrl = "index.html?type=0&plate=1&two=11";
+							}else if(key=="build"){
+								type = "建设投产";
+								postUrl = "index.html?type=0&plate=1&two=21";
+							}else if(key=="management"){
+								type = "经营管理";
+								postUrl = "index.html?type=0&plate=1&two=31";
+							}else if(key=="information"){
+								type = "信息推广";
+								postUrl = "index.html?type=0&plate=1&two=41";
+							}else if(key=="admin"){
+								type = "项目管理";
+								postUrl = "index.html?type=0&plate=1&two=51";
+							}else if(key=="english"){
+								type = "English";
+								postUrl = "index.html?type=0&plate=1&two=61";
+							}
+							if(obj[key].length){
+								$("#postList").append('<div class="zy_title layout"><h2 class="selected">'+type+'<i></i></h2><a href="'+postUrl+'" class="more">更多>></a></div>');
+								var div_dom = $('<div class="news_list zy_listbox"></div>');
+								var dom = $('<ul></ul>');
+								var Arr = obj[key];
+								for(var i=0;i<Arr.length;i++){
+									$(dom).append('<li><img src="'+Arr[i].post_photo+'"/><div class="blog_list postStyle"><div class="news_title"><a href="forum.html?postid='+Arr[i].id+'&plate='+Arr[i].post_label+'" style="max-width: 360px;">'+Arr[i].post_title+'</a><i class="red_news">['+Arr[i].post_label+']</i></div><div class="news_time news_other"><span>发布于：'+Arr[i].post_releasetime+'</span><span id="">阅读数：'+Arr[i].post_readnum+'</span></div><div class="news_owner news_other"><span id="">发帖人：'+Arr[i].last_user_name+'</span><span id="">最后回复人：'+Arr[i].post_user_name+'</span><div class="share share_ml bdsharebuttonbox">分享：<a url="forum.html?postid='+Arr[i].id+'&plate='+Arr[i].post_label+'" class="bds_weixin" data-cmd="weixin"></a><a url="forum.html?postid='+Arr[i].id+'&plate='+Arr[i].post_label+'" class="bds_tsina" data-cmd="tsina"></a></div></div></div></li>');
+								}
+								$(div_dom).html(dom);
+								$("#postList").append(div_dom);
+								$('.bdsharebuttonbox a').on('mousemove', function() {
+									var title = $(this).attr('title');
+									var Url = $(this).attr('url');
+									$("#share_url").val(title + "||" + Url);
+								})
+							}
+						}
+						window._bd_share_main.init();
+					}
+				}
+			});
+			//用户排行榜
+			$.ajax({
+				url: sever_url+'/statistic/user/rank',
+				type: 'post',
+				// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+				dataType: 'json',
+				success: function(res) {
+//					console.log(res);
+					//发帖总排名
+					$("#release_total").html('');
+					for(var index in res.data.rank_release_total){
+						var rank = parseInt(index)+1;
+						var li = $('<li></li>');
+						var span1 = $('<span>'+rank+'.'+res.data.rank_release_total[index].user_name+'</span>');
+						var span2 = $('<span>'+Number(res.data.rank_release_total[index].count)+'篇</span>');
+						li.attr('class','ranking')
+						li.append(span1);
+						li.append(span2);
+						$("#release_total").append(li);
+					}
+					//积分总排名
+					$("#coin_total").html('');
+					for(var index in res.data.rank_coin_total){
+						var rank = parseInt(index)+1;
+						var li = $('<li></li>');
+						var span1 = $('<span>'+rank+'.'+res.data.rank_coin_total[index].user_name+'</span>');
+						var span2 = $('<span>'+Number(res.data.rank_coin_total[index].wallet_coin)+'</span>');
+						li.attr('class','ranking')
+						li.append(span1);
+						li.append(span2);
+						$("#coin_total").append(li);
+					}
+					//获赞总排名
+					$("#support_total").html('');
+					for(var index in res.data.rank_support_total){
+						var rank = parseInt(index)+1;
+						var li = $('<li></li>');
+						var span1 = $('<span>'+rank+'.'+res.data.rank_support_total[index].user_name+'</span>');
+						var span2 = $('<span>'+Number(res.data.rank_support_total[index].user_laid_sum)+'赞</span>');
+						li.attr('class','ranking')
+						li.append(span1);
+						li.append(span2);
+						$("#support_total").append(li);
+					}
+				},
+				error:function(XMLHttpRequest,msg,res){
+					console.log(msg);
+				}
+			});
+			//监听头部菜单
+			$('#top_list').on('click','h2',function(){
+				$('h2').removeClass("selected");
+				$(this).attr('class','selected');
+				var index = $('#top_list h2').index(this);//获取当前选中下标，0-3
+				if(infodata){
+                    var token = infodata.token;
+                }else{
+                    var token = '';
+                }
+				//后端判断
+				$.ajax({
+					url: sever_url+'coverinfo/chooselist',
+					type: 'post',
+					data: {
+						cover_plate: 1,
+						list:index,
+						token:token
+					},
+					// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+					dataType: 'json',
+					success: function(res) {
+//						console.log(res)
+						if(res.code==2){
+							alert('您未登陆，无法查看关注信息，请登陆后查看')
+						}
+						//推荐
+						$("#recommend").html('');
+						for(var index in res.data){
+							var li = $('<li></li>');
+							var a = $('<a></a>');
+							a.attr('id',res.data[index].id);
+							a.attr('href','forum.html?postid='+res.data[index].id);
+							var b = $('<b>·</b>');
+							var span = $('<span>'+res.data[index].post_title+'</span>');
+							li.append(a);
+							a.append(b);
+							a.append(span);
+							$("#recommend").append(li);
+						}
+					},
+					error:function(XMLHttpRequest,msg,res){
+						console.log(msg);
+					}
+				});
+			});
+			$('.hiden_list').hide();
+			$('.hiden_list_w').hide();
+			//监听头像鼠标移入事件
+			$("#head").mouseover(function(){
+				if(!infodata){
+					return;
+				}
+				if(infodata.user_power_num==4){
+					$('.hiden_list_w').show();
+				}else{
+					$('.hiden_list').show();
+				}
+			});
+			$("#topbanner").mouseover(function(){
+				if(!infodata){
+					return;
+				}
+				if(infodata.user_power_num==4){
+					$('.hiden_list_w').hide();
+				}else{
+					$('.hiden_list').hide();
+				}
+			});
+			//退出登陆清除数据
+			function delsession(){
+				sessionStorage.clear();
+			}
+		</script>
+	</body>
+</html>

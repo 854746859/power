@@ -136,7 +136,7 @@
 	left: 0;
 	width: 100%;
 	height: 3px;
-	background-color: #e0620d;
+	background-color: #0084ff;
 }
 
 /*领导班子*/
@@ -287,9 +287,14 @@
 .other_page h1{ font-size: 32px; color: #005389; text-align: center; padding: 24px 0; }
 
 /*搜索结果*/
-.news_list{
-	height: 750px;
+.news_title{
+	font-size: 18px;
+    font-weight: 600;
+    line-height: 1.6;
+    font-family: PingFangSC-Regular,PingFang SC;
+    color: rgba(0,0,0,0.85);
 }
+.news_list{height: 750px;}
 .news_list ul li{ line-height: 38px; display: flex; flex-direction: row;padding: 10px 0;border-bottom: 1px solid #eee;}
 .news_list ul li img{
 	width: 90px;

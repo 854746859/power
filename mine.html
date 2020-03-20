@@ -74,7 +74,7 @@
 			
 			.mine {
 				border-bottom: 1px solid #ddd;
-				background-color: #005389;
+				background-color: #0084ff;
 			}
 			
 			.classification ul {
@@ -408,7 +408,8 @@
 			}
 			
 			.select {
-				background: #1a83da !important;
+				background: #36f1fa !important;
+				border-radius: 5px;
 			}
 			
 			.mine_box {
@@ -1026,10 +1027,10 @@
 					<div class="edit_info">
 						<!--<input type="button" name="" id="check" value="认证" />
 						<input type="button" name="" id="edit" value="编辑" />-->
-						<a rel="leanModal" name="test" href="#test">编辑信息</a>
+						<a href="personal.html">编辑信息</a>
 						<a  rel="leanModal" name="signup" href="#signup">实名认证</a>
 					</div>
-					<div id="signup">
+					<!--<div id="signup">
 						<div id="signup-ct">
 							<div id="signup-header">
 								<h2>实名认证</h2>
@@ -1091,7 +1092,7 @@
 								</div>
 							</form>
 						</div>
-					</div>
+					</div>-->
 				</div>
 
 				<div class="conbox fix">
@@ -1573,10 +1574,10 @@
 					<a href="newslist.html">办事指南</a>
 				</li>
 			</ul>
-			<div class="l">
+			<!--<div class="l">
 				<a href="http://121.43.68.40/exposure/jiucuo.html?site_code=5200000083&url=www.guizhou.gov.cn" target="blank" class="dib vm"><img src="images/zhaocuo.png" /></a>
 				<a href="http://bszs.conac.cn/sitename?method=show&id=09D70ADDD9E64427E053022819AC3042" target="blank" class="dib vm"><img src="images/dangzheng.png"></a>
-			</div>
+			</div>-->
 			<div class="l txt">
 				<p><img src="images/beian.png">X公网安备 5201030200xxxx号&nbsp;&nbsp;&nbsp;XICP备xxxxxxxxx号-2&nbsp;&nbsp;&nbsp;政府网站标识码：520xxxxxxxx
 				</p>
@@ -1654,56 +1655,56 @@
 			var infodata = eval('(' + data + ')');
 			// console.log(infodata.token);
 			//认证
-			$("#check").click(function() {
-				$.ajax({
-					type:"post",
-					url:sever_url+"real/iden",
-					async:true,
-					data:{
-						token:infodata.token,
-						user_realname:$("#user_realname").val(),
-						user_company:$("#user_company").val(),
-						user_number:$("#user_number").val(),
-						idcard_number:$("#idcard_number").val(),
-						idcard:""
-					},
-					dataType:"json",
-					success:function(data){
-						console.log(data)
-					}
-				});
-			})
+//			$("#check").click(function() {
+//				$.ajax({
+//					type:"post",
+//					url:sever_url+"real/iden",
+//					async:true,
+//					data:{
+//						token:infodata.token,
+//						user_realname:$("#user_realname").val(),
+//						user_company:$("#user_company").val(),
+//						user_number:$("#user_number").val(),
+//						idcard_number:$("#idcard_number").val(),
+//						idcard:""
+//					},
+//					dataType:"json",
+//					success:function(data){
+//						console.log(data)
+//					}
+//				});
+//			})
 			//编辑
-			$("#edit").click(function() {
-				var picfile = $("#imageFile").get(0).files[0];
-				var formData = new FormData();
-				formData.append("imgFile", picfile);
-				formData.append("token", infodata.token);
-				formData.append("user_name", $("#userName").val());
-				formData.append("user_profile", $("#userProfile").val());
-				formData.append("user_address", $("#userAddress").val());
-				$.ajax({
-					type:"post",
-					url:sever_url+"perfect",
-					async:true,
-					processData: false,
-					contentType: false,
-					data:formData,
-					dataType:"json",
-					success:function(data){
-						console.log(data)
-						if(data.code=="200"){
-							var obj = JSON.stringify(data.data);
-							sessionStorage.setItem("data",obj);
-							$("#head").attr("src",data.data.user_head);
-							$("#user_head img").attr("src",data.data.user_head);
-							$("#user_name").html(data.data.user_name);
-							$("#user_profile").html(data.data.user_profile);
-							$("#user_address").html(data.data.user_address);
-						}
-					}
-				});
-			})
+//			$("#edit").click(function() {
+//				var picfile = $("#imageFile").get(0).files[0];
+//				var formData = new FormData();
+//				formData.append("imgFile", picfile);
+//				formData.append("token", infodata.token);
+//				formData.append("user_name", $("#userName").val());
+//				formData.append("user_profile", $("#userProfile").val());
+//				formData.append("user_address", $("#userAddress").val());
+//				$.ajax({
+//					type:"post",
+//					url:sever_url+"perfect",
+//					async:true,
+//					processData: false,
+//					contentType: false,
+//					data:formData,
+//					dataType:"json",
+//					success:function(data){
+//						console.log(data)
+//						if(data.code=="200"){
+//							var obj = JSON.stringify(data.data);
+//							sessionStorage.setItem("data",obj);
+//							$("#head").attr("src",data.data.user_head);
+//							$("#user_head img").attr("src",data.data.user_head);
+//							$("#user_name").html(data.data.user_name);
+//							$("#user_profile").html(data.data.user_profile);
+//							$("#user_address").html(data.data.user_address);
+//						}
+//					}
+//				});
+//			})
 			if(infodata != null) {
 				var admin_box_head = '';
 				var infodatatoken = infodata.token
@@ -1861,7 +1862,7 @@
 							};
 
 							var b = {
-								background: '#005389'
+								background: '#0084ff'
 							};
 
 							$(".pagination").Paging({
@@ -1972,7 +1973,7 @@
 							};
 
 							var b = {
-								background: '#005389'
+								background: '#0084ff'
 							};
 
 							$(".pagination").Paging({
@@ -2059,7 +2060,7 @@
 							};
 
 							var b = {
-								background: '#005389'
+								background: '#0084ff'
 							};
 
 							$(".pagination").Paging({
@@ -2133,7 +2134,7 @@
 							};
 
 							var b = {
-								background: '#005389'
+								background: '#0084ff'
 							};
 
 							$(".pagination").Paging({
@@ -2260,7 +2261,7 @@
 									};
 
 									var b = {
-										background: '#005389'
+										background: '#0084ff'
 									};
 
 									$(".pagination").Paging({
@@ -2356,7 +2357,7 @@
 										};
 
 										var b = {
-											background: '#005389'
+											background: '#0084ff'
 										};
 
 										$(".pagination").Paging({
@@ -2487,7 +2488,7 @@
 										};
 
 										var b = {
-											background: '#005389'
+											background: '#0084ff'
 										};
 
 										$(".pagination").Paging({
