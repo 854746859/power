@@ -23,11 +23,11 @@
         dataJson: null,
         selectpattern: [{
                 field: 'userProvinceId',
-                placeholder: '请选择省份'
+                placeholder: '请选择省份(必填项)'
             },
             {
                 field: 'userCityId',
-                placeholder: '请选择城市'
+                placeholder: '请选择城市(必填项)'
             },
             {
                 field: 'userDistrictId',
