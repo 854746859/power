@@ -84,10 +84,14 @@
 				align-items: center;
  			}
  			.banner{
- 				margin: 100px 0;
+ 				width: 100%;
+ 			}
+ 			.banner img{
+ 				width: 74%;
+ 				margin: 100px 13%;
  			}
  			.icon_box{
- 				width: 60%;
+ 				width: 74%;
  				height: 120px;
  				display: flex;
  				flex-direction: row;
@@ -96,10 +100,11 @@
  				margin-top: -60px;
  			}
  			.icon{
- 				width: 60px;
- 				height: 60px;
- 				background-color: #008C81;
+ 				width: 75px;
+ 				height: 75px;
+ 				/*background-color: #008C81;*/
  				box-shadow: 4px 4px 2px #B5B5B5;
+ 				border-radius: 5px;
  			}
  			.block_box{
  				width: 100%;
@@ -112,7 +117,7 @@
  			}
  			.partener{
  				width: 100%;
- 				height: 600px;
+ 				/*height: 600px;*/
  				background-color: #D2D2D2;
  				padding: 40px 0;
  				display: flex;
@@ -122,7 +127,7 @@
  			}
  			.block_box,.partener .title{
  				font-size: 50px;
- 				letter-spacing: 8px;
+ 				/*letter-spacing: 8px;*/
  			}
  			.news_box{
  				width: 60%;
@@ -146,6 +151,28 @@
  				list-style: disc;
  				border-bottom: 1px solid rgba(0,0,0,0.1);
  				margin: 10px 0;
+ 			}
+ 			.partner_logo{
+ 				margin-top: 10px;
+ 				width: 80%;
+ 				display: flex;
+ 				flex-direction: row;
+ 				flex-wrap: wrap;
+ 				justify-content: center;
+ 			}
+ 			.partner_logo img{
+ 				height: 40px;
+ 				margin: 10px;
+ 			}
+ 			.intro{
+ 				display: flex;
+ 				flex-direction: row;
+ 				margin-top: 60px;
+ 				width: 60%;
+ 			}
+ 			.intro .intro_box{
+ 				width: 50%;
+ 				height: 160px;
  			}
 		</style>
 	</head>
@@ -266,23 +293,23 @@
 				</div>
 				<!--横幅一-->
 				<div class="banner">
-					<img src="images/true.jpg"/>
+					<img src="images/coverLogo/广告1.png"/>
 				</div>
 				<!--小图标-->
 				<div class="icon_box">
-					<div class="icon"></div>
-					<div class="icon"></div>
-					<div class="icon"></div>
-					<div class="icon"></div>
-					<div class="icon"></div>
-					<div class="icon"></div>
-					<div class="icon"></div>
-					<div class="icon"></div>
-					<div class="icon"></div>
+					<div class="icon"><img src="images/coverLogo/1LNG.png"/></div>
+					<div class="icon"><img src="images/coverLogo/2油.png"/></div>
+					<div class="icon"><img src="images/coverLogo/3电力.png"/></div>
+					<div class="icon"><img src="images/coverLogo/4核能.png"/></div>
+					<div class="icon"><img src="images/coverLogo/5管理.png"/></div>
+					<div class="icon"><img src="images/coverLogo/6海洋.png"/></div>
+					<div class="icon"><img src="images/coverLogo/7新能源.png"/></div>
+					<div class="icon"><img src="images/coverLogo/8化工.png"/></div>
+					<div class="icon"><img src="images/coverLogo/9煤炭.png"/></div>
 				</div>
 				<!--横幅二-->
-				<div class="banner" style="margin-top: 50px;">
-					<img src="images/red.jpg"/>
+				<div class="banner">
+					<img src="images/coverLogo/广告2.png"/>
 				</div>
 				<!--滚动新闻-->
 				<div class="block_box">
@@ -336,6 +363,54 @@
 				<div class="partener">
 					<div class="title">
 						友情链接
+					</div>
+					<div class="partner_logo">
+						<a href="http://www.wanfangdata.com.cn/index.html" target="_blank"><img src="images/partner/1.png"/></a>
+						<a href="http://www.nea.gov.cn/" target="_blank"><img src="images/partner/2.jpg"/ title="国家能源局"></a>
+						<a href="http://www.cas.cn/" target="_blank"><img src="images/partner/3.png"/></a>
+						<a href="https://www.ncepu.edu.cn/" target="_blank"><img src="images/partner/4.png"/></a>
+						<a href="http://www.cae.cn/" target="_blank"><img src="images/partner/5.png"/></a>
+						<a href="http://www.cqvip.com/" target="_blank"><img src="images/partner/6.png"/></a>
+						<a href="https://www.linkedin.com/" target="_blank"><img src="images/partner/7.png" title="领英"/></a>
+						<a href="https://www.cugb.edu.cn/index.action" target="_blank"><img src="images/partner/8.png"/></a>
+						<a href="https://www.igu.org/" target="_blank"><img src="images/partner/9.png"/></a>
+						<a href="http://www.ine.cn/" target="_blank"><img src="images/partner/10.png"/ title="上海国际能源交易中心"></a>
+						<a href="https://www.guokr.com/" target="_blank"><img src="images/partner/11.png"/></a>
+						<a href="https://www.un.org/zh" target="_blank"><img src="images/partner/12.png"/></a>
+						<a href="https://www.shpgx.com/html/index.html" target="_blank"><img src="images/partner/13.png"/ title="上海石油天然气交易中心"></a>
+						<a href="https://xs.glgoo.org/" target="_blank"><img src="images/partner/14.png" title="Glgoo学术搜索"/></a>
+						<a href="https://36kr.com/" target="_blank"><img src="images/partner/15.png"/></a>
+						<a href="https://www.cnki.net/" target="_blank"><img src="images/partner/16.png"/></a>
+						<a href="https://www.elsevier.com/zh-cn" target="_blank"><img src="images/partner/17.png"/ title="ELSEVIER"></a>
+						<a href="http://www.cug.edu.cn/" target="_blank"><img src="images/partner/18.png"/></a>
+						<a href="http://www.upc.edu.cn/" target="_blank"><img src="images/partner/19.png"/></a>
+						<a href="http://www.cumt.edu.cn/" target="_blank"><img src="images/partner/20.png"/></a>
+						<a href="http://www.cup.edu.cn/" target="_blank"><img src="images/partner/21.png"/></a>
+						<a href="https://www.tsinghua.edu.cn/publish/thu2018/index.html" target="_blank"><img src="images/partner/22.png"/></a>
+						<a href="https://www.cumtb.edu.cn/" target="_blank"><img src="images/partner/23.png"/></a>
+						<a href="https://www.pku.edu.cn" target="_blank"><img src="images/partner/24.png"/></a>
+						<a href="http://www.engineering.org.cn/" target="_blank"><img src="images/partner/25.png"/></a>
+						<a href="http://www.nlc.cn/" target="_blank"><img src="images/partner/26.jpg"/></a>
+						<a href="http://www.ouc.edu.cn/" target="_blank"><img src="images/partner/27.jpg"/></a>
+						<a href="http://journal.hep.com.cn/hep/EN/hep/home.shtml" target="_blank"><img src="images/partner/28.png"/></a>
+						<a href="https://www.ndrc.gov.cn/" target="_blank"><img src="images/partner/29.png"/ title="国家发改委"></a>
+						<a href="https://www.zhihu.com/" target="_blank"><img src="images/partner/30.png"/></a>
+					</div>
+					<div class="intro">
+						<div class="intro_box">
+							<h4>您，是能源公社的主人</h4>
+							<h4>您，不仅是贡献者，更是收益者</h4>
+							<h4>专业 专注 共创 共享</h4>
+							<h4>Professional Dedicated</h4>
+						</div>
+						<div class="intro_box">
+							<h4>能源公社，期待您的加入</h4>
+							<h4>www.chinanengyuan.com</h4>
+							<h4>www.onelng.com</h4>
+						</div>
+					</div>
+					<div class="intro">
+						<h6>注册用户可享受公社收益，实名认证即享收益PLUS，详见社员公约</h6>
 					</div>
 				</div>
 			</div>

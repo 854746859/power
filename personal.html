@@ -42,12 +42,22 @@
 				margin: 80px auto;
 			}
 			.user_info{
-				width: 100%;
+				width: 80%;
 				margin-left: 40px;
 			}
 			.user_logo{
 				position: relative;
 				top: -40px;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				font-size: 14px;
+			}
+			.user_logo img{
+				width: 120px;
+				height: 120px;
+				border-radius: 60px;
+				margin-bottom: 5px;
 			}
 			.name{
 				width: 100%;
@@ -56,8 +66,20 @@
 				justify-content: space-between;
 				align-items: flex-end;
 			}
-			.name h1{
+			.user_name{
+				display: flex;
+				flex-direction: row;
+				align-items: flex-end;
+			}
+			.user_name input{
 				font-family: -apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+				font-size: 34px;
+				width: 140px;
+				font-weight: 600;
+			}
+			.user_name a{
+				font-size: 14px;
+				color: #0084ff !important;
 			}
 			.name a{
 				cursor: pointer;
@@ -73,7 +95,7 @@
 			.user_info li{
 				display: flex;
 				flex-direction: row;
-				align-items: center;
+				align-items: flex-start;
 				justify-content: space-between;
 				height: 80px;
 				width: 100%;
@@ -82,7 +104,15 @@
 			}
 			.edit{
 				position: relative;
-				left: -480px;
+				width: 80%;
+				left: -30px;
+			}
+			.edit textarea{
+				width: 80%;
+				height: 70px;
+				border: 1px solid #eee;
+				padding: 6px;
+				font-size: 16px;
 			}
 			/*鼠标移入菜单*/
 			.hiden_list{
@@ -105,7 +135,20 @@
 			.hiden_list_w ul li{
 				border-bottom:1px dotted;
 			}
-			
+			.bt{
+				width: 100%;
+				margin-top: 10px;
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+			}
+			.bt button{
+				width: 100px;
+				height: 40px;
+				background-color: #0084ff;
+				color: #fff;
+				border-radius: 20px;
+			}
 		</style>
 	</head>
 	<body>
@@ -223,31 +266,28 @@
 				</script>
 			</div>
 			<div class="person_info">
-				<div class="user_logo">
-					<img src="images/manager.jpg" width="120px"/>
+				<div class="user_logo" id="select_pic">
+					<img id="imageShow" src="images/manager.jpg"/>
+					<div class="clilck_logo">
+						点击图片更换头像
+					</div>
+					<input type="file" name="" id="pic_file" value="" accept="image/*" style="display: none;"/>
 				</div>
 				<div class="user_info">
 					<div class="name">
-						<div class="user_name"><h1>Jasson</h1></div>
-						<div><a>返回主页>></a></div>
+						<div class="user_name">
+							<input type="text" name="" id="name" value="Jasson" disabled="disabled"/>
+							<a id="name_change">修改</a>
+						</div>
+						<div><a href="mine.html">返回主页>></a></div>
 					</div>
 					<ul>
-						<li>
-							<div class="dir">
-								<h3>性别：</h3>
-							</div>
-							<div class="edit">
-								<label><input type="radio" name="sex" value="男生">男生</label>
-								<label><input type="radio" name="sex" value="女生">女生</label>
-							</div>
-						</li>
 						<li>
 							<div class="dir">
 								<h3>介绍自己：</h3>
 							</div>
 							<div class="edit">
-								<label><input type="radio" name="sex" value="男生">男生</label>
-								<label><input type="radio" name="sex" value="女生">女生</label>
+								<textarea name="" id="user_profile" rows="3" cols=""></textarea>
 							</div>
 						</li>
 						<li>
@@ -255,29 +295,13 @@
 								<h3>居住地：</h3>
 							</div>
 							<div class="edit">
-								<label><input type="radio" name="sex" value="男生">男生</label>
-								<label><input type="radio" name="sex" value="女生">女生</label>
-							</div>
-						</li>
-						<li>
-							<div class="dir">
-								<h3>所在行业：</h3>
-							</div>
-							<div class="edit">
-								<label><input type="radio" name="sex" value="男生">男生</label>
-								<label><input type="radio" name="sex" value="女生">女生</label>
-							</div>
-						</li>
-						<li>
-							<div class="dir">
-								<h3>学历：</h3>
-							</div>
-							<div class="edit">
-								<label><input type="radio" name="sex" value="男生">男生</label>
-								<label><input type="radio" name="sex" value="女生">女生</label>
+								<textarea name="" id="address" rows="3" cols=""></textarea>
 							</div>
 						</li>
 					</ul>
+					<div class="bt">
+						<button id="submit">提交</button>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -316,6 +340,71 @@
 		<script type="text/javascript" src="config.js"></script>
 		<script type="text/javascript" src="js/paging/paging.js"></script>
 		<script type="text/javascript">
+			//选择图片
+			$("#imageShow").click(function() {
+				$("#pic_file").click();
+				//在input file内容改变的时候触发事件
+				$('#pic_file').change(function() {
+					//获取input file的files文件数组;
+					//$('#pic_file')获取的是jQuery对象，.get(0)转为原生对象;
+					//这边默认只能选一个，但是存放形式仍然是数组，所以取第一个元素使用[0];
+					var file = $('#pic_file').get(0).files[0];
+					//创建用来读取此文件的对象
+					var reader = new FileReader();
+					//使用该对象读取file文件
+					reader.readAsDataURL(file);
+					//读取文件成功后执行的方法函数
+					reader.onload = function(e) {
+						//读取成功后返回的一个参数e，整个的一个进度事件
+						//			        console.log(e);
+						//选择所要显示图片的img，要赋值给img的src就是e中target下result里面
+						//的base64编码格式的地址
+						$('#imageShow').get(0).src = e.target.result;
+					}
+				})
+			})
+			$("#name").val(infodata.user_name);
+			$("#imageShow").attr("src",infodata.user_head);
+			$("#user_profile").val(infodata.user_profile);
+			//修改name
+			$("#name_change").click(function(){
+				$("#name").removeAttr("disabled");
+				$("#name").focus().select();
+			})
+			//提交
+			$("#submit").click(function(){
+				var picfile = $("#pic_file").get(0).files[0];
+				var formData = new FormData();
+				formData.append("imgFile", picfile);
+				formData.append("token", infodata.token);
+				formData.append("user_name", $("#name").val());
+				formData.append("user_profile", $("#user_profile").val());
+				formData.append("user_address", $("#address").val());
+				$.ajax({
+					type:"post",
+					url:sever_url+"perfect",
+					async:true,
+					processData: false,
+					contentType: false,
+					data:formData,
+					dataType:"json",
+					success:function(data){
+						console.log(data)
+						if(data.code=="200"){
+							var obj = JSON.stringify(data.data);
+							sessionStorage.setItem("data",obj);
+							$("#head").attr("src",data.data.user_head);
+							$("#user_head img").attr("src",data.data.user_head);
+							$("#user_name").html(data.data.user_name);
+							$("#user_profile").html(data.data.user_profile);
+							$("#user_address").html(data.data.user_address);
+							window.location.reload();
+						}else{
+							
+						}
+					}
+				});
+			})
 			// 获取当前分类
 			function GetRequest() {
 				var url = decodeURI(location.search); //获取url中"?"符后的字串
