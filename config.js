@@ -1,5 +1,6 @@
 //服务器地址
 var  sever_url = "http://114.55.35.82/tp6_forum/public/index.php/";
+var  lngImg = "";
 //获取URL传值
 function getUrldata(name) { 
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
@@ -82,11 +83,12 @@ function adConfig(Position){
 		},
 		dtaType:"json",
 		success:function(data){
-			console.log(data)
+			// console.log(data)
 			if(data.code=="200"){
 				var bottomBanner = data.data.bottom_banner;
 				var topBanner = data.data.top_banner;
 				var rightBanner = data.data.right_roll_poster;
+				console.log(data.data.lng_chart.cover_posterurl)
 				if(Object.prototype.toString.call(bottomBanner)== '[object Array]'){
 					for(var i=0;i<bottomBanner.length;i++){
 						$("#bottom_banner").append('<li><a href="'+bottomBanner[i].cover_href+'"><img src="'+bottomBanner[i].cover_posterurl+'" /></a></li>');
@@ -98,10 +100,13 @@ function adConfig(Position){
 				if(Object.prototype.toString.call(topBanner)== '[object Array]'){
 					for(var i=0;i<topBanner.length;i++){
 						$("#top_banner").append('<li><a href="'+topBanner[i].cover_href+'"><img src="'+topBanner[i].cover_posterurl+'" /></a></li>');
+						
 						$("#top_point").append('<li></li>');
 					}
+					$("#lngIndex").append(`<img src="${data.data.lng_chart.cover_posterurl}" />`)
 				}else{
 					$("#top_banner").append('<li><a href="'+topBanner.cover_href+'"><img src="'+topBanner.cover_posterurl+'" /></a></li>')
+					$("#lngIndex").append(`<img src="${data.data.lng_chart.cover_posterurl}" />`)
 				}
 				if(Position=="right"){
 					console.log(Position)
