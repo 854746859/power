@@ -410,7 +410,7 @@
 			}
 			
 			.select {
-				background: #36f1fa !important;
+				background: #41ccf6 !important;
 				border-radius: 5px;
 			}
 			
@@ -1104,28 +1104,28 @@
 									<div>
 										<ul id="navbar" class="fix">
 											<li class="select">
-												<a href="#original">原创</a>
+												<a name="original">原创</a>
 											</li>
 											<li>
-												<a href="#question">问答</a>
+												<a name="question">问答</a>
 											</li>
 											<li>
-												<a href="#favorite">收藏</a>
+												<a name="favorite">收藏</a>
 											</li>
 											<li>
-												<a href="#attention">关注</a>
+												<a name="attention">关注</a>
 											</li>
 											<li>
-												<a href="#fan">粉丝</a>
+												<a name="fan">粉丝</a>
 											</li>
 											<li>
-												<a href="#wallet">收益/钱包</a>
+												<a name="wallet">收益/钱包</a>
 											</li>
 											<li>
-												<a href="#post">快速发帖</a>
+												<a name="post">快速发帖</a>
 											</li>
 											<li>
-												<a href="#notice">系统通知</a>
+												<a name="notice">系统通知</a>
 											</li>
 										</ul>
 									</div>
@@ -2203,13 +2203,13 @@
 			$("#navbar li").click(function() {
 				if($(this).attr("class") != "select") {
 					var nav_a = $(this).find('a')[0];
-					var nav_id = $(nav_a).attr("href");
-					if(nav_id == "#question") {
+					var nav_id = $(nav_a).attr("name");
+					if(nav_id == "question") {
 						$("#hide").show();
 					} else {
 						$("#hide").hide();
 					}
-					if(nav_id != "#post") {
+					if(nav_id != "post") {
 						$("#pagiNation").removeAttr("hidden");
 					}
 					var part_arr = $(".zy_listbox");
@@ -2221,19 +2221,19 @@
 						$(li_arr[i]).removeAttr("class");
 					}
 					//					console.log(nav_id)
-					$(nav_id).removeAttr("hidden");
+					$("#"+nav_id).removeAttr("hidden");
 					$(this).attr("class", "select");
 					// 原创
-					if(nav_id === "#original") {
+					if(nav_id === "original") {
 						original();
 					} else // 问答
-						if(nav_id === "#question") {
+						if(nav_id === "question") {
 							question(1);
 							// 收藏
-						} else if(nav_id === "#favorite") {
+						} else if(nav_id === "favorite") {
 							favorite();
 						// 关注
-					} else if(nav_id === "#attention") {
+					} else if(nav_id === "attention") {
 						$.ajax({
 							url: sever_url + 'my/follows',
 							type: 'post',
@@ -2307,9 +2307,9 @@
 							},
 						})
 						// 粉丝
-					} else if(nav_id === "#fan") {
+					} else if(nav_id === "fan") {
 						fan();
-					} else if(nav_id === "#wallet") {
+					} else if(nav_id === "wallet") {
 						//收益/钱包
 						$.ajax({
 							url: sever_url + 'my/walletinfo',
@@ -2386,7 +2386,7 @@
 							});
 						}
 
-					} else if(nav_id == "#post") {
+					} else if(nav_id == "post") {
 						$("#pagiNation").attr("hidden", "hidden");
 						$("#Form :radio").on('click', function() {
 							var item = $(this).val();
@@ -2464,7 +2464,7 @@
 							});
 						})
 						// 系统通知
-					} else if(nav_id == "#notice") {
+					} else if(nav_id == "notice") {
 						$.ajax({
 							type: "post",
 							url: sever_url + "my/natice",
