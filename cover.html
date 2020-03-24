@@ -1,46 +1,52 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="utf-8">
 		<meta content="能源公社" http-equiv="keywords">
 		<meta name="description" content="能源公社">
 		<meta name="applicable-device" content="pc,mobile">
-		<meta http-equiv="Cache-Control" content="no-siteapp"/>
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
 		<meta http-equiv="Cache-Control" content="no-transform" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<title>能源公社</title>
 		<link rel="stylesheet" href="css/index.css" type="text/css">
-		<link rel="stylesheet" type="text/css" href="css/style.css"/>
-		<link rel="stylesheet" type="text/css" href="css/children.css"/>
-		<link rel="stylesheet" type="text/css" href="css/cover.css"/>
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link rel="stylesheet" type="text/css" href="css/children.css" />
+		<link rel="stylesheet" type="text/css" href="css/cover.css" />
 		<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-		<script type="text/javascript" src="js/public.js"></script><!-- 菜单js等-->
+		<script type="text/javascript" src="js/public.js"></script>
+		<!-- 菜单js等-->
 		<style type="text/css">
-			.cover_bg{
-				background-color: rgb(236,26,63);
+			.cover_bg {
+				background-color: rgb(236, 26, 63);
 			}
-			.cover_top{
+			
+			.cover_top {
 				display: flex;
 				flex-direction: row;
 				justify-content: space-between;
 			}
-			.bt{
+			
+			.bt {
 				width: 100px;
 				height: 40px;
 				font-weight: 600;
 				border-radius: 5px;
 				border: none;
 				background-color: #fff;
-				color: rgb(125,182,176);
+				color: rgb(125, 182, 176);
 			}
-			.contain{
+			
+			.contain {
 				width: 100%;
 				display: flex;
 				flex-direction: column;
 				align-items: center;
 				/*margin-bottom: 100px;*/
 			}
-			.search_contain{
+			
+			.search_contain {
 				width: 60%;
 				height: 60px;
 				margin: 60px auto;
@@ -49,7 +55,8 @@
 				justify-content: space-between;
 				align-items: center;
 			}
-			.search{
+			
+			.search {
 				width: 90%;
 				display: flex;
 				flex-direction: row;
@@ -57,130 +64,175 @@
 				padding: 5px 0;
 				border-bottom: 1px solid #008C81;
 			}
-			.search img{
+			
+			.search img {
 				width: 32px;
 				height: 32px;
 			}
-			.search_bt{
+			
+			.search_bt {
 				width: 100px;
 				height: 40px;
 				border-radius: 5px;
 				background-color: #008C81;
 				color: #fff;
 			}
-			.statistics{
+			
+			.statistics {
 				width: 70%;
 				height: 100px;
 				display: flex;
 				flex-direction: row;
 				justify-content: space-between;
 			}
-			.statistics .part{
+			
+			.statistics .part {
 				width: 25%;
 				height: 100px;
-				display:flex;
+				display: flex;
 				flex-direction: column;
 				justify-content: space-around;
 				align-items: center;
- 			}
- 			.banner{
- 				width: 100%;
- 			}
- 			.banner img{
- 				width: 74%;
- 				margin: 100px 13%;
- 			}
- 			.icon_box{
- 				width: 74%;
- 				height: 120px;
- 				display: flex;
- 				flex-direction: row;
- 				justify-content: space-between;
- 				align-items: center;
- 				margin-top: -60px;
- 			}
- 			.icon{
- 				width: 75px;
- 				height: 75px;
- 				/*background-color: #008C81;*/
- 				box-shadow: 4px 4px 2px #B5B5B5;
- 				border-radius: 5px;
- 			}
- 			.block_box{
- 				width: 100%;
- 				background-color: #e5e5e5;
- 				padding: 40px 0;
- 				display: flex;
- 				flex-direction: column;
- 				justify-content: center;
- 				align-items: center;
- 			}
- 			.partener{
- 				width: 100%;
- 				/*height: 600px;*/
- 				background-color: #D2D2D2;
- 				padding: 40px 0;
- 				display: flex;
- 				flex-direction: column;
- 				/*justify-content: center;*/
- 				align-items: center;
- 			}
- 			.block_box,.partener .title{
- 				font-size: 50px;
- 				/*letter-spacing: 8px;*/
- 			}
- 			.news_box{
- 				width: 60%;
- 				display: flex;
- 				flex-direction: row;
- 				justify-content: space-between;
- 				padding: 10px 0;
- 			}
- 			.news_card{
- 				width: 48%;
- 				display: flex;
- 				flex-direction: column;
- 				align-items: center;
- 				justify-content: center;
- 				background-color: #eee;
- 				border-radius: 6px;
- 				padding: 10px 0;
- 				
- 			}
- 			.news_box ul li{
- 				list-style: disc;
- 				border-bottom: 1px solid rgba(0,0,0,0.1);
- 				margin: 10px 0;
- 			}
- 			.partner_logo{
- 				margin-top: 10px;
- 				width: 80%;
- 				display: flex;
- 				flex-direction: row;
- 				flex-wrap: wrap;
- 				justify-content: center;
- 			}
- 			.partner_logo img{
- 				height: 40px;
- 				margin: 10px;
- 			}
- 			.intro{
- 				display: flex;
- 				flex-direction: row;
- 				margin-top: 60px;
- 				width: 60%;
- 			}
- 			.intro .intro_box{
- 				width: 50%;
- 				height: 160px;
- 			}
+			}
+			
+			.banner {
+				width: 100%;
+			}
+			
+			.banner img {
+				width: 74%;
+				margin: 100px 13%;
+			}
+			
+			.icon_box {
+				width: 74%;
+				height: 120px;
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				align-items: center;
+				margin-top: -40px;
+			}
+			
+			.icon_name {
+				width: 75px;
+				height: 120px;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+			
+			.icon_name span {
+				margin-top: 10px;
+			}
+			
+			.icon {
+				width: 75px;
+				height: 75px;
+				/*background-color: #008C81;*/
+				box-shadow: 4px 4px 2px #B5B5B5;
+				border-radius: 5px;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+			}
+			
+			.block_box {
+				width: 100%;
+				background-color: #e5e5e5;
+				padding: 40px 0;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+			}
+			
+			.partener {
+				width: 100%;
+				/*height: 600px;*/
+				background-color: #D2D2D2;
+				padding: 40px 0;
+				display: flex;
+				flex-direction: column;
+				/*justify-content: center;*/
+				align-items: center;
+			}
+			
+			.block_box,
+			.partener .title {
+				font-size: 50px;
+				/*letter-spacing: 8px;*/
+			}
+			
+			.news_box {
+				width: 60%;
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				padding: 10px 0;
+			}
+			
+			.news_card {
+				width: 48%;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				background-color: #eee;
+				border-radius: 6px;
+				padding: 10px 0;
+			}
+			
+			.news_box ul li {
+				list-style: disc;
+				border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+				margin: 10px 0;
+			}
+			
+			.partner_logo {
+				margin-top: 10px;
+				width: 80%;
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+				justify-content: center;
+			}
+			
+			.partner_logo a {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				font-size: 18px;
+				font-weight: 600;
+				padding: 20px;
+				color:#333;
+			}
+			
+			.partner_logo img {
+				height: 40px;
+				margin: 15px 10px 5px 10px;
+			}
+			
+			.intro {
+				display: flex;
+				flex-direction: row;
+				margin-top: 60px;
+				width: 60%;
+			}
+			
+			.intro .intro_box {
+				width: 50%;
+				height: 160px;
+			}
 		</style>
 	</head>
+
 	<body>
 		<!--头部-->
 		<div class="cover_bg">
 			<div class="wid_main topbox cover_bg cover_top">
-				<div class="l"><img src="images/6.png" alt="logo" width="140px"/></div>
+				<div class="l"><img src="images/6.png" alt="logo" width="140px" /></div>
 				<!--<nav>
 		            <div>
 		                <ul>
@@ -253,19 +305,19 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<!-- 主体内容框 -->
 		<div class="contentbox bora_5">
 			<div class="contain">
 				<div class="search_contain">
 					<div class="search">
-						<img src="images/searching.png"/>
+						<img src="images/searching.png" />
 						<input type="search" name="" id="" value="" />
 					</div>
 					<button class="search_bt">搜索</button>
 				</div>
 				<!--统计-->
-		        <div class="statistics">
+				<div class="statistics">
 					<div class="part">
 						<h1>3000+</h1>
 						<span id="">
@@ -293,23 +345,68 @@
 				</div>
 				<!--横幅一-->
 				<div class="banner">
-					<img src="images/coverLogo/广告1.png"/>
+					<img src="images/coverLogo/广告1.png" />
 				</div>
 				<!--小图标-->
 				<div class="icon_box">
-					<div class="icon"><a href="coverchild.html"><img src="images/coverLogo/1LNG.png"/></a></div>
-					<div class="icon"><img src="images/coverLogo/2油.png"/></div>
-					<div class="icon"><img src="images/coverLogo/3电力.png"/></div>
-					<div class="icon"><img src="images/coverLogo/4核能.png"/></div>
-					<div class="icon"><img src="images/coverLogo/5管理.png"/></div>
-					<div class="icon"><img src="images/coverLogo/6海洋.png"/></div>
-					<div class="icon"><img src="images/coverLogo/7新能源.png"/></div>
-					<div class="icon"><img src="images/coverLogo/8化工.png"/></div>
-					<div class="icon"><img src="images/coverLogo/9煤炭.png"/></div>
+					<div class="icon_name">
+						<div class="icon">
+							<a href="coverchild.html"><img src="images/coverLogo/煤气天然气.png" /></a>
+						</div>
+						<span>LNG</span>
+					</div>
+					<div class="icon_name">
+						<div class="icon">
+							<a href="#"><img src="images/coverLogo/能源化工.png" /></a>
+						</div>
+						<span>油气</span>
+					</div>
+					<div class="icon_name">
+						<div class="icon">
+							<a href="#"><img src="images/coverLogo/电力.png" /></a>
+						</div>
+						<span>电力</span>
+					</div>
+					<div class="icon_name">
+						<div class="icon">
+							<a href="#"><img src="images/coverLogo/核电.png" /></a>
+						</div>
+						<span>核电</span>
+					</div>
+					<div class="icon_name">
+						<div class="icon">
+							<a href="#"><img src="images/coverLogo/管理.png" /></a>
+						</div>
+						<span>项目管理</span>
+					</div>
+					<div class="icon_name">
+						<div class="icon">
+							<a href="#"><img src="images/coverLogo/海洋.png" /></a>
+						</div>
+						<span>海洋</span>
+					</div>
+					<div class="icon_name">
+						<div class="icon">
+							<a href="#"><img src="images/coverLogo/风电.png" /></a>
+						</div>
+						<span>新能源</span>
+					</div>
+					<div class="icon_name">
+						<div class="icon">
+							<a href="#"><img src="images/coverLogo/化工.png" /></a>
+						</div>
+						<span>化工</span>
+					</div>
+					<div class="icon_name">
+						<div class="icon">
+							<a href="#"><img src="images/coverLogo/运煤.png" /></a>
+						</div>
+						<span>煤炭</span>
+					</div>
 				</div>
 				<!--横幅二-->
 				<div class="banner">
-					<img src="images/coverLogo/广告2.png"/>
+					<img src="images/coverLogo/广告2.png" />
 				</div>
 				<!--滚动新闻-->
 				<div class="block_box">
@@ -365,36 +462,126 @@
 						友情链接
 					</div>
 					<div class="partner_logo">
-						<a href="http://www.wanfangdata.com.cn/index.html" target="_blank"><img src="images/partner/1.png"/></a>
-						<a href="http://www.nea.gov.cn/" target="_blank"><img src="images/partner/2.jpg"/ title="国家能源局"></a>
-						<a href="http://www.cas.cn/" target="_blank"><img src="images/partner/3.png"/></a>
-						<a href="https://www.ncepu.edu.cn/" target="_blank"><img src="images/partner/4.png"/></a>
-						<a href="http://www.cae.cn/" target="_blank"><img src="images/partner/5.png"/></a>
-						<a href="http://www.cqvip.com/" target="_blank"><img src="images/partner/6.png"/></a>
-						<a href="https://www.linkedin.com/" target="_blank"><img src="images/partner/7.png" title="领英"/></a>
-						<a href="https://www.cugb.edu.cn/index.action" target="_blank"><img src="images/partner/8.png"/></a>
-						<a href="https://www.igu.org/" target="_blank"><img src="images/partner/9.png"/></a>
-						<a href="http://www.ine.cn/" target="_blank"><img src="images/partner/10.png"/ title="上海国际能源交易中心"></a>
-						<a href="https://www.guokr.com/" target="_blank"><img src="images/partner/11.png"/></a>
-						<a href="https://www.un.org/zh" target="_blank"><img src="images/partner/12.png"/></a>
-						<a href="https://www.shpgx.com/html/index.html" target="_blank"><img src="images/partner/13.png"/ title="上海石油天然气交易中心"></a>
-						<a href="https://xs.glgoo.org/" target="_blank"><img src="images/partner/14.png" title="Glgoo学术搜索"/></a>
-						<a href="https://36kr.com/" target="_blank"><img src="images/partner/15.png"/></a>
-						<a href="https://www.cnki.net/" target="_blank"><img src="images/partner/16.png"/></a>
-						<a href="https://www.elsevier.com/zh-cn" target="_blank"><img src="images/partner/17.png"/ title="ELSEVIER"></a>
-						<a href="http://www.cug.edu.cn/" target="_blank"><img src="images/partner/18.png"/></a>
-						<a href="http://www.upc.edu.cn/" target="_blank"><img src="images/partner/19.png"/></a>
-						<a href="http://www.cumt.edu.cn/" target="_blank"><img src="images/partner/20.png"/></a>
-						<a href="http://www.cup.edu.cn/" target="_blank"><img src="images/partner/21.png"/></a>
-						<a href="https://www.tsinghua.edu.cn/publish/thu2018/index.html" target="_blank"><img src="images/partner/22.png"/></a>
-						<a href="https://www.cumtb.edu.cn/" target="_blank"><img src="images/partner/23.png"/></a>
-						<a href="https://www.pku.edu.cn" target="_blank"><img src="images/partner/24.png"/></a>
-						<a href="http://www.engineering.org.cn/" target="_blank"><img src="images/partner/25.png"/></a>
-						<a href="http://www.nlc.cn/" target="_blank"><img src="images/partner/26.jpg"/></a>
-						<a href="http://www.ouc.edu.cn/" target="_blank"><img src="images/partner/27.jpg"/></a>
-						<a href="http://journal.hep.com.cn/hep/EN/hep/home.shtml" target="_blank"><img src="images/partner/28.png"/></a>
-						<a href="https://www.ndrc.gov.cn/" target="_blank"><img src="images/partner/29.png"/ title="国家发改委"></a>
-						<a href="https://www.zhihu.com/" target="_blank"><img src="images/partner/30.png"/></a>
+						<a href="http://www.wanfangdata.com.cn/index.html">
+							<!--<img src="images/partner/1.png" />-->
+							<span>万方数据库</span>
+						</a>
+						<a href="http://www.nea.gov.cn/" target="_blank">
+							<!--<img src="images/partner/2.jpg" />-->
+							<span>国家能源局</span>
+						</a>
+						<a href="http://www.cas.cn/" target="_blank">
+							<!--<img src="images/partner/3.png" />-->
+							<span>中国科学院</span>
+						</a>
+						<a href="https://www.ncepu.edu.cn/" target="_blank">
+							<!--<img src="images/partner/4.png" />-->
+							<span>华北电力大学</span>
+						</a>
+						<a href="http://www.cae.cn/" target="_blank">
+							<!--<img src="images/partner/5.png" />-->
+							<span>中国工程院</span>
+						</a>
+						<a href="http://www.cqvip.com/" target="_blank">
+							<!--<img src="images/partner/6.png" />-->
+							<span>维普网</span>
+						</a>
+						<a href="https://www.linkedin.com/" target="_blank">
+							<!--<img src="images/partner/7.png" />-->
+							<span>领英</span>
+						</a>
+						<a href="https://www.cugb.edu.cn/index.action" target="_blank">
+							<!--<img src="images/partner/8.png" />-->
+							<span>中国地质大学（北京）</span>
+						</a>
+						<a href="https://www.igu.org/" target="_blank">
+							<!--<img src="images/partner/9.png" />-->
+							<span>IGU</span>
+						</a>
+						<a href="http://www.ine.cn/" target="_blank">
+							<!--<img src="images/partner/10.png" />-->
+							<span>上海国际能源交易中心</span>
+						</a>
+						<a href="https://www.guokr.com/" target="_blank">
+							<!--<img src="images/partner/11.png" />-->
+							<span>果壳</span>
+						</a>
+						<a href="https://www.un.org/zh" target="_blank">
+							<!--<img src="images/partner/12.png" />-->
+							<span>联合国</span>
+						</a>
+						<a href="https://www.shpgx.com/html/index.html" target="_blank">
+							<!--<img src="images/partner/13.png" />-->
+							<span>上海石油天然气交易中心</span>
+						</a>
+						<a href="https://xs.glgoo.org/" target="_blank">
+							<!--<img src="images/partner/14.png" />-->
+							<span>Glgoo学术搜索</span>
+						</a>
+						<a href="https://36kr.com/" target="_blank">
+							<!--<img src="images/partner/15.png" />-->
+							<span>36氪</span>
+						</a>
+						<a href="https://www.cnki.net/" target="_blank">
+							<!--<img src="images/partner/16.png" />-->
+							<span>中国知网</span>
+						</a>
+						<a href="https://www.elsevier.com/zh-cn" target="_blank">
+							<!--<img src="images/partner/17.png" />-->
+							<span>ELSEVIER</span>
+						</a>
+						<a href="http://www.cug.edu.cn/" target="_blank">
+							<!--<img src="images/partner/18.png" />-->
+							<span>中国地质大学（武汉）</span>
+						</a>
+						<a href="http://www.upc.edu.cn/" target="_blank">
+							<!--<img src="images/partner/19.png" />-->
+							<span>中国石油大学（华东）</span>
+						</a>
+						<a href="http://www.cumt.edu.cn/" target="_blank">
+							<!--<img src="images/partner/20.png" />-->
+							<span>中国矿业大学</span>
+						</a>
+						<a href="http://www.cup.edu.cn/" target="_blank">
+							<!--<img src="images/partner/21.png" />-->
+							<span>中国石油大学（北京）</span>
+						</a>
+						<a href="https://www.tsinghua.edu.cn/publish/thu2018/index.html" target="_blank">
+							<!--<img src="images/partner/22.png" />-->
+							<span>清华大学图书馆</span>
+						</a>
+						<a href="https://www.cumtb.edu.cn/" target="_blank">
+							<!--<img src="images/partner/23.png" />-->
+							<span>中国矿业大学（北京）</span>
+						</a>
+						<a href="https://www.pku.edu.cn" target="_blank">
+							<!--<img src="images/partner/24.png" />-->
+							<span>北京大学</span>
+						</a>
+						<a href="http://www.engineering.org.cn/" target="_blank">
+							<!--<img src="images/partner/25.png" />-->
+							<span>Engineering</span>
+						</a>
+						<a href="http://www.nlc.cn/" target="_blank">
+							<!--<img src="images/partner/26.jpg" />-->
+							<span>中国家图书馆</span>
+						</a>
+						<a href="http://www.ouc.edu.cn/" target="_blank">
+							<!--<img src="images/partner/27.jpg" />-->
+							<span>中国海洋大学</span>
+						</a>
+						<a href="http://journal.hep.com.cn/hep/EN/hep/home.shtml" target="_blank">
+							<!--<img src="images/partner/28.png" />-->
+							<span>Frontiers</span>
+						</a>
+						<a href="https://www.ndrc.gov.cn/" target="_blank">
+							<!--<img src="images/partner/29.png" />-->
+							<span>国家发改委</span>
+						</a>
+						<a href="https://www.zhihu.com/" target="_blank">
+							<!--<img src="images/partner/30.png" />-->
+							<span>知乎</span>
+						</a>
 					</div>
 					<div class="intro">
 						<div class="intro_box">
@@ -418,10 +605,18 @@
 		<!-- 底部 -->
 		<div class="footerbox cover_bg">
 			<ul class="other fix">
-				<li><a href="contact.html">联系我们</a></li>
-				<li><a href="about.html">机构概况</a></li>
-				<li><a href="info_public.html">信息公开</a></li>
-				<li><a href="newslist.html">办事指南</a></li>
+				<li>
+					<a href="contact.html">联系我们</a>
+				</li>
+				<li>
+					<a href="about.html">机构概况</a>
+				</li>
+				<li>
+					<a href="info_public.html">信息公开</a>
+				</li>
+				<li>
+					<a href="newslist.html">办事指南</a>
+				</li>
 			</ul>
 			<div class="l" id="outlogo">
 				<!-- 外部公司logo -->
@@ -432,9 +627,10 @@
 			</div>
 			<p>版权所有：XX市综合行政执法局&nbsp;&nbsp;&nbsp;地址：XX省XX市工业园区特1号</p>
 		</div>
-		<script type="text/javascript" src="config.js"></script><!-- 服务器地址-->
+		<script type="text/javascript" src="config.js"></script>
+		<!-- 服务器地址-->
 		<script type="text/javascript">
-		
 		</script>
 	</body>
+
 </html>

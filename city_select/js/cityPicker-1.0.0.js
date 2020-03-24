@@ -76,7 +76,7 @@
 
                     if (config.renderMode) {
                         //模拟
-                        html += '<li class="caller" data-id="' + data[i].id + '" data-title="' + reverse + '" ' + code + '>' + name + '</li>';
+                        html += '<li class="caller" style="height:28px" data-id="' + data[i].id + '" data-title="' + reverse + '" ' + code + '>' + name + '</li>';
                     } else {
                         //原生
                         html += '<option class="caller" value="' + storage + '" data-title="' + reverse + '" ' + code + '>' + name + '</option>';
