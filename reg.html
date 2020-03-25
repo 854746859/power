@@ -188,6 +188,21 @@
 			    $("#realReg").click(function(){
 			    	window.location.href="realReg.html";
 			    })
+			    //获取验证码
+			    $("#code").click(function(){
+			    	$.ajax({
+			    		type:"post",
+			    		url:sever_url+"sendSms",
+			    		async:true,
+			    		data:{
+			    			phone:$("#user_phone").val()
+			    		},
+			    		dataType:"json",
+			    		success:function(data){
+			    			console.log(data)
+			    		}
+			    	});
+			    })
 				$("#submit").click(function(){
 					if($("#user_password").val()==$("#user_password_again").val()){
 						$.ajax({

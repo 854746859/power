@@ -216,10 +216,45 @@
             .center{
                 width: 640px;
                 margin: 12px;
-                border: 1px solid #ededed;
+                /*border: 1px solid #ededed;*/
                 
             }
-            
+            .news_box:nth-child(n+2){
+            	margin: 10px 0;
+            }
+            .news_type{
+            	height: 40px;
+            	font-size: 18px;
+            	font-weight: 600;
+            	line-height: 40px;
+            	padding-left: 12px;
+            	border-bottom: 2px solid #eee;
+            }
+            .four_box{
+            	width: 80%;
+            	margin: 10px auto;
+            	display: flex;
+            	flex-direction: row;
+            	justify-content: space-between;
+            }
+            .four_box .per_info{
+            	width: 22%;
+            	/*height: 100px;*/
+            	display: flex;
+            	flex-direction: row;
+            	align-items: center;
+            }
+            .four_box .per_info .infomation{
+            	padding-left: 10px;
+            	display: flex;
+            	flex-direction: column;
+            }
+            .four_box .per_info .infomation h3{
+            	height: 30px;
+            }
+            .four_box .per_info .infomation div{
+            	font-size: 14px;
+            }
             .tabbar {
                 display: flex;
                 flex-direction: row;
@@ -307,11 +342,15 @@
             }
             .ranking{
                 width: 240px;
-                height: 224px;
+                /*height: 224px;*/
                 margin-top: 12px;
                 margin-bottom: 12px;
                 padding-bottom: 10px;
-                border: 1px solid #ededed;
+                /*border: 1px solid #ededed;*/
+            }
+            .ranking img{
+            	border: 1px solid #eee;
+            	margin-top: 10px;
             }
             .ranking-card{
                 display: flex;
@@ -375,43 +414,30 @@
 				display: flex;
 				flex-direction: row;
 			}
-			.bottom_box .partener{
-				width: 70%;
-				height: 190px;
-			}
-            .bottom_box .about_us{
-				width: 20%;
-				height: 120px;
-			}
-			.bottom_box .about_us a{
-				color: #fff;
-            }
-            .partener_list{
-				display: flex;
-				flex-direction: row;
-			}
-			.partener_list a{
-				color: #fff;
-			}
-			.partener_list ul{
-				margin: 10px 0 0 15px;
-            }
-            .triangle{
-				border-style: solid;
-	            border-width: 5px 0 5px 8px;
-	            border-color: transparent transparent transparent #fff;
-	            width: 0px;
-	            height: 0px;
-	            margin-right: 5px;
-            }
             .bottom_title{
 				display: flex;
 				flex-direction: row;
 				color:#fff;
 				align-items: center;
             }
-
-            
+            .partener{
+            	width: 70%;
+            	margin: 60px auto;
+            }
+			.partener .partener_title{
+				text-align: center;
+				font-size: 30px;
+				font-weight: 500;
+			}
+            .partener .partener_block{
+            	display: flex;
+            	flex-direction: row;
+            	justify-content: space-around;
+            	margin-top: 10px;
+            }
+            .partener ul li{
+            	color: #333;
+            }
             /* 专家 */
             .experts{
                 display: flex;
@@ -460,7 +486,60 @@
                 font-size: 18px;
                 color: rgba(255,255,255,1);
             }
-
+			.ad_box{
+				display: flex;
+				flex-direction: column;
+				padding: 0 10px;
+			}
+			.ad_box img{
+				margin-top: 10px;
+			}
+			.video_box{
+				width: 98%;
+				margin: 0 auto;
+			}
+			.video_box ul{
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+			}
+			.video_box ul li{
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				width: 24%;
+			}
+			.video_box ul li img{
+				width: 100%;
+				height: 140px;
+			}
+			.video_box ul li .video_name{
+				text-align: center;
+			}
+			.post_list ul li{
+				width: 100%;
+				height: 60px;
+				border-bottom: 1px solid #eee;
+			}
+			.vote{
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+			}
+			.vote input{
+				height: 16px;
+				width: 30px;
+				background-color: #0084ff;
+				font-size: 6px;
+				color: #fff;
+				margin-left: 10px;
+				border-radius: 3px;
+				cursor: pointer;
+			}
+			.question{
+				font-size: 18px;
+				padding: 10px;
+			}
 		</style>
 	</head>
 	<body>
@@ -683,8 +762,8 @@
 									<a href="#">专栏专题</a>
 									<ul class="more_list">
 										<li><a href="index.html?type=0&plate=1&two=101" title="" itemprop="url">LNG储罐</a></li>
-										<li><a href="index.html?type=0&plate=1&two=102" title="" itemprop="url">专栏专题-数字化</a></li>
-										<li><a href="index.html?type=0&plate=1&two=103" title="" itemprop="url">专栏专题-国家管网</a></li>
+										<li><a href="index.html?type=0&plate=1&two=102" title="" itemprop="url">数字化</a></li>
+										<li><a href="index.html?type=0&plate=1&two=103" title="" itemprop="url">国家管网</a></li>
 									</ul>
 								</li>
 								<li class="menu-item-has-children second-menu">
@@ -831,51 +910,310 @@
                     </div>
 
                     <div class="center">
-                        <div class="tabbar">
-                            <ul>
-                                <li onclick="qiehuan(0)" class="active caidan">行业新闻</li>
-                                <li onclick="qiehuan(1)" class="caidan">技术前沿</li>
-                                <li onclick="qiehuan(2)" class="caidan">信息推广</li>
-                                <li onclick="qiehuan(3)" class="caidan">资源市场</li>
-                                <li onclick="qiehuan(4)" class="caidan">天然气液化</li>
-                                <li onclick="qiehuan(5)" class="caidan">LNG接收站</li>
-                                <li><a href="index.html?type=0&plate=1&two=0">更多</a></li>
-                            </ul>
-                        </div>
-                        <div id="policy">
+                    	<div class="news_box">
+                        	<div class="news_type">
+                        		行业新闻
+                        	</div>
+                        	<div id="policy">
                             
+                        	</div>
                         </div>
-                        <div id="techology"  style="display: none;">
+                        <div class="news_box">
+                        	<div class="news_type">
+                        		技术前沿
+                        	</div>
+                        	<div id="techology">
                             
+                        	</div>
                         </div>
-                        <div id="information"  style="display: none;">
+                        <div class="news_box">
+                        	<div class="news_type">
+                        		信息推广
+                        	</div>
+                        	<div id="information">
                             
+                        	</div>
                         </div>
-                        <div id="market"  style="display: none;">
+                        <div class="news_box">
+                        	<div class="news_type">
+                        		资源市场
+                        	</div>
+                        	<div id="market">
                             
+                        	</div>
                         </div>
-                        <div id="gas"  style="display: none;">
+                        <div class="news_box">
+                        	<div class="news_type">
+                        		天然气液化
+                        	</div>
+                        	<div id="gas">
                             
+                        	</div>
                         </div>
-                        <div id="lng_state"  style="display: none;">
+                        <div class="news_box">
+                        	<div class="news_type">
+                        		LNG接收站
+                        	</div>
+                        	<div id="lng_state">
                             
+                        	</div>
+                        </div>
+                        <div class="news_box">
+                        	<div class="news_type">
+                        		LNG运输
+                        	</div>
+                        	<div id="admin">
+                            	
+                        	</div>
+                        </div>
+                        <div class="news_box">
+                        	<div class="news_type">
+                        		LNG利用
+                        	</div>
+                        	<div id="english">
+                            
+                        	</div>
                         </div>
                     </div>
-
                     <div class="right">
                         <div class="sock">
                             <div class="heardline-right">
                                 <p class="font24">投票区</p>
                             </div>
-                            <div class="news_card">
-                                
+                            <div class="news_card" id="vote">
+                            	<!--<h3 class="question">
+                            		今天天气很好！
+                            	</h3>
+                            	<div class="vote">
+                            		<div class="skillbar clearfix" data-percent="0%">
+										<div class="skillbar-title" style="background: #0084ff;"><span>支持</span></div>
+										<div class="skillbar-bar" style="background: #0084ff;"></div>
+										<div class="skill-bar-percent">0%</div>
+									</div>
+									<input type="button" name="" value="投票" onclick="agree()"/>
+                            	</div>
+                                <div class="vote">
+									<div class="skillbar clearfix" data-percent="0%">
+										<div class="skillbar-title" style="background: #0084ff;"><span>反对 </span></div>
+										<div class="skillbar-bar" style="background: #0084ff;"></div>
+										<div class="skill-bar-percent">0%</div>
+									</div>
+									<input type="button" name="" value="投票" onclick="against()"/>
+								</div>-->
                             </div>
                             
                         </div>
                     </div>
                 </div>
+				<div class="four_box">
+					<div class="per_info">
+						<div class="head_pic">
+							<img src="images/manager.jpg" width="90px"/>
+						</div>
+						<div class="infomation">
+							<h3	>name</h3>
+							<div>亚洲首富</div>
+							<div>阿里巴巴创始人</div>
+						</div>
+					</div>
+					<div class="per_info">
+						<div class="head_pic">
+							<img src="images/manager.jpg" width="90px"/>
+						</div>
+						<div class="infomation">
+							<h3	>name</h3>
+							<div>亚洲首富</div>
+							<div>阿里巴巴创始人</div>
+						</div>
+					</div>
+					<div class="per_info">
+						<div class="head_pic">
+							<img src="images/manager.jpg" width="90px"/>
+						</div>
+						<div class="infomation">
+							<h3	>name</h3>
+							<div>亚洲首富</div>
+							<div>阿里巴巴创始人</div>
+						</div>
+					</div>
+					<div class="per_info">
+						<div class="head_pic">
+							<img src="images/manager.jpg" width="90px"/>
+						</div>
+						<div class="infomation">
+							<h3	>name</h3>
+							<div>亚洲首富</div>
+							<div>阿里巴巴创始人</div>
+						</div>
+					</div>
+				</div>
+				<div class="content" style="display: flex;">
+                    <div class="left">
+                        <div class="ranking">
+                            <a href="http://www.natural-gastech.net/" target="_blank">
+                            	<img src="images/zh1.png"/>
+                            </a>
+                            <a href="https://www.expowindow.com/news/guanzhu_51700.html" target="_blank">
+                            	<img src="images/zh2.png"/>
+                            </a>
+                        </div>
 
-                <div class="experts" id="experts">
+                        <div class="ranking">
+                            <img src="images/lng.png"/>
+                        </div>
+                    </div>
+
+                    <div class="center">
+                    	<div class="news_box">
+                        	<div class="news_type">
+                        		外网信息编译区
+                        	</div>
+                        	<div class="post_list">
+                            	<ul>
+                            		<li></li>
+                            		<li></li>
+                            		<li></li>
+                            		<li></li>
+                            	</ul>
+                        	</div>
+                        </div>
+                        <div class="news_box">
+                        	<div class="news_type">
+                        		原创文章区
+                        	</div>
+                        	<div class="post_list">
+                            	<ul>
+                            		<li></li>
+                            		<li></li>
+                            		<li></li>
+                            		<li></li>
+                            	</ul>
+                        	</div>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div class="ad_box">
+                            <img src="images/ad1.png"/>
+                            <img src="images/ad2.png"/>
+                            <img src="images/ad3.png"/>
+                            <img src="images/ad4.png"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="video_box">
+                	<ul>
+                		<li>
+                			<div class="video_pic">
+                				<img src="images/lesson1.jpg"/>
+                				<div class="video_name">
+                					XX课程视频
+                				</div>
+                			</div>
+                		</li>
+                		<li>
+                			<div class="video_pic">
+                				<img src="images/lesson2.jpg"/>
+                				<div class="video_name">
+                					XX课程视频
+                				</div>
+                			</div>
+                		</li>
+                		<li>
+                			<div class="video_pic">
+                				<img src="images/lesson1.jpg"/>
+                				<div class="video_name">
+                					XX课程视频
+                				</div>
+                			</div>
+                		</li>
+                		<li>
+                			<div class="video_pic">
+                				<img src="images/lesson2.jpg"/>
+                				<div class="video_name">
+                					XX课程视频
+                				</div>
+                			</div>
+                		</li>
+                	</ul>
+                	<ul>
+                		<li>
+                			<div class="video_pic">
+                				<img src="images/lesson2.jpg"/>
+                				<div class="video_name">
+                					XX课程视频
+                				</div>
+                			</div>
+                		</li>
+                		<li>
+                			<div class="video_pic">
+                				<img src="images/lesson1.jpg"/>
+                				<div class="video_name">
+                					XX课程视频
+                				</div>
+                			</div>
+                		</li>
+                		<li>
+                			<div class="video_pic">
+                				<img src="images/lesson2.jpg"/>
+                				<div class="video_name">
+                					XX课程视频
+                				</div>
+                			</div>
+                		</li>
+                		<li>
+                			<div class="video_pic">
+                				<img src="images/lesson1.jpg"/>
+                				<div class="video_name">
+                					XX课程视频
+                				</div>
+                			</div>
+                		</li>
+                	</ul>
+                </div>
+                <div class="partener">
+                	<div class="partener_title">
+                		友情链接
+                	</div>
+                	<div class="partener_block">
+                		<ul>
+                			<li><a href="https://www.shpgx.com/html/index.html">上海石油天然气交易中心</a></li>
+                		</ul>
+                		<ul>
+                			<li><a href="https://www.iea.org/">IEA</a></li>
+							<li><a href="https://www.igu.org/">IGU</a></li>
+							<li><a href="https://www.opec.org/opec_web/en/">OPEC</a></li>
+							<li><a href="https://www.ocimf.org/">OCIMF</a></li>
+                		</ul>
+                		<ul>
+                			<li><a href="http://www.cnpc.com.cn/index.shtml">中国石油</a></li>
+							<li><a href="http://www.sinopecgroup.com/">中国石化</a></li>
+							<li><a href="https://www.cnooc.com.cn/">中国海油</a></li>
+							<li><a href="http://www.sinochem.com/">中国中化</a></li>
+                		</ul>
+                		<ul>
+                			<li><a href="https://www.bp.com/">BP</a></li>
+							<li><a href="https://www.shell.com/">SHELL</a></li>
+							<li><a href="https://www.total.com/en">TOTAL</a></li>
+							<li><a href="https://www.tokyo-gas.co.jp/en/index.html">东京燃气</a></li>
+							<li><a href="http://www.kogas.or.kr/eng/index.do">KOGAS</a></li>
+                		</ul>
+                		<ul>
+                			<li><a href="http://www.qatargas.com/english">Qatargas</a></li>
+							<li><a href="https://www.enn.cn/">新奥集团</a></li>
+							<li><a href="http://www.guanghui.com/">新疆广汇</a></li>
+							<li><a href="https://www.geg.com.cn/">广东能源</a></li>
+							<li><a href="http://www.bjgas.com/NewsCen2.aspx">北京燃气</a></li>
+                		</ul>
+                		<ul>
+                			<li><a href="http://trqgy.cn/">天然气工业</a></li>
+							<li><a href="http://www.syytrqhg.cn/ch/index.aspx">石油与天然气化工</a></li>
+                		</ul>
+                		<ul>
+                			<li><a href="https://www.jtsi.wa.gov.au/gasfund/introduction">中澳天然气基金</a></li>
+                		</ul>
+                	</div>
+                </div>
+                <!--<div class="experts" id="experts">
                     <div class="heardimg" style="background: url('images/people01.jpg');">
                         <div class="experts_name">
                             jungjd
@@ -885,7 +1223,7 @@
                             <span>职位：大boss</span>
                         </div>
                     </div>
-                </div>
+                </div>-->
 
                 <!-- <div class="content" style="display: flex;">
                     <div class="left">
@@ -921,47 +1259,40 @@
 		<!-- 底部 -->
 		<div class="footerbox bg">
 			<div class="bottom_box">
-				<div class="partener">
+				<!--<div class="partener">
 					<div class="bottom_title">
 						<div class="triangle"></div>
 						<div>友情链接</div>
 					</div>
 					<div class="partener_list">
 						<ul>
-							<li><a href="https://www.shell.com/">SHELL</a></li>
+							<li><a href="https://www.shpgx.com/html/index.html">上海石油天然气交易中心</a></li>
+							
 							<li><a href="https://www.iea.org/">IEA</a></li>
 							<li><a href="https://www.igu.org/">IGU</a></li>
 							<li><a href="https://www.opec.org/opec_web/en/">OPEC</a></li>
 							<li><a href="https://www.ocimf.org/">OCIMF</a></li>
-						</ul>
-						<ul>
+							
 							<li><a href="http://www.cnpc.com.cn/index.shtml">中国石油</a></li>
 							<li><a href="http://www.sinopecgroup.com/">中国石化</a></li>
 							<li><a href="https://www.cnooc.com.cn/">中国海油</a></li>
 							<li><a href="http://www.sinochem.com/">中国中化</a></li>
-							<li><a href="http://www.cnnc.com.cn/">中核集团</a></li>
-						</ul>
-						<ul>
-							<li><a href="http://trqgy.cn/">天然气工业</a></li>
+							
+							<li><a href="https://www.bp.com/">BP</a></li>
+							<li><a href="https://www.shell.com/">SHELL</a></li>
+							<li><a href="https://www.total.com/en">TOTAL</a></li>
+							<li><a href="https://www.tokyo-gas.co.jp/en/index.html">东京燃气</a></li>
 							<li><a href="http://www.kogas.or.kr/eng/index.do">KOGAS</a></li>
 							<li><a href="http://www.qatargas.com/english">Qatargas</a></li>
 							<li><a href="https://www.enn.cn/">新奥集团</a></li>
 							<li><a href="http://www.guanghui.com/">新疆广汇</a></li>
-						</ul>
-						<ul>
-							<li><a href="https://www.bp.com/">BP</a></li>
-							<li><a href="https://www.total.com/en">TOTAL</a></li>
-							<li><a href="https://www.tokyo-gas.co.jp/en/index.html">东京燃气</a></li>
 							<li><a href="https://www.geg.com.cn/">广东能源</a></li>
 							<li><a href="http://www.bjgas.com/NewsCen2.aspx">北京燃气</a></li>
-						</ul>
-						<ul>
-							<li><a href="https://www.shpgx.com/html/index.html">上海石油天然气交易中心</a></li>
-							<li><a href="http://www.syytrqhg.cn/ch/index.aspx">石油与天然气化工</a></li>
-							<li><a href="https://www.jtsi.wa.gov.au/gasfund/introduction">中澳天然气基金</a></li>
-							<li><a></a></li>
-							<li><a></a></li>
 							
+							<li><a href="http://trqgy.cn/">天然气工业</a></li>
+							<li><a href="http://www.syytrqhg.cn/ch/index.aspx">石油与天然气化工</a></li>
+							
+							<li><a href="https://www.jtsi.wa.gov.au/gasfund/introduction">中澳天然气基金</a></li>
 						</ul>
 					</div>
 				</div>
@@ -980,7 +1311,7 @@
 							<li><a href="newslist.html">办事指南</a></li>
 						</ul>
 					</div>
-				</div>
+				</div>-->
 			</div>
 			<div class="l txt">
 				<p><img src="images/beian.png">X公网安备
@@ -996,11 +1327,66 @@
 		<!-- <script type="text/javascript" src="js/paging/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/paging/paging.js"></script> -->
         <script type="text/javascript">
-        
+        	
 			// 获取我的信息
 			var data = sessionStorage.getItem("data");
             var infodata = eval('(' + data + ')');
-
+			//功能：将浮点数四舍五入，取小数点后2位     
+			function toDecimal(x) {   
+			  var f = parseFloat(x);    
+				if (isNaN(f)) {   
+				  return;    
+				}          
+				f = Math.round(x*100)/100;  
+				return f;        
+			}  
+			
+			//获取投票
+			getVote();
+			function getVote(){
+				$.ajax({
+					type:"post",
+					url:`${sever_url}vote/select`,
+					data:{
+						token: infodata.token,
+						vote_plate:1
+					},
+					dataType:"json",
+					success:function(data){
+						console.log(data)
+						var obj = data.data;
+						$("#vote").empty();
+						for(var i=0;i<obj.length;i++){
+							var proportion = toDecimal(obj[i].vote_square/(Number(obj[i].vote_square)+Number(obj[i].vote_conside)));
+							console.log(1-proportion)
+							$("#vote").append(`<h3 class="question">${obj[i].vote_comment}</h3><div class="vote"><div class="skillbar clearfix" data-percent="${proportion*100}%"><div class="skillbar-title" style="background: #0084ff;"><span>支持</span></div><div class="skillbar-bar" style="background: #0084ff;"></div><div class="skill-bar-percent">${proportion*100}%</div></div><input type="button" name="" value="投票" ${obj[i].vote_flag?'disabled="disabled"':''} style="background-color:${obj[i].vote_flag?'#ccc':'#0084ff'}" onclick="vote(${obj[i].id},1)"/></div><div class="vote"><div class="skillbar clearfix" data-percent="${(1-proportion)*100}%"><div class="skillbar-title" style="background: #0084ff;"><span>反对 </span></div><div class="skillbar-bar" style="background: #0084ff;"></div><div class="skill-bar-percent">${toDecimal((1-proportion))*100}%</div></div><input type="button" name="" value="投票" ${obj[i].vote_flag?'disabled="disabled"':''} style="background-color:${obj[i].vote_flag?'#ccc':'#0084ff'}" onclick="vote(${obj[i].id},0)"/></div>`)
+						}
+						$('.skillbar').each(function(){
+							$(this).find('.skillbar-bar').animate({
+								width:$(this).attr('data-percent')
+							},3000);
+						});
+					}
+				});
+			}
+			
+			//投票
+			function vote(id,num){
+				$.ajax({
+					type:"post",
+					url:`${sever_url}vote/throw`,
+					data:{
+						token: infodata.token,
+						vote_id: id,
+						vote_choose: num
+					},
+					dataType:"json",
+					success:function(data){
+//						console.log(data)
+						getVote();
+					}
+				});
+			}
             // 推荐\关注\悬赏\最新
             $.ajax({
                 url:`${sever_url}coverinfo/chooselist`,
@@ -1059,72 +1445,6 @@
                         document.getElementById('news').style.display="block";
                         $(".selection1").removeClass("selection1")
                         $(".biaoti")[2].classList.add("selection1")
-                    break;
-                }
-            }
-
-            function qiehuan(num){
-                
-                switch(num){
-                    case 0:
-                        document.getElementById('policy').style.display="block";
-                        document.getElementById('techology').style.display="none";
-                        document.getElementById('information').style.display="none";
-                        document.getElementById('market').style.display="none";
-                        document.getElementById('gas').style.display="none";
-                        document.getElementById('lng_state').style.display="none";
-                        $(".active").removeClass("active")
-                        $(".caidan")[0].classList.add("active")
-                    break;
-                    case 1:
-                        document.getElementById('policy').style.display="none";
-                        document.getElementById('techology').style.display="block";
-                        document.getElementById('information').style.display="none";
-                        document.getElementById('market').style.display="none";
-                        document.getElementById('gas').style.display="none";
-                        document.getElementById('lng_state').style.display="none";
-                        $(".active").removeClass("active")
-                        $(".caidan")[1].classList.add("active")
-                    break;
-                    case 2:
-                        document.getElementById('policy').style.display="none";
-                        document.getElementById('techology').style.display="none";
-                        document.getElementById('information').style.display="block";
-                        document.getElementById('market').style.display="none";
-                        document.getElementById('gas').style.display="none";
-                        document.getElementById('lng_state').style.display="none";
-                        $(".active").removeClass("active")
-                        $(".caidan")[2].classList.add("active")
-                    break;
-                    case 3:
-                        document.getElementById('policy').style.display="none";
-                        document.getElementById('techology').style.display="none";
-                        document.getElementById('information').style.display="none";
-                        document.getElementById('market').style.display="block";
-                        document.getElementById('gas').style.display="none";
-                        document.getElementById('lng_state').style.display="none";
-                        $(".active").removeClass("active")
-                        $(".caidan")[3].classList.add("active")
-                    break;
-                    case 4:
-                        document.getElementById('policy').style.display="none";
-                        document.getElementById('techology').style.display="none";
-                        document.getElementById('information').style.display="none";
-                        document.getElementById('market').style.display="none";
-                        document.getElementById('gas').style.display="block";
-                        document.getElementById('lng_state').style.display="none";
-                        $(".active").removeClass("active")
-                        $(".caidan")[4].classList.add("active")
-                    break;
-                    case 5:
-                        document.getElementById('policy').style.display="none";
-                        document.getElementById('techology').style.display="none";
-                        document.getElementById('information').style.display="none";
-                        document.getElementById('market').style.display="none";
-                        document.getElementById('gas').style.display="none";
-                        document.getElementById('lng_state').style.display="block";
-                        $(".active").removeClass("active")
-                        $(".caidan")[5].classList.add("active")
                     break;
                 }
             }
@@ -1263,7 +1583,7 @@
                     
                 }
             })
-
+			//八类文章列表
             $.ajax({
                 url: `${sever_url}coverinfo/middle`,
                 type: 'post',
@@ -1272,12 +1592,15 @@
                 },
                 dataType: 'json',
                 success: function(res){
+//              	console.log(res)
                     let policy = ''
                     let techology = ''
                     let information = ''
                     let market = ''
                     let gas = ''
                     let lng_state = ''
+                    let lng_admin = ''
+                    let lng_english = ''
                     for(let i = 0; i < res.data.policy.length; i++){
                         policy += `<div class="postBox"><img src="${res.data.policy[i].post_photo}" alt=""><div class="postInfo"><div class="postTitle"><a href="forum.html?postid=${res.data.policy[i].id}">${res.data.policy[i].post_title}</a></div><div class="author"><span>发帖人：${res.data.policy[i].post_user_name}</span><span>最后回复人：${res.data.policy[i].last_user_name}</span></div><div class="author"><span>发布时间：${res.data.policy[i].post_releasetime}</span><span>阅读数：${res.data.policy[i].post_readnum}</span></div></div></div>`
                     }
@@ -1320,12 +1643,28 @@
                     }else{
                         lng_state += `<div class="none">暂无数据</div>`
                     }
+                    if(res.data.admin.length>0){
+                        for(let i = 0; i < res.data.admin.length; i++){
+                            lng_admin += `<div class="postBox"><img src="${res.data.admin[i].post_photo}" alt=""><div class="postInfo"><div class="postTitle"><a href="forum.html?postid=${res.data.admin[i].id}">${res.data.admin[i].post_title}</a></div><div class="author"><span>发帖人：${res.data.admin[i].post_user_name}</span><span>最后回复人：${res.data.admin[i].last_user_name}</span></div><div class="author"><span>发布时间：${res.data.admin[i].post_releasetime}</span><span>阅读数：${res.data.admin[i].post_readnum}</span></div></div></div>`
+                        }
+                    }else{
+                        lng_admin += `<div class="none">暂无数据</div>`
+                    }
+                    if(res.data.english.length>0){
+                        for(let i = 0; i < res.data.english.length; i++){
+                            lng_admin += `<div class="postBox"><img src="${res.data.english[i].post_photo}" alt=""><div class="postInfo"><div class="postTitle"><a href="forum.html?postid=${res.data.english[i].id}">${res.data.english[i].post_title}</a></div><div class="author"><span>发帖人：${res.data.english[i].post_user_name}</span><span>最后回复人：${res.data.english[i].last_user_name}</span></div><div class="author"><span>发布时间：${res.data.english[i].post_releasetime}</span><span>阅读数：${res.data.english[i].post_readnum}</span></div></div></div>`
+                        }
+                    }else{
+                        lng_english += `<div class="none">暂无数据</div>`
+                    }
                     document.getElementById('policy').innerHTML = policy
                     document.getElementById('techology').innerHTML = techology
                     document.getElementById('information').innerHTML = information
                     document.getElementById('market').innerHTML = market
                     document.getElementById('gas').innerHTML = gas
                     document.getElementById('lng_state').innerHTML = lng_state
+                    document.getElementById('admin').innerHTML = lng_admin
+                    document.getElementById('english').innerHTML = lng_english
                 }
                 
             })
