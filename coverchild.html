@@ -231,14 +231,14 @@
             	border-bottom: 2px solid #eee;
             }
             .four_box{
-            	width: 80%;
+            	width: 100%;
             	margin: 10px auto;
             	display: flex;
             	flex-direction: row;
             	justify-content: space-between;
             }
             .four_box .per_info{
-            	width: 22%;
+            	width: 14.28%;
             	/*height: 100px;*/
             	display: flex;
             	flex-direction: row;
@@ -509,7 +509,7 @@
 				justify-content: center;
 				width: 24%;
 			}
-			.video_box ul li img{
+			.video_box ul li img:first-child{
 				width: 100%;
 				height: 140px;
 			}
@@ -539,6 +539,14 @@
 			.question{
 				font-size: 18px;
 				padding: 10px;
+			}
+			.play{
+				position: absolute;
+				margin-left: -160px;
+				margin-top: 60px;
+				width: 40px;
+				height: 40px;
+				z-index: 99;
 			}
 		</style>
 	</head>
@@ -1005,8 +1013,8 @@
                         </div>
                     </div>
                 </div>
-				<div class="four_box">
-					<div class="per_info">
+				<div class="four_box" id="expert">
+					<!--<div class="per_info">
 						<div class="head_pic">
 							<img src="images/manager.jpg" width="90px"/>
 						</div>
@@ -1045,7 +1053,7 @@
 							<div>亚洲首富</div>
 							<div>阿里巴巴创始人</div>
 						</div>
-					</div>
+					</div>-->
 				</div>
 				<div class="content" style="display: flex;">
                     <div class="left">
@@ -1104,33 +1112,45 @@
                 	<ul>
                 		<li>
                 			<div class="video_pic">
-                				<img src="images/lesson1.jpg"/>
+                				<a href="https://haokan.baidu.com/v?vid=11090501508026145161&pd=bjh&fr=bjhauthor&type=video" target="_blank">
+                					<img src="images/video1.jpg"/>
+                					<img class="play" src="images/play.png"/>
+                				</a>
                 				<div class="video_name">
-                					XX课程视频
+                					<a href="https://haokan.baidu.com/v?vid=11090501508026145161&pd=bjh&fr=bjhauthor&type=video" target="_blank">LNG槽车卸车教学</a>
                 				</div>
                 			</div>
                 		</li>
                 		<li>
                 			<div class="video_pic">
-                				<img src="images/lesson2.jpg"/>
+                				<a href="https://v.qq.com/x/page/r0519ijydib.html" target="_blank">
+                					<img src="images/video2.jpg"/>
+                					<img class="play" src="images/play.png"/>
+                				</a>
                 				<div class="video_name">
-                					XX课程视频
+                					<a href="https://v.qq.com/x/page/r0519ijydib.html" target="_blank">LNG卸车操作步骤</a>
                 				</div>
                 			</div>
                 		</li>
                 		<li>
                 			<div class="video_pic">
-                				<img src="images/lesson1.jpg"/>
+                				<a href="https://v.qq.com/x/page/z0765wxlps1.html" target="_blank">
+                					<img src="images/video3.jpg"/>
+                					<img class="play" src="images/play.png"/>
+                				</a>
                 				<div class="video_name">
-                					XX课程视频
+                					<a href="https://v.qq.com/x/page/z0765wxlps1.html" target="_blank">LNG船舶接卸程序</a>
                 				</div>
                 			</div>
                 		</li>
                 		<li>
                 			<div class="video_pic">
-                				<img src="images/lesson2.jpg"/>
+                				<a href="https://v.qq.com/x/page/b05035eigfq.html" target="_blank">
+                					<img src="images/video4.jpg"/>
+                					<img class="play" src="images/play.png"/>
+                				</a>
                 				<div class="video_name">
-                					XX课程视频
+                					<a href="https://v.qq.com/x/page/b05035eigfq.html" target="_blank">粤东LNG首船接卸仪式</a>
                 				</div>
                 			</div>
                 		</li>
@@ -1138,17 +1158,22 @@
                 	<ul>
                 		<li>
                 			<div class="video_pic">
-                				<img src="images/lesson2.jpg"/>
+                				<a href="https://v.qq.com/x/page/w03953frft3.html" target="_blank"></a>
+                				<img src="images/video5.jpg"/>
+                				<img class="play" src="images/play.png"/>
                 				<div class="video_name">
-                					XX课程视频
+                					<a href="https://v.qq.com/x/page/w03953frft3.html" target="_blank">浙江LNG接卸第100船LNG</a>
                 				</div>
                 			</div>
                 		</li>
                 		<li>
                 			<div class="video_pic">
-                				<img src="images/lesson1.jpg"/>
+                				<a href="https://v.qq.com/x/page/a0522sfe2o9.html" target="_blank">
+                					<img src="images/video6.jpg"/>
+                					<img class="play" src="images/play.png"/>
+                				</a>
                 				<div class="video_name">
-                					XX课程视频
+                					浙江LNG顺利接卸年度第五十船
                 				</div>
                 			</div>
                 		</li>
@@ -1344,16 +1369,17 @@
 			//获取投票
 			getVote();
 			function getVote(){
+				console.log(infodata==null)
 				$.ajax({
 					type:"post",
 					url:`${sever_url}vote/select`,
 					data:{
-						token: infodata.token,
+						token: infodata==null?"":infodata.token,
 						vote_plate:1
 					},
 					dataType:"json",
 					success:function(data){
-						console.log(data)
+//						console.log(data)
 						var obj = data.data;
 						$("#vote").empty();
 						for(var i=0;i<obj.length;i++){
@@ -1387,6 +1413,19 @@
 					}
 				});
 			}
+			//获取专家
+			$.ajax({
+				type:"post",
+				url:`${sever_url}expert/list`,
+				dataType:"json",
+				success:function(data){
+					console.log(data)
+					var obj = data.data;
+					for(var i=0;i<obj.length;i++){
+						$("#expert").append(`<div class="per_info"><div class="head_pic"><img src="${obj[i].user_head}" width="90px"/></div><div class="infomation"><h3>${obj[i].user_name}</h3><div>${obj[i].real_company}</div><div>${obj[i].real_education}</div></div></div>`);
+					}
+				}
+			});
             // 推荐\关注\悬赏\最新
             $.ajax({
                 url:`${sever_url}coverinfo/chooselist`,
