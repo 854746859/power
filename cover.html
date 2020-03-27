@@ -15,6 +15,7 @@
 		<link rel="stylesheet" type="text/css" href="css/children.css" />
 		<link rel="stylesheet" type="text/css" href="css/cover.css" />
 		<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+		<script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" src="js/public.js"></script>
 		<!-- 菜单js等-->
 		<style type="text/css">
@@ -172,18 +173,30 @@
 				justify-content: space-between;
 				padding: 10px 0;
 			}
-			
+			.card_box{
+				width: 48%;
+				padding: 10px 0;
+				background-color: #eee;
+			}
 			.news_card {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				border-radius: 6px;
+				height: 205px;
+				overflow: hidden;
+			}
+			.count{
 				width: 48%;
 				display: flex;
 				flex-direction: column;
 				align-items: center;
+				border-radius: 6px;
+				height: 250px;
 				justify-content: center;
 				background-color: #eee;
-				border-radius: 6px;
-				padding: 10px 0;
+				padding-top: 10px;
 			}
-			
 			.news_box ul li {
 				list-style: disc;
 				border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -414,39 +427,65 @@
 						滚动新闻
 					</div>
 					<div class="news_box">
-						<div class="news_card">
-							<ul>
-								<li>全国新增确诊39例 均为境外输入病例 湖北...</li>
-								<li>全国新增确诊39例 均为境外输入病例 湖北...</li>
-								<li>全国新增确诊39例 均为境外输入病例 湖北...</li>
-								<li>全国新增确诊39例 均为境外输入病例 湖北...</li>
-								<li>全国新增确诊39例 均为境外输入病例 湖北...</li>
-							</ul>
+						<!-- 需要添加的最新通知或公告滚动部分 -->
+						<div class="card_box">
+							<div class="news_card" id="demo1">
+								<ul>
+									<li>全国新增确诊39例 均为境外输入病例 湖北...</li>
+									<li>全国新增确诊38例 均为境外输入病例 湖北...</li>
+									<li>全国新增确诊37例 均为境外输入病例 湖北...</li>
+									<li>全国新增确诊36例 均为境外输入病例 湖北...</li>
+									<li>全国新增确诊35例 均为境外输入病例 湖北...</li>
+									<li>全国新增确诊39例 均为境外输入病例 湖北...</li>
+									<li>全国新增确诊38例 均为境外输入病例 湖北...</li>
+									<li>全国新增确诊37例 均为境外输入病例 湖北...</li>
+									<li>全国新增确诊36例 均为境外输入病例 湖北...</li>
+									<li>全国新增确诊35例 均为境外输入病例 湖北...</li>
+								</ul>
+							</div>
 						</div>
-						<div class="news_card">
-							<ul>
-								<li>全国新增确诊39例 均为境外输入病例 湖北...</li>
-								<li>全国新增确诊39例 均为境外输入病例 湖北...</li>
-								<li>全国新增确诊39例 均为境外输入病例 湖北...</li>
-								<li>全国新增确诊39例 均为境外输入病例 湖北...</li>
-								<li>全国新增确诊39例 均为境外输入病例 湖北...</li>
-							</ul>
+						<div class="card_box">
+							<div class="news_card" id="demo2">
+								<ul>
+									<li>全国新增确诊39例 均为境外输入病例 湖北...</li>
+									<li>全国新增确诊38例 均为境外输入病例 湖北...</li>
+									<li>全国新增确诊37例 均为境外输入病例 湖北...</li>
+									<li>全国新增确诊36例 均为境外输入病例 湖北...</li>
+									<li>全国新增确诊35例 均为境外输入病例 湖北...</li>
+									<li>全国新增确诊39例 均为境外输入病例 湖北...</li>
+									<li>全国新增确诊38例 均为境外输入病例 湖北...</li>
+									<li>全国新增确诊37例 均为境外输入病例 湖北...</li>
+									<li>全国新增确诊36例 均为境外输入病例 湖北...</li>
+									<li>全国新增确诊35例 均为境外输入病例 湖北...</li>
+								</ul>
+							</div>
 						</div>
+						<script type="text/javascript">
+							function AutoScroll(obj) {
+							    $(obj).find("ul:first").animate({
+							        marginTop: "-51px"
+							    },
+							    500,
+							    function() {
+							        $(this).css({
+							            marginTop: "0px"
+							        }).find("li:first").appendTo(this);
+							    });
+							}
+							$(document).ready(function() {
+							    setInterval('AutoScroll("#demo1")', 2000)
+							    setInterval('AutoScroll("#demo2")', 2000)
+							});
+						</script>
 					</div>
 					<div class="title" style="margin-top: 20px;">
 						数据统计
 					</div>
 					<div class="news_box">
-						<div class="news_card" style="height: 250px;">
-							<ul>
-								<!--<li>全国新增确诊39例 均为境外输入病例 湖北...</li>
-								<li>全国新增确诊39例 均为境外输入病例 湖北...</li>
-								<li>全国新增确诊39例 均为境外输入病例 湖北...</li>
-								<li>全国新增确诊39例 均为境外输入病例 湖北...</li>
-								<li>全国新增确诊39例 均为境外输入病例 湖北...</li>-->
-							</ul>
+						<div class="count">
+							<div id="main" style="width: 600px;height:400px;"></div>
 						</div>
-						<div class="news_card" style="height: 250px;">
+						<div class="count">
 							<ul>
 								<!--<li>全国新增确诊39例 均为境外输入病例 湖北...</li>
 								<li>全国新增确诊39例 均为境外输入病例 湖北...</li>
@@ -722,8 +761,87 @@
 			<p>版权所有：XX市综合行政执法局&nbsp;&nbsp;&nbsp;地址：XX省XX市工业园区特1号</p>
 		</div>
 		<script type="text/javascript" src="config.js"></script>
+		<script src="js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
 		<!-- 服务器地址-->
 		<script type="text/javascript">
+			//头部统计
+			$.ajax({
+				type:"post",
+				url:`${sever_url}master/title`,
+				dataType:"json",
+				success:function(data){
+					console.log(data)
+				}
+			});
+			//滚动新闻
+			$.ajax({
+				type:"post",
+				url:`${sever_url}master/news`,
+				dataType:"json",
+				success:function(data){
+					console.log(data)
+				}
+			});
+			//统计
+			$.ajax({
+				type:"post",
+				url:`${sever_url}statistics/industry`,
+				dataType:"json",
+				success:function(data){
+					console.log(data)
+					var obj = data.data;
+					var name_arr = [];
+					var data_arr = [];
+					for(var i=0;i<obj.length;i++){
+						name_arr[i]=obj[i].real_industry;
+						data_arr[i]={"value":obj[i].count,"name":obj[i].real_industry};
+					}
+					option.legend.data = name_arr;
+					option.series[0].data = data_arr;
+					myChart.setOption(option);
+				}
+			});
+			var myChart = echarts.init(document.getElementById('main'));
+		    option = {
+		        title : {
+		            text: '用户行业统计',       //大标题
+		            subtext: '',                //类似于副标题
+		            x:'center'                 //标题位置   居中
+		        },
+		        tooltip : {
+		            trigger: 'item',           //数据项图形触发，主要在散点图，饼图等无类目轴的图表中使用。
+		            formatter: "{a} <br/>{b} : {c} ({d}%)"   //{a}（系列名称），{b}（数据项名称），{c}（数值）, {d}（百分比）用于鼠标悬浮时对应的显示格式和内容
+		        },
+		        legend: {                           //图例组件。
+		            orient: 'vertical',             //图例列表的布局朝向
+		            left: 'left',
+		            data: [
+//		            '石油天然气',
+//		            '其他',
+//		            '港口水利'
+		            ]
+		        },
+		        series : [              //系列列表。每个系列通过 type 决定自己的图表类型
+		            {
+		                name: '访问来源',
+		                type: 'pie',
+		                radius : '55%',
+		                center: ['50%', '60%'],
+		                data:[
+//		                    {value:1, name:'石油天然气'},
+//		                    {value:36, name:'其他'},
+//		                    {value:1, name:'港口水利'}
+		                ],
+		                itemStyle: {
+		                    emphasis: {
+		                        shadowBlur: 10,
+		                        shadowOffsetX: 0,
+		                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+		                    }
+		                }
+		            }
+		        ]
+		    };
 		</script>
 	</body>
 
