@@ -150,18 +150,18 @@
             }
             
             .statistics{
-				width: 70%;
-				height: 100px;
+				width: 90%;
+				/*height: 100px;*/
                 display: flex;
                 margin: 8px auto;
 				flex-direction: row;
 				justify-content: space-between;
 			}
 			.statistics .part{
-				width: 25%;
+				/*width: 25%;
 				height: 100px;
 				display:flex;
-				flex-direction: column;
+				flex-direction: column;*/
 				justify-content: space-around;
 				align-items: center;
             }
@@ -208,9 +208,12 @@
  			}
  			.news_card ul li{
                 max-width: 200px;
-                list-style-type:disc !important;
+                /*list-style-type:disc !important;*/
                 margin: 10px 10px;
                 margin-left: 12px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
             }
              
             .center{
@@ -401,7 +404,7 @@
                 font-family: PingFangSC-Regular;
                 font-size: 14px;
                 color: #666666;
-                margin-right: 32px;
+                margin-right: 15px;
             }
             .none{
                 margin: 12px auto 0px auto;
@@ -548,6 +551,34 @@
 				height: 40px;
 				z-index: 99;
 			}
+			.order{
+			    width: 15px;
+			    height: 15px;
+			    display: flex;
+			    justify-content: center;
+			    align-items: center;
+			    color: #fff;
+			    font-size: 12px;
+			    border-radius: 4px;
+			    margin-right: 5px;
+			}
+			.order1{
+				background-color: red;
+			}
+			.order2{
+				background-color: orange;
+			}
+			.order3{
+				background-color: yellow;
+			}
+			.order_other{
+				background-color: #ccc;
+			}
+			.layout{
+				display:flex;
+				flex-direction:row;
+				align-items:center;
+			}
 		</style>
 	</head>
 	<body>
@@ -646,34 +677,50 @@
                 <!--统计-->
 		        <div class="statistics">
 					<div class="part">
-						<h1>3000+</h1>
 						<span id="" class="font18">
-							注册用户
+							在线人数：
+						</span>
+						<span id="">
+							2000
 						</span>
 					</div>
 					<div class="part">
-						<h1>2000+</h1>
 						<span id="" class="font18">
-							在线用户
+							帖子总数：
+						</span>
+						<span id="post_count">
+							5000
 						</span>
 					</div>
 					<div class="part">
-						<h1>5000+</h1>
 						<span id="" class="font18">
-							帖子总数
+							会员人数：
+						</span>
+						<span id="user_count">
+							2000
 						</span>
 					</div>
 					<div class="part">
-						<h1>200+</h1>
 						<span id="" class="font18">
-							今日发帖
+							最后回复人：
+						</span>
+						<span id="">
+							xxx
+						</span>
+					</div>
+					<div class="part">
+						<span id="" class="font18">
+							欢迎新成员：
+						</span>
+						<span id="">
+							xxx
 						</span>
 					</div>
                 </div>
                 
 
                 <!-- 导航栏部分 -->
-				<div class="top_nav bora_5">
+				<div class="top_nav bora_5" style="margin-top: 0;">
 					<nav style="width: 100%;">
 						<div>
 							<ul class="fix border">
@@ -1365,7 +1412,17 @@
 				f = Math.round(x*100)/100;  
 				return f;        
 			}  
-			
+			//头部统计
+			$.ajax({
+				type:"post",
+				url:`${sever_url}master/title`,
+				dataType:"json",
+				success:function(data){
+					console.log(data)
+					$("#user_count").html(data.data.user_count);
+					$("#post_count").html(data.data.post_count);
+				}
+			});
 			//获取投票
 			getVote();
 			function getVote(){
@@ -1504,15 +1561,28 @@
                     let reward = ""
                     let news = ""
                     for(let i=0;i<res.data.hot_post.length;i++){
-                        hotPost += `<li><a href='forum.html?postid=${res.data.hot_post[i].id}'>${res.data.hot_post[i].post_title}</a></li>`
+                    	var order = Number(i)+1;
+                    	if(i<3){
+                    		var back = "order"+order;
+                    	}else{
+                    		var back = "order_other";
+                    	}
+                    	
+                        hotPost += `<li><div class="order ${back}">${order}</div><a href='forum.html?postid=${res.data.hot_post[i].id}'>${res.data.hot_post[i].post_title}</a></li>`
                     }
                     for(let i=0;i<res.data.hot_reward.length;i++){
-                        hotReward += `<li><a href='questiondetail.html?postid=${res.data.hot_post[i].id}'>${res.data.hot_post[i].post_title}</a></li>`
+                    	var order = Number(i)+1;
+                    	if(i<3){
+                    		var back = "order"+order;
+                    	}else{
+                    		var back = "order_other";
+                    	}
+                        hotReward += `<li><div class="order ${back}">${order}</div><a href='questiondetail.html?postid=${res.data.hot_post[i].id}'>${res.data.hot_post[i].post_title}</a></li>`
                     }
 
                     if(res.data.recommend.length>0){
                         for(let i = 0; i < res.data.recommend.length; i++){
-                            recommend += `<div class="postBox"><img src="${res.data.recommend[i].post_photo}" alt=""><div class="postInfo"><div class="postTitle"><a href="forum.html?postid=${res.data.recommend[i].id}">${res.data.recommend[i].post_title}</a><i class='red_news'>[${res.data.recommend[i].post_label}]</i></div><div class="author"><span>发帖人：${res.data.recommend[i].post_user_name}</span><span>最后回复人：${res.data.recommend[i].last_user_name}</span></div><div class="author"><span>发布时间：${res.data.recommend[i].post_releasetime}</span><span>阅读数：${res.data.recommend[i].post_readnum}</span></div></div></div>`
+                            recommend += `<div class="postBox"><div class="postInfo"><div class="postTitle"><a href="forum.html?postid=${res.data.recommend[i].id}">${res.data.recommend[i].post_title}</a><i class='red_news'>[${res.data.recommend[i].post_label}]</i></div><div class="author"><!--文章内容--></div><div class="author"><span>发帖人：${res.data.recommend[i].post_user_name}</span><span>最后回复人：${res.data.recommend[i].last_user_name}</span><span>发布时间：${res.data.recommend[i].post_releasetime}</span><span>阅读数：${res.data.recommend[i].post_readnum}</span></div></div></div>`
                         }
                     }else{
                         recommend += `<div class="none">暂无数据</div>`
@@ -1520,7 +1590,7 @@
 
                     if(res.data.news.length>0){
                         for(let i = 0; i < res.data.news.length; i++){
-                            news += `<div class="postBox"><img src="${res.data.news[i].post_photo}" alt=""><div class="postInfo"><div class="postTitle"><a href="forum.html?postid=${res.data.news[i].id}">${res.data.news[i].post_title}</a><i class='red_news'>[${res.data.news[i].post_label}]</i></div><div class="author"><span>发帖人：${res.data.news[i].post_user_name}</span><span>最后回复人：${res.data.news[i].last_user_name}</span></div><div class="author"><span>发布时间：${res.data.news[i].post_releasetime}</span><span>阅读数：${res.data.news[i].post_readnum}</span></div></div></div>`
+                            news += `<div class="postBox"><div class="postInfo"><div class="postTitle"><a href="forum.html?postid=${res.data.news[i].id}">${res.data.news[i].post_title}</a><i class='red_news'>[${res.data.news[i].post_label}]</i></div><div class="author"><!--文章内容--></div><div class="author"><span>发帖人：${res.data.news[i].post_user_name}</span><span>最后回复人：${res.data.news[i].last_user_name}</span><span>发布时间：${res.data.news[i].post_releasetime}</span><span>阅读数：${res.data.news[i].post_readnum}</span></div></div></div>`
                         }
                     }else{
                         news += `<div class="none">暂无数据</div>`
@@ -1528,22 +1598,16 @@
 
                     if(res.data.reward.length>0){
                         for(let i = 0; i < res.data.reward.length; i++){
-                            reward += `<div class="postBox"><img src="${res.data.reward[i].post_photo}" alt=""><div class="postInfo"><div class="postTitle"><a href="forum.html?postid=${res.data.reward[i].id}">${res.data.reward[i].post_title}</a><i class='red_news'>[${res.data.reward[i].post_label}]</i></div><div class="author"><span>发帖人：${res.data.reward[i].post_user_name}</span><span>最后回复人：${res.data.reward[i].last_user_name}</span></div><div class="author"><span>发布时间：${res.data.reward[i].post_releasetime}</span><span>阅读数：${res.data.reward[i].post_readnum}</span></div></div></div>`
+                            reward += `<div class="postBox"><div class="postInfo"><div class="postTitle"><a href="forum.html?postid=${res.data.reward[i].id}">${res.data.reward[i].post_title}</a><i class='red_news'>[${res.data.reward[i].post_label}]</i></div><div class="author"><!--文章内容--></div><div class="author"><span>发帖人：${res.data.reward[i].post_user_name}</span><span>最后回复人：${res.data.reward[i].last_user_name}</span><span>发布时间：${res.data.reward[i].post_releasetime}</span><span>阅读数：${res.data.reward[i].post_readnum}</span></div></div></div>`
                         }
                     }else{
                         reward += `<div class="none">暂无数据</div>`
                     }
-
-
-
                     document.getElementById('hot_post').innerHTML = hotPost
                     document.getElementById('hot_reward').innerHTML = hotReward
                     document.getElementById('recommend').innerHTML = recommend
                     document.getElementById('reward').innerHTML = reward
                     document.getElementById('news').innerHTML = news
-                    
-                    
-                    
                 }
             })
 
@@ -1573,8 +1637,6 @@
                             oilData += `<div class="colume"><span>${res.data.oil[i].shares_name}</span><div><span>${res.data.oil[i].shares_money}</span><span class="stockBox"  style="background: #37A316;"> ${res.data.oil[i].shares_range}%</span></div></div>`
                         }
                     }
-
-
                     document.getElementById('stock').innerHTML = stockList
                     document.getElementById('oil').innerHTML = oilData
                 }
@@ -1591,11 +1653,17 @@
                     let integralRank = ""
                     let getGoodRank = ""
                     for(let i = 0; i < res.data.rank_release_total.length; i++){
-                        postingRank += `<li><span>${i+1}.${res.data.month_release_rank[i].user_name}</span><span>${res.data.month_release_rank[i].count}篇</span></li>`;
+                    	var order = Number(i)+1;
+                    	if(i<3){
+                    		var back = "order"+order;
+                    	}else{
+                    		var back = "order_other";
+                    	}
+                        postingRank += `<li><span class="layout"><div class="order ${back}">${order}</div>${res.data.month_release_rank[i].user_name}</span><span>${res.data.month_release_rank[i].count}篇</span></li>`;
 
-                        integralRank += `<li><span>${i+1}.${res.data.rank_coin_total[i].user_name}</span><span>${res.data.rank_coin_total[i].wallet_coin}积分</span></li>`;
+                        integralRank += `<li><span class="layout"><div class="order ${back}">${order}</div>${res.data.rank_coin_total[i].user_name}</span><span>${res.data.rank_coin_total[i].wallet_coin}积分</span></li>`;
 
-                        getGoodRank += `<li><span>${i+1}.${res.data.rank_support_total[i].user_name}</span><span>${res.data.rank_support_total[i].user_laid_sum}点赞</span></li>`;
+                        getGoodRank += `<li><span class="layout"><div class="order ${back}">${order}</div>${res.data.rank_support_total[i].user_name}</span><span>${res.data.rank_support_total[i].user_laid_sum}点赞</span></li>`;
 
                     }
                     document.getElementById('posting-rank').innerHTML = postingRank

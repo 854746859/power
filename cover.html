@@ -181,7 +181,8 @@
 			.news_card {
 				display: flex;
 				flex-direction: column;
-				align-items: center;
+				/*align-items: center;*/
+			    padding-left: 30px;
 				border-radius: 6px;
 				height: 205px;
 				overflow: hidden;
@@ -332,8 +333,8 @@
 				<!--统计-->
 				<div class="statistics">
 					<div class="part">
-						<h1>3000+</h1>
-						<span id="">
+						<h1 id="user_count">3000+</h1>
+						<span>
 							注册用户
 						</span>
 					</div>
@@ -344,15 +345,15 @@
 						</span>
 					</div>
 					<div class="part">
-						<h1>5000+</h1>
-						<span id="">
+						<h1 id="post_count">5000+</h1>
+						<span>
 							帖子总数
 						</span>
 					</div>
 					<div class="part">
 						<h1>3000+</h1>
 						<span id="">
-							网站数据
+							今日发帖
 						</span>
 					</div>
 				</div>
@@ -430,8 +431,8 @@
 						<!-- 需要添加的最新通知或公告滚动部分 -->
 						<div class="card_box">
 							<div class="news_card" id="demo1">
-								<ul>
-									<li>全国新增确诊39例 均为境外输入病例 湖北...</li>
+								<ul id="news_left">
+									<!--<li>全国新增确诊39例 均为境外输入病例 湖北...</li>
 									<li>全国新增确诊38例 均为境外输入病例 湖北...</li>
 									<li>全国新增确诊37例 均为境外输入病例 湖北...</li>
 									<li>全国新增确诊36例 均为境外输入病例 湖北...</li>
@@ -440,14 +441,14 @@
 									<li>全国新增确诊38例 均为境外输入病例 湖北...</li>
 									<li>全国新增确诊37例 均为境外输入病例 湖北...</li>
 									<li>全国新增确诊36例 均为境外输入病例 湖北...</li>
-									<li>全国新增确诊35例 均为境外输入病例 湖北...</li>
+									<li>全国新增确诊35例 均为境外输入病例 湖北...</li>-->
 								</ul>
 							</div>
 						</div>
 						<div class="card_box">
 							<div class="news_card" id="demo2">
-								<ul>
-									<li>全国新增确诊39例 均为境外输入病例 湖北...</li>
+								<ul id="news_right">
+									<!--<li>全国新增确诊39例 均为境外输入病例 湖北...</li>
 									<li>全国新增确诊38例 均为境外输入病例 湖北...</li>
 									<li>全国新增确诊37例 均为境外输入病例 湖北...</li>
 									<li>全国新增确诊36例 均为境外输入病例 湖北...</li>
@@ -456,7 +457,7 @@
 									<li>全国新增确诊38例 均为境外输入病例 湖北...</li>
 									<li>全国新增确诊37例 均为境外输入病例 湖北...</li>
 									<li>全国新增确诊36例 均为境外输入病例 湖北...</li>
-									<li>全国新增确诊35例 均为境外输入病例 湖北...</li>
+									<li>全国新增确诊35例 均为境外输入病例 湖北...</li>-->
 								</ul>
 							</div>
 						</div>
@@ -486,13 +487,7 @@
 							<div id="main" style="width: 600px;height:400px;"></div>
 						</div>
 						<div class="count">
-							<ul>
-								<!--<li>全国新增确诊39例 均为境外输入病例 湖北...</li>
-								<li>全国新增确诊39例 均为境外输入病例 湖北...</li>
-								<li>全国新增确诊39例 均为境外输入病例 湖北...</li>
-								<li>全国新增确诊39例 均为境外输入病例 湖北...</li>
-								<li>全国新增确诊39例 均为境外输入病例 湖北...</li>-->
-							</ul>
+							<div id="main_post" style="width: 600px;height:400px;"></div>
 						</div>
 					</div>
 				</div>
@@ -771,6 +766,8 @@
 				dataType:"json",
 				success:function(data){
 					console.log(data)
+					$("#user_count").html(data.data.user_count);
+					$("#post_count").html(data.data.post_count);
 				}
 			});
 			//滚动新闻
@@ -779,7 +776,16 @@
 				url:`${sever_url}master/news`,
 				dataType:"json",
 				success:function(data){
-					console.log(data)
+//					console.log(data)
+					var obj = data.data;
+					for(var i=0;i<obj.length;i++){
+						if(i<=9){
+							var dom = $("#news_left");
+						}else{
+							var dom = $("#news_right");
+						}
+						$(dom).append(`<li>${obj[i].post_title}</li>`)
+					}
 				}
 			});
 			//统计
@@ -788,7 +794,7 @@
 				url:`${sever_url}statistics/industry`,
 				dataType:"json",
 				success:function(data){
-					console.log(data)
+//					console.log(data)
 					var obj = data.data;
 					var name_arr = [];
 					var data_arr = [];
@@ -796,15 +802,34 @@
 						name_arr[i]=obj[i].real_industry;
 						data_arr[i]={"value":obj[i].count,"name":obj[i].real_industry};
 					}
-					option.legend.data = name_arr;
+//					option.legend.data = name_arr;
 					option.series[0].data = data_arr;
 					myChart.setOption(option);
 				}
 			});
+			$.ajax({
+				type:"post",
+				url:`${sever_url}statistics/article`,
+				dataType:"json",
+				success:function(data){
+//					console.log(data)
+					var obj = data.data;
+					var name_arr = [];
+					var data_arr = [];
+					for(var i=0;i<obj.length;i++){
+						name_arr[i]=obj[i].post_plate;
+						data_arr[i]={"value":obj[i].count,"name":obj[i].post_plate};
+					}
+//					option.legend.data = name_arr;
+					option.series[0].data = data_arr;
+					MyChart.setOption(option);
+				}
+			});
 			var myChart = echarts.init(document.getElementById('main'));
+			var MyChart = echarts.init(document.getElementById('main_post'));
 		    option = {
 		        title : {
-		            text: '用户行业统计',       //大标题
+		            text: '版块文章统计',       //大标题
 		            subtext: '',                //类似于副标题
 		            x:'center'                 //标题位置   居中
 		        },
