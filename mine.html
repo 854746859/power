@@ -1229,8 +1229,8 @@
 											<div id="wallet_money">余额：0元</div>
 										</div>
 										<div class="rechange">
-											<a href="javascript:void(0)">充值</a>
-											<a href="javascript:void(0)">提现</a>
+											<!--<a href="javascript:void(0)">充值</a>
+											<a href="javascript:void(0)">提现</a>-->
 										</div>
 									</div>
 								</div>
@@ -1298,55 +1298,72 @@
 										</div>
 									</div>
 									<div class="description_post">
+										<h4>文章大类：</h4>
+										<select id="post_Large">
+											<option value="1">原创</option>
+											<option value="2">编译</option>
+											<option value="3">技术评论</option>
+											<option value="4">一般</option>
+										</select>
+									</div>
+									<div class="description_post">
 										<h4>二级分类：</h4>
 										<select id="Classification">
-											<option value="1">政策法规-国内</option>
-											<option value="2">政策法规-国际</option>
-											<option value="3">项目市场-国内</option>
-											<option value="4">项目市场-国际</option>
-											<option value="11">论文数据-学术论文</option>
-											<option value="12">论文数据-标准规范</option>
-											<option value="13">论文数据-研究报告</option>
-											<option value="14">论文数据-会议论坛</option>
-											<option value="21">建设投产-前期研究</option>
-											<option value="22">建设投产-设计管理</option>
-											<option value="23">建设投产-设备采办</option>
-											<option value="24">建设投产-建设资源</option>
-											<option value="25">建设投产-施工建设</option>
-											<option value="26">建设投产-调试投产</option>
-											<option value="31">经营管理-生产管理</option>
-											<option value="32">经营管理-技术管理</option>
-											<option value="33">经营管理-维保管理</option>
-											<option value="34">经营管理-资源市场</option>
-											<option value="35">经营管理-公司管理</option>
-											<option value="36">经营管理-财务审计</option>
-											<option value="37">经营管理-人力资源</option>
-											<option value="41">信息推广-信息推广</option>
-											<option value="42">信息推广-采购信息</option>
-											<option value="43">信息推广-招聘信息</option>
-											<option value="51">项目管理-管理知识</option>
-											<option value="52">项目管理-管理知识</option>
-											<option value="61">English Version-Project Information</option>
-											<option value="62">English Version-LNG Resource</option>
-											<option value="63">English Version-Market</option>
-											<option value="64">English Version-Financial Accounting</option>
-											<option value="65">English Version-Engineering</option>
-											<option value="66">English Version-Construction</option>
-											<option value="67">English Version-Commission</option>
-											<option value="68">English Version-Project management</option>
-											<option value="69">English Version-Human Resource</option>
-											<option value="60">English Version-Financial Accounting</option>
-											<option value="71">论坛管理-论坛管理</option>
-											<option value="72">论坛管理-论坛管理</option>
-											<option value="81">能源杂谈-杂谈</option>
-											<option value="82">能源杂谈-休闲</option>
-											<option value="111">技术交流-低温设备</option>
-											<option value="112">技术交流-LNG储罐</option>
-											<option value="113">技术交流-工艺系统</option>
-											<option value="114">技术交流-公用系统</option>
-											<option value="115">技术交流-公用系统</option>
-											<option value="116">技术交流-港口航道</option>
-											<option value="117">技术交流-输气站场</option>
+											<option value="1">行业新闻-新闻速递</option>
+											<option value="2">行业新闻-国家政策</option>
+											<option value="3">行业新闻-行业法规</option>
+											<option value="11">技术前沿-学术论文</option>
+											<option value="12">技术前沿-标准规范</option>
+											<option value="13">技术前沿-研究报告</option>
+											<option value="14">技术前沿-会议论坛</option>
+											<option value="21">信息推广-展会论坛</option>
+											<option value="22">信息推广-招标采购</option>
+											<option value="23">信息推广-培训教育</option>
+											<option value="24">信息推广-销售信息</option>
+											<option value="25">信息推广-招聘求职</option>
+											<option value="31">资源市场-国外资源</option>
+											<option value="32">资源市场-国内资源</option>
+											<option value="33">资源市场-供需动态</option>
+											<option value="34">资源市场-价格速递</option>
+											<option value="41">天然气液化-项目信息</option>
+											<option value="42">天然气液化-工艺技术</option>
+											<option value="43">天然气液化-建设调试</option>
+											<option value="44">天然气液化-生产运营</option>
+											<option value="51">LNG接收站-项目信息</option>
+											<option value="52">LNG接收站-企业管理</option>
+											<option value="53">LNG接收站-工艺技术</option>
+											<option value="54">LNG接收站-生产运营</option>
+											<option value="55">LNG接收站-维保维修</option>
+											<option value="71">LNG运输-LNG船舶</option>
+											<option value="72">LNG运输-FSRU</option>
+											<option value="73">LNG运输-LNG过驳</option>
+											<option value="74">LNG运输-LNG槽车</option>
+											<option value="75">LNG运输-LNG加注船</option>
+											<option value="76">LNG运输-LNG罐箱</option>
+											<option value="81">LNG利用-燃气发电</option>
+											<option value="82">LNG利用-冷能利用</option>
+											<option value="83">LNG利用-调峰气化</option>
+											<option value="84">LNG利用-船舶加注</option>
+											<option value="85">LNG利用-车辆加注</option>
+											<option value="86">LNG利用-工业用气</option>
+											<option value="91">项目建设-选址决策</option>
+											<option value="92">项目建设-设计研究</option>
+											<option value="93">项目建设-设备采办</option>
+											<option value="94">项目建设-建设资源</option>
+											<option value="95">项目建设-施工技术</option>
+											<option value="96">项目建设-调试投产</option>
+											<option value="97">项目建设-项目管理</option>
+											<option value="101">专栏专题-LNG储罐</option>
+											<option value="102">专栏专题-数字化</option>
+											<option value="103">专栏专题-国家管网</option>
+											<option value="111">休闲广场-赏心悦目</option>
+											<option value="112">休闲广场-心情驿站</option>
+											<option value="113">休闲广场-休闲文学</option>
+											<option value="114">休闲广场-沙龙活动</option>
+											<option value="121">论坛管理-论坛版规</option>
+											<option value="122">论坛管理-用户体验</option>
+											<option value="123">论坛管理-投票区</option>
+											<option value="124">论坛管理-管委会</option>
 										</select>
 										<span style="color: #1a83da;margin-left: 5px;font-size: 12px;">*可不选</span>
 
@@ -2413,6 +2430,7 @@
 							formData.append("post_plate_two", Number($('#Classification option:selected').val()));
 							formData.append("post_releasetype", 0);
 							formData.append("post_articletype", Number($('#postType option:selected').val()));
+							formData.append("post_Large", Number($('#post_Large option:selected').val()));
 							formData.append("post_rewardmoney", Number($("#rewardmoney").val()));
 							console.log(formData)
 							$.ajax({

@@ -46,6 +46,10 @@ if(infodata != null){
 	}
 	if(infodata.user_power!="管理员"&&infodata.user_power!="超级管理员"){
 		$("#manager").hide();
+		
+	}
+	if(infodata.user_power_num>3){
+		$("#vip_area").hide();
 	}
 }
 //分享
