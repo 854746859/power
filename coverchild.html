@@ -1686,7 +1686,7 @@
                 },
                 dataType: 'json',
                 success: function(res){
-//              	console.log(res)
+                	console.log(res)
                     let policy = ''
                     let techology = ''
                     let information = ''
@@ -1696,11 +1696,11 @@
                     let lng_admin = ''
                     let lng_english = ''
                     for(let i = 0; i < res.data.policy.length; i++){
-                        policy += `<div class="postBox"><img src="${res.data.policy[i].post_photo}" alt=""><div class="postInfo"><div class="postTitle"><a href="forum.html?postid=${res.data.policy[i].id}">${res.data.policy[i].post_title}</a></div><div class="author"><span>发帖人：${res.data.policy[i].post_user_name}</span><span>最后回复人：${res.data.policy[i].last_user_name}</span></div><div class="author"><span>发布时间：${res.data.policy[i].post_releasetime}</span><span>阅读数：${res.data.policy[i].post_readnum}</span></div></div></div>`
+                        policy += `<div class="postBox"><div class="postInfo"><div class="postTitle"><a href="forum.html?postid=${res.data.policy[i].id}">${res.data.policy[i].post_title}</a><i class='red_news'>[${res.data.policy[i].post_label}]</i></div><div class="author"><!--content--></div><div class="author"><span>发帖人：${res.data.policy[i].post_user_name}</span><span>最后回复人：${res.data.policy[i].last_user_name}</span><span>发布时间：${res.data.policy[i].post_releasetime}</span><span>阅读数：${res.data.policy[i].post_readnum}</span></div></div></div>`
                     }
                     if(res.data.project.length>0){
                         for(let i = 0; i < res.data.project.length; i++){
-                            techology += `<div class="postBox"><img src="${res.data.project[i].post_photo}" alt=""><div class="postInfo"><div class="postTitle"><a href="forum.html?postid=${res.data.project[i].id}">${res.data.project[i].post_title}</a></div><div class="author"><span>发帖人：${res.data.project[i].post_user_name}</span><span>最后回复人：${res.data.project[i].last_user_name}</span></div><div class="author"><span>发布时间：${res.data.project[i].post_releasetime}</span><span>阅读数：${res.data.project[i].post_readnum}</span></div></div></div>`
+                            techology += `<div class="postBox"><div class="postInfo"><div class="postTitle"><a href="forum.html?postid=${res.data.project[i].id}">${res.data.project[i].post_title}</a><i class='red_news'>[${res.data.project[i].post_label}]</i></div><div class="author"><!--content--></div><div class="author"><span>发帖人：${res.data.project[i].post_user_name}</span><span>最后回复人：${res.data.project[i].last_user_name}</span><span>发布时间：${res.data.project[i].post_releasetime}</span><span>阅读数：${res.data.project[i].post_readnum}</span></div></div></div>`
                         }
                     }else{
                         techology += `<div class="none">暂无数据</div>`
@@ -1708,7 +1708,7 @@
 
                     if(res.data.paper.length>0){
                         for(let i = 0; i < res.data.paper.length; i++){
-                            information += `<div class="postBox"><img src="${res.data.paper[i].post_photo}" alt=""><div class="postInfo"><div class="postTitle"><a href="forum.html?postid=${res.data.paper[i].id}">${res.data.paper[i].post_title}</a></div><div class="author"><span>发帖人：${res.data.paper[i].post_user_name}</span><span>最后回复人：${res.data.paper[i].last_user_name}</span></div><div class="author"><span>发布时间：${res.data.paper[i].post_releasetime}</span><span>阅读数：${res.data.paper[i].post_readnum}</span></div></div></div>`
+                            information += `<div class="postBox"><div class="postInfo"><div class="postTitle"><a href="forum.html?postid=${res.data.paper[i].id}">${res.data.paper[i].post_title}</a><i class='red_news'>[${res.data.paper[i].post_label}]</i></div><div class="author"><!--content--></div><div class="author"><span>发帖人：${res.data.paper[i].post_user_name}</span><span>最后回复人：${res.data.paper[i].last_user_name}</span><span>发布时间：${res.data.paper[i].post_releasetime}</span><span>阅读数：${res.data.paper[i].post_readnum}</span></div></div></div>`
                         }
                     }else{
                         information += `<div class="none">暂无数据</div>`
@@ -1716,7 +1716,7 @@
 
                     if(res.data.build.length>0){
                         for(let i = 0; i < res.data.build.length; i++){
-                            market += `<div class="postBox"><img src="${res.data.build[i].post_photo}" alt=""><div class="postInfo"><div class="postTitle"><a href="forum.html?postid=${res.data.build[i].id}">${res.data.build[i].post_title}</a></div><div class="author"><span>发帖人：${res.data.build[i].post_user_name}</span><span>最后回复人：${res.data.build[i].last_user_name}</span></div><div class="author"><span>发布时间：${res.data.build[i].post_releasetime}</span><span>阅读数：${res.data.build[i].post_readnum}</span></div></div></div>`
+                            market += `<div class="postBox"><div class="postInfo"><div class="postTitle"><a href="forum.html?postid=${res.data.build[i].id}">${res.data.build[i].post_title}</a><i class='red_news'>[${res.data.build[i].post_label}]</i></div><div class="author"><!--content--></div><div class="author"><span>发帖人：${res.data.build[i].post_user_name}</span><span>最后回复人：${res.data.build[i].last_user_name}</span><span>发布时间：${res.data.build[i].post_releasetime}</span><span>阅读数：${res.data.build[i].post_readnum}</span></div></div></div>`
                         }
                     }else{
                         market += `<div class="none">暂无数据</div>`
@@ -1724,7 +1724,7 @@
 
                     if(res.data.management.length>0){
                         for(let i = 0; i < res.data.management.length; i++){
-                            gas += `<div class="postBox"><img src="${res.data.management[i].post_photo}" alt=""><div class="postInfo"><div class="postTitle"><a href="forum.html?postid=${res.data.management[i].id}">${res.data.management[i].post_title}</a></div><div class="author"><span>发帖人：${res.data.management[i].post_user_name}</span><span>最后回复人：${res.data.management[i].last_user_name}</span></div><div class="author"><span>发布时间：${res.data.management[i].post_releasetime}</span><span>阅读数：${res.data.management[i].post_readnum}</span></div></div></div>`
+                            gas += `<div class="postBox"><div class="postInfo"><div class="postTitle"><a href="forum.html?postid=${res.data.management[i].id}">${res.data.management[i].post_title}</a><i class='red_news'>[${res.data.management[i].post_label}]</i></div><div class="author"><!--content--></div><div class="author"><span>发帖人：${res.data.management[i].post_user_name}</span><span>最后回复人：${res.data.management[i].last_user_name}</span><span>发布时间：${res.data.management[i].post_releasetime}</span><span>阅读数：${res.data.management[i].post_readnum}</span></div></div></div>`
                         }
                     }else{
                         gas += `<div class="none">暂无数据</div>`
@@ -1732,21 +1732,21 @@
 
                     if(res.data.information.length>0){
                         for(let i = 0; i < res.data.information.length; i++){
-                            lng_state += `<div class="postBox"><img src="${res.data.information[i].post_photo}" alt=""><div class="postInfo"><div class="postTitle"><a href="forum.html?postid=${res.data.information[i].id}">${res.data.information[i].post_title}</a></div><div class="author"><span>发帖人：${res.data.information[i].post_user_name}</span><span>最后回复人：${res.data.information[i].last_user_name}</span></div><div class="author"><span>发布时间：${res.data.information[i].post_releasetime}</span><span>阅读数：${res.data.information[i].post_readnum}</span></div></div></div>`
+                            lng_state += `<div class="postBox"><div class="postInfo"><div class="postTitle"><a href="forum.html?postid=${res.data.information[i].id}">${res.data.information[i].post_title}</a><i class='red_news'>[${res.data.information[i].post_label}]</i></div><div class="author"><!--content--></div><div class="author"><span>发帖人：${res.data.information[i].post_user_name}</span><span>最后回复人：${res.data.information[i].last_user_name}</span><span>发布时间：${res.data.information[i].post_releasetime}</span><span>阅读数：${res.data.information[i].post_readnum}</span></div></div></div>`
                         }
                     }else{
                         lng_state += `<div class="none">暂无数据</div>`
                     }
                     if(res.data.admin.length>0){
                         for(let i = 0; i < res.data.admin.length; i++){
-                            lng_admin += `<div class="postBox"><img src="${res.data.admin[i].post_photo}" alt=""><div class="postInfo"><div class="postTitle"><a href="forum.html?postid=${res.data.admin[i].id}">${res.data.admin[i].post_title}</a></div><div class="author"><span>发帖人：${res.data.admin[i].post_user_name}</span><span>最后回复人：${res.data.admin[i].last_user_name}</span></div><div class="author"><span>发布时间：${res.data.admin[i].post_releasetime}</span><span>阅读数：${res.data.admin[i].post_readnum}</span></div></div></div>`
+                            lng_admin += `<div class="postBox"><div class="postInfo"><div class="postTitle"><a href="forum.html?postid=${res.data.admin[i].id}">${res.data.admin[i].post_title}</a><i class='red_news'>[${res.data.admin[i].post_label}]</i></div><div class="author"><!--content--></div><div class="author"><span>发帖人：${res.data.admin[i].post_user_name}</span><span>最后回复人：${res.data.admin[i].last_user_name}</span><span>发布时间：${res.data.admin[i].post_releasetime}</span><span>阅读数：${res.data.admin[i].post_readnum}</span></div></div></div>`
                         }
                     }else{
                         lng_admin += `<div class="none">暂无数据</div>`
                     }
                     if(res.data.english.length>0){
                         for(let i = 0; i < res.data.english.length; i++){
-                            lng_admin += `<div class="postBox"><img src="${res.data.english[i].post_photo}" alt=""><div class="postInfo"><div class="postTitle"><a href="forum.html?postid=${res.data.english[i].id}">${res.data.english[i].post_title}</a></div><div class="author"><span>发帖人：${res.data.english[i].post_user_name}</span><span>最后回复人：${res.data.english[i].last_user_name}</span></div><div class="author"><span>发布时间：${res.data.english[i].post_releasetime}</span><span>阅读数：${res.data.english[i].post_readnum}</span></div></div></div>`
+                            lng_admin += `<div class="postBox"><div class="postInfo"><div class="postTitle"><a href="forum.html?postid=${res.data.english[i].id}">${res.data.english[i].post_title}</a><i class='red_news'>[${res.data.english[i].post_label}]</i></div><div class="author"><!--content--></div><div class="author"><span>发帖人：${res.data.english[i].post_user_name}</span><span>最后回复人：${res.data.english[i].last_user_name}</span><span>发布时间：${res.data.english[i].post_releasetime}</span><span>阅读数：${res.data.english[i].post_readnum}</span></div></div></div>`
                         }
                     }else{
                         lng_english += `<div class="none">暂无数据</div>`
