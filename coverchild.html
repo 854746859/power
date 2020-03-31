@@ -687,7 +687,7 @@
 						<span id="" class="font18">
 							最后回复人：
 						</span>
-						<span id="">
+						<span id="end_reply_name">
 							xxx
 						</span>
 					</div>
@@ -695,7 +695,7 @@
 						<span id="" class="font18">
 							欢迎新成员：
 						</span>
-						<span id="">
+						<span id="new_username">
 							xxx
 						</span>
 					</div>
@@ -1406,6 +1406,8 @@
 					$("#user_count").html(data.data.user_count);
 					$("#post_count").html(data.data.post_count);
 					$("#user_loging").html(data.data.user_loging);
+					$("#new_username").html(data.data.new_username);
+					$("#end_reply_name").html(data.data.end_reply_name);
 				}
 			});
 			//获取投票
