@@ -1107,26 +1107,16 @@
                         	<div class="news_type">
                         		外网信息编译区
                         	</div>
-                        	<div class="post_list">
-                            	<ul>
-                            		<li></li>
-                            		<li></li>
-                            		<li></li>
-                            		<li></li>
-                            	</ul>
+                        	<div class="post_list" id="out_post">
+                            	
                         	</div>
                         </div>
                         <div class="news_box">
                         	<div class="news_type">
                         		原创文章区
                         	</div>
-                        	<div class="post_list">
-                            	<ul>
-                            		<li></li>
-                            		<li></li>
-                            		<li></li>
-                            		<li></li>
-                            	</ul>
+                        	<div class="post_list" id="original">
+                            	
                         	</div>
                         </div>
                     </div>
@@ -1547,6 +1537,8 @@
                     let recommend = ""
                     let reward = ""
                     let news = ""
+                    let original = ""
+                    let out_post = ""
                     for(let i=0;i<res.data.hot_post.length;i++){
                     	var order = Number(i)+1;
                     	if(i<3){
@@ -1590,11 +1582,29 @@
                     }else{
                         reward += `<div class="none">暂无数据</div>`
                     }
+                    //外网
+                    if(res.data.out_post.length>0){
+                        for(let i = 0; i < res.data.out_post.length; i++){
+                            out_post += `<div class="postBox"><div class="postInfo"><div class="postTitle"><a href="forum.html?postid=${res.data.out_post[i].id}">${res.data.out_post[i].out_title}</a><i class='red_news'><!--[${res.data.out_post[i].post_label}]--></i></div><div class="author"><!--文章内容--></div><div class="author"><span>发帖人：${res.data.out_post[i].setup_user}</span><span>最后回复人：${res.data.out_post[i].revise_user}</span><span>发布时间：${res.data.out_post[i].setup_time}</span><!--<span>阅读数：${res.data.out_post[i].post_readnum}</span>--></div></div></div>`
+                        }
+                    }else{
+                        out_post += `<div class="none">暂无数据</div>`
+                    }
+                    //原创
+                    if(res.data.original.length>0){
+                        for(let i = 0; i < res.data.original.length; i++){
+                            original += `<div class="postBox"><div class="postInfo"><div class="postTitle"><a href="forum.html?postid=${res.data.original[i].id}">${res.data.original[i].post_title}</a><!--<i class='red_news'>[${res.data.original[i].post_label}]</i>--></div><div class="author"><!--文章内容--></div><div class="author"><!--<span>发帖人：${res.data.original[i].post_user_name}</span><span>最后回复人：${res.data.original[i].last_user_name}</span><span>发布时间：${res.data.original[i].post_releasetime}</span><span>阅读数：${res.data.original[i].post_readnum}</span>--></div></div></div>`
+                        }
+                    }else{
+                        original += `<div class="none">暂无数据</div>`
+                    }
                     document.getElementById('hot_post').innerHTML = hotPost
                     document.getElementById('hot_reward').innerHTML = hotReward
                     document.getElementById('recommend').innerHTML = recommend
                     document.getElementById('reward').innerHTML = reward
                     document.getElementById('news').innerHTML = news
+                    document.getElementById('out_post').innerHTML = out_post
+                    document.getElementById('original').innerHTML = original
                 }
             })
 

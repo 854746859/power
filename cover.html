@@ -359,7 +359,7 @@
 				</div>
 				<!--横幅一-->
 				<div class="banner">
-					<img src="images/coverLogo/广告1.png" />
+					<img id="top_banner" src="images/coverLogo/广告1.png" />
 				</div>
 				<!--小图标-->
 				<div class="icon_box">
@@ -420,7 +420,7 @@
 				</div>
 				<!--横幅二-->
 				<div class="banner">
-					<img src="images/coverLogo/广告2.png" />
+					<img id="bottom_banner" src="images/coverLogo/广告2.png" />
 				</div>
 				<!--滚动新闻-->
 				<div class="block_box">
@@ -770,6 +770,20 @@
 					$("#post_count").html(data.data.post_count);
 					$("#post_today").html(data.data.post_today);
 					$("#user_loging").html(data.data.user_loging);
+				}
+			});
+			//广告
+			$.ajax({
+				type:"post",
+				url:`${sever_url}coverinfo/poster`,
+				data:{
+					cover_plate:0
+				},
+				dataType:"json",
+				success:function(data){
+					console.log(data)
+					$("#top_banner").attr("src",data.data.top_banner[0].cover_posterurl);
+					$("#bottom_banner").attr("src",data.data.bottom_banner.cover_posterurl);
 				}
 			});
 			//滚动新闻
