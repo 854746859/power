@@ -423,24 +423,7 @@
 				color:#fff;
 				align-items: center;
             }
-            .partener{
-            	width: 70%;
-            	margin: 60px auto;
-            }
-			.partener .partener_title{
-				text-align: center;
-				font-size: 30px;
-				font-weight: 500;
-			}
-            .partener .partener_block{
-            	display: flex;
-            	flex-direction: row;
-            	justify-content: space-around;
-            	margin-top: 10px;
-            }
-            .partener ul li{
-            	color: #333;
-            }
+            
             /* 专家 */
             .experts{
                 display: flex;
@@ -680,7 +663,7 @@
 						<span id="" class="font18">
 							在线人数：
 						</span>
-						<span id="">
+						<span id="user_loging">
 							2000
 						</span>
 					</div>
@@ -1114,6 +1097,7 @@
                         </div>
 
                         <div class="ranking">
+                        	<p class="font24">LNG油价</p>
                             <img src="images/lng.png"/>
                         </div>
                     </div>
@@ -1421,6 +1405,7 @@
 					console.log(data)
 					$("#user_count").html(data.data.user_count);
 					$("#post_count").html(data.data.post_count);
+					$("#user_loging").html(data.data.user_loging);
 				}
 			});
 			//获取投票

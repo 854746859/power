@@ -183,6 +183,26 @@ footer,
 	color:rgba(0, 0, 0, 0.4);
 }
 /*end*/
+/*链接*/
+.partener{
+	width: 70%;
+	margin: 60px auto;
+}
+.partener .partener_title{
+	text-align: center;
+	font-size: 30px;
+	font-weight: 500;
+}
+.partener .partener_block{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	margin-top: 10px;
+}
+.partener ul li{
+	color: #333;
+}
+/*end*/
 .block {padding: 7.8125rem 0;}
 .less-spacing,
 .block.less-spacing {padding: 6.25rem 0;}

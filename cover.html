@@ -339,7 +339,7 @@
 						</span>
 					</div>
 					<div class="part">
-						<h1>2000+</h1>
+						<h1 id="user_loging">2000+</h1>
 						<span id="">
 							在线用户
 						</span>
@@ -351,7 +351,7 @@
 						</span>
 					</div>
 					<div class="part">
-						<h1>3000+</h1>
+						<h1 id="post_today">3000+</h1>
 						<span id="">
 							今日发帖
 						</span>
@@ -768,6 +768,8 @@
 					console.log(data)
 					$("#user_count").html(data.data.user_count);
 					$("#post_count").html(data.data.post_count);
+					$("#post_today").html(data.data.post_today);
+					$("#user_loging").html(data.data.user_loging);
 				}
 			});
 			//滚动新闻
