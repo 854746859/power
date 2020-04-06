@@ -162,7 +162,7 @@
 			
 			.block_box,
 			.partener .title {
-				font-size: 50px;
+				font-size: 40px;
 				/*letter-spacing: 8px;*/
 			}
 			
@@ -365,55 +365,55 @@
 				<div class="icon_box">
 					<div class="icon_name">
 						<div class="icon">
-							<a href="coverchild.html"><img src="images/coverLogo/煤气天然气.png" /></a>
+							<a href="coverchild.html"><img name="煤气天然气" src="images/coverLogo/煤气天然气.png" /></a>
 						</div>
 						<span>LNG</span>
 					</div>
 					<div class="icon_name">
 						<div class="icon">
-							<a href="#"><img src="images/coverLogo/能源化工.png" /></a>
+							<a href="#"><img name="能源化工" src="images/coverLogo/能源化工.png" /></a>
 						</div>
 						<span>油气</span>
 					</div>
 					<div class="icon_name">
 						<div class="icon">
-							<a href="#"><img src="images/coverLogo/电力.png" /></a>
+							<a href="#"><img name="电力" src="images/coverLogo/电力.png" /></a>
 						</div>
 						<span>电力</span>
 					</div>
 					<div class="icon_name">
 						<div class="icon">
-							<a href="#"><img src="images/coverLogo/核电.png" /></a>
+							<a href="#"><img name="核电" src="images/coverLogo/核电.png" /></a>
 						</div>
 						<span>核电</span>
 					</div>
 					<div class="icon_name">
 						<div class="icon">
-							<a href="#"><img src="images/coverLogo/管理.png" /></a>
+							<a href="#"><img name="管理" src="images/coverLogo/管理.png" /></a>
 						</div>
 						<span>项目管理</span>
 					</div>
 					<div class="icon_name">
 						<div class="icon">
-							<a href="#"><img src="images/coverLogo/海洋.png" /></a>
+							<a href="#"><img name="海洋" src="images/coverLogo/海洋.png" /></a>
 						</div>
 						<span>海洋</span>
 					</div>
 					<div class="icon_name">
 						<div class="icon">
-							<a href="#"><img src="images/coverLogo/风电.png" /></a>
+							<a href="#"><img name="风电" src="images/coverLogo/风电.png" /></a>
 						</div>
 						<span>新能源</span>
 					</div>
 					<div class="icon_name">
 						<div class="icon">
-							<a href="#"><img src="images/coverLogo/化工.png" /></a>
+							<a href="#"><img name="化工" src="images/coverLogo/化工.png" /></a>
 						</div>
 						<span>化工</span>
 					</div>
 					<div class="icon_name">
 						<div class="icon">
-							<a href="#"><img src="images/coverLogo/运煤.png" /></a>
+							<a href="#"><img name="运煤" src="images/coverLogo/运煤.png" /></a>
 						</div>
 						<span>煤炭</span>
 					</div>
@@ -804,6 +804,16 @@
 					}
 				}
 			});
+			//icon选择
+			$(".icon img").hover(function(){
+				var dom = $(this)[0];
+				var name = $(dom).attr("name");
+				$(dom).attr("src","images/coverLogo/"+name+"C.png");
+			},function(){
+				var dom = $(this)[0];
+				var name = $(dom).attr("name");
+				$(dom).attr("src","images/coverLogo/"+name+".png");
+			})
 			//统计
 			$.ajax({
 				type:"post",
