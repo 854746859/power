@@ -1396,6 +1396,7 @@
 			$(document).ready(function() {
 				var obj = sessionStorage.getItem("data");
 				obj = JSON.parse(obj);
+				console.log(obj)
 				//关注
 				$("#attention").click(function() {
 					$.ajax({
@@ -1403,7 +1404,7 @@
 						url: sever_url + "follow/add",
 						async: true,
 						data: {
-							token: obj.token,
+							token: obj!=null?obj.token:"",
 							user_id: $("#user_head").attr("name")
 						},
 						dataType: "json",
@@ -1412,6 +1413,21 @@
 							if (data.code == "200") {
 								$("#attention").attr("hidden", "hidden");
 								$("#attentioned").removeAttr("hidden");
+							}else if(data.code == "2"){
+								Dialog({
+									title: "请登录！",
+									content: "您还未登录，是否登录？",
+									ok: {
+										callback: function() {
+											window.location.href = 'login.html';
+										}
+									},
+									cancel: {
+										callback: function() {
+											Dialog.close();
+										}
+									}
+								});
 							}
 						}
 					});
@@ -1423,7 +1439,7 @@
 						url: sever_url + "my/follow/del",
 						async: true,
 						data: {
-							token: obj.token,
+							token: obj!=null?obj.token:"",
 							user_id: $("#user_head").attr("name")
 						},
 						dataType: "json",
@@ -1432,6 +1448,21 @@
 							if (data.code == "200") {
 								$("#attentioned").attr("hidden", "hidden");
 								$("#attention").removeAttr("hidden");
+							}else if(data.code == "2"){
+								Dialog({
+									title: "请登录！",
+									content: "您还未登录，是否登录？",
+									ok: {
+										callback: function() {
+											window.location.href = 'login.html';
+										}
+									},
+									cancel: {
+										callback: function() {
+											Dialog.close();
+										}
+									}
+								});
 							}
 						}
 					});

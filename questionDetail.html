@@ -1419,6 +1419,21 @@
 							if(data.code == "200") {
 								$("#attention").attr("hidden", "hidden");
 								$("#attentioned").removeAttr("hidden");
+							}else if(data.code == "2"){
+								Dialog({
+									title: "请登录！",
+									content: "您还未登录，是否登录？",
+									ok: {
+										callback: function() {
+											window.location.href = 'login.html';
+										}
+									},
+									cancel: {
+										callback: function() {
+											Dialog.close();
+										}
+									}
+								});
 							}
 						}
 					});
@@ -1439,6 +1454,21 @@
 							if(data.code == "200") {
 								$("#attentioned").attr("hidden", "hidden");
 								$("#attention").removeAttr("hidden");
+							}else if(data.code == "2"){
+								Dialog({
+									title: "请登录！",
+									content: "您还未登录，是否登录？",
+									ok: {
+										callback: function() {
+											window.location.href = 'login.html';
+										}
+									},
+									cancel: {
+										callback: function() {
+											Dialog.close();
+										}
+									}
+								});
 							}
 						}
 					});

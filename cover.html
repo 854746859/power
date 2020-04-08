@@ -113,6 +113,7 @@
 				justify-content: space-between;
 				align-items: center;
 				margin-top: -40px;
+				border-bottom: 1px solid #eee;
 			}
 			
 			.icon_name {
@@ -122,7 +123,11 @@
 				flex-direction: column;
 				align-items: center;
 			}
-			
+			.selected{
+				border-bottom: 2px solid #0084ff;
+				margin: 0;
+				font-size: 18px;
+			}
 			.icon_name span {
 				margin-top: 10px;
 			}
@@ -131,7 +136,7 @@
 				width: 75px;
 				height: 75px;
 				/*background-color: #008C81;*/
-				box-shadow: 4px 4px 2px #B5B5B5;
+				/*box-shadow: 4px 4px 2px #B5B5B5;*/
 				border-radius: 5px;
 				display: flex;
 				flex-direction: column;
@@ -208,9 +213,16 @@
 				margin-top: 10px;
 				/*width: 80%;*/
 				display: flex;
-				flex-direction: row;
+				flex-direction: column;
 				flex-wrap: wrap;
 				justify-content: center;
+			}
+			.partner_logo ul{
+				display: flex;
+				flex-direction: row;	
+			    flex-wrap: wrap;
+			    align-items: center;
+			    justify-content: center;
 			}
 			
 			.partner_logo a {
@@ -496,6 +508,7 @@
 						友情链接
 					</div>
 					<div class="partner_logo">
+						<!--1-->
 						<ul>
 							<li>
 								<a href="https://www.ndrc.gov.cn/" target="_blank">
@@ -522,6 +535,7 @@
 								</a>
 							</li>
 						</ul>
+						<!--2-->
 						<ul>
 							<li>
 								<a href="https://www.un.org/zh" target="_blank">
@@ -548,6 +562,7 @@
 								</a>
 							</li>
 						</ul>
+						<!--3-->
 						<ul>
 							<li>
 								<a href="https://www.cnki.net/" target="_blank">
@@ -579,8 +594,6 @@
 									<span>中国家图书馆</span>
 								</a>
 							</li>
-						</ul>
-						<ul>
 							<li>
 								<a href="http://lib.tsinghua.edu.cn/dra/" target="_blank">
 									<!--<img src="images/partner/22.png" />-->
@@ -606,6 +619,10 @@
 								</a>
 							</li>
 						</ul>
+						<!--<ul>
+							
+						</ul>-->
+						<!--4-->
 						<ul>
 							<li>
 								<a href="http://www.cas.cn/" target="_blank">
@@ -631,8 +648,6 @@
 									<span>北京大学</span>
 								</a>
 							</li>
-						</ul>
-						<ul>
 							<li>
 								<a href="http://www.ouc.edu.cn/" target="_blank">
 									<!--<img src="images/partner/27.jpg" />-->
@@ -657,8 +672,6 @@
 									<span>中国石油大学（北京）</span>
 								</a>
 							</li>
-						</ul>
-						<ul>
 							<li>
 								<a href="http://www.upc.edu.cn/" target="_blank">
 									<!--<img src="images/partner/19.png" />-->
@@ -684,6 +697,13 @@
 								</a>
 							</li>
 						</ul>
+						<!--<ul>
+							
+						</ul>
+						<ul>
+							
+						</ul>-->
+						<!--5-->
 						<ul>
 							<li>
 								<a href="https://www.zhihu.com/" target="_blank">
@@ -805,12 +825,14 @@
 				}
 			});
 			//icon选择
-			$(".icon img").hover(function(){
-				var dom = $(this)[0];
+			$(".icon_name").hover(function(){
+				$(this).addClass("selected");
+				var dom = $(this).find("img").each(function(i){});
 				var name = $(dom).attr("name");
 				$(dom).attr("src","images/coverLogo/"+name+"C.png");
 			},function(){
-				var dom = $(this)[0];
+				$(this).removeClass("selected");
+				var dom = $(this).find("img").each(function(i){});
 				var name = $(dom).attr("name");
 				$(dom).attr("src","images/coverLogo/"+name+".png");
 			})
