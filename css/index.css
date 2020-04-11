@@ -28,7 +28,7 @@ html,body{ background-color:#eee;width: 100%;}
 .fc{ color: #333; font-family:PingFangSC-Regular,PingFang SC; font-size: 20px;}
 .bg{background-color: #0084ff; min-width: 1220px;width: 100%;}
 .b{font-weight:bold;}
-.bora_5{  margin-top: 30px; border-radius: 5px; display: flex; flex-direction: row;justify-content: space-around;}
+.bora_5{  margin-top: 30px; border-radius: 5px; display: flex; flex-direction: column;justify-content: space-around;}
 .ovh{overflow: hidden;}
 
 /*top*/

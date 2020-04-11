@@ -103,7 +103,7 @@ function adConfig(Position){
 				}
 				if(Object.prototype.toString.call(topBanner)== '[object Array]'){
 					for(var i=0;i<topBanner.length;i++){
-						$("#top_banner").append('<li><a href="'+topBanner[i].cover_href+'"><img src="'+topBanner[i].cover_posterurl+'" /></a></li>');
+						$("#top_banner").append('<li><a href="https://www.c.citic/citic-web-ui/" target="_blank"><img src="'+topBanner[i].cover_posterurl+'" /></a></li>');
 						
 						$("#top_point").append('<li></li>');
 					}
