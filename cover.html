@@ -116,8 +116,8 @@
 				border-bottom: 1px solid #eee;
 			}
 			
-			.icon_name {
-				width: 75px;
+			.icon_name a{
+				width: 80px;
 				height: 140px;
 				display: flex;
 				flex-direction: column;
@@ -127,14 +127,13 @@
 			.icon_name span{
 				text-align: center;
 				font-size: 14px;
+				margin-top: 10px;
+				width: 90px;
 			}
 			.selected{
 				border-bottom: 2px solid #0084ff;
 				margin: 0;
-				font-size: 18px;
-			}
-			.icon_name span {
-				margin-top: 10px;
+				font-size: 14px;
 			}
 			
 			.icon {
@@ -167,12 +166,11 @@
 				display: flex;
 				flex-direction: column;
 				/*justify-content: center;*/
-				align-items: center;
+				/*align-items: center;*/
 			}
 			
-			.block_box,
-			.partener .title {
-				font-size: 40px;
+			.block_box .title {
+				font-size: 28px;
 				/*letter-spacing: 8px;*/
 			}
 			
@@ -220,22 +218,23 @@
 				display: flex;
 				flex-direction: column;
 				flex-wrap: wrap;
-				justify-content: center;
+				padding-left: 36px;
+				/*justify-content: center;*/
 			}
 			.partner_logo ul{
 				display: flex;
 				flex-direction: row;	
 			    flex-wrap: wrap;
 			    align-items: center;
-			    justify-content: center;
+			    /*justify-content: center;*/
 			}
-			
+			.partener .title,
 			.partner_logo a {
 				display: flex;
 				flex-direction: column;
 				/*align-items: center;*/
 				font-size: 18px;
-				font-weight: 600;
+				/*font-weight: 600;*/
 				padding: 5px 10px;
 				color: #333;
 			}
@@ -381,58 +380,76 @@
 				<!--小图标-->
 				<div class="icon_box">
 					<div class="icon_name">
-						<div class="icon">
-							<a href="#"><img name="运煤" src="images/coverLogo/运煤.png" /></a>
-						</div>
-						<span>煤炭</br>coal</span>
+						<a href="#">
+							<div class="icon">
+								<img name="运煤" src="images/coverLogo/运煤.png" />
+							</div>
+							<span>煤炭</br>COAL</span>
+						</a>
 					</div>
 					<div class="icon_name">
-						<div class="icon">
-							<a href="#"><img name="能源化工" src="images/coverLogo/能源化工.png" /></a>
-						</div>
-						<span>油气</br>Oil&Gas</span>
+						<a href="#">
+							<div class="icon">
+								<img name="能源化工" src="images/coverLogo/能源化工.png" />
+							</div>
+							<span>石油&天然气</br>OIL&GAS</span>
+						</a>
 					</div>
 					<div class="icon_name">
-						<div class="icon">
-							<a href="coverchild.html"><img name="煤气天然气" src="images/coverLogo/煤气天然气.png" /></a>
-						</div>
-						<span>LNG</br>液化天然气</span>
+						<a href="coverchild.html">
+							<div class="icon">
+								<img name="煤气天然气" src="images/coverLogo/煤气天然气.png" />
+							</div>
+							<span>液化天然气</br>LNG</span>
+						</a>
 					</div>
 					<div class="icon_name">
-						<div class="icon">
-							<a href="#"><img name="电力" src="images/coverLogo/电力.png" /></a>
-						</div>
-						<span>电力</br>power</span>
+						<a href="#">
+							<div class="icon">
+								<img name="电力" src="images/coverLogo/电力.png" />
+							</div>
+							<span>电力</br>POWER</span>
+						</a>
 					</div>
 					<div class="icon_name">
-						<div class="icon">
-							<a href="#"><img name="核电" src="images/coverLogo/核电.png" /></a>
-						</div>
-						<span>核电</br>nuclear power</span>
+						<a href="#">
+							<div class="icon">
+								<img name="核电" src="images/coverLogo/核电.png" />
+							</div>
+							<span>核电</br>NUCLEAR</span>
+						</a>
 					</div>
 					<div class="icon_name">
-						<div class="icon">
-							<a href="#"><img name="风电" src="images/coverLogo/风电.png" /></a>
-						</div>
-						<span>新能源</br>new energy</span>
+						<a href="#">
+							<div class="icon">
+								<img name="风电" src="images/coverLogo/风电.png" />
+							</div>
+							<span>新能源</br>RENEWABLE</span>
+						</a>
 					</div>
 					<div class="icon_name">
-						<div class="icon">
-							<a href="#"><img name="化工" src="images/coverLogo/化工.png" /></a>
-						</div>
-						<span>化工</br>Chemical industry</span>
+						<a href="#">
+							<div class="icon">
+								<img name="化工" src="images/coverLogo/化工.png" />
+							</div>
+							<span>化工</br>CHEM</span>
+						</a>
 					</div>
 					<div class="icon_name">
-						<div class="icon">
-							<a href="#"><img name="管理" src="images/coverLogo/管理.png" /></a>
-						</div>
-						<span>项目管理</br>Project management</span>
+						<a href="#">
+							<div class="icon">
+								<img name="管理" src="images/coverLogo/管理.png" />
+							</div>
+							<span>项目管理</br>PROJECT MANAGEMENT</span>
+						</a>
 					</div>
 					<div class="icon_name">
-						<div class="icon">
-							<a href="#"><img name="海洋" src="images/coverLogo/海洋.png" /></a>
-						</div>
-						<span>海洋</br>ocean</span>
+						<a href="#">
+							<div class="icon">
+								<img name="海洋" src="images/coverLogo/海洋.png" />
+							</div>
+							<span>海洋</br>OCEAN</span>
+						</a>
 					</div>
 				</div>
 				<!--横幅二-->
@@ -509,7 +526,7 @@
 					</div>
 				</div>
 				<div class="partener">
-					<div class="title">
+					<div class="title" style="padding-left: 41px;">
 						友情链接
 					</div>
 					<div class="partner_logo">
@@ -539,9 +556,7 @@
 									<span>上海国际能源交易中心</span>
 								</a>
 							</li>
-						</ul>
-						<!--2-->
-						<ul>
+							<!--2-->
 							<li>
 								<a href="https://www.un.org/zh" target="_blank">
 									<!--<img src="images/partner/12.png" />-->
@@ -566,6 +581,10 @@
 									<span>OPEC</span>
 								</a>
 							</li>
+						</ul>
+						<!--2-->
+						<ul>
+							
 						</ul>
 						<!--3-->
 						<ul>
@@ -701,15 +720,7 @@
 									<span>中国矿业大学（北京）</span>
 								</a>
 							</li>
-						</ul>
-						<!--<ul>
-							
-						</ul>
-						<ul>
-							
-						</ul>-->
-						<!--5-->
-						<ul>
+							<!--5-->
 							<li>
 								<a href="https://www.zhihu.com/" target="_blank">
 									<!--<img src="images/partner/30.png" />-->
@@ -735,6 +746,16 @@
 								</a>
 							</li>
 						</ul>
+						<!--<ul>
+							
+						</ul>
+						<ul>
+							
+						</ul>-->
+						<!--5-->
+						<ul>
+							
+						</ul>
 					</div>
 					<!--<div class="intro">
 						<div class="intro_box">
@@ -756,12 +777,12 @@
 			</div>
 		</div>
 		<!-- 底部 -->
-		<div class="footerbox cover_bg">
+		<div class="footerbox cover_bg" style="height: 100px;">
 			<div class="l txt">
 				<p><img src="images/beian.png">X公网安备 5201030200xxxx号&nbsp;&nbsp;&nbsp;XICP备xxxxxxxxx号-2&nbsp;&nbsp;&nbsp;政府网站标识码：520xxxxxxxx</p>
 				<p>XX市综合执法局信息技术处建设和维护</p>
 			</div>
-			<p>版权所有：XX市综合行政执法局&nbsp;&nbsp;&nbsp;地址：XX省XX市工业园区特1号</p>
+			<!--<p>版权所有：XX市综合行政执法局&nbsp;&nbsp;&nbsp;地址：XX省XX市工业园区特1号</p>-->
 		</div>
 		<script type="text/javascript" src="config.js"></script>
 		<script src="js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
