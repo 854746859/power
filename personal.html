@@ -1,0 +1,616 @@
+@@ -1,548 +0,0 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta content="能源公社" http-equiv="keywords">
+		<meta name="description" content="能源公社">
+		<meta name="applicable-device" content="pc,mobile">
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<meta http-equiv="Cache-Control" content="no-transform" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<title>能源公社</title>
+
+		<link rel="stylesheet" href="css/index.css" type="text/css">
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link rel="stylesheet" type="text/css" href="css/children.css" />
+		<link rel="stylesheet" type="text/css" href="css/paging.css" />
+		<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="js/public.js"></script><!-- 菜单js等-->
+		
+		<!--百度分享插件-->
+		<!-- 时间选择js -->
+		<script type="text/javascript" src="js/laydate.js"></script>
+		<style>
+			.headLink{
+				display: flex;
+				flex-direction: row;
+			}
+			.headLink li{
+				margin: 0 10px 0 10px;
+			}
+
+			.contain{
+				display: flex;
+				flex-direction: column;
+			}
+			.person_info{
+				display: flex;
+				flex-direction: row;
+				width: 70%;
+				margin: 80px auto;
+				min-height: 460px;
+			}
+			.user_info{
+				width: 80%;
+				margin-left: 40px;
+			}
+			.user_logo{
+				position: relative;
+				top: -40px;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				font-size: 14px;
+			}
+			.user_logo img{
+				width: 120px;
+				height: 120px;
+				border-radius: 60px;
+				margin-bottom: 5px;
+			}
+			.name{
+				width: 100%;
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				align-items: flex-end;
+			}
+			.user_name{
+				display: flex;
+				flex-direction: row;
+				align-items: flex-end;
+			}
+			.user_name input{
+				font-family: -apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+				font-size: 34px;
+				width: 140px;
+				font-weight: 600;
+			}
+			.user_name a{
+				font-size: 14px;
+				color: #0084ff !important;
+			}
+			.name a{
+				cursor: pointer;
+			    display: inline-block;
+			    font-size: 14px;
+			    line-height: 32px;
+			    color: #8590a6;
+			    background: none;
+			}
+			.user_info ul{
+				margin-top: 20px;
+			}
+			.user_info li{
+				display: flex;
+				flex-direction: row;
+				align-items: flex-start;
+				justify-content: space-between;
+				height: 80px;
+				width: 100%;
+				padding: 10px 0;
+				border-bottom: 1px solid #eee;
+			}
+			.edit{
+				position: relative;
+				width: 80%;
+				left: -30px;
+			}
+			.edit textarea{
+				width: 80%;
+				height: 70px;
+				border: 1px solid #eee;
+				padding: 6px;
+				font-size: 16px;
+			}
+			/*鼠标移入菜单*/
+			
+			.hiden_list{
+				width: 120px;
+				position: absolute;
+				top:40px;
+				background-color: rgb(255,255,255);
+				z-index: 9;
+				padding: 12px;
+				border-radius: 8px;
+				box-shadow: 0px 0px 5px 6px rgba(0,0,0,0.2);
+			}
+			
+			.hiden_list ul li {
+				border-bottom: 1px dotted;
+			}
+			
+			.hiden_list_w {
+				width: 120px;
+				position: absolute;
+				top: 40px;
+				background-color: rgb(255, 255, 255);
+				z-index: 9;
+			}
+			
+			.hiden_list_w ul li {
+				border-bottom: 1px dotted;
+			}
+			
+			.head_div {
+				position: relative;
+			}
+			.bt{
+				width: 100%;
+				margin-top: 10px;
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+			}
+			.bt button{
+				width: 100px;
+				height: 40px;
+				background-color: #0084ff;
+				color: #fff;
+				border-radius: 20px;
+			}
+			.statistics{
+				width: 90%;
+				/*height: 100px;*/
+                display: flex;
+                margin: 8px auto;
+				flex-direction: row;
+				justify-content: space-between;
+			}
+			.statistics .part{
+				/*width: 25%;
+				height: 100px;
+				display:flex;
+				flex-direction: column;*/
+				justify-content: space-around;
+				align-items: center;
+            }
+		</style>
+	</head>
+	<body>
+		<!--头部-->
+		<div class="bg">
+			<div class="wid_main topbox fix">
+				<div class="l"><a href="coverchild.html"><img src="images/6.png" alt="logo" width="120px" /></a></div>
+				<nav>
+					<div>
+						<ul>
+							<li><a href="index.html?type=0&plate=1&two=0">首页</a></li>
+							<li class="menu-item-has-children"><a href="#" title="" itemprop="url">论坛</a>
+								<ul>
+									<li><a href="index.html?type=0&plate=1&two=0" title="" itemprop="url">煤炭</a></li>
+									<li><a href="index.html?type=0&plate=2&two=0" title="" itemprop="url">石油&天然气</a></li>
+									<li><a href="coverchild.html?type=0&plate=1&two=0" title="" itemprop="url">液化天然气</a></li>
+									<li><a href="index.html?type=0&plate=4&two=0" title="" itemprop="url">电力</a></li>
+									<li><a href="index.html?type=0&plate=5&two=0" title="" itemprop="url">核能</a></li>
+									<li><a href="index.html?type=0&plate=6&two=0" title="" itemprop="url">新能源</a></li>
+									<li><a href="index.html?type=0&plate=7&two=0" title="" itemprop="url">化工</a></li>
+									<li><a href="index.html?type=0&plate=8&two=0" title="" itemprop="url">项目管理</a></li>
+								</ul>
+							</li>
+							<li class="menu-item-has-children"><a href="#">问答</a>
+								<ul>
+									<li><a href="question.html?type=0&plate=1&two=0" title="" itemprop="url">煤炭</a></li>
+									<li><a href="question.html?type=0&plate=2&two=0" title="" itemprop="url">石油&天然气</a></li>
+									<li><a href="question.html?type=0&plate=1&two=0" title="" itemprop="url">液化天然气</a></li>
+									<li><a href="question.html?type=0&plate=4&two=0" title="" itemprop="url">电力</a></li>
+									<li><a href="question.html?type=0&plate=5&two=0" title="" itemprop="url">核能</a></li>
+									<li><a href="question.html?type=0&plate=6&two=0" title="" itemprop="url">新能源</a></li>
+									<li><a href="question.html?type=0&plate=7&two=0" title="" itemprop="url">化工</a></li>
+									<li><a href="question.html?type=0&plate=8&two=0" title="" itemprop="url">项目管理</a></li>
+								</ul>
+							</li>
+							<li><a href="#">专家</a></li>
+							<li><a href="#">课程</a></li>
+							<li><a href="#">前沿</a></li>
+							<li><a href="#">会议</a></li>
+							<li><a href="#">活动</a></li>
+						</ul>
+					</div>
+				</nav>
+				<!-- 搜索 -->
+				<div class="search_box" style="height: 40px;border-radius: 20px;">
+					<div>
+						<input id="search" type="text" name="" placeholder="请输入关键词检索">
+						<button id="btn" style="float: right;margin-left: 30px;" type="submit"><img src="images/search.png"></button>
+					</div>
+
+				</div>
+				<div class="head_div">
+					<div id="admin_box" class="admin_box">
+						<!--<img src="images/messageIcon.png" width="20px"/>
+						<div class="admin">
+							<img src="images/people03.jpg" class="admin_logo"/>
+							<span class="lever">LV10</span>
+						</div>-->
+						<a href="login.html">登录/注册</a>
+						<a href="mine.html?fast=1">快速发帖</a>
+					</div>
+					<!-- 鼠标移入显示的菜单 -->
+					<div class="hiden_list">
+						<ul>
+							<li><a href="mine.html">个人中心</a></li>
+							<li id="manager"><a href="http://114.55.35.82/dist/index.html#/easay">管理员中心</a></li>
+							<li><a onclick="delsession()" href="login.html">退出登陆</a></li>
+						</ul>
+					</div>
+					<div class="hiden_list_w">
+						<ul>
+							<li><a href="mine.html">个人中心</a></li>
+							<li><a onclick="delsession()" href="login.html">退出登陆</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- top end -->
+
+		<!-- 主体内容框 -->
+		<div class="contentbox bora_5 contain">
+			<!-- 专题轮播 -->
+			<div class="zhuanti_pic">
+				<div class="hd">
+					<!--轮播点 -->
+					<ul id="top_point">
+						<!--<li></li>
+						<li></li>-->
+					</ul>
+				</div>
+				<div class="bd">
+					<ul id="top_banner">
+						<!--专题图片轮播 -->
+						<!--<li>
+							<a href="#"><img src="images/pic01.jpg" /></a>
+						</li>
+						<li>
+							<a href="#"><img src="images/pic01.jpg" /></a>
+						</li>-->
+					</ul>
+				</div>
+				<!-- 下面是前/后按钮代码，如果不需要删除即可 -->
+				<a class="prev" href="javascript:void(0)"></a>
+				<a class="next" href="javascript:void(0)"></a>
+
+				<script type="text/javascript">
+					jQuery(".zhuanti_pic").slide({
+						mainCell: ".bd ul",
+						autoPlay: true,
+						effect: "fade",
+						mouseOverStop: false,
+						interTime: 3000,
+					});
+				</script>
+			</div>
+			<!--统计-->
+		        <div class="statistics">
+					<div class="part">
+						<span id="" class="font18">
+							在线人数：
+						</span>
+						<span id="user_loging">
+							2000
+						</span>
+					</div>
+					<div class="part">
+						<span id="" class="font18">
+							帖子总数：
+						</span>
+						<span id="post_count">
+							5000
+						</span>
+					</div>
+					<div class="part">
+						<span id="" class="font18">
+							会员人数：
+						</span>
+						<span id="user_count">
+							2000
+						</span>
+					</div>
+					<div class="part">
+						<span id="" class="font18">
+							最后回复人：
+						</span>
+						<span id="end_reply_name">
+							xxx
+						</span>
+					</div>
+					<div class="part">
+						<span id="" class="font18">
+							欢迎新成员：
+						</span>
+						<span id="new_username">
+							xxx
+						</span>
+					</div>
+                </div>
+			<div class="person_info">
+				<div class="user_logo" id="select_pic">
+					<img id="imageShow" src="images/manager.jpg"/>
+					<div class="clilck_logo">
+						点击图片更换头像
+					</div>
+					<input type="file" name="" id="pic_file" value="" accept="image/*" style="display: none;"/>
+				</div>
+				<div class="user_info">
+					<div class="name">
+						<div class="user_name">
+							<input type="text" name="" id="name" value="Jasson" disabled="disabled"/>
+							<a id="name_change">修改</a>
+						</div>
+						<div><a href="mine.html">返回主页>></a></div>
+					</div>
+					<ul>
+						<li>
+							<div class="dir">
+								<h3>介绍自己：</h3>
+							</div>
+							<div class="edit">
+								<textarea name="" id="user_profile" rows="3" cols=""></textarea>
+							</div>
+						</li>
+						<li>
+							<div class="dir">
+								<h3>居住地：</h3>
+							</div>
+							<div class="edit">
+								<textarea name="" id="address" rows="3" cols=""></textarea>
+							</div>
+						</li>
+					</ul>
+					<div class="bt">
+						<button id="submit">提交</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 返回顶部 -->
+		<div class="side_box">
+			<ul>
+				<li class="sidetop">
+					<span></span>
+				</li>
+			</ul>
+		</div>
+
+		<!-- 底部 -->
+		<div class="footerbox bg">
+			<div class="l txt">
+				<p><a href="http://www.beian.miit.gov.cn" target="_blank"><img src="images/beian.png">网站备案号:津ICP备20001741-4</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;联系QQ号:1510531900&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮箱:oilngas@qq.com</p>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="config.js"></script>
+		<script type="text/javascript" src="js/paging/paging.js"></script>
+		<script type="text/javascript">
+			//选择图片
+			$("#imageShow").click(function() {
+				$("#pic_file").click();
+				//在input file内容改变的时候触发事件
+				$('#pic_file').change(function() {
+					//获取input file的files文件数组;
+					//$('#pic_file')获取的是jQuery对象，.get(0)转为原生对象;
+					//这边默认只能选一个，但是存放形式仍然是数组，所以取第一个元素使用[0];
+					var file = $('#pic_file').get(0).files[0];
+					//创建用来读取此文件的对象
+					var reader = new FileReader();
+					//使用该对象读取file文件
+					reader.readAsDataURL(file);
+					//读取文件成功后执行的方法函数
+					reader.onload = function(e) {
+						//读取成功后返回的一个参数e，整个的一个进度事件
+						//			        console.log(e);
+						//选择所要显示图片的img，要赋值给img的src就是e中target下result里面
+						//的base64编码格式的地址
+						$('#imageShow').get(0).src = e.target.result;
+					}
+				})
+			})
+			$("#name").val(infodata.user_name);
+			$("#imageShow").attr("src",infodata.user_head);
+			$("#user_profile").val(infodata.user_profile);
+			//修改name
+			$("#name_change").click(function(){
+				$("#name").removeAttr("disabled");
+				$("#name").focus().select();
+			})
+			//提交
+			$("#submit").click(function(){
+				var picfile = $("#pic_file").get(0).files[0];
+				var formData = new FormData();
+				formData.append("imgFile", picfile);
+				formData.append("token", infodata.token);
+				formData.append("user_name", $("#name").val());
+				formData.append("user_profile", $("#user_profile").val());
+				formData.append("user_address", $("#address").val());
+				$.ajax({
+					type:"post",
+					url:sever_url+"perfect",
+					async:true,
+					processData: false,
+					contentType: false,
+					data:formData,
+					dataType:"json",
+					success:function(data){
+						console.log(data)
+						if(data.code=="200"){
+							var obj = JSON.stringify(data.data);
+							sessionStorage.setItem("data",obj);
+							$("#head").attr("src",data.data.user_head);
+							$("#user_head img").attr("src",data.data.user_head);
+							$("#user_name").html(data.data.user_name);
+							$("#user_profile").html(data.data.user_profile);
+							$("#user_address").html(data.data.user_address);
+							window.location.reload();
+						}else{
+							
+						}
+					}
+				});
+			})
+			// 获取当前分类
+			function GetRequest() {
+				var url = decodeURI(location.search); //获取url中"?"符后的字串
+				var theRequest = new Object();
+				if (url.indexOf("?") != -1) {
+					var str = url.substr(1);
+					strs = str.split("&");
+					for (var i = 0; i < strs.length; i++) {
+						theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+					}
+				}
+				return theRequest;
+			}
+			var json = GetRequest();
+			console.log(json);
+			localStorage.setItem("plate", json.plate)
+			localStorage.setItem("type", json.type)
+			localStorage.setItem("searchv", json.searchv)
+			// 搜索
+			var search = document.getElementById("search");
+			var btn = document.getElementById("btn");
+			function searchlist() {
+			var plate = localStorage.getItem("plate")
+			var searchv = localStorage.getItem("searchv")
+				$.ajax({
+					url: 'http://114.55.35.82/tp6_forum/public/index.php/search/plate',
+					type: 'post',
+					data: {
+						plate: plate,
+						rows: '8',
+						page: '1',
+						search: searchv,
+						order: '0'
+					},
+					// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+					dataType: 'json',
+					success: function(res) {
+						// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
+						// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
+						console.log(res)
+						var data = res.data;
+						var post = "";
+						var postlist = document.getElementById("postlist");
+						// 分页函数
+						$(function() {
+							var a = {
+								color: '#blue',
+								sex: 'black',
+								border: '1px solid #ddd'
+							};
+			
+							var b = {
+								background: '#0084ff'
+							};
+			
+							$(".pagination").Paging({
+								classStyle: a, //a标签样式的对象,也可以不定义使用默认值
+								backClass: b, //选中的页数的背景，也可以不定义使用默认值
+								isFirst: true, //首页按钮是否显示
+								isPre: true, //下一页按钮是否显示
+								showRecordNum: res.per_page, // 一页列表数量
+								totalNum: res.total, // 总列表数量
+								showNum: function(data1, data2) {
+									// alert(data1 + "," + data2);
+								},
+								pages: "post",
+							});
+			
+						});
+						if (data.length === 0) {
+							post += "<h3>暂无数据</h3>";
+							content.innerHTML = post;
+			
+						} else {
+							if (document.getElementById("postlist")) {
+								//存在
+								// postlist.remove();
+								document.getElementById("postlist").innerHTML = "";
+								document.getElementById("menu").style.display = "none";
+							}
+							for (var i = 0; i < data.length; i++) {
+								post += "<li><img src='" + data[i].post_img + "'/><div class='blog_list'>";
+								post += "<div class='news_title'><a href='forum.html?postid=" + data[i]['id'] + "&plate=" + json.plate +
+									"&plate_two=" + json.two + "''>" + data[i][
+										'post_title'
+									] + "</a>";
+								post += "<i class='red_news'>[" + data[i]['post_label'] + "]</i></div>";
+								post += "<div class='news_time news_other'><span>发布于：" + data[i]['post_releasetime'] + "</span>";
+								post += "<span id=''>阅读数：" + data[i]['post_readnum'] + " </span><span id=''>点赞：" + data[i]['post_upnum'] +
+									"</span></div>";
+								post += "<div class='news_owner news_other'><span id=''>发帖人：" + data[i]['post_user_name'] + "</span>";
+								post += "<span id=''>最后回复人：" + data[i]['last_user_name'] +
+									"</span><div class='share bdsharebuttonbox'>分享：";
+								post +=
+									"<a url='forum.html?postid=" + data[i]['id'] + "&plate=" + json.plate +
+									"&plate_two=" + json.two + "' class='bds_weixin' data-cmd='weixin'></a><a url='forum.html?postid=" +
+									data[
+										i]
+									['id'] + "&plate=" + json.plate +
+									"&plate_two=" + json.two + "' class='bds_tsina' data-cmd='tsina'></a></div></div></div></li>";
+								postlist.innerHTML = post;
+							}
+			
+							$('.bdsharebuttonbox a').on('mousemove', function() {
+								var title = $(this).attr('title');
+								var Url = $(this).attr('url');
+								$("#share_url").val(title + "||" + Url);
+							})
+							window._bd_share_main.init();
+						}
+			
+					},
+				})
+			}
+			$('.hiden_list').hide();
+			$('.hiden_list_w').hide();
+			//监听头像鼠标移入事件
+			$("#head").mouseover(function() {
+				if(!infodata){
+					return;
+				}
+				if (infodata.user_power_num == 4) {
+					$('.hiden_list_w').show();
+				} else {
+					$('.hiden_list').show();
+				}
+			});
+			$(".bd").mouseover(function() {
+				if(!infodata){
+					return;
+				}
+				if (infodata.user_power_num == 4) {
+					$('.hiden_list_w').hide();
+				} else {
+					$('.hiden_list').hide();
+				}
+			});
+			//退出登陆清除数据
+			function delsession(){
+				sessionStorage.clear();
+			}
+
+			btn.addEventListener('click', function() {
+				localStorage.setItem("searchv", search.value)
+				searchlist();
+			})
+			//广告
+			adConfig();
+		</script>
+
+	</body>
+</html>

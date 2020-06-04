@@ -1,0 +1,2643 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta content="能源公社" http-equiv="keywords">
+		<meta name="description" content="能源公社">
+		<meta name="applicable-device" content="pc,mobile">
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<meta http-equiv="Cache-Control" content="no-transform" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<title>能源公社</title>
+		<link rel="stylesheet" href="css/index.css" type="text/css">
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link rel="stylesheet" type="text/css" href="css/children.css" />
+		<link rel="stylesheet" type="text/css" href="css/paging.css" />
+		<!--<link rel="stylesheet" type="text/css" href="LeanModal/css/style.css" />-->
+
+		<!--富文本编辑框-->
+		<script type="text/javascript" charset="utf-8" src="./ueditor/ueditor.config.js"></script>
+		<script type="text/javascript" charset="utf-8" src="./ueditor/ueditor.all.min.js"></script>
+		<!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
+		<!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
+		<script type="text/javascript" charset="utf-8" src="./ueditor/lang/zh-cn/zh-cn.js"></script>
+		<!--end-->
+		<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="js/public.js"></script>
+		<!-- 菜单js等-->
+		<script type="text/javascript" src="LeanModal/js/jquery.leanModal.min.js"></script>
+		<!-- 时间选择js -->
+		<script type="text/javascript" src="js/laydate.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('a[rel*=leanModal]').leanModal({
+					top: 200,
+					closeButton: ".modal_close"
+				});
+			});
+		</script>
+		<style>
+			.headLink {
+				display: flex;
+				flex-direction: row;
+			}
+			
+			.headLink li {
+				margin: 0 10px 0 10px;
+			}
+			
+			.marT {
+				position: relative;
+				top: -25px;
+			}
+			
+			.more_list {
+				display: flex;
+				flex-direction: column;
+			}
+			
+			.more_list li a {
+				color: #333;
+			}
+			
+			.classification {
+				width: 100%;
+				display: flex;
+				flex-direction: row;
+				padding: 10px 5px;
+				background-color: #fff;
+				border-bottom: 1px solid #dbdbdb;
+			}
+			
+			.mine {
+				border-bottom: 1px solid #ddd;
+				background-color: #0084ff;
+			}
+			
+			.classification ul {
+				position: relative;
+				display: flex;
+				flex-direction: row;
+				border-radius: 5px;
+			}
+			
+			.ul_bc {
+
+				width: 200px;
+			}
+			
+			.sort {
+				width: 562px;
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				align-items: center;
+				padding-left: 16px;
+				padding-right: 16px;
+			}
+			
+			.sort .sort_type {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+			}
+			
+			.sort .sort_type .type_box {
+				display: flex;
+				flex-direction: row;
+			}
+			
+			.sort .sort_type .type_box div {
+				margin-right: 5px;
+				font-size: 14px;
+				color:#3399ea;
+			}
+			
+			.sort .sort_type .time {
+				display: flex;
+				align-self: center;
+				width: 220px;
+				font-size: 14px;
+			}
+			
+			.ul_bc li {
+				
+			}
+			
+			.classification ul li {
+				width: 100px;
+				height: 40px;
+				text-align: center;
+				line-height: 40px;
+				font-size:18px;
+				font-family:PingFangSC-Regular,PingFang SC;
+				font-weight:400;
+				color:#3399ea;
+			}
+			.classification ul li:hover{
+				width: 100px;
+				height: 40px;
+				text-align: center;
+				line-height: 40px;
+				font-size:18px;
+				font-family:PingFangSC-Regular,PingFang SC;
+				font-weight:400;
+				color:#3399ea;
+				border-bottom: 3px solid rgb(9, 91, 185);
+			}
+			.navClicked{
+				width: 100px;
+				height: 40px;
+				text-align: center;
+				line-height: 40px;
+				font-size:18px;
+				font-family:PingFangSC-Regular,PingFang SC;
+				font-weight:400;
+				color:#3399ea;
+				border-bottom: 3px solid rgb(9, 91, 185);
+			}
+
+			
+			.classification ul>li:before {
+				content: "";
+				position: absolute;
+				right: -0.15625rem;
+				height: 0.0625rem;
+				width: 0;
+				-webkit-transition: width 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+				-ms-transition: width 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+				-o-transition: width 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+				transition: width 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+				top: 50%;
+				margin-top: -.0.03125rem;
+			}
+			
+			#navbar ul li:hover {
+				background-color: #1a83da;
+				color: #fff;
+			}
+			#navbar li{
+				width: 12.5%;
+			}
+			.user_box {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				align-items: center;
+				background-color: #F5F6F7;
+				padding: 10px;
+			}
+			
+			.user_box .box_L {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+			}
+			
+			.user_box .box_L .user_loge {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+			}
+			
+			.user_box .box_L .user_loge img {
+				width: 88px;
+				height: 88px;
+				border-radius: 50%;
+			}
+			
+			.user_box .box_L .user_loge .user_name {
+				margin-left: 10px;
+				height: 100%;
+			}
+			
+			.user_box .box_L .user_loge .user_name .user_id #user_name{
+				margin-left: 10px;
+				font-size:32px;
+				font-family:PingFangSC-Regular,PingFang SC;
+				font-weight:400;
+				color:rgba(0,0,0,0.85);
+			}
+			.user_id span:nth-child(2){
+				margin-left: 10px;
+				font-size:24px;
+				font-family:PingFangSC-Regular,PingFang SC;
+				font-weight:400;
+				color:rgba(0,0,0,0.85);
+			}
+			
+			.user_box .box_L .user_loge .user_name .user_des {
+				/* width: 140px; */
+				word-break: break-all;
+				margin-left: 10px;
+				margin-top: 8px;
+				display: flex;
+				align-items: center;
+				font-size:18px;
+				font-family:PingFangSC-Regular,PingFang SC;
+				font-weight:400;
+				color:rgba(0,0,0,0.65);
+			}
+			#user_profile{
+				display: flex;
+				margin-left: 8px;
+				flex-direction: row;
+				font-size:18px;
+				font-family:PingFangSC-Regular,PingFang SC;
+				font-weight:400;
+				color:rgba(0,0,0,0.65);
+			}
+
+			.user_address_box{
+				display: flex;
+				align-items: center;
+				margin-left: 10px;
+				font-size:18px;
+				font-family:PingFangSC-Regular,PingFang SC;
+				font-weight:400;
+				color:rgba(0,0,0,0.65);
+			}
+			
+			.user_box .box_L .address,
+			.company {
+				display: flex;
+				margin-left: 8px;
+				flex-direction: row;
+				font-size:18px;
+				font-family:PingFangSC-Regular,PingFang SC;
+				font-weight:400;
+				color:rgba(0,0,0,0.65);
+			}
+			
+			.user_box input {
+				width: 80px;
+				height: 30px;
+				color: #fff;
+				border-radius: 3px;
+				background-color: #1a83da;
+				margin-top: 5px;
+				margin-left: 10px;
+			}
+			
+			.box_one {
+				width: 100%;
+				height: 120px;
+				margin-top: 10px;
+			}
+			
+			.box_one ul {
+				width: 100%;
+				height: 100%;
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+				justify-content: flex-start;
+			}
+			
+			.box_one ul li {
+				width: 33%;
+				height: 60px;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				border-bottom: 1px solid #eee;
+				border-right: 1px solid #eee;
+			}
+			
+			.box_one ul li:nth-child(3) {
+				border-right: 1px solid #FFF;
+			}
+			
+			.box_one ul li span{
+				font-size:18px;
+				font-family:PingFangSC-Regular,PingFang SC;
+				color:rgba(0,0,0,0.85);
+			}
+
+			.box_one ul li p{
+				margin-top: 6px;
+				font-size:18px;
+				font-family:HelveticaNeue;
+				color:rgba(0,0,0,0.65);
+			}
+			
+			.box_two {
+				width: 100%;
+				margin-top: 10px;
+				border-top: 1px solid #dbdbdd;
+				box-sizing: border-box;
+				padding: 10px;
+				margin-right: 10px;
+			}
+			
+			.new_fan,
+			.recent_visitors {
+				height: 120px;
+				border-bottom: 1px solid #fff;
+			}
+			
+			.title {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				/* align-items: flex-end; */
+				border-bottom: 1px solid #dedede;
+			}
+			
+			.title span {
+				font-size: 16px;
+				font-weight: 600;
+				font-family: PingFangSC-Regular,PingFang SC;
+			}
+			.recent_visitors .title{
+				padding-bottom: 8px;
+			}
+			.title a{
+				margin-top: px;
+			}
+			
+			.avatar {
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+			}
+			
+			.avatar div {
+				width: 25%;
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+			}
+			
+			.avatar div img {
+				width: 80%;
+				height: 80%;
+				border-radius: 40%;
+			}
+			
+			.bc {
+				border-top-left-radius: 4px;
+				border-top-right-radius: 4px;
+				margin-top: 10px;
+				background-color: #eee;
+				padding: 8px 10px;
+			}
+
+			#lng_todaycount_list li h3{
+				font-size: 14px;
+				font-weight: 500;
+				font-family: PingFangSC-Regular,PingFang SC;
+			}
+			
+			.box_three ul {
+				border: 1px solid #eee;
+				margin: 0;
+				padding: 0 10px;
+			}
+			
+			.box_three ul li {
+				border-bottom: 1px dashed #eee;
+			}
+			
+			.icon {
+				width: 20px;
+				height: 20px;
+			}
+			
+			.select {
+				background: #41ccf6 !important;
+				border-radius: 5px;
+			}
+			
+			.mine_box {
+				width: 800px;
+				/*height: 700px;
+		overflow: hidden;*/
+			}
+			
+			.attention_title {
+				display: flex;
+				flex-direction: row;
+				width: 400px;
+				justify-content: space-between;
+				align-items: center;
+				color: #333;
+			}
+			
+			.attention_title div:first-child {
+				font-size: 20px;
+				font-weight: 600;
+			}
+			
+			.icon_radius {
+				border-radius: 45px;
+			}
+			
+			.about_att {
+				display: flex;
+				flex-direction: column;
+				justify-content: space-around;
+				margin-left: 80px;
+				color: #1a83da;
+			}
+			
+			.about_att a {
+				font-size: 14px;
+			}
+			
+			.wallet_title,
+			.detail_title {
+				width: 740px;
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				padding: 0 10px;
+				margin-top: 10px;
+				border-bottom: 1px solid #eee;
+				height: 50px;
+			}
+
+			.detail_title div{
+				display: flex;
+				flex-direction: row;
+				align-self: center;
+			}
+			
+			.detail_box {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-around;
+				align-items: center;
+				margin-top: 10px;
+			}
+			
+			.detail_box .yesterday,
+			.month,
+			.wallet {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				padding: 10px;
+				width: 28%;
+				height: 140px;
+				background-color: #eee;
+			}
+			
+			.detail_box .yesterday,
+			.month,
+			.wallet div {
+				font-size: 18px;
+				font-weight: 600;
+			}
+			
+			.list_title,
+			.list_body {
+				width: 100%;
+				display: flex;
+				flex-direction: row;
+			}
+			
+			.list_title li {
+				width: 20%;
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+			}
+			
+			.list_body li {
+				width: 20%;
+			}
+			
+			.list_title li:first-child {
+				width: 200px;
+			}
+			
+			.list_body li:first-child {
+				width: 200px;
+			}
+			
+			.list_body li:nth-child(n+2) {
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+			}
+			
+			.message {
+				display: flex;
+				flex-direction: column;
+				padding: 10px;
+				background-color: #eee;
+				border-radius: 5px;
+				margin-top: 10px;
+			}
+			
+			.message .message_title {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+			}
+			
+			.message .message_detail a {
+				color: #1a83da;
+			}
+			
+			.post_title {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				margin: 10px 0;
+			}
+			
+			.post_title input {
+				width: 260px;
+				height: 40px;
+				background-color: #eee;
+				padding-left: 10px;
+				margin-left: 10px;
+				border-radius: 5px;
+			}
+			
+			.reward_money {
+				display: flex;
+				flex-direction: row;
+			}
+			
+			.reward_money span {
+				color: red;
+				font-size: 14px;
+				margin-left: 5px;
+			}
+			
+			.description_post,
+			.checkbox {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+			}
+			
+			.description_post select {
+				width: 80px;
+				height: 30px;
+				border: 1px solid #E0E0E0;
+			}
+			
+			.description_post .checkbox input {
+				margin-left: 10px;
+			}
+			
+			.description_post .checkbox input[type="number"] {
+				border: 1px solid #E0E0E0;
+				width: 70px;
+				height: 25px;
+				color: #333;
+			}
+			.annex input{
+				width: 180px;
+				height: 40px;
+				background-color: #eee;
+				padding-left: 10px;
+				margin-left: 10px;
+				border-radius: 5px;
+			}
+			.button_box {
+				width: 500px;
+				margin: 0 auto;
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+			}
+			
+			.button_box input[type="button"] {
+				width: 120px;
+				height: 40px;
+				border-radius: 5px;
+				background-color: #1a83da;
+				color: #fff;
+				line-height: 30px;
+			}
+			
+			#wallet_money,
+			#wallet_coin {
+				font-size: 14px !important;
+			}
+			
+			.rechange {
+				width: 60%;
+				margin: 10px auto;
+				display: flex;
+				flex-direction: row;
+				justify-content: space-around;
+			}
+			
+			.rechange a {
+				color: #1a83da;
+				font-size: 14px;
+			}
+			
+			#post {
+				height: auto !important;
+			}
+			/*鼠标移入菜单*/
+			
+			.hiden_list{
+				width: 120px;
+				position: absolute;
+				top:40px;
+				background-color: rgb(255,255,255);
+				z-index: 9;
+				padding: 12px;
+				border-radius: 8px;
+				box-shadow: 0px 0px 5px 6px rgba(0,0,0,0.2);
+			}
+			
+			.hiden_list ul li {
+				border-bottom: 1px dotted;
+			}
+			
+			.hiden_list_w {
+				width: 120px;
+				position: absolute;
+				top: 40px;
+				background-color: rgb(255, 255, 255);
+				z-index: 9;
+			}
+			
+			.hiden_list_w ul li {
+				border-bottom: 1px dotted;
+			}
+			
+			.head_div {
+				position: relative;
+			}
+			
+			.share_right {
+				margin-left: 200px;
+				margin-right: 50px;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				align-items: center;
+			}
+			
+			.edit_info {
+				display: flex;
+				flex-direction: row;
+				align-self: flex-start;
+				margin-right: 20px;
+			}
+			.edit_info a{
+				font-family: 'Microsoft YaHei','SF Pro Display',Roboto,Noto,Arial,'PingFang SC',sans-serif;
+				font-size: 18px;
+				color: #3399ea;
+				cursor: pointer;
+				margin-right: 8px;
+			}
+			
+			#signup,#test {
+				width: 500px;
+				padding-bottom: 2px;
+				display: none;
+				background: #FFF;
+				border-radius: 5px;
+				-moz-border-radius: 5px;
+				-webkit-border-radius: 5px;
+				box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.7);
+				-webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+				-moz-box-shadow: 0 0px 4px rgba(0, 0, 0, 0.7);
+			}
+
+			form{
+				display: flex;
+				flex-direction: column;
+			}
+			#signup-ct{
+				border: none;
+			}
+			#signup-header {
+				background-color: #1a83da;
+				padding: 8px 10px 8px 12px;
+				border-top-left-radius: 5px;
+				-moz-border-radius-topleft: 5px;
+				-webkit-border-top-left-radius: 5px;
+				border-top-right-radius: 5px;
+				-moz-border-radius-topright: 5px;
+				-webkit-border-top-right-radius: 5px;
+			}
+			#qusetionlist h3,#collectionlist h3,#followslist h3{
+				font-size:18px;
+				font-family:PingFangSC-Regular,PingFang SC;
+				font-weight:600;
+				color:rgba(0,0,0,0.85);
+				text-align: center;
+    			margin-top: 20px;
+			}
+			#signup-header a{
+				background-color: #1a83da;
+			}
+			#signup-header h2 {
+				color: #fff ;
+				font-size: 24px ;
+				font-weight: 500 ;
+				text-shadow:none ;
+			}
+			#signup-header p {
+				color: #444;
+				font-size: 1.3em;
+				margin: 0;
+				text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+				text-shadow: none;
+			}
+			/* .modal_close {
+				position: absolute;
+				top: 12px;
+				right: 12px;
+				display: block;
+				width: 14px;
+				height: 14px;
+				background: url(LeanModal/css/img/modal_close.png);
+				z-index: 2;
+			} */
+			#signup-header p {
+				color: #444;
+				font-size: 1.3em;
+				margin: 0;
+				text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+				text-shadow: none;
+			}
+			.txt-fld {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				position: relative;
+				width: 364px;
+				padding: 8px 12px;
+				/* border-bottom: 1px solid #EEE; */
+				text-align: right;
+			}
+			.txt-fld input[type="file"]{
+				background: none;
+				border: none;
+			}
+			.btn-fld {
+				width: 254px;
+				overflow: hidden;
+				padding: 12px 20px 12px 130px;
+			}
+			
+			.txt-fld label {
+				display: block;
+				float: left;
+				width: 90px;
+				text-align: left;
+				font-size:18px;
+				font-family:PingFangSC-Regular,PingFang SC;
+				font-weight:400;
+				color:rgba(0,0,0,0.85);
+			}
+			
+			.txt-fld input,textarea {
+				width: 244px;
+				padding: 2px 8px;
+				border-radius: 4px;
+				-moz-border-radius: 4px;
+				-webkit-border-radius: 4px;
+				font-size: 1.2em;
+				color: #222;
+				font-family: PingFangSC-Regular,PingFang SC;
+				outline: none;
+				border: 1px solid #dbdbdb;
+				background-color: #fff;
+			}
+			
+			.txt-fld input.error_input {
+				background: #FDE0E0;
+			}
+			.txt-fld input:focus,
+			.txt-fld textarea:focus {
+				background-color: #FAF9DC;
+			}
+			#lean_overlay {
+			    position: fixed;
+			    z-index: 10000;
+			    top: 0px;
+			    left: 0px;
+			    height:100%;
+			    width:100%;
+			    background: #000;
+			    display: none;
+			}
+			.submit{
+				display: flex;
+				flex-direction: row;
+				justify-content: flex-end;
+				padding: 4px 0px;
+				border-top: 1px solid #dbdbdb;
+			}
+			.submit input{
+				margin-right: 10px;
+			}
+			.head_div{
+				position: relative;
+			}
+			#edui1{
+				width: 758px !important;
+			}
+			.partener_block ul{
+				display: flex;
+				flex-direction: row;
+				font-size: 14px;
+			}
+			.statistics{
+				width: 90%;
+				/*height: 100px;*/
+                display: flex;
+                margin: 8px auto;
+				flex-direction: row;
+				justify-content: space-between;
+			}
+			.statistics .part{
+				/*width: 25%;
+				height: 100px;
+				display:flex;
+				flex-direction: column;*/
+				justify-content: space-around;
+				align-items: center;
+            }
+		</style>
+	</head>
+
+	<body>
+		<!--头部-->
+		<div class="bg">
+			<div class="wid_main topbox fix">
+				<div class="l"><a href="coverchild.html"><img src="images/6.png" alt="logo" width="120px" /></a></div>
+				<nav>
+					<div>
+						<ul>
+							<li>
+								<a href="index.html?type=0&plate=1&two=0">首页</a>
+							</li>
+							<li class="menu-item-has-children"><a href="#" title="" itemprop="url">论坛</a>
+								<ul>
+									<li><a href="index.html?type=0&plate=1&two=0" title="" itemprop="url">煤炭</a></li>
+									<li><a href="index.html?type=0&plate=2&two=0" title="" itemprop="url">石油&天然气</a></li>
+									<li><a href="coverchild.html?type=0&plate=1&two=0" title="" itemprop="url">液化天然气</a></li>
+									<li><a href="index.html?type=0&plate=4&two=0" title="" itemprop="url">电力</a></li>
+									<li><a href="index.html?type=0&plate=5&two=0" title="" itemprop="url">核能</a></li>
+									<li><a href="index.html?type=0&plate=6&two=0" title="" itemprop="url">新能源</a></li>
+									<li><a href="index.html?type=0&plate=7&two=0" title="" itemprop="url">化工</a></li>
+									<li><a href="index.html?type=0&plate=8&two=0" title="" itemprop="url">项目管理</a></li>
+								</ul>
+							</li>
+							<li class="menu-item-has-children"><a href="#">问答</a>
+								<ul>
+									<li><a href="question.html?type=0&plate=1&two=0" title="" itemprop="url">煤炭</a></li>
+									<li><a href="question.html?type=0&plate=2&two=0" title="" itemprop="url">石油&天然气</a></li>
+									<li><a href="question.html?type=0&plate=1&two=0" title="" itemprop="url">液化天然气</a></li>
+									<li><a href="question.html?type=0&plate=4&two=0" title="" itemprop="url">电力</a></li>
+									<li><a href="question.html?type=0&plate=5&two=0" title="" itemprop="url">核能</a></li>
+									<li><a href="question.html?type=0&plate=6&two=0" title="" itemprop="url">新能源</a></li>
+									<li><a href="question.html?type=0&plate=7&two=0" title="" itemprop="url">化工</a></li>
+									<li><a href="question.html?type=0&plate=8&two=0" title="" itemprop="url">项目管理</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="#">专家</a>
+							</li>
+							<li>
+								<a href="#">课程</a>
+							</li>
+							<li>
+								<a href="#">前沿</a>
+							</li>
+							<li>
+								<a href="#">会议</a>
+							</li>
+							<li>
+								<a href="#">活动</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+				<!-- 搜索 -->
+				<div class="search_box" style="height: 40px;border-radius: 20px;">
+									<div>
+										<input id="search" type="text" name="" placeholder="请输入关键词检索">
+										<button id="btn" style="float: right;margin-left: 30px;" type="submit"><img src="images/search.png"></button>
+									</div>
+				
+								</div>
+				<div class="head_div">
+					<div id="admin_box" class="admin_box">
+						<!--<img src="images/messageIcon.png" width="20px"/>
+						<div class="admin">
+							<img src="images/people03.jpg" class="admin_logo"/>
+							<span class="lever">LV10</span>
+						</div>-->
+						<a href="login.html">登录/注册</a>
+						<a href="">快速发帖</a>
+					</div>
+					<!-- 鼠标移入显示的菜单 -->
+					<div class="hiden_list">
+						<ul>
+							<li><a href="mine.html">个人中心</a></li>
+							<li id="manager"><a href="http://114.55.35.82/dist/index.html#/easay">管理员中心</a></li>
+							<li><a onclick="delsession()" href="login.html">退出登陆</a></li>
+						</ul>
+					</div>
+					<div class="hiden_list_w">
+						<ul>
+							<li><a href="mine.html">个人中心</a></li>
+							<li><a onclick="delsession()" href="login.html">退出登陆</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- top end -->
+
+		<!-- 主体内容框 -->
+		<div class="contentbox bora_5">
+			<div class="content">
+				<!-- 专题轮播 -->
+				<div class="zhuanti_pic">
+					<div class="hd">
+						<!--轮播点 -->
+						<ul id="top_point">
+							<!--<li></li>
+							<li></li>-->
+						</ul>
+					</div>
+					<div class="bd">
+						<ul id="top_banner">
+							<!--专题图片轮播 -->
+							<!--<li>
+								<a href="#"><img src="images/pic01.jpg" /></a>
+							</li>
+							<li>
+								<a href="#"><img src="images/pic01.jpg" /></a>
+							</li>-->
+						</ul>
+					</div>
+					<!-- 下面是前/后按钮代码，如果不需要删除即可 -->
+					<a class="prev" href="javascript:void(0)"></a>
+					<a class="next" href="javascript:void(0)"></a>
+
+					<script type="text/javascript">
+						jQuery(".zhuanti_pic").slide({
+							mainCell: ".bd ul",
+							autoPlay: true,
+							effect: "fade",
+							mouseOverStop: false,
+							interTime: 3000,
+						});
+					</script>
+				</div>
+				<!--统计-->
+		        <div class="statistics">
+					<div class="part">
+						<span id="" class="font18">
+							在线人数：
+						</span>
+						<span id="user_loging">
+							2000
+						</span>
+					</div>
+					<div class="part">
+						<span id="" class="font18">
+							帖子总数：
+						</span>
+						<span id="post_count">
+							5000
+						</span>
+					</div>
+					<div class="part">
+						<span id="" class="font18">
+							会员人数：
+						</span>
+						<span id="user_count">
+							2000
+						</span>
+					</div>
+					<div class="part">
+						<span id="" class="font18">
+							最后回复人：
+						</span>
+						<span id="end_reply_name">
+							xxx
+						</span>
+					</div>
+					<div class="part">
+						<span id="" class="font18">
+							欢迎新成员：
+						</span>
+						<span id="new_username">
+							xxx
+						</span>
+					</div>
+                </div>
+				<!-- 用户信息 -->
+				<div class="user_box">
+					<div id="infolist" class="box_L">
+						<div class="user_loge">
+							<div id="user_head">
+								<!-- <img id="user_head"  src="" /> -->
+							</div>
+							<div class="user_name">
+								<div class="user_id">
+									<span id="user_name"></span>
+									<span id="id"></span>
+								</div>
+								<div class="user_address_box">
+									地址：
+									<p id="user_address" class="address"></p>
+								</div>
+								<div class="user_des">
+									个人简介：
+									<p id="user_profile"></p>
+								</div>
+								
+							</div>
+						</div>
+						
+						<div class="company">
+
+						</div>
+					</div>
+					<div class="edit_info">
+						<a href="personal.html">编辑信息</a>
+						<a href="aprove.html">实名认证</a>
+					</div>
+					<!--<div id="signup">
+						<div id="signup-ct">
+							<div id="signup-header">
+								<h2>实名认证</h2>
+								<a class="modal_close" href="#"></a>
+							</div>
+							<form action="">
+								<div style="display: flex; flex-direction: column; align-items: center;">
+									<div class="txt-fld">
+										<label for="">真实姓名</label>
+										<input id="user_realname" name="" type="text" />
+									</div>
+									<div class="txt-fld">
+										<label for="">单位/学校</label>
+										<input id="user_company" name="" type="text" />
+									</div>
+									<div class="txt-fld">
+										<label for="">工号/学号</label>
+										<input id="user_number" name="" type="text" />
+									</div>
+									<div class="txt-fld">
+										<label for="">身份证号</label>
+										<input id="idcard_number" name="" type="number" />
+									</div>
+								</div>
+								<div class="submit">
+									<input type="button" name="" id="check" value="确认" />
+								</div>
+							</form>
+						</div>
+					</div>
+					<div id="test">
+						<div id="signup-ct">
+							<div id="signup-header">
+								<h2>信息编辑</h2>
+								<a class="modal_close" href="#"></a>
+							</div>
+							<form action="">
+								<div style="display: flex; flex-direction: column; align-items: center;">
+									<div class="txt-fld">
+										<label for="">头像</label>
+										<input id="imageFile" name="" type="file" />
+									</div>
+									<div class="txt-fld">
+										<label for="">用户名</label>
+										<input id="userName" name="" type="text" />
+									</div>
+									<div class="txt-fld">
+										<label for="">地址</label>
+										<input id="userAddress" name="" type="text" />
+									</div>
+									<div class="txt-fld">
+										<label for="">个人简介</label>
+										<textarea id="userProfile" name="" rows="" cols=""></textarea>
+									</div>
+								</div>
+								
+								<div class="submit">
+									<input type="button" name="" id="edit" value="确认" />
+								</div>
+							</form>
+						</div>
+					</div>-->
+				</div>
+
+				<div class="conbox fix">
+					<div class="news_banner l">
+						<!-- 左边内容 -->
+						<div class="zy_right_con">
+							<div class="top_nav bora_5">
+								<nav style="width: 100%;">
+									<div>
+										<ul id="navbar" class="fix">
+											<li class="select">
+												<a name="original">原创</a>
+											</li>
+											<li>
+												<a name="question">问答</a>
+											</li>
+											<li>
+												<a name="favorite">收藏</a>
+											</li>
+											<li>
+												<a name="attention">关注</a>
+											</li>
+											<li>
+												<a name="fan">粉丝</a>
+											</li>
+											<li>
+												<a name="wallet">收益/钱包</a>
+											</li>
+											<li>
+												<a name="post">快速发帖</a>
+											</li>
+											<li>
+												<a name="vote">投票</a>
+											</li>
+											<li>
+												<a name="notice">系统通知</a>
+											</li>
+										</ul>
+									</div>
+								</nav>
+							</div>
+							<!-- 当前位置 -->
+							<div class="classification" id="hide" style="display:none;">
+								<ul id="menu" class="ul_bc">
+									<li onclick="question(1)">已发布</li>
+									<li onclick="question(2)">草稿</li>
+									<li onclick="question(3)">退回</li>
+								</ul>
+								<div class="sort">
+									<div class="sort_type">
+										<span>
+											排序：
+										</span>
+										<div class="type_box">
+											<div>默认</div>
+											<div>按更新时间</div>
+											<div>按访问量</div>
+										</div>
+									</div>
+									<div class="time">
+										<span>选择时间：</span>
+										<div class="dib vm laydate-icon" id="startTime01"></div>
+										—
+										<div class="dib vm laydate-icon" id="endTime01"></div>
+									</div>
+								</div>
+							</div>
+							<!-- 时间范围选择js -->
+							<script type="text/javascript">
+								// 行政许可日期范围
+								laydate({
+									elem: '#startTime01',
+									max: laydate.now() //+1代表明天，+2代表后天，以此类推
+								});
+								laydate({
+									elem: '#endTime01',
+									max: laydate.now() //+1代表明天，+2代表后天，以此类推
+								});
+							</script>
+							<!-- 内容展示块-->
+							<div class="news_list zy_listbox mine_box" style="height: 900px;" id="original">
+								<!-- 展示15条数据后出现分页 -->
+								<ul id="postlist">
+
+								</ul>
+							</div>
+							<!--我的问答-->
+							<div class="news_list zy_listbox mine_box" id="question" hidden="hidden">
+								<!-- 展示15条数据后出现分页 -->
+								<ul id="qusetionlist">
+
+								</ul>
+							</div>
+							<!--我的收藏-->
+							<div class="news_list zy_listbox mine_box" style="height: 900px;" id="favorite" hidden="hidden">
+								<!-- 展示15条数据后出现分页 -->
+								<ul id="collectionlist">
+
+								</ul>
+							</div>
+							<!--我的关注-->
+							<div class="news_list zy_listbox mine_box" style="height: 900px;" id="attention" hidden="hidden">
+								<!-- 展示15条数据后出现分页 -->
+								<ul id="followslist">
+
+								</ul>
+
+							</div>
+							<!--我的粉丝-->
+							<div class="news_list zy_listbox mine_box" id="fan" hidden="hidden">
+								<!-- 展示15条数据后出现分页 -->
+								<ul id="fanslist">
+
+								</ul>
+							</div>
+							<!--收益/钱包-->
+							<div class="news_list zy_listbox mine_box" id="wallet" hidden="hidden">
+								<div class="wallet_title">
+									<h2>整体收益</h2>
+									<a href="">提现须知？</a>
+								</div>
+								<div class="detail_box">
+									<div class="yesterday">
+										<div>昨日收益/元</div>
+										<div id="yesterday_money">0</div>
+										<div id="week_money">近7日收益0元</div>
+									</div>
+									<div class="month">
+										<div>本月收益/元</div>
+										<div id="month_money">0</div>
+										<div id="money_sum">总收益0元</div>
+									</div>
+									<div class="wallet">
+										<div>钱包</div>
+										<div class="wallet_money">
+											<div id="wallet_coin">论坛币：0</div>
+											<div id="wallet_money">余额：0元</div>
+										</div>
+										<div class="rechange">
+											<!--<a href="javascript:void(0)">充值</a>
+											<a href="javascript:void(0)">提现</a>-->
+										</div>
+									</div>
+								</div>
+								<div class="detail_title">
+									<h2>收益明细</h2>
+									<div class="time">
+										<span>选择时间：</span>
+										<div class="dib vm laydate-icon" id="startTime01"></div>
+										—
+										<div class="dib vm laydate-icon" id="endTime01"></div>
+									</div>
+								</div>
+								<div class="detail_list">
+									<ul class="list_title">
+										<li>日期</li>
+										<li>收益类型</li>
+										<li>现金收益</li>
+										<li>论坛币收益</li>
+										<li>支付人</li>
+									</ul>
+									<ul id="listBody">
+										
+									</ul>
+								</div>
+							</div>
+							<!--快速发帖-->
+							<div class="news_list zy_listbox mine_box" id="post" hidden="hidden">
+								<div class="post_title">
+									<h4>文章标题：</h4><input type="text" name="" id="postTitle" value="" placeholder="请输入文章标题" />
+								</div>
+								<div class="description_post">
+									<h4>封面图上传：</h4><input type="file" name="" id="picFile" value="" />
+								</div>
+								<h4>文章内容：</h4>
+								<script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>
+								<div id="btns">
+									<div class="description_post">
+										<h4>发布版块：</h4>
+										<select id="Section">
+											<option value="1">煤炭</option>
+											<option value="2">石油&天然气</option>
+											<option value="1">液化天然气</option>
+											<option value="4">电力</option>
+											<option value="5">核能</option>
+											<option value="6">新能源</option>
+											<option value="7">化工</option>
+											<option value="8">项目管理</option>
+										</select>
+									</div>
+									<div class="description_post post_title">
+										<h4>文章标签：</h4>
+										<input type="text" name="" id="Tag" value="" placeholder="标签" />
+									</div>
+									<div class="description_post">
+										<h4>文章类型：</h4>
+										<select id="postType">
+											<option value="0">普通</option>
+											<option value="1">问答</option>
+											<option value="2">悬赏</option>
+										</select>
+										<div class="post_title reward_money" style="display: none;">
+											<input type="number" name="" id="rewardmoney" value="0" placeholder="悬赏额度" />
+											<span>*必填</span>
+										</div>
+									</div>
+									<div class="description_post">
+										<h4>文章大类：</h4>
+										<select id="post_Large">
+											<option value="1">原创</option>
+											<option value="2">编译</option>
+											<option value="3">技术评论</option>
+											<option value="4">一般</option>
+										</select>
+									</div>
+									<div class="description_post">
+										<h4>二级分类：</h4>
+										<select id="Classification">
+											<option value="1">行业新闻-新闻速递</option>
+											<option value="2">行业新闻-国家政策</option>
+											<option value="3">行业新闻-行业法规</option>
+											<option value="11">技术前沿-学术论文</option>
+											<option value="12">技术前沿-标准规范</option>
+											<option value="13">技术前沿-研究报告</option>
+											<option value="14">技术前沿-会议论坛</option>
+											<option value="21">信息推广-展会论坛</option>
+											<option value="22">信息推广-招标采购</option>
+											<option value="23">信息推广-培训教育</option>
+											<option value="24">信息推广-销售信息</option>
+											<option value="25">信息推广-招聘求职</option>
+											<option value="31">资源市场-国外资源</option>
+											<option value="32">资源市场-国内资源</option>
+											<option value="33">资源市场-供需动态</option>
+											<option value="34">资源市场-价格速递</option>
+											<option value="41">天然气液化-项目信息</option>
+											<option value="42">天然气液化-工艺技术</option>
+											<option value="43">天然气液化-建设调试</option>
+											<option value="44">天然气液化-生产运营</option>
+											<option value="51">LNG接收站-项目信息</option>
+											<option value="52">LNG接收站-企业管理</option>
+											<option value="53">LNG接收站-工艺技术</option>
+											<option value="54">LNG接收站-生产运营</option>
+											<option value="55">LNG接收站-维保维修</option>
+											<option value="71">LNG运输-LNG船舶</option>
+											<option value="72">LNG运输-FSRU</option>
+											<option value="73">LNG运输-LNG过驳</option>
+											<option value="74">LNG运输-LNG槽车</option>
+											<option value="75">LNG运输-LNG加注船</option>
+											<option value="76">LNG运输-LNG罐箱</option>
+											<option value="81">LNG利用-燃气发电</option>
+											<option value="82">LNG利用-冷能利用</option>
+											<option value="83">LNG利用-调峰气化</option>
+											<option value="84">LNG利用-船舶加注</option>
+											<option value="85">LNG利用-车辆加注</option>
+											<option value="86">LNG利用-工业用气</option>
+											<option value="91">项目建设-选址决策</option>
+											<option value="92">项目建设-设计研究</option>
+											<option value="93">项目建设-设备采办</option>
+											<option value="94">项目建设-建设资源</option>
+											<option value="95">项目建设-施工技术</option>
+											<option value="96">项目建设-调试投产</option>
+											<option value="97">项目建设-项目管理</option>
+											<option value="101">专栏专题-LNG储罐</option>
+											<option value="102">专栏专题-数字化</option>
+											<option value="103">专栏专题-国家管网</option>
+											<option value="111">休闲广场-赏心悦目</option>
+											<option value="112">休闲广场-心情驿站</option>
+											<option value="113">休闲广场-休闲文学</option>
+											<option value="114">休闲广场-沙龙活动</option>
+											<option value="121">论坛管理-论坛版规</option>
+											<option value="122">论坛管理-用户体验</option>
+											<option value="123">论坛管理-投票区</option>
+											<option value="124">论坛管理-管委会</option>
+										</select>
+										<span style="color: #1a83da;margin-left: 5px;font-size: 12px;">*可不选</span>
+
+									</div>
+									<div class="description_post">
+										<h4>发布形式：</h4>
+										<div class="checkbox" id="Form">
+											<label>
+												<input type="radio" name="form" id="" value="0" /><span>公开</span>
+											</label>
+											<label>
+												<input type="radio" name="form" id="" value="1" /><span>粉丝可见</span>
+											</label>
+											<label>
+												<input type="radio" name="form" id="" value="2" /><span>私密</span>
+											</label>
+											<div>
+												<input type="text" name="radioForm" id="radioForm" value="0" hidden="hidden" />
+											</div>
+										</div>
+									</div>
+									<div class="description_post">
+										<h4>封面图上传：</h4><input type="file" name="" id="picFile" value="" />
+									</div>
+									<div class="description_post annex">
+										<h4>附件上传：</h4>
+										<input type="text" id="revise_enclosure_name" value="" placeholder="附件名称" /> 
+										<input type="number" id="revise_enclosure_coin" value="" placeholder="附件价格" />
+										<input type="file" name="" id="file1" value="" style="background-color: #fff;"/>
+									</div>
+									<div class="description_post button_box">
+										<input type="button" onclick="push()" value="发布" />
+										<!--<input type="button" id="save" value="保存草稿" />-->
+										<input type="button" onclick="back()" value="返回" />
+									</div>
+								</div>
+								<script type="text/javascript">
+									//实例化编辑器
+									//建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+									var ue = UE.getEditor('editor', {
+										toolbars: [
+											[
+												'fullscreen', //全屏
+												'undo', //撤销
+												'redo', //重做
+												'inserttitle', //插入标题
+												'fontfamily', //字体
+												'fontsize', //字号
+												'paragraph', //段落格式
+												'simpleupload', //单图上传
+												'bold', //加粗
+												'indent', //首行缩进
+												'italic', //斜体
+												'underline', //下划线
+												'strikethrough', //删除线
+												'subscript', //下标
+												'superscript', //上标
+												'blockquote', //引用
+												'selectall', //全选
+												'horizontal', //分隔线
+												'removeformat', //清除格式
+												'time', //时间
+												'date', //日期
+												'unlink', //取消链接
+												'insertrow', //前插入行
+												'link', //超链接
+												'emotion', //表情
+												'justifyleft', //居左对齐
+												'justifyright', //居右对齐
+												'justifycenter', //居中对齐
+												'justifyjustify', //两端对齐
+												'forecolor', //字体颜色
+												'backcolor', //背景色
+												'insertorderedlist', //有序列表
+												'insertunorderedlist', //无序列表
+												'imageleft', //左浮动
+												'imageright', //右浮动
+												'attachment', //附件
+												'imagecenter', //居中
+												'lineheight', //行间距
+												'edittip ', //编辑提示
+												'customstyle', //自定义标题
+												'autotypeset', //自动排版
+												'touppercase', //字母大写
+												'tolowercase', //字母小写
+												'background', //背景
+											]
+										],
+										autoHeightEnabled: true,
+										autoFloatEnabled: true
+									});
+								</script>
+							</div>
+							<!--投票-->
+							<div class="news_list zy_listbox mine_box" id="vote" hidden="hidden">
+								<div class="description_post" style="margin: 10px 0;">
+									<h2>发起投票</h2>  
+								</div>
+								<div class="description_post" style="display: flex;flex-direction: row;align-items: flex-start;">
+									<h4 style="margin: 0;">投票内容：</h4><textarea name="" rows="" id="question_text" cols="" style="border: 1px solid #eee;height: 100px;font-size: 16PX;"></textarea>
+								</div>
+								<div class="description_post">
+									<h4>所属版块：</h4>
+									<select id="plate" style="width: 100px;">
+										<option value="1">COAL版块</option>
+										<option value="2">OIL&GAS版块</option>
+										<option value="1">LNG版块</option>
+										<option value="4">POWER版块</option>
+										<option value="5">NUCLEAR版块</option>
+										<option value="6">RENEWABLE版块</option>
+										<option value="7">CHEM版块</option>
+										<option value="8">PM版块</option>
+									</select>
+								</div>
+								<div class="description_post button_box">
+									<input type="button" id="ok" value="发布" />
+								</div>
+							</div>
+							<!--系统通知-->
+							<div class="news_list zy_listbox mine_box" id="notice" hidden="hidden">
+								
+							</div>
+
+							<center id="pagiNation">
+								<ul class="pagination"></ul>
+							</center>
+						</div>
+					</div>
+					<!-- zy_content end -->
+					<!-- 招标公告 -->
+					<div class="tender r">
+						<div class="box_one">
+							<ul>
+								<li>
+									<span>发布</span><p id="user_release_sum">0</p>
+								</li>
+								<li>
+									<span>粉丝</span><p id="user_fans_sum">0</p>
+								</li>
+								<li>
+									<span>关注</span><p id="user_follow_sum">0</p>
+								</li>
+								<li>
+									<span>获赞</span><p id="user_laid_sum">0</p>
+								</li>
+								<li>
+									<span>转发</span><p id="user_forward_sum">0</p>
+								</li>
+							</ul>
+						</div>
+						<div class="box_two">
+							<div class="new_fan">
+								<div class="title">
+									<span>新粉丝</span>
+									<a id="fanmore" class="more">更多>></a>
+								</div>
+								<div id="new_fans_list" class="avatar">
+									<!-- <div>
+										<img src="images/logo.jpg" />
+									</div> -->
+								</div>
+							</div>
+							<div class="recent_visitors">
+								<div class="title">
+									<span>最近访客</span>
+									<a href="javascript:void(0)" class="more"></a>
+								</div>
+								<div id="new_visitor_list" class="avatar">
+									<!-- <div>
+										<img src="images/logo.jpg" />
+									</div> -->
+								</div>
+							</div>
+						</div>
+						<div class="box_three">
+							<div class="title bc">
+								<span>喜欢的版块</span>
+								<!-- <a class="more">返回首页</a> -->
+							</div>
+							<ul id="lng_todaycount_list">
+
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- 专题轮播 -->
+				<div class="zhuanti_pic">
+					<div class="hd">
+						<!--轮播点 -->
+						<ul id="bottom_point">
+							<!--<li></li>
+							<li></li>-->
+						</ul>
+					</div>
+					<div class="bd">
+						<ul id="bottom_banner">
+							<!--专题图片轮播 -->
+							<!--<li>
+								<a href="news_xq.html"><img src="images/pic01.jpg" /></a>
+							</li>
+							<li>
+								<a href="news_xq.html"><img src="images/pic01.jpg" /></a>
+							</li>-->
+						</ul>
+					</div>
+					<!-- 下面是前/后按钮代码，如果不需要删除即可 -->
+					<a class="prev" href="javascript:void(0)"></a>
+					<a class="next" href="javascript:void(0)"></a>
+
+					<script type="text/javascript">
+						jQuery(".zhuanti_pic").slide({
+							mainCell: ".bd ul",
+							autoPlay: true,
+							effect: "fade",
+							mouseOverStop: false,
+							interTime: 3000,
+						});
+					</script>
+				</div>
+				<div class="partener">
+                	<div class="partener_title">
+                		友情链接
+                	</div>
+                	<div class="partener_block">
+                		<ul>
+                			<!--1-->
+                			<li><a href="https://www.shpgx.com/html/index.html">上海石油天然气交易中心</a></li>
+                		<!--</ul>
+                		<ul>-->
+                			<!--2-->
+                			<li><a href="https://www.iea.org/">IEA</a></li>
+							<li><a href="https://www.igu.org/">IGU</a></li>
+							<li><a href="https://www.opec.org/opec_web/en/">OPEC</a></li>
+							<li><a href="https://www.ocimf.org/">OCIMF</a></li>
+							<!--3-->
+                			<li><a href="http://www.cnpc.com.cn/index.shtml">中国石油</a></li>
+                		</ul>
+                		<ul>
+							<li><a href="http://www.sinopecgroup.com/">中国石化</a></li>
+							<li><a href="https://www.cnooc.com.cn/">中国海油</a></li>
+							<li><a href="http://www.sinochem.com/">中国中化</a></li>
+							<!--4-->
+                			<li><a href="https://www.bp.com/">BP</a></li>
+							<li><a href="https://www.shell.com/">SHELL</a></li>
+							<li><a href="https://www.total.com/en">TOTAL</a></li>
+                		</ul>
+                		<ul>
+							<li><a href="https://www.tokyo-gas.co.jp/en/index.html">东京燃气</a></li>
+							<li><a href="http://www.kogas.or.kr/eng/index.do">KOGAS</a></li>
+							<!--5-->
+                			<li><a href="http://www.qatargas.com/english">Qatargas</a></li>
+							<li><a href="https://www.enn.cn/">新奥集团</a></li>
+							<li><a href="http://www.guanghui.com/">新疆广汇</a></li>
+							<li><a href="https://www.geg.com.cn/">广东能源</a></li>
+                		</ul>
+                		<ul>
+                			
+							<li><a href="http://www.bjgas.com/NewsCen2.aspx">北京燃气</a></li>
+                			<!--6-->
+                			<li><a href="http://trqgy.cn/">天然气工业</a></li>
+							<li><a href="http://www.syytrqhg.cn/ch/index.aspx">石油与天然气化工</a></li>
+                			<!--7-->
+                			<li><a href="https://www.jtsi.wa.gov.au/gasfund/introduction">中澳天然气基金</a></li>
+                		</ul>
+                	</div>
+                </div>
+			</div>
+
+			<style type="text/css">
+				.date_bg {
+					position: absolute;
+					z-index: 999;
+					top: 0;
+					left: 0;
+					width: 100%;
+					background-color: rgba(0, 0, 0, .5);
+				}
+			</style>
+		</div>
+
+		<!-- 返回顶部 -->
+		<div class="side_box">
+			<ul>
+				<li class="sidetop">
+					<span></span>
+				</li>
+			</ul>
+		</div>
+
+		<!-- 底部 -->
+		<div class="footerbox bg">
+			<div class="l txt">
+				<p><a href="http://www.beian.miit.gov.cn" target="_blank"><img src="images/beian.png">网站备案号:津ICP备20001741-4</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;联系QQ号:1510531900&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮箱:oilngas@qq.com</p>
+			</div>
+		</div>
+		<input type="text" name="share_url" id="share_url" value="" hidden="hidden" />
+		<script type="text/javascript" src="config.js"></script>
+		<script type="text/javascript" src="js/pop_ups/MiniDialog-es5.min.js"></script>
+		<script type="text/javascript" src="js/paging/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/paging/paging.js"></script>
+		<script id="baidu_share" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			adConfig();
+			window.onload = BaiduShare();
+			function BaiduShare(){
+				$("#baidu_share").attr("src",'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5));
+			}
+			//头部统计
+			$.ajax({
+				type:"post",
+				url:`${sever_url}master/title`,
+				dataType:"json",
+				success:function(data){
+					console.log(data)
+					$("#user_count").html(data.data.user_count);
+					$("#post_count").html(data.data.post_count);
+					$("#user_loging").html(data.data.user_loging);
+					$("#new_username").html(data.data.new_username);
+					$("#end_reply_name").html(data.data.end_reply_name);
+				}
+			});
+			// 获取当前时间
+			var day2 = new Date();
+			day2.setTime(day2.getTime());
+			var s2 = day2.getFullYear() + "-" + (day2.getMonth() + 1) + "-" + day2.getDate();
+			// console.log(s2)
+			if(getUrldata("fast") == 1) {
+				var part_arr = $(".zy_listbox");
+				var li_arr = $("#navbar li");
+				for(var i = 0; i < part_arr.length; i++) {
+					if($(part_arr[i]).attr("id") == "post") {
+						$(part_arr[i]).removeAttr("hidden");
+						$(li_arr[i]).attr("class", "select");
+						$("#pagiNation").attr("hidden", "hidden");
+					} else {
+						$(part_arr[i]).attr("hidden", "hidden");
+						$(li_arr[i]).removeAttr("class");
+					}
+				}
+			}
+			$(function(){
+				//第一种方法
+				$(".classification ul li").each(function(index) {
+					$(this).click(function() {
+						$(".classification ul li").eq(index).addClass("navClicked").siblings().removeClass("navClicked");
+					})
+				})
+			});
+			
+			// 其他页面搜索
+			var search = document.getElementById("search");
+			var btn = document.getElementById("btn");
+			btn.addEventListener('click', function() {
+				window.location.href = "/power/index.html?type=0&plate=1&two=0&search=1&searchv="+ search.value;
+			
+			})
+			
+			// 新粉丝跳转
+			$("#fanmore").click(function() {
+				var part_arr = $(".zy_listbox");
+				var li_arr = $("#navbar li");
+				for(var i = 0; i < part_arr.length; i++) {
+					if($(part_arr[i]).attr("id") == "fan") {
+						$(part_arr[i]).removeAttr("hidden");
+						$(li_arr[i]).attr("class", "select");
+						$("#pagiNation").attr("hidden", "hidden");
+					} else {
+						$(part_arr[i]).attr("hidden", "hidden");
+						$(li_arr[i]).removeAttr("class");
+					}
+				}
+				fan();
+			})
+
+			// 获取我的信息
+			var data = sessionStorage.getItem("data");
+			var infodata = eval('(' + data + ')');
+			// console.log(infodata.token);
+			if(infodata != null) {
+				var admin_box_head = '';
+				var infodatatoken = infodata.token
+				var admin_box = document.getElementById("admin_box");
+
+				if(infodatatoken.length > 1) {
+					admin_box_head += "<div class='admin'><a href='mine.html'><img id='head' class='admin_logo' src='" + infodata.user_head +
+						"'  /></a><a href='mine.html?fast=1'>快速发帖</a></div>";
+					admin_box.innerHTML = admin_box_head;
+				}
+			} else {
+				Dialog({
+					title: "请登录！",
+					content: "您还未登录，是登录？",
+					ok: {
+						callback: function() {
+							window.location.href = 'login.html';
+						}
+					},
+					cancel: {
+						callback: function() {
+							Dialog.close();
+						}
+					}
+				});
+			}
+
+			$('.hiden_list').hide();
+			$('.hiden_list_w').hide();
+			//监听头像鼠标移入事件
+			$("#head").mouseover(function() {
+				if(!infodata){
+					return;
+				}
+				if(infodata.user_power_num == 4) {
+					$('.hiden_list_w').show();
+				} else {
+					$('.hiden_list').show();
+				}
+			});
+			$(".bd").mouseover(function() {
+				if(!infodata){
+					return;
+				}
+				if(infodata.user_power_num == 4) {
+					$('.hiden_list_w').hide();
+				} else {
+					$('.hiden_list').hide();
+				}
+			});
+			//退出登陆清除数据
+			function delsession(){
+				sessionStorage.clear();
+			}
+			// 获取我的信息
+			$.ajax({
+				url: sever_url + 'my/info',
+				type: 'post',
+				data: {
+					token: infodata.token,
+				},
+				// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+				dataType: 'json',
+				success: function(res) {
+					// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
+					// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
+					// console.log(res)
+					var data = res.data;
+					var new_fans = data.new_fans;
+					var new_visitor = data.new_visitor;
+					var lng_todaycount = data.lng_todaycount;
+
+					// 顶部个人信息
+					var user_head = document.getElementById("user_head");
+					user_head.innerHTML = "<img src='" + data.user_head + "'>";
+					var user_name = document.getElementById("user_name");
+					user_name.innerHTML = data.user_name;
+					var id = document.getElementById("id");
+					id.innerHTML = "ID:  " + data.id + " ";
+					var user_profile = document.getElementById("user_profile");
+					user_profile.innerHTML = data.user_profile;
+					var user_address = document.getElementById("user_address");
+					user_address.innerHTML = data.user_address;
+
+					// 右边数量
+					var user_release_sum = document.getElementById("user_release_sum");
+					user_release_sum.innerHTML = data.user_release_sum;
+					var user_follow_sum = document.getElementById("user_follow_sum");
+					user_follow_sum.innerHTML = data.user_follow_sum;
+					var user_fans_sum = document.getElementById("user_fans_sum");
+					user_fans_sum.innerHTML = data.user_fans_sum;
+					var user_laid_sum = document.getElementById("user_laid_sum");
+					user_laid_sum.innerHTML = data.user_laid_sum;
+					var user_forward_sum = document.getElementById("user_forward_sum");
+					user_forward_sum.innerHTML = data.user_forward_sum;
+
+					// 新粉丝
+					var new_fans_img = '';
+					var new_fans_list = document.getElementById("new_fans_list");
+					for(var i = 0; i < new_fans.length; i++) {
+						new_fans_img += "<div><img  style='width:70px; height:70px; border-radius:50%; margin-top:8px;' src='" + new_fans[i].user_head +
+							"'/></div>";
+						new_fans_list.innerHTML = new_fans_img;
+					}
+
+					// 最近访客
+					var new_visitor_img = '';
+					var new_visitor_list = document.getElementById("new_visitor_list");
+					for(var i = 0; i < new_visitor.length; i++) {
+						new_visitor_img += "<div><img style='width:70px; height:70px; border-radius:50%;margin-top:8px; ' src='" + new_visitor[i].user_head +
+							"'/></div>";
+						new_visitor_list.innerHTML = new_visitor_img;
+					}
+
+					// 喜欢
+					var lng_todaycounts = '';
+					var lng_todaycount_list = document.getElementById("lng_todaycount_list");
+					// for (var i = 0; i < lng_todaycount.length; i++) {
+					lng_todaycounts += "<li><h3>" + lng_todaycount.name + "</h3><a href='index.html?plate=" + lng_todaycount.id +
+						"'><span>今日更新：" + lng_todaycount.today_count +
+						"篇</span></a></li>";
+					lng_todaycount_list.innerHTML = lng_todaycounts;
+					// }
+				},
+			})
+
+			// 获取我的原创
+			function original() {
+				$.ajax({
+					url: sever_url + 'my/article',
+					type: 'post',
+					data: {
+						token: infodata.token,
+						article_type: '0',
+						rows: '8',
+						page: '1',
+						state: '1',
+						order: '0',
+						star_time: '2020-1-1',
+						end_time: s2,
+					},
+					// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+					dataType: 'json',
+					success: function(res) {
+						// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
+						// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
+												console.log(res)
+						var postdata = res.data;
+
+						$(function() {
+							var a = {
+								color: '#blue',
+								sex: 'black',
+								border: '1px solid #ddd'
+							};
+
+							var b = {
+								background: '#0084ff'
+							};
+
+							$(".pagination").Paging({
+								classStyle: a, //a标签样式的对象,也可以不定义使用默认值
+								backClass: b, //选中的页数的背景，也可以不定义使用默认值
+								isFirst: true, //首页按钮是否显示
+								isPre: true, //下一页按钮是否显示
+								showRecordNum: 8, // 一页列表数量
+								totalNum: res.total, // 总列表数量
+								showNum: function(data1, data2) {
+									// alert(data1 + "," + data2);
+								},
+								pages: 'infopost'
+							});
+
+						});
+						// console.log(followdata)
+						var post = '';
+						var postlist = document.getElementById("postlist");
+						if(postdata.length === 0) {
+							follows += "<h3>暂无数据</h3>";
+							content.innerHTML = follows;
+
+						} else {
+							for(var i = 0; i < postdata.length; i++) {
+								post += "<li><img src='" + postdata[i].post_img + "'/><div class='blog_list'>";
+								post += "<div class='news_title'><a href='forum.html?postid=" + postdata[i]['id'] + "'>" + postdata[i][
+									'post_title'
+								] + "</a>";
+								post += "<i class='red_news'>[" + postdata[i]['post_label'] + "]</i></div>";
+								post += "<div class='news_time news_other'><span>发布于：" + postdata[i]['post_releasetime'] + "</span>";
+								post += "<span id=''>阅读数：" + postdata[i]['post_readnum'] + " </span><span id=''>点赞：" + postdata[i][
+										'post_upnum'
+									] +
+									"</span></div>";
+								post += "<div class='news_owner news_other'><span id=''>发帖人：" + postdata[i]['post_user_name'] + "</span>";
+								post += "<span id=''>最后回复人：" + postdata[i]['last_user_name'] +
+									"</span>";
+								post += "</div></div><div class='share_right share bdsharebuttonbox'><div><img style='width: 20px;height: 20px;' src='images/write.png' />";
+								post += "<img style='width: 20px;height: 20px;' onclick = 'Delete("+postdata[i]['id']+")' src='images/delete.png' /></div><div style='display:flex;flex-direction:row;align-items:center;'><p style='float:left;width: 60px;'>分享：</p>";
+								post += "<a url='forum.html?postid=" + postdata[i]['id'] + "' class='bds_weixin' data-cmd='weixin'></a><a url='forum.html?postid=" + postdata[i]['id'] + "' class='bds_tsina' data-cmd='tsina'></a></div></div></li>";
+								postlist.innerHTML = post;
+							}
+							$('.bdsharebuttonbox a').on('mousemove', function() {
+								var title = $(this).attr('title');
+								var Url = $(this).attr('url');
+								$("#share_url").val(title + "||" + Url);
+							})
+							window._bd_share_main.init();
+						}
+
+					},
+				})
+			}
+			original();
+			//删除
+			function Delete(post_id){
+				$.ajax({
+					type:"post",
+					url:sever_url+"article/del",
+					async:true,
+					data:{
+						token:infodata.token,
+						article_id:post_id
+					},
+					dataType:"json",
+					success:function(data){
+						console.log(data)
+						original();
+					}
+				});
+			}
+			// 获取我的问答
+			function question(state) {
+				//				console.log(order)
+				if(document.getElementById("postlist")) {
+					//存在
+					// postlist.remove();
+					document.getElementById("postlist").innerHTML = "";
+				}
+
+				$.ajax({
+					url: sever_url + 'my/article',
+					type: 'post',
+					data: {
+						token: infodata.token,
+						article_type: '1',
+						rows: '8',
+						page: '1',
+						state: state,
+						order: '0',
+						star_time: '2020-1-1',
+						end_time: s2,
+					},
+					// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+					dataType: 'json',
+					success: function(res) {
+						// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
+						// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
+						// console.log(res)
+						var postdata = res.data;
+
+						$(function() {
+							var a = {
+								color: '#blue',
+								sex: 'black',
+								border: '1px solid #ddd'
+							};
+
+							var b = {
+								background: '#0084ff'
+							};
+
+							$(".pagination").Paging({
+								classStyle: a, //a标签样式的对象,也可以不定义使用默认值
+								backClass: b, //选中的页数的背景，也可以不定义使用默认值
+								isFirst: true, //首页按钮是否显示
+								isPre: true, //下一页按钮是否显示
+								showRecordNum: 8, // 一页列表数量
+								totalNum: res.total, // 总列表数量
+								showNum: function(data1, data2) {
+									// alert(data1 + "," + data2);
+								},
+								pages: 'infopost'
+							});
+
+						});
+						// console.log(followdata)
+						var post = '';
+						var qusetionlist = document.getElementById("qusetionlist");
+						if(postdata.length === 0) {
+							post += "<h3>暂无数据</h3>";
+							qusetionlist.innerHTML = post;
+
+						} else {
+							for(var i = 0; i < postdata.length; i++) {
+								post += "<li><img src='" + postdata[i].post_img + "'/><div class='blog_list'>";
+								post += "<div class='news_title'><a href='forum.html?postid=" + postdata[i]['id'] + "'>" + postdata[i][
+									'post_title'
+								] + "</a>";
+								post += "<i class='red_news'>[" + postdata[i]['post_label'] + "]</i></div>";
+								post += "<div class='news_time news_other'><span>发布于：" + postdata[i]['post_releasetime'] + "</span>";
+								post += "<span id=''>阅读数：" + postdata[i]['post_readnum'] + " </span><span id=''>点赞：" + postdata[i][
+										'post_upnum'
+									] +
+									"</span></div>";
+								post += "<div class='news_owner news_other'><span id=''>发帖人：" + postdata[i]['post_user_name'] +
+									"</span>";
+								post += "<span id=''>最后回复人：" + postdata[i]['last_user_name'] +
+									"</span><div class='share bdsharebuttonbox'>分享：";
+								post +=
+									"<a url='forum.html?postid=" + postdata[i]['id'] +
+									"' class='bds_weixin' data-cmd='weixin'></a><a url='forum.html?postid=" + postdata[i]['id'] +
+									"' class='bds_tsina' data-cmd='tsina'></a></div></div></div><img style='width: 20px;height: 20px;' src='images/write.png' /><img style='width: 20px;height: 20px;' src='images/delete.png' /></li>";
+								qusetionlist.innerHTML = post;
+							}
+							$('.bdsharebuttonbox a').on('mousemove', function() {
+								var title = $(this).attr('title');
+								var Url = $(this).attr('url');
+								$("#share_url").val(title + "||" + Url);
+							})
+							window._bd_share_main.init();
+						}
+
+					},
+				})
+			}
+
+			// 获取我的粉丝
+			function fan() {
+				$.ajax({
+					url: sever_url + 'my/fans',
+					type: 'post',
+					data: {
+						token: infodata.token,
+						rows: '8',
+						page: '1',
+						order: '0',
+						star_time: '',
+						end_time: s2,
+					},
+					// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+					dataType: 'json',
+					success: function(res) {
+						// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
+						// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
+						//								console.log(res)
+						var fansdata = res.data;
+
+						$(function() {
+							var a = {
+								color: '#blue',
+								sex: 'black',
+								border: '1px solid #ddd'
+							};
+
+							var b = {
+								background: '#0084ff'
+							};
+
+							$(".pagination").Paging({
+								classStyle: a, //a标签样式的对象,也可以不定义使用默认值
+								backClass: b, //选中的页数的背景，也可以不定义使用默认值
+								isFirst: true, //首页按钮是否显示
+								isPre: true, //下一页按钮是否显示
+								showRecordNum: 8, // 一页列表数量
+								totalNum: res.total, // 总列表数量
+								showNum: function(data1, data2) {
+									// alert(data1 + "," + data2);
+								},
+								pages: 'fans'
+							});
+
+						});
+						// console.log(fansdata)
+						var fans = '';
+						var fanslist = document.getElementById("fanslist");
+						if(fansdata.length === 0) {
+							fans += "<h3>暂无数据</h3>";
+							fanslist.innerHTML = fans;
+
+						} else {
+							for(var i = 0; i < fansdata.length; i++) {
+								fans += "<li><img class='icon_radius' src='" + fansdata[i].user_head + " ' /><div class='blog_list'>";
+								fans += "<div class='attention_title'><div>" + fansdata[i]['user_name'] + "</div><div>ID:" + fansdata[i]
+									[
+										'id'
+									] + "</div><div>关注时间：" + fansdata[i]['follow_time'] + "</div>";
+								fans += "</div><div class='news_time news_other'><span>个人简介：</span><p>" + fansdata[i]['user_profile'] +
+									"</p>";
+								fans += "</div><div class='news_owner news_other'><span id=''>关注：" + fansdata[i]['user_follow_sum'] +
+									"|粉丝：" + fansdata[i]['user_fans_sum'] + "</span>";
+								fans +=
+									"</div></div><div class='about_att'><div class='cansel'>关注+</div><div class='hispage'><a>TA的个人主页</a></div></div></li>";
+								fanslist.innerHTML = fans;
+							}
+						}
+					},
+				})
+			}
+			//我的收藏
+			function favorite(){
+				$.ajax({
+					url: sever_url + 'my/collection/select',
+					type: 'post',
+					data: {
+						token: infodata.token,
+						article_type: '1',
+						rows: '8',
+						page: '1',
+						state: '1',
+						order: '0',
+						star_time: '2020-1-1',
+						end_time: s2,
+					},
+					// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+					dataType: 'json',
+					success: function(res) {
+						// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
+						// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
+						//								console.log(res)
+						var collectiondata = res.data;
+
+						$(function() {
+							var a = {
+								color: '#blue',
+								sex: 'black',
+								border: '1px solid #ddd'
+							};
+
+							var b = {
+								background: '#0084ff'
+							};
+
+							$(".pagination").Paging({
+								classStyle: a, //a标签样式的对象,也可以不定义使用默认值
+								backClass: b, //选中的页数的背景，也可以不定义使用默认值
+								isFirst: true, //首页按钮是否显示
+								isPre: true, //下一页按钮是否显示
+								showRecordNum: 8, // 一页列表数量
+								totalNum: res.total, // 总列表数量
+								showNum: function(data1, data2) {
+									// alert(data1 + "," + data2);
+								},
+								pages: 'infopost'
+							});
+
+						});
+						// console.log(followdata)
+						var post = '';
+						var collectionlist = document.getElementById("collectionlist");
+						if(collectiondata.length === 0) {
+							post += "<h3>暂无数据</h3>";
+							collectionlist.innerHTML = post;
+
+						} else {
+							for(var i = 0; i < collectiondata.length; i++) {
+								post += "<li><img src='" + collectiondata[i].post_img + "'/><div class='blog_list'>";
+								post += "<div class='news_title'><a href='forum.html?postid=" + collectiondata[i]['id'] + "'>" +
+									collectiondata[i][
+										'post_title'
+									] + "</a>";
+								post += "<i class='red_news'>[" + collectiondata[i]['post_label'] + "]</i></div>";
+								post += "<div class='news_time news_other'><span>发布于：" + collectiondata[i]['post_releasetime'] +
+									"</span>";
+								post += "<span id=''>阅读数：" + collectiondata[i]['post_readnum'] + " </span><span id=''>点赞：" +
+									collectiondata[i][
+										'post_upnum'
+									] +
+									"</span></div>";
+								post += "<div class='news_owner news_other'><span id=''>发帖人：" + collectiondata[i]['post_user_name'] +
+									"</span>";
+								post += "<span id=''>最后回复人：" + collectiondata[i]['last_user_name'] +
+									"</span><div class='share bdsharebuttonbox'>分享：";
+								post +=
+									"<a url='forum.html?postid=" + collectiondata[i]['id'] +
+									"' class='bds_weixin' data-cmd='weixin'></a><a url='forum.html?postid=" + collectiondata[i]['id'] +
+									"' class='bds_tsina' data-cmd='tsina'></a></div></div></div><img style='width: 20px;height: 20px;' src='images/write.png' /><img style='width: 20px;height: 20px;' src='images/delete.png' /></li>";
+								collectionlist.innerHTML = post;
+							}
+							$('.bdsharebuttonbox a').on('mousemove', function() {
+								var title = $(this).attr('title');
+								var Url = $(this).attr('url');
+								$("#share_url").val(title + "||" + Url);
+							})
+							window._bd_share_main.init();
+						}
+
+					},
+				})
+			}
+			//快速发帖返回
+			function back() {
+				self.location = document.referrer;
+			}
+			var part_arr = $(".zy_listbox");
+			var li_arr = $("#navbar li");
+			//快速发帖发布
+			function push() {
+				var picfile = $("#picFile").get(0).files[0];
+				var file1 = $("#file1").get(0).files[0];
+				var formData = new FormData();
+				formData.append("imgFile", picfile);
+				formData.append("token", infodata.token);
+				formData.append("post_title", $("#postTitle").val());
+				formData.append("post_copyright", "");
+				formData.append("post_content", UE.getEditor('editor').getContent());
+				formData.append("post_plate", Number($('#Section option:selected').val()));
+				formData.append("post_label", $("#Tag").val());
+				formData.append("post_plate_two", Number($('#Classification option:selected').val()));
+				formData.append("post_releasetype", 0);
+				formData.append("post_articletype", Number($('#postType option:selected').val()));
+				formData.append("post_Large", Number($('#post_Large option:selected').val()));
+				formData.append("post_rewardmoney", Number($("#rewardmoney").val()));
+				formData.append("revise_enclosure_name", $("#revise_enclosure_name").val());
+				formData.append("revise_enclosure_coin", Number($("#revise_enclosure_coin").val()));
+				formData.append("file1", file1);
+				$.ajax({
+					url: sever_url + 'release',
+					type: 'post',
+					processData: false,
+					contentType: false,
+					data: formData,
+					// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+					dataType: 'json',
+					success: function(data) {
+						if(data.code == "200") {
+							for(var i = 0; i < part_arr.length; i++) {
+								if($(part_arr[i]).attr("id") == "original") {
+									$(part_arr[i]).removeAttr("hidden");
+									$(li_arr[i]).attr("class", "select");
+								} else {
+									$(part_arr[i]).attr("hidden", "hidden");
+									$(li_arr[i]).removeAttr("class");
+								}
+							}
+							$("#pagiNation").removeAttr("hidden");
+							original();
+						} else if(data.code == "2") {
+							Dialog({
+								title: "请登录！",
+								content: "您的登录已过期，是否重新登录？",
+								ok: {
+									callback: function() {
+										window.location.href = 'login.html';
+									}
+								},
+								cancel: {
+									callback: function() {
+										Dialog.close();
+									}
+								}
+							});
+						}
+					},
+					error: function(XMLHttpRequest, msg, res) {
+						console.log(msg);
+					}
+				});
+			}
+			//页内导航
+			$("#navbar li").click(function() {
+				if($(this).attr("class") != "select") {
+					var nav_a = $(this).find('a')[0];
+					var nav_id = $(nav_a).attr("name");
+					if(nav_id == "question") {
+						$("#hide").show();
+					} else {
+						$("#hide").hide();
+					}
+					if(nav_id != "post") {
+						$("#pagiNation").removeAttr("hidden");
+					}
+					for(var i = 0; i < part_arr.length; i++) {
+						if($(part_arr[i]).attr("hidden") == undefined) {
+							$(part_arr[i]).attr("hidden", "hidden");
+						}
+						$(li_arr[i]).removeAttr("class");
+					}
+					//					console.log(nav_id)
+					$("#"+nav_id).removeAttr("hidden");
+					$(this).attr("class", "select");
+					// 原创
+					if(nav_id === "original") {
+						original();
+					} else // 问答
+						if(nav_id === "question") {
+							question(1);
+							// 收藏
+						} else if(nav_id === "favorite") {
+							favorite();
+						// 关注
+					} else if(nav_id === "attention") {
+						$.ajax({
+							url: sever_url + 'my/follows',
+							type: 'post',
+							data: {
+								token: infodata.token,
+								rows: '8',
+								page: '1',
+								order: '0',
+								star_time: '',
+								end_time: s2,
+							},
+							// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+							dataType: 'json',
+							success: function(res) {
+								// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
+								// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
+								//								console.log(res)
+								var followsdata = res.data;
+
+								$(function() {
+									var a = {
+										color: '#blue',
+										sex: 'black',
+										border: '1px solid #ddd'
+									};
+
+									var b = {
+										background: '#0084ff'
+									};
+
+									$(".pagination").Paging({
+										classStyle: a, //a标签样式的对象,也可以不定义使用默认值
+										backClass: b, //选中的页数的背景，也可以不定义使用默认值
+										isFirst: true, //首页按钮是否显示
+										isPre: true, //下一页按钮是否显示
+										showRecordNum: 8, // 一页列表数量
+										totalNum: res.total, // 总列表数量
+										showNum: function(data1, data2) {
+											// alert(data1 + "," + data2);
+										},
+										pages: 'follows'
+									});
+
+								});
+								// console.log(fansdata)
+								var follows = '';
+								var followslist = document.getElementById("followslist");
+								if(followsdata.length === 0) {
+									follows += "<h3>暂无数据</h3>";
+									followslist.innerHTML = follows;
+
+								} else {
+									for(var i = 0; i < followsdata.length; i++) {
+										follows += "<li><img class='icon_radius' src='" + followsdata[i].user_head +
+											" ' /><div class='blog_list'>";
+										follows += "<div class='attention_title'><div>" + followsdata[i]['user_name'] + "</div><div>ID:" +
+											followsdata[i][
+												'id'
+											] + "</div><div>关注时间：" + followsdata[i]['follow_time'] + "</div>";
+										follows += "</div><div class='news_time news_other'><span>个人简介：</span><p>" + followsdata[i][
+												'user_profile'
+											] +
+											"</p>";
+										follows += "</div><div class='news_owner news_other'><span id=''>关注：" + followsdata[i]['user_follow_sum'] +
+											"|粉丝：" + followsdata[i]['user_fans_sum'] + "</span>";
+										follows +=
+											"</div></div><div class='about_att'><div class='cansel'>关注+</div><div class='hispage'><a>TA的个人主页</a></div></div></li>";
+										followslist.innerHTML = follows;
+									}
+								}
+							},
+						})
+						// 粉丝
+					} else if(nav_id === "fan") {
+						fan();
+					} else if(nav_id === "wallet") {
+						//收益/钱包
+						$.ajax({
+							url: sever_url + 'my/walletinfo',
+							type: 'post',
+							data: {
+								token: infodata.token
+							},
+							// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+							dataType: 'json',
+							success: function(data) {
+								//								console.log(data)
+								if(data.code == "200") {
+									$("#yesterday_money").html(data.data.yesterday_money);
+									$("#week_money").html("近7日收益" + data.data.week_money + "元");
+									$("#month_money").html(data.data.month_money);
+									$("#money_sum").html("总收益" + data.data.money_sum + "元")
+									$("#wallet_coin").html("论坛币：" + data.data.wallet_coin);
+									$("#wallet_money").html("余额：" + data.data.wallet_money + "元");
+								}
+							}
+						});
+						getList();
+
+						function getList() {
+							$.ajax({
+								url: sever_url + 'my/business',
+								type: 'post',
+								data: {
+									token: infodata.token,
+									star_time: "",
+									end_time: "",
+									rows: 5,
+									page: 1
+								},
+								// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+								dataType: 'json',
+								success: function(data) {
+									console.log(data)
+									var length = data.data.length;
+									$(function() {
+										var a = {
+											color: '#blue',
+											sex: 'black',
+											border: '1px solid #ddd'
+										};
+
+										var b = {
+											background: '#0084ff'
+										};
+
+										$(".pagination").Paging({
+											classStyle: a, //a标签样式的对象,也可以不定义使用默认值
+											backClass: b, //选中的页数的背景，也可以不定义使用默认值
+											isFirst: true, //首页按钮是否显示
+											isPre: true, //下一页按钮是否显示
+											showRecordNum: 5, // 一页列表数量
+											totalNum: data.total, // 总列表数量
+											showNum: function(data1, data2) {
+												// alert(data1 + "," + data2);
+											},
+											pages: 'follows'
+										});
+
+									});
+
+									$("#listBody").empty();
+									for(var i = 0; i < length; i++) {
+										var obj = data.data[i];
+										$("#listBody").append('<li><ul class="list_body"><li>' + obj.business_time + '</li><li>' + obj.business_type +
+											'</li><li>' + obj.business_money + '</li><li>' + obj.business_coin + '</li><li>' + obj.pay_user +
+											'</li></ul></li>');
+									}
+								}
+							});
+						}
+
+					} else if(nav_id == "post") {
+						$("#pagiNation").attr("hidden", "hidden");
+						$("#Form :radio").on('click', function() {
+							var item = $(this).val();
+							$("#radioForm").val(item)
+						})
+						$("#postType").change(() => {
+							if($("#postType").val() == '2') {
+								$(".reward_money").css("display", "flex");
+							} else {
+								$(".reward_money").css("display", "none");
+							}
+						})
+						// 系统通知
+					}else if(nav_id == "vote"){
+						$("#pagiNation").attr("hidden", "hidden");
+						$("#ok").click(function(){
+							$.ajax({
+								type:"post",
+								url:sever_url + "insert/vote",
+								async:true,
+								data:{
+									token: infodata.token,
+									vote_plate:Number($('#plate option:selected').val()),
+									vote_comment:$("#question_text").val()
+								},
+								success:function(data){
+									if(data.code=="200"){
+										Dialog.success("发布成功！")
+										$("#question_text").val("");
+									}else{
+										Dialog.warn( data.msg );
+									}
+								}
+							});
+						})
+					} else if(nav_id == "notice") {
+						$.ajax({
+							type: "post",
+							url: sever_url + "my/natice",
+							async: true,
+							data: {
+								token: infodata.token,
+								rows: 6,
+								page: 1
+							},
+							dataType: "json",
+							success: function(data) {
+								console.log(data)
+								if(data.code == '200') {
+									$("#notice").empty();
+									var length = data.data.data.length;
+									$(function() {
+										var a = {
+											color: '#blue',
+											sex: 'black',
+											border: '1px solid #ddd'
+										};
+
+										var b = {
+											background: '#0084ff'
+										};
+
+										$(".pagination").Paging({
+											classStyle: a, //a标签样式的对象,也可以不定义使用默认值
+											backClass: b, //选中的页数的背景，也可以不定义使用默认值
+											isFirst: true, //首页按钮是否显示
+											isPre: true, //下一页按钮是否显示
+											showRecordNum: 6, // 一页列表数量
+											totalNum: data.data.total, // 总列表数量
+											showNum: function(data1, data2) {
+												// alert(data1 + "," + data2);
+											},
+											pages: 'follows'
+										});
+
+									});
+
+									for(var i = 0; i < length; i++) {
+										var obj = data.data.data[i];
+										$("#notice").append('<div class="message"><div class="message_title"><h3>' + obj.notice_title +
+											'</h3><span>' + obj.notice_time + '</span></div><div class="message_detail"><span>' + obj.notice_content +
+											'</span><a>网页链接</a></div></div>');
+									}
+								} else if(data.code == '2') {
+									Dialog({
+										title: "请登录！",
+										content: "您的登录已过期，是否重新登录？",
+										ok: {
+											callback: function() {
+												window.location.href = 'login.html';
+											}
+										},
+										cancel: {
+											callback: function() {
+												Dialog.close();
+											}
+										}
+									});
+								}
+
+							}
+						});
+					}
+				}
+			})
+		</script>
+	</body>
+
+</html>

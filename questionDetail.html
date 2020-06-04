@@ -1,0 +1,1879 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta content="能源公社" http-equiv="keywords">
+		<meta name="description" content="能源公社">
+		<meta name="applicable-device" content="pc,mobile">
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<meta http-equiv="Cache-Control" content="no-transform" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<title>能源公社</title>
+
+		<link rel="stylesheet" href="css/index.css" type="text/css">
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link rel="stylesheet" type="text/css" href="css/children.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
+		<!--富文本编辑框-->
+		<script type="text/javascript" charset="utf-8" src="./ueditor/ueditor.config.js"></script>
+		<script type="text/javascript" charset="utf-8" src="./ueditor/ueditor.all.min.js"></script>
+		<script type="text/javascript" src="js/public.js"></script>
+		<!-- 菜单js等-->
+		<script src="LeanModal/js/jquery.leanModal.min.js" type="text/javascript" charset="utf-8"></script>
+		<!-- 时间选择js -->
+		<script type="text/javascript" src="js/laydate.js"></script>
+		<style>
+			.blog_box {
+				width: 100%;
+				margin-top: 10px;
+				display: flex;
+				flex-direction: row;
+			}
+			
+			.blog_box .blog_left {
+				width: 65%;
+				display: flex;
+				flex-direction: column;
+			}
+			
+			.blog_box .blog_detail .blog_left div:nth-child(n+2) {
+				width: 25%;
+				margin-top: 5px;
+			}
+			
+			.blog_title {
+				font-size: 16px;
+				font-weight: 700;
+			}
+			
+			.blog_detail {
+				width: 100%;
+				border-bottom: 1px solid #eee;
+				margin-top: 5px;
+				font-size: 14px;
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+			}
+			
+			.post_type {
+				display: flex;
+				flex-direction: row;
+			}
+			
+			.post_type span:nth-child(n+2) {
+				margin-left: 5px;
+				color: red;
+			}
+			
+			.collect {
+				display: flex;
+				flex-direction: row;
+				margin-right: 10px;
+			}
+			
+			.collect img {
+				width: 20px;
+				height: 20px;
+			}
+			
+			.state {
+				font-size: 12px;
+				margin-top: 5px;
+				line-height: 18px;
+			}
+			
+			.state span {
+				font-size: 18px;
+				color: red;
+				margin-right: 5px;
+			}
+			
+			.post_info {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				margin-top: 5px;
+				align-items: center;
+				background-color: #eee;
+				padding: 10px;
+				margin-right: 10px;
+				border-radius: 5px;
+			}
+			
+			.post_info .user {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+			}
+			
+			.post_info .user img {
+				width: 60px;
+				height: 60px;
+				border-radius: 30px;
+			}
+			
+			.info_box{
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				padding: 10px;
+				position: absolute;
+				margin-top: 90px;
+				z-index: 1000;
+			}
+			.post_info .user .info_box .user_name {
+				display: flex;
+				flex-direction: column;
+				/*height: 60px;*/
+				text-overflow: ellipsis;
+				overflow: hidden;
+				background-color: #fff;
+				padding: 10px;
+				border-radius: 5px;
+				box-shadow: 0px 0px 6px 6px rgba(0,0,0,0.1);
+			}
+			.info_box:before{
+				content: '';
+				width: 0;
+				height: 0;
+				border-width: 16px 8px;
+				border-style: solid;
+				border-color: transparent transparent #fff transparent; 
+				position: relative;
+				margin-left: 10px;
+				z-index: 999;
+			}
+			
+			.post_info .user .user_name .user_intro {
+				width: 220px;
+				min-height: 30px;
+				overflow-wrap: break-word;
+				line-height: 1.5;
+				padding-bottom: 5px;
+				border-bottom: #eee solid 1px;
+			}
+			
+			.attention {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				color: #0084ff;
+				font-size: 14px;
+				position: relative;
+				left: -80px;
+			}
+			
+			.attention input {
+				width: 80px;
+				height: 30px;
+				color: #fff;
+				background-color: #0084ff;
+				border-radius: 3px;
+			}
+			
+			.trivial {
+				display: flex;
+				flex-direction: row;
+				width: 40%;
+				justify-content: space-between;
+			}
+			
+			.trivial div {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+			}
+			
+			.post_text {
+				margin: 10px 10px 0 0;
+			}
+			
+			.post_text p {
+				text-align: justify;
+				text-indent: 2em;
+				color: #333;
+				line-height: 1.6;
+				margin-top: 5px;
+				font-size: 15px;
+				display: block;
+				margin-block-start: 1em;
+				margin-block-end: 1em;
+				margin-inline-start: 0px;
+				margin-inline-end: 0px;
+			}
+			
+			.post_text img {
+				width: 420px;
+				height: 290px;
+			}
+			
+			.annex_d {
+				padding: 10px;
+				margin-top: 30px;
+				background-color: #E7E7E7;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				border-radius: 5px;
+			}
+			
+			.annex_info {
+				width: 100%;
+				height: 40px;
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				border-bottom: 1px solid #fff;
+			}
+			
+			.annex_info .user_logo {
+				display: flex;
+				flex-direction: row;
+			}
+			
+			.annex_info .user_logo img {
+				width: 50px;
+				height: 50px;
+				border-radius: 25px;
+				position: relative;
+				top: -30px;
+			}
+			
+			.annex_info .good {
+				width: 50px;
+				height: 30px;
+				padding-right: 5px;
+				position: relative;
+				top: -25px;
+				background-color: #fff
+			}
+			
+			.annex_info .good img {
+				width: 30px;
+				height: 30px;
+			}
+			
+			.user_reply {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				padding: 0 30px;
+			}
+			
+			.user_reply .reply_dt div {
+				margin-top: 5px;
+			}
+			
+			.user_reply .reply_dt .reply_name {
+				display: flex;
+				flex-direction: row;
+				align-items: flex-end;
+			}
+			
+			.user_reply .reply_dt .reply_name span {
+				margin-left: 10px;
+			}
+			
+			.report {
+				margin-top: 15px;
+			}
+			
+			.report span {
+				cursor: pointer;
+				color: red;
+			}
+			
+			.report span:first-child {
+				margin-right: 10px;
+			}
+			
+			.five_bt {
+				width: 100%;
+				height: 60px;
+				display: flex;
+				flex-direction: row;
+				justify-content: flex-end;
+				align-items: center;
+				margin-top: 10px;
+				border-bottom: 1px solid #eee;
+				margin-bottom: 20px;
+			}
+			
+			.five_bt .post_icon {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				margin-right: 20px;
+			}
+			
+			.five_bt .post_icon img {
+				width: 18px;
+				height: 18px;
+				margin-right: 5px;
+			}
+			
+			.comment_box,
+			.content_box {
+				width: 99%;
+				display: flex;
+				flex-direction: column;
+			}
+			
+			.content_box {
+				border-bottom: 1px dashed #B9B9B9;
+				margin-bottom: 5px;
+			}
+			
+			.content_box .visitor {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+			}
+			
+			.visitor_info,
+			.visitor_pic,
+			.other_visitor {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+			}
+			
+			.other_visitor img {
+				width: 18px;
+				height: 18px;
+			}
+			
+			.other_visitor span:nth-last-child(n+2),
+			img {
+				cursor: pointer;
+				color: red;
+			}
+			
+			.other_visitor span:first-child {
+				margin-right: 5px;
+			}
+			
+			.content_box .visitor .visitor_pic img {
+				width: 50px;
+				height: 50px;
+				border-radius: 25px;
+				margin-right: 5px;
+			}
+			
+			.commet_time {
+				margin-left: 10px;
+			}
+			
+			.comment_text {
+				padding: 10px 30px 10px 10px;
+				margin-bottom: 5px;
+			}
+			
+			.comment_text p {
+				text-align: justify;
+				text-indent: 2em;
+				color: #333;
+				line-height: 1.6;
+				margin-top: 5px;
+			}
+			
+			.commet {
+				width: 100%;
+				margin-bottom: 20px;
+			}
+			
+			.commet textarea {
+				width: 100%;
+				height: 120px;
+				border: 2px solid #eee;
+				font-size: 18px;
+			}
+			
+			.commet .push_bt {
+				width: 99%;
+				display: flex;
+				flex-direction: row;
+				justify-content: flex-end;
+				align-items: center;
+			}
+			
+			.commet .push_bt input {
+				width: 80px;
+				height: 30px;
+				color: #fff;
+				background-color: #0084ff;
+				margin-top: 5px;
+				margin-left: 10px;
+			}
+			
+			.blog_box .blog_right {
+				width: 34%;
+				margin-left: 1%;
+			}
+			
+			.pic_link img {
+				width: 100%;
+				/*height: 200px;*/
+			}
+			
+			.hot_post {
+				margin-top: 10px;
+			}
+			
+			.carousel {
+				width: 100%;
+				height: 300px;
+			}
+			
+			.carousel img {
+				width: 100%;
+				height: 300px;
+			}
+			
+			#Report,
+			#test,
+			#reply,
+			#Reported {
+				width: 404px;
+				padding-bottom: 2px;
+				display: none;
+				background: #FFF;
+				border-radius: 5px;
+				-moz-border-radius: 5px;
+				-webkit-border-radius: 5px;
+				/*box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.7);
+				-webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+				-moz-box-shadow: 0 0px 4px rgba(0, 0, 0, 0.7);*/
+			}
+			
+			#signup-header {
+				/* background: url(LeanModal/css/img/hd-bg.png); */
+				height: 31px;
+				padding: 8px 18px 8px 12px;
+				background: #0084ff;
+				border-top-left-radius: 6px;
+				-moz-border-radius-topleft: 6px;
+				-webkit-border-top-left-radius: 6px;
+				border-top-right-radius: 6px;
+				-moz-border-radius-topright: 6px;
+				-webkit-border-top-right-radius: 6px;
+			}
+			
+			#signup-header h2 {
+				font-size:24px;
+				font-family:PingFangSC-Regular,PingFang SC;
+				font-weight:400;
+				color:#fff;
+			}
+			
+			#signup-header p {
+				color: #444;
+				font-size: 1.3em;
+				margin: 0;
+				text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+				text-shadow: none;
+			}
+			
+			.modal_close {
+				position: absolute;
+				top: 12px;
+				right: 12px;
+				display: block;
+				width: 14px;
+				height: 14px;
+				background: url(LeanModal/css/img/modal_close.png);
+				z-index: 2;
+			}
+			.txt-fld {
+				display: flex;
+				align-items: center;
+				position: relative;
+				width: 364px;
+				padding: 14px 20px;
+				border-bottom: 1px solid #EEE;
+				text-align: right;
+			}
+			
+			.btn-fld {
+				width: 254px;
+				overflow: hidden;
+				padding: 12px 20px 12px 130px;
+			}
+			
+			.txt-fld label {
+				display: block;
+				float: left;
+				width: 90px;
+				text-align: left;
+				font-size:18px;
+				font-family:PingFangSC-Regular,PingFang SC;
+				font-weight:400;
+				color:rgba(0,0,0,0.85);
+			}
+			
+			.txt-fld input,
+			textarea {
+				width: 244px;
+				padding: 8px;
+				border-radius: 4px;
+				-moz-border-radius: 4px;
+				-webkit-border-radius: 4px;
+				font-size: 1.2em;
+				color: #222;
+				background: #F7F7F7;
+				font-family: "Helvetica Neue";
+				outline: none;
+				border-top: 1px solid #CCC;
+				border-left: 1px solid #CCC;
+				border-right: 1px solid #E7E6E6;
+				border-bottom: 1px solid #E7E6E6;
+			}
+			
+			.txt-fld input.error_input {
+				background: #FDE0E0;
+			}
+			
+			.txt-fld input:focus,
+			.txt-fld textarea:focus {
+				background-color: #FAF9DC;
+			}
+			
+			#lean_overlay {
+				position: fixed;
+				z-index: 10000;
+				top: 0px;
+				left: 0px;
+				height: 100%;
+				width: 100%;
+				background: #000;
+				display: none;
+			}
+			
+			.submit {
+				display: flex;
+				flex-direction: row;
+				justify-content: flex-end;
+				padding: 8px 0px;
+			}
+			
+			.submit input {
+				margin-right: 10px;
+				width: 80px;
+				height: 30px;
+				color: #fff;
+				background-color: #0084ff;
+			}
+			/*鼠标移入菜单*/
+			
+			.hiden_list{
+				width: 120px;
+				position: absolute;
+				top:40px;
+				background-color: rgb(255,255,255);
+				z-index: 9;
+				padding: 12px;
+				border-radius: 8px;
+				box-shadow: 0px 0px 5px 6px rgba(0,0,0,0.2);
+			}
+			
+			.hiden_list ul li {
+				border-bottom: 1px dotted;
+			}
+			
+			.hiden_list_w {
+				width: 120px;
+				position: absolute;
+				top: 40px;
+				background-color: rgb(255, 255, 255);
+				z-index: 9;
+			}
+			
+			.hiden_list_w ul li {
+				border-bottom: 1px dotted;
+			}
+			
+			.head_div {
+				position: relative;
+			}
+			
+			#edui1_iframeholder {
+				height: 200px !important;
+			}
+			
+			.edit_type {
+				display: flex;
+				flex-direction: row;
+				font-size: 14px;
+				color: #0084ff;
+				margin-bottom: 10px;
+			}
+			
+			.edit_type span {
+				cursor: pointer;
+			}
+			
+			#more_edit {
+				margin-left: 10px;
+			}
+			
+			.comment_area {
+				font-size: 16px;
+				font-weight: 600;
+				color: #333;
+				margin: 10px 0;
+				padding: 10px 0;
+				border-top: 1px solid #B9B9B9;
+				border-bottom: 1px dashed #B9B9B9;
+			}
+			
+			#edui1 {
+				width: 770px !important;
+			}
+			#postTitle {
+				margin-top: 12px;
+			    margin-bottom: 4px;
+			    font-size: 22px;
+			    font-weight: 600;
+			    font-synthesis: style;
+			    line-height: 32px;
+			    color: #1a1a1a;
+			}
+			.partener_block ul{
+				display: flex;
+				flex-direction: row;
+				font-size: 14px;
+			}
+			.statistics{
+				width: 90%;
+				/*height: 100px;*/
+                display: flex;
+                margin: 8px auto;
+				flex-direction: row;
+				justify-content: space-between;
+			}
+			.statistics .part{
+				/*width: 25%;
+				height: 100px;
+				display:flex;
+				flex-direction: column;*/
+				justify-content: space-around;
+				align-items: center;
+            }
+		</style>
+	</head>
+
+	<body>
+		<!--头部-->
+		<div class="bg">
+			<div class="wid_main topbox fix">
+				<div class="l"><a href="coverchild.html"><img src="images/6.png" alt="logo" width="120px" /></a></div>
+				<nav>
+					<div>
+						<ul>
+							<li>
+								<a href="index.html?type=0&plate=1&two=0">首页</a>
+							</li>
+							<li class="menu-item-has-children"><a href="#" title="" itemprop="url">论坛</a>
+								<ul>
+									<li><a href="index.html?type=0&plate=1&two=0" title="" itemprop="url">煤炭</a></li>
+									<li><a href="index.html?type=0&plate=2&two=0" title="" itemprop="url">石油&天然气</a></li>
+									<li><a href="coverchild.html?type=0&plate=1&two=0" title="" itemprop="url">液化天然气</a></li>
+									<li><a href="index.html?type=0&plate=4&two=0" title="" itemprop="url">电力</a></li>
+									<li><a href="index.html?type=0&plate=5&two=0" title="" itemprop="url">核能</a></li>
+									<li><a href="index.html?type=0&plate=6&two=0" title="" itemprop="url">新能源</a></li>
+									<li><a href="index.html?type=0&plate=7&two=0" title="" itemprop="url">化工</a></li>
+									<li><a href="index.html?type=0&plate=8&two=0" title="" itemprop="url">项目管理</a></li>
+								</ul>
+							</li>
+							<li class="menu-item-has-children"><a href="#">问答</a>
+								<ul>
+									<li><a href="question.html?type=0&plate=1&two=0" title="" itemprop="url">煤炭</a></li>
+									<li><a href="question.html?type=0&plate=2&two=0" title="" itemprop="url">石油&天然气</a></li>
+									<li><a href="question.html?type=0&plate=1&two=0" title="" itemprop="url">液化天然气</a></li>
+									<li><a href="question.html?type=0&plate=4&two=0" title="" itemprop="url">电力</a></li>
+									<li><a href="question.html?type=0&plate=5&two=0" title="" itemprop="url">核能</a></li>
+									<li><a href="question.html?type=0&plate=6&two=0" title="" itemprop="url">新能源</a></li>
+									<li><a href="question.html?type=0&plate=7&two=0" title="" itemprop="url">化工</a></li>
+									<li><a href="question.html?type=0&plate=8&two=0" title="" itemprop="url">项目管理</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="#">专家</a>
+							</li>
+							<li>
+								<a href="#">课程</a>
+							</li>
+							<li>
+								<a href="#">前沿</a>
+							</li>
+							<li>
+								<a href="#">会议</a>
+							</li>
+							<li>
+								<a href="#">活动</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+				<!-- 搜索 -->
+				<div class="search_box" style="height: 40px;border-radius: 20px;">
+					<div>
+						<input id="search" type="text" name="" placeholder="请输入关键词检索">
+						<button id="btn" style="float: right;margin-left: 30px;" type="submit"><img src="images/search.png"></button>
+					</div>
+				</div>
+				<div class="head_div">
+					<div id="admin_box" class="admin_box">
+						<a href="login.html">登录/注册</a>
+						<a href="">快速发帖</a>
+					</div>
+					<!-- 鼠标移入显示的菜单 -->
+					<div class="hiden_list">
+						<ul>
+							<li>
+								<a href="mine.html">个人中心</a>
+							</li>
+							<li id="manager">
+								<a href="http://114.55.35.82/dist/index.html#/easay">管理员中心</a>
+							</li>
+							<li>
+								<a onclick="delsession()" href="login.html">退出登陆</a>
+							</li>
+						</ul>
+					</div>
+					<div class="hiden_list_w">
+						<ul>
+							<li>
+								<a href="mine.html">个人中心</a>
+							</li>
+							<li>
+								<a onclick="delsession()" href="login.html">退出登陆</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- top end -->
+
+		<!-- 主体内容框 -->
+		<div class="contentbox bora_5">
+			<div class="content">
+				<!-- 专题轮播 -->
+				<div class="zhuanti_pic">
+					<div class="hd">
+						<!--轮播点 -->
+						<ul id="top_point">
+							<!--<li></li>
+							<li></li>-->
+						</ul>
+					</div>
+					<div class="bd">
+						<ul id="top_banner">
+							<!--专题图片轮播 -->
+							<!--<li>
+								<a href="#"><img src="images/pic01.jpg" /></a>
+							</li>
+							<li>
+								<a href="#"><img src="images/pic01.jpg" /></a>
+							</li>-->
+						</ul>
+					</div>
+					<!-- 下面是前/后按钮代码，如果不需要删除即可 -->
+					<a class="prev" href="javascript:void(0)"></a>
+					<a class="next" href="javascript:void(0)"></a>
+
+					<script type="text/javascript">
+						jQuery(".zhuanti_pic").slide({
+							mainCell: ".bd ul",
+							autoPlay: true,
+							effect: "fade",
+							mouseOverStop: false,
+							interTime: 3000,
+						});
+						$(function() {
+							$('a[rel*=leanModal]').leanModal({
+								top: 200,
+								closeButton: ".modal_close"
+							});
+						});
+					</script>
+				</div>
+				<!--统计-->
+		        <div class="statistics">
+					<div class="part">
+						<span id="" class="font18">
+							在线人数：
+						</span>
+						<span id="user_loging">
+							2000
+						</span>
+					</div>
+					<div class="part">
+						<span id="" class="font18">
+							帖子总数：
+						</span>
+						<span id="post_count">
+							5000
+						</span>
+					</div>
+					<div class="part">
+						<span id="" class="font18">
+							会员人数：
+						</span>
+						<span id="user_count">
+							2000
+						</span>
+					</div>
+					<div class="part">
+						<span id="" class="font18">
+							最后回复人：
+						</span>
+						<span id="end_reply_name">
+							xxx
+						</span>
+					</div>
+					<div class="part">
+						<span id="" class="font18">
+							欢迎新成员：
+						</span>
+						<span id="new_username">
+							xxx
+						</span>
+					</div>
+                </div>
+				<!-- 当前位置 -->
+				<div class="gonggao bdb_d fix">
+					<div class="txtScroll-top l zy_cur">
+						<div class="l tit"><img src="images/icon_location.png"><b class="dib vm">当前位置：</b></div>
+						<p class="l">
+							<a href="" id="post_plate"></a><span id="post_plate_two"></span></p>
+					</div>
+				</div>
+				<!--博客版块-->
+				<div class="blog_box">
+					<div class="blog_left">
+						<div class="blog_title">
+							<h1 id="postTitle">xxxx</h1>
+						</div>
+						<div class="blog_detail">
+							<div class="post_type" id="postLabel">
+								<span>分类专栏：</span>
+								<!--<span>[原创]</span>
+						<span>[闲谈]</span>-->
+							</div>
+							<div class="public_time">
+								<span>发布于：</span>
+								<span id="time">0000-00-00 00:00:00</span>
+							</div>
+							<div class="read_num">
+								<span id="readNum">
+									阅读数：0
+								</span>
+							</div>
+							<!--<div class="collect">
+								<img src="images/collection.png" />
+								<span>
+									收藏
+								</span>
+							</div>-->
+						</div>
+						<div class="state" id="postCopyright"><span>*</span>版权声明：本文为原创文章，转载请附上原文出处链接和本声明/未经许可不可转载。</div>
+						<div class="post_info">
+							<div class="user">
+								<img id="user_head" src="images/manager.jpg" />
+								<div class="info_box" id="info_box">
+									<div class="user_name">
+										<h3 id="user_name">xx</h3>
+										<div class="user_intro" id="user_profile">
+											<p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+										</div>
+										<div class="trivial" style="width: 100%;margin-top: 5px;">
+											<div>
+												<span style="font-size: 12px;color: #807979;">发布</span>
+												<span id="my_publish">0</span>
+											</div>
+											<div>
+												<span style="font-size: 12px;color: #807979;">粉丝</span>
+												<span id="my_fans">0</span>
+											</div>
+											<div>
+												<span style="font-size: 12px;color: #807979;">获赞</span>
+												<span id="my_support">0</span>
+											</div>
+											<div>
+												<span style="font-size: 12px;color: #807979;">关注</span>
+												<span id="my_focuse">0</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="attention">
+								<input type="button" name="" id="attention" value="关注" />
+								<input type="button" name="" id="attentioned" value="取消关注" hidden="hidden" />
+								<span>
+									Ta的关注>
+								</span>
+							</div>
+							<div class="trivial">
+								<div>
+									<span>发布</span>
+									<span id="user_release_sum">0</span>
+								</div>
+								<div>
+									<span>粉丝</span>
+									<span id="user_fans_sum">0</span>
+								</div>
+								<div>
+									<span>获赞</span>
+									<span id="post_upnum">0</span>
+								</div>
+								<div>
+									<span>转发</span>
+									<span id="user_follow_sum">0</span>
+								</div>
+								<!--<div>
+							<span>访问</span>
+							<span>12k</span>
+						</div>-->
+							</div>
+						</div>
+						<div class="post_text" id="postContent">
+							<!--<p> 在18日召开的国务院联防联控机制新闻发布会上，国资委副主任任洪斌表示，目前，中央企业所属2万余户生产型子企业开工率已超80%，石油石化、通信、电网、交通运输等行业已超95%，有的已达100%。</p>
+							<p>
+								“疫情确实对央企生产经营造成了影响，对个别行业影响还较大，但这种影响是阶段性、暂时性的。”任洪斌表示，国资委不会改变年初制定的生产经营目标和改革任务，并将为此付出更大努力：一是指导央企分类有序带头复工复产，保持生产经营稳定运行;二是加强形势研判，分析企业所涉行业和产业链形势，强化预测预警，及时制定对策;三是加大降本节支、提质增效工作力度，尽力减少疫情造成的损失;四是指导央企用好金融、财税等政策，把握市场机遇，做好结构优化和稳产稳收。</p><img
+							 src="images/owner.jpg" />
+							<p>在18日召开的国务院联防联控机制新闻发布会上，国资委副主任任洪斌表示，目前，中央企业所属2万余户生产型子企业开工率已超80%，石油石化、通信、电网、交通运输等行业已超95%，有的已达100%。</p>-->
+						</div>
+						<div class="annex_d" id="annex_d" style="display: none;">
+							<div class="annex_info">
+								<div class="user_logo">
+									<img id="user_logo" src="images/manager.jpg" />
+									<h2>已采纳</h3>
+								</div>
+								<div class="good">
+									<img src="images/good.png" /><span id="comment_upnum">0</span>
+								</div>
+							</div>
+							<div class="user_reply">
+								<div class="reply_dt">
+									<div class="reply_name">
+										<h2 id="user_name">xx</h2><span>xx</span>
+								</div>
+								<div>
+									综合排名：0
+								</div>
+								<div id="comment_content">
+									xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+								</div>
+							</div>
+							<div class="report">
+								<span>举报</span><span>回复</span>
+							</div>
+						</div>
+					</div>
+					<div class="five_bt" id="do_something">
+						<div class="post_icon" name="support">
+							<img id="support" src="images/support.png" /><span id="postUpnum">0</span>
+						</div>
+						<div class="post_icon" name="forword">
+							<img id="forword" src="images/forword.png" /><span id="postForwardnum">0</span>
+						</div>
+						<div class="post_icon" name="collection">
+							<img id="collection" src="images/collection.png" /><span id="postCollectionnum">0</span>
+						</div>
+						<div class="post_icon" name="reward">
+							<a rel="leanModal" name="test" href="#test"><img id="reward" src="images/rewarded.png" /><span></span></a>
+						</div>
+						<div class="post_icon" name="report">
+							<a rel="leanModal" name="Report" href="#Report"><img id="report" src="images/report.png" /><span></span></a>
+						</div>
+					</div>
+					<div id="Report">
+						<div id="signup-ct">
+							<div id="signup-header">
+								<h2>举报</h2>
+								<a class="modal_close" href="#"></a>
+							</div>
+							<form action="">
+								<div class="txt-fld">
+									<label for="">举报内容</label>
+									<textarea id="report_text" name="" rows="" cols=""></textarea>
+								</div>
+								<div class="submit">
+									<input type="button" name="" id="edit" value="确认" />
+								</div>
+							</form>
+						</div>
+					</div>
+					<div id="test">
+						<div id="signup-ct">
+							<div id="signup-header">
+								<h2>打赏金额</h2>
+								<a class="modal_close" href="#"></a>
+							</div>
+							<form action="">
+								<div class="txt-fld">
+									<label for="">论坛币</label>
+									<input id="reward_coinnum" name="" type="text" />
+								</div>
+								<div class="txt-fld">
+									<label for="">人民币</label>
+									<input id="reward_money" name="" type="text" />
+								</div>
+								<div class="submit">
+									<input type="button" name="" id="check" value="确认" />
+								</div>
+							</form>
+						</div>
+					</div>
+					<div id="reply">
+						<div id="signup-ct">
+							<div id="signup-header">
+								<h2>回复</h2>
+								<!-- <a class="modal_close" href="#"></a> -->
+							</div>
+							<form action="">
+								<div class="txt-fld">
+									<label for="">回复</label>
+									<input id="reply_content" name="" type="text" placeholder="请输入回复的内容" />
+								</div>
+								<!-- <div class="txt-fld">
+										<label for="">人民币</label>
+										<input id="reward_money" name="" type="text" placeholder="请点击扫码"/>
+									</div> -->
+								<div class="submit">
+									<input type="button" name="" id="checked" value="确认" />
+								</div>
+							</form>
+						</div>
+					</div>
+
+					<div id="Reported">
+						<div id="signup-ct">
+							<div id="signup-header">
+								<h2>举报</h2>
+								<a class="modal_close" href="#"></a>
+							</div>
+							<form action="">
+								<div class="txt-fld">
+									<label for="">举报内容</label>
+									<textarea id="report_texted" name="" rows="" cols=""></textarea>
+								</div>
+								<div class="submit">
+									<input type="button" name="" id="edited" value="确认" />
+								</div>
+							</form>
+						</div>
+					</div>
+					<div></div>
+					<div class="commet">
+						<div class="edit_type">
+							<span id="fast_edit">快速回复</span><span id="more_edit">富文本编辑</span>
+						</div>
+						<textarea name="" rows="" cols="" placeholder="评论" id="comment"></textarea>
+						<script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>
+						<script type="text/javascript">
+							//实例化编辑器
+							//建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+							var ue = UE.getEditor('editor', {
+								toolbars: [
+									[
+										'undo', //撤销
+										'redo', //重做
+										'inserttitle', //插入标题
+										'simpleupload', //单图上传
+										'bold', //加粗
+										'indent', //首行缩进
+										'italic', //斜体
+										'underline', //下划线
+										'strikethrough', //删除线
+										'subscript', //下标
+										'superscript', //上标
+										'unlink', //取消链接
+										'insertrow', //前插入行
+										'link', //超链接
+										'emotion', //表情
+										'justifyleft', //居左对齐
+										'justifyright', //居右对齐
+										'justifycenter', //居中对齐
+										'justifyjustify', //两端对齐
+										'forecolor', //字体颜色
+										'backcolor', //背景色
+										'insertorderedlist', //有序列表
+										'insertunorderedlist', //无序列表
+										'imageleft', //左浮动
+										'imageright', //右浮动
+										'attachment', //附件
+										'edittip ', //编辑提示
+									]
+								],
+								autoHeightEnabled: true,
+								autoFloatEnabled: true
+							});
+						</script>
+						<div class="push_bt">
+							<span id="">
+									最多输入1000个字
+								</span>
+							<input type="button" name="" value="发表" id="publish" />
+							<input type="button" name="" id="more_publish" value="发表" />
+							<input type="button" name="" id="reply_push" value="回复" />
+						</div>
+						<div class="comment_area">
+							评论区
+						</div>
+						<div class="comment_box" id="comment_box">
+						</div>
+					</div>
+				</div>
+				<div class="blog_right">
+					<div class="pic_link">
+						<img src="images/owner.jpg" />
+					</div>
+					<div class="hot_post">
+						<div class="sy_title bdb_d ovh">
+							<h2 class="l"><b class="fc">推荐热帖</b></h2>
+							<a href="newslist.html" class="more r">查看更多></a>
+						</div>
+						<ul id="recommend">
+							<!--<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span></a></li>
+						<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局办公大楼新建地块招标项目开发商承建福泉市综合执法局办公大楼新建地块招标项目开发商承建</span></a></li>
+						<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span></a></li>
+						<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局办公大楼新建地块招标项目开发商承建</span></a></li>
+						<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span></a></li>
+						<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局办公大楼新建地块招标项目开发商承建</span></a></li>
+						<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span></a></li>-->
+						</ul>
+					</div>
+					<!--轮播-->
+					<div class="zhuanti_pic">
+						<div class="hd">
+							<!--轮播点 -->
+							<ul id="right_point">
+								<!--<li></li>
+								<li></li>-->
+							</ul>
+						</div>
+						<div class="bd">
+							<ol class="carousel" id="right_ad">
+								<!--专题图片轮播 -->
+								<!--<li>
+									<a href="news_xq.html"><img src="images/owner.jpg" /></a>
+								</li>
+								<li>
+									<a href="news_xq.html"><img src="images/owner.jpg" /></a>
+								</li>-->
+							</ol>
+						</div>
+						<!-- 下面是前/后按钮代码，如果不需要删除即可 -->
+						<a class="prev" href="javascript:void(0)"></a>
+						<a class="next" href="javascript:void(0)"></a>
+
+						<script type="text/javascript">
+							jQuery(".zhuanti_pic").slide({
+								mainCell: ".bd ul",
+								autoPlay: true,
+								effect: "fade",
+								mouseOverStop: false,
+								interTime: 3000,
+							});
+						</script>
+					</div>
+				</div>
+			</div>
+
+			<!-- 专题轮播 -->
+			<div class="zhuanti_pic">
+				<div class="hd">
+					<!--轮播点 -->
+					<ul id="bottom_point">
+						<!--<li></li>
+						<li></li>-->
+					</ul>
+				</div>
+				<div class="bd">
+					<ul id="bottom_banner">
+						<!--专题图片轮播 -->
+						<!--<li>
+							<a href="news_xq.html"><img src="images/pic01.jpg" /></a>
+						</li>
+						<li>
+							<a href="news_xq.html"><img src="images/pic01.jpg" /></a>
+						</li>-->
+					</ul>
+				</div>
+				<!-- 下面是前/后按钮代码，如果不需要删除即可 -->
+				<a class="prev" href="javascript:void(0)"></a>
+				<a class="next" href="javascript:void(0)"></a>
+
+				<script type="text/javascript">
+					jQuery(".zhuanti_pic").slide({
+						mainCell: ".bd ul",
+						autoPlay: true,
+						effect: "fade",
+						mouseOverStop: false,
+						interTime: 3000,
+					});
+				</script>
+			</div>
+			<div class="partener">
+            	<div class="partener_title">
+            		友情链接
+            	</div>
+            	<div class="partener_block">
+            		<ul>
+            			<!--1-->
+            			<li><a href="https://www.shpgx.com/html/index.html">上海石油天然气交易中心</a></li>
+            		<!--</ul>
+            		<ul>-->
+            			<!--2-->
+            			<li><a href="https://www.iea.org/">IEA</a></li>
+						<li><a href="https://www.igu.org/">IGU</a></li>
+						<li><a href="https://www.opec.org/opec_web/en/">OPEC</a></li>
+						<li><a href="https://www.ocimf.org/">OCIMF</a></li>
+						<!--3-->
+            			<li><a href="http://www.cnpc.com.cn/index.shtml">中国石油</a></li>
+            		</ul>
+            		<ul>
+						<li><a href="http://www.sinopecgroup.com/">中国石化</a></li>
+						<li><a href="https://www.cnooc.com.cn/">中国海油</a></li>
+						<li><a href="http://www.sinochem.com/">中国中化</a></li>
+						<!--4-->
+            			<li><a href="https://www.bp.com/">BP</a></li>
+						<li><a href="https://www.shell.com/">SHELL</a></li>
+						<li><a href="https://www.total.com/en">TOTAL</a></li>
+            		</ul>
+            		<ul>
+						<li><a href="https://www.tokyo-gas.co.jp/en/index.html">东京燃气</a></li>
+						<li><a href="http://www.kogas.or.kr/eng/index.do">KOGAS</a></li>
+						<!--5-->
+            			<li><a href="http://www.qatargas.com/english">Qatargas</a></li>
+						<li><a href="https://www.enn.cn/">新奥集团</a></li>
+						<li><a href="http://www.guanghui.com/">新疆广汇</a></li>
+						<li><a href="https://www.geg.com.cn/">广东能源</a></li>
+            		</ul>
+            		<ul>
+            			
+						<li><a href="http://www.bjgas.com/NewsCen2.aspx">北京燃气</a></li>
+            			<!--6-->
+            			<li><a href="http://trqgy.cn/">天然气工业</a></li>
+						<li><a href="http://www.syytrqhg.cn/ch/index.aspx">石油与天然气化工</a></li>
+            			<!--7-->
+            			<li><a href="https://www.jtsi.wa.gov.au/gasfund/introduction">中澳天然气基金</a></li>
+            		</ul>
+            	</div>
+            </div>
+		</div>
+
+		<style type="text/css">
+			.date_bg {
+				position: absolute;
+				z-index: 999;
+				top: 0;
+				left: 0;
+				width: 100%;
+				background-color: rgba(0, 0, 0, .5);
+			}
+		</style>
+		</div>
+
+		<!-- 返回顶部 -->
+		<div class="side_box">
+			<ul>
+				<li class="sidetop">
+					<span></span>
+				</li>
+			</ul>
+		</div>
+
+		<!-- 底部 -->
+		<div class="footerbox bg">
+			<div class="l txt">
+				<p><a href="http://www.beian.miit.gov.cn" target="_blank"><img src="images/beian.png">网站备案号:津ICP备20001741-4</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;联系QQ号:1510531900&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮箱:oilngas@qq.com</p>
+			</div>
+		</div>
+		<script type="text/javascript" src="config.js"></script>
+		<script type="text/javascript" src="js/pop_ups/MiniDialog-es5.min.js"></script>
+		<script type="text/javascript">
+			$("#info_box").hide()
+			$("#user_head").hover(function(){
+				$("#info_box").show()
+			},function(){
+				$("#info_box").hide()
+			})
+			//头部统计
+			$.ajax({
+				type:"post",
+				url:`${sever_url}master/title`,
+				dataType:"json",
+				success:function(data){
+					console.log(data)
+					$("#user_count").html(data.data.user_count);
+					$("#post_count").html(data.data.post_count);
+					$("#user_loging").html(data.data.user_loging);
+					$("#new_username").html(data.data.new_username);
+					$("#end_reply_name").html(data.data.end_reply_name);
+				}
+			});
+			// 其他页面搜索
+			var search = document.getElementById("search");
+			var btn = document.getElementById("btn");
+			btn.addEventListener('click', function() {
+				window.location.href = "/power/index.html?type=0&plate=1&two=0&search=1&searchv=" + search.value;
+
+			})
+			//回复编辑方式
+			$("#comment").hide();
+			$("#publish").hide();
+			$("#reply_push").hide();
+			$("#fast_edit").click(function() {
+				$("#comment").show();
+				$("#publish").show();
+				$("#more_publish").hide();
+				$("#edui1").hide();
+				$("#reply_push").hide();
+			})
+			$("#more_edit").click(function() {
+				$("#comment").hide();
+				$("#publish").hide();
+				$("#more_publish").show();
+				$("#edui1").show();
+				$("#reply_push").hide();
+			})
+			// 举报
+			function Reported(commentId) {
+				console.log(commentId);
+				$("#edited").click(function() {
+					reprot_content = $("#report_texted").val();
+					console.log(reprot_content);
+					doSomething(reprot_content)
+				})
+				if(sessionStorage.getItem("data") == null) {
+					Dialog({
+						title: "请登录！",
+						content: "您还未登录，是否登录？",
+						ok: {
+							callback: function() {
+								window.location.href = 'login.html';
+							}
+						},
+						cancel: {
+							callback: function() {
+								Dialog.close();
+							}
+						}
+					});
+				} else {
+					function doSomething(reprot_content) {
+						var obj = sessionStorage.getItem("data");
+						obj = JSON.parse(obj);
+						$.ajax({
+							type: "post",
+							url: sever_url + "post/report",
+							async: true,
+							data: {
+								token: obj.token,
+								post_id: getUrldata('postid'),
+								comment_id: commentId,
+								reprot_content: reprot_content
+							},
+							dataType: "json",
+							success: function(data) {
+
+								// $("#Reported").css("display","none");
+								console.log(data)
+								location.reload()
+								// var num = Number($("#comment" + commentId).html());
+								// $("#comment" + commentId).html(num + 1);
+							},
+							error: function() {
+								console.log('error')
+							}
+						});
+					}
+				}
+			}
+
+			// 回复
+			function reply(commentId, user_name) {
+				// console.log(commentId,user_name);
+				UE.getEditor('editor').execCommand('insertHtml', "@" + user_name + "  ")
+				$("#publish").hide();
+				$("#more_publish").hide();
+				$("#reply_push").show();
+				$("#fast_edit").attr("disabled", "disabled");
+				$("#reply_push").click(function() {
+					var content = UE.getEditor('editor').getContent();
+					doSomething(content);
+				})
+				if(sessionStorage.getItem("data") == null) {
+					Dialog({
+						title: "请登录！",
+						content: "您还未登录，是否登录？",
+						ok: {
+							callback: function() {
+								window.location.href = 'login.html';
+							}
+						},
+						cancel: {
+							callback: function() {
+								Dialog.close();
+							}
+						}
+					});
+				} else {
+					function doSomething(reply_content) {
+						var obj = sessionStorage.getItem("data");
+						obj = JSON.parse(obj);
+						$.ajax({
+							type: "post",
+							url: sever_url + "comment/publish",
+							async: true,
+							data: {
+								token: obj.token,
+								post_id: getUrldata('postid'),
+								// comment_id: commentId,
+								comment_content: reply_content
+							},
+							dataType: "json",
+							success: function(data) {
+
+								console.log(data)
+								location.reload()
+							},
+							error: function() {
+								console.log('error')
+							}
+						});
+					}
+				}
+			}
+
+			//评论点赞
+			function commentSupport(commentId) {
+				console.log(commentId);
+				if(sessionStorage.getItem("data") == null) {
+					Dialog({
+						title: "请登录！",
+						content: "您还未登录，是否登录？",
+						ok: {
+							callback: function() {
+								window.location.href = 'login.html';
+							}
+						},
+						cancel: {
+							callback: function() {
+								Dialog.close();
+							}
+						}
+					});
+				} else {
+					var obj = sessionStorage.getItem("data");
+					obj = JSON.parse(obj);
+					$.ajax({
+						type: "post",
+						url: sever_url + "post/support",
+						async: true,
+						data: {
+							token: obj ? obj.token : "",
+							post_id: getUrldata('postid'),
+							comment_id: commentId
+						},
+						dataType: "json",
+						success: function(data) {
+							//							console.log(data)
+							var num = Number($("#comment" + commentId).html());
+							$("#comment" + commentId).html(num + 1);
+						},
+						error: function() {
+
+						}
+					});
+				}
+			}
+			$(document).ready(function() {
+				var obj = sessionStorage.getItem("data");
+				obj = JSON.parse(obj);
+				//关注
+				$("#attention").click(function() {
+					$.ajax({
+						type: "post",
+						url: sever_url + "follow/add",
+						async: true,
+						data: {
+							token: obj ? obj.token : "",
+							user_id: $("#user_head").attr("name")
+						},
+						dataType: "json",
+						success: function(data) {
+							console.log(data)
+							if(data.code == "200") {
+								$("#attention").attr("hidden", "hidden");
+								$("#attentioned").removeAttr("hidden");
+							}else if(data.code == "2"){
+								Dialog({
+									title: "请登录！",
+									content: "您还未登录，是否登录？",
+									ok: {
+										callback: function() {
+											window.location.href = 'login.html';
+										}
+									},
+									cancel: {
+										callback: function() {
+											Dialog.close();
+										}
+									}
+								});
+							}
+						}
+					});
+				})
+				//取关
+				$("#attentioned").click(function() {
+					$.ajax({
+						type: "post",
+						url: sever_url + "my/follow/del",
+						async: true,
+						data: {
+							token: obj ? obj.token : "",
+							user_id: $("#user_head").attr("name")
+						},
+						dataType: "json",
+						success: function(data) {
+							console.log(data)
+							if(data.code == "200") {
+								$("#attentioned").attr("hidden", "hidden");
+								$("#attention").removeAttr("hidden");
+							}else if(data.code == "2"){
+								Dialog({
+									title: "请登录！",
+									content: "您还未登录，是否登录？",
+									ok: {
+										callback: function() {
+											window.location.href = 'login.html';
+										}
+									},
+									cancel: {
+										callback: function() {
+											Dialog.close();
+										}
+									}
+								});
+							}
+						}
+					});
+				})
+				//获取URL传值
+				var post_id = getUrldata('postid'); //文章id
+				//文章
+				$.ajax({
+					type: "post",
+					url: sever_url + "article/info",
+					async: true,
+					dataType: "json",
+					data: {
+						article_id: post_id,
+						token: obj ? obj.token : ""
+					},
+					success: function(data) {
+//						console.log(data.data.post_upnum)
+						if(data.code == 200) {
+							$("#postTitle").html(data.data.post_title); //文章标题
+							$("#postCopyright").html('<span>*</span>版权声明：' + data.data.post_copyright); //版权声明
+							$("#postContent").html("<p>" + data.data.post_content + "</p>"); //文章内容
+							var labels = new RegExp(",", "g"); //g,表示全部替换。
+							var label = data.data.post_label.replace(labels, "]</span><span>[");
+							$("#postLabel").append('<span>[' + label + ']</span>'); //文章标签，多个“，”隔开
+							$("#post_plate").html(data.data.post_plate);
+							$("#post_plate_two").html(data.data.post_plate_two);
+							$("#time").html(data.data.post_releasetime); //发布时间
+							$("#readNum").html("阅读数：" + data.data.post_readnum); //阅读数
+							$("#postUpnum").html(data.data.post_upnum); //点赞数
+							$("#postForwardnum").html(data.data.post_forwardnum); //转发数
+							$("#postCollectionnum").html(data.data.post_collectionnum); //收藏数
+							$("#user_head").attr("src", data.data.user_head);
+							$("#user_head").attr("name", data.data.post_userid);
+							$("#user_name").html(data.data.user_name);
+							$("#user_profile").html(data.data.user_profile);
+							$("#user_release_sum").html(Number(data.data.user_release_sum));
+							$("#post_upnum").html(Number(data.data.post_upnum));
+							$("#user_follow_sum").html(Number(data.data.user_follow_sum));
+							$("#user_fans_sum").html(Number(data.data.user_fans_sum));
+							$("#my_publish").html(data.data.user_release_sum);
+							$("#my_fans").html(data.data.user_fans_sum);
+							$("#my_support").html(data.data.post_upnum);
+							$("#my_focuse").html(data.data.user_follow_sum);
+							if(data.data.fabulous) {
+								$("#support").attr("src", "images/supported.png");
+								$("#support").parent().attr("name", "supportdel");
+								$("#support").attr("id", "supportdel");
+							}
+							if(data.data.collect) {
+								$("#collection").attr("src", "images/collectioned.png");
+								$("#collection").parent().attr("name", "collectiondel");
+								$("#collection").attr("id", "collectiondel");
+							}
+							if(data.data.follow) {
+								$("#attention").attr("hidden", "hidden");
+								$("#attentioned").removeAttr("hidden", "hidden");
+							}
+							//悬赏
+							if(data.data.hasOwnProperty("adopd")) {
+								$("#annex_d").css("display", "block");
+								$("#user_logo").attr("src", data.data.adopd.user_head);
+								$("#user_logo").attr("name", data.data.adopd.comment_userid);
+								$("#user_name").html(data.data.adopd.user_name);
+								$("#comment_content").html(data.data.adopd.comment_content);
+								$("#comment_upnum").html(Number(data.data.adopd.comment_upnum));
+							}
+							//推荐热帖
+							var num = data.data.recommend.length;
+							for(var i = 0; i < num; i++) {
+								var arr = data.data.recommend[i];
+								$("#recommend").append('<li><a id="' + arr.id + '" href="news_xq.html"><b>·</b><span>' + arr.post_title +
+									'</span></a></li>')
+							}
+						}
+					},
+					error: function() {
+						console.log("error!");
+					}
+				});
+				//评论
+				GetComment();
+
+				function GetComment() {
+					$.ajax({
+						type: "post",
+						url: sever_url + "comment/select",
+						async: true,
+						data: {
+							rows: 100,
+							page: 1,
+							post_id: post_id
+						},
+						dataType: "json",
+						success: function(data) {
+							console.log(data)
+							var length = data.data.length;
+							$("#comment_box").empty();
+							for(var i = 0; i < length; i++) {
+								var obj = data.data[i];
+								$("#comment_box").append(
+									'<div class="content_box"><div class="visitor"><div class="visitor_info"><div class="visitor_pic"><img id="' +
+									obj.id + '" src="' + obj.user_head + '"/><span >' + obj.user_name +
+									'</span></div><div class="commet_time"><span>' + obj.comment_time + '</span><span>【' + obj.comment_layernum +
+									'楼】</span></div></div><div class="other_visitor"><a rel="leanModal" name="Reported" href="#Reported"><span onclick=Reported(' +
+									obj.id + ')>举报</span></a><a href="#editor"><span onclick=reply(' + obj.id +
+									',"' + obj.user_name +
+									'")>回复</span></a><span style="display:flex;align-items: center;"><img onclick=commentSupport(' +
+									obj.id + ') src="images/support.png"/><span id="comment' + obj.id + '">' + Number(obj.comment_upnum) +
+									'</span></span></div></div><div class="comment_text"><p>' + obj.comment_content + '</p></div></div>');
+							}
+							$('a[rel*=leanModal]').leanModal({
+								top: 200,
+								closeButton: ".modal_close"
+							});
+						},
+						error: function() {
+
+						}
+					});
+				}
+				//点赞、转发、打赏、、、、
+				$("#do_something div").click(function() {
+					var that = this;
+					var name = $(that).attr("name");
+					if(sessionStorage.getItem("data") == null) {
+						Dialog({
+							title: "请登录！",
+							content: "您还未登录，是否登录？",
+							ok: {
+								callback: function() {
+									window.location.href = 'login.html';
+								}
+							},
+							cancel: {
+								callback: function() {
+									Dialog.close();
+								}
+							}
+						});
+					} else {
+						var obj = sessionStorage.getItem("data");
+						obj = JSON.parse(obj);
+						var token = obj ? obj.token : "";
+						var comment_id = "";
+						var reprot_content = "";
+						var reward_coinnum = "";
+						var reward_money = "";
+						console.log(name)
+						if(name == "reward") {
+							$("#check").click(function() {
+								reward_coinnum = $("#reward_coinnum").val();
+								reward_money = $("#reward_money").val();
+								doSomething(token, post_id, comment_id, reprot_content, reward_coinnum, reward_money);
+							})
+						} else if(name == "report") {
+							$("#edit").click(function() {
+								reprot_content = $("#report_text").val();
+								doSomething(token, post_id, comment_id, reprot_content, reward_coinnum, reward_money);
+							})
+						} else {
+							doSomething(token, post_id, comment_id, reprot_content, reward_coinnum, reward_money);
+						}
+
+						function doSomething(token, post_id, comment_id, reprot_content, reward_coinnum, reward_money) {
+							$.ajax({
+								type: "post",
+								url: sever_url + "post/" + name,
+								async: true,
+								data: {
+									token: token,
+									post_id: post_id,
+									comment_id: comment_id,
+									reprot_content: reprot_content,
+									reward_coinnum: reward_coinnum,
+									reward_money: reward_money
+								},
+								success: function(data) {
+									var upNumber = parseInt($("#postUpnum").html());
+									var coNumber = parseInt($("#postCollectionnum").html());
+									var fwNumber = parseInt($("#postForwardnum").html());
+									console.log(data)
+									if(data.code == "200") {
+										if(name == "support" || name == "collection") {
+											$("#" + name).attr("src", "images/" + name + "ed.png");
+											$(that).attr("name", name + "del");
+											$("#" + name).attr("id", name + "del");
+											if(name == "support") {
+												$("#postUpnum").html(upNumber + 1);
+											} else if(name == "collection") {
+												$("#postCollectionnum").html(coNumber + 1);
+											}
+										} else if(name == "supportdel" || name == "collectiondel") {
+											var named = name.substr(0, name.length - 3);
+											$("#" + name).attr("src", "images/" + named + ".png");
+											$(that).attr("name", named);
+											$("#" + name).attr("id", named);
+											if(name == "supportdel") {
+												$("#postUpnum").html(upNumber - 1);
+											} else if(name == "collectiondel") {
+												$("#postCollectionnum").html(coNumber - 1);
+											}
+										} else if(name == "forword") {
+											$("#postForwardnum").html(fwNumber + 1)
+										}
+
+									} else if(data.code == "2") {
+										Dialog({
+											title: "请登录！",
+											content: "您的登录已过期，是否重新登录？",
+											ok: {
+												callback: function() {
+													window.location.href = 'login.html';
+												}
+											},
+											cancel: {
+												callback: function() {
+													Dialog.close();
+												}
+											}
+										});
+									}
+								}
+							});
+						}
+					}
+				})
+				//发表
+				$("#publish").click(function() {
+					var comment_content = $("#comment_content").val();
+					DoAjax(comment_content);
+				})
+				$("#more_publish").click(function() {
+					var comment_content = UE.getEditor('editor').getContent();
+					DoAjax(comment_content);
+				})
+
+				function DoAjax(comment_content) {
+
+					$.ajax({
+						type: "post",
+						url: sever_url + "comment/publish",
+						async: true,
+						data: {
+							token: obj ? obj.token : "",
+							post_id: post_id,
+							comment_content: $("#comment").val()
+						},
+						success: function(data) {
+							console.log(data)
+							if(data.code == "2") {
+								Dialog({
+									title: "请登录！",
+									content: "您的登录已过期，是否重新登录？",
+									ok: {
+										callback: function() {
+											window.location.href = 'login.html';
+										}
+									},
+									cancel: {
+										callback: function() {
+											Dialog.close();
+										}
+									}
+								});
+							} else if(data.code == "200") {
+								GetComment();
+								$("#comment").val("");
+							}
+						},
+						error: function() {
+
+						}
+					});
+				}
+				$('.hiden_list').hide();
+				$('.hiden_list_w').hide();
+				//监听头像鼠标移入事件
+				$("#head").mouseover(function() {
+					if(!infodata) {
+						return;
+					}
+					if(infodata.user_power_num == 4) {
+						$('.hiden_list_w').show();
+					} else {
+						$('.hiden_list').show();
+					}
+				});
+				$(".bd").mouseover(function() {
+					if(!infodata) {
+						return;
+					}
+					if(infodata.user_power_num == 4) {
+						$('.hiden_list_w').hide();
+					} else {
+						$('.hiden_list').hide();
+					}
+				});
+				//退出登陆清除数据
+				function delsession() {
+					sessionStorage.clear();
+				}
+				adConfig("right");
+			});
+		</script>
+	</body>
+
+</html>
