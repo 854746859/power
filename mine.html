@@ -366,7 +366,7 @@
 				flex-wrap: wrap;
 			}
 			
-			.avatar div {
+			.avatar .all {
 				width: 25%;
 				display: flex;
 				flex-direction: row;
@@ -374,7 +374,7 @@
 				align-items: center;
 			}
 			
-			.avatar div img {
+			.avatar .all img {
 				width: 80%;
 				height: 80%;
 				border-radius: 40%;
@@ -442,10 +442,13 @@
 				display: flex;
 				flex-direction: column;
 				justify-content: space-around;
-				margin-left: 80px;
+				/*margin-left: 80px;*/
 				color: #1a83da;
+				align-items: flex-end;
 			}
-			
+			.about_att .cansel{
+				cursor: pointer;
+			}
 			.about_att a {
 				font-size: 14px;
 			}
@@ -869,6 +872,94 @@
 				justify-content: space-around;
 				align-items: center;
             }
+            .info_box{
+            	width: 200px;
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				padding: 10px;
+				position: absolute;
+				z-index: 999;
+				background-color: #fff;
+				margin: 140px 0 0 80px;
+				border-radius: 6px;
+				box-shadow: 0px 0px 6px 6px rgba(0,0,0,0.1);
+			}
+			.info_box .user_name {
+				width: 180px;
+				display: flex;
+				flex-direction: column;
+				/*height: 60px;*/
+				text-overflow: ellipsis;
+				overflow: hidden;
+				background-color: #fff;
+				padding: 10px;
+				border-radius: 5px;
+			}
+			.info_box:before{
+				content: '';
+				width: 0;
+				height: 0;
+				border-width: 16px 8px;
+				border-style: solid;
+				border-color: transparent transparent #fff transparent; 
+				position: relative;
+				margin-left: 10px;
+				top: -40px;
+				z-index: 999;
+			}
+			
+			.post_info .user .user_name .user_intro {
+				width: 220px;
+				min-height: 30px;
+				overflow-wrap: break-word;
+				line-height: 1.5;
+				padding-bottom: 5px;
+				border-bottom: #eee solid 1px;
+			}
+			
+			.attention {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				color: #0084ff;
+				font-size: 14px;
+				position: relative;
+				left: -80px;
+			}
+			
+			.attention input {
+				width: 80px;
+				height: 30px;
+				color: #fff;
+				background-color: #0084ff;
+				border-radius: 3px;
+				margin-bottom: 8px;
+			}
+			#user_release_sum,#user_fans_sum,#post_upnum,#user_follow_sum{
+				margin-top: 8px;
+			}
+			
+			.trivial {
+				padding-top: 10px;
+				display: flex;
+				flex-direction: row;
+				width: 40%;
+				border-top: 1px solid #eee;
+				justify-content: space-between;
+			}
+			
+			.trivial div {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+			}
+			
+			.trivial span {
+				height: 21px;
+			}
 		</style>
 	</head>
 
@@ -881,7 +972,7 @@
 					<div>
 						<ul>
 							<li>
-								<a href="index.html?type=0&plate=1&two=0">首页</a>
+								<a href="coverchild.html">首页</a>
 							</li>
 							<li class="menu-item-has-children"><a href="#" title="" itemprop="url">论坛</a>
 								<ul>
@@ -1256,7 +1347,7 @@
 							<div class="news_list zy_listbox mine_box" id="wallet" hidden="hidden">
 								<div class="wallet_title">
 									<h2>整体收益</h2>
-									<a href="">提现须知？</a>
+									<!--<a href="">提现须知？</a>-->
 								</div>
 								<div class="detail_box">
 									<div class="yesterday">
@@ -1285,9 +1376,10 @@
 									<h2>收益明细</h2>
 									<div class="time">
 										<span>选择时间：</span>
-										<div class="dib vm laydate-icon" id="startTime01"></div>
+										<div class="dib vm laydate-icon" id="startTime01"><input type="date" name="" id="start_time" value="" /></div>
 										—
-										<div class="dib vm laydate-icon" id="endTime01"></div>
+										<div class="dib vm laydate-icon" id="endTime01"><input type="date" name="" id="end_time" value="" /></div>
+										<button style="width: 60px;height: 25px;background-color: #0084ff;color: #fff;margin-left: 20px;" onclick="toSearch()">查询</button>
 									</div>
 								</div>
 								<div class="detail_list">
@@ -1317,7 +1409,7 @@
 									<div class="description_post">
 										<h4>发布版块：</h4>
 										<select id="Section">
-											<option value="1">煤炭</option>
+											<option value="3">煤炭</option>
 											<option value="2">石油&天然气</option>
 											<option value="1">液化天然气</option>
 											<option value="4">电力</option>
@@ -1418,7 +1510,7 @@
 										<h4>发布形式：</h4>
 										<div class="checkbox" id="Form">
 											<label>
-												<input type="radio" name="form" id="" value="0" /><span>公开</span>
+												<input type="radio" name="form" id="" value="0" checked="checked"/><span>公开</span>
 											</label>
 											<label>
 												<input type="radio" name="form" id="" value="1" /><span>粉丝可见</span>
@@ -1441,7 +1533,7 @@
 										<input type="file" name="" id="file1" value="" style="background-color: #fff;"/>
 									</div>
 									<div class="description_post button_box">
-										<input type="button" onclick="push()" value="发布" />
+										<input type="button" id="pushBt" onclick="push()" value="发布" />
 										<!--<input type="button" id="save" value="保存草稿" />-->
 										<input type="button" onclick="back()" value="返回" />
 									</div>
@@ -1714,6 +1806,7 @@
 		<script type="text/javascript">
 			adConfig();
 			window.onload = BaiduShare();
+			
 			function BaiduShare(){
 				$("#baidu_share").attr("src",'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5));
 			}
@@ -1749,6 +1842,8 @@
 						$(li_arr[i]).removeAttr("class");
 					}
 				}
+				$("#Section").val(getUrldata("plate"))
+				$("#Classification").val(getUrldata("two"))
 			}
 			$(function(){
 				//第一种方法
@@ -1783,7 +1878,7 @@
 				}
 				fan();
 			})
-
+			
 			// 获取我的信息
 			var data = sessionStorage.getItem("data");
 			var infodata = eval('(' + data + ')');
@@ -1854,7 +1949,7 @@
 				success: function(res) {
 					// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
 					// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
-					// console.log(res)
+					 console.log(res)
 					var data = res.data;
 					var new_fans = data.new_fans;
 					var new_visitor = data.new_visitor;
@@ -1888,8 +1983,8 @@
 					var new_fans_img = '';
 					var new_fans_list = document.getElementById("new_fans_list");
 					for(var i = 0; i < new_fans.length; i++) {
-						new_fans_img += "<div><img  style='width:70px; height:70px; border-radius:50%; margin-top:8px;' src='" + new_fans[i].user_head +
-							"'/></div>";
+						new_fans_img += "<div class='all'><img  style='width:70px; height:70px; border-radius:50%; margin-top:8px;cursor: pointer;' src='" + new_fans[i].user_head +"'/><div class='info_box' id='info_box'><div class='user_name'><h3 id='user_name' style='min-height: 25px;'>" + new_fans[i].user_name +"</h3><div class='user_intro' id='user_profile'><p>"+new_fans[i].user_profile+"</p></div><div class='trivial' style='width: 100%;margin-top: 5px;'><div><span style='font-size: 12px;color: #807979;'>发布</span><span id='user_release_sum'>" + new_fans[i].user_release_sum +"</span></div><div><span style='font-size: 12px;color: #807979;'>粉丝</span><span id='user_fans_sum'>" + new_fans[i].user_fans_sum +"</span></div><div><span style='font-size: 12px;color: #807979;'>获赞</span><span id='post_upnum'>" + new_fans[i].user_laid_sum +"</span></div><div><span style='font-size: 12px;color: #807979;'>转发</span><span id='user_follow_sum'>" + new_fans[i].user_forward_sum +"</span></div></div></div></div></div>";
+						
 						new_fans_list.innerHTML = new_fans_img;
 					}
 
@@ -1897,8 +1992,7 @@
 					var new_visitor_img = '';
 					var new_visitor_list = document.getElementById("new_visitor_list");
 					for(var i = 0; i < new_visitor.length; i++) {
-						new_visitor_img += "<div><img style='width:70px; height:70px; border-radius:50%;margin-top:8px; ' src='" + new_visitor[i].user_head +
-							"'/></div>";
+						new_visitor_img += "<div class='all'><img style='width:70px; height:70px; border-radius:50%;margin-top:8px;cursor: pointer;' src='" + new_visitor[i].user_head +"'/><div class='info_box' id='info_box'><div class='user_name'><h3 id='user_name' style='min-height: 25px;'>" + new_fans[i].user_name +"</h3><div class='user_intro' id='user_profile'><p>"+new_fans[i].user_profile+"</p></div><div class='trivial' style='width: 100%;margin-top: 5px;'><div><span style='font-size: 12px;color: #807979;'>发布</span><span id='user_release_sum'>" + new_fans[i].user_release_sum +"</span></div><div><span style='font-size: 12px;color: #807979;'>粉丝</span><span id='user_fans_sum'>" + new_fans[i].user_fans_sum +"</span></div><div><span style='font-size: 12px;color: #807979;'>获赞</span><span id='post_upnum'>" + new_fans[i].user_laid_sum +"</span></div><div><span style='font-size: 12px;color: #807979;'>转发</span><span id='user_follow_sum'>" + new_fans[i].user_forward_sum +"</span></div></div></div></div></div></div>";
 						new_visitor_list.innerHTML = new_visitor_img;
 					}
 
@@ -1911,6 +2005,18 @@
 						"篇</span></a></li>";
 					lng_todaycount_list.innerHTML = lng_todaycounts;
 					// }
+					
+					$(".info_box").hide();
+					$("#new_fans_list img").hover(function(){
+						$(this).next().show();
+					},function(){
+						$(this).next().hide();
+					})
+					$("#new_visitor_list img").hover(function(){
+						$(this).next().show();
+					},function(){
+						$(this).next().hide();
+					})
 				},
 			})
 
@@ -2015,6 +2121,28 @@
 					success:function(data){
 						console.log(data)
 						original();
+					}
+				});
+			}
+			//取消关注
+			function deleteIt(user_id){
+				$.ajax({
+					type:"post",
+					url:sever_url+"my/follow/del",
+					async:true,
+					data:{
+						user_id:user_id,
+						token:infodata.token
+					},
+					dataType:"json",
+					success:function(data){
+						console.log(data)
+						if(data.code==200){
+							Dialog.success("成功取消！")
+							my_attention()
+						}else{
+							Dialog.warn(data.msg)
+						}
 					}
 				});
 			}
@@ -2132,7 +2260,6 @@
 					success: function(res) {
 						// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
 						// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
-						//								console.log(res)
 						var fansdata = res.data;
 
 						$(function() {
@@ -2179,12 +2306,35 @@
 								fans += "</div><div class='news_owner news_other'><span id=''>关注：" + fansdata[i]['user_follow_sum'] +
 									"|粉丝：" + fansdata[i]['user_fans_sum'] + "</span>";
 								fans +=
-									"</div></div><div class='about_att'><div class='cansel'>关注+</div><div class='hispage'><a>TA的个人主页</a></div></div></li>";
+									"</div></div><div class='about_att'><div class='cansel' onclick='attention("+fansdata[i]['id']+")'>关注+</div><div class='hispage'></div></div></li>";
 								fanslist.innerHTML = fans;
 							}
 						}
 					},
 				})
+			}
+			function attention(user_id){
+				console.log(infodata.token)
+				$.ajax({
+					url: sever_url + 'follow/add',
+					type: 'post',
+					data: {
+						user_id:user_id,
+						token: infodata.token
+					},
+					// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+					dataType: 'json',
+					success: function(data) {
+						if(data.code==200){
+							Dialog.success("关注成功！")
+						}else{
+							Dialog.warn(data.msg)
+						}
+					},
+					error: function(XMLHttpRequest, msg, res) {
+						console.log(msg);
+					}
+				});
 			}
 			//我的收藏
 			function favorite(){
@@ -2277,14 +2427,143 @@
 					},
 				})
 			}
+			function my_attention(){
+				$.ajax({
+					url: sever_url + 'my/follows',
+					type: 'post',
+					data: {
+						token: infodata.token,
+						rows: '8',
+						page: '1',
+						order: '0',
+						star_time: '',
+						end_time: s2,
+					},
+					// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+					dataType: 'json',
+					success: function(res) {
+						// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
+						// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
+						var followsdata = res.data;
+
+						$(function() {
+							var a = {
+								color: '#blue',
+								sex: 'black',
+								border: '1px solid #ddd'
+							};
+
+							var b = {
+								background: '#0084ff'
+							};
+
+							$(".pagination").Paging({
+								classStyle: a, //a标签样式的对象,也可以不定义使用默认值
+								backClass: b, //选中的页数的背景，也可以不定义使用默认值
+								isFirst: true, //首页按钮是否显示
+								isPre: true, //下一页按钮是否显示
+								showRecordNum: 8, // 一页列表数量
+								totalNum: res.total, // 总列表数量
+								showNum: function(data1, data2) {
+									// alert(data1 + "," + data2);
+								},
+								pages: 'follows'
+							});
+
+						});
+						// console.log(fansdata)
+						var follows = '';
+						var followslist = document.getElementById("followslist");
+						if(followsdata.length === 0) {
+							follows += "<h3>暂无数据</h3>";
+							followslist.innerHTML = follows;
+
+						} else {
+							for(var i = 0; i < followsdata.length; i++) {
+								follows += "<li><img class='icon_radius' src='" + followsdata[i].user_head +
+									" ' /><div class='blog_list'>";
+								follows += "<div class='attention_title'><div>" + followsdata[i]['user_name'] + "</div><div>ID:" +
+									followsdata[i][
+										'id'
+									] + "</div><div>关注时间：" + followsdata[i]['follow_time'] + "</div>";
+								follows += "</div><div class='news_time news_other'><span>个人简介：</span><p>" + followsdata[i][
+										'user_profile'
+									] +
+									"</p>";
+								follows += "</div><div class='news_owner news_other'><span id=''>关注：" + followsdata[i]['user_follow_sum'] +
+									"|粉丝：" + followsdata[i]['user_fans_sum'] + "</span>";
+								follows +=
+									"</div></div><div class='about_att'><div class='cansel' onclick='deleteIt("+followsdata[i]['id']+")'>取消关注</div><div class='hispage'></div></div></li>";
+								followslist.innerHTML = follows;
+							}
+						}
+					},
+				})
+			}
 			//快速发帖返回
 			function back() {
 				self.location = document.referrer;
 			}
 			var part_arr = $(".zy_listbox");
 			var li_arr = $("#navbar li");
+			//查询收益明细
+			function toSearch(){
+				var start_time = $("#start_time").val();
+				var end_time = $("#end_time").val();
+				$.ajax({
+					url: sever_url + 'my/business',
+					type: 'post',
+					data: {
+						token: infodata.token,
+						star_time: start_time,
+						end_time: end_time,
+						rows: 5,
+						page: 1
+					},
+					// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+					dataType: 'json',
+					success: function(data) {
+						var length = data.data.length;
+						$(function() {
+							var a = {
+								color: '#blue',
+								sex: 'black',
+								border: '1px solid #ddd'
+							};
+
+							var b = {
+								background: '#0084ff'
+							};
+
+							$(".pagination").Paging({
+								classStyle: a, //a标签样式的对象,也可以不定义使用默认值
+								backClass: b, //选中的页数的背景，也可以不定义使用默认值
+								isFirst: true, //首页按钮是否显示
+								isPre: true, //下一页按钮是否显示
+								showRecordNum: 5, // 一页列表数量
+								totalNum: data.total, // 总列表数量
+								showNum: function(data1, data2) {
+									// alert(data1 + "," + data2);
+								},
+								pages: 'follows'
+							});
+
+						});
+
+						$("#listBody").empty();
+						for(var i = 0; i < length; i++) {
+							var obj = data.data[i];
+							$("#listBody").append('<li><ul class="list_body"><li>' + obj.business_time + '</li><li>' + obj.business_type +
+								'</li><li>' + obj.business_money + '</li><li>' + obj.business_coin + '</li><li>' + obj.pay_user +
+								'</li></ul></li>');
+						}
+					}
+				});
+			}
+			
 			//快速发帖发布
 			function push() {
+				$("#pushBt").attr('disabled',true);
 				var picfile = $("#picFile").get(0).files[0];
 				var file1 = $("#file1").get(0).files[0];
 				var formData = new FormData();
@@ -2379,79 +2658,8 @@
 							favorite();
 						// 关注
 					} else if(nav_id === "attention") {
-						$.ajax({
-							url: sever_url + 'my/follows',
-							type: 'post',
-							data: {
-								token: infodata.token,
-								rows: '8',
-								page: '1',
-								order: '0',
-								star_time: '',
-								end_time: s2,
-							},
-							// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
-							dataType: 'json',
-							success: function(res) {
-								// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
-								// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
-								//								console.log(res)
-								var followsdata = res.data;
-
-								$(function() {
-									var a = {
-										color: '#blue',
-										sex: 'black',
-										border: '1px solid #ddd'
-									};
-
-									var b = {
-										background: '#0084ff'
-									};
-
-									$(".pagination").Paging({
-										classStyle: a, //a标签样式的对象,也可以不定义使用默认值
-										backClass: b, //选中的页数的背景，也可以不定义使用默认值
-										isFirst: true, //首页按钮是否显示
-										isPre: true, //下一页按钮是否显示
-										showRecordNum: 8, // 一页列表数量
-										totalNum: res.total, // 总列表数量
-										showNum: function(data1, data2) {
-											// alert(data1 + "," + data2);
-										},
-										pages: 'follows'
-									});
-
-								});
-								// console.log(fansdata)
-								var follows = '';
-								var followslist = document.getElementById("followslist");
-								if(followsdata.length === 0) {
-									follows += "<h3>暂无数据</h3>";
-									followslist.innerHTML = follows;
-
-								} else {
-									for(var i = 0; i < followsdata.length; i++) {
-										follows += "<li><img class='icon_radius' src='" + followsdata[i].user_head +
-											" ' /><div class='blog_list'>";
-										follows += "<div class='attention_title'><div>" + followsdata[i]['user_name'] + "</div><div>ID:" +
-											followsdata[i][
-												'id'
-											] + "</div><div>关注时间：" + followsdata[i]['follow_time'] + "</div>";
-										follows += "</div><div class='news_time news_other'><span>个人简介：</span><p>" + followsdata[i][
-												'user_profile'
-											] +
-											"</p>";
-										follows += "</div><div class='news_owner news_other'><span id=''>关注：" + followsdata[i]['user_follow_sum'] +
-											"|粉丝：" + followsdata[i]['user_fans_sum'] + "</span>";
-										follows +=
-											"</div></div><div class='about_att'><div class='cansel'>关注+</div><div class='hispage'><a>TA的个人主页</a></div></div></li>";
-										followslist.innerHTML = follows;
-									}
-								}
-							},
-						})
-						// 粉丝
+						my_attention();
+						//粉丝
 					} else if(nav_id === "fan") {
 						fan();
 					} else if(nav_id === "wallet") {
@@ -2476,16 +2684,16 @@
 								}
 							}
 						});
-						getList();
-
-						function getList() {
+						getList("","");
+						
+						function getList(start_time,end_time) {
 							$.ajax({
 								url: sever_url + 'my/business',
 								type: 'post',
 								data: {
 									token: infodata.token,
-									star_time: "",
-									end_time: "",
+									star_time: start_time,
+									end_time: end_time,
 									rows: 5,
 									page: 1
 								},

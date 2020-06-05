@@ -637,7 +637,7 @@
 					<div>
 						<ul>
 							<li>
-								<a href="index.html?type=0&plate=1&two=0">首页</a>
+								<a href="coverchild.html">首页</a>
 							</li>
 							<li class="menu-item-has-children"><a href="#" title="" itemprop="url">论坛</a>
 								<ul>
@@ -879,7 +879,7 @@
 								</span>
 							</div>
 							<div class="trivial">
-								<div>
+								<!--<div>
 									<span>发布</span>
 									<span id="user_release_sum">0</span>
 								</div>
@@ -894,7 +894,7 @@
 								<div>
 									<span>转发</span>
 									<span id="user_follow_sum">0</span>
-								</div>
+								</div>-->
 								<!--<div>
 							<span>访问</span>
 							<span>12k</span>
@@ -1246,6 +1246,25 @@
 					$("#end_reply_name").html(data.data.end_reply_name);
 				}
 			});
+			
+			// 获取当前分类
+			function GetRequest() {
+				var url = decodeURI(location.search); //获取url中"?"符后的字串
+				var theRequest = new Object();
+				if (url.indexOf("?") != -1) {
+					var str = url.substr(1);
+					strs = str.split("&");
+					for (var i = 0; i < strs.length; i++) {
+						theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+					}
+				}
+				return theRequest;
+			}
+			var json = GetRequest();
+			//快速发帖
+			function toPost(){
+				window.location.href="mine.html?fast=1&type="+json.type+"&plate="+json.plate+"&two="+json.plate_two; 
+			}
 			// 其他页面搜索
 			var search = document.getElementById("search");
 			var btn = document.getElementById("btn");

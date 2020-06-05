@@ -3,7 +3,7 @@
 	// 定义类
 	function paging(element, option) {
 		this.element = element;
-		console.log(option)
+//		console.log(option)
 		this.option = {
 			currentPage: 1,
 			classStyle: option.classStyle,
@@ -47,11 +47,11 @@
 			}
 
 			var currentPage = parseInt(ele.option.currentPage);
-			console.log('currentPage:' + currentPage);
+//			console.log('currentPage:' + currentPage);
 			var totalPage = parseInt(ele.option.totalPage);
-			console.log('totalPage:' + totalPage);
+//			console.log('totalPage:' + totalPage);
 			var totalNum = parseInt(ele.option.totalNum);
-			console.log('totalNum:' + totalNum);
+//			console.log('totalNum:' + totalNum);
 			if (isNaN(currentPage) || isNaN(totalPage) || isNaN(totalNum)) {
 				alert("分页插件不能正常工作，请输入正确的数字");
 			} else {

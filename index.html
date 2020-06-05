@@ -193,7 +193,7 @@
 				<nav>
 					<div>
 						<ul>
-							<li><a href="index.html?type=0&plate=1&two=0">首页</a></li>
+							<li><a href="coverchild.html">首页</a></li>
 							<li class="menu-item-has-children"><a href="#" title="" itemprop="url">论坛</a>
 								<ul>
 									<li><a href="index.html?type=0&plate=1&two=0" title="" itemprop="url">煤炭</a></li>
@@ -242,7 +242,7 @@
 							<span class="lever">LV10</span>
 						</div>-->
 						<a href="login.html">登录/注册</a>
-						<a href="mine.html?fast=1">快速发帖</a>
+						<div class="topush" onclick="toPost()">快速发帖</div>
 					</div>
 					<!-- 鼠标移入显示的菜单 -->
 					<div class="hiden_list">
@@ -520,7 +520,8 @@
 									<!-- 通用分页end -->
 								</div>
 
-								<center>
+								<center style="display:flex;flex-direction:row;align-items:center;justify-content: space-around;">
+									<button style="background-color: #0084FF;width: 90px;height: 40px;color: #fff;border-radius: 6px;" onclick="toPost()">去发帖</button>
 									<ul class="pagination"></ul>
 								</center>
 							</div>
@@ -689,6 +690,7 @@
 			function BaiduShare(){
 				$("#baidu_share").attr("src",'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5));
 			}
+			
 			//头部统计
 			$.ajax({
 				type:"post",
@@ -739,6 +741,10 @@
 			localStorage.setItem("plate", json.plate)
 			localStorage.setItem("type", json.type)
 			localStorage.setItem("searchv", json.searchv)
+			//快速发帖
+			function toPost(){
+				window.location.href="mine.html?fast=1&type="+json.type+"&plate="+json.plate+"&two="+json.two; 
+			}
 			// localStorage.setItem("type", json.type)
 			
 			
