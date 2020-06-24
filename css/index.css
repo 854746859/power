@@ -99,7 +99,7 @@ flex-grow: 1;
 .share{
 	font-size: 14px;
 	position: relative;
-	margin-left: 300px;
+	/*margin-left: 300px;*/
 	display: flex;
 	flex-direction: row;
 	align-items: center;

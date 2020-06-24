@@ -586,7 +586,7 @@
 		<!--头部-->
 		<div class="bg">
 			<div class="wid_main topbox fix">
-				<div class="l"><img src="images/6.png" alt="logo" width="120px" /></div>
+				<div class="l"><a href="cover.html"><img src="images/6.png" alt="logo" width="120px" /></a></div>
 				<nav>
 					<div>
 						<ul>
@@ -640,7 +640,7 @@
 					<div class="hiden_list">
 						<ul>
 							<li><a href="mine.html">个人中心</a></li>
-							<li id="manager"><a href="http://114.55.35.82/dist/index.html#/easay">管理员中心</a></li>
+							<li id="manager"><a href="http://114.55.35.82/dist/index.html">管理员中心</a></li>
 							<li><a onclick="delsession()" href="login.html">退出登陆</a></li>
 						</ul>
 					</div>
@@ -1340,7 +1340,10 @@
 			// 获取我的信息
 			var data = sessionStorage.getItem("data");
             var infodata = eval('(' + data + ')');
-            console.log(infodata)
+            //快速发帖
+			function toPost(){
+				window.location.href="mine.html?fast=1"; 
+			}
 			//功能：将浮点数四舍五入，取小数点后2位     
 			function toDecimal(x) {   
 			  var f = parseFloat(x);    

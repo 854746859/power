@@ -294,7 +294,7 @@
     font-family: PingFangSC-Regular,PingFang SC;
     color: rgba(0,0,0,0.85);
 }
-.news_list{height: 750px;}
+.news_list{min-height: 750px;}
 .news_list ul li{ line-height: 38px; display: flex; flex-direction: row;padding: 10px 0;border-bottom: 1px solid #eee;}
 .news_list ul li img{
 	width: 90px;

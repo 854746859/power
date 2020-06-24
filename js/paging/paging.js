@@ -1,9 +1,7 @@
-;
 (function($, window, document, undefined) {
 	// 定义类
 	function paging(element, option) {
 		this.element = element;
-//		console.log(option)
 		this.option = {
 			currentPage: 1,
 			classStyle: option.classStyle,
@@ -212,7 +210,7 @@
 				ele.createPage();
 				if (ele.option.showNum) {
 					ele.option.showNum(ele.option.currentPage, ele.option.showRecordNum);
-					// console.log(ele.option.pages)
+					alert(ele.option.pages)
 					// 首页文章分页
 					if (ele.option.pages == "post") {
 						// ajax请求文章列表
@@ -363,19 +361,6 @@
 										background: '#005389'
 									};
 
-									$(".pagination").Paging({
-										classStyle: a, //a标签样式的对象,也可以不定义使用默认值
-										backClass: b, //选中的页数的背景，也可以不定义使用默认值
-										isFirst: true, //首页按钮是否显示
-										isPre: true, //下一页按钮是否显示
-										showRecordNum: 8, // 一页列表数量
-										totalNum: res.total, // 总列表数量
-										showNum: function(data1, data2) {
-											// alert(data1 + "," + data2);
-										},
-										pages: 'fans'
-									});
-
 								});
 								// console.log(fansdata)
 								var fans = '';
@@ -435,18 +420,6 @@
 											background: '#005389'
 										};
 						
-										$(".pagination").Paging({
-											classStyle: a, //a标签样式的对象,也可以不定义使用默认值
-											backClass: b, //选中的页数的背景，也可以不定义使用默认值
-											isFirst: true, //首页按钮是否显示
-											isPre: true, //下一页按钮是否显示
-											showRecordNum: 8, // 一页列表数量
-											totalNum: res.total, // 总列表数量
-											showNum: function(data1, data2) {
-												// alert(data1 + "," + data2);
-											},
-											pages: 'follows'
-										});
 						
 									});
 									// console.log(fansdata)
@@ -507,19 +480,6 @@
 											background: '#005389'
 										};
 						
-										$(".pagination").Paging({
-											classStyle: a, //a标签样式的对象,也可以不定义使用默认值
-											backClass: b, //选中的页数的背景，也可以不定义使用默认值
-											isFirst: true, //首页按钮是否显示
-											isPre: true, //下一页按钮是否显示
-											showRecordNum: 5, // 一页列表数量
-											totalNum: data.total, // 总列表数量
-											showNum: function(data1, data2) {
-												// alert(data1 + "," + data2);
-											},
-											pages: 'business'
-										});
-						
 									});
 						
 									$("#listBody").empty();
@@ -560,19 +520,6 @@
 												background: '#005389'
 											};
 						
-											$(".pagination").Paging({
-												classStyle: a, //a标签样式的对象,也可以不定义使用默认值
-												backClass: b, //选中的页数的背景，也可以不定义使用默认值
-												isFirst: true, //首页按钮是否显示
-												isPre: true, //下一页按钮是否显示
-												showRecordNum: 6, // 一页列表数量
-												totalNum: data.data.total, // 总列表数量
-												showNum: function(data1, data2) {
-													// alert(data1 + "," + data2);
-												},
-												pages: 'natice'
-											});
-						
 										});
 						
 										for (var i = 0; i < length; i++) {
@@ -600,11 +547,7 @@
 						
 								}
 							});
-						
 					}
-					
-					
-
 				}
 			});
 		}

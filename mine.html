@@ -136,6 +136,7 @@
 				font-family:PingFangSC-Regular,PingFang SC;
 				font-weight:400;
 				color:#3399ea;
+				cursor: pointer;
 			}
 			.classification ul li:hover{
 				width: 100px;
@@ -423,8 +424,8 @@
 			.attention_title {
 				display: flex;
 				flex-direction: row;
-				width: 400px;
-				justify-content: space-between;
+				/*width: 400px;*/
+				justify-content: space-around;
 				align-items: center;
 				color: #333;
 			}
@@ -544,8 +545,11 @@
 				display: flex;
 				flex-direction: row;
 				align-items: center;
+				margin-bottom: 8px;
 			}
-			
+			.message .message_title span{
+				margin-left: 20px;
+			}
 			.message .message_detail a {
 				color: #1a83da;
 			}
@@ -967,7 +971,7 @@
 		<!--头部-->
 		<div class="bg">
 			<div class="wid_main topbox fix">
-				<div class="l"><a href="coverchild.html"><img src="images/6.png" alt="logo" width="120px" /></a></div>
+				<div class="l"><a href="cover.html"><img src="images/6.png" alt="logo" width="120px" /></a></div>
 				<nav>
 					<div>
 						<ul>
@@ -1277,7 +1281,7 @@
 									<li onclick="question(3)">退回</li>
 								</ul>
 								<div class="sort">
-									<div class="sort_type">
+									<!--<div class="sort_type">
 										<span>
 											排序：
 										</span>
@@ -1286,13 +1290,13 @@
 											<div>按更新时间</div>
 											<div>按访问量</div>
 										</div>
-									</div>
-									<div class="time">
+									</div>-->
+									<!--<div class="time">
 										<span>选择时间：</span>
 										<div class="dib vm laydate-icon" id="startTime01"></div>
 										—
 										<div class="dib vm laydate-icon" id="endTime01"></div>
-									</div>
+									</div>-->
 								</div>
 							</div>
 							<!-- 时间范围选择js -->
@@ -1385,7 +1389,7 @@
 								<div class="detail_list">
 									<ul class="list_title">
 										<li>日期</li>
-										<li>收益类型</li>
+										<li>交易描述</li>
 										<li>现金收益</li>
 										<li>论坛币收益</li>
 										<li>支付人</li>
@@ -1624,7 +1628,7 @@
 							<div class="news_list zy_listbox mine_box" id="notice" hidden="hidden">
 								
 							</div>
-
+							<!--分页-->
 							<center id="pagiNation">
 								<ul class="pagination"></ul>
 							</center>
@@ -2109,18 +2113,61 @@
 			original();
 			//删除
 			function Delete(post_id){
-				$.ajax({
-					type:"post",
-					url:sever_url+"article/del",
-					async:true,
-					data:{
-						token:infodata.token,
-						article_id:post_id
+				Dialog({
+					title: "删除文章？",
+					content: "是否确认删除？",
+					ok: {
+						callback: function() {
+							$.ajax({
+								type:"post",
+								url:sever_url+"article/del",
+								async:true,
+								data:{
+									token:infodata.token,
+									article_id:post_id
+								},
+								dataType:"json",
+								success:function(data){
+									console.log(data)
+									original();
+								}
+							});
+						}
 					},
-					dataType:"json",
-					success:function(data){
-						console.log(data)
-						original();
+					cancel: {
+						callback: function() {
+							Dialog.close();
+						}
+					}
+				});
+			}
+			//取消收藏
+			function cancelColl(post_id){
+				Dialog({
+					title: "取消收藏？",
+					content: "是否确认取消？",
+					ok: {
+						callback: function() {
+							$.ajax({
+								type:"post",
+								url:sever_url+"post/collectiondel",
+								async:true,
+								data:{
+									token:infodata.token,
+									post_id:post_id
+								},
+								dataType:"json",
+								success:function(data){
+									console.log(data)
+									favorite();
+								}
+							});
+						}
+					},
+					cancel: {
+						callback: function() {
+							Dialog.close();
+						}
 					}
 				});
 			}
@@ -2227,7 +2274,7 @@
 								post +=
 									"<a url='forum.html?postid=" + postdata[i]['id'] +
 									"' class='bds_weixin' data-cmd='weixin'></a><a url='forum.html?postid=" + postdata[i]['id'] +
-									"' class='bds_tsina' data-cmd='tsina'></a></div></div></div><img style='width: 20px;height: 20px;' src='images/write.png' /><img style='width: 20px;height: 20px;' src='images/delete.png' /></li>";
+									"' class='bds_tsina' data-cmd='tsina'></a></div></div></div><img style='width: 20px;height: 20px;' src='images/write.png' /><img style='width: 20px;height: 20px;' onclick = 'Delete("+postdata[i]['id']+")' src='images/delete.png' /></li>";
 								qusetionlist.innerHTML = post;
 							}
 							$('.bdsharebuttonbox a').on('mousemove', function() {
@@ -2413,7 +2460,7 @@
 								post +=
 									"<a url='forum.html?postid=" + collectiondata[i]['id'] +
 									"' class='bds_weixin' data-cmd='weixin'></a><a url='forum.html?postid=" + collectiondata[i]['id'] +
-									"' class='bds_tsina' data-cmd='tsina'></a></div></div></div><img style='width: 20px;height: 20px;' src='images/write.png' /><img style='width: 20px;height: 20px;' src='images/delete.png' /></li>";
+									"' class='bds_tsina' data-cmd='tsina'></a></div></div></div><img style='width: 20px;height: 20px;' src='images/write.png' /><img style='width: 20px;height: 20px;' onclick = 'cancelColl("+collectiondata[i]['id']+")' src='images/delete.png' /></li>";
 								collectionlist.innerHTML = post;
 							}
 							$('.bdsharebuttonbox a').on('mousemove', function() {
@@ -2553,7 +2600,7 @@
 						$("#listBody").empty();
 						for(var i = 0; i < length; i++) {
 							var obj = data.data[i];
-							$("#listBody").append('<li><ul class="list_body"><li>' + obj.business_time + '</li><li>' + obj.business_type +
+							$("#listBody").append('<li><ul class="list_body"><li>' + obj.business_time + '</li><li>' + obj.business_content +
 								'</li><li>' + obj.business_money + '</li><li>' + obj.business_coin + '</li><li>' + obj.pay_user +
 								'</li></ul></li>');
 						}
@@ -2723,7 +2770,7 @@
 											showNum: function(data1, data2) {
 												// alert(data1 + "," + data2);
 											},
-											pages: 'follows'
+											pages: 'business'
 										});
 
 									});
@@ -2731,7 +2778,7 @@
 									$("#listBody").empty();
 									for(var i = 0; i < length; i++) {
 										var obj = data.data[i];
-										$("#listBody").append('<li><ul class="list_body"><li>' + obj.business_time + '</li><li>' + obj.business_type +
+										$("#listBody").append('<li><ul class="list_body"><li>' + obj.business_time + '</li><li>' + obj.business_content +
 											'</li><li>' + obj.business_money + '</li><li>' + obj.business_coin + '</li><li>' + obj.pay_user +
 											'</li></ul></li>');
 									}
