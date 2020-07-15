@@ -2611,6 +2611,14 @@
 			//快速发帖发布
 			function push() {
 				$("#pushBt").attr('disabled',true);
+				var twoNum = $('#Classification option:selected').val()
+//				var twoNum = Number($('#Classification option:selected').val())
+				if(twoNum == undefined){
+					twoNum = 1
+				}else{
+					twoNum = Number($('#Classification option:selected').val())
+				}
+				console.log(twoNum)
 				var picfile = $("#picFile").get(0).files[0];
 				var file1 = $("#file1").get(0).files[0];
 				var formData = new FormData();
@@ -2621,7 +2629,7 @@
 				formData.append("post_content", UE.getEditor('editor').getContent());
 				formData.append("post_plate", Number($('#Section option:selected').val()));
 				formData.append("post_label", $("#Tag").val());
-				formData.append("post_plate_two", Number($('#Classification option:selected').val()));
+				formData.append("post_plate_two", twoNum);
 				formData.append("post_releasetype", 0);
 				formData.append("post_articletype", Number($('#postType option:selected').val()));
 				formData.append("post_Large", Number($('#post_Large option:selected').val()));
