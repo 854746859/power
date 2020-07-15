@@ -77,7 +77,10 @@ flex-grow: 1;
 	flex-direction: column;
 	justify-content: space-between;
 	margin-left: 10px;
-	width: 560px;
+	width: 560px !important;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 .news_other{
 	line-height: 16px;

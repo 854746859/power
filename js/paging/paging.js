@@ -210,7 +210,7 @@
 				ele.createPage();
 				if (ele.option.showNum) {
 					ele.option.showNum(ele.option.currentPage, ele.option.showRecordNum);
-					alert(ele.option.pages)
+//					alert(ele.option.pages)
 					// 首页文章分页
 					if (ele.option.pages == "post") {
 						// ajax请求文章列表
