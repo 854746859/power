@@ -217,7 +217,7 @@
 			
 			.user_box .box_L .user_loge .user_name .user_id #user_name{
 				margin-left: 10px;
-				font-size:32px;
+				font-size:28px;
 				font-family:PingFangSC-Regular,PingFang SC;
 				font-weight:400;
 				color:rgba(0,0,0,0.85);
@@ -497,7 +497,7 @@
 			.month,
 			.wallet div {
 				font-size: 18px;
-				font-weight: 600;
+				font-weight: 500;
 			}
 			
 			.list_title,
@@ -684,7 +684,7 @@
 			}
 			
 			.share_right {
-				margin-left: 200px;
+				/* margin-left: 200px; */
 				margin-right: 50px;
 				display: flex;
 				flex-direction: column;
@@ -1144,12 +1144,12 @@
 							<div id="user_head">
 								<!-- <img id="user_head"  src="" /> -->
 							</div>
-							<div class="user_name">
-								<div class="user_id">
+							<div class="user_name" >
+								<div class="user_id" style="margin-bottom: 6px;">
 									<span id="user_name"></span>
 									<span id="id"></span>
 								</div>
-								<div class="user_address_box">
+								<div class="user_address_box"  style="margin-bottom: 6px;">
 									地址：
 									<p id="user_address" class="address"></p>
 								</div>
@@ -1355,19 +1355,19 @@
 								</div>
 								<div class="detail_box">
 									<div class="yesterday">
-										<div>昨日收益/元</div>
+										<div>昨日收益 / 元</div>
 										<div id="yesterday_money">0</div>
-										<div id="week_money">近7日收益0元</div>
+										<div id="week_money">近7日收益 0 元</div>
 									</div>
 									<div class="month">
-										<div>本月收益/元</div>
-										<div id="month_money">0</div>
-										<div id="money_sum">总收益0元</div>
+										<div>本月收益 / 元</div>
+										<div id="month_money" style="margin-top: 6px;">0</div>
+										<div id="money_sum">总收益 0 元</div>
 									</div>
 									<div class="wallet">
 										<div>钱包</div>
 										<div class="wallet_money">
-											<div id="wallet_coin">论坛币：0</div>
+											<div id="wallet_coin" style="margin-top: 6px;">论坛币：0</div>
 											<div id="wallet_money">余额：0元</div>
 										</div>
 										<div class="rechange">
@@ -1514,13 +1514,13 @@
 										<h4>发布形式：</h4>
 										<div class="checkbox" id="Form">
 											<label>
-												<input type="radio" name="form" id="" value="0" checked="checked"/><span>公开</span>
+												<input type="radio" name="form" id="" value="0" checked="checked"/><span style="margin-left: 6px;margin-right: 12px;">公开</span>
 											</label>
 											<label>
-												<input type="radio" name="form" id="" value="1" /><span>粉丝可见</span>
+												<input type="radio" name="form" id="" value="1" /><span style="margin-left: 6px;margin-right: 12px;">粉丝可见</span>
 											</label>
 											<label>
-												<input type="radio" name="form" id="" value="2" /><span>私密</span>
+												<input type="radio" name="form" id="" value="2" /><span style="margin-left: 6px;margin-right: 12px;">私密</span>
 											</label>
 											<div>
 												<input type="text" name="radioForm" id="radioForm" value="0" hidden="hidden" />
@@ -2618,7 +2618,15 @@
 				}else{
 					twoNum = Number($('#Classification option:selected').val())
 				}
-				console.log(twoNum)
+				if($("#postTitle").val() == ''){
+					alert("请输入文章标题");
+					return;
+				}
+				if($("#Tag").val() == ''){
+					alert("请输入文章标签");
+					return;
+				}
+				
 				var picfile = $("#picFile").get(0).files[0];
 				var file1 = $("#file1").get(0).files[0];
 				var formData = new FormData();

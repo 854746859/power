@@ -22,7 +22,7 @@ html,body{ background-color:#eee;width: 100%;}
 .l{ float: left; display: flex; align-items: center;}
 .r{ float: right; }
 .db{display:block;}
-.dib{display:inline-block;width: 130px;font-size: 12px;}
+.dib{display:inline-block;font-size: 12px;}
 .vm{vertical-align:middle;}
 .bdb_d{border-bottom:1px solid #ddd;}
 .fc{ color: #333; font-family:PingFangSC-Regular,PingFang SC; font-size: 20px;}
