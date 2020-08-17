@@ -123,7 +123,7 @@
 			.post_info .user {
 				display: flex;
 				flex-direction: row;
-				align-items: center;
+				/* align-items: center; */
 			}
 			
 			.post_info .user img {
@@ -138,7 +138,7 @@
 				align-items: flex-start;
 				padding: 10px;
 				position: absolute;
-				margin-top: 100px;
+				margin-top: 34px;
 				z-index: 999;
 			}
 			.post_info .user .info_box .user_name {
@@ -198,10 +198,13 @@
 			}
 			
 			.trivial {
-				display: flex;
-				flex-direction: row;
+				display: flex;/* 
+				flex-direction: row; */
 				width: 40%;
 				justify-content: space-between;
+				display: flex;
+			    flex-flow: row wrap;
+			    align-content: flex-start;
 			}
 			
 			.trivial div {
@@ -209,6 +212,7 @@
 				flex-direction: column;
 				justify-content: center;
 				align-items: center;
+				flex: 0 0 33%;
 			}
 			
 			.trivial span {
@@ -845,9 +849,13 @@
 						<div class="post_info">
 							<div class="user">
 								<img id="user_head" src="images/manager.jpg" />
+								
 								<div class="info_box" id="info_box">
 									<div class="user_name">
-										<h3 id="user_name" style="min-height: 25px;">xx</h3>
+										<div style="display: flex;align-items: center;margin-bottom: 10px;">
+											<img id="user_heads" src="images/manager.jpg" />
+											<h3 id="user_name" style="min-height: 25px;margin: 0;padding-bottom: 0px;padding-left: 10px;">xx</h3>
+										</div>
 										<div class="user_intro" id="user_profile">
 											<p>ta比较懒还没有说明</p>
 										</div>
@@ -868,6 +876,14 @@
 												<span style="font-size: 12px;color: #807979;">转发</span>
 												<span id="user_follow_sum">0</span>
 											</div>
+											<div>
+												<span style='font-size: 12px;color: #807979;'>积分</span>
+												<span id='user_coin_sum'></span>
+											</div>
+										</div>
+										<div style="margin-top: 10px;">
+											<button style="background-color: #0084ff;color: #fff;width: 64px;height: 20px;border-radius: 4px;"  onclick="attention('admin_id')">个人主页</button>
+											<input type="text" name="admin_id" id="admin_id" value="" hidden="hidden"/>
 										</div>
 									</div>
 								</div>
@@ -1623,6 +1639,7 @@
 							$("#postForwardnum").html(Number(data.data.post_forwardnum)); //转发数
 							$("#postCollectionnum").html(Number(data.data.post_collectionnum)); //收藏数
 							$("#user_head").attr("src", data.data.user_head);
+							$("#user_heads").attr("src", data.data.user_head);
 							$("#user_head").attr("name", data.data.post_userid);
 							$("#user_name").html(data.data.user_name==null?"昵称":data.data.user_name);
 							$("#user_profile").html(data.data.user_profile==null?"ta比较懒没有说明":data.data.user_profile);

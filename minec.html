@@ -1166,8 +1166,8 @@
 						</div>
 					</div>
 					<div class="edit_info">
-						<a href="personal.html">编辑信息</a>
-						<a href="aprove.html">实名认证</a>
+						<!-- <a href="personal.html">编辑信息</a>
+						<a href="aprove.html">实名认证</a> -->
 					</div>
 					<!--<div id="signup">
 						<div id="signup-ct">
@@ -1257,7 +1257,7 @@
 											<li>
 												<a name="fan">粉丝</a>
 											</li>
-											<li>
+											<!-- <li>
 												<a name="wallet">收益/钱包</a>
 											</li>
 											<li>
@@ -1268,18 +1268,18 @@
 											</li>
 											<li>
 												<a name="notice">系统通知</a>
-											</li>
+											</li> -->
 										</ul>
 									</div>
 								</nav>
 							</div>
 							<!-- 当前位置 -->
 							<div class="classification" id="hide" style="display:none;">
-								<ul id="menu" class="ul_bc">
+								<!-- <ul id="menu" class="ul_bc">
 									<li onclick="question(1)">已发布</li>
 									<li onclick="question(2)">草稿</li>
 									<li onclick="question(3)">退回</li>
-								</ul>
+								</ul> -->
 								<div class="sort">
 									<!--<div class="sort_type">
 										<span>
@@ -1886,7 +1886,7 @@
 			// 获取我的信息
 			var data = sessionStorage.getItem("data");
 			var infodata = eval('(' + data + ')');
-			// console.log(infodata.token);
+			console.log(infodata.token);
 			if(infodata != null) {
 				var admin_box_head = '';
 				var infodatatoken = infodata.token
@@ -2118,8 +2118,8 @@
 								post += "<div class='news_owner news_other'><span id=''>发帖人：" + postdata[i]['post_user_name'] + "</span>";
 								post += "<span id=''>最后回复人：" + postdata[i]['last_user_name'] +
 									"</span>";
-								post += "</div></div><div class='share_right share bdsharebuttonbox'><div><img style='width: 20px;height: 20px;' src='images/write.png' />";
-								post += "<img style='width: 20px;height: 20px;' onclick = 'Delete("+postdata[i]['id']+")' src='images/delete.png' /></div><div style='display:flex;flex-direction:row;align-items:center;'><p style='float:left;width: 60px;'>分享：</p>";
+								// post += "</div></div><div class='share_right share bdsharebuttonbox'><div><img style='width: 20px;height: 20px;' src='images/write.png' />";
+								// post += "<img style='width: 20px;height: 20px;' onclick = 'Delete("+postdata[i]['id']+")' src='images/delete.png' /></div><div style='display:flex;flex-direction:row;align-items:center;'><p style='float:left;width: 60px;'>分享：</p>";
 								post += "<a url='forum.html?postid=" + postdata[i]['id'] + "' class='bds_weixin' data-cmd='weixin'></a><a url='forum.html?postid=" + postdata[i]['id'] + "' class='bds_tsina' data-cmd='tsina'></a></div></div></li>";
 								postlist.innerHTML = post;
 							}
@@ -2293,12 +2293,12 @@
 									"</span></div>";
 								post += "<div class='news_owner news_other'><span id=''>发帖人：" + postdata[i]['post_user_name'] +
 									"</span>";
-								post += "<span id=''>最后回复人：" + postdata[i]['last_user_name'] +
-									"</span><div class='share bdsharebuttonbox'>分享：";
-								post +=
-									"<a url='forum.html?postid=" + postdata[i]['id'] +
-									"' class='bds_weixin' data-cmd='weixin'></a><a url='forum.html?postid=" + postdata[i]['id'] +
-									"' class='bds_tsina' data-cmd='tsina'></a></div></div></div><img style='width: 20px;height: 20px;' src='images/write.png' /><img style='width: 20px;height: 20px;' onclick = 'Delete("+postdata[i]['id']+")' src='images/delete.png' /></li>";
+								// post += "<span id=''>最后回复人：" + postdata[i]['last_user_name'] +
+								// 	"</span><div class='share bdsharebuttonbox'>分享：";
+								// post +=
+								// 	"<a url='forum.html?postid=" + postdata[i]['id'] +
+								// 	"' class='bds_weixin' data-cmd='weixin'></a><a url='forum.html?postid=" + postdata[i]['id'] +
+								// 	"' class='bds_tsina' data-cmd='tsina'></a></div></div></div><img style='width: 20px;height: 20px;' src='images/write.png' /><img style='width: 20px;height: 20px;' onclick = 'Delete("+postdata[i]['id']+")' src='images/delete.png' /></li>";
 								qusetionlist.innerHTML = post;
 							}
 							$('.bdsharebuttonbox a').on('mousemove', function() {
@@ -2374,10 +2374,10 @@
 									] + "</div><div>关注时间：" + fansdata[i]['follow_time'] + "</div>";
 								fans += "</div><div class='news_time news_other'><span>个人简介：</span><p>" + fansdata[i]['user_profile'] +
 									"</p>";
-								fans += "</div><div class='news_owner news_other'><span id=''>关注：" + fansdata[i]['user_follow_sum'] +
-									"|粉丝：" + fansdata[i]['user_fans_sum'] + "</span>";
-								fans +=
-									"</div></div><div class='about_att'><div class='cansel' onclick='attention("+fansdata[i]['id']+")'>关注+</div><div class='hispage'></div></div></li>";
+								// fans += "</div><div class='news_owner news_other'><span id=''>关注：" + fansdata[i]['user_follow_sum'] +
+								// 	"|粉丝：" + fansdata[i]['user_fans_sum'] + "</span>";
+								// fans +=
+								// 	"</div></div><div class='about_att'><div class='cansel' onclick='attention("+fansdata[i]['id']+")'>关注+</div><div class='hispage'></div></div></li>";
 								fanslist.innerHTML = fans;
 							}
 						}
@@ -2479,12 +2479,12 @@
 									"</span></div>";
 								post += "<div class='news_owner news_other'><span id=''>发帖人：" + collectiondata[i]['post_user_name'] +
 									"</span>";
-								post += "<span id=''>最后回复人：" + collectiondata[i]['last_user_name'] +
-									"</span><div class='share bdsharebuttonbox'>分享：";
-								post +=
-									"<a url='forum.html?postid=" + collectiondata[i]['id'] +
-									"' class='bds_weixin' data-cmd='weixin'></a><a url='forum.html?postid=" + collectiondata[i]['id'] +
-									"' class='bds_tsina' data-cmd='tsina'></a></div></div></div><img style='width: 20px;height: 20px;' src='images/write.png' /><img style='width: 20px;height: 20px;' onclick = 'cancelColl("+collectiondata[i]['id']+")' src='images/delete.png' /></li>";
+								// post += "<span id=''>最后回复人：" + collectiondata[i]['last_user_name'] +
+								// 	"</span><div class='share bdsharebuttonbox'>分享：";
+								// post +=
+								// 	"<a url='forum.html?postid=" + collectiondata[i]['id'] +
+								// 	"' class='bds_weixin' data-cmd='weixin'></a><a url='forum.html?postid=" + collectiondata[i]['id'] +
+								// 	"' class='bds_tsina' data-cmd='tsina'></a></div></div></div><img style='width: 20px;height: 20px;' src='images/write.png' /><img style='width: 20px;height: 20px;' onclick = 'cancelColl("+collectiondata[i]['id']+")' src='images/delete.png' /></li>";
 								collectionlist.innerHTML = post;
 							}
 							$('.bdsharebuttonbox a').on('mousemove', function() {
@@ -2561,10 +2561,10 @@
 										'user_profile'
 									] +
 									"</p>";
-								follows += "</div><div class='news_owner news_other'><span id=''>关注：" + followsdata[i]['user_follow_sum'] +
-									"|粉丝：" + followsdata[i]['user_fans_sum'] + "</span>";
-								follows +=
-									"</div></div><div class='about_att'><div class='cansel' onclick='deleteIt("+followsdata[i]['id']+")'>取消关注</div><div class='hispage'></div></div></li>";
+								// follows += "</div><div class='news_owner news_other'><span id=''>关注：" + followsdata[i]['user_follow_sum'] +
+								// 	"|粉丝：" + followsdata[i]['user_fans_sum'] + "</span>";
+								// follows +=
+								// 	"</div></div><div class='about_att'><div class='cansel' onclick='deleteIt("+followsdata[i]['id']+")'>取消关注</div><div class='hispage'></div></div></li>";
 								followslist.innerHTML = follows;
 							}
 						}

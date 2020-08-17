@@ -108,7 +108,7 @@
 			.post_info .user {
 				display: flex;
 				flex-direction: row;
-				align-items: center;
+				/* align-items: center; */
 			}
 			
 			.post_info .user img {
@@ -123,7 +123,7 @@
 				align-items: flex-start;
 				padding: 10px;
 				position: absolute;
-				margin-top: 90px;
+				margin-top: 34px;
 				z-index: 1000;
 			}
 			.post_info .user .info_box .user_name {
@@ -177,11 +177,13 @@
 				border-radius: 3px;
 			}
 			
-			.trivial {
+			.trivial {/* 
 				display: flex;
-				flex-direction: row;
+				flex-direction: row; */
 				width: 40%;
-				justify-content: space-between;
+				justify-content: space-between;z
+				flex-flow: row wrap;
+				align-content: flex-start;
 			}
 			
 			.trivial div {
@@ -189,6 +191,7 @@
 				flex-direction: column;
 				justify-content: center;
 				align-items: center;
+				flex: 0 0 33%;
 			}
 			
 			.post_text {
@@ -891,7 +894,10 @@
 								<img id="user_head" src="images/manager.jpg" />
 								<div class="info_box" id="info_box">
 									<div class="user_name">
-										<h3 id="user_name">xx</h3>
+										<div id="">
+											<img id="user_heads" src="images/manager.jpg" />
+											<h3 id="user_name">xx</h3>
+										</div>
 										<div class="user_intro" id="user_profile">
 											<p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
 										</div>
@@ -924,7 +930,7 @@
 								</span>
 							</div>
 							<div class="trivial">
-								<div>
+								<!-- <div>
 									<span>发布</span>
 									<span id="user_release_sum">0</span>
 								</div>
@@ -939,11 +945,7 @@
 								<div>
 									<span>转发</span>
 									<span id="user_follow_sum">0</span>
-								</div>
-								<!--<div>
-							<span>访问</span>
-							<span>12k</span>
-						</div>-->
+								</div> -->
 							</div>
 						</div>
 						<div class="post_text" id="postContent">

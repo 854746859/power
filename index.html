@@ -209,7 +209,7 @@
 				border-radius: 5px;
 			}
 			.info_box:before{
-				content: '';
+				/* content: ''; */
 				width: 0;
 				height: 0;
 				border-width: 16px 8px;
@@ -254,12 +254,15 @@
 			}
 			
 			.trivial {
-				padding-top: 10px;
+				padding-top: 10px;/* 
 				display: flex;
-				flex-direction: row;
+				flex-direction: row; */
 				width: 40%;
 				border-top: 1px solid #eee;
 				justify-content: space-between;
+				display: flex;
+				  flex-flow: row wrap;
+				  align-content: flex-start;
 			}
 			
 			.trivial div {
@@ -267,6 +270,7 @@
 				flex-direction: column;
 				justify-content: center;
 				align-items: center;
+				flex: 0 0 33%;
 			}
 			
 			.trivial span {
@@ -632,8 +636,10 @@
 									</div>-->
 									<div class='info_box' id='info_box'>
 										<div class='user_name'>
-											<h3 id="plate_admin_name" style='min-height: 25px;margin: 0;'>
-											</h3>
+											<div style="display: flex;align-items: center;margin-bottom: 10px;">
+												<img id="plate_admin_pics" src="images/manager.jpg" />
+												<h3 id="plate_admin_name" style='min-height: 25px;margin: 0;padding-bottom: 0px;padding-left: 10px;'></h3>
+											</div>
 											<div class='user_intro' id='user_profile'>
 												<p id="plate_admin_info">
 												
@@ -654,15 +660,23 @@
 														
 													</span>
 												</div>
+												<br>
 												<div>
 													<span style='font-size: 12px;color: #807979;'>转发</span>
 													<span id='admin_user_forward_sum'>
 														
 													</span>
 												</div>
+												<div>
+													<span style='font-size: 12px;color: #807979;'>积分</span>
+													<span id='admin_user_coin_sum'>
+														
+													</span>
+												</div>
 											</div>
-											<div>
+											<div style="margin-top: 10px;">
 												<button style="background-color: #0084ff;color: #fff;width: 46px;height: 20px;border-radius: 4px;"  onclick="attention('admin_id')">+关注</button>
+												<button style="background-color: #0084ff;color: #fff;width: 64px;height: 20px;border-radius: 4px;"  onclick="attention('admin_id')">个人主页</button>
 												<input type="text" name="admin_id" id="admin_id" value="" hidden="hidden"/>
 											</div>
 										</div>
@@ -679,8 +693,11 @@
 									</div>-->
 									<div class='info_box' id='info_box'>
 										<div class='user_name'>
-											<h3 id="plate_master_name" style='min-height: 25px;margin: 0;'>
-											</h3>
+											<div style="display: flex;align-items: center;margin-bottom: 10px;">
+												<img id="plate_master_pics" src="images/owner.jpg" />
+												<h3 id="plate_master_name" style='min-height: 25px;margin: 0;padding-bottom: 0px;padding-left: 10px;'></h3>
+												</div>
+											
 											<div class='user_intro' id='user_profile'>
 												<p id="plate_master_info">
 												
@@ -707,9 +724,16 @@
 														
 													</span>
 												</div>
+												<div>
+													<span style='font-size: 12px;color: #807979;'>积分</span>
+													<span id='master_user_coin_sum'>
+														
+													</span>
+												</div>
 											</div>
 											<div>
 												<button style="background-color: #0084ff;color: #fff;width: 46px;height: 20px;border-radius: 4px;" onclick="attention('master_id')">+关注</button>
+												<button style="background-color: #0084ff;color: #fff;width: 64px;height: 20px;border-radius: 4px;"  onclick="attention('admin_id')">个人主页</button>
 												<input type="text" name="master_id" id="master_id" value="" hidden="hidden"/>
 											</div>
 										</div>
@@ -1194,9 +1218,11 @@
 					var plate_master = res.data.plate_master;
 					var hot_post = res.data.hot_post;
 					$("#plate_admin_pic").attr("src",plate_admin.user_head);
+					$("#plate_admin_pics").attr("src",plate_admin.user_head);
 					$("#plate_admin_name").html(plate_admin.user_name);
 					$("#plate_admin_info").html(plate_admin.user_profile);
 					$("#plate_master_pic").attr("src",plate_master.user_head);
+					$("#plate_master_pics").attr("src",plate_master.user_head);
 					$("#plate_master_name").html(plate_master.user_name);
 					$("#plate_master_info").html(plate_master.user_profile);
 					$("#admin_id").val(plate_admin.id)
@@ -1206,11 +1232,12 @@
 					$("#admin_user_fans_sum").html(plate_master.user_fans_sum);
 					$("#admin_user_laid_sum").html(plate_master.user_laid_sum);
 					$("#admin_user_forward_sum").html(plate_master.user_forward_sum);
-					
+					$("#admin_user_coin_sum").html(plate_master.user_coin_sum);
 					$("#master_user_release_sum").html(plate_master.user_release_sum);
 					$("#master_user_fans_sum").html(plate_master.user_fans_sum);
 					$("#master_user_laid_sum").html(plate_master.user_laid_sum);
 					$("#master_user_forward_sum").html(plate_master.user_forward_sum);
+					$("#master_user_coin_sum").html(plate_master.user_coin_sum);
 					for (var i = 0; i < hot_post.length; i++) {
 						info += "<li><a href='forum.html?postid=" + hot_post[i]['id'] + "&plate=" + json.plate + "&plate_two=" + json.two +
 							"'><b>·</b><span>" + hot_post[i]['post_title'] + "</span></a></li>";
