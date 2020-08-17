@@ -15,6 +15,7 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<link rel="stylesheet" type="text/css" href="css/children.css" />
 		<link rel="stylesheet" type="text/css" href="css/paging.css" />
+		<link href="https://cdn.bootcss.com/jquery-toast-plugin/1.3.2/jquery.toast.css" rel="stylesheet">
 		<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
 		<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
 		<script type="text/javascript" src="js/public.js"></script><!-- 菜单js等-->
@@ -641,24 +642,28 @@
 											<div class='trivial' style='width: 100%;margin-top: 5px;'>
 												<div>
 													<span style='font-size: 12px;color: #807979;'>发布</span>
-													<span id='user_release_sum'></span>
+													<span id='admin_user_release_sum'></span>
 												</div>
 												<div>
 													<span style='font-size: 12px;color: #807979;'>粉丝</span>
-													<span id='user_fans_sum'></span>
+													<span id='admin_user_fans_sum'></span>
 												</div>
 												<div>
 													<span style='font-size: 12px;color: #807979;'>获赞</span>
-													<span id='post_upnum'>
+													<span id='admin_user_laid_sum'>
 														
 													</span>
 												</div>
 												<div>
 													<span style='font-size: 12px;color: #807979;'>转发</span>
-													<span id='user_follow_sum'>
+													<span id='admin_user_forward_sum'>
 														
 													</span>
 												</div>
+											</div>
+											<div>
+												<button style="background-color: #0084ff;color: #fff;width: 46px;height: 20px;border-radius: 4px;"  onclick="attention('admin_id')">+关注</button>
+												<input type="text" name="admin_id" id="admin_id" value="" hidden="hidden"/>
 											</div>
 										</div>
 									</div>
@@ -684,24 +689,28 @@
 											<div class='trivial' style='width: 100%;margin-top: 5px;'>
 												<div>
 													<span style='font-size: 12px;color: #807979;'>发布</span>
-													<span id='user_release_sum'></span>
+													<span id='master_user_release_sum'></span>
 												</div>
 												<div>
 													<span style='font-size: 12px;color: #807979;'>粉丝</span>
-													<span id='user_fans_sum'></span>
+													<span id='master_user_fans_sum'></span>
 												</div>
 												<div>
 													<span style='font-size: 12px;color: #807979;'>获赞</span>
-													<span id='post_upnum'>
+													<span id='master_user_laid_sum'>
 														
 													</span>
 												</div>
 												<div>
 													<span style='font-size: 12px;color: #807979;'>转发</span>
-													<span id='user_follow_sum'>
+													<span id='master_user_forward_sum'>
 														
 													</span>
 												</div>
+											</div>
+											<div>
+												<button style="background-color: #0084ff;color: #fff;width: 46px;height: 20px;border-radius: 4px;" onclick="attention('master_id')">+关注</button>
+												<input type="text" name="master_id" id="master_id" value="" hidden="hidden"/>
 											</div>
 										</div>
 									</div>
@@ -832,6 +841,7 @@
 		<script type="text/javascript" src="config.js"></script>
 		<script type="text/javascript" src="js/paging/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/paging/paging.js"></script>
+		<script src="https://cdn.bootcss.com/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
 		<script type="text/javascript">
 			window.onload = BaiduShare();
 			function BaiduShare(){
@@ -856,30 +866,87 @@
 			var data = sessionStorage.getItem("data");
 			var infodata = eval('(' + data + ')');
 
-//			if (infodata != null) {
-//				var admin_box_head = '';
-//				var infodatatoken = infodata.token
-//				var admin_box = document.getElementById("admin_box");
-//
-//				if (infodatatoken.length > 1) {
-//					admin_box_head += "<div class='admin'><a href='mine.html'><img id='head'  class='admin_logo' src='" + infodata.user_head +
-//						"'  /></a><a href='mine.html?fast=1'>快速发帖</a></div>";
-//					admin_box.innerHTML = admin_box_head;
-//				}
-//				
-//			}
 			$(".info_box").hide();
-			$("#plate_admin_pic").hover(function(){
+			$("#plate_admin_pic").mouseenter(function(){
 				$(this).next().show();
-			},function(){
-				$(this).next().hide();
 			})
-			$("#plate_master_pic").hover(function(){
+			$(".manager").mouseleave(function(){
+				$("#plate_admin_pic").next().hide();
+			})
+			$("#plate_master_pic").mouseenter(function(){
 				$(this).next().show();
-			},function(){
-				$(this).next().hide();
 			})
-
+			$(".owner").mouseleave(function(){
+				$("#plate_master_pic").next().hide();
+			})
+			
+			//关注
+			function attention(user_id){
+				var Info = JSON.parse(sessionStorage.getItem("data")) 
+				var Id = "#"+user_id
+				var userId = $(Id).val()
+				if(Info==null){
+					showMsg("请登录后关注！", "info", 2000)
+				}else{
+					$.ajax({
+						url:sever_url+"follow/add",
+						type:"post",
+						data:{
+							token: Info.token,
+							user_id: userId
+						},
+						dataType:"json",
+						success:function(res){
+							if(res.code){
+								showMsg(res.msg, "success", 2000)
+							}
+						}
+					})
+				}
+			}
+			function showMsg(text, icon, hideAfter) {
+		        if (heading == undefined) {
+		            var heading = "提示";
+		        }
+		        $.toast({
+		            text: text,//消息提示框的内容。
+		            heading: heading,//消息提示框的标题。
+		            icon: icon,//消息提示框的图标样式。
+		            showHideTransition: 'fade',//消息提示框的动画效果。可取值：plain，fade，slide。
+		            allowToastClose: true,//是否显示关闭按钮。(true 显示，false 不显示)
+		            hideAfter: hideAfter,//设置为false则消息提示框不自动关闭.设置为一个数值则在指定的毫秒之后自动关闭消息提框
+		            stack: 1,//消息栈。同时允许的提示框数量
+		            position: 'top-center',//消息提示框的位置：bottom-left, bottom-right,bottom-center,top-left,top-right,top-center,mid-center。
+		            textAlign: 'left',//文本对齐：left, right, center。
+		            loader: true,//是否显示加载条
+					//bgColor: '#FF1356',//背景颜色。
+					//textColor: '#eee',//文字颜色。
+		            loaderBg: '#ffffff',//加载条的背景颜色。
+		 
+					beforeShow: function(){
+//						alert('The toast is about to appear');
+					},
+		 
+					afterShown: function () {
+//						alert('Toast has appeared.');
+					},
+		 
+					beforeHide: function () {
+//						alert('Toast is about to hide.');
+					},
+		 
+					afterHidden: function () {
+//						alert('Toast has been hidden.');
+					}
+		 
+					/*toast事件
+					beforeShow 会在toast即将出现之前触发
+					afterShown 会在toast出现后触发
+					beforeHide 会在toast藏起来之前触发
+					afterHidden 会在toast藏起来后被触发
+					*/
+		        });
+		    }
 			// 获取当前分类
 			function GetRequest() {
 				var url = decodeURI(location.search); //获取url中"?"符后的字串
@@ -912,7 +979,7 @@
 			var plate = localStorage.getItem("plate")
 			var searchv = localStorage.getItem("searchv")
 				$.ajax({
-					url: 'http://114.55.35.82/tp6_forum/public/index.php/search/plate',
+					url: sever_url+'search/plate',
 					type: 'post',
 					data: {
 						plate: plate,
@@ -1024,7 +1091,7 @@
 				// alert(localStorage.getItem("type"))
 				var type = localStorage.getItem("type")
 				$.ajax({
-					url: 'http://114.55.35.82/tp6_forum/public/index.php/sort/select',
+					url: sever_url+'sort/select',
 					type: 'post',
 					data: {
 						// token: 'sadafsaf',
@@ -1111,7 +1178,7 @@
 			var rightinfo = document.getElementById("rightinfo");
 			(json.plate == undefined) ? plate = '1': plate = json.plate;
 			$.ajax({
-				url: 'http://114.55.35.82/tp6_forum/public/index.php/sort/info',
+				url: sever_url+'sort/info',
 				type: 'post',
 				data: {
 					plate: plate,
@@ -1132,6 +1199,18 @@
 					$("#plate_master_pic").attr("src",plate_master.user_head);
 					$("#plate_master_name").html(plate_master.user_name);
 					$("#plate_master_info").html(plate_master.user_profile);
+					$("#admin_id").val(plate_admin.id)
+					$("#master_id").val(plate_master.id)
+					
+					$("#admin_user_release_sum").html(plate_master.user_release_sum);
+					$("#admin_user_fans_sum").html(plate_master.user_fans_sum);
+					$("#admin_user_laid_sum").html(plate_master.user_laid_sum);
+					$("#admin_user_forward_sum").html(plate_master.user_forward_sum);
+					
+					$("#master_user_release_sum").html(plate_master.user_release_sum);
+					$("#master_user_fans_sum").html(plate_master.user_fans_sum);
+					$("#master_user_laid_sum").html(plate_master.user_laid_sum);
+					$("#master_user_forward_sum").html(plate_master.user_forward_sum);
 					for (var i = 0; i < hot_post.length; i++) {
 						info += "<li><a href='forum.html?postid=" + hot_post[i]['id'] + "&plate=" + json.plate + "&plate_two=" + json.two +
 							"'><b>·</b><span>" + hot_post[i]['post_title'] + "</span></a></li>";
