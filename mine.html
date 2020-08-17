@@ -877,7 +877,7 @@
 				align-items: center;
             }
             .info_box{
-            	width: 200px;
+            	width: 260px;
 				display: flex;
 				flex-direction: column;
 				align-items: flex-start;
@@ -890,7 +890,7 @@
 				box-shadow: 0px 0px 6px 6px rgba(0,0,0,0.1);
 			}
 			.info_box .user_name {
-				width: 180px;
+				width: 240px;
 				display: flex;
 				flex-direction: column;
 				/*height: 60px;*/
@@ -914,7 +914,7 @@
 			}
 			
 			.post_info .user .user_name .user_intro {
-				width: 220px;
+				width: 260px;
 				min-height: 30px;
 				overflow-wrap: break-word;
 				line-height: 1.5;
@@ -948,7 +948,8 @@
 			.trivial {
 				padding-top: 10px;
 				display: flex;
-				flex-direction: row;
+				  flex-flow: row wrap;
+				  align-content: flex-start;
 				width: 40%;
 				border-top: 1px solid #eee;
 				justify-content: space-between;
@@ -959,6 +960,7 @@
 				flex-direction: column;
 				justify-content: center;
 				align-items: center;
+				flex: 0 0 33%;
 			}
 			
 			.trivial span {
@@ -1987,7 +1989,7 @@
 					var new_fans_img = '';
 					var new_fans_list = document.getElementById("new_fans_list");
 					for(var i = 0; i < new_fans.length; i++) {
-						new_fans_img += "<div class='fan'><img id='plate_fan_pic' style='width:70px; height:70px; border-radius:50%; margin-top:8px;cursor: pointer;' src='" + new_fans[i].user_head +"'/><div class='info_box' id='info_box'><img id='' style='width:70px; height:70px; border-radius:50%;margin-top:8px;cursor: pointer;' src='" + new_visitor[i].user_head +"'/><div class='user_name'><h3 id='user_name' style='min-height: 25px;'>" + new_fans[i].user_name +"</h3><div class='user_intro' id='user_profile'><p>"+new_fans[i].user_profile+"</p></div><div class='trivial' style='width: 100%;margin-top: 5px;'><div><span style='font-size: 12px;color: #807979;'>发布</span><span id='user_release_sum'>" + new_fans[i].user_release_sum +"</span></div><div><span style='font-size: 12px;color: #807979;'>粉丝</span><span id='user_fans_sum'>" + new_fans[i].user_fans_sum +"</span></div><div><span style='font-size: 12px;color: #807979;'>获赞</span><span id='post_upnum'>" + new_fans[i].user_laid_sum +"</span></div><div><span style='font-size: 12px;color: #807979;'>转发</span><span id='user_follow_sum'>" + new_fans[i].user_forward_sum +"</span></div></div><div><button style='background-color: #0084ff;color: #fff;width: 46px;height: 20px;border-radius: 4px;' onclick='attention("+new_fans[i].id+")'>+关注</button><input type='text' name='master_id' id='master_id' value='' hidden='/></div></div></div></div>";
+						new_fans_img += "<div class='fan'><img id='plate_fan_pic' style='width:70px; height:70px; border-radius:50%; margin-top:8px;cursor: pointer;' src='" + new_fans[i].user_head +"'/><div class='info_box' id='info_box'><div class='user_name'><div style='display: flex;align-items: center;margin-bottom: 10px;'><img id='plate_fan_pics' style='width:70px; height:70px; border-radius:50%;margin-top:8px;cursor: pointer;' src='" + new_visitor[i].user_head +"'/><h3 id='user_name' style='min-height: 25px;margin: 0;padding-bottom: 0px;padding-left: 10px;'>" + new_fans[i].user_name +"</h3></div><div class='user_intro' id='user_profile'><p>"+new_fans[i].user_profile+"</p></div><div class='trivial' style='width: 100%;margin-top: 5px;'><div><span style='font-size: 12px;color: #807979;'>发布</span><span id='user_release_sum'>" + new_fans[i].user_release_sum +"</span></div><div><span style='font-size: 12px;color: #807979;'>粉丝</span><span id='user_fans_sum'>" + new_fans[i].user_fans_sum +"</span></div><div><span style='font-size: 12px;color: #807979;'>获赞</span><span id='post_upnum'>" + new_fans[i].user_laid_sum +"</span></div><div><span style='font-size: 12px;color: #807979;'>转发</span><span id='user_follow_sum'>" + new_fans[i].user_forward_sum +"</span></div><div><span style='font-size: 12px;color: #807979;'>积分</span><span id='user_follow_sum'>" + new_fans[i].user_coin_sum +"</span></div></div><div style='margin-top: 10px;'><button style='background-color: #0084ff;color: #fff;width: 46px;height: 20px;border-radius: 4px;' onclick='attention("+new_fans[i].id+")'>+关注</button><input type='text' name='master_id' id='master_id' value='' hidden='/></div></div></div></div>";
 						
 						new_fans_list.innerHTML = new_fans_img;
 					}
@@ -1996,7 +1998,7 @@
 					var new_visitor_img = '';
 					var new_visitor_list = document.getElementById("new_visitor_list");
 					for(var i = 0; i < new_visitor.length; i++) {
-						new_visitor_img += "<div class='look'><img id='plate_look_pic' style='width:70px; height:70px; border-radius:50%;margin-top:8px;cursor: pointer;' src='" + new_visitor[i].user_head +"'/><div class='info_box' id='info_box'><img id='' style='width:70px; height:70px; border-radius:50%;margin-top:8px;cursor: pointer;' src='" + new_visitor[i].user_head +"'/><div class='user_name'><h3 id='user_name' style='min-height: 25px;'>" + new_visitor[i].user_name +"</h3><div class='user_intro' id='user_profile'><p>"+new_visitor[i].user_profile+"</p></div><div class='trivial' style='width: 100%;margin-top: 5px;'><div><span style='font-size: 12px;color: #807979;'>发布</span><span id='user_release_sum'>" + new_visitor[i].user_release_sum +"</span></div><div><span style='font-size: 12px;color: #807979;'>粉丝</span><span id='user_fans_sum'>" + new_visitor[i].user_fans_sum +"</span></div><div><span style='font-size: 12px;color: #807979;'>获赞</span><span id='post_upnum'>" + new_visitor[i].user_laid_sum +"</span></div><div><span style='font-size: 12px;color: #807979;'>转发</span><span id='user_follow_sum'>" + new_visitor[i].user_forward_sum +"</span></div></div><div><button style='background-color: #0084ff;color: #fff;width: 46px;height: 20px;border-radius: 4px;' onclick='attention("+new_visitor[i].id+")'>+关注</button><input type='text' name='master_id' id='master_id' value='' hidden='/></div></div></div></div>";
+						new_visitor_img += "<div class='look'><img id='plate_look_pic' style='width:70px; height:70px; border-radius:50%;margin-top:8px;cursor: pointer;' src='" + new_visitor[i].user_head +"'/><div class='info_box' id='info_box'><div style='display: flex;align-items: center;margin-bottom: 10px;'><img id='plate_look_pics' style='width:70px; height:70px; border-radius:50%;margin-top:8px;cursor: pointer;' src='" + new_visitor[i].user_head +"'/><h3 id='user_name' style='min-height: 25px;margin: 0;padding-bottom: 0px;padding-left: 10px;'>" + new_fans[i].user_name +"</h3></div><div class='user_intro' id='user_profile'><p>"+new_visitor[i].user_profile+"</p></div><div class='trivial' style='width: 100%;margin-top: 5px;'><div><span style='font-size: 12px;color: #807979;'>发布</span><span id='user_release_sum'>" + new_visitor[i].user_release_sum +"</span></div><div><span style='font-size: 12px;color: #807979;'>粉丝</span><span id='user_fans_sum'>" + new_visitor[i].user_fans_sum +"</span></div><div><span style='font-size: 12px;color: #807979;'>获赞</span><span id='post_upnum'>" + new_visitor[i].user_laid_sum +"</span></div><div><span style='font-size: 12px;color: #807979;'>转发</span><span id='user_follow_sum'>" + new_visitor[i].user_forward_sum +"</span></div><div><span style='font-size: 12px;color: #807979;'>积分</span><span id='user_follow_sum'>" + new_fans[i].user_coin_sum +"</span></div></div><div style='margin-top: 10px;'><button style='background-color: #0084ff;color: #fff;width: 46px;height: 20px;border-radius: 4px;' onclick='attention("+new_visitor[i].id+")'>+关注</button><input type='text' name='master_id' id='master_id' value='' hidden='/></div></div></div></div>";
 						new_visitor_list.innerHTML = new_visitor_img;
 					}
 

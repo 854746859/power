@@ -177,11 +177,12 @@
 				border-radius: 3px;
 			}
 			
-			.trivial {/* 
+			.trivial {
+				padding-top: 10px;
 				display: flex;
-				flex-direction: row; */
+				/* flex-direction: row; */
 				width: 40%;
-				justify-content: space-between;z
+				justify-content: space-between;
 				flex-flow: row wrap;
 				align-content: flex-start;
 			}
@@ -192,6 +193,10 @@
 				justify-content: center;
 				align-items: center;
 				flex: 0 0 33%;
+			}
+			
+			.trivial span {
+				height: 21px;
 			}
 			
 			.post_text {
@@ -894,9 +899,9 @@
 								<img id="user_head" src="images/manager.jpg" />
 								<div class="info_box" id="info_box">
 									<div class="user_name">
-										<div id="">
+										<div style="display: flex;align-items: center;margin-bottom: 10px;">
 											<img id="user_heads" src="images/manager.jpg" />
-											<h3 id="user_name">xx</h3>
+											<h3 id="user_name" style="min-height: 25px;margin: 0;padding-bottom: 0px;padding-left: 10px;">xx</h3>
 										</div>
 										<div class="user_intro" id="user_profile">
 											<p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
@@ -918,6 +923,14 @@
 												<span style="font-size: 12px;color: #807979;">关注</span>
 												<span id="my_focuse">0</span>
 											</div>
+											<div>
+												<span style="font-size: 12px;color: #807979;">积分</span>
+												<span id="my_coin">0</span>
+											</div>
+										</div>
+										<div style="margin-top: 10px;">
+											<button style="background-color: #0084ff;color: #fff;width: 64px;height: 20px;border-radius: 4px;"  onclick="attention('admin_id')">个人主页</button>
+											<input type="text" name="admin_id" id="admin_id" value="" hidden="hidden"/>
 										</div>
 									</div>
 								</div>
@@ -1306,11 +1319,12 @@
 		<script type="text/javascript" src="config.js"></script>
 		<script type="text/javascript" src="js/pop_ups/MiniDialog-es5.min.js"></script>
 		<script type="text/javascript">
-			$("#info_box").hide()
-			$("#user_head").hover(function(){
-				$("#info_box").show()
-			},function(){
-				$("#info_box").hide()
+			$(".info_box").hide();
+			$("#user_head").mouseenter(function(){
+				$(this).next().show();
+			})
+			$(".user").mouseleave(function(){
+				$("#user_head").next().hide();
 			})
 			//头部统计
 			$.ajax({
@@ -1623,6 +1637,7 @@
 							$("#postForwardnum").html(data.data.post_forwardnum); //转发数
 							$("#postCollectionnum").html(data.data.post_collectionnum); //收藏数
 							$("#user_head").attr("src", data.data.user_head);
+							$("#user_heads").attr("src", data.data.user_head);
 							$("#user_head").attr("name", data.data.post_userid);
 							$("#user_name").html(data.data.user_name);
 							$("#user_profile").html(data.data.user_profile);
