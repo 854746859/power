@@ -213,6 +213,7 @@
 //					alert(ele.option.pages)
 					// 首页文章分页
 					if (ele.option.pages == "post") {
+						console.log("dfafsdasd")
 						// ajax请求文章列表
 						var post = "";
 						var postlist = document.getElementById("postlist");
@@ -222,7 +223,6 @@
 							// postlist.remove();
 							document.getElementById("postlist").innerHTML = "";
 						}
-						// alert(ele.option.showRecordNum)
 						$.ajax({
 							url: 'http://114.55.35.82/tp6_forum/public/index.php/sort/select',
 							type: 'post',

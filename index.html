@@ -259,7 +259,7 @@
 				flex-direction: row; */
 				width: 40%;
 				border-top: 1px solid #eee;
-				justify-content: space-between;
+				/* justify-content: space-between; */
 				display: flex;
 				  flex-flow: row wrap;
 				  align-content: flex-start;
@@ -275,6 +275,27 @@
 			
 			.trivial span {
 				height: 21px;
+			}
+			
+			.zy_right_con1{
+				float: left;
+				width: 780px;
+				overflow: hidden;
+			}
+			.blog_list1{
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				margin-left: 10px;
+				width: 676px !important;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+			.news_owner1{
+				display: flex;
+				justify-content: space-between;
+				align-items: flex-end; 
 			}
 		</style>
 	</head>
@@ -599,7 +620,7 @@
 								<h2 id="1">最后回复</h2>
 							</div>
 							<!-- 左边内容 -->
-							<div class="zy_right_con" style="margin-left: 24px;">
+							<div class="zy_right_con1" style="margin-left: 24px;">
 								<!-- 当前位置 -->
 
 								<!-- 内容展示块-->
@@ -630,10 +651,6 @@
 								<h3>版块管理员</h3>
 								<div class="info">
 									<img id="plate_admin_pic" src="images/manager.jpg" />
-									<!--<div class="description">
-										<div id="plate_admin_name">XXX</div>
-										<p id="plate_admin_info">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
-									</div>-->
 									<div class='info_box' id='info_box'>
 										<div class='user_name'>
 											<div style="display: flex;align-items: center;margin-bottom: 10px;">
@@ -675,8 +692,8 @@
 												</div>
 											</div>
 											<div style="margin-top: 10px;">
-												<button style="background-color: #0084ff;color: #fff;width: 46px;height: 20px;border-radius: 4px;"  onclick="attention('admin_id')">+关注</button>
-												<button style="background-color: #0084ff;color: #fff;width: 64px;height: 20px;border-radius: 4px;"  onclick="attention('admin_id')">个人主页</button>
+												<button style="background-color: #0084ff;color: #fff;padding: 4px 10px;border-radius: 4px;"  onclick="attention('admin_id')">+关注</button>
+												<button style="background-color: #0084ff;color: #fff;padding: 4px 10px;border-radius: 4px;"  onclick="toMinec('1')">个人主页</button>
 												<input type="text" name="admin_id" id="admin_id" value="" hidden="hidden"/>
 											</div>
 										</div>
@@ -732,8 +749,8 @@
 												</div>
 											</div>
 											<div style="margin-top: 10px;">
-												<button style="background-color: #0084ff;color: #fff;width: 46px;height: 20px;border-radius: 4px;" onclick="attention('master_id')">+关注</button>
-												<button style="background-color: #0084ff;color: #fff;width: 64px;height: 20px;border-radius: 4px;"  onclick="attention('admin_id')">个人主页</button>
+												<button style="background-color: #0084ff;color: #fff;padding: 4px 10px;border-radius: 4px; padding: 4px;" onclick="attention('master_id')">+关注</button>
+												<button style="background-color: #0084ff;color: #fff;padding: 4px 10px;border-radius: 4px;  padding: 4px;"  onclick="toMinec('2')">个人主页</button>
 												<input type="text" name="master_id" id="master_id" value="" hidden="hidden"/>
 											</div>
 										</div>
@@ -904,6 +921,15 @@
 				$("#plate_master_pic").next().hide();
 			})
 			
+			// 个人主页
+			function toMinec(index) {
+				if(index == '1') {
+					console.log($("#admin_id").val())
+				}else{
+					$("#master_id").val()				
+				}
+			}
+			
 			//关注
 			function attention(user_id){
 				var Info = JSON.parse(sessionStorage.getItem("data")) 
@@ -1059,7 +1085,7 @@
 								document.getElementById("menu").style.display = "none";
 							}
 							for (var i = 0; i < data.length; i++) {
-								post += "<li><img src='" + data[i].post_img + "'/><div class='blog_list'>";
+								post += "<li><img src='" + data[i].post_img + "'/><div class='blog_list1'>";
 								post += "<div class='news_title'><a href='forum.html?postid=" + data[i]['id'] + "&plate=" + json.plate +
 									"&plate_two=" + json.two + "''>" + data[i][
 										'post_title'
@@ -1068,7 +1094,7 @@
 								post += "<div class='news_time news_other'><span>发布于：" + data[i]['post_releasetime'] + "</span>";
 								post += "<span id=''>阅读数：" + data[i]['post_readnum'] + " </span><span id=''>点赞：" + data[i]['post_upnum'] +
 									"</span></div>";
-								post += "<div class='news_owner news_other'><span id=''>发帖人：" + data[i]['post_user_name'] + "</span>";
+								post += "<div class='news_owner1 news_other'><span id=''>发帖人：" + data[i]['post_user_name'] + "</span>";
 								post += "<span id=''>最后回复人：" + data[i]['last_user_name'] +
 									"</span><div class='share bdsharebuttonbox'>分享：";
 								post +=
@@ -1166,7 +1192,7 @@
 
 						} else {
 							for (var i = 0; i < data.length; i++) {
-								post += "<li><img src='" + data[i].post_img + "'/><div class='blog_list'>";
+								post += "<li><img src='" + data[i].post_img + "'/><div class='blog_list1'>";
 								post += "<div class='news_title'><a href='forum.html?postid=" + data[i]['id'] + "&plate=" + json.plate +
 									"&plate_two=" + json.two + "''>" + data[i][
 										'post_title'
@@ -1175,7 +1201,7 @@
 								post += "<div class='news_time news_other'><span>发布于：" + data[i]['post_releasetime'] + "</span>";
 								post += "<span id=''>阅读数：" + data[i]['post_readnum'] + " </span><span id=''>点赞：" + data[i]['post_upnum'] +
 									"</span></div>";
-								post += "<div class='news_owner news_other'><span id=''>发帖人：" + data[i]['post_user_name'] + "</span>";
+								post += "<div class='news_owner1 news_other'><span id=''>发帖人：" + data[i]['post_user_name'] + "</span>";
 								post += "<span id=''>最后回复人：" + data[i]['last_user_name'] + "</span><div class='share bdsharebuttonbox'>分享：";
 								post +=
 									"<a url='forum.html?postid=" + data[i]['id'] + "&plate=" + json.plate +
@@ -1212,7 +1238,6 @@
 				success: function(res) {
 					// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
 					// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
-					 console.log(res)
 					// console.log(res.data.plate_admin.user_name)
 					var plate_admin = res.data.plate_admin;
 					var plate_master = res.data.plate_master;
@@ -1228,7 +1253,7 @@
 					$("#admin_id").val(plate_admin.id)
 					$("#master_id").val(plate_master.id)
 					
-					$("#admin_user_release_sum").html(plate_master.user_release_sum);
+					$("#admin_user_release_sum").html(plate_master.user_release_sum ? '1': '2');
 					$("#admin_user_fans_sum").html(plate_master.user_fans_sum);
 					$("#admin_user_laid_sum").html(plate_master.user_laid_sum);
 					$("#admin_user_forward_sum").html(plate_master.user_forward_sum);
