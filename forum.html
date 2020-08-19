@@ -32,7 +32,6 @@
 			}
 			.blog_box {
 				width: 100%;
-				margin-top: 10px;
 				display: flex;
 				flex-direction: row;
 			}
@@ -41,6 +40,15 @@
 				width: 65%;
 				display: flex;
 				flex-direction: column;
+				margin-bottom: 17px;
+				padding: 16px 24px;
+				background: #fff;
+				border: 1px solid #ebebeb;
+			}
+			
+			.blog_title{
+				display: flex;
+				align-items: center;
 			}
 			
 			.blog_box .blog_detail .blog_left div:nth-child(n+2) {
@@ -49,26 +57,22 @@
 			}
 			
 			#postTitle {
-				margin-top: 12px;
-			    margin-bottom: 4px;
-			    font-size: 22px;
-			    font-weight: 600;
-			    font-synthesis: style;
-			    line-height: 32px;
-			    color: #1a1a1a;
+				color: #333;
+				font-size: 20px;
+				line-height: 36px;
+				word-break: break-all;
+				font-weight: 500;
+				font-family: -apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
 			}
 			
 			.blog_detail {
-				width: 96%;
-				padding-left: 2%;
-				padding-right: 2%;
+				width: 100%;
 				padding-bottom: 8px;
 				border-bottom: 1px solid #eee;
-				margin-top: 5px;
+				margin: 18px 0 0;
 				font-size: 14px;
 				display: flex;
 				flex-direction: row;
-				justify-content: space-between;
 			}
 			#time{
 				font-family:HelveticaNeue;
@@ -79,9 +83,17 @@
 				flex-direction: row;
 			}
 			
-			.post_type span:nth-child(n+2) {
-				margin-left: 5px;
-				color: red;
+			.post_type span {
+				display: inline-block;
+				line-height: 18px;
+				font-size: 12px;
+				font-weight: 500;
+				background: rgb(247, 100, 100);
+				color: rgb(255, 255, 255);
+				border-radius: 2px;
+				padding: 0px 4px;
+				margin-right: 4px;
+				text-align: center;
 			}
 			
 			.collect {
@@ -112,11 +124,8 @@
 				display: flex;
 				flex-direction: row;
 				justify-content: space-between;
-				margin-top: 5px;
 				align-items: center;
-				background-color: #eee;
-				padding: 10px;
-				margin-right: 10px;
+				padding: 10px 0;
 				border-radius: 5px;
 			}
 			
@@ -137,26 +146,27 @@
 				flex-direction: column;
 				align-items: flex-start;
 				padding: 10px;
+				margin-top: 66px;
 				position: absolute;
-				margin-top: 34px;
 				z-index: 999;
+				background-color: #fff;
+				/* margin: 140px 0 0 80px; */
+				border-radius: 6px;
+				box-shadow: 0px 0px 6px 6px rgba(0,0,0,0.1);			
 			}
 			.post_info .user .info_box .user_name {
+				width: 240px;
 				display: flex;
 				flex-direction: column;
-				/*height: 60px;*/
 				text-overflow: ellipsis;
 				overflow: hidden;
 				background-color: #fff;
-				padding: 10px;
 				border-radius: 5px;
-				box-shadow: 0px 0px 6px 6px rgba(0,0,0,0.1);
 			}
 			.info_box:before{
 				content: '';
 				width: 0;
 				height: 0;
-				border-width: 16px 8px;
 				border-style: solid;
 				border-color: transparent transparent #fff transparent; 
 				position: relative;
@@ -164,13 +174,13 @@
 				z-index: 999;
 			}
 			
-			.post_info .user .user_name .user_intro {
-				width: 220px;
-				min-height: 30px;
-				overflow-wrap: break-word;
-				line-height: 1.5;
-				padding-bottom: 5px;
-				border-bottom: #eee solid 1px;
+			.post_info .user .user_name .user_intro { 
+				margin-left: 8px;
+				width: 100%;
+				color: #333;
+				font-size: 14px;
+				font-family: -apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+				font-weight: 400;
 			}
 			
 			.attention {
@@ -197,14 +207,14 @@
 				margin-top: 8px;
 			}
 			
-			.trivial {/* 
+			.trivial {
+				padding-top: 10px;
 				display: flex;
-				flex-direction: row; */
-				width: 40%;
-				justify-content: space-between;
-				display: flex;
-			    flex-flow: row wrap;
-			    align-content: flex-start;
+				flex-flow: row wrap;
+				align-content: flex-start;
+				border-top: 1px solid #eee;
+				width: 100%;
+				margin-top: 5px;
 			}
 			
 			.trivial div {
@@ -215,8 +225,18 @@
 				flex: 0 0 33%;
 			}
 			
-			.trivial span {
-				height: 21px;
+			.spanTitle {
+				padding-bottom: 4px;
+				color: #999;
+				line-height: 13px;
+				font-size: 13px;
+			}
+			.spanInfo {
+			    color: #333;
+			    font-weight: 600;
+			    font-size: 16px;
+			    line-height: 16px;
+			    margin: 6px 0;
 			}
 			
 			.post_text {
@@ -371,8 +391,9 @@
 				font-size: 18px;
 			}
 			#readNum{
-				font-family:HelveticaNeue;
-				color:rgba(0,0,0,0.85);
+				color: #999;
+				font-size: 13px;
+				line-height: 18px;
 			}
 			
 			.commet .push_bt {
@@ -630,7 +651,44 @@
 				flex-direction: column;*/
 				justify-content: space-around;
 				align-items: center;
-            }
+			}
+			.read_num span,.public_time span{
+				color: #999;
+				font-size: 13px;
+				line-height: 18px;
+			}
+			#user_box{
+				display: flex;
+			}
+			.user_info{
+				margin-left: 20px;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+			}
+			#user_name_head{
+				color: #333;
+				font-weight: 600;
+				font-size: 16px;
+				font-family: -apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+			}
+			#time{
+				margin: 8px 0 0;
+				color: #999;
+				font-size: 13px;
+			}
+			.boxBtn{
+				display: inline-block;
+				height: 32px;
+				padding: 0 16px;
+				color: #fff;
+				line-height: 32px;
+				text-align: center;
+				background-color: #0084ff;
+				border: 0;
+				border-radius: 16px;
+				cursor: pointer;
+			}
 		</style>
 	</head>
 
@@ -810,7 +868,7 @@
 					</div>
                 </div>
 				<!-- 当前位置 -->
-				<div class="gonggao bdb_d fix">
+				<div class="gonggao fix">
 					<div class="txtScroll-top l zy_cur">
 						<div class="l tit"><img src="images/icon_location.png"><b class="dib vm">当前位置：</b></div>
 						<p class="l">
@@ -821,24 +879,34 @@
 				<div class="blog_box">
 					<div class="blog_left">
 						<div class="blog_title">
+							<div class="post_type" id="postLabel">
+							</div>
 							<h1 id="postTitle"></h1>
 						</div>
 						<div class="blog_detail">
-							<div class="post_type" id="postLabel">
+							<!-- <div class="post_type" id="postLabel">
 								<span>分类专栏：</span>
-								<!--<span>[原创]</span>
-						<span>[闲谈]</span>-->
-							</div>
-							<div class="public_time">
-								<span>发布于：</span>
-								<span id="time"></span>
-							</div>
+							</div> -->
 							<div class="read_num">
-								<span>阅读数：</span>
+								<span>浏览：</span>
 								<span id="readNum">
-
+							
 								</span>
 							</div>
+							
+							<div class="read_num">
+								<span style="margin: 0 4px;">·</span>
+								<span>获赞：</span>
+								<span id="getUpnum">
+							
+								</span>
+							</div>
+							
+							<!-- <div class="public_time">
+								<span>发布于：</span>
+								<span id="time"></span>
+							</div> -->
+							
 							<!--<div class="collect">
 								<img src="images/collection.png" />
 								<span>
@@ -846,91 +914,69 @@
 								</span>
 							</div>-->
 						</div>
-						<div class="state" id="postCopyright"><span>*</span>版权声明：本文为原创文章，转载请附上原文出处链接和本声明/未经许可不可转载。</div>
+						<!-- <div class="state" id="postCopyright"><span>*</span>版权声明：本文为原创文章，转载请附上原文出处链接和本声明/未经许可不可转载。</div> -->
 						<div class="post_info">
 							<div class="user">
-								<img id="user_head" src="images/manager.jpg" />
+								<div id="user_box">
+									<img id="user_head" src="images/manager.jpg" />
+									<div class="user_info">
+										<div id="user_name_head">
+												
+										</div>
+										<span id="time"></span>
+									</div>
+								</div>
 								
 								<div class="info_box" id="info_box">
 									<div class="user_name">
 										<div style="display: flex;align-items: center;margin-bottom: 10px;">
 											<img id="user_heads" src="images/manager.jpg" />
-											<h3 id="user_name" style="min-height: 25px;margin: 0;padding-bottom: 0px;padding-left: 10px;">xx</h3>
+											<h3 id="user_name" style="width: 240px;display: flex;flex-direction: column;text-overflow: ellipsis;overflow: hidden;background-color: #fff;border-radius: 5px;min-height: 25px;margin: 0;padding-bottom: 0px; padding-left: 10px;">xx</h3>
 										</div>
 										<div class="user_intro" id="user_profile">
 											<p>ta比较懒还没有说明</p>
 										</div>
-										<div class="trivial" style="width: 100%;margin-top: 5px;">
+										<div class="trivial">
 											<div>
-												<span style="font-size: 12px;color: #807979;">发布</span>
-												<span id="user_release_sum">0</span>
+												<span class="spanTitle">发布</span>
+												<span class="spanInfo" id="user_release_sum">0</span>
 											</div>
 											<div>
-												<span style="font-size: 12px;color: #807979;">粉丝</span>
-												<span id="user_fans_sum">0</span>
+												<span class="spanTitle">粉丝</span>
+												<span class="spanInfo" id="user_fans_sum">0</span>
 											</div>
 											<div>
-												<span style="font-size: 12px;color: #807979;">获赞</span>
-												<span id="post_upnum">0</span>
+												<span class="spanTitle">获赞</span>
+												<span class="spanInfo" id="post_upnum">0</span>
 											</div>
 											<div>
-												<span style="font-size: 12px;color: #807979;">转发</span>
-												<span id="user_follow_sum">0</span>
+												<span class="spanTitle">转发</span>
+												<span class="spanInfo" id="user_follow_sum">0</span>
 											</div>
 											<div>
 												<span style='font-size: 12px;color: #807979;'>积分</span>
-												<span id='user_coin_sum'>0</span>
+												<span class="spanInfo" id='user_coin_sum'>0</span>
 											</div>
 										</div>
-										<div style="margin-top: 10px;">
-											<button style="background-color: #0084ff;color: #fff;width: 64px;height: 20px;border-radius: 4px;"  onclick="attention('admin_id')">个人主页</button>
+										<div style="margin-top: 10px;margin-left: 12px;">
+											<button class="boxBtn"  onclick="attention('admin_id')">个人主页</button>
 											<input type="text" name="admin_id" id="admin_id" value="" hidden="hidden"/>
 										</div>
 									</div>
 								</div>
 							</div>
-							<div class="attention">
+							<!-- <div class="attention">
 								<input type="button" name="" id="attention" value="关注" />
 								<input type="button" name="" id="attentioned" value="取消关注" hidden="hidden" />
-								<!-- <span>
-									Ta的关注>
-								</span> -->
-							</div>
-							<div class="trivial">
-								<!--<div>
-									<span>发布</span>
-									<span id="user_release_sum">0</span>
-								</div>
-								<div>
-									<span>粉丝</span>
-									<span id="user_fans_sum">0</span>
-								</div>
-								<div>
-									<span>获赞</span>
-									<span id="post_upnum">0</span>
-								</div>
-								<div>
-									<span>转发</span>
-									<span id="user_follow_sum">0</span>
-								</div>-->
-								<!--<div>
-							<span>访问</span>
-							<span>12k</span>
-						</div>-->
-							</div>
+							</div> -->
 						</div>
 						<div class="post_text" id="postContent">
-							<!--<p> 在18日召开的国务院联防联控机制新闻发布会上，国资委副主任任洪斌表示，目前，中央企业所属2万余户生产型子企业开工率已超80%，石油石化、通信、电网、交通运输等行业已超95%，有的已达100%。</p>
-							<p> “疫情确实对央企生产经营造成了影响，对个别行业影响还较大，但这种影响是阶段性、暂时性的。”任洪斌表示，国资委不会改变年初制定的生产经营目标和改革任务，并将为此付出更大努力：一是指导央企分类有序带头复工复产，保持生产经营稳定运行;二是加强形势研判，分析企业所涉行业和产业链形势，强化预测预警，及时制定对策;三是加大降本节支、提质增效工作力度，尽力减少疫情造成的损失;四是指导央企用好金融、财税等政策，把握市场机遇，做好结构优化和稳产稳收。</p><img src="images/owner.jpg" />
-							<p>在18日召开的国务院联防联控机制新闻发布会上，国资委副主任任洪斌表示，目前，中央企业所属2万余户生产型子企业开工率已超80%，石油石化、通信、电网、交通运输等行业已超95%，有的已达100%。</p>-->
+							
 						</div>
 						<div class="annex_d" id="annex_d" style="display: none;">
 							<div class="annex_info">
 								<h3 id="enclosureName">附件标题</h3>
-								<!-- <div class="annex_des">
-									描述:
-									<p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
-								</div> -->
+								
 								<div class="annex_spent" style="margin-top: 12px;" id="enclosureCoin">
 									所需：0积分/论坛币
 								</div>
@@ -1246,11 +1292,11 @@
 		<script type="text/javascript">
 			
 		$(".info_box").hide();
-		$("#user_head").mouseenter(function(){
+		$("#user_box").mouseenter(function(){
 			$(this).next().show();
 		})
 		$(".user").mouseleave(function(){
-			$("#user_head").next().hide();
+			$("#user_box").next().hide();
 		})
 		$("#plate_master_pic").mouseenter(function(){
 			$(this).next().show();
@@ -1264,7 +1310,6 @@
 				url:`${sever_url}master/title`,
 				dataType:"json",
 				success:function(data){
-					console.log(data)
 					$("#user_count").html(data.data.user_count);
 					$("#post_count").html(data.data.post_count);
 					$("#user_loging").html(data.data.user_loging);
@@ -1631,8 +1676,8 @@
 							$("#postCopyright").html('<span>*</span>版权声明：' + data.data.post_copyright); //版权声明
 							$("#postContent").html("<p>" + data.data.post_content + "</p>"); //文章内容
 							var labels = new RegExp(",", "g"); //g,表示全部替换。
-							var label = data.data.post_label.replace(labels, "]</span><span>[");
-							$("#postLabel").append('<span>[' + label + ']</span>'); //文章标签，多个“，”隔开
+							var label = data.data.post_label.replace(labels, "</span><span>");
+							$("#postLabel").append('<span>' + label + '</span>'); //文章标签，多个“，”隔开
 							$("#post_plate").html(data.data.post_plate);
 							$("#post_plate_two").html(data.data.post_plate_two);
 							if (!data.data.revise_enclosure_name) {
@@ -1642,8 +1687,9 @@
 								$("#enclosureCoin").html('所需：' + data.data.revise_enclosure_coin + '积分/论坛币') //附件价格
 							}
 
-							$("#time").html(data.data.post_releasetime); //发布时间
+							$("#time").html('发布于：'+data.data.post_releasetime); //发布时间
 							$("#readNum").html(Number(data.data.post_readnum)); //阅读数
+							$("#getUpnum").html(Number(data.data.post_upnum)); //点赞数
 							$("#postUpnum").html(Number(data.data.post_upnum)); //点赞数
 							$("#postForwardnum").html(Number(data.data.post_forwardnum)); //转发数
 							$("#postCollectionnum").html(Number(data.data.post_collectionnum)); //收藏数
@@ -1651,6 +1697,8 @@
 							$("#user_heads").attr("src", data.data.user_head);
 							$("#user_head").attr("name", data.data.post_userid);
 							$("#user_name").html(data.data.user_name==null?"昵称":data.data.user_name);
+							$("#user_name_head").html(data.data.user_name==null?"昵称":data.data.user_name);
+							
 							$("#user_profile").html(data.data.user_profile==null?"ta比较懒没有说明":data.data.user_profile);
 							$("#user_release_sum").html(Number(data.data.user_release_sum));
 							$("#post_upnum").html(Number(data.data.post_upnum));

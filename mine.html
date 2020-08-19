@@ -293,9 +293,7 @@
 			}
 			
 			.box_one {
-				/* width: 100%;
-				height: 120px; */
-				padding: 18px 0px;
+				padding: 8px 0px;
 				border: 1px solid rgb(235, 235, 235);
 			}
 			
@@ -413,19 +411,37 @@
 			}
 
 			#lng_todaycount_list li h3{
+				width: 112px;
+				overflow: hidden;
+				color: #333;
 				font-size: 14px;
 				font-weight: 500;
-				font-family: PingFangSC-Regular,PingFang SC;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				word-break: keep-all;
+			}
+			
+			.box_three{
+				padding: 24px 0px;
+				margin-top: 10px;
+				border: 1px solid rgb(235, 235, 235);
 			}
 			
 			.box_three ul {
-				border: 1px solid #eee;
+				/* border: 1px solid #eee; */
 				margin: 0;
-				padding: 0 10px;
+				margin-top: 12px;
+				padding: 0 24px;
 			}
 			
 			.box_three ul li {
+				line-height: 20px !important;
+				width: 40%;
 				border-bottom: 1px dashed #eee;
+				padding: 8px 4%;
+			}
+			.box_three ul li:hover{
+				box-shadow: 2px 4px 6px #bdbdbd;
 			}
 			
 			.icon {
@@ -920,11 +936,11 @@
 				align-items: center;
             }
 			.info_box{
-				width: 260px;
 				display: flex;
 				flex-direction: column;
 				align-items: flex-start;
 				padding: 10px;
+				margin-top: -20px;
 				position: absolute;
 				z-index: 999;
 				background-color: #fff;
@@ -940,7 +956,7 @@
 				text-overflow: ellipsis;
 				overflow: hidden;
 				background-color: #fff;
-				padding: 10px;
+				/* padding: 10px; */
 				border-radius: 5px;
 			}
 			.info_box:before{
@@ -1005,8 +1021,31 @@
 				flex: 0 0 33%;
 			}
 			
-			.trivial span {
-				height: 21px;
+			.spanTitle {
+				padding-bottom: 4px;
+				color: #999;
+				line-height: 13px;
+				font-size: 13px;
+			}
+			.spanInfo{
+				color: #333;
+				font-weight: 600;
+				font-size: 16px;
+				line-height: 16px;
+				margin: 6px 0;
+			}
+			
+			.boxBtn{
+				display: inline-block;
+				height: 32px;
+				padding: 0 16px;
+				color: #fff;
+				line-height: 32px;
+				text-align: center;
+				background-color: #0084ff;
+				border: 0;
+				border-radius: 16px;
+				cursor: pointer;
 			}
 			
 			.news_owner1{
@@ -1031,6 +1070,7 @@
 			#plate_fan_box{
 				display: flex;
 				flex-direction: column;
+				margin-right: 12px;
 			}
 			.plate_fan_span{
 				display: block;
@@ -1046,6 +1086,19 @@
 			#plate_look_box{
 				display: flex;
 				flex-direction: column;
+			}
+			.user_profile{
+				color: #333;
+				font-size: 14px;
+			}
+			.spanList{
+				display: flex;
+				flex-direction: column;
+			}
+			.new_num{
+				margin-top: 2px;
+				color: #999 !important;
+				font-size: 12px;
 			}
 			
 		</style>
@@ -1679,18 +1732,17 @@
 						<div class="box_two">
 							<div class="new_fan">
 								<div class="title">
-									<span><i style="display: inline-block;width: 3px;height: 18px;background-color: #7c5dc7;border-radius: 1.5px;margin-right: 8px;"></i>新粉丝</span>
+									<span><i style="display: inline-block;width: 3px;height: 18px;background-color: #0084ff;border-radius: 1.5px;margin-right: 8px;"></i>新粉丝</span>
 									<a id="fanmore" class="more">更多>></a>
 								</div>
 								<div id="new_fans_list" class="avatar">
-									<!-- <div>
-										<img src="images/logo.jpg" />
-									</div> -->
+									<!-- 新粉丝头像 -->
+									
 								</div>
 							</div>
 							<div class="recent_visitors">
 								<div class="title">
-									<span><i style="display: inline-block;width: 3px;height: 18px;background-color: #7c5dc7;border-radius: 1.5px;margin-right: 8px;"></i>最近访客</span>
+									<span><i style="display: inline-block;width: 3px;height: 18px;background-color: #0084ff;border-radius: 1.5px;margin-right: 8px;"></i>最近访客</span>
 									<a href="javascript:void(0)" class="more"></a>
 								</div>
 								<div id="new_visitor_list" class="avatar">
@@ -1701,10 +1753,7 @@
 							</div>
 						</div>
 						<div class="box_three">
-							<div class="title bc">
-								<span>喜欢的版块</span>
-								<!-- <a class="more">返回首页</a> -->
-							</div>
+							<span style="margin-left: 24px;color: #333;font-weight: 600;font-size: 18px"><i style="display: inline-block;width: 3px;height: 18px;background-color: #0084ff;border-radius: 1.5px;margin-right: 8px;"></i>喜欢的版块</span>
 							<ul id="lng_todaycount_list">
 
 							</ul>
@@ -2006,17 +2055,16 @@
 					// 新粉丝
 					var new_fans_img = '';
 					var new_fans_list = document.getElementById("new_fans_list");
-					console.log(new_fans.length)
+					console.log(new_fans)
 					for(var i = 0; i < new_fans.length; i++) {
-						new_fans_img += "<div class='fan'><div id='plate_fan_box'><img id='plate_fan_pic' style='width:44px; height:44px; border-radius:50%; margin-top:8px;cursor: pointer;' src='" + new_fans[i].user_head +"'/><span class='plate_fan_span'>" + new_fans[i].user_name +"</span></div><div class='info_box' id='info_box'><div class='user_name'><div style='display: flex;align-items: center;margin-bottom: 10px;'><img id='plate_fan_pics' style='width:70px; height:70px; border-radius:50%;margin-top:8px;cursor: pointer;' src='" + new_visitor[i].user_head +"'/><h3 id='user_name' style='min-height: 25px;margin: 0;padding-bottom: 0px;padding-left: 10px;'>" + new_fans[i].user_name +"</h3></div><div class='user_intro' id='user_profile'><p>"+new_fans[i].user_profile+"</p></div><div class='trivial' style='width: 100%;margin-top: 5px;'><div><span style='font-size: 12px;color: #807979;'>发布</span><span id='user_release_sum'>" + new_fans[i].user_release_sum +"</span></div><div><span style='font-size: 12px;color: #807979;'>粉丝</span><span id='user_fans_sum'>" + new_fans[i].user_fans_sum +"</span></div><div><span style='font-size: 12px;color: #807979;'>获赞</span><span id='post_upnum'>" + new_fans[i].user_laid_sum +"</span></div><div><span style='font-size: 12px;color: #807979;'>转发</span><span id='user_follow_sum'>" + new_fans[i].user_forward_sum +"</span></div><div><span style='font-size: 12px;color: #807979;'>积分</span><span id='user_follow_sum'>" + new_fans[i].user_coin_sum +"</span></div></div><div style='margin-top: 10px;'><button style='background-color: #0084ff;color: #fff;width: 46px;height: 20px;border-radius: 4px;' onclick='attention("+new_fans[i].id+")'>+关注</button><input type='text' name='master_id' id='master_id' value='' hidden='/></div></div></div></div>";						
+						new_fans_img += `<div  class='fan'><div id='plate_fan_box${i}'><img id='plate_fan_pic' style='width:44px; height:44px; border-radius:50%; margin-top:8px;cursor: pointer;' src='${new_fans[i].user_head}'><span class='plate_fan_span'>${new_fans[i].user_name}</span></div><div class='info_box' id='info_box'><div class='user_name'><div style='display: flex;align-items: center;margin-bottom: 10px;'><img id='plate_fan_pics' style='width:70px; height:70px; border-radius:50%;margin-top:8px;cursor: pointer;' src='${new_fans[i].user_head}'/><h3 id='user_name' style='min-height: 25px;margin: 0;padding-bottom: 0px;padding-left: 10px;'>${new_fans[i].user_name}</h3></div><div class='user_intro' id='user_profile'><p class="user_profile">${new_fans[i].user_profile}</p></div><div class='trivial' style='width: 100%;margin-top: 5px;'><div class="spanList"><span class="spanTitle">发布</span><span class="spanInfo">${new_fans[i].user_release_sum}</span></div><div class="spanList"><span class="spanTitle">粉丝</span><span class="spanInfo">${new_fans[i].user_fans_sum}</span></div><div class="spanList"><span class="spanTitle">获赞</span>	<span class="spanInfo">${new_fans[i].user_laid_sum}</span></div><div class="spanList"><span class="spanTitle">转发</span><span class="spanInfo">${new_fans[i].user_forward_sum}</span></div><div class="spanList"><span class="spanTitle">积分</span><span class="spanInfo">${new_fans[i].user_coin_sum}</span></div></div><div style='margin-top: 10px;margin-left: 12px;'><button class="boxBtn" onclick='attention(${new_fans[i].id})'>+关注</button></div></div></div></div>`;
 					}
 					new_fans_list.innerHTML = new_fans_img;	
-					console.log(new_fans_img)
 					// 最近访客
 					var new_visitor_img = '';
 					var new_visitor_list = document.getElementById("new_visitor_list");
 					for(var i = 0; i < new_visitor.length; i++) {
-						new_visitor_img += "<div class='look'><div id='plate_look_box'><img id='plate_look_pic'  style='width:44px; height:44px; border-radius:50%; margin-top:8px;cursor: pointer;' src='" + new_visitor[i].user_head +"'/><span class='plate_fan_span'>" + new_visitor[i].user_name +"</span></div><div class='info_box' id='info_box'><div style='display: flex;align-items: center;margin-bottom: 10px;'><img id='plate_look_pics' style='width:70px; height:70px; border-radius:50%;margin-top:8px;cursor: pointer;' src='" + new_visitor[i].user_head +"'/><h3 id='user_name' style='min-height: 25px;margin: 0;padding-bottom: 0px;padding-left: 10px;'>" + new_fans[i].user_name +"</h3></div><div class='user_intro' id='user_profile'><p>"+new_visitor[i].user_profile+"</p></div><div class='trivial' style='width: 100%;margin-top: 5px;'><div><span style='font-size: 12px;color: #807979;'>发布</span><span id='user_release_sum'>" + new_visitor[i].user_release_sum +"</span></div><div><span style='font-size: 12px;color: #807979;'>粉丝</span><span id='user_fans_sum'>" + new_visitor[i].user_fans_sum +"</span></div><div><span style='font-size: 12px;color: #807979;'>获赞</span><span id='post_upnum'>" + new_visitor[i].user_laid_sum +"</span></div><div><span style='font-size: 12px;color: #807979;'>转发</span><span id='user_follow_sum'>" + new_visitor[i].user_forward_sum +"</span></div><div><span style='font-size: 12px;color: #807979;'>积分</span><span id='user_follow_sum'>" + new_fans[i].user_coin_sum +"</span></div></div><div style='margin-top: 10px;'><button style='background-color: #0084ff;color: #fff;width: 46px;height: 20px;border-radius: 4px;' onclick='attention("+new_visitor[i].id+")'>+关注</button><input type='text' name='master_id' id='master_id' value='' hidden='/></div></div></div></div>";
+						new_visitor_img += `<div  class='look'><div id='plate_look_box${i}'><img id='plate_look_pic' style='width:44px; height:44px; border-radius:50%; margin-top:8px;cursor: pointer;' src='${new_visitor[i].user_head}'><span class='plate_fan_span'>${new_visitor[i].user_name}</span></div><div class='info_box' id='info_box'><div class='user_name'><div style='display: flex;align-items: center;margin-bottom: 10px;'><img id='plate_look_pics' style='width:70px; height:70px; border-radius:50%;margin-top:8px;cursor: pointer;' src='${new_visitor[i].user_head}'/><h3 id='user_name' style='min-height: 25px;margin: 0;padding-bottom: 0px;padding-left: 10px;'>${new_visitor[i].user_name}</h3></div><div class='user_intro' id='user_profile'><p class="user_profile">${new_visitor[i].user_profile}</p></div><div class='trivial' style='width: 100%;margin-top: 5px;'><div class="spanList"><span class="spanTitle">发布</span><span class="spanInfo">${new_visitor[i].user_release_sum}</span></div><div class="spanList"><span class="spanTitle">粉丝</span><span class="spanInfo">${new_visitor[i].user_fans_sum}</span></div><div class="spanList"><span class="spanTitle">获赞</span>	<span class="spanInfo">${new_visitor[i].user_laid_sum}</span></div><div class="spanList"><span class="spanTitle">转发</span><span class="spanInfo">${new_visitor[i].user_forward_sum}</span></div><div class="spanList"><span class="spanTitle">积分</span><span class="spanInfo">${new_visitor[i].user_coin_sum}</span></div></div><div style='margin-top: 10px;margin-left: 12px;'><button class="boxBtn" onclick='attention(${new_visitor[i].id})'>+关注</button></div></div></div></div>`;
 						new_visitor_list.innerHTML = new_visitor_img;
 					}
 
@@ -2024,50 +2072,63 @@
 					var lng_todaycounts = '';
 					var lng_todaycount_list = document.getElementById("lng_todaycount_list");
 					// for (var i = 0; i < lng_todaycount.length; i++) {
-					lng_todaycounts += "<li><h3>" + lng_todaycount.name + "</h3><a href='index.html?plate=" + lng_todaycount.id +
-						"'><span>今日更新：" + lng_todaycount.today_count +
-						"篇</span></a></li>";
+					lng_todaycounts += "<li><h3>" + lng_todaycount.name + "</h3><a href='index.html?plate=" + lng_todaycount.id + "'><span class='new_num'>今日更新：" + lng_todaycount.today_count + "篇</span></a></li>";
 					lng_todaycount_list.innerHTML = lng_todaycounts;
 					// }
 					
 					$(".info_box").hide();
-					$("#plate_fan_box").mouseenter(function(){
+					$("#plate_fan_box0").mouseenter(function(){
 						$(this).next().show();
 					})
 					$(".fan").mouseleave(function(){
-						$("#plate_fan_box").next().hide();
+						$("#plate_fan_box0").next().hide();
 					})
-					$("#plate_look_box").mouseenter(function(){
+					$("#plate_fan_box1").mouseenter(function(){
+						$(this).next().show();
+					})
+					$(".fan").mouseleave(function(){
+						$("#plate_fan_box1").next().hide();
+					})
+					$(".fan").mouseleave(function(){
+						$("#plate_fan_box2").next().hide();
+					})
+					$("#plate_fan_box2").mouseenter(function(){
+						$(this).next().show();
+					})
+					$(".fan").mouseleave(function(){
+						$("#plate_fan_box3").next().hide();
+					})
+					$("#plate_fan_box3").mouseenter(function(){
+						$(this).next().show();
+					})
+					
+					$("#plate_look_box0").mouseenter(function(){
 						$(this).next().show();
 					})
 					$(".look").mouseleave(function(){
-						$("#plate_look_box").next().hide();
+						$("#plate_look_box0").next().hide();
+					})
+					$("#plate_look_box1").mouseenter(function(){
+						$(this).next().show();
+					})
+					$(".look").mouseleave(function(){
+						$("#plate_look_box1").next().hide();
+					})
+					$("#plate_look_box2").mouseenter(function(){
+						$(this).next().show();
+					})
+					$(".look").mouseleave(function(){
+						$("#plate_look_box2").next().hide();
+					})
+					$("#plate_look_box3").mouseenter(function(){
+						$(this).next().show();
+					})
+					$(".look").mouseleave(function(){
+						$("#plate_look_box3").next().hide();
 					})
 				},
 			})
 			
-			//关注
-			function attention(user_id){
-				var Info = JSON.parse(sessionStorage.getItem("data")) 
-				if(Info==null){
-					showMsg("请登录后关注！", "info", 2000)
-				}else{
-					$.ajax({
-						url:sever_url+"follow/add",
-						type:"post",
-						data:{
-							token: Info.token,
-							user_id: user_id
-						},
-						dataType:"json",
-						success:function(res){
-							if(res.code){
-								showMsg(res.msg, "success", 2000)
-							}
-						}
-					})
-				}
-			}
 			// 获取我的原创
 			function original() {
 				$.ajax({
@@ -2125,7 +2186,7 @@
 
 						} else {
 							for(var i = 0; i < postdata.length; i++) {
-								post += "<li><img src='" + postdata[i].post_img + "'/><div class='blog_list' style='width: 594px !important;'>";
+								post += "<li style='height: 88px;'><img src='" + postdata[i].post_img + "'/><div class='blog_list' style='width: 594px !important;'>";
 								post += "<div class='news_title'><a href='forum.html?postid=" + postdata[i]['id'] + "'>" + postdata[i]['post_title'] + "</a>";
 								post += "<i class='red_news'>[" + postdata[i]['post_label'] + "]</i></div>";
 								post += "<div class='news_time news_other'><span>发布于：" + postdata[i]['post_releasetime'] + "</span>";
@@ -2133,7 +2194,7 @@
 								post += "<div class='news_owner1 news_other'><span id=''>发帖人：" + postdata[i]['post_user_name'] + "</span>";
 								post += `<span id='' style='margin-left: 24px'>最后回复人：${postdata[i]['last_user_name']=='' ? '暂无回复人' :postdata[i]['last_user_name']}</span>`;
 								post += "</div></div><div class='share_right share bdsharebuttonbox'><div><img style='width: 20px;height: 20px;' src='images/write.png' />";
-								post += "<img style='width: 20px;height: 20px;' onclick = 'Delete("+postdata[i]['id']+")' src='images/delete.png' /></div><div style='display:flex;flex-direction:row;align-items:center;margin-top: 34px'><p style='float:left;width: 60px;'>分享：</p>";
+								post += "<img style='width: 20px;height: 20px;' onclick = 'Delete("+postdata[i]['id']+")' src='images/delete.png' /></div><div style='display:flex;flex-direction:row;align-items:center;margin-top: 28px'><p style='float:left;width: 60px;'>分享：</p>";
 								post += "<a url='forum.html?postid=" + postdata[i]['id'] + "' class='bds_weixin' data-cmd='weixin'></a><a url='forum.html?postid=" + postdata[i]['id'] + "' class='bds_tsina' data-cmd='tsina'></a></div></div></li>";
 								postlist.innerHTML = post;
 							}
@@ -2397,7 +2458,8 @@
 				})
 			}
 			function attention(user_id){
-				console.log(infodata.token)
+				
+				// console.log(user_id)
 				$.ajax({
 					url: sever_url + 'follow/add',
 					type: 'post',
