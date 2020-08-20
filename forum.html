@@ -1448,7 +1448,7 @@
 				}
 			})
 			function toMinec() {
-				console.log($("#admin_id").val())
+				window.location.href = `minec.html?user_id=${$("#admin_id").val()}`;
 			}
 			//退出登陆清除数据
 			function delsession() {
@@ -1769,6 +1769,7 @@
 								$("#collection").parent().attr("name", "collectiondel");
 								$("#collection").attr("id", "collectiondel");
 							}
+							$("#admin_id").val(data.data.post_userid)
 							if (data.data.follow) {
 								$("#attention").hide();
 								$("#attentioned").show();
