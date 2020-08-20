@@ -2022,7 +2022,6 @@
 				success: function(res) {
 					// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
 					// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
-					 console.log(res)
 					var data = res.data;
 					var new_fans = data.new_fans;
 					var new_visitor = data.new_visitor;
@@ -2055,7 +2054,6 @@
 					// 新粉丝
 					var new_fans_img = '';
 					var new_fans_list = document.getElementById("new_fans_list");
-					console.log(new_fans)
 					for(var i = 0; i < new_fans.length; i++) {
 						new_fans_img += `<div  class='fan'><div id='plate_fan_box${i}'><img id='plate_fan_pic' style='width:44px; height:44px; border-radius:50%; margin-top:8px;cursor: pointer;' src='${new_fans[i].user_head}'><span class='plate_fan_span'>${new_fans[i].user_name}</span></div><div class='info_box' id='info_box'><div class='user_name'><div style='display: flex;align-items: center;margin-bottom: 10px;'><img id='plate_fan_pics' style='width:70px; height:70px; border-radius:50%;margin-top:8px;cursor: pointer;' src='${new_fans[i].user_head}'/><h3 id='user_name' style='min-height: 25px;margin: 0;padding-bottom: 0px;padding-left: 10px;'>${new_fans[i].user_name}</h3></div><div class='user_intro' id='user_profile'><p class="user_profile">${new_fans[i].user_profile}</p></div><div class='trivial' style='width: 100%;margin-top: 5px;'><div class="spanList"><span class="spanTitle">发布</span><span class="spanInfo">${new_fans[i].user_release_sum}</span></div><div class="spanList"><span class="spanTitle">粉丝</span><span class="spanInfo">${new_fans[i].user_fans_sum}</span></div><div class="spanList"><span class="spanTitle">获赞</span>	<span class="spanInfo">${new_fans[i].user_laid_sum}</span></div><div class="spanList"><span class="spanTitle">转发</span><span class="spanInfo">${new_fans[i].user_forward_sum}</span></div><div class="spanList"><span class="spanTitle">积分</span><span class="spanInfo">${new_fans[i].user_coin_sum}</span></div></div><div style='margin-top: 10px;margin-left: 12px;'><button class="boxBtn" onclick='attention(${new_fans[i].id})'>+关注</button></div></div></div></div>`;
 					}
