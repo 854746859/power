@@ -1075,7 +1075,7 @@
 				(json.two == undefined) ? two = '0': two = json.two;
 
 				var postlist = document.getElementById("postlist");
-				var type = localStorage.getItem("type")
+				var type = json.type
 				$.ajax({
 					url: sever_url + 'sort/select',
 					type: 'post',
@@ -1086,7 +1086,7 @@
 						serch: '',
 						plate: json.plate,
 						plate_two: json.two,
-						post_type: type,
+						post_type: '1',
 						order: order
 					},
 					// 用于设置响应体的类型 注意 跟 data 参数没关系！！！

@@ -243,6 +243,7 @@
 							border-right: 1px solid #EDEDED;
 							border-left: 1px solid #EDEDED;
 							border-bottom: 1px solid #EDEDED;
+							margin-bottom: 12px;
 						}
             .news_box:nth-child(n+2){
             	margin: 10px 0;
@@ -382,59 +383,73 @@
                 border: 1px solid #ededed;
             }
             .ranking img{
-            	border: 1px solid #eee;
+            	/* border: 1px solid #eee; */
             	margin-top: 10px;
             }
             .ranking-card{
-                display: flex;
- 				flex-direction: column;
- 				align-items: center;
- 				justify-content: center;
- 				border-radius: 6px;
- 				padding: 6px 10px;
+							display: flex;
+							flex-direction: column;
+							align-items: center;
+							justify-content: center;
+							border-radius: 6px;
+							padding: 6px 10px;
             }
- 			.ranking-card ul li{
-                display: flex;
-                width: 208px;
-                justify-content: space-between;
-                list-style-type:disc !important;
-                margin: 8px 0px;
-                margin-left: 12px;
+						.ranking-card ul li{
+							display: flex;
+							width: 208px;
+							justify-content: space-between;
+							list-style-type:disc !important;
+							margin: 8px 0px;
+							margin-left: 12px;
             }
             .stockBox{
-                padding: 4px;
-                background: #FF3A2F;
-                border-radius: 3px;
-                opacity: 0.85;
-                color: #fff !important;
-                margin-left: 8px;
+							padding: 4px;
+							background: #FF3A2F;
+							border-radius: 3px;
+							opacity: 0.85;
+							color: #fff !important;
+							margin-left: 8px;
             }
 
             .postBox{
-                display: flex;
-                padding: 12px;
-                border-bottom: 1px solid #eeeeee;
+							display: flex;
+							padding: 12px;
+							border-bottom: 1px solid #eeeeee;
             }
             .postBox img{
-                width: 88px;
-                margin-right: 16px;
-            }
+							width: 88px;
+							margin-right: 16px;
+						}
             .postTitle{
-                font-family: PingFangSC-Regular;
-                font-size:18px;
-                font-weight: 500;
-                margin-top: 8px;
-                margin-bottom: 12px;
-                color:rgba(0,0,0,0.85);
+							font-family: PingFangSC-Regular;
+							font-size:18px;
+							font-weight: 500;
+							margin-top: 8px;
+							margin-bottom: 12px;
+							color:rgba(0,0,0,0.85);
             }
+						.postTitle1{
+							font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;
+							font-size: 16px;
+							font-weight: 500;
+							margin-top: 6px;
+							margin-bottom: 6px;
+							padding-left: 12px;
+							color: #333;
+						}
+						.postTip{
+							font-size: 18px;
+							font-weight: bold;
+							margin-right: 6px;
+						}
             .author{
-                margin-bottom: 8px;
+							margin-bottom: 8px;
             }
             .author span{
-                font-family: PingFangSC-Regular;
-                font-size: 14px;
-                color: #666666;
-                margin-right: 15px;
+							font-family: PingFangSC-Regular;
+							font-size: 14px;
+							color: #666666;
+							margin-right: 15px;
             }
             .none{
 							display: flex;
@@ -1124,7 +1139,7 @@
 						</div>
 					</div>-->
 				</div>
-				<div class="content" style="display: flex;">
+				<div class="content" style="display: flex;min-height: 480PX;">
                     <div class="left">
                         <div class="ranking">
                             <a href="http://www.natural-gastech.net/" target="_blank">
@@ -1596,15 +1611,16 @@
                     //外网
                     if(res.data.out_post.length>0){
                         for(let i = 0; i < res.data.out_post.length; i++){
-                            out_post += `<div class="postBox"><div class="postInfo"><div class="postTitle"><a href="forum.html?postid=${res.data.out_post[i].id}">${res.data.out_post[i].out_title}</a><i class='red_news'><!--[${res.data.out_post[i].post_label}]--></i></div></div></div>`
+                            out_post += `<div class="postTitle1"><a href="forum.html?postid=${res.data.out_post[i].id}"><span class="postTip">·</span>${res.data.out_post[i].out_title}</a><i class='red_news'></i></div>`
                         }
                     }else{
                         out_post += `<div class="none">暂无数据</div>`
                     }
                     //原创
                     if(res.data.original.length>0){
+											
                         for(let i = 0; i < res.data.original.length; i++){
-                            original += `<div class="postBox"><div class="postInfo"><div class="postTitle"><a href="forum.html?postid=${res.data.original[i].id}">${res.data.original[i].post_title}</a><!--<i class='red_news'>[${res.data.original[i].post_label}]</i>--></div><div class="author"><!--文章内容--></div><div class="author"><!--<span>发帖人：${res.data.original[i].post_user_name}</span><span>最后回复人：${res.data.original[i].last_user_name}</span><span>发布时间：${res.data.original[i].post_releasetime}</span><span>阅读数：${res.data.original[i].post_readnum}</span>--></div></div></div>`
+                            original += `<div class="postTitle1"><a href="forum.html?postid=${res.data.original[i].id}"><span class="postTip">·</span>${res.data.original[i].post_title}</a><i class='red_news'></i></div>`
                         }
                     }else{
                         original += `<div class="none">暂无数据</div>`
