@@ -37,7 +37,7 @@
 			}
 			
 			.blog_box .blog_left {
-				width: 65%;
+				width: 60%;
 				display: flex;
 				flex-direction: column;
 				margin-bottom: 17px;
@@ -241,6 +241,7 @@
 			}
 			
 			.post_text {
+				/* margin: 10px 10px 0 0; */
 				margin-right: 10px;
 				min-height: 240px;
 			}
@@ -310,9 +311,16 @@
 			}
 			
 			.five_bt .post_icon img {
-				width: 18px;
-				height: 18px;
-				margin-right: 5px;
+				width: 16px;
+				height: 16px;
+				margin-right: 4px;
+			}
+			
+			.post_icon span{
+				color: #666;
+				font-size: 13px;
+				cursor: pointer;
+				font-family: -apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
 			}
 			
 			.comment_box,
@@ -425,7 +433,10 @@
 			}
 			
 			.hot_post {
-				margin-top: 10px;
+				margin-top: 16px;
+				margin-bottom: 16px;
+				border: 1px solid #ebebeb;
+				padding: 24px 0 0;
 			}
 			
 			.carousel {
@@ -618,19 +629,21 @@
 				border-bottom: 1px dashed #B9B9B9;
 			}
 			#edui1{
-				width: 770px !important;
+				width: 708px !important;
+			}
+			#recommend{
+				margin-top: 16px;
+				padding: 0 24px 16px;
 			}
 			#recommend li{
-				line-height: 28px;
-			    font-size: 14px;
-			    font-family: PingFangSC-Regular,PingFang SC;
-			    font-weight: 400;
-			    color: #333;
+				color: #333;
+				font-size: 14px;
+				font-family: -apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
 			}
 			#recommend li:hover{
 				color: #0084ff;
-			    text-indent: .3em;
-			    text-decoration: underline;
+				text-indent: .3em;
+				text-decoration: underline;
 			}
 			.partener_block ul{
 				display: flex;
@@ -639,17 +652,12 @@
 			}
 			.statistics{
 				width: 90%;
-				/*height: 100px;*/
-                display: flex;
-                margin: 8px auto;
+				display: flex;
+				margin: 8px auto;
 				flex-direction: row;
 				justify-content: space-between;
 			}
 			.statistics .part{
-				/*width: 25%;
-				height: 100px;
-				display:flex;
-				flex-direction: column;*/
 				justify-content: space-around;
 				align-items: center;
 			}
@@ -689,6 +697,42 @@
 				border: 0;
 				border-radius: 16px;
 				cursor: pointer;
+			}
+			.authorTip{
+				display: inline-block;
+				line-height: 18px;
+				font-size: 12px;
+				font-weight: 500;
+				background: rgb(80, 159, 233);
+				color: rgb(255, 255, 255);
+				border-radius: 2px;
+				padding: 0px 4px;
+				margin-right: 4px;
+				text-align: center;
+			}
+			.hot_post_title{
+				padding: 0 24px;
+				justify-content: space-between;
+				display: flex;
+			}
+			.hot_post_title h2{
+				display: inline-block;
+				-ms-flex: 1 1;
+				flex: 1 1;
+				margin-right: 16px;
+				color: #333;
+				font-weight: 600;
+				font-size: 18px;
+				font-style: normal;
+				font-stretch: normal;
+				line-height: 1.22;
+				letter-spacing: normal;
+				text-overflow: ellipsis;
+				word-break: keep-all;
+			}
+			.toMore{
+				font-size: 14px;
+				color: #0084ff;				
 			}
 		</style>
 	</head>
@@ -921,8 +965,11 @@
 								<div id="user_box">
 									<img id="user_head" src="images/manager.jpg" />
 									<div class="user_info">
-										<div id="user_name_head">
-												
+										<div>
+												<span id="user_name_head"></span>
+												<span class="authorTip">
+													楼主
+												</span>
 										</div>
 										<span id="time"></span>
 									</div>
@@ -960,16 +1007,14 @@
 											</div>
 										</div>
 										<div style="margin-top: 10px;margin-left: 12px;">
+											<button class="boxBtn" style="margin-right: 64x;" id="attention">+ 关注</button>
+											<button class="boxBtn" style="margin-right: 64x; display: none;" id="attentioned">取消关注</button>
 											<button class="boxBtn"  onclick="attention('admin_id')">个人主页</button>
 											<input type="text" name="admin_id" id="admin_id" value="" hidden="hidden"/>
 										</div>
 									</div>
 								</div>
 							</div>
-							<!-- <div class="attention">
-								<input type="button" name="" id="attention" value="关注" />
-								<input type="button" name="" id="attentioned" value="取消关注" hidden="hidden" />
-							</div> -->
 						</div>
 						<div class="post_text" id="postContent">
 							
@@ -1000,10 +1045,10 @@
 								<img id="collection" src="images/collection.png" /><span id="postCollectionnum">0</span>
 							</div>
 							<div class="post_icon" name="reward">
-								<a rel="leanModal" name="test" href="#test"><img id="reward" src="images/reward.png" /><span></span></a>
+								<a rel="leanModal" name="test" href="#test"><img id="reward" src="images/reward.png" /><span>打赏</span></a>
 							</div>
 							<div class="post_icon" name="report">
-								<a rel="leanModal" name="Report" href="#Report"><img id="report" src="images/report.png" /><span></span></a>
+								<a rel="leanModal" name="Report" href="#Report"><img id="report" src="images/report.png" /><span>举报</span></a>
 							</div>
 						</div>
 						<div id="Report">
@@ -1124,21 +1169,15 @@
 					</div>
 					<div class="blog_right">
 						<div class="pic_link">
-							<img src="images/owner.jpg" />
+							<img src="images/bannar.png" />
 						</div>
 						<div class="hot_post">
-							<div class="sy_title bdb_d ovh">
-								<h2 class="l"><img src="images/hot.png" width="25px"><b class="fc">推荐热帖</b></h2>
-								<a href="newslist.html" class="more r">查看更多></a>
+							<div class="hot_post_title">
+								<h2 class="l"><img src="images/hot.png" style="width: 22px; margin-right: 8px;">推荐热帖</h2>
+								<a href="newslist.html" class="toMore">查看更多></a>
 							</div>
 							<ul id="recommend">
-								<!--<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span></a></li>
-						<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局办公大楼新建地块招标项目开发商承建福泉市综合执法局办公大楼新建地块招标项目开发商承建</span></a></li>
-						<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span></a></li>
-						<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局办公大楼新建地块招标项目开发商承建</span></a></li>
-						<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span></a></li>
-						<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局办公大楼新建地块招标项目开发商承建</span></a></li>
-						<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span></a></li>-->
+								
 							</ul>
 						</div>
 						<!--轮播-->
@@ -1299,6 +1338,7 @@
 		$(".user").mouseleave(function(){
 			$("#user_box").next().hide();
 		})
+		
 		$("#plate_master_pic").mouseenter(function(){
 			$(this).next().show();
 		})
@@ -1601,6 +1641,20 @@
 						success: function(data) {
 							console.log(data)
 							if (data.code == "200") {
+								Dialog({
+									title: data.msg,
+									content: "您还未登录，是否登录？",
+									ok: {
+										callback: function() {
+											window.location.href = 'login.html';
+										}
+									},
+									cancel: {
+										callback: function() {
+											Dialog.close();
+										}
+									}
+								});
 								$("#attention").attr("hidden", "hidden");
 								$("#attentioned").removeAttr("hidden");
 							}else if(data.code == "2"){
@@ -1691,9 +1745,9 @@
 							$("#time").html('发布于：'+data.data.post_releasetime); //发布时间
 							$("#readNum").html(Number(data.data.post_readnum)); //阅读数
 							$("#getUpnum").html(Number(data.data.post_upnum)); //点赞数
-							$("#postUpnum").html(Number(data.data.post_upnum)); //点赞数
-							$("#postForwardnum").html(Number(data.data.post_forwardnum)); //转发数
-							$("#postCollectionnum").html(Number(data.data.post_collectionnum)); //收藏数
+							$("#postUpnum").html('点赞('+Number(data.data.post_upnum)+')'); //点赞数
+							$("#postForwardnum").html('转发('+Number(data.data.post_forwardnum)+')'); //转发数
+							$("#postCollectionnum").html('收藏('+Number(data.data.post_collectionnum)+')'); //收藏数
 							$("#user_head").attr("src", data.data.user_head);
 							$("#user_heads").attr("src", data.data.user_head);
 							$("#user_head").attr("name", data.data.post_userid);
@@ -1727,8 +1781,7 @@
 							var num = data.data.recommend.length;
 							for (var i = 0; i < num; i++) {
 								var arr = data.data.recommend[i];
-								$("#recommend").append('<li><a id="' + arr.id + '" href="forum.html?postid=' + arr.id +
-									' " ><b>·</b><span>' + arr.post_title + '</span></a></li>')
+								$("#recommend").append('<li><a id="' + arr.id + '" href="forum.html?postid=' + arr.id +	' " ><b style="margin-right: 8px;">·</b><span>' + arr.post_title + '</span></a></li>')
 							}
 						}
 					},
