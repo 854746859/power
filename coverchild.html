@@ -23,6 +23,9 @@
 		<!-- 时间选择js -->
 		<script type="text/javascript" src="js/laydate.js"></script>
 		<style>
+			body{
+				font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Microsoft YaHei,Source Han Sans SC,Noto Sans CJK SC,WenQuanYi Micro Hei,sans-serif;
+			}
 			.headLink{
 				display: flex;
 				flex-direction: row;
@@ -201,29 +204,25 @@
                 border-bottom: 1px solid #ededed;
             }
             .font24{
-                margin-left: 10px;
-                font-family: PingFangSC-Regular;
-                font-size:20px;
-                font-size: 500;
-                color:rgba(0,0,0,0.85)
+							margin-left: 10px;
+							font-size:20px;
+							font-size: 500;
+							color:rgba(0,0,0,0.85)
             }
             .news_card{
- 				display: flex;
- 				flex-direction: column;
- 				/* align-items: center; */
- 				justify-content: center;
- 				border-radius: 6px;
- 				padding: 8px 10px;
- 				
- 			}
- 			.news_card ul li{
-                max-width: 200px;
-                /*list-style-type:disc !important;*/
-                margin: 10px 10px;
-                margin-left: 12px;
-                display: flex;
-                flex-direction: row;
-                align-items: center;
+							display: flex;
+							flex-direction: column;
+							justify-content: center;
+							border-radius: 6px;
+							padding: 8px 10px;							
+						}
+						.news_card ul li{
+							max-width: 200px;
+							margin: 10px 10px;
+							margin-left: 12px;
+							display: flex;
+							flex-direction: row;
+							align-items: center;
             }
 						
 						.news_card ul li a{
@@ -240,6 +239,11 @@
                 /*border: 1px solid #ededed;*/
                 
             }
+						.news_box{
+							border-right: 1px solid #EDEDED;
+							border-left: 1px solid #EDEDED;
+							border-bottom: 1px solid #EDEDED;
+						}
             .news_box:nth-child(n+2){
             	margin: 10px 0;
             }
@@ -250,7 +254,15 @@
             	line-height: 40px;
             	padding-left: 12px;
             	border-bottom: 2px solid #eee;
+							background-color: rgb(243,243,243);
+							
             }
+						#recommend, #reward,#news{
+							border-left: 1px solid #EDEDED;
+							border-right: 1px solid #EDEDED;
+							border-bottom: 1px solid #EDEDED;
+							min-height: 686px;
+						}
             .four_box{
             	width: 100%;
             	margin: 10px auto;
@@ -337,7 +349,7 @@
             }
             .sock{
                 width: 280px;
-                margin-top: 12px;
+                margin-top: 20px;
                 margin-bottom: 12px;
                 padding-bottom: 20px;
                 border: 1px solid #ededed;
@@ -364,10 +376,10 @@
             .ranking{
                 width: 240px;
                 /*height: 224px;*/
-                margin-top: 12px;
+                margin-top: 20px;
                 margin-bottom: 12px;
-                padding-bottom: 10px;
-                /*border: 1px solid #ededed;*/
+                /* padding-bottom: 10px; */
+                border: 1px solid #ededed;
             }
             .ranking img{
             	border: 1px solid #eee;
@@ -425,21 +437,22 @@
                 margin-right: 15px;
             }
             .none{
-                margin: 12px auto 0px auto;
-                display: flex;
-                justify-content: center;
+							display: flex;
+							flex-direction: column;
+							align-items: center;
+							color: #999999;
             }
             .bottom_box{
-				width: 1220px;
-				margin: 0 auto;
-				display: flex;
-				flex-direction: row;
-			}
+							width: 1220px;
+							margin: 0 auto;
+							display: flex;
+							flex-direction: row;
+						}
             .bottom_title{
-				display: flex;
-				flex-direction: row;
-				color:#fff;
-				align-items: center;
+							display: flex;
+							flex-direction: row;
+							color:#fff;
+							align-items: center;
             }
             
             /* 专家 */
@@ -1399,7 +1412,7 @@
 								var proportion = toDecimal(obj[i].vote_square/(Number(obj[i].vote_square)+Number(obj[i].vote_conside)));
 								var other = 1-proportion;
 							}
-							$("#vote").append(`<h3 class="question">${obj[i].vote_comment}</h3><div class="vote"><div class="skillbar clearfix" data-percent="${proportion*100}%"><div class="skillbar-title" style="background: #0084ff;"><span>支持</span></div><div class="skillbar-bar" style="background: #0084ff;"></div><div class="skill-bar-percent">${proportion*100}%</div></div><input type="button" name="" value="投票" ${obj[i].vote_flag?'disabled="disabled"':''} style="background-color:${obj[i].vote_flag?'#ccc':'#0084ff'}" onclick="vote(${obj[i].id},1)"/></div><div class="vote"><div class="skillbar clearfix" data-percent="${other*100}%"><div class="skillbar-title" style="background: #0084ff;"><span>反对 </span></div><div class="skillbar-bar" style="background: #0084ff;"></div><div class="skill-bar-percent">${other*100}%</div></div><input type="button" name="" value="投票" ${obj[i].vote_flag==1?'disabled="disabled"':''} style="background-color:${obj[i].vote_flag?'#ccc':'#0084ff'}" onclick="vote(${obj[i].id},0)"/></div>`)
+							$("#vote").append(`<h3 class="question">${obj[i].vote_comment}</h3><div class="vote"><div class="skillbar clearfix" data-percent="${proportion*100}%"><div class="skillbar-title" style="background: #0084ff;"><span>支持</span></div><div class="skillbar-bar" style="background: #0084ff;"></div><div class="skill-bar-percent">${(proportion*100).toFixed()}%</div></div><input type="button" name="" value="投票" ${obj[i].vote_flag?'disabled="disabled"':''} style="background-color:${obj[i].vote_flag?'#ccc':'#0084ff'}" onclick="vote(${obj[i].id},1)"/></div><div class="vote"><div class="skillbar clearfix" data-percent="${other*100}%"><div class="skillbar-title" style="background: #0084ff;"><span>反对 </span></div><div class="skillbar-bar" style="background: #0084ff;"></div><div class="skill-bar-percent">${(other*100).toFixed()}%</div></div><input type="button" name="" value="投票" ${obj[i].vote_flag==1?'disabled="disabled"':''} style="background-color:${obj[i].vote_flag?'#ccc':'#0084ff'}" onclick="vote(${obj[i].id},0)"/></div>`)
 						}
 						$('.skillbar').each(function(){
 							$(this).find('.skillbar-bar').animate({
@@ -1754,7 +1767,7 @@
                     }
                     if(res.data.english.length>0){
                         for(let i = 0; i < res.data.english.length; i++){
-                            lng_admin += `<div class="postBox"><div class="postInfo"><div class="postTitle"><a href="forum.html?postid=${res.data.english[i].id}">${res.data.english[i].post_title}</a><i class='red_news'>[${res.data.english[i].post_label}]</i></div><div class="author"><!--content--></div><div class="author"><span>发帖人：${res.data.english[i].post_user_name}</span><span>最后回复人：${res.data.english[i].last_user_name}</span><span>发布时间：${res.data.english[i].post_releasetime}</span><span>阅读数：${res.data.english[i].post_readnum}</span></div></div></div>`
+                            lng_english += `<div class="postBox"><div class="postInfo"><div class="postTitle"><a href="forum.html?postid=${res.data.english[i].id}">${res.data.english[i].post_title}</a><i class='red_news'>[${res.data.english[i].post_label}]</i></div><div class="author"><!--content--></div><div class="author"><span>发帖人：${res.data.english[i].post_user_name}</span><span>最后回复人：${res.data.english[i].last_user_name}</span><span>发布时间：${res.data.english[i].post_releasetime}</span><span>阅读数：${res.data.english[i].post_readnum}</span></div></div></div>`
                         }
                     }else{
                         lng_english += `<div class="none">暂无数据</div>`
