@@ -698,6 +698,18 @@
 				border-radius: 16px;
 				cursor: pointer;
 			}
+			.boxBtn1{
+				display: inline-block;
+				height: 32px;
+				padding: 0 16px;
+				color: #0084ff;
+				line-height: 32px;
+				text-align: center;
+				background-color: #fff;
+				border: 1px solid #0084ff;
+				border-radius: 16px;
+				cursor: pointer;
+			}
 			.authorTip{
 				display: inline-block;
 				line-height: 18px;
@@ -946,20 +958,7 @@
 							
 								</span>
 							</div>
-							
-							<!-- <div class="public_time">
-								<span>发布于：</span>
-								<span id="time"></span>
-							</div> -->
-							
-							<!--<div class="collect">
-								<img src="images/collection.png" />
-								<span>
-									收藏
-								</span>
-							</div>-->
 						</div>
-						<!-- <div class="state" id="postCopyright"><span>*</span>版权声明：本文为原创文章，转载请附上原文出处链接和本声明/未经许可不可转载。</div> -->
 						<div class="post_info">
 							<div class="user">
 								<div id="user_box">
@@ -1008,8 +1007,8 @@
 										</div>
 										<div style="margin-top: 10px;margin-left: 12px;">
 											<button class="boxBtn" style="margin-right: 64x;" id="attention">+ 关注</button>
-											<button class="boxBtn" style="margin-right: 64x; display: none;" id="attentioned">取消关注</button>
-											<button class="boxBtn"  onclick="attention('admin_id')">个人主页</button>
+											<button class="boxBtn1" style="margin-right: 64x; display: none;" id="attentioned">取消关注</button>
+											<button class="boxBtn"  onclick="toMinec('admin_id')">个人主页</button>
 											<input type="text" name="admin_id" id="admin_id" value="" hidden="hidden"/>
 										</div>
 									</div>
@@ -1071,40 +1070,21 @@
 						<div id="test">
 							<div id="signup-ct">
 								<div id="signup-header">
-									<h2>打赏金额</h2>
-									<!-- <a class="modal_close" href="#"></a> -->
+									<h2>打赏金额</h2>									
 								</div>
 								<form action="">
 									<div class="txt-fld">
 										<label for="">论坛币</label>
 										<input id="reward_coinnum" name="" type="text" placeholder="请输入打赏的论坛币" />
 									</div>
-									<!-- <div class="txt-fld">
-										<label for="">人民币</label>
-										<input id="reward_money" name="" type="text" placeholder="请点击扫码"/>
-									</div> -->
+									
 									<div class="submit">
 										<input type="button" name="" id="check" value="确认" />
 									</div>
 								</form>
 							</div>
 						</div>
-						<!--<div id="reply">
-							<div id="signup-ct">
-								<div id="signup-header">
-									<h2>回复</h2>
-								</div>
-								<form action="">
-									<div class="txt-fld">
-										<label for="">回复</label>
-										<input id="reply_content" name="" type="text" placeholder="请输入回复的内容" />
-									</div>
-									<div class="submit">
-										<input type="button" name="" id="checked" value="确认" />
-									</div>
-								</form>
-							</div>
-						</div>-->
+						
 						<div></div>
 						<div class="commet">
 							<div class="edit_type">
@@ -1263,42 +1243,42 @@
                 		<ul>-->
                 			<!--2-->
                 			<li><a href="https://www.iea.org/">IEA</a></li>
-							<li><a href="https://www.igu.org/">IGU</a></li>
-							<li><a href="https://www.opec.org/opec_web/en/">OPEC</a></li>
-							<li><a href="https://www.ocimf.org/">OCIMF</a></li>
-							<!--3-->
+											<li><a href="https://www.igu.org/">IGU</a></li>
+											<li><a href="https://www.opec.org/opec_web/en/">OPEC</a></li>
+											<li><a href="https://www.ocimf.org/">OCIMF</a></li>
+											<!--3-->
                 			<li><a href="http://www.cnpc.com.cn/index.shtml">中国石油</a></li>
                 		</ul>
                 		<ul>
-							<li><a href="http://www.sinopecgroup.com/">中国石化</a></li>
-							<li><a href="https://www.cnooc.com.cn/">中国海油</a></li>
-							<li><a href="http://www.sinochem.com/">中国中化</a></li>
-							<!--4-->
+											<li><a href="http://www.sinopecgroup.com/">中国石化</a></li>
+											<li><a href="https://www.cnooc.com.cn/">中国海油</a></li>
+											<li><a href="http://www.sinochem.com/">中国中化</a></li>
+											<!--4-->
                 			<li><a href="https://www.bp.com/">BP</a></li>
-							<li><a href="https://www.shell.com/">SHELL</a></li>
-							<li><a href="https://www.total.com/en">TOTAL</a></li>
+											<li><a href="https://www.shell.com/">SHELL</a></li>
+											<li><a href="https://www.total.com/en">TOTAL</a></li>
                 		</ul>
                 		<ul>
-							<li><a href="https://www.tokyo-gas.co.jp/en/index.html">东京燃气</a></li>
-							<li><a href="http://www.kogas.or.kr/eng/index.do">KOGAS</a></li>
-							<!--5-->
+											<li><a href="https://www.tokyo-gas.co.jp/en/index.html">东京燃气</a></li>
+											<li><a href="http://www.kogas.or.kr/eng/index.do">KOGAS</a></li>
+											<!--5-->
                 			<li><a href="http://www.qatargas.com/english">Qatargas</a></li>
-							<li><a href="https://www.enn.cn/">新奥集团</a></li>
-							<li><a href="http://www.guanghui.com/">新疆广汇</a></li>
-							<li><a href="https://www.geg.com.cn/">广东能源</a></li>
+											<li><a href="https://www.enn.cn/">新奥集团</a></li>
+											<li><a href="http://www.guanghui.com/">新疆广汇</a></li>
+											<li><a href="https://www.geg.com.cn/">广东能源</a></li>
                 		</ul>
                 		<ul>
                 			
-							<li><a href="http://www.bjgas.com/NewsCen2.aspx">北京燃气</a></li>
+											<li><a href="http://www.bjgas.com/NewsCen2.aspx">北京燃气</a></li>
                 			<!--6-->
                 			<li><a href="http://trqgy.cn/">天然气工业</a></li>
-							<li><a href="http://www.syytrqhg.cn/ch/index.aspx">石油与天然气化工</a></li>
+											<li><a href="http://www.syytrqhg.cn/ch/index.aspx">石油与天然气化工</a></li>
                 			<!--7-->
                 			<li><a href="https://www.jtsi.wa.gov.au/gasfund/introduction">中澳天然气基金</a></li>
                 		</ul>
                 	</div>
                 </div>
-			</div>
+							</div>
 
 			<style type="text/css">
 				.date_bg {
@@ -1331,20 +1311,20 @@
 		<script type="text/javascript" src="js/pop_ups/MiniDialog-es5.min.js"></script>
 		<script type="text/javascript">
 			
-		$(".info_box").hide();
-		$("#user_box").mouseenter(function(){
-			$(this).next().show();
-		})
-		$(".user").mouseleave(function(){
-			$("#user_box").next().hide();
-		})
-		
-		$("#plate_master_pic").mouseenter(function(){
-			$(this).next().show();
-		})
-		$(".owner").mouseleave(function(){
-			$("#plate_master_pic").next().hide();
-		})
+			$(".info_box").hide();
+			$("#user_box").mouseenter(function(){
+				$(this).next().show();
+			})
+			$(".user").mouseleave(function(){
+				$("#user_box").next().hide();
+			})
+			
+			$("#plate_master_pic").mouseenter(function(){
+				$(this).next().show();
+			})
+			$(".owner").mouseleave(function(){
+				$("#plate_master_pic").next().hide();
+			})
 			//头部统计
 			$.ajax({
 				type:"post",
@@ -1467,6 +1447,9 @@
 					});
 				}
 			})
+			function toMinec() {
+				console.log($("#admin_id").val())
+			}
 			//退出登陆清除数据
 			function delsession() {
 				sessionStorage.clear();
@@ -1514,9 +1497,6 @@
 
 								// $("#Reported").css("display","none");
 								console.log(data)
-
-								// var num = Number($("#comment" + commentId).html());
-								// $("#comment" + commentId).html(num + 1);
 							},
 							error: function() {
 								console.log('error')
@@ -1626,90 +1606,105 @@
 			$(document).ready(function() {
 				var obj = sessionStorage.getItem("data");
 				obj = JSON.parse(obj);
-				console.log(obj)
 				//关注
 				$("#attention").click(function() {
-					$.ajax({
-						type: "post",
-						url: sever_url + "follow/add",
-						async: true,
-						data: {
-							token: obj!=null?obj.token:"",
-							user_id: $("#user_head").attr("name")
-						},
-						dataType: "json",
-						success: function(data) {
-							console.log(data)
-							if (data.code == "200") {
-								Dialog({
-									title: data.msg,
-									content: "您还未登录，是否登录？",
-									ok: {
-										callback: function() {
-											window.location.href = 'login.html';
+					if(obj != null){
+						$.ajax({
+							type: "post",
+							url: sever_url + "follow/add",
+							async: true,
+							data: {
+								token: obj!=null?obj.token:"",
+								user_id: $("#user_head").attr("name")
+							},
+							dataType: "json",
+							success: function(data) {
+								console.log(data)
+								if (data.code == "200") {
+									
+									$("#attention").hide();
+									$("#attentioned").show();
+								}else{
+									Dialog({
+										title: "提示",
+										content: data.msg,
+										ok: {
+											callback: function() {
+												Dialog.close();
+											}
 										}
-									},
-									cancel: {
-										callback: function() {
-											Dialog.close();
-										}
-									}
-								});
-								$("#attention").attr("hidden", "hidden");
-								$("#attentioned").removeAttr("hidden");
-							}else if(data.code == "2"){
-								Dialog({
-									title: "请登录！",
-									content: "您还未登录，是否登录？",
-									ok: {
-										callback: function() {
-											window.location.href = 'login.html';
-										}
-									},
-									cancel: {
-										callback: function() {
-											Dialog.close();
-										}
-									}
-								});
+									});
+								}
 							}
-						}
-					});
+						});
+					}else{
+						Dialog({
+							title: "请登录！",
+							content: "您还未登录，是否登录？",
+							ok: {
+								callback: function() {
+									window.location.href = 'login.html';
+								}
+							},
+							cancel: {
+								callback: function() {
+									Dialog.close();
+								}
+							}
+						});
+					}
 				})
 				//取关
 				$("#attentioned").click(function() {
-					$.ajax({
-						type: "post",
-						url: sever_url + "my/follow/del",
-						async: true,
-						data: {
-							token: obj!=null?obj.token:"",
-							user_id: $("#user_head").attr("name")
-						},
-						dataType: "json",
-						success: function(data) {
-							console.log(data)
-							if (data.code == "200") {
-								$("#attentioned").attr("hidden", "hidden");
-								$("#attention").removeAttr("hidden");
-							}else if(data.code == "2"){
-								Dialog({
-									title: "请登录！",
-									content: "您还未登录，是否登录？",
-									ok: {
-										callback: function() {
-											window.location.href = 'login.html';
+					if(obj != null) {
+						$.ajax({
+							type: "post",
+							url: sever_url + "my/follow/del",
+							async: true,
+							data: {
+								token: obj!=null?obj.token:"",
+								user_id: $("#user_head").attr("name")
+							},
+							dataType: "json",
+							success: function(data) {
+								if (data.code == "200") {
+									$("#attentioned").hide();
+									$("#attention").show();
+								}else{
+									Dialog({
+										title: "提示",
+										content: data.msg,
+										ok: {
+											callback: function() {
+												Dialog.close();
+											}
+										},
+										cancel: {
+											callback: function() {
+												Dialog.close();
+											}
 										}
-									},
-									cancel: {
-										callback: function() {
-											Dialog.close();
-										}
-									}
-								});
+									});
+								}
 							}
-						}
-					});
+						});
+					}else{
+						Dialog({
+							title: "提示",
+							content: "您还未登录，是否登录？",
+							ok: {
+								callback: function() {
+									window.location.href = 'login.html';
+								}
+							},
+							cancel: {
+								callback: function() {
+									Dialog.close();
+								}
+							}
+						});
+					}
+					
 				})
 				//获取URL传值
 				var post_id = getUrldata('postid'); //文章id
@@ -1775,8 +1770,8 @@
 								$("#collection").attr("id", "collectiondel");
 							}
 							if (data.data.follow) {
-								$("#attention").attr("hidden", "hidden");
-								$("#attentioned").removeAttr("hidden", "hidden");
+								$("#attention").hide();
+								$("#attentioned").show();
 							}
 							var num = data.data.recommend.length;
 							for (var i = 0; i < num; i++) {
