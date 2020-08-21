@@ -257,10 +257,10 @@
 												var obj = JSON.stringify(data.data);
 												sessionStorage.setItem("data",obj);
 												window.location.href="mine.html";
+												// window.history.go(-2);
 											}
 										}
-									});
-									window.history.go(-2);
+									});									
 								}else{
 									Dialog.error( "错误", data.msg );
 								}
