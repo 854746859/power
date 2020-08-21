@@ -760,7 +760,31 @@
 				cursor: pointer;				
 				margin-right: 16px;
 			}
-			
+			.cancel{
+				display: flex;
+				flex-direction: row;
+				align-self: flex-start;
+				margin-top: 12px;
+			}
+			.cancel a{
+				/* font-family: 'Microsoft YaHei','SF Pro Display',Roboto,Noto,Arial,'PingFang SC',sans-serif;
+				font-size: 18px;
+				color: #3399ea;
+				cursor: pointer;
+				margin-right: 8px; */
+				
+				display: inline-block;
+				/* min-width: 74px; */
+				height: 32px;
+				padding: 0 16px;
+				color: #3399ea;
+				line-height: 30px;
+				background-color: #FFF;
+				border: 1px solid #3399ea;
+				border-radius: 16px;
+				cursor: pointer;				
+				margin-right: 16px;
+			}
 			#signup,#test {
 				width: 500px;
 				padding-bottom: 2px;
@@ -1299,9 +1323,13 @@
 								
 							</div>
 						</div>
-						<div class="edit_info">
+						<div class="edit_info" id="follow">
 							<a>+关注</a>
 						</div>
+						<div class="cancel" style="display: none;" id="cancelfollow">
+							<a>取消关注</a>
+						</div>
+
 					</div>
 					<div class="edit_info">
 						<!-- <a href="personal.html">编辑信息</a>
@@ -2278,6 +2306,7 @@
 
 						});
 						// console.log(followdata)
+						var follows = '';
 						var post = '';
 						var postlist = document.getElementById("postlist");
 						if(postdata.length === 0) {
