@@ -1675,22 +1675,22 @@
 							<!--投票-->
 							<div class="news_list zy_listbox mine_box" id="vote" hidden="hidden">
 								<div class="description_post" style="margin: 10px 0;">
-									<h2>发起投票</h2>  
+									<!-- <h2>发起投票</h2>   -->
 								</div>
 								<div class="description_post" style="display: flex;flex-direction: row;align-items: flex-start;">
-									<h4 style="margin: 0;">投票内容：</h4><textarea name="" rows="" id="question_text" cols="" style="border: 1px solid #eee;height: 100px;font-size: 16PX;"></textarea>
+									<h4 style="margin: 0;">投票内容：</h4><textarea name="" rows="" id="question_text" cols="" style="border: 1px solid #eee;height: 100px;font-size: 16PX;width: 600px"></textarea>
 								</div>
 								<div class="description_post">
 									<h4>所属版块：</h4>
-									<select id="plate" style="width: 100px;">
-										<option value="1">COAL版块</option>
-										<option value="2">OIL&GAS版块</option>
-										<option value="1">LNG版块</option>
-										<option value="4">POWER版块</option>
-										<option value="5">NUCLEAR版块</option>
-										<option value="6">RENEWABLE版块</option>
-										<option value="7">CHEM版块</option>
-										<option value="8">PM版块</option>
+									<select id="plate" style="width: 100px; width: 180px">
+										<option value="3">煤炭</option>
+										<option value="2">石油&天然气</option>
+										<option value="1">液化天然气</option>
+										<option value="4">电力</option>
+										<option value="5">核能</option>
+										<option value="6">新能源</option>
+										<option value="7">化工</option>
+										<option value="8">项目管理</option>
 									</select>
 								</div>
 								<div class="description_post button_box">
@@ -2361,9 +2361,8 @@
 						} else {
 							for(var i = 0; i < postdata.length; i++) {
 								post += "<li><img src='" + postdata[i].post_img + "'/><div class='blog_list1'>";
-								post += "<div class='news_title'><a href='forum.html?postid=" + postdata[i]['id'] + "'>" + postdata[i][
-									'post_title'
-								] + "</a>";
+								post += "<div class='news_title'><a href='questionDetail.html?postid=" + postdata[i]['id'] + "&plate=" + postdata[i].post_plate +
+									"&plate_two=" + postdata[i].post_plate_two + "'>" + postdata[i]['post_title'] + "</a>";
 								post += "<i class='red_news'>[" + postdata[i]['post_label'] + "]</i></div>";
 								post += "<div class='news_time news_other'><span>发布于：" + postdata[i]['post_releasetime'] + "</span>";
 								post += "<span id=''>阅读数：" + postdata[i]['post_readnum'] + " </span><span id=''>点赞：" + postdata[i][
@@ -2374,9 +2373,9 @@
 									"</span>";
 								post += `<span id=''>最后回复人：${postdata[i]['last_user_name']=='' ?'暂无回复' :postdata[i]['last_user_name']}</span><div class='share bdsharebuttonbox'>分享：`;
 								post +=
-									"<a url='forum.html?postid=" + postdata[i]['id'] +
-									"' class='bds_weixin' data-cmd='weixin'></a><a url='forum.html?postid=" + postdata[i]['id'] +
-									"' class='bds_tsina' data-cmd='tsina'></a></div></div></div><img style='width: 20px;height: 20px;position: absolute;right: 92px;' src='images/write.png' /><img style='width: 20px;height: 20px;position: absolute;right: 70px;' onclick = 'Delete("+postdata[i]['id']+")' src='images/delete.png' /></li>";
+									"<a url='questionDetail.html?postid=" + postdata[i]['id'] + "&plate=" + postdata[i].post_plate +
+									"&plate_two=" + postdata[i].post_plate_two + "' class='bds_weixin' data-cmd='weixin'></a><a url='questionDetail.html?postid=" + postdata[i]['id'] + "&plate=" + postdata[i].post_plate +
+									"&plate_two=" + postdata[i].post_plate_two + "' class='bds_tsina' data-cmd='tsina'></a></div></div></div><img style='width: 20px;height: 20px;position: absolute;right: 92px;' src='images/write.png' /><img style='width: 20px;height: 20px;position: absolute;right: 70px;' onclick = 'Delete("+postdata[i]['id']+")' src='images/delete.png' /></li>";
 								qusetionlist.innerHTML = post;
 							}
 							$('.bdsharebuttonbox a').on('mousemove', function() {
@@ -2721,10 +2720,12 @@
 					twoNum = Number($('#Classification option:selected').val())
 				}
 				if($("#postTitle").val() == ''){
+					$("#pushBt").attr('disabled',false);
 					alert("请输入文章标题");
 					return;
 				}
 				if($("#Tag").val() == ''){
+					$("#pushBt").attr('disabled',false);
 					alert("请输入文章标签");
 					return;
 				}
@@ -2756,6 +2757,7 @@
 					// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
 					dataType: 'json',
 					success: function(data) {
+						$("#pushBt").attr('disabled',false);
 						if(data.code == "200") {
 							for(var i = 0; i < part_arr.length; i++) {
 								if($(part_arr[i]).attr("id") == "original") {

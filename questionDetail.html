@@ -18,26 +18,37 @@
 		<link rel="stylesheet" type="text/css" href="css/index.css" />
 		<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
 		<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="js/public.js"></script>
 		<!--富文本编辑框-->
 		<script type="text/javascript" charset="utf-8" src="./ueditor/ueditor.config.js"></script>
 		<script type="text/javascript" charset="utf-8" src="./ueditor/ueditor.all.min.js"></script>
-		<script type="text/javascript" src="js/public.js"></script>
-		<!-- 菜单js等-->
 		<script src="LeanModal/js/jquery.leanModal.min.js" type="text/javascript" charset="utf-8"></script>
+		<!-- 菜单js等-->
 		<!-- 时间选择js -->
 		<script type="text/javascript" src="js/laydate.js"></script>
 		<style>
+			body{
+				font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Microsoft YaHei,Source Han Sans SC,Noto Sans CJK SC,WenQuanYi Micro Hei,sans-serif;
+			}
 			.blog_box {
 				width: 100%;
-				margin-top: 10px;
 				display: flex;
 				flex-direction: row;
 			}
 			
 			.blog_box .blog_left {
-				width: 65%;
+				width: 60%;
 				display: flex;
 				flex-direction: column;
+				margin-bottom: 17px;
+				padding: 16px 24px;
+				background: #fff;
+				border: 1px solid #ebebeb;
+			}
+			
+			.blog_title{
+				display: flex;
+				align-items: center;
 			}
 			
 			.blog_box .blog_detail .blog_left div:nth-child(n+2) {
@@ -45,29 +56,44 @@
 				margin-top: 5px;
 			}
 			
-			.blog_title {
-				font-size: 16px;
-				font-weight: 700;
+			#postTitle {
+				color: #333;
+				font-size: 20px;
+				line-height: 36px;
+				word-break: break-all;
+				font-weight: 500;
+				font-family: -apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
 			}
 			
 			.blog_detail {
 				width: 100%;
+				padding-bottom: 8px;
 				border-bottom: 1px solid #eee;
-				margin-top: 5px;
+				margin: 18px 0 0;
 				font-size: 14px;
 				display: flex;
 				flex-direction: row;
-				justify-content: space-between;
 			}
-			
+			#time{
+				font-family:HelveticaNeue;
+				color:rgba(0,0,0,0.65);
+			}
 			.post_type {
 				display: flex;
 				flex-direction: row;
 			}
 			
-			.post_type span:nth-child(n+2) {
-				margin-left: 5px;
-				color: red;
+			.post_type span {
+				display: inline-block;
+				line-height: 18px;
+				font-size: 12px;
+				font-weight: 500;
+				background: rgb(247, 100, 100);
+				color: rgb(255, 255, 255);
+				border-radius: 2px;
+				padding: 0px 4px;
+				margin-right: 4px;
+				text-align: center;
 			}
 			
 			.collect {
@@ -88,6 +114,7 @@
 			}
 			
 			.state span {
+				line-height: 18px;
 				font-size: 18px;
 				color: red;
 				margin-right: 5px;
@@ -97,17 +124,15 @@
 				display: flex;
 				flex-direction: row;
 				justify-content: space-between;
-				margin-top: 5px;
 				align-items: center;
-				background-color: #eee;
-				padding: 10px;
-				margin-right: 10px;
+				padding: 10px 0;
 				border-radius: 5px;
 			}
 			
 			.post_info .user {
 				display: flex;
 				flex-direction: row;
+				padding-bottom: 20px;
 				/* align-items: center; */
 			}
 			
@@ -122,26 +147,27 @@
 				flex-direction: column;
 				align-items: flex-start;
 				padding: 10px;
+				margin-top: 66px;
 				position: absolute;
-				margin-top: 34px;
-				z-index: 1000;
+				z-index: 999;
+				background-color: #fff;
+				/* margin: 140px 0 0 80px; */
+				border-radius: 6px;
+				box-shadow: 0px 0px 6px 6px rgba(0,0,0,0.1);			
 			}
 			.post_info .user .info_box .user_name {
+				width: 240px;
 				display: flex;
 				flex-direction: column;
-				/*height: 60px;*/
 				text-overflow: ellipsis;
 				overflow: hidden;
 				background-color: #fff;
-				padding: 10px;
 				border-radius: 5px;
-				box-shadow: 0px 0px 6px 6px rgba(0,0,0,0.1);
 			}
 			.info_box:before{
 				content: '';
 				width: 0;
 				height: 0;
-				border-width: 16px 8px;
 				border-style: solid;
 				border-color: transparent transparent #fff transparent; 
 				position: relative;
@@ -149,13 +175,13 @@
 				z-index: 999;
 			}
 			
-			.post_info .user .user_name .user_intro {
-				width: 220px;
-				min-height: 30px;
-				overflow-wrap: break-word;
-				line-height: 1.5;
-				padding-bottom: 5px;
-				border-bottom: #eee solid 1px;
+			.post_info .user .user_name .user_intro { 
+				margin-left: 8px;
+				width: 100%;
+				color: #333;
+				font-size: 14px;
+				font-family: -apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+				font-weight: 400;
 			}
 			
 			.attention {
@@ -166,7 +192,8 @@
 				color: #0084ff;
 				font-size: 14px;
 				position: relative;
-				left: -80px;
+				left: -120px;
+				margin-top: 12px;
 			}
 			
 			.attention input {
@@ -175,16 +202,20 @@
 				color: #fff;
 				background-color: #0084ff;
 				border-radius: 3px;
+				margin-bottom: 8px;
+			}
+			#user_release_sum,#user_fans_sum,#post_upnum,#user_follow_sum{
+				margin-top: 8px;
 			}
 			
 			.trivial {
 				padding-top: 10px;
 				display: flex;
-				/* flex-direction: row; */
-				width: 40%;
-				justify-content: space-between;
 				flex-flow: row wrap;
 				align-content: flex-start;
+				border-top: 1px solid #eee;
+				width: 100%;
+				margin-top: 5px;
 			}
 			
 			.trivial div {
@@ -195,12 +226,24 @@
 				flex: 0 0 33%;
 			}
 			
-			.trivial span {
-				height: 21px;
+			.spanTitle {
+				padding-bottom: 4px;
+				color: #999;
+				line-height: 13px;
+				font-size: 13px;
+			}
+			.spanInfo {
+			    color: #333;
+			    font-weight: 600;
+			    font-size: 16px;
+			    line-height: 16px;
+			    margin: 6px 0;
 			}
 			
 			.post_text {
-				margin: 10px 10px 0 0;
+				/* margin: 10px 10px 0 0; */
+				margin-right: 10px;
+				min-height: 240px;
 			}
 			
 			.post_text p {
@@ -224,86 +267,32 @@
 			
 			.annex_d {
 				padding: 10px;
-				margin-top: 30px;
-				background-color: #E7E7E7;
+				margin-right: 10px;
+				background-color: #eee;
 				display: flex;
-				flex-direction: column;
+				flex-direction: row;
 				justify-content: space-between;
+				align-items: center;
 				border-radius: 5px;
 			}
 			
-			.annex_info {
-				width: 100%;
-				height: 40px;
+			.annex_bt {
 				display: flex;
-				flex-direction: row;
-				justify-content: space-between;
-				border-bottom: 1px solid #fff;
+				flex-direction: column;
+				justify-content: space-around;
+				align-items: center;
 			}
 			
-			.annex_info .user_logo {
-				display: flex;
-				flex-direction: row;
-			}
-			
-			.annex_info .user_logo img {
-				width: 50px;
-				height: 50px;
-				border-radius: 25px;
-				position: relative;
-				top: -30px;
-			}
-			
-			.annex_info .good {
-				width: 50px;
+			.annex_bt input {
+				width: 80px;
 				height: 30px;
-				padding-right: 5px;
-				position: relative;
-				top: -25px;
-				background-color: #fff
-			}
-			
-			.annex_info .good img {
-				width: 30px;
-				height: 30px;
-			}
-			
-			.user_reply {
-				display: flex;
-				flex-direction: row;
-				justify-content: space-between;
-				padding: 0 30px;
-			}
-			
-			.user_reply .reply_dt div {
+				color: #fff;
+				background-color: #0084ff;
 				margin-top: 5px;
 			}
 			
-			.user_reply .reply_dt .reply_name {
-				display: flex;
-				flex-direction: row;
-				align-items: flex-end;
-			}
-			
-			.user_reply .reply_dt .reply_name span {
-				margin-left: 10px;
-			}
-			
-			.report {
-				margin-top: 15px;
-			}
-			
-			.report span {
-				cursor: pointer;
-				color: red;
-			}
-			
-			.report span:first-child {
-				margin-right: 10px;
-			}
-			
 			.five_bt {
-				width: 100%;
+				width: 99%;
 				height: 60px;
 				display: flex;
 				flex-direction: row;
@@ -322,14 +311,21 @@
 			}
 			
 			.five_bt .post_icon img {
-				width: 18px;
-				height: 18px;
-				margin-right: 5px;
+				width: 16px;
+				height: 16px;
+				margin-right: 4px;
+			}
+			
+			.post_icon span{
+				color: #666;
+				font-size: 13px;
+				cursor: pointer;
+				font-family: -apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
 			}
 			
 			.comment_box,
 			.content_box {
-				width: 99%;
+				width: 100%;
 				display: flex;
 				flex-direction: column;
 			}
@@ -393,7 +389,7 @@
 			}
 			
 			.commet {
-				width: 100%;
+				width: 99%;
 				margin-bottom: 20px;
 			}
 			
@@ -403,9 +399,14 @@
 				border: 2px solid #eee;
 				font-size: 18px;
 			}
+			#readNum{
+				color: #999;
+				font-size: 13px;
+				line-height: 18px;
+			}
 			
 			.commet .push_bt {
-				width: 99%;
+				width: 100%;
 				display: flex;
 				flex-direction: row;
 				justify-content: flex-end;
@@ -432,7 +433,10 @@
 			}
 			
 			.hot_post {
-				margin-top: 10px;
+				margin-top: 16px;
+				margin-bottom: 16px;
+				border: 1px solid #ebebeb;
+				padding: 24px 0 0;
 			}
 			
 			.carousel {
@@ -444,26 +448,45 @@
 				width: 100%;
 				height: 300px;
 			}
+			/*鼠标移入菜单*/
+			.hiden_list{
+				width: 120px;
+				position: absolute;
+				top:40px;
+				background-color: rgb(255,255,255);
+				z-index: 9;
+				padding: 12px;
+				border-radius: 8px;
+				box-shadow: 0px 0px 5px 6px rgba(0,0,0,0.2);
+			}
+			.hiden_list ul li{
+				border-bottom:1px dotted;
+			}
+			.hiden_list_w{
+				width: 120px;
+				position: absolute;
+				top:40px;
+				background-color: rgb(255,255,255);
+				z-index: 9;
+			}
+			.hiden_list_w ul li{
+				border-bottom:1px dotted;
+			}
 			
-			#Report,
-			#test,
-			#reply,
-			#Reported {
+			#Report,#test,#reply {
 				width: 404px;
 				padding-bottom: 2px;
 				display: none;
 				background: #FFF;
-				border-radius: 5px;
-				-moz-border-radius: 5px;
-				-webkit-border-radius: 5px;
-				/*box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.7);
-				-webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
-				-moz-box-shadow: 0 0px 4px rgba(0, 0, 0, 0.7);*/
+				border-radius: 6px;
+				-moz-border-radius: 6px;
+				-webkit-border-radius: 6px;
+				/* box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.7); */
+				/* -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+				-moz-box-shadow: 0 0px 4px rgba(0, 0, 0, 0.7); */
 			}
-			
 			#signup-header {
 				/* background: url(LeanModal/css/img/hd-bg.png); */
-				height: 31px;
 				padding: 8px 18px 8px 12px;
 				background: #0084ff;
 				border-top-left-radius: 6px;
@@ -473,14 +496,12 @@
 				-moz-border-radius-topright: 6px;
 				-webkit-border-top-right-radius: 6px;
 			}
-			
 			#signup-header h2 {
 				font-size:24px;
 				font-family:PingFangSC-Regular,PingFang SC;
 				font-weight:400;
 				color:#fff;
 			}
-			
 			#signup-header p {
 				color: #444;
 				font-size: 1.3em;
@@ -488,7 +509,6 @@
 				text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
 				text-shadow: none;
 			}
-			
 			.modal_close {
 				position: absolute;
 				top: 12px;
@@ -499,6 +519,13 @@
 				background: url(LeanModal/css/img/modal_close.png);
 				z-index: 2;
 			}
+			#signup-header p {
+				color: #444;
+				font-size: 1.3em;
+				margin: 0;
+				text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+				text-shadow: none;
+			}
 			.txt-fld {
 				display: flex;
 				align-items: center;
@@ -508,7 +535,6 @@
 				border-bottom: 1px solid #EEE;
 				text-align: right;
 			}
-			
 			.btn-fld {
 				width: 254px;
 				overflow: hidden;
@@ -526,8 +552,7 @@
 				color:rgba(0,0,0,0.85);
 			}
 			
-			.txt-fld input,
-			textarea {
+			.txt-fld input,textarea {
 				width: 244px;
 				padding: 8px;
 				border-radius: 4px;
@@ -547,91 +572,54 @@
 			.txt-fld input.error_input {
 				background: #FDE0E0;
 			}
-			
 			.txt-fld input:focus,
 			.txt-fld textarea:focus {
 				background-color: #FAF9DC;
 			}
-			
 			#lean_overlay {
-				position: fixed;
-				z-index: 10000;
-				top: 0px;
-				left: 0px;
-				height: 100%;
-				width: 100%;
-				background: #000;
-				display: none;
+			    position: fixed;
+			    z-index: 10000;
+			    top: 0px;
+			    left: 0px;
+			    height:100%;
+			    width:100%;
+			    background: #000;
+			    display: none;
 			}
-			
-			.submit {
+			.submit{
 				display: flex;
 				flex-direction: row;
 				justify-content: flex-end;
 				padding: 8px 0px;
 			}
-			
-			.submit input {
+			.submit input{
 				margin-right: 10px;
 				width: 80px;
 				height: 30px;
 				color: #fff;
 				background-color: #0084ff;
+				border-radius: 3px;
 			}
-			/*鼠标移入菜单*/
-			
-			.hiden_list{
-				width: 120px;
-				position: absolute;
-				top:40px;
-				background-color: rgb(255,255,255);
-				z-index: 9;
-				padding: 12px;
-				border-radius: 8px;
-				box-shadow: 0px 0px 5px 6px rgba(0,0,0,0.2);
-			}
-			
-			.hiden_list ul li {
-				border-bottom: 1px dotted;
-			}
-			
-			.hiden_list_w {
-				width: 120px;
-				position: absolute;
-				top: 40px;
-				background-color: rgb(255, 255, 255);
-				z-index: 9;
-			}
-			
-			.hiden_list_w ul li {
-				border-bottom: 1px dotted;
-			}
-			
-			.head_div {
+			.head_div{
 				position: relative;
 			}
-			
-			#edui1_iframeholder {
+			#edui1_iframeholder{
 				height: 200px !important;
 			}
-			
-			.edit_type {
+			.edit_type{
 				display: flex;
 				flex-direction: row;
 				font-size: 14px;
 				color: #0084ff;
 				margin-bottom: 10px;
 			}
-			
-			.edit_type span {
+			.edit_type span{
 				cursor: pointer;
 			}
-			
-			#more_edit {
+			#more_edit{
 				margin-left: 10px;
 			}
-			
-			.comment_area {
+			.comment_area{
 				font-size: 16px;
 				font-weight: 600;
 				color: #333;
@@ -640,18 +628,22 @@
 				border-top: 1px solid #B9B9B9;
 				border-bottom: 1px dashed #B9B9B9;
 			}
-			
-			#edui1 {
-				width: 770px !important;
+			#edui1{
+				width: 708px !important;
 			}
-			#postTitle {
-				margin-top: 12px;
-			    margin-bottom: 4px;
-			    font-size: 22px;
-			    font-weight: 600;
-			    font-synthesis: style;
-			    line-height: 32px;
-			    color: #1a1a1a;
+			#recommend{
+				margin-top: 16px;
+				padding: 0 24px 16px;
+			}
+			#recommend li{
+				color: #333;
+				font-size: 14px;
+				font-family: -apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+			}
+			#recommend li:hover{
+				color: #0084ff;
+				text-indent: .3em;
+				text-decoration: underline;
 			}
 			.partener_block ul{
 				display: flex;
@@ -660,20 +652,100 @@
 			}
 			.statistics{
 				width: 90%;
-				/*height: 100px;*/
-                display: flex;
-                margin: 8px auto;
+				display: flex;
+				margin: 8px auto;
 				flex-direction: row;
 				justify-content: space-between;
 			}
 			.statistics .part{
-				/*width: 25%;
-				height: 100px;
-				display:flex;
-				flex-direction: column;*/
 				justify-content: space-around;
 				align-items: center;
-            }
+			}
+			.read_num span,.public_time span{
+				color: #999;
+				font-size: 13px;
+				line-height: 18px;
+			}
+			#user_box{
+				display: flex;
+			}
+			.user_info{
+				margin-left: 20px;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+			}
+			#user_name_head{
+				color: #333;
+				font-weight: 600;
+				font-size: 16px;
+				font-family: -apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+			}
+			#time{
+				margin: 8px 0 0;
+				color: #999;
+				font-size: 13px;
+			}
+			.boxBtn{
+				display: inline-block;
+				height: 32px;
+				padding: 0 16px;
+				color: #fff;
+				line-height: 32px;
+				text-align: center;
+				background-color: #0084ff;
+				border: 0;
+				border-radius: 16px;
+				cursor: pointer;
+			}
+			.boxBtn1{
+				display: inline-block;
+				height: 32px;
+				padding: 0 16px;
+				color: #0084ff;
+				line-height: 32px;
+				text-align: center;
+				background-color: #fff;
+				border: 1px solid #0084ff;
+				border-radius: 16px;
+				cursor: pointer;
+			}
+			.authorTip{
+				display: inline-block;
+				line-height: 18px;
+				font-size: 12px;
+				font-weight: 500;
+				background: rgb(80, 159, 233);
+				color: rgb(255, 255, 255);
+				border-radius: 2px;
+				padding: 0px 4px;
+				margin-right: 4px;
+				text-align: center;
+			}
+			.hot_post_title{
+				padding: 0 24px;
+				justify-content: space-between;
+				display: flex;
+			}
+			.hot_post_title h2{
+				display: inline-block;
+				-ms-flex: 1 1;
+				flex: 1 1;
+				margin-right: 16px;
+				color: #333;
+				font-weight: 600;
+				font-size: 18px;
+				font-style: normal;
+				font-stretch: normal;
+				line-height: 1.22;
+				letter-spacing: normal;
+				text-overflow: ellipsis;
+				word-break: keep-all;
+			}
+			.toMore{
+				font-size: 14px;
+				color: #0084ff;				
+			}
 		</style>
 	</head>
 
@@ -691,7 +763,7 @@
 							<li class="menu-item-has-children"><a href="#" title="" itemprop="url">论坛</a>
 								<ul>
 									<li><a href="index.html?type=0&plate=1&two=0" title="" itemprop="url">煤炭</a></li>
-									<li><a href="index.html?type=0&plate=2&two=0" title="" itemprop="url">石油&天然气</a></li>
+									<li><a href="index.html?type=0&plate=1&two=0" title="" itemprop="url">石油&天然气</a></li>
 									<li><a href="coverchild.html?type=0&plate=1&two=0" title="" itemprop="url">液化天然气</a></li>
 									<li><a href="index.html?type=0&plate=4&two=0" title="" itemprop="url">电力</a></li>
 									<li><a href="index.html?type=0&plate=5&two=0" title="" itemprop="url">核能</a></li>
@@ -703,7 +775,7 @@
 							<li class="menu-item-has-children"><a href="#">问答</a>
 								<ul>
 									<li><a href="question.html?type=0&plate=1&two=0" title="" itemprop="url">煤炭</a></li>
-									<li><a href="question.html?type=0&plate=2&two=0" title="" itemprop="url">石油&天然气</a></li>
+									<li><a href="question.html?type=0&plate=1&two=0" title="" itemprop="url">石油&天然气</a></li>
 									<li><a href="question.html?type=0&plate=1&two=0" title="" itemprop="url">液化天然气</a></li>
 									<li><a href="question.html?type=0&plate=4&two=0" title="" itemprop="url">电力</a></li>
 									<li><a href="question.html?type=0&plate=5&two=0" title="" itemprop="url">核能</a></li>
@@ -739,31 +811,26 @@
 				</div>
 				<div class="head_div">
 					<div id="admin_box" class="admin_box">
+						<!--<img src="images/messageIcon.png" width="20px"/>
+						<div class="admin">
+							<img src="images/people03.jpg" class="admin_logo"/>
+							<span class="lever">LV10</span>
+						</div>-->
 						<a href="login.html">登录/注册</a>
-						<a href="">快速发帖</a>
+						<a href="mine.html?fast=1">快速发帖</a>
 					</div>
 					<!-- 鼠标移入显示的菜单 -->
 					<div class="hiden_list">
 						<ul>
-							<li>
-								<a href="mine.html">个人中心</a>
-							</li>
-							<li id="manager">
-								<a href="http://114.55.35.82/dist/index.html#/easay">管理员中心</a>
-							</li>
-							<li>
-								<a onclick="delsession()" href="login.html">退出登陆</a>
-							</li>
+							<li><a href="mine.html">个人中心</a></li>
+							<li id="manager"><a href="http://114.55.35.82/dist/index.html#/easay">管理员中心</a></li>
+							<li><a onclick="delsession()" href="login.html">退出登陆</a></li>
 						</ul>
 					</div>
 					<div class="hiden_list_w">
 						<ul>
-							<li>
-								<a href="mine.html">个人中心</a>
-							</li>
-							<li>
-								<a onclick="delsession()" href="login.html">退出登陆</a>
-							</li>
+							<li><a href="mine.html">个人中心</a></li>
+							<li><a onclick="delsession()" href="login.html">退出登陆</a></li>
 						</ul>
 					</div>
 				</div>
@@ -858,447 +925,371 @@
 					</div>
                 </div>
 				<!-- 当前位置 -->
-				<div class="gonggao bdb_d fix">
+				<div class="gonggao fix">
 					<div class="txtScroll-top l zy_cur">
 						<div class="l tit"><img src="images/icon_location.png"><b class="dib vm">当前位置：</b></div>
 						<p class="l">
-							<a href="" id="post_plate"></a><span id="post_plate_two"></span></p>
+							<a href="index.html" id="post_plate"></a><span id="post_plate_two"></span></p>
 					</div>
 				</div>
 				<!--博客版块-->
 				<div class="blog_box">
 					<div class="blog_left">
 						<div class="blog_title">
-							<h1 id="postTitle">xxxx</h1>
+							<div class="post_type" id="postLabel">
+							</div>
+							<h1 id="postTitle"></h1>
 						</div>
 						<div class="blog_detail">
-							<div class="post_type" id="postLabel">
+							<!-- <div class="post_type" id="postLabel">
 								<span>分类专栏：</span>
-								<!--<span>[原创]</span>
-						<span>[闲谈]</span>-->
-							</div>
-							<div class="public_time">
-								<span>发布于：</span>
-								<span id="time">0000-00-00 00:00:00</span>
-							</div>
+							</div> -->
 							<div class="read_num">
+								<span>浏览：</span>
 								<span id="readNum">
-									阅读数：0
+							
 								</span>
 							</div>
-							<!--<div class="collect">
-								<img src="images/collection.png" />
-								<span>
-									收藏
+							
+							<div class="read_num">
+								<span style="margin: 0 4px;">·</span>
+								<span>获赞：</span>
+								<span id="getUpnum">
+							
 								</span>
-							</div>-->
+							</div>
 						</div>
-						<div class="state" id="postCopyright"><span>*</span>版权声明：本文为原创文章，转载请附上原文出处链接和本声明/未经许可不可转载。</div>
 						<div class="post_info">
 							<div class="user">
-								<img id="user_head" src="images/manager.jpg" />
+								<div id="user_box">
+									<img id="user_head" src="images/manager.jpg" />
+									<div class="user_info">
+										<div>
+												<span id="user_name_head"></span>
+												<span class="authorTip">
+													楼主
+												</span>
+										</div>
+										<span id="time"></span>
+									</div>
+								</div>
+								
 								<div class="info_box" id="info_box">
 									<div class="user_name">
 										<div style="display: flex;align-items: center;margin-bottom: 10px;">
 											<img id="user_heads" src="images/manager.jpg" />
-											<h3 id="user_name" style="min-height: 25px;margin: 0;padding-bottom: 0px;padding-left: 10px;">xx</h3>
+											<h3 id="user_name" style="width: 240px;display: flex;flex-direction: column;text-overflow: ellipsis;overflow: hidden;background-color: #fff;border-radius: 5px;min-height: 25px;margin: 0;padding-bottom: 0px; padding-left: 10px;">xx</h3>
 										</div>
 										<div class="user_intro" id="user_profile">
-											<p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+											<p>ta比较懒还没有说明</p>
 										</div>
-										<div class="trivial" style="width: 100%;margin-top: 5px;">
+										<div class="trivial">
 											<div>
-												<span style="font-size: 12px;color: #807979;">发布</span>
-												<span id="my_publish">0</span>
+												<span class="spanTitle">发布</span>
+												<span class="spanInfo" id="user_release_sum">0</span>
 											</div>
 											<div>
-												<span style="font-size: 12px;color: #807979;">粉丝</span>
-												<span id="my_fans">0</span>
+												<span class="spanTitle">粉丝</span>
+												<span class="spanInfo" id="user_fans_sum">0</span>
 											</div>
 											<div>
-												<span style="font-size: 12px;color: #807979;">获赞</span>
-												<span id="my_support">0</span>
+												<span class="spanTitle">获赞</span>
+												<span class="spanInfo" id="post_upnum">0</span>
 											</div>
 											<div>
-												<span style="font-size: 12px;color: #807979;">关注</span>
-												<span id="my_focuse">0</span>
+												<span class="spanTitle">转发</span>
+												<span class="spanInfo" id="user_follow_sum">0</span>
 											</div>
 											<div>
-												<span style="font-size: 12px;color: #807979;">积分</span>
-												<span id="my_coin">0</span>
+												<span style='font-size: 12px;color: #807979;'>积分</span>
+												<span class="spanInfo" id='user_coin_sum'>0</span>
 											</div>
 										</div>
-										<div style="margin-top: 10px;">
-											<button style="background-color: #0084ff;color: #fff;width: 64px;height: 20px;border-radius: 4px;"  onclick="attention('admin_id')">个人主页</button>
+										<div style="margin-top: 10px;margin-left: 12px;">
+											<button class="boxBtn" style="margin-right: 64x;" id="attention">+ 关注</button>
+											<button class="boxBtn1" style="margin-right: 64x; display: none;" id="attentioned">取消关注</button>
+											<button class="boxBtn"  onclick="toMinec('admin_id')">个人主页</button>
 											<input type="text" name="admin_id" id="admin_id" value="" hidden="hidden"/>
 										</div>
 									</div>
 								</div>
 							</div>
-							<div class="attention">
-								<input type="button" name="" id="attention" value="关注" />
-								<input type="button" name="" id="attentioned" value="取消关注" hidden="hidden" />
-								<span>
-									Ta的关注>
-								</span>
-							</div>
-							<div class="trivial">
-								<!-- <div>
-									<span>发布</span>
-									<span id="user_release_sum">0</span>
-								</div>
-								<div>
-									<span>粉丝</span>
-									<span id="user_fans_sum">0</span>
-								</div>
-								<div>
-									<span>获赞</span>
-									<span id="post_upnum">0</span>
-								</div>
-								<div>
-									<span>转发</span>
-									<span id="user_follow_sum">0</span>
-								</div> -->
-							</div>
 						</div>
 						<div class="post_text" id="postContent">
-							<!--<p> 在18日召开的国务院联防联控机制新闻发布会上，国资委副主任任洪斌表示，目前，中央企业所属2万余户生产型子企业开工率已超80%，石油石化、通信、电网、交通运输等行业已超95%，有的已达100%。</p>
-							<p>
-								“疫情确实对央企生产经营造成了影响，对个别行业影响还较大，但这种影响是阶段性、暂时性的。”任洪斌表示，国资委不会改变年初制定的生产经营目标和改革任务，并将为此付出更大努力：一是指导央企分类有序带头复工复产，保持生产经营稳定运行;二是加强形势研判，分析企业所涉行业和产业链形势，强化预测预警，及时制定对策;三是加大降本节支、提质增效工作力度，尽力减少疫情造成的损失;四是指导央企用好金融、财税等政策，把握市场机遇，做好结构优化和稳产稳收。</p><img
-							 src="images/owner.jpg" />
-							<p>在18日召开的国务院联防联控机制新闻发布会上，国资委副主任任洪斌表示，目前，中央企业所属2万余户生产型子企业开工率已超80%，石油石化、通信、电网、交通运输等行业已超95%，有的已达100%。</p>-->
+							
 						</div>
 						<div class="annex_d" id="annex_d" style="display: none;">
 							<div class="annex_info">
-								<div class="user_logo">
-									<img id="user_logo" src="images/manager.jpg" />
-									<h2>已采纳</h3>
-								</div>
-								<div class="good">
-									<img src="images/good.png" /><span id="comment_upnum">0</span>
+								<h3 id="enclosureName">附件标题</h3>
+								
+								<div class="annex_spent" style="margin-top: 12px;" id="enclosureCoin">
+									所需：0积分/论坛币
 								</div>
 							</div>
-							<div class="user_reply">
-								<div class="reply_dt">
-									<div class="reply_name">
-										<h2 id="user_name">xx</h2><span>xx</span>
-								</div>
-								<div>
-									综合排名：0
-								</div>
-								<div id="comment_content">
-									xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-								</div>
-							</div>
-							<div class="report">
-								<span>举报</span><span>回复</span>
+							<div class="annex_bt">
+								<span>
+									大小：0M
+								</span>
+								<input type="button" name="" style="margin-top: 12px;" id="dowmload" value="立即下载" />
 							</div>
 						</div>
-					</div>
-					<div class="five_bt" id="do_something">
-						<div class="post_icon" name="support">
-							<img id="support" src="images/support.png" /><span id="postUpnum">0</span>
-						</div>
-						<div class="post_icon" name="forword">
-							<img id="forword" src="images/forword.png" /><span id="postForwardnum">0</span>
-						</div>
-						<div class="post_icon" name="collection">
-							<img id="collection" src="images/collection.png" /><span id="postCollectionnum">0</span>
-						</div>
-						<div class="post_icon" name="reward">
-							<a rel="leanModal" name="test" href="#test"><img id="reward" src="images/rewarded.png" /><span></span></a>
-						</div>
-						<div class="post_icon" name="report">
-							<a rel="leanModal" name="Report" href="#Report"><img id="report" src="images/report.png" /><span></span></a>
-						</div>
-					</div>
-					<div id="Report">
-						<div id="signup-ct">
-							<div id="signup-header">
-								<h2>举报</h2>
-								<a class="modal_close" href="#"></a>
+						<div class="five_bt" id="do_something">
+							<div class="post_icon" name="support">
+								<img id="support" src="images/support.png" /><span id="postUpnum">0</span>
 							</div>
-							<form action="">
-								<div class="txt-fld">
-									<label for="">举报内容</label>
-									<textarea id="report_text" name="" rows="" cols=""></textarea>
-								</div>
-								<div class="submit">
-									<input type="button" name="" id="edit" value="确认" />
-								</div>
-							</form>
-						</div>
-					</div>
-					<div id="test">
-						<div id="signup-ct">
-							<div id="signup-header">
-								<h2>打赏金额</h2>
-								<a class="modal_close" href="#"></a>
+							<div class="post_icon" name="forword">
+								<img id="forword" src="images/forword.png" /><span id="postForwardnum">0</span>
 							</div>
-							<form action="">
-								<div class="txt-fld">
-									<label for="">论坛币</label>
-									<input id="reward_coinnum" name="" type="text" />
-								</div>
-								<div class="txt-fld">
-									<label for="">人民币</label>
-									<input id="reward_money" name="" type="text" />
-								</div>
-								<div class="submit">
-									<input type="button" name="" id="check" value="确认" />
-								</div>
-							</form>
-						</div>
-					</div>
-					<div id="reply">
-						<div id="signup-ct">
-							<div id="signup-header">
-								<h2>回复</h2>
-								<!-- <a class="modal_close" href="#"></a> -->
+							<div class="post_icon" name="collection">
+								<img id="collection" src="images/collection.png" /><span id="postCollectionnum">0</span>
 							</div>
-							<form action="">
-								<div class="txt-fld">
-									<label for="">回复</label>
-									<input id="reply_content" name="" type="text" placeholder="请输入回复的内容" />
-								</div>
-								<!-- <div class="txt-fld">
-										<label for="">人民币</label>
-										<input id="reward_money" name="" type="text" placeholder="请点击扫码"/>
-									</div> -->
-								<div class="submit">
-									<input type="button" name="" id="checked" value="确认" />
-								</div>
-							</form>
-						</div>
-					</div>
-
-					<div id="Reported">
-						<div id="signup-ct">
-							<div id="signup-header">
-								<h2>举报</h2>
-								<a class="modal_close" href="#"></a>
+							<div class="post_icon" name="reward">
+								<a rel="leanModal" name="test" href="#test"><img id="reward" src="images/reward.png" /><span>打赏</span></a>
 							</div>
-							<form action="">
-								<div class="txt-fld">
-									<label for="">举报内容</label>
-									<textarea id="report_texted" name="" rows="" cols=""></textarea>
-								</div>
-								<div class="submit">
-									<input type="button" name="" id="edited" value="确认" />
-								</div>
-							</form>
+							<div class="post_icon" name="report">
+								<a rel="leanModal" name="Report" href="#Report"><img id="report" src="images/report.png" /><span>举报</span></a>
+							</div>
 						</div>
-					</div>
-					<div></div>
-					<div class="commet">
-						<div class="edit_type">
-							<span id="fast_edit">快速回复</span><span id="more_edit">富文本编辑</span>
+						<div id="Report">
+							<div id="signup-ct">
+								<div id="signup-header">
+									<h2>举报</h2>
+									<a class="modal_close" href="#"></a>
+								</div>
+								<form action="">
+									<div class="txt-fld">
+										<label for="">举报内容</label>
+										<textarea id="report_text" name="" rows="" cols=""></textarea>
+									</div>
+									<div class="submit">
+										<input type="button" name="" id="edit" value="确认" />
+									</div>
+								</form>
+							</div>
 						</div>
-						<textarea name="" rows="" cols="" placeholder="评论" id="comment"></textarea>
-						<script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>
-						<script type="text/javascript">
+						<div id="test">
+							<div id="signup-ct">
+								<div id="signup-header">
+									<h2>打赏金额</h2>									
+								</div>
+								<form action="">
+									<div class="txt-fld">
+										<label for="">论坛币</label>
+										<input id="reward_coinnum" name="" type="text" placeholder="请输入打赏的论坛币" />
+									</div>
+									
+									<div class="submit">
+										<input type="button" name="" id="check" value="确认" />
+									</div>
+								</form>
+							</div>
+						</div>
+						
+						<div></div>
+						<div class="commet">
+							<div class="edit_type">
+								<span id="fast_edit">快速回复</span><span id="more_edit">富文本编辑</span>
+							</div>
+							<textarea name="" rows="" cols="" id="comment_content" placeholder="评论"></textarea>
+							<script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>
+							<script type="text/javascript">
 							//实例化编辑器
 							//建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
 							var ue = UE.getEditor('editor', {
 								toolbars: [
-									[
-										'undo', //撤销
-										'redo', //重做
-										'inserttitle', //插入标题
-										'simpleupload', //单图上传
-										'bold', //加粗
-										'indent', //首行缩进
-										'italic', //斜体
-										'underline', //下划线
-										'strikethrough', //删除线
-										'subscript', //下标
-										'superscript', //上标
-										'unlink', //取消链接
-										'insertrow', //前插入行
-										'link', //超链接
-										'emotion', //表情
-										'justifyleft', //居左对齐
-										'justifyright', //居右对齐
-										'justifycenter', //居中对齐
-										'justifyjustify', //两端对齐
-										'forecolor', //字体颜色
-										'backcolor', //背景色
-										'insertorderedlist', //有序列表
-										'insertunorderedlist', //无序列表
-										'imageleft', //左浮动
-										'imageright', //右浮动
-										'attachment', //附件
-										'edittip ', //编辑提示
-									]
-								],
-								autoHeightEnabled: true,
-								autoFloatEnabled: true
-							});
-						</script>
-						<div class="push_bt">
-							<span id="">
+										[
+											'undo', //撤销
+											'redo', //重做
+											'inserttitle', //插入标题
+											'simpleupload', //单图上传
+											'bold', //加粗
+											'indent', //首行缩进
+											'italic', //斜体
+											'underline', //下划线
+											'strikethrough', //删除线
+											'subscript', //下标
+											'superscript', //上标
+											'unlink', //取消链接
+											'insertrow', //前插入行
+											'link', //超链接
+											'emotion', //表情
+											'justifyleft', //居左对齐
+											'justifyright', //居右对齐
+											'justifycenter', //居中对齐
+											'justifyjustify', //两端对齐
+											'forecolor', //字体颜色
+											'backcolor', //背景色
+											'insertorderedlist', //有序列表
+											'insertunorderedlist', //无序列表
+											'imageleft', //左浮动
+											'imageright', //右浮动
+											'attachment', //附件
+											'edittip ', //编辑提示
+										]
+									],
+									autoHeightEnabled: true,
+									autoFloatEnabled: true
+								});
+							</script>							
+							<div class="push_bt">
+								<span id="">
 									最多输入1000个字
 								</span>
-							<input type="button" name="" value="发表" id="publish" />
-							<input type="button" name="" id="more_publish" value="发表" />
-							<input type="button" name="" id="reply_push" value="回复" />
-						</div>
-						<div class="comment_area">
-							评论区
-						</div>
-						<div class="comment_box" id="comment_box">
+								<input type="button" name="" id="publish" value="发表" />
+								<input type="button" name="" id="more_publish" value="发表" />
+								<input type="button" name="" id="reply_push" value="回复" />
+							</div>
+							<div class="comment_area">
+								评论区
+							</div>
+							<div class="comment_box" id="comment_box">
+
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="blog_right">
-					<div class="pic_link">
-						<img src="images/owner.jpg" />
-					</div>
-					<div class="hot_post">
-						<div class="sy_title bdb_d ovh">
-							<h2 class="l"><b class="fc">推荐热帖</b></h2>
-							<a href="newslist.html" class="more r">查看更多></a>
+					<div class="blog_right">
+						<div class="pic_link">
+							<img src="images/bannar.png" />
 						</div>
-						<ul id="recommend">
-							<!--<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span></a></li>
-						<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局办公大楼新建地块招标项目开发商承建福泉市综合执法局办公大楼新建地块招标项目开发商承建</span></a></li>
-						<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span></a></li>
-						<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局办公大楼新建地块招标项目开发商承建</span></a></li>
-						<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span></a></li>
-						<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局办公大楼新建地块招标项目开发商承建</span></a></li>
-						<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span></a></li>-->
-						</ul>
-					</div>
-					<!--轮播-->
-					<div class="zhuanti_pic">
-						<div class="hd">
-							<!--轮播点 -->
-							<ul id="right_point">
-								<!--<li></li>
-								<li></li>-->
+						<div class="hot_post">
+							<div class="hot_post_title">
+								<h2 class="l"><img src="images/hot.png" style="width: 22px; margin-right: 8px;">推荐热帖</h2>
+								<a href="coverchild.html" class="toMore">查看更多></a>
+							</div>
+							<ul id="recommend">
+								
 							</ul>
 						</div>
-						<div class="bd">
-							<ol class="carousel" id="right_ad">
-								<!--专题图片轮播 -->
-								<!--<li>
-									<a href="news_xq.html"><img src="images/owner.jpg" /></a>
-								</li>
-								<li>
-									<a href="news_xq.html"><img src="images/owner.jpg" /></a>
-								</li>-->
-							</ol>
-						</div>
-						<!-- 下面是前/后按钮代码，如果不需要删除即可 -->
-						<a class="prev" href="javascript:void(0)"></a>
-						<a class="next" href="javascript:void(0)"></a>
+						<!--轮播-->
+						<div class="zhuanti_pic">
+							<div class="hd">
+								<!--轮播点 -->
+								<ul id="right_point">
+									<!--<li></li>
+									<li></li>-->
+								</ul>
+							</div>
+							<div class="bd">
+								<ol class="carousel" id="right_ad">
+									<!--专题图片轮播 -->
+									<!--<li>
+										<a href="news_xq.html"><img src="images/owner.jpg" /></a>
+									</li>
+									<li>
+										<a href="news_xq.html"><img src="images/owner.jpg" /></a>
+									</li>-->
+								</ol>
+							</div>
+							<!-- 下面是前/后按钮代码，如果不需要删除即可 -->
+							<a class="prev" href="javascript:void(0)"></a>
+							<a class="next" href="javascript:void(0)"></a>
 
-						<script type="text/javascript">
-							jQuery(".zhuanti_pic").slide({
-								mainCell: ".bd ul",
-								autoPlay: true,
-								effect: "fade",
-								mouseOverStop: false,
-								interTime: 3000,
-							});
-						</script>
+							<script type="text/javascript">
+								jQuery(".zhuanti_pic").slide({
+									mainCell: ".bd ul",
+									autoPlay: true,
+									effect: "fade",
+									mouseOverStop: false,
+									interTime: 3000,
+								});
+							</script>
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<!-- 专题轮播 -->
-			<div class="zhuanti_pic">
-				<div class="hd">
-					<!--轮播点 -->
-					<ul id="bottom_point">
-						<!--<li></li>
-						<li></li>-->
-					</ul>
+				<!-- 专题轮播 -->
+				<div class="zhuanti_pic">
+					<div class="hd">
+						<!--轮播点 -->
+						<ul id="bottom_point">
+							<!--<li></li>
+							<li></li>-->
+						</ul>
+					</div>
+					<div class="bd">
+						<ul id="bottom_banner">
+							<!--专题图片轮播 -->
+							<!--<li>
+								<a href="news_xq.html"><img src="images/pic01.jpg" /></a>
+							</li>
+							<li>
+								<a href="news_xq.html"><img src="images/pic01.jpg" /></a>
+							</li>-->
+						</ul>
+					</div>
+					<!-- 下面是前/后按钮代码，如果不需要删除即可 -->
+					<a class="prev" href="javascript:void(0)"></a>
+					<a class="next" href="javascript:void(0)"></a>
+
+					<script type="text/javascript">
+						jQuery(".zhuanti_pic").slide({
+							mainCell: ".bd ul",
+							autoPlay: true,
+							effect: "fade",
+							mouseOverStop: false,
+							interTime: 3000,
+						});
+					</script>
 				</div>
-				<div class="bd">
-					<ul id="bottom_banner">
-						<!--专题图片轮播 -->
-						<!--<li>
-							<a href="news_xq.html"><img src="images/pic01.jpg" /></a>
-						</li>
-						<li>
-							<a href="news_xq.html"><img src="images/pic01.jpg" /></a>
-						</li>-->
-					</ul>
-				</div>
-				<!-- 下面是前/后按钮代码，如果不需要删除即可 -->
-				<a class="prev" href="javascript:void(0)"></a>
-				<a class="next" href="javascript:void(0)"></a>
+				<div class="partener">
+                	<div class="partener_title">
+                		友情链接
+                	</div>
+                	<div class="partener_block">
+                		<ul>
+                			<!--1-->
+                			<li><a href="https://www.shpgx.com/html/index.html">上海石油天然气交易中心</a></li>
+                		<!--</ul>
+                		<ul>-->
+                			<!--2-->
+                			<li><a href="https://www.iea.org/">IEA</a></li>
+											<li><a href="https://www.igu.org/">IGU</a></li>
+											<li><a href="https://www.opec.org/opec_web/en/">OPEC</a></li>
+											<li><a href="https://www.ocimf.org/">OCIMF</a></li>
+											<!--3-->
+                			<li><a href="http://www.cnpc.com.cn/index.shtml">中国石油</a></li>
+                		</ul>
+                		<ul>
+											<li><a href="http://www.sinopecgroup.com/">中国石化</a></li>
+											<li><a href="https://www.cnooc.com.cn/">中国海油</a></li>
+											<li><a href="http://www.sinochem.com/">中国中化</a></li>
+											<!--4-->
+                			<li><a href="https://www.bp.com/">BP</a></li>
+											<li><a href="https://www.shell.com/">SHELL</a></li>
+											<li><a href="https://www.total.com/en">TOTAL</a></li>
+                		</ul>
+                		<ul>
+											<li><a href="https://www.tokyo-gas.co.jp/en/index.html">东京燃气</a></li>
+											<li><a href="http://www.kogas.or.kr/eng/index.do">KOGAS</a></li>
+											<!--5-->
+                			<li><a href="http://www.qatargas.com/english">Qatargas</a></li>
+											<li><a href="https://www.enn.cn/">新奥集团</a></li>
+											<li><a href="http://www.guanghui.com/">新疆广汇</a></li>
+											<li><a href="https://www.geg.com.cn/">广东能源</a></li>
+                		</ul>
+                		<ul>
+                			
+											<li><a href="http://www.bjgas.com/NewsCen2.aspx">北京燃气</a></li>
+                			<!--6-->
+                			<li><a href="http://trqgy.cn/">天然气工业</a></li>
+											<li><a href="http://www.syytrqhg.cn/ch/index.aspx">石油与天然气化工</a></li>
+                			<!--7-->
+                			<li><a href="https://www.jtsi.wa.gov.au/gasfund/introduction">中澳天然气基金</a></li>
+                		</ul>
+                	</div>
+                </div>
+							</div>
 
-				<script type="text/javascript">
-					jQuery(".zhuanti_pic").slide({
-						mainCell: ".bd ul",
-						autoPlay: true,
-						effect: "fade",
-						mouseOverStop: false,
-						interTime: 3000,
-					});
-				</script>
-			</div>
-			<div class="partener">
-            	<div class="partener_title">
-            		友情链接
-            	</div>
-            	<div class="partener_block">
-            		<ul>
-            			<!--1-->
-            			<li><a href="https://www.shpgx.com/html/index.html">上海石油天然气交易中心</a></li>
-            		<!--</ul>
-            		<ul>-->
-            			<!--2-->
-            			<li><a href="https://www.iea.org/">IEA</a></li>
-						<li><a href="https://www.igu.org/">IGU</a></li>
-						<li><a href="https://www.opec.org/opec_web/en/">OPEC</a></li>
-						<li><a href="https://www.ocimf.org/">OCIMF</a></li>
-						<!--3-->
-            			<li><a href="http://www.cnpc.com.cn/index.shtml">中国石油</a></li>
-            		</ul>
-            		<ul>
-						<li><a href="http://www.sinopecgroup.com/">中国石化</a></li>
-						<li><a href="https://www.cnooc.com.cn/">中国海油</a></li>
-						<li><a href="http://www.sinochem.com/">中国中化</a></li>
-						<!--4-->
-            			<li><a href="https://www.bp.com/">BP</a></li>
-						<li><a href="https://www.shell.com/">SHELL</a></li>
-						<li><a href="https://www.total.com/en">TOTAL</a></li>
-            		</ul>
-            		<ul>
-						<li><a href="https://www.tokyo-gas.co.jp/en/index.html">东京燃气</a></li>
-						<li><a href="http://www.kogas.or.kr/eng/index.do">KOGAS</a></li>
-						<!--5-->
-            			<li><a href="http://www.qatargas.com/english">Qatargas</a></li>
-						<li><a href="https://www.enn.cn/">新奥集团</a></li>
-						<li><a href="http://www.guanghui.com/">新疆广汇</a></li>
-						<li><a href="https://www.geg.com.cn/">广东能源</a></li>
-            		</ul>
-            		<ul>
-            			
-						<li><a href="http://www.bjgas.com/NewsCen2.aspx">北京燃气</a></li>
-            			<!--6-->
-            			<li><a href="http://trqgy.cn/">天然气工业</a></li>
-						<li><a href="http://www.syytrqhg.cn/ch/index.aspx">石油与天然气化工</a></li>
-            			<!--7-->
-            			<li><a href="https://www.jtsi.wa.gov.au/gasfund/introduction">中澳天然气基金</a></li>
-            		</ul>
-            	</div>
-            </div>
-		</div>
-
-		<style type="text/css">
-			.date_bg {
-				position: absolute;
-				z-index: 999;
-				top: 0;
-				left: 0;
-				width: 100%;
-				background-color: rgba(0, 0, 0, .5);
-			}
-		</style>
+			<style type="text/css">
+				.date_bg {
+					position: absolute;
+					z-index: 999;
+					top: 0;
+					left: 0;
+					width: 100%;
+					background-color: rgba(0, 0, 0, .5);
+				}
+			</style>
 		</div>
 
 		<!-- 返回顶部 -->
@@ -1319,12 +1310,20 @@
 		<script type="text/javascript" src="config.js"></script>
 		<script type="text/javascript" src="js/pop_ups/MiniDialog-es5.min.js"></script>
 		<script type="text/javascript">
+			
 			$(".info_box").hide();
-			$("#user_head").mouseenter(function(){
+			$("#user_box").mouseenter(function(){
 				$(this).next().show();
 			})
 			$(".user").mouseleave(function(){
-				$("#user_head").next().hide();
+				$("#user_box").next().hide();
+			})
+			
+			$("#plate_master_pic").mouseenter(function(){
+				$(this).next().show();
+			})
+			$(".owner").mouseleave(function(){
+				$("#plate_master_pic").next().hide();
 			})
 			//头部统计
 			$.ajax({
@@ -1332,7 +1331,6 @@
 				url:`${sever_url}master/title`,
 				dataType:"json",
 				success:function(data){
-					console.log(data)
 					$("#user_count").html(data.data.user_count);
 					$("#post_count").html(data.data.post_count);
 					$("#user_loging").html(data.data.user_loging);
@@ -1363,36 +1361,109 @@
 			var search = document.getElementById("search");
 			var btn = document.getElementById("btn");
 			btn.addEventListener('click', function() {
-				window.location.href = "/power/index.html?type=0&plate=1&two=0&search=1&searchv=" + search.value;
-
+				window.location.href = "/power/index.html?type=0&plate=1&two=0&search=1&searchv="+ search.value;
+			
 			})
+			// 获取我的信息
+			var data = sessionStorage.getItem("data");
+			var infodata = eval('(' + data + ')');
+			// console.log(infodata.token);
 			//回复编辑方式
-			$("#comment").hide();
+			$("#comment_content").hide();
 			$("#publish").hide();
 			$("#reply_push").hide();
-			$("#fast_edit").click(function() {
-				$("#comment").show();
+			$("#fast_edit").click(function(){
+				$("#comment_content").show();
 				$("#publish").show();
 				$("#more_publish").hide();
 				$("#edui1").hide();
 				$("#reply_push").hide();
 			})
-			$("#more_edit").click(function() {
-				$("#comment").hide();
+			$("#more_edit").click(function(){
+				$("#comment_content").hide();
 				$("#publish").hide();
 				$("#more_publish").show();
 				$("#edui1").show();
 				$("#reply_push").hide();
 			})
+			//监听头像鼠标移入事件
+			$('.hiden_list').hide();
+			$('.hiden_list_w').hide();
+			$("#head").mouseover(function() {
+				if (!infodata) {
+					return;
+				}
+				if (infodata.user_power_num == 4) {
+					$('.hiden_list_w').show();
+				} else {
+					$('.hiden_list').show();
+				}
+			});
+			$(".bd").mouseover(function() {
+				if (!infodata) {
+					return;
+				}
+				if (infodata.user_power_num == 4) {
+					$('.hiden_list_w').hide();
+				} else {
+					$('.hiden_list').hide();
+				}
+			});
+			//附件下载
+			$("#dowmload").click(function(){
+				if (sessionStorage.getItem("data") == null) {
+					Dialog({
+						title: "请登录！",
+						content: "您还未登录，是否登录？",
+						ok: {
+							callback: function() {
+								window.location.href = 'login.html';
+							}
+						},
+						cancel: {
+							callback: function() {
+								Dialog.close();
+							}
+						}
+					});
+				} else {
+					$.ajax({
+						type:"post",
+						url:sever_url+"file/dowmload",
+						async:true,
+						data:{
+							token:infodata.token,
+							post_id:$("#postTitle").attr("name")
+						},
+						dataType:"json",
+						success:function(data){
+//							console.log(data)
+							var $eleForm = $("<form method='get'></form>");
+				            $eleForm.attr("action",data.file_url);
+				            $(document.body).append($eleForm);
+				            //提交表单，实现下载
+				            $eleForm.submit();
+						}
+					});
+				}
+			})
+			function toMinec() {
+				window.location.href = `minec.html?user_id=${$("#admin_id").val()}`;
+			}
+			//退出登陆清除数据
+			function delsession() {
+				sessionStorage.clear();
+			}
+
 			// 举报
 			function Reported(commentId) {
 				console.log(commentId);
-				$("#edited").click(function() {
-					reprot_content = $("#report_texted").val();
+				$("#edit").click(function() {
+					reprot_content = $("#report_text").val();
 					console.log(reprot_content);
 					doSomething(reprot_content)
 				})
-				if(sessionStorage.getItem("data") == null) {
+				if (sessionStorage.getItem("data") == null) {
 					Dialog({
 						title: "请登录！",
 						content: "您还未登录，是否登录？",
@@ -1426,9 +1497,6 @@
 
 								// $("#Reported").css("display","none");
 								console.log(data)
-								location.reload()
-								// var num = Number($("#comment" + commentId).html());
-								// $("#comment" + commentId).html(num + 1);
 							},
 							error: function() {
 								console.log('error')
@@ -1441,16 +1509,16 @@
 			// 回复
 			function reply(commentId, user_name) {
 				// console.log(commentId,user_name);
-				UE.getEditor('editor').execCommand('insertHtml', "@" + user_name + "  ")
+				UE.getEditor('editor').execCommand('insertHtml', "@" + user_name+"  ")
 				$("#publish").hide();
 				$("#more_publish").hide();
 				$("#reply_push").show();
-				$("#fast_edit").attr("disabled", "disabled");
+				$("#fast_edit").attr("disabled","disabled");
 				$("#reply_push").click(function() {
 					var content = UE.getEditor('editor').getContent();
 					doSomething(content);
 				})
-				if(sessionStorage.getItem("data") == null) {
+				if (sessionStorage.getItem("data") == null) {
 					Dialog({
 						title: "请登录！",
 						content: "您还未登录，是否登录？",
@@ -1496,7 +1564,7 @@
 			//评论点赞
 			function commentSupport(commentId) {
 				console.log(commentId);
-				if(sessionStorage.getItem("data") == null) {
+				if (sessionStorage.getItem("data") == null) {
 					Dialog({
 						title: "请登录！",
 						content: "您还未登录，是否登录？",
@@ -1519,13 +1587,13 @@
 						url: sever_url + "post/support",
 						async: true,
 						data: {
-							token: obj ? obj.token : "",
+							token: obj.token,
 							post_id: getUrldata('postid'),
 							comment_id: commentId
 						},
 						dataType: "json",
 						success: function(data) {
-							//							console.log(data)
+							console.log(data)
 							var num = Number($("#comment" + commentId).html());
 							$("#comment" + commentId).html(num + 1);
 						},
@@ -1540,73 +1608,103 @@
 				obj = JSON.parse(obj);
 				//关注
 				$("#attention").click(function() {
-					$.ajax({
-						type: "post",
-						url: sever_url + "follow/add",
-						async: true,
-						data: {
-							token: obj ? obj.token : "",
-							user_id: $("#user_head").attr("name")
-						},
-						dataType: "json",
-						success: function(data) {
-							console.log(data)
-							if(data.code == "200") {
-								$("#attention").attr("hidden", "hidden");
-								$("#attentioned").removeAttr("hidden");
-							}else if(data.code == "2"){
-								Dialog({
-									title: "请登录！",
-									content: "您还未登录，是否登录？",
-									ok: {
-										callback: function() {
-											window.location.href = 'login.html';
+					if(obj != null){
+						$.ajax({
+							type: "post",
+							url: sever_url + "follow/add",
+							async: true,
+							data: {
+								token: obj!=null?obj.token:"",
+								user_id: $("#user_head").attr("name")
+							},
+							dataType: "json",
+							success: function(data) {
+								console.log(data)
+								if (data.code == "200") {
+									
+									$("#attention").hide();
+									$("#attentioned").show();
+								}else{
+									Dialog({
+										title: "提示",
+										content: data.msg,
+										ok: {
+											callback: function() {
+												Dialog.close();
+											}
 										}
-									},
-									cancel: {
-										callback: function() {
-											Dialog.close();
-										}
-									}
-								});
+									});
+								}
 							}
-						}
-					});
+						});
+					}else{
+						Dialog({
+							title: "请登录！",
+							content: "您还未登录，是否登录？",
+							ok: {
+								callback: function() {
+									window.location.href = 'login.html';
+								}
+							},
+							cancel: {
+								callback: function() {
+									Dialog.close();
+								}
+							}
+						});
+					}
 				})
 				//取关
 				$("#attentioned").click(function() {
-					$.ajax({
-						type: "post",
-						url: sever_url + "my/follow/del",
-						async: true,
-						data: {
-							token: obj ? obj.token : "",
-							user_id: $("#user_head").attr("name")
-						},
-						dataType: "json",
-						success: function(data) {
-							console.log(data)
-							if(data.code == "200") {
-								$("#attentioned").attr("hidden", "hidden");
-								$("#attention").removeAttr("hidden");
-							}else if(data.code == "2"){
-								Dialog({
-									title: "请登录！",
-									content: "您还未登录，是否登录？",
-									ok: {
-										callback: function() {
-											window.location.href = 'login.html';
+					if(obj != null) {
+						$.ajax({
+							type: "post",
+							url: sever_url + "my/follow/del",
+							async: true,
+							data: {
+								token: obj!=null?obj.token:"",
+								user_id: $("#user_head").attr("name")
+							},
+							dataType: "json",
+							success: function(data) {
+								if (data.code == "200") {
+									$("#attentioned").hide();
+									$("#attention").show();
+								}else{
+									Dialog({
+										title: "提示",
+										content: data.msg,
+										ok: {
+											callback: function() {
+												Dialog.close();
+											}
+										},
+										cancel: {
+											callback: function() {
+												Dialog.close();
+											}
 										}
-									},
-									cancel: {
-										callback: function() {
-											Dialog.close();
-										}
-									}
-								});
+									});
+								}
 							}
-						}
-					});
+						});
+					}else{
+						Dialog({
+							title: "提示",
+							content: "您还未登录，是否登录？",
+							ok: {
+								callback: function() {
+									window.location.href = 'login.html';
+								}
+							},
+							cancel: {
+								callback: function() {
+									Dialog.close();
+								}
+							}
+						});
+					}
+					
 				})
 				//获取URL传值
 				var post_id = getUrldata('postid'); //文章id
@@ -1621,26 +1719,37 @@
 						token: obj ? obj.token : ""
 					},
 					success: function(data) {
-//						console.log(data.data.post_upnum)
-						if(data.code == 200) {
+						console.log(data)
+						if (data.code == 200) {
 							$("#postTitle").html(data.data.post_title); //文章标题
+							$("#postTitle").attr("name",data.data.id);
 							$("#postCopyright").html('<span>*</span>版权声明：' + data.data.post_copyright); //版权声明
 							$("#postContent").html("<p>" + data.data.post_content + "</p>"); //文章内容
 							var labels = new RegExp(",", "g"); //g,表示全部替换。
-							var label = data.data.post_label.replace(labels, "]</span><span>[");
-							$("#postLabel").append('<span>[' + label + ']</span>'); //文章标签，多个“，”隔开
+							var label = data.data.post_label.replace(labels, "</span><span>");
+							$("#postLabel").append('<span>' + label + '</span>'); //文章标签，多个“，”隔开
 							$("#post_plate").html(data.data.post_plate);
 							$("#post_plate_two").html(data.data.post_plate_two);
-							$("#time").html(data.data.post_releasetime); //发布时间
-							$("#readNum").html("阅读数：" + data.data.post_readnum); //阅读数
-							$("#postUpnum").html(data.data.post_upnum); //点赞数
-							$("#postForwardnum").html(data.data.post_forwardnum); //转发数
-							$("#postCollectionnum").html(data.data.post_collectionnum); //收藏数
+							if (!data.data.revise_enclosure_name) {
+							}else{
+								$("#annex_d").css("display", "flex");
+								$("#enclosureName").html(data.data.revise_enclosure_name); //附件名称
+								$("#enclosureCoin").html('所需：' + data.data.revise_enclosure_coin + '积分/论坛币') //附件价格
+							}
+
+							$("#time").html('发布于：'+data.data.post_releasetime); //发布时间
+							$("#readNum").html(Number(data.data.post_readnum)); //阅读数
+							$("#getUpnum").html(Number(data.data.post_upnum)); //点赞数
+							$("#postUpnum").html('点赞('+Number(data.data.post_upnum)+')'); //点赞数
+							$("#postForwardnum").html('转发('+Number(data.data.post_forwardnum)+')'); //转发数
+							$("#postCollectionnum").html('收藏('+Number(data.data.post_collectionnum)+')'); //收藏数
 							$("#user_head").attr("src", data.data.user_head);
 							$("#user_heads").attr("src", data.data.user_head);
 							$("#user_head").attr("name", data.data.post_userid);
-							$("#user_name").html(data.data.user_name);
-							$("#user_profile").html(data.data.user_profile);
+							$("#user_name").html(data.data.user_name==null?"昵称":data.data.user_name);
+							$("#user_name_head").html(data.data.user_name==null?"昵称":data.data.user_name);
+							
+							$("#user_profile").html(data.data.user_profile==null?"ta比较懒没有说明":data.data.user_profile);
 							$("#user_release_sum").html(Number(data.data.user_release_sum));
 							$("#post_upnum").html(Number(data.data.post_upnum));
 							$("#user_follow_sum").html(Number(data.data.user_follow_sum));
@@ -1649,35 +1758,26 @@
 							$("#my_fans").html(data.data.user_fans_sum);
 							$("#my_support").html(data.data.post_upnum);
 							$("#my_focuse").html(data.data.user_follow_sum);
-							if(data.data.fabulous) {
+
+							if (data.data.fabulous) {
 								$("#support").attr("src", "images/supported.png");
 								$("#support").parent().attr("name", "supportdel");
 								$("#support").attr("id", "supportdel");
 							}
-							if(data.data.collect) {
+							if (data.data.collect) {
 								$("#collection").attr("src", "images/collectioned.png");
 								$("#collection").parent().attr("name", "collectiondel");
 								$("#collection").attr("id", "collectiondel");
 							}
-							if(data.data.follow) {
-								$("#attention").attr("hidden", "hidden");
-								$("#attentioned").removeAttr("hidden", "hidden");
+							$("#admin_id").val(data.data.post_userid)
+							if (data.data.follow) {
+								$("#attention").hide();
+								$("#attentioned").show();
 							}
-							//悬赏
-							if(data.data.hasOwnProperty("adopd")) {
-								$("#annex_d").css("display", "block");
-								$("#user_logo").attr("src", data.data.adopd.user_head);
-								$("#user_logo").attr("name", data.data.adopd.comment_userid);
-								$("#user_name").html(data.data.adopd.user_name);
-								$("#comment_content").html(data.data.adopd.comment_content);
-								$("#comment_upnum").html(Number(data.data.adopd.comment_upnum));
-							}
-							//推荐热帖
 							var num = data.data.recommend.length;
-							for(var i = 0; i < num; i++) {
+							for (var i = 0; i < num; i++) {
 								var arr = data.data.recommend[i];
-								$("#recommend").append('<li><a id="' + arr.id + '" href="news_xq.html"><b>·</b><span>' + arr.post_title +
-									'</span></a></li>')
+								$("#recommend").append('<li><a id="' + arr.id + '" href="forum.html?postid=' + arr.id +	' " ><b style="margin-right: 8px;">·</b><span>' + arr.post_title + '</span></a></li>')
 							}
 						}
 					},
@@ -1703,13 +1803,13 @@
 							console.log(data)
 							var length = data.data.length;
 							$("#comment_box").empty();
-							for(var i = 0; i < length; i++) {
+							for (var i = 0; i < length; i++) {
 								var obj = data.data[i];
 								$("#comment_box").append(
 									'<div class="content_box"><div class="visitor"><div class="visitor_info"><div class="visitor_pic"><img id="' +
 									obj.id + '" src="' + obj.user_head + '"/><span >' + obj.user_name +
 									'</span></div><div class="commet_time"><span>' + obj.comment_time + '</span><span>【' + obj.comment_layernum +
-									'楼】</span></div></div><div class="other_visitor"><a rel="leanModal" name="Reported" href="#Reported"><span onclick=Reported(' +
+									'楼】</span></div></div><div class="other_visitor"><a rel="leanModal" name="Report" href="#Report"><span onclick=Reported(' +
 									obj.id + ')>举报</span></a><a href="#editor"><span onclick=reply(' + obj.id +
 									',"' + obj.user_name +
 									'")>回复</span></a><span style="display:flex;align-items: center;"><img onclick=commentSupport(' +
@@ -1726,11 +1826,12 @@
 						}
 					});
 				}
+
 				//点赞、转发、打赏、、、、
 				$("#do_something div").click(function() {
 					var that = this;
 					var name = $(that).attr("name");
-					if(sessionStorage.getItem("data") == null) {
+					if (sessionStorage.getItem("data") == null) {
 						Dialog({
 							title: "请登录！",
 							content: "您还未登录，是否登录？",
@@ -1748,19 +1849,19 @@
 					} else {
 						var obj = sessionStorage.getItem("data");
 						obj = JSON.parse(obj);
-						var token = obj ? obj.token : "";
+						var token = obj.token;
 						var comment_id = "";
 						var reprot_content = "";
 						var reward_coinnum = "";
 						var reward_money = "";
 						console.log(name)
-						if(name == "reward") {
+						if (name == "reward") {
 							$("#check").click(function() {
 								reward_coinnum = $("#reward_coinnum").val();
 								reward_money = $("#reward_money").val();
 								doSomething(token, post_id, comment_id, reprot_content, reward_coinnum, reward_money);
 							})
-						} else if(name == "report") {
+						} else if (name == "report") {
 							$("#edit").click(function() {
 								reprot_content = $("#report_text").val();
 								doSomething(token, post_id, comment_id, reprot_content, reward_coinnum, reward_money);
@@ -1787,31 +1888,31 @@
 									var coNumber = parseInt($("#postCollectionnum").html());
 									var fwNumber = parseInt($("#postForwardnum").html());
 									console.log(data)
-									if(data.code == "200") {
-										if(name == "support" || name == "collection") {
+									if (data.code == "200") {
+										if (name == "support" || name == "collection") {
 											$("#" + name).attr("src", "images/" + name + "ed.png");
 											$(that).attr("name", name + "del");
 											$("#" + name).attr("id", name + "del");
-											if(name == "support") {
+											if (name == "support") {
 												$("#postUpnum").html(upNumber + 1);
-											} else if(name == "collection") {
+											} else if (name == "collection") {
 												$("#postCollectionnum").html(coNumber + 1);
 											}
-										} else if(name == "supportdel" || name == "collectiondel") {
+										} else if (name == "supportdel" || name == "collectiondel") {
 											var named = name.substr(0, name.length - 3);
 											$("#" + name).attr("src", "images/" + named + ".png");
 											$(that).attr("name", named);
 											$("#" + name).attr("id", named);
-											if(name == "supportdel") {
+											if (name == "supportdel") {
 												$("#postUpnum").html(upNumber - 1);
-											} else if(name == "collectiondel") {
+											} else if (name == "collectiondel") {
 												$("#postCollectionnum").html(coNumber - 1);
 											}
-										} else if(name == "forword") {
+										} else if (name == "forword") {
 											$("#postForwardnum").html(fwNumber + 1)
 										}
 
-									} else if(data.code == "2") {
+									} else if (data.code == "2") {
 										Dialog({
 											title: "请登录！",
 											content: "您的登录已过期，是否重新登录？",
@@ -1841,9 +1942,9 @@
 					var comment_content = UE.getEditor('editor').getContent();
 					DoAjax(comment_content);
 				})
-
 				function DoAjax(comment_content) {
-
+					var obj = sessionStorage.getItem("data");
+					obj = JSON.parse(obj);
 					$.ajax({
 						type: "post",
 						url: sever_url + "comment/publish",
@@ -1851,11 +1952,11 @@
 						data: {
 							token: obj ? obj.token : "",
 							post_id: post_id,
-							comment_content: $("#comment").val()
+							comment_content: comment_content
 						},
 						success: function(data) {
 							console.log(data)
-							if(data.code == "2") {
+							if (data.code == "2") {
 								Dialog({
 									title: "请登录！",
 									content: "您的登录已过期，是否重新登录？",
@@ -1870,9 +1971,9 @@
 										}
 									}
 								});
-							} else if(data.code == "200") {
+							} else if (data.code == "200") {
 								GetComment();
-								$("#comment").val("");
+								$("#comment_content").val("");
 							}
 						},
 						error: function() {
@@ -1880,36 +1981,8 @@
 						}
 					});
 				}
-				$('.hiden_list').hide();
-				$('.hiden_list_w').hide();
-				//监听头像鼠标移入事件
-				$("#head").mouseover(function() {
-					if(!infodata) {
-						return;
-					}
-					if(infodata.user_power_num == 4) {
-						$('.hiden_list_w').show();
-					} else {
-						$('.hiden_list').show();
-					}
-				});
-				$(".bd").mouseover(function() {
-					if(!infodata) {
-						return;
-					}
-					if(infodata.user_power_num == 4) {
-						$('.hiden_list_w').hide();
-					} else {
-						$('.hiden_list').hide();
-					}
-				});
-				//退出登陆清除数据
-				function delsession() {
-					sessionStorage.clear();
-				}
+				//广告
 				adConfig("right");
-			});
+			})
 		</script>
 	</body>
-
-</html>
