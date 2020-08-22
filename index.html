@@ -33,34 +33,36 @@
 			}
 			.manager_box{
 				width: 100%;
-				height: 350px;
-				padding: 20px 0;
-				/*background-color: #0044CC;*/
+				padding: 20px 0 0;
 			}
-			.manager h3{
+			.manager,.owner{
+				padding: 8px 24px;
+				border: 1px solid #EBEBEB;
+				height: 128px !important;
+				margin-bottom: 16px;
+			}
+			.manager h3,.owner h3{
 				font-size:18px;
 				font-family:PingFangSC-Regular,PingFang SC;
 				font-weight: bold;
 				color:rgba(0,0,0,0.85);
-				margin-top: 13px;
-				padding-bottom: 10px;
+				padding-bottom: 6px;
 			}
-
-			.owner h3{
-				font-size:18px;
-				font-family:PingFangSC-Regular,PingFang SC;
-				font-weight: bold;
-				color:rgba(0,0,0,0.85);
-				margin-top: 13px;
-				padding-bottom: 10px;
+			
+			.tender ul{
+				height: auto;
 			}
+			
+			.tender ul li span{
+				max-width: 288px !important;
+			}
+			
 			
 			.info{
 				width: 97%;
-				margin-left: 3%;
-				margin-top: 5px;
 				display: flex;
 				flex-direction: row;
+				margin-left: 8px;
 			}
 			.info img{
 				width: 50px;
@@ -91,14 +93,8 @@
 				flex-direction: column;
 			}
 			.more_list li a{
-				/*color: #0084ff;*/
+				
 			}
-			/*.top_nav ul li:hover{
-				border: 1px solid #0084ff;
-				background-color: #fff;
-				color: #0084ff;
-			}*/
-			/*鼠标移入菜单*/
 			
 			.hiden_list{
 				width: 120px;
@@ -170,46 +166,38 @@
 			}
 			.statistics{
 				width: 90%;
-				/*height: 100px;*/
                 display: flex;
                 margin: 8px auto;
 				flex-direction: row;
 				justify-content: space-between;
 			}
 			.statistics .part{
-				/*width: 25%;
-				height: 100px;
-				display:flex;
-				flex-direction: column;*/
 				justify-content: space-around;
 				align-items: center;
             }
-            .info_box{
-            	width: 200px;
+			.info_box{
 				display: flex;
 				flex-direction: column;
 				align-items: flex-start;
-				padding: 0 10px 10px 10px;
+				padding: 10px;
 				position: absolute;
 				z-index: 999;
+				margin-top: 80px;
 				background-color: #fff;
-				margin: 70px 0 0 0;
+				/* margin: 140px 0 0 80px; */
 				border-radius: 6px;
 				box-shadow: 0px 0px 6px 6px rgba(0,0,0,0.1);
 			}
 			.info_box .user_name {
-				width: 180px;
+				width: 240px;
 				display: flex;
 				flex-direction: column;
-				/*height: 60px;*/
 				text-overflow: ellipsis;
 				overflow: hidden;
 				background-color: #fff;
-				padding: 10px;
 				border-radius: 5px;
 			}
 			.info_box:before{
-				/* content: ''; */
 				width: 0;
 				height: 0;
 				border-width: 16px 8px;
@@ -254,15 +242,13 @@
 			}
 			
 			.trivial {
-				padding-top: 10px;/* 
+				padding-top: 10px;
 				display: flex;
-				flex-direction: row; */
-				width: 40%;
+				flex-flow: row wrap;
+				align-content: flex-start;
+				width: 100%;
+				margin-top: 5px;
 				border-top: 1px solid #eee;
-				/* justify-content: space-between; */
-				display: flex;
-				  flex-flow: row wrap;
-				  align-content: flex-start;
 			}
 			
 			.trivial div {
@@ -273,8 +259,32 @@
 				flex: 0 0 33%;
 			}
 			
-			.trivial span {
-				height: 21px;
+			.spanTitle {
+				padding-bottom: 4px;
+				color: #999;
+				line-height: 13px;
+				font-size: 13px;
+			}
+			
+			.spanInfo {
+				color: #333;
+				font-weight: 600;
+				font-size: 16px;
+				line-height: 16px;
+				margin: 6px 0;
+			}
+			
+			.boxBtn {
+			    display: inline-block;
+			    height: 32px;
+			    padding: 0 16px;
+			    color: #fff;
+			    line-height: 32px;
+			    text-align: center;
+			    background-color: #0084ff;
+			    border: 0;
+			    border-radius: 16px;
+			    cursor: pointer;
 			}
 			
 			.zy_right_con1{
@@ -296,6 +306,50 @@
 				display: flex;
 				justify-content: space-between;
 				align-items: flex-end; 
+			}
+			.hot_post {
+				margin-top: 16px;
+				margin-bottom: 16px;
+				border: 1px solid #ebebeb;
+				padding: 24px 0 0;
+			}
+			.hot_post_title{
+				padding: 0 24px;
+				justify-content: space-between;
+				display: flex;
+			}
+			.hot_post_title h2{
+				display: inline-block;
+				-ms-flex: 1 1;
+				flex: 1 1;
+				margin-right: 16px;
+				color: #333;
+				font-weight: 600;
+				font-size: 18px;
+				font-style: normal;
+				font-stretch: normal;
+				line-height: 1.22;
+				letter-spacing: normal;
+				text-overflow: ellipsis;
+				word-break: keep-all;
+			}
+			.toMore{
+				font-size: 14px;
+				color: #0084ff;				
+			}
+			#hotPost{
+				margin-top: 16px;
+				padding: 0 24px 16px;
+			}
+			#hotPost li{
+				color: #333;
+				font-size: 14px;
+				font-family: -apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+			}
+			#hotPost li:hover{
+				color: #0084ff;
+				text-indent: .3em;
+				text-decoration: underline;
 			}
 		</style>
 	</head>
@@ -382,6 +436,7 @@
 			<div class="content">
 				<!-- 专题轮播 -->
 				<div class="zhuanti_pic">
+					
 					<div class="hd">
 						<!--轮播点 -->
 						<ul id="top_point">
@@ -400,12 +455,9 @@
 							</li>-->
 						</ul>
 					</div>
-					<!-- 下面是前/后按钮代码，如果不需要删除即可 -->
-					<a class="prev" href="javascript:void(0)"></a>
-					<a class="next" href="javascript:void(0)"></a>
 
 					<script type="text/javascript">
-						jQuery(".zhuanti_pic").slide({
+						jQuery(".zhuanti_pic").slideDown({
 							mainCell: ".bd ul",
 							autoPlay: true,
 							effect: "fade",
@@ -648,9 +700,12 @@
 					<div id="rightinfo" class="tender r">
 						 <div class="manager_box">
 							<div class="manager">
-								<h3>版块管理员</h3>
+								<h3><i style="display: inline-block;width: 3px;height: 18px;background-color: #0084ff;border-radius: 1.5px;margin-right: 8px;"></i>版块管理员</h3>
 								<div class="info">
-									<img id="plate_admin_pic" src="images/manager.jpg" />
+									<div id="plate_admin_box" style="padding-bottom: 12px;display: flex;flex-direction: column;align-items: center;">										
+										<img id="plate_admin_pic" src="images/manager.jpg" />
+										<p id="plate_admin_name1" style="display: block;width: 56px;margin-top: 4px; margin-bottom: 4px;color: #333;font-size: 14px;overflow-x: hidden;white-space: nowrap;text-overflow: ellipsis;">54556</p>
+									</div>
 									<div class='info_box' id='info_box'>
 										<div class='user_name'>
 											<div style="display: flex;align-items: center;margin-bottom: 10px;">
@@ -663,37 +718,36 @@
 												</p>
 											</div>
 											<div class='trivial' style='width: 100%;margin-top: 5px;'>
-												<div>
-													<span style='font-size: 12px;color: #807979;'>发布</span>
-													<span id='admin_user_release_sum'></span>
+												<div class="spanList">
+													<span class="spanTitle">发布</span>
+													<span class="spanInfo" id='admin_user_release_sum'></span>
 												</div>
-												<div>
-													<span style='font-size: 12px;color: #807979;'>粉丝</span>
-													<span id='admin_user_fans_sum'></span>
+												<div class="spanList">
+													<span class="spanTitle">粉丝</span>
+													<span class="spanInfo" id='admin_user_fans_sum'></span>
 												</div>
-												<div>
-													<span style='font-size: 12px;color: #807979;'>获赞</span>
-													<span id='admin_user_laid_sum'>
+												<div class="spanList">
+													<span class="spanTitle">获赞</span>
+													<span class="spanInfo" id='admin_user_laid_sum'>
 														
 													</span>
 												</div>
-												<br>
-												<div>
-													<span style='font-size: 12px;color: #807979;'>转发</span>
-													<span id='admin_user_forward_sum'>
+												<div class="spanList">
+													<span class="spanTitle">转发</span>
+													<span class="spanInfo" id='admin_user_forward_sum'>
 														
 													</span>
 												</div>
-												<div>
-													<span style='font-size: 12px;color: #807979;'>积分</span>
-													<span id='admin_user_coin_sum'>
+												<div class="spanList">
+													<span class="spanTitle">积分</span>
+													<span class="spanInfo" id='admin_user_coin_sum'>
 														0
 													</span>
 												</div>
 											</div>
-											<div style="margin-top: 10px;">
-												<button style="background-color: #0084ff;color: #fff;padding: 4px 10px;border-radius: 4px;"  onclick="attention('admin_id')">+关注</button>
-												<button style="background-color: #0084ff;color: #fff;padding: 4px 10px;border-radius: 4px;"  onclick="toMinec('1')">个人主页</button>
+											<div style="margin-top: 10px; margin-left: 12px;">
+												<button class="boxBtn"  onclick="attention('admin_id')">+关注</button>
+												<button class="boxBtn"  onclick="toMinec('1')">个人主页</button>
 												<input type="text" name="admin_id" id="admin_id" value="" hidden="hidden"/>
 											</div>
 										</div>
@@ -701,13 +755,13 @@
 								</div>
 							</div>
 							<div class="owner">
-								<h3>板主</h3>
+								<h3><i style="display: inline-block;width: 3px;height: 18px;background-color: #0084ff;border-radius: 1.5px;margin-right: 8px;"></i>板主</h3>
 								<div class="info">
-									<img id="plate_master_pic" src="images/owner.jpg" />
-									<!--<div class="description">
-										<div id="plate_master_name">XXX</div>
-										<p id="plate_master_info">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
-									</div>-->
+									<div id="plate_master_box" style="padding-bottom: 12px;display: flex;flex-direction: column;align-items: center;">
+										<img id="plate_master_pic" src="images/owner.jpg" />
+										<p id="plate_master_name1"></p>
+									</div>
+									
 									<div class='info_box' id='info_box'>
 										<div class='user_name'>
 											<div style="display: flex;align-items: center;margin-bottom: 10px;">
@@ -722,35 +776,35 @@
 											</div>
 											<div class='trivial' style='width: 100%;margin-top: 5px;'>
 												<div>
-													<span style='font-size: 12px;color: #807979;'>发布</span>
-													<span id='master_user_release_sum'></span>
+													<span class="spanTitle">发布</span>
+													<span class="spanInfo" id='master_user_release_sum'></span>
 												</div>
 												<div>
-													<span style='font-size: 12px;color: #807979;'>粉丝</span>
-													<span id='master_user_fans_sum'></span>
+													<span class="spanTitle">粉丝</span>
+													<span class="spanInfo" id='master_user_fans_sum'></span>
 												</div>
 												<div>
-													<span style='font-size: 12px;color: #807979;'>获赞</span>
-													<span id='master_user_laid_sum'>
+													<span class="spanTitle">获赞</span>
+													<span class="spanInfo" id='master_user_laid_sum'>
 														
 													</span>
 												</div>
 												<div>
-													<span style='font-size: 12px;color: #807979;'>转发</span>
-													<span id='master_user_forward_sum'>
+													<span class="spanTitle">转发</span>
+													<span class="spanInfo" id='master_user_forward_sum'>
 														
 													</span>
 												</div>
 												<div>
-													<span style='font-size: 12px;color: #807979;'>积分</span>
-													<span id='master_user_coin_sum'>
+													<span class="spanTitle">积分</span>
+													<span class="spanInfo" id='master_user_coin_sum'>
 														0
 													</span>
 												</div>
 											</div>
-											<div style="margin-top: 10px;">
-												<button style="background-color: #0084ff;color: #fff;padding: 4px 10px;border-radius: 4px; padding: 4px;" onclick="attention('master_id')">+关注</button>
-												<button style="background-color: #0084ff;color: #fff;padding: 4px 10px;border-radius: 4px;  padding: 4px;"  onclick="toMinec('2')">个人主页</button>
+											<div style="margin-top: 10px; margin-left: 12px;">
+												<button class="boxBtn" onclick="attention('master_id')">+关注</button>
+												<button class="boxBtn" onclick="toMinec('2')">个人主页</button>
 												<input type="text" name="master_id" id="master_id" value="" hidden="hidden"/>
 											</div>
 										</div>
@@ -758,12 +812,15 @@
 								</div>
 							</div>
 						</div>
-						<div class="sy_title bdb_d ovh">
-							<h2 class="l"><img src="images/hot.png" width="25px"><b class="fc">推荐热帖</b></h2>
-							<a href="newslist.html" class="r">查看更多></a>
+						<div class="hot_post">
+							<div class="hot_post_title">
+								<h2 class="l"><img src="images/hot.png" style="width: 22px; margin-right: 8px;">推荐热帖</h2>
+								<a href="coverchild.html" class="toMore">查看更多></a>
+							</div>
+							<ul id="hotPost">
+								
+							</ul>
 						</div>
-						<ul id="hotPost">
-						</ul> 
 					</div>
 				</div>
 				<!-- 专题轮播 -->
@@ -908,25 +965,27 @@
 			var infodata = eval('(' + data + ')');
 
 			$(".info_box").hide();
-			$("#plate_admin_pic").mouseenter(function(){
+			$("#plate_admin_box").mouseenter(function(){
 				$(this).next().show();
 			})
 			$(".manager").mouseleave(function(){
-				$("#plate_admin_pic").next().hide();
+				$("#plate_admin_box").next().hide();
 			})
-			$("#plate_master_pic").mouseenter(function(){
+			$("#plate_master_box").mouseenter(function(){
 				$(this).next().show();
 			})
 			$(".owner").mouseleave(function(){
-				$("#plate_master_pic").next().hide();
+				$("#plate_master_box").next().hide();
 			})
 			
 			// 个人主页
 			function toMinec(index) {
 				if(index == '1') {
 					console.log($("#admin_id").val())
+					window.location.href = `minec.html?user_id=${$("#admin_id").val()}`;
 				}else{
-					$("#master_id").val()				
+					$("#master_id").val()
+					window.location.href = `minec.html?user_id=${$("#master_id").val()}`;
 				}
 			}
 			
@@ -1245,10 +1304,12 @@
 					$("#plate_admin_pic").attr("src",plate_admin.user_head);
 					$("#plate_admin_pics").attr("src",plate_admin.user_head);
 					$("#plate_admin_name").html(plate_admin.user_name);
+					$("#plate_admin_name1").html(plate_admin.user_name);					
 					$("#plate_admin_info").html(plate_admin.user_profile);
 					$("#plate_master_pic").attr("src",plate_master.user_head);
 					$("#plate_master_pics").attr("src",plate_master.user_head);
 					$("#plate_master_name").html(plate_master.user_name);
+					$("#plate_master_name1").html(plate_master.user_name);					
 					$("#plate_master_info").html(plate_master.user_profile);
 					$("#admin_id").val(plate_admin.id)
 					$("#master_id").val(plate_master.id)

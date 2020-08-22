@@ -92,7 +92,7 @@ function adConfig(Position){
 				var bottomBanner = data.data.bottom_banner;
 				var topBanner = data.data.top_banner;
 				var rightBanner = data.data.right_roll_poster;
-				console.log(data.data.lng_chart.cover_posterurl)
+				
 				if(Object.prototype.toString.call(bottomBanner)== '[object Array]'){
 					for(var i=0;i<bottomBanner.length;i++){
 						$("#bottom_banner").append('<li><a href="'+bottomBanner[i].cover_href+'"><img src="'+bottomBanner[i].cover_posterurl+'" /></a></li>');
@@ -101,6 +101,9 @@ function adConfig(Position){
 				}else{
 					$("#bottom_banner").append('<li><a href="'+bottomBanner.cover_href+'"><img src="'+bottomBanner.cover_posterurl+'" /></a></li>')
 				}
+				
+				// 顶部广告轮播
+				console.log(Object.prototype.toString.call(topBanner))
 				if(Object.prototype.toString.call(topBanner)== '[object Array]'){
 					for(var i=0;i<topBanner.length;i++){
 						$("#top_banner").append('<li><a href="https://www.c.citic/citic-web-ui/" target="_blank"><img src="'+topBanner[i].cover_posterurl+'" /></a></li>');
@@ -112,6 +115,8 @@ function adConfig(Position){
 					$("#top_banner").append('<li><a href="'+topBanner.cover_href+'"><img src="'+topBanner.cover_posterurl+'" /></a></li>')
 					$("#lngIndex").append(`<img src="${data.data.lng_chart.cover_posterurl}" />`)
 				}
+				
+				
 				if(Position=="right"){
 					console.log(Position)
 					if(Object.prototype.toString.call(rightBanner)== '[object Array]'){

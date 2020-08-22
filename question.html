@@ -15,9 +15,11 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<link rel="stylesheet" type="text/css" href="css/children.css" />
 		<link rel="stylesheet" type="text/css" href="css/paging.css" />
+		<link href="https://cdn.bootcss.com/jquery-toast-plugin/1.3.2/jquery.toast.css" rel="stylesheet">
 		<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
 		<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
 		<script type="text/javascript" src="js/public.js"></script><!-- 菜单js等-->
+		<script src="https://cdn.bootcss.com/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
 		<!-- 时间选择js -->
 		<script type="text/javascript" src="js/laydate.js"></script>
 		<style>
@@ -30,9 +32,20 @@
 	}
 	.manager_box{
 		width: 100%;
-		height: 350px;
-		padding: 20px 0;
-		/*background-color: #0044CC;*/
+		padding: 20px 0 0;
+	}
+	.manager,.owner{
+		padding: 8px 24px;
+		border: 1px solid #EBEBEB;
+		height: 128px !important;
+		margin-bottom: 16px;
+	}
+	.manager h3,.owner h3{
+		font-size:18px;
+		font-family:PingFangSC-Regular,PingFang SC;
+		font-weight: bold;
+		color:rgba(0,0,0,0.85);
+		padding-bottom: 6px;
 	}
 	
 	.info{
@@ -144,31 +157,28 @@
 		align-items: center;
     }
 	.info_box{
-		width: 200px;
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-		padding: 0 10px 10px 10px;
+		padding: 10px;
 		position: absolute;
 		z-index: 999;
+		margin-top: 80px;
 		background-color: #fff;
-		margin: 70px 0 0 0;
+		/* margin: 140px 0 0 80px; */
 		border-radius: 6px;
 		box-shadow: 0px 0px 6px 6px rgba(0,0,0,0.1);
 	}
 	.info_box .user_name {
-		width: 180px;
+		width: 240px;
 		display: flex;
 		flex-direction: column;
-		/*height: 60px;*/
 		text-overflow: ellipsis;
 		overflow: hidden;
 		background-color: #fff;
-		padding: 10px;
 		border-radius: 5px;
 	}
 	.info_box:before{
-		/* content: ''; */
 		width: 0;
 		height: 0;
 		border-width: 16px 8px;
@@ -189,15 +199,13 @@
 	}
 	
 	.trivial {
-		padding-top: 10px;/* 
+		padding-top: 10px;
 		display: flex;
-		flex-direction: row; */
-		width: 40%;
+		flex-flow: row wrap;
+		align-content: flex-start;
+		width: 100%;
+		margin-top: 5px;
 		border-top: 1px solid #eee;
-		justify-content: space-between;
-		display: flex;
-						  flex-flow: row wrap;
-						  align-content: flex-start;
 	}
 	
 	.trivial div {
@@ -208,8 +216,83 @@
 		flex: 0 0 33%;
 	}
 	
-	.trivial span {
-		height: 21px;
+	.spanTitle {
+		padding-bottom: 4px;
+		color: #999;
+		line-height: 13px;
+		font-size: 13px;
+	}
+	
+	.spanInfo {
+		color: #333;
+		font-weight: 600;
+		font-size: 16px;
+		line-height: 16px;
+		margin: 6px 0;
+	}
+	
+	.boxBtn {
+	    display: inline-block;
+	    height: 32px;
+	    padding: 0 16px;
+	    color: #fff;
+	    line-height: 32px;
+	    text-align: center;
+	    background-color: #0084ff;
+	    border: 0;
+	    border-radius: 16px;
+	    cursor: pointer;
+	}
+	
+	.hot_post {
+		margin-top: 16px;
+		margin-bottom: 16px;
+		border: 1px solid #ebebeb;
+		padding: 24px 0 0;
+	}
+	.hot_post_title{
+		padding: 0 24px;
+		justify-content: space-between;
+		display: flex;
+	}
+	.hot_post_title h2{
+		display: inline-block;
+		-ms-flex: 1 1;
+		flex: 1 1;
+		margin-right: 16px;
+		color: #333;
+		font-weight: 600;
+		font-size: 18px;
+		font-style: normal;
+		font-stretch: normal;
+		line-height: 1.22;
+		letter-spacing: normal;
+		text-overflow: ellipsis;
+		word-break: keep-all;
+	}
+	.toMore{
+		font-size: 14px;
+		color: #0084ff;				
+	}
+	#hotPost{
+		margin-top: 16px;
+		padding: 0 24px 16px;
+	}
+	#hotPost li{
+		color: #333;
+		font-size: 14px;
+		font-family: -apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+	}
+	#hotPost li:hover{
+		color: #0084ff;
+		text-indent: .3em;
+		text-decoration: underline;
+	}
+	.tender ul{
+		height: auto;
+	}
+	.tender ul li span{
+		max-width: 288px !important;
 	}
 </style>
 	</head>
@@ -530,7 +613,7 @@
 								<h2 id="1" class="selected">最新发布<i></i></h2>
 								<h2 id="2">已解决<i></i></h2>
 								<h2 id="3">未解决<i></i></h2>
-								<h2 id="4">筛选<i></i></h2>
+								<!-- <h2 id="4">筛选<i></i></h2> -->
 							</div>
 							<!-- 内容展示块-->
 							<div class="news_list zy_listbox" style="height: 900px;">
@@ -749,134 +832,127 @@
 						<div class="manager_box">
 
 							<div class="manager">
-								<h3>版块管理员</h3>
+								<h3><i style="display: inline-block;width: 3px;height: 18px;background-color: #0084ff;border-radius: 1.5px;margin-right: 8px;"></i>版块管理员</h3>
 								<div class="info">
-									<img id="plate_admin_pic" src="images/manager.jpg" />
-									<!--<div class="description">
-																	<div id="plate_admin_name">XXX</div>
-																	<p id="plate_admin_info">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
-																</div>-->
+									<div id="plate_admin_box" style="padding-bottom: 12px;display: flex;flex-direction: column;align-items: center;">										
+										<img id="plate_admin_pic" src="images/manager.jpg" />
+										<p id="plate_admin_name1" style="display: block;max-width : 56px;margin-top: 4px; margin-bottom: 4px;color: #333;font-size: 14px;overflow-x: hidden;white-space: nowrap;text-overflow: ellipsis;"></p>
+									</div>
 									<div class='info_box' id='info_box'>
 										<div class='user_name'>
-											<div  style="display: flex;align-items: center;margin-bottom: 10px;">
+											<div style="display: flex;align-items: center;margin-bottom: 10px;">
 												<img id="plate_admin_pics" src="images/manager.jpg" />
 												<h3 id="plate_admin_name" style='min-height: 25px;margin: 0;padding-bottom: 0px;padding-left: 10px;'></h3>
 											</div>
-											
 											<div class='user_intro' id='user_profile'>
 												<p id="plate_admin_info">
-
+												
 												</p>
 											</div>
 											<div class='trivial' style='width: 100%;margin-top: 5px;'>
-												<div>
-													<span style='font-size: 12px;color: #807979;'>发布</span>
-													<span id='admin_user_release_sum'></span>
+												<div class="spanList">
+													<span class="spanTitle">发布</span>
+													<span class="spanInfo" id='admin_user_release_sum'></span>
 												</div>
-												<div>
-													<span style='font-size: 12px;color: #807979;'>粉丝</span>
-													<span id='admin_user_fans_sum'></span>
+												<div class="spanList">
+													<span class="spanTitle">粉丝</span>
+													<span class="spanInfo" id='admin_user_fans_sum'></span>
 												</div>
-												<div>
-													<span style='font-size: 12px;color: #807979;'>获赞</span>
-													<span id='admin_user_laid_sum'>
-
+												<div class="spanList">
+													<span class="spanTitle">获赞</span>
+													<span class="spanInfo" id='admin_user_laid_sum'>
+														
 													</span>
 												</div>
-												<div>
-													<span style='font-size: 12px;color: #807979;'>转发</span>
-													<span id='admin_user_forward_sum'>
-
+												<div class="spanList">
+													<span class="spanTitle">转发</span>
+													<span class="spanInfo" id='admin_user_forward_sum'>
+														
 													</span>
 												</div>
-												<div>
-													<span style='font-size: 12px;color: #807979;'>积分</span>
-													<span id='admin_user_coin_sum'>
+												<div class="spanList">
+													<span class="spanTitle">积分</span>
+													<span class="spanInfo" id='admin_user_coin_sum'>
 														0
 													</span>
 												</div>
 											</div>
-											<div style="margin-top: 10px;">
-												<button style="background-color: #0084ff;color: #fff;width: 46px;height: 20px;border-radius: 4px;" onclick="attention('admin_id')">+关注</button>
-												<button style="background-color: #0084ff;color: #fff;width: 64px;height: 20px;border-radius: 4px;"  onclick="attention('admin_id')">个人主页</button>
-												<input type="text" name="admin_id" id="admin_id" value="" hidden="hidden" />
+											<div style="margin-top: 10px; margin-left: 12px;">
+												<button class="boxBtn"  onclick="attention('admin_id')">+关注</button>
+												<button class="boxBtn"  onclick="toMinec('1')">个人主页</button>
+												<input type="text" name="admin_id" id="admin_id" value="" hidden="hidden"/>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 							<div class="owner">
-								<h3>板主</h3>
+								<h3><i style="display: inline-block;width: 3px;height: 18px;background-color: #0084ff;border-radius: 1.5px;margin-right: 8px;"></i>板主</h3>
 								<div class="info">
-									<img id="plate_master_pic" src="images/owner.jpg" />
-									<!--<div class="description">
-											<div id="plate_master_name">XXX</div>
-											<p id="plate_master_info">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
-										</div>-->
+									<div id="plate_master_box" style="padding-bottom: 12px;display: flex;flex-direction: column;align-items: center;">
+										<img id="plate_master_pic" src="images/owner.jpg" />
+										<p id="plate_master_name1"></p>
+									</div>
+									
 									<div class='info_box' id='info_box'>
 										<div class='user_name'>
-											<div  style="display: flex;align-items: center;margin-bottom: 10px;">
+											<div style="display: flex;align-items: center;margin-bottom: 10px;">
 												<img id="plate_master_pics" src="images/owner.jpg" />
-												<h3 id="plate_master_name" style='min-height: 25px;margin: 0;padding-bottom: 0px;padding-left: 10px;'>
-											</h3>
-											</div>
+												<h3 id="plate_master_name" style='min-height: 25px;margin: 0;padding-bottom: 0px;padding-left: 10px;'></h3>
+												</div>
 											
 											<div class='user_intro' id='user_profile'>
 												<p id="plate_master_info">
-
+												
 												</p>
 											</div>
 											<div class='trivial' style='width: 100%;margin-top: 5px;'>
 												<div>
-													<span style='font-size: 12px;color: #807979;'>发布</span>
-													<span id='master_user_release_sum'></span>
+													<span class="spanTitle">发布</span>
+													<span class="spanInfo" id='master_user_release_sum'></span>
 												</div>
 												<div>
-													<span style='font-size: 12px;color: #807979;'>粉丝</span>
-													<span id='master_user_fans_sum'></span>
+													<span class="spanTitle">粉丝</span>
+													<span class="spanInfo" id='master_user_fans_sum'></span>
 												</div>
 												<div>
-													<span style='font-size: 12px;color: #807979;'>获赞</span>
-													<span id='master_user_laid_sum'>
-
+													<span class="spanTitle">获赞</span>
+													<span class="spanInfo" id='master_user_laid_sum'>
+														
 													</span>
 												</div>
 												<div>
-													<span style='font-size: 12px;color: #807979;'>转发</span>
-													<span id='master_user_forward_sum'>
-
+													<span class="spanTitle">转发</span>
+													<span class="spanInfo" id='master_user_forward_sum'>
+														
 													</span>
 												</div>
 												<div>
-													<span style='font-size: 12px;color: #807979;'>积分</span>
-													<span id='master_user_coin_sum'>
+													<span class="spanTitle">积分</span>
+													<span class="spanInfo" id='master_user_coin_sum'>
 														0
 													</span>
 												</div>
 											</div>
-											<div style="margin-top: 10px;">
-												<button style="background-color: #0084ff;color: #fff;width: 46px;height: 20px;border-radius: 4px;" onclick="attention('master_id')">+关注</button>
-												<button style="background-color: #0084ff;color: #fff;width: 64px;height: 20px;border-radius: 4px;"  onclick="attention('admin_id')">个人主页</button>
-												<input type="text" name="master_id" id="master_id" value="" hidden="hidden" />
+											<div style="margin-top: 10px; margin-left: 12px;">
+												<button class="boxBtn" onclick="attention('master_id')">+关注</button>
+												<button class="boxBtn" onclick="toMinec('2')">个人主页</button>
+												<input type="text" name="master_id" id="master_id" value="" hidden="hidden"/>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="sy_title bdb_d ovh">
-							<h2 class="l"><img src="images/icon_hot.png"><b class="fc">推荐热帖</b></h2>
-							<a href="newslist.html" class="r">查看更多></a>
+						<div class="hot_post">
+							<div class="hot_post_title">
+								<h2 class="l"><img src="images/hot.png" style="width: 22px; margin-right: 8px;">推荐热帖</h2>
+								<a href="coverchild.html" class="toMore">查看更多></a>
+							</div>
+							<ul id="hotPost">
+								
+							</ul>
 						</div>
-						<ul>
-							<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span><i class="red_news">[新]</i></a></li>
-							<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局办公大楼新建地块招标项目开发商承建福泉市综合执法局办公大楼新建地块招标项目开发商承建</span><i class="red_news">[新]</i></a></li>
-							<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span></a></li>
-							<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局办公大楼新建地块招标项目开发商承建</span></a></li>
-							<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span></a></li>
-							<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局办公大楼新建地块招标项目开发商承建</span></a></li>
-							<li><a href="news_xq.html"><b>·</b><span>福泉市综合执法局公开招标办公设备的公告</span></a></li>
-						</ul>
 					</div>
 				</div>
 				<!-- 专题轮播 -->
@@ -1029,17 +1105,17 @@
 			var infodata = eval('(' + data + ')');
 
 			$(".info_box").hide();
-			$("#plate_admin_pic").mouseenter(function() {
+			$("#plate_admin_box").mouseenter(function() {
 				$(this).next().show();
 			})
 			$(".manager").mouseleave(function() {
-				$("#plate_admin_pic").next().hide();
+				$("#plate_admin_box").next().hide();
 			})
-			$("#plate_master_pic").mouseenter(function() {
+			$("#plate_master_box").mouseenter(function() {
 				$(this).next().show();
 			})
 			$(".owner").mouseleave(function() {
-				$("#plate_master_pic").next().hide();
+				$("#plate_master_box").next().hide();
 			})
 
 			// 获取当前分类
@@ -1063,6 +1139,87 @@
 			function toPost() {
 				window.location.href = "mine.html?fast=1&type=" + json.type + "&plate=" + json.plate + "&two=" + json.two;
 			}
+			
+			//关注
+			function attention(user_id){
+				var Info = JSON.parse(sessionStorage.getItem("data")) 
+				var Id = "#"+user_id
+				var userId = $(Id).val()
+				if(Info==null){
+					showMsg("请登录后关注！", "info", 2000)
+				}else{
+					$.ajax({
+						url:sever_url+"follow/add",
+						type:"post",
+						data:{
+							token: Info.token,
+							user_id: userId
+						},
+						dataType:"json",
+						success:function(res){
+							if(res.code){
+								showMsg(res.msg, "success", 2000)
+							}
+						}
+					})
+				}
+			}
+			
+			// 个人主页
+			function toMinec(index) {
+				if(index == '1') {
+					console.log($("#admin_id").val())
+					window.location.href = `minec.html?user_id=${$("#admin_id").val()}`;
+				}else{
+					$("#master_id").val()
+					window.location.href = `minec.html?user_id=${$("#master_id").val()}`;
+				}
+			}
+			
+			
+			function showMsg(text, icon, hideAfter) {
+					        if (heading == undefined) {
+					            var heading = "提示";
+					        }
+					        $.toast({
+					            text: text,//消息提示框的内容。
+					            heading: heading,//消息提示框的标题。
+					            icon: icon,//消息提示框的图标样式。
+					            showHideTransition: 'fade',//消息提示框的动画效果。可取值：plain，fade，slide。
+					            allowToastClose: true,//是否显示关闭按钮。(true 显示，false 不显示)
+					            hideAfter: hideAfter,//设置为false则消息提示框不自动关闭.设置为一个数值则在指定的毫秒之后自动关闭消息提框
+					            stack: 1,//消息栈。同时允许的提示框数量
+					            position: 'top-center',//消息提示框的位置：bottom-left, bottom-right,bottom-center,top-left,top-right,top-center,mid-center。
+					            textAlign: 'left',//文本对齐：left, right, center。
+					            loader: true,//是否显示加载条
+								//bgColor: '#FF1356',//背景颜色。
+								//textColor: '#eee',//文字颜色。
+					            loaderBg: '#ffffff',//加载条的背景颜色。
+					 
+								beforeShow: function(){
+			//						alert('The toast is about to appear');
+								},
+					 
+								afterShown: function () {
+			//						alert('Toast has appeared.');
+								},
+					 
+								beforeHide: function () {
+			//						alert('Toast is about to hide.');
+								},
+					 
+								afterHidden: function () {
+			//						alert('Toast has been hidden.');
+								}
+					 
+								/*toast事件
+								beforeShow 会在toast即将出现之前触发
+								afterShown 会在toast出现后触发
+								beforeHide 会在toast藏起来之前触发
+								afterHidden 会在toast藏起来后被触发
+								*/
+					        });
+					    }
 			// ajax请求文章列表
 			function post(orders) {
 				var post = "";
@@ -1178,10 +1335,12 @@
 					$("#plate_admin_pic").attr("src", plate_admin.user_head);
 					$("#plate_admin_pics").attr("src", plate_admin.user_head);
 					$("#plate_admin_name").html(plate_admin.user_name);
+					$("#plate_admin_name1").html(plate_admin.user_name);					
 					$("#plate_admin_info").html(plate_admin.user_profile);
 					$("#plate_master_pic").attr("src", plate_master.user_head);
 					$("#plate_master_pics").attr("src", plate_master.user_head);
 					$("#plate_master_name").html(plate_master.user_name);
+					$("#plate_master_name1").html(plate_master.user_name);					
 					$("#plate_master_info").html(plate_master.user_profile);
 					$("#admin_id").val(plate_admin.id)
 					$("#master_id").val(plate_master.id)
