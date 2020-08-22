@@ -1494,9 +1494,11 @@
 							},
 							dataType: "json",
 							success: function(data) {
-
-								// $("#Reported").css("display","none");
-								console.log(data)
+								if(data.code==200){
+									Dialog.success('操作成功');
+								}else{
+									Dialog.error(data.msg);
+								}
 							},
 							error: function() {
 								console.log('error')
@@ -1887,8 +1889,8 @@
 									var upNumber = parseInt($("#postUpnum").html());
 									var coNumber = parseInt($("#postCollectionnum").html());
 									var fwNumber = parseInt($("#postForwardnum").html());
-									console.log(data)
 									if (data.code == "200") {
+										Dialog.success("操作成功！")
 										if (name == "support" || name == "collection") {
 											$("#" + name).attr("src", "images/" + name + "ed.png");
 											$(that).attr("name", name + "del");
@@ -1927,6 +1929,8 @@
 												}
 											}
 										});
+									}else{
+										Dialog.error(data.msg);
 									}
 								}
 							});

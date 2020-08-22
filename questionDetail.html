@@ -1018,6 +1018,13 @@
 						<div class="post_text" id="postContent">
 							
 						</div>
+						<div class="annex_a" id="annex_a" style="border: 1px solid #dbdbdb; display: none">
+							<div style="position: relative;padding-top: 30px">
+								<img src="http://qny.spinternet.cn/adopt1.jpg" style="position: absolute;left: 0;top: 0">
+								<span style="font-size: 14px;position: absolute;top: 6px;left: 20px;color: #FFF">采纳答案</span>
+								<!-- 采纳答案区域 -->
+							</div>
+						</div>
 						<div class="annex_d" id="annex_d" style="display: none;">
 							<div class="annex_info">
 								<h3 id="enclosureName">附件标题</h3>
@@ -1494,9 +1501,11 @@
 							},
 							dataType: "json",
 							success: function(data) {
-
-								// $("#Reported").css("display","none");
-								console.log(data)
+								if(data.code==200){
+									Dialog.success('操作成功');
+								}else{
+									Dialog.error(data.msg);
+								}
 							},
 							error: function() {
 								console.log('error')
@@ -1549,8 +1558,6 @@
 							},
 							dataType: "json",
 							success: function(data) {
-
-								console.log(data)
 								location.reload()
 							},
 							error: function() {
@@ -1560,10 +1567,52 @@
 					}
 				}
 			}
+			// 采纳
+			function adopt(id){
+				if (sessionStorage.getItem("data") == null) {
+					Dialog({
+						title: "请登录！",
+						content: "您还未登录，是否登录？",
+						ok: {
+							callback: function() {
+								window.location.href = 'login.html';
+							}
+						},
+						cancel: {
+							callback: function() {
+								Dialog.close();
+							}
+						}
+					});
+				} else {
+					var obj = sessionStorage.getItem("data");
+					obj = JSON.parse(obj);
+					$.ajax({
+						type: "post",
+						url: sever_url + "post/adopt",
+						async: true,
+						data: {
+							token: obj.token,
+							post_id: getUrldata('postid'),
+							comment_id: id
+						},
+						dataType: "json",
+						success: function(data) {
+							if(data.code==200){
+								alert("采纳成功！")
+								location.reload();
+							}else{
+								Dialog.error(data.msg)
+							}
+						},
+						error: function() {
 
+						}
+					});
+				}
+			}
 			//评论点赞
 			function commentSupport(commentId) {
-				console.log(commentId);
 				if (sessionStorage.getItem("data") == null) {
 					Dialog({
 						title: "请登录！",
@@ -1779,6 +1828,15 @@
 								var arr = data.data.recommend[i];
 								$("#recommend").append('<li><a id="' + arr.id + '" href="forum.html?postid=' + arr.id +	' " ><b style="margin-right: 8px;">·</b><span>' + arr.post_title + '</span></a></li>')
 							}
+							if(data.data.adopd){
+								$('#annex_a').show();
+								var html = '';
+								html += '<div style="margin:8px 12px 16px">';
+								html += '<img id="user_logo" src="'+data.data.adopd.user_head+'" style="width:50px;height: 50px;    border-radius: 50%;margin-right: 10px;margin-bottom: 10px" />';
+								html += '<span>'+data.data.adopd.user_name+'</span>';
+								html += '<p>'+data.data.adopd.comment_content+'</p></div>';
+								$('#annex_a').append(html);
+							}
 						}
 					},
 					error: function() {
@@ -1809,7 +1867,10 @@
 									'<div class="content_box"><div class="visitor"><div class="visitor_info"><div class="visitor_pic"><img id="' +
 									obj.id + '" src="' + obj.user_head + '"/><span >' + obj.user_name +
 									'</span></div><div class="commet_time"><span>' + obj.comment_time + '</span><span>【' + obj.comment_layernum +
-									'楼】</span></div></div><div class="other_visitor"><a rel="leanModal" name="Report" href="#Report"><span onclick=Reported(' +
+									'楼】</span></div></div><div class="other_visitor"><a><span onclick=adopt(' +
+									obj.id + ')>采纳</span></a><a href="#editor"><span onclick=reply(' + obj.id +
+									',"' + obj.user_name +
+									'")>回复</span></a><a rel="leanModal" name="Report" href="#Report"><span onclick=Reported(' +
 									obj.id + ')>举报</span></a><a href="#editor"><span onclick=reply(' + obj.id +
 									',"' + obj.user_name +
 									'")>回复</span></a><span style="display:flex;align-items: center;"><img onclick=commentSupport(' +
@@ -1887,8 +1948,8 @@
 									var upNumber = parseInt($("#postUpnum").html());
 									var coNumber = parseInt($("#postCollectionnum").html());
 									var fwNumber = parseInt($("#postForwardnum").html());
-									console.log(data)
 									if (data.code == "200") {
+										Dialog.success("操作成功！")
 										if (name == "support" || name == "collection") {
 											$("#" + name).attr("src", "images/" + name + "ed.png");
 											$(that).attr("name", name + "del");
@@ -1927,6 +1988,8 @@
 												}
 											}
 										});
+									}else{
+										Dialog.error(data.msg);
 									}
 								}
 							});
