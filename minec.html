@@ -754,7 +754,7 @@
 				padding: 0 16px;
 				color: #FFF;
 				line-height: 30px;
-				background-color: #3399ea;
+				background-color: #0084ff;
 				border: 1px solid #FFF;
 				border-radius: 16px;
 				cursor: pointer;				
@@ -777,10 +777,10 @@
 				/* min-width: 74px; */
 				height: 32px;
 				padding: 0 16px;
-				color: #3399ea;
+				color: #0084ff;
 				line-height: 30px;
 				background-color: #FFF;
-				border: 1px solid #3399ea;
+				border: 1px solid #0084ff;
 				border-radius: 16px;
 				cursor: pointer;				
 				margin-right: 16px;
@@ -2146,7 +2146,59 @@
 					user_profile.innerHTML = data.user_profile;
 					var user_address = document.getElementById("user_address");
 					user_address.innerHTML = data.user_address;
-
+					// 判断是否关注
+					if(data.is_follow==1){
+						$('#follow').hide()
+						$('#cancelfollow').show()
+					}
+					//关注
+					$('#cancelfollow').click(function(){
+						$.ajax({
+							type:"post",
+							url:sever_url+"my/follow/del",
+							async:true,
+							data:{
+								user_id:data.id,
+								token:infodata.token
+							},
+							dataType:"json",
+							success:function(data){
+								if(data.code==200){
+									Dialog.success("成功取消！")
+									$('#follow').show()
+									$('#cancelfollow').hide()
+								}else{
+									Dialog.warn(data.msg)
+								}
+							}
+						});
+					})
+					// 取消关注
+					$('#follow').click(function(){
+						var Info = JSON.parse(sessionStorage.getItem("data")) 
+						if(Info==null){
+							Dialog.warn("请登陆后关注！")
+						}else{
+							$.ajax({
+								url:sever_url+"follow/add",
+								type:"post",
+								data:{
+									token: Info.token,
+									user_id: data.id
+								},
+								dataType:"json",
+								success:function(res){
+									if(res.code){
+										Dialog.success("关注成功！")
+										$('#follow').hide()
+										$('#cancelfollow').show()
+									}else{
+										Dialog.warn(data.msg)
+									}
+								}
+							})
+						}
+					})
 					// 右边数量
 					var user_release_sum = document.getElementById("user_release_sum");
 					user_release_sum.innerHTML = data.user_release_sum;
