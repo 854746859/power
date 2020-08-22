@@ -1,4 +1,3 @@
-@@ -1,548 +0,0 @@
 <!doctype html>
 <html>
 	<head>
@@ -35,31 +34,37 @@
 			.contain{
 				display: flex;
 				flex-direction: column;
+				align-items: center;
+				padding-top: 12px !important;
 			}
 			.person_info{
 				display: flex;
-				flex-direction: row;
-				width: 70%;
-				margin: 80px auto;
-				min-height: 460px;
+				flex-direction: column;
+				min-height: 68vh;
+				border: 1px solid #ebebeb;
+				padding-bottom: 12px;
+				margin-bottom: 16px;
 			}
 			.user_info{
-				width: 80%;
-				margin-left: 40px;
+				width: 60%;
+				margin-left: 188px;
+				margin-top: 14px;
 			}
 			.user_logo{
-				position: relative;
-				top: -40px;
+				position: absolute;
+				margin-top:  68px;
 				display: flex;
 				flex-direction: column;
 				align-items: center;
 				font-size: 14px;
+				margin-left: 48px;
 			}
 			.user_logo img{
 				width: 120px;
 				height: 120px;
 				border-radius: 60px;
 				margin-bottom: 5px;
+				border: 4px solid #fff;
 			}
 			.name{
 				width: 100%;
@@ -74,10 +79,16 @@
 				align-items: flex-end;
 			}
 			.user_name input{
+				color: #333;
+				font-weight: 500;
+				font-size: 26px;
 				font-family: -apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
-				font-size: 34px;
-				width: 140px;
-				font-weight: 600;
+				font-variant: tabular-nums;
+			}
+			.clilck_logo{
+				color: #999;
+				font-size: 14px;
+				font-family: -apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
 			}
 			.user_name a{
 				font-size: 14px;
@@ -102,7 +113,6 @@
 				height: 80px;
 				width: 100%;
 				padding: 10px 0;
-				border-bottom: 1px solid #eee;
 			}
 			.edit{
 				position: relative;
@@ -164,20 +174,48 @@
 			}
 			.statistics{
 				width: 90%;
-				/*height: 100px;*/
-                display: flex;
-                margin: 8px auto;
+				display: flex;
+				margin: 8px auto;
 				flex-direction: row;
 				justify-content: space-between;
 			}
 			.statistics .part{
-				/*width: 25%;
-				height: 100px;
-				display:flex;
-				flex-direction: column;*/
 				justify-content: space-around;
 				align-items: center;
-            }
+			}
+			.input{
+				color: #666;
+				font-weight: 400;
+				font-size: 14px;
+				font-style: normal;
+				font-stretch: normal;
+				line-height: 1.71;
+				letter-spacing: normal;
+				word-break: break-all;
+				font-family: -apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+				border: 1px solid #DBDBDB;
+				padding-left: 8px;
+				padding-top: 12px;
+				padding-bottom: 12px;
+				width: 600px;
+			}
+			.input:focus{
+				border: 1px solid #DBDBDB;
+			}
+			.textarea{
+				position: relative;
+				box-sizing: border-box;
+				width: 608px;
+				height: 120px;
+				padding: 12px;
+				color: #333;
+				background-color: #fff;
+				border: 1px solid #d9d9d9;
+				border-radius: 4px;
+			}
+			.textarea:focus{
+				border: 1px solid #d9d9d9;
+			}
 		</style>
 	</head>
 	<body>
@@ -294,50 +332,10 @@
 					});
 				</script>
 			</div>
-			<!--统计-->
-		        <div class="statistics">
-					<div class="part">
-						<span id="" class="font18">
-							在线人数：
-						</span>
-						<span id="user_loging">
-							2000
-						</span>
-					</div>
-					<div class="part">
-						<span id="" class="font18">
-							帖子总数：
-						</span>
-						<span id="post_count">
-							5000
-						</span>
-					</div>
-					<div class="part">
-						<span id="" class="font18">
-							会员人数：
-						</span>
-						<span id="user_count">
-							2000
-						</span>
-					</div>
-					<div class="part">
-						<span id="" class="font18">
-							最后回复人：
-						</span>
-						<span id="end_reply_name">
-							xxx
-						</span>
-					</div>
-					<div class="part">
-						<span id="" class="font18">
-							欢迎新成员：
-						</span>
-						<span id="new_username">
-							xxx
-						</span>
-					</div>
-                </div>
 			<div class="person_info">
+				<div id="">
+					<img style="height: 128px; width: 1200px;" src="images/userInfo.png" >
+				</div>
 				<div class="user_logo" id="select_pic">
 					<img id="imageShow" src="images/manager.jpg"/>
 					<div class="clilck_logo">
@@ -349,28 +347,24 @@
 					<div class="name">
 						<div class="user_name">
 							<input type="text" name="" id="name" value="Jasson" disabled="disabled"/>
-							<a id="name_change">修改</a>
 						</div>
 						<div><a href="mine.html">返回主页>></a></div>
 					</div>
-					<ul>
-						<li>
-							<div class="dir">
-								<h3>介绍自己：</h3>
-							</div>
-							<div class="edit">
-								<textarea name="" id="user_profile" rows="3" cols=""></textarea>
-							</div>
-						</li>
-						<li>
-							<div class="dir">
-								<h3>居住地：</h3>
-							</div>
-							<div class="edit">
-								<textarea name="" id="address" rows="3" cols=""></textarea>
-							</div>
-						</li>
-					</ul>
+					
+						<div style="display: flex;align-items: center; margin-top: 24px;padding-bottom: 32px;border-bottom: 1px solid #ededed;">
+							<label style="width: 98px;">用户名：</label>
+							<input class="input" type="" name="" id="user_name" value="" />
+						</div>
+						<div style="display: flex;align-items: flex-start; margin-top: 24px;padding-bottom: 32px;border-bottom: 1px solid #ededed;">
+							<label style="width: 98px;">个人简介：</label>
+							<textarea class="textarea" name="" id="user_profile" rows="3"  cols="30"></textarea>
+						</div>
+						
+						<div style="display: flex;align-items: flex-start; margin-top: 24px;padding-bottom: 32px;border-bottom: 1px solid #ededed;">
+							<label style="width: 98px;">居住地：</label>
+							<textarea class="textarea" name="" id="address" rows="3" cols="30"></textarea>
+						</div>
+													
 					<div class="bt">
 						<button id="submit">提交</button>
 					</div>
@@ -397,14 +391,36 @@
 		<script type="text/javascript" src="config.js"></script>
 		<script type="text/javascript" src="js/paging/paging.js"></script>
 		<script type="text/javascript">
+			//获取个人信息
+			$(function(){
+				let fd = new FormData()
+				fd.append("token",infodata.token)
+				$.ajax({
+					type:"post",
+					url: sever_url + 'my/info',
+					async:true,
+					processData: false,
+					contentType: false,
+					data: fd,
+					dataType:"json",
+					success:function(data){
+						$("#name").val(data.data.user_name);
+						$('#user_name').val(data.data.user_name)
+						$("#imageShow").attr("src",data.data.user_head);
+						$("#user_profile").val(data.data.user_profile);
+						$("#address").val(data.data.user_address);
+						
+					}
+				});				
+			})
+			
+				
+			
 			//选择图片
 			$("#imageShow").click(function() {
 				$("#pic_file").click();
 				//在input file内容改变的时候触发事件
 				$('#pic_file').change(function() {
-					//获取input file的files文件数组;
-					//$('#pic_file')获取的是jQuery对象，.get(0)转为原生对象;
-					//这边默认只能选一个，但是存放形式仍然是数组，所以取第一个元素使用[0];
 					var file = $('#pic_file').get(0).files[0];
 					//创建用来读取此文件的对象
 					var reader = new FileReader();
@@ -412,17 +428,11 @@
 					reader.readAsDataURL(file);
 					//读取文件成功后执行的方法函数
 					reader.onload = function(e) {
-						//读取成功后返回的一个参数e，整个的一个进度事件
-						//			        console.log(e);
-						//选择所要显示图片的img，要赋值给img的src就是e中target下result里面
-						//的base64编码格式的地址
 						$('#imageShow').get(0).src = e.target.result;
 					}
 				})
 			})
-			$("#name").val(infodata.user_name);
-			$("#imageShow").attr("src",infodata.user_head);
-			$("#user_profile").val(infodata.user_profile);
+			
 			//修改name
 			$("#name_change").click(function(){
 				$("#name").removeAttr("disabled");
@@ -462,120 +472,8 @@
 					}
 				});
 			})
-			// 获取当前分类
-			function GetRequest() {
-				var url = decodeURI(location.search); //获取url中"?"符后的字串
-				var theRequest = new Object();
-				if (url.indexOf("?") != -1) {
-					var str = url.substr(1);
-					strs = str.split("&");
-					for (var i = 0; i < strs.length; i++) {
-						theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
-					}
-				}
-				return theRequest;
-			}
-			var json = GetRequest();
-			console.log(json);
-			localStorage.setItem("plate", json.plate)
-			localStorage.setItem("type", json.type)
-			localStorage.setItem("searchv", json.searchv)
-			// 搜索
-			var search = document.getElementById("search");
-			var btn = document.getElementById("btn");
-			function searchlist() {
-			var plate = localStorage.getItem("plate")
-			var searchv = localStorage.getItem("searchv")
-				$.ajax({
-					url: 'http://114.55.35.82/tp6_forum/public/index.php/search/plate',
-					type: 'post',
-					data: {
-						plate: plate,
-						rows: '8',
-						page: '1',
-						search: searchv,
-						order: '0'
-					},
-					// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
-					dataType: 'json',
-					success: function(res) {
-						// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
-						// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
-						console.log(res)
-						var data = res.data;
-						var post = "";
-						var postlist = document.getElementById("postlist");
-						// 分页函数
-						$(function() {
-							var a = {
-								color: '#blue',
-								sex: 'black',
-								border: '1px solid #ddd'
-							};
 			
-							var b = {
-								background: '#0084ff'
-							};
 			
-							$(".pagination").Paging({
-								classStyle: a, //a标签样式的对象,也可以不定义使用默认值
-								backClass: b, //选中的页数的背景，也可以不定义使用默认值
-								isFirst: true, //首页按钮是否显示
-								isPre: true, //下一页按钮是否显示
-								showRecordNum: res.per_page, // 一页列表数量
-								totalNum: res.total, // 总列表数量
-								showNum: function(data1, data2) {
-									// alert(data1 + "," + data2);
-								},
-								pages: "post",
-							});
-			
-						});
-						if (data.length === 0) {
-							post += "<h3>暂无数据</h3>";
-							content.innerHTML = post;
-			
-						} else {
-							if (document.getElementById("postlist")) {
-								//存在
-								// postlist.remove();
-								document.getElementById("postlist").innerHTML = "";
-								document.getElementById("menu").style.display = "none";
-							}
-							for (var i = 0; i < data.length; i++) {
-								post += "<li><img src='" + data[i].post_img + "'/><div class='blog_list'>";
-								post += "<div class='news_title'><a href='forum.html?postid=" + data[i]['id'] + "&plate=" + json.plate +
-									"&plate_two=" + json.two + "''>" + data[i][
-										'post_title'
-									] + "</a>";
-								post += "<i class='red_news'>[" + data[i]['post_label'] + "]</i></div>";
-								post += "<div class='news_time news_other'><span>发布于：" + data[i]['post_releasetime'] + "</span>";
-								post += "<span id=''>阅读数：" + data[i]['post_readnum'] + " </span><span id=''>点赞：" + data[i]['post_upnum'] +
-									"</span></div>";
-								post += "<div class='news_owner news_other'><span id=''>发帖人：" + data[i]['post_user_name'] + "</span>";
-								post += "<span id=''>最后回复人：" + data[i]['last_user_name'] +
-									"</span><div class='share bdsharebuttonbox'>分享：";
-								post +=
-									"<a url='forum.html?postid=" + data[i]['id'] + "&plate=" + json.plate +
-									"&plate_two=" + json.two + "' class='bds_weixin' data-cmd='weixin'></a><a url='forum.html?postid=" +
-									data[
-										i]
-									['id'] + "&plate=" + json.plate +
-									"&plate_two=" + json.two + "' class='bds_tsina' data-cmd='tsina'></a></div></div></div></li>";
-								postlist.innerHTML = post;
-							}
-			
-							$('.bdsharebuttonbox a').on('mousemove', function() {
-								var title = $(this).attr('title');
-								var Url = $(this).attr('url');
-								$("#share_url").val(title + "||" + Url);
-							})
-							window._bd_share_main.init();
-						}
-			
-					},
-				})
-			}
 			$('.hiden_list').hide();
 			$('.hiden_list_w').hide();
 			//监听头像鼠标移入事件

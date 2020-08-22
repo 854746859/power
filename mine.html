@@ -1600,9 +1600,9 @@
 											</div>
 										</div>
 									</div>
-									<div class="description_post">
+									<!-- <div class="description_post">
 										<h4>封面图上传：</h4><input type="file" name="" id="picFile" value="" />
-									</div>
+									</div> -->
 									<div class="description_post annex">
 										<h4>附件上传：</h4>
 										<input type="text" id="revise_enclosure_name" value="" placeholder="附件名称" /> 
@@ -1726,6 +1726,9 @@
 								</li>
 								<li>
 									<span>转发</span><p id="user_forward_sum">0</p>
+								</li>
+								<li>
+									<span>积分</span><p id="user_coin_sum">0</p>
 								</li>
 							</ul>
 						</div>
@@ -2049,7 +2052,9 @@
 					var user_laid_sum = document.getElementById("user_laid_sum");
 					user_laid_sum.innerHTML = data.user_laid_sum;
 					var user_forward_sum = document.getElementById("user_forward_sum");
-					user_forward_sum.innerHTML = data.user_forward_sum;
+					user_forward_sum.innerHTML = data.user_forward_sum;					
+					var user_coin_sum = document.getElementById("user_coin_sum");
+					user_coin_sum.innerHTML = data.user_coin_sum;
 
 					// 新粉丝
 					var new_fans_img = '';
