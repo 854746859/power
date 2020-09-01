@@ -45,22 +45,22 @@
 			}
 
 			var currentPage = parseInt(ele.option.currentPage);
-//			console.log('currentPage:' + currentPage);
+            //			console.log('currentPage:' + currentPage);
 			var totalPage = parseInt(ele.option.totalPage);
-//			console.log('totalPage:' + totalPage);
+            //			console.log('totalPage:' + totalPage);
 			var totalNum = parseInt(ele.option.totalNum);
-//			console.log('totalNum:' + totalNum);
+            //			console.log('totalNum:' + totalNum);
 			if (isNaN(currentPage) || isNaN(totalPage) || isNaN(totalNum)) {
 				alert("分页插件不能正常工作，请输入正确的数字");
 			} else {
 				if (isFirst) {
 					if (currentPage == 1) {
 						str = '<li class="disabled"><span style="' + string1 + '">首页</span></li>';
-						console.debug(str);
+                        // console.debug(str);
 						arr.push(str);
 					} else {
 						str = '<li><a href="javascript:void(0)" style="' + string1 + '">首页</a></li>';
-						console.debug(str);
+                        // console.debug(str);
 						arr.push(str);
 					}
 				}
@@ -183,7 +183,7 @@
 		},
 		changePage: function() {
 			var ele = this;
-			console.debug(ele);
+            // console.debug(ele);
 			ele.element.on('click', 'a', function() {
 				var currentPage = parseInt(ele.option.currentPage);
 				var totalpage = parseInt(ele.option.totalPage);
@@ -210,7 +210,7 @@
 				ele.createPage();
 				if (ele.option.showNum) {
 					ele.option.showNum(ele.option.currentPage, ele.option.showRecordNum);
-//					alert(ele.option.pages)
+                    //					alert(ele.option.pages)
 					// 首页文章分页
 					if (ele.option.pages == "post") {
 						console.log("dfafsdasd")
@@ -260,8 +260,9 @@
 										"</span><div class='share bdsharebuttonbox'>分享：";
 									post +=
 										"<a url='forum.html?postid=" + data[i]['id'] + "&plate=" + json.plate +
-									"&plate_two=" + json.two + "' class='bds_weixin' data-cmd='weixin'></a><a url='forum.html?postid=" + data[i]['id'] + "&plate=" + json.plate +
-									"&plate_two=" + json.two + "' class='bds_tsina' data-cmd='tsina'></a></div></div></div></li>";
+                                        "&plate_two=" + json.two + "' class='bds_weixin' data-cmd='weixin'></a><a url='forum.html?postid=" +
+                                        data[i]['id'] + "&plate=" + json.plate +
+                                        "&plate_two=" + json.two + "' class='bds_tsina' data-cmd='tsina'></a></div></div></div></li>";
 									postlist.innerHTML = post;
 								}
 								$('.bdsharebuttonbox a').on('mousemove', function() {
@@ -274,6 +275,8 @@
 						})
 						// 我的文章分页
 					} else if (ele.option.pages == 'infopost') {
+                        console.error(ele.option)
+                        console.log(s2)
 						$.ajax({
 							url: sever_url + 'my/article',
 							type: 'post',
@@ -282,8 +285,11 @@
 								article_type: '0',
 								rows: ele.option.showRecordNum,
 								page: ele.option.currentPage,
+
+                                // rows: 8,
+                                // page: 2,
 								state: '1',
-								order: '1',
+                                order: '0',
 								star_time: '2020-1-1',
 								end_time: s2,
 							},
@@ -292,14 +298,13 @@
 							success: function(res) {
 								// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
 								// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
-								// console.log(res.data)
+                                console.log(res)
 								var postdata = res.data;
 								var post = '';
 								var postlist = document.getElementById("postlist");
 								if (postdata.length === 0) {
-									follows += "<h3>暂无数据</h3>";
-									content.innerHTML = follows;
-
+                                    // follows += "<h3>暂无数据</h3>";
+                                    // content.innerHTML = follows;
 								} else {
 									for (var i = 0; i < postdata.length; i++) {
 										post += "<li><img src='" + postdata[i].post_img + "'/><div class='blog_list'>";
@@ -318,7 +323,9 @@
 										post += "<span id=''>最后回复人：" + postdata[i]['last_user_name'] +
 											"</span><div class='share bdsharebuttonbox'>分享：";
 										post +=
-											"<a url='forum.html?postid=" + postdata[i]['id'] + "' class='bds_weixin' data-cmd='weixin'></a><a url='forum.html?postid=" + postdata[i]['id'] + "' class='bds_tsina' data-cmd='tsina'></a></div></div></div><img style='width: 20px;height: 20px;' src='images/write.png' /><img style='width: 20px;height: 20px;' src='images/delete.png' /></li>";
+                                            "<a url='forum.html?postid=" + postdata[i]['id'] +
+                                            "' class='bds_weixin' data-cmd='weixin'></a><a url='forum.html?postid=" + postdata[i]['id'] +
+                                            "' class='bds_tsina' data-cmd='tsina'></a></div></div></div><img style='width: 20px;height: 20px;' src='images/write.png' /><img style='width: 20px;height: 20px;' src='images/delete.png' /></li>";
 										postlist.innerHTML = post;
 									}
 									$('.bdsharebuttonbox a').on('mousemove', function() {
@@ -388,165 +395,167 @@
 								}
 							},
 						})
-					} else if (ele.option.pages == "follows"){
-						
-							$.ajax({
-								url: sever_url + 'my/follows',
-								type: 'post',
-								data: {
-									token: infodata.token,
-									rows: ele.option.showRecordNum,
-									page: ele.option.currentPage,
-									order: '0',
-									star_time: '2020-1-1',
-									end_time: s2,
-								},
-								// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
-								dataType: 'json',
-								success: function(res) {
-									// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
-									// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
-									//								console.log(res)
-									var followsdata = res.data;
-						
-									$(function() {
-										var a = {
-											color: '#blue',
-											sex: 'black',
-											border: '1px solid #ddd'
-										};
-						
-										var b = {
-											background: '#005389'
-										};
-						
-						
-									});
-									// console.log(fansdata)
-									var follows = '';
-									var followslist = document.getElementById("followslist");
-									if (followsdata.length === 0) {
-										follows += "<h3>暂无数据</h3>";
-										followslist.innerHTML = follows;
-						
-									} else {
-										for (var i = 0; i < followsdata.length; i++) {
-											follows += "<li><img class='icon_radius' src='" + followsdata[i].user_head +
-												" ' /><div class='blog_list'>";
-											follows += "<div class='attention_title'><div>" + followsdata[i]['user_name'] + "</div><div>ID:" +
-												followsdata[i][
-													'id'
-												] + "</div><div>关注时间：" + followsdata[i]['follow_time'] + "</div>";
-											follows += "</div><div class='news_time news_other'><span>个人简介：</span><p>" + followsdata[i][
-													'user_profile'
-												] +
-												"</p>";
-											follows += "</div><div class='news_owner news_other'><span id=''>关注：" + followsdata[i]['user_follow_sum'] +
-												"|粉丝：" + followsdata[i]['user_fans_sum'] + "</span>";
-											follows +=
-												"</div></div><div class='about_att'><div class='cansel'>关注+</div><div class='hispage'><a>TA的个人主页</a></div></div></li>";
-											followslist.innerHTML = follows;
-										}
-									}
-								},
-							})
-							// 粉丝
-						
-					} else if (ele.option.pages == "business"){
-						
-							$.ajax({
-								url: sever_url + 'my/business',
-								type: 'post',
-								data: {
-									token: infodata.token,
-									star_time: "",
-									end_time: "",
-									rows: 5,
-									page: ele.option.currentPage,
-								},
-								// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
-								dataType: 'json',
-								success: function(data) {
-									console.log(data)
-									var length = data.data.length;
-									$(function() {
-										var a = {
-											color: '#blue',
-											sex: 'black',
-											border: '1px solid #ddd'
-										};
-						
-										var b = {
-											background: '#005389'
-										};
-						
-									});
-						
-									$("#listBody").empty();
-									for (var i = 0; i < length; i++) {
-										var obj = data.data[i];
-										$("#listBody").append('<li><ul class="list_body"><li>' + obj.business_time + '</li><li>' + obj.business_type +
-											'</li><li>' + obj.business_money + '</li><li>' + obj.business_coin + '</li><li>' + obj.pay_user +
-											'</li></ul></li>');
-									}
-								}
-							});
-						
-					} else if (ele.option.pages == "natice"){
-						
-							$.ajax({
-								type: "post",
-								url: sever_url + "my/natice",
-								async: true,
-								data: {
-									token: infodata.token,
-									rows: ele.option.showRecordNum,
-									page: ele.option.currentPage,
-								},
-								dataType: "json",
-								success: function(data) {
-									console.log(data)
-									if (data.code == '200') {
-										$("#notice").empty();
-										var length = data.data.data.length;
-										$(function() {
-											var a = {
-												color: '#blue',
-												sex: 'black',
-												border: '1px solid #ddd'
-											};
-						
-											var b = {
-												background: '#005389'
-											};
-						
-										});
-						
-										for (var i = 0; i < length; i++) {
-											var obj = data.data.data[i];
-											$("#notice").append('<div class="message"><div class="message_title"><h3>' + obj.notice_title +
-												'</h3><span>' + obj.notice_time + '</span></div><div class="message_detail"><span>' + obj.notice_content +
-												'</span><a>网页链接</a></div></div>');
-										}
-									} else if (data.code == '2') {
-										Dialog({
-											title: "请登录！",
-											content: "您的登录已过期，是否重新登录？",
-											ok: {
-												callback: function() {
-													window.location.href = 'login.html';
-												}
-											},
-											cancel: {
-												callback: function() {
-													Dialog.close();
-												}
-											}
-										});
-									}
-						
-								}
-							});
+                    } else if (ele.option.pages == "follows") {
+
+                        $.ajax({
+                            url: sever_url + 'my/follows',
+                            type: 'post',
+                            data: {
+                                token: infodata.token,
+                                rows: ele.option.showRecordNum,
+                                page: ele.option.currentPage,
+                                order: '0',
+                                star_time: '2020-1-1',
+                                end_time: s2,
+                            },
+                            // 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+                            dataType: 'json',
+                            success: function (res) {
+                                // 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
+                                // 客户端会主观认为服务端返回的就是 JSON 格式的字符串
+                                //								console.log(res)
+                                var followsdata = res.data;
+
+                                $(function () {
+                                    var a = {
+                                        color: '#blue',
+                                        sex: 'black',
+                                        border: '1px solid #ddd'
+                                    };
+
+                                    var b = {
+                                        background: '#005389'
+                                    };
+
+
+                                });
+                                // console.log(fansdata)
+                                var follows = '';
+                                var followslist = document.getElementById("followslist");
+                                if (followsdata.length === 0) {
+                                    follows += "<h3>暂无数据</h3>";
+                                    followslist.innerHTML = follows;
+
+                                } else {
+                                    for (var i = 0; i < followsdata.length; i++) {
+                                        follows += "<li><img class='icon_radius' src='" + followsdata[i].user_head +
+                                            " ' /><div class='blog_list'>";
+                                        follows += "<div class='attention_title'><div>" + followsdata[i]['user_name'] + "</div><div>ID:" +
+                                            followsdata[i][
+                                                'id'
+                                                ] + "</div><div>关注时间：" + followsdata[i]['follow_time'] + "</div>";
+                                        follows += "</div><div class='news_time news_other'><span>个人简介：</span><p>" + followsdata[i][
+                                                'user_profile'
+                                                ] +
+                                            "</p>";
+                                        follows += "</div><div class='news_owner news_other'><span id=''>关注：" + followsdata[i][
+                                                'user_follow_sum'
+                                                ] +
+                                            "|粉丝：" + followsdata[i]['user_fans_sum'] + "</span>";
+                                        follows +=
+                                            "</div></div><div class='about_att'><div class='cansel'>关注+</div><div class='hispage'><a>TA的个人主页</a></div></div></li>";
+                                        followslist.innerHTML = follows;
+                                    }
+                                }
+                            },
+                        })
+                        // 粉丝
+
+                    } else if (ele.option.pages == "business") {
+
+                        $.ajax({
+                            url: sever_url + 'my/business',
+                            type: 'post',
+                            data: {
+                                token: infodata.token,
+                                star_time: "",
+                                end_time: "",
+                                rows: 5,
+                                page: ele.option.currentPage,
+                            },
+                            // 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+                            dataType: 'json',
+                            success: function (data) {
+                                // console.log(data)
+                                var length = data.data.length;
+                                $(function () {
+                                    var a = {
+                                        color: '#blue',
+                                        sex: 'black',
+                                        border: '1px solid #ddd'
+                                    };
+
+                                    var b = {
+                                        background: '#005389'
+                                    };
+
+                                });
+
+                                $("#listBody").empty();
+                                for (var i = 0; i < length; i++) {
+                                    var obj = data.data[i];
+                                    $("#listBody").append('<li><ul class="list_body"><li>' + obj.business_time + '</li><li>' + obj.business_type +
+                                        '</li><li>' + obj.business_money + '</li><li>' + obj.business_coin + '</li><li>' + obj.pay_user +
+                                        '</li></ul></li>');
+                                }
+                            }
+                        });
+
+                    } else if (ele.option.pages == "natice") {
+
+                        $.ajax({
+                            type: "post",
+                            url: sever_url + "my/natice",
+                            async: true,
+                            data: {
+                                token: infodata.token,
+                                rows: ele.option.showRecordNum,
+                                page: ele.option.currentPage,
+                            },
+                            dataType: "json",
+                            success: function (data) {
+                                console.log(data)
+                                if (data.code == '200') {
+                                    $("#notice").empty();
+                                    var length = data.data.data.length;
+                                    $(function () {
+                                        var a = {
+                                            color: '#blue',
+                                            sex: 'black',
+                                            border: '1px solid #ddd'
+                                        };
+
+                                        var b = {
+                                            background: '#005389'
+                                        };
+
+                                    });
+
+                                    for (var i = 0; i < length; i++) {
+                                        var obj = data.data.data[i];
+                                        $("#notice").append('<div class="message"><div class="message_title"><h3>' + obj.notice_title +
+                                            '</h3><span>' + obj.notice_time + '</span></div><div class="message_detail"><span>' + obj.notice_content +
+                                            '</span><a>网页链接</a></div></div>');
+                                    }
+                                } else if (data.code == '2') {
+                                    Dialog({
+                                        title: "请登录！",
+                                        content: "您的登录已过期，是否重新登录？",
+                                        ok: {
+                                            callback: function () {
+                                                window.location.href = 'login.html';
+                                            }
+                                        },
+                                        cancel: {
+                                            callback: function () {
+                                                Dialog.close();
+                                            }
+                                        }
+                                    });
+                                }
+
+                            }
+                        });
 					}
 				}
 			});
