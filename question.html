@@ -294,6 +294,75 @@
 	.tender ul li span{
 		max-width: 288px !important;
 	}
+	
+	.bora_4{
+		margin-top: 21px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		border: 1px solid #EDEDED;
+	}
+	
+	#menu{
+		background-color: #eee;
+		width: 820px;		
+	}
+	#postlist li{
+		margin: 0 16px;
+	}
+		
+		
+	/* 标题栏 */
+	.tabbar {
+	    display: flex;
+	    flex-direction: row;
+	    align-items: center;
+	    width: 640px;
+	    text-align: center;
+	}	
+	.tabbar ul {
+	    width: 640px;
+	    margin: 0;
+	    height: 33px;
+	    padding: 0;
+	    text-align: center;
+	}	
+	.tabbar ul li {
+	    padding: 0;
+	    list-style: none;
+	    /* display: inline; */
+	}	
+	.tabbar ul li{
+	    float: left;
+	    padding-left: 12px;
+	    padding-right: 12px;
+	    font-family: PingFangSC-Regular;
+	    font-size:16px;
+	    font-weight: 500;
+	    line-height: 33px;
+	    color:rgba(0,0,0,0.85);
+	    text-decoration: none;
+	}	
+	.tabbar ul li:hover {
+	    background: #fff;
+	    border-bottom: 2px solid #0084ff;
+	    margin-top: -2px;
+	}
+	.tabbar ul li:active {
+	    background: #fff;
+	    border-bottom: 2px solid #0084ff;
+	    margin-top: -2px;
+	}
+	.active{
+	    background: #fff;
+	    border-bottom: 2px solid #0084ff;
+	    margin-top: -2px;
+	}
+	.selection1{
+	    background: #fff;
+	    border-bottom: 2px solid #0084ff;
+	    margin-top: -2px;
+	}
 </style>
 	</head>
 	<body>
@@ -574,251 +643,28 @@
 					</nav>
 				</div>
 				<!-- 导航end -->
-				<!-- 需要添加的最新通知或公告滚动部分 -->
-				<!-- <div class="gonggao bdb_d fix">
-					<div class="txtScroll-top l fix">
-						<div class="l tit"><img src="images/icon_notice.png"><b class="dib vm">信息公告：</b></div>
-						<div class="bd l">
-							<ul class="infoList">
-								<li><a href="news_xq.html">我局顺利组织2019年xx市第一期渔业安全生产知识培训及应急实操演练</a><span class="date">2019-07-05</span></li>
-								<li><a href="news_xq.html">xx市综合执法局办公大楼新建地块招标项目开发商承建</a><span class="date">2019-07-05</span></li>
-								<li><a href="news_xq.html">我局顺利组织2019年xx市第一期渔业安全生产知识培训及应急实操演练我局顺利组织2019年福泉市第</a><span class="date">2019-07-05</span></li>
-								<li><a href="news_xq.html">xx市综合执法局办公大楼新建地块招标项目开发商承建</a><span class="date">2019-07-05</span></li>
-							</ul>
-						</div>
-					</div>
-					<script type="text/javascript">
-						jQuery(".txtScroll-top").slide({
-							titCell: ".hd ul",
-							mainCell: ".bd ul",
-							effect: "topLoop",
-							autoPlay: true,
-							vis: 1,
-							interTime: 4000,
-						});
-					</script> -->
-
-				<!-- 时间 -->
-				<!-- <div class="timebox fc r">
-						<script type="text/javascript" src="js/show_date.js"></script>
-					</div>
-				</div> -->
-
+				
 				<div class="conbox fix">
-					<div class="news_banner l bora_5">
+					<div class="news_banner l bora_4">
 						<!-- 左边内容 -->
-						<div id="content" class="zy_right_con">
+						<div id="content" class="zy_right_con" style="width: 100%;">
 							<!-- 当前位置 -->
-							<div id="menu" class="zy_title">
-								<h2 id="1" class="selected">最新发布<i></i></h2>
+							<div id="menu" class="tabbar">
+								<!-- <h2 id="1" class="selected">最新发布<i></i></h2>
 								<h2 id="2">已解决<i></i></h2>
-								<h2 id="3">未解决<i></i></h2>
-								<!-- <h2 id="4">筛选<i></i></h2> -->
+								<h2 id="3">未解决<i></i></h2> -->
+								<ul>
+								    <li id="1" onclick="tabber(0)" class="selection1 biaoti">最新发布</li>
+								    <li id="2" onclick="tabber(1)" class="biaoti">已解决</li>                                
+								    <li id="3" onclick="tabber(2)" class="biaoti">未解决</li>
+								</ul>
 							</div>
 							<!-- 内容展示块-->
 							<div class="news_list zy_listbox" style="height: 900px;">
 								<!-- 展示15条数据后出现分页 -->
 								<ul id="postlist">
-									<!-- <li>
-										<img src="News-module1/images/dangzheng.png" />
-										<div class="blog_list">
-											<div class="news_title">
-												<a href="news_xq.html" style="max-width: 360px;">李克强主持召开国务院常务会议 部署进一步促进社区养老和家政服务工作安排</a>
-												<i class="red_news">[原创]</i>
-												<i class="red_news">[新闻]</i>
-												<div class="r">
-													<i class="solve">未解决</i>
-													<i class="reward">悬赏 20C</i>
-												</div>
-											</div>
-											<div class="news_time news_other">
-												<span>发布于：2019-07-05 13:12:06</span>
-												<span id="">
-													阅读数：32564
-												</span>
-												<span id="">
-													点赞：1563
-												</span>
-											</div>
-											<div class="news_owner news_other">
-												<span id="">
-													发帖人：XXX
-												</span>
-												<span id="">
-													最后回复人：XXX
-												</span>
-												<div class="share">
-													分享：
-													<img class="share_icon" src="images/WeChat.png" />
-													<img class="share_icon" src="images/weibo.png" />
-												</div>
-											</div>
-										</div>
-									</li>
-									<li>
-										<img src="images/icon_leader.png" />
-										<div class="blog_list">
-											<div class="news_title">
-												<a href="news_xq.html" style="max-width: 360px;">特勤大队暂扣污染路面车辆</a>
-												<i class="red_news">[原创]</i>
-												<i class="red_news">[新闻]</i>
-												<div class="r">
-													<i class="solve">未解决</i>
-													<i class="reward">悬赏 20C</i>
-												</div>
-											</div>
-											<div class="news_time news_other">
-												<span>发布于：2019-07-05 13:12:06</span>
-												<span id="">
-													阅读数：32564
-												</span>
-												<span id="">
-													点赞：1563
-												</span>
-											</div>
-											<div class="news_owner news_other">
-												<span id="">
-													发帖人：XXX
-												</span>
-												<span id="">
-													最后回复人：XXX
-												</span>
-												<div class="share">
-													分享：
-													<img class="share_icon" src="images/WeChat.png" />
-													<img class="share_icon" src="images/weibo.png" />
-												</div>
-											</div>
-										</div>
-									</li>
-									<li>
-										<img src="images/people01.jpg" />
-										<div class="blog_list">
-											<div class="news_title">
-												<a href="news_xq.html" style="max-width: 360px;">我局顺利组织2019年福泉市第一期渔业安全生产知识培训及应急实操演练我局顺利组织2019年福泉市第</a>
-												<i class="red_news">[原创]</i>
-												<i class="red_news">[新闻]</i>
-												<div class="r">
-													<i class="solved">已解决</i>
-													<i class="reward">悬赏 20C</i>
-												</div>
-											</div>
-											<div class="news_time news_other">
-												<span>发布于：2019-07-05 13:12:06</span>
-												<span id="">
-													阅读数：32564
-												</span>
-												<span id="">
-													点赞：1563
-												</span>
-											</div>
-											<div class="news_owner news_other">
-												<span id="">
-													发帖人：XXX
-												</span>
-												<span id="">
-													最后回复人：XXX
-												</span>
-												<div class="share">
-													分享：
-													<img class="share_icon" src="images/WeChat.png" />
-													<img class="share_icon" src="images/weibo.png" />
-												</div>
-											</div>
-										</div>
-									</li>
-									<li>
-										<img src="images/icon_gongshi.png" />
-										<div class="blog_list">
-											<div class="news_title">
-												<a href="news_xq.html" style="max-width: 360px;">特勤大队暂扣污染路面车辆</a>
-												<i class="red_news">[原创]</i>
-												<i class="red_news">[新闻]</i>
-												<div class="r">
-													<i class="solve">未解决</i>
-													<i class="reward">悬赏 20C</i>
-												</div>
-											</div>
-											<div class="news_time news_other">
-												<span>发布于：2019-07-05 13:12:06</span>
-												<span id="">
-													阅读数：32564
-												</span>
-												<span id="">
-													点赞：1563
-												</span>
-											</div>
-											<div class="news_owner news_other">
-												<span id="">
-													发帖人：XXX
-												</span>
-												<span id="">
-													最后回复人：XXX
-												</span>
-												<div class="share">
-													分享：
-													<img class="share_icon" src="images/WeChat.png" />
-													<img class="share_icon" src="images/weibo.png" />
-												</div>
-											</div>
-										</div>
-									</li>
-									<li>
-										<img src="images/icon_zhaobiao.png" />
-										<div class="blog_list">
-											<div class="news_title">
-												<a href="news_xq.html">特勤大队暂扣污染路面车辆</a>
-												<i class="red_news">[原创]</i>
-												<i class="red_news">[新闻]</i>
-												<div class="r">
-													<i class="solve">未解决</i>
-													<i class="reward">悬赏 20C</i>
-												</div>
-											</div>
-											<div class="news_time news_other">
-												<span>发布于：2019-07-05 13:12:06</span>
-												<span id="">
-													阅读数：32564
-												</span>
-												<span id="">
-													点赞：1563
-												</span>
-											</div>
-											<div class="news_owner news_other">
-												<span id="">
-													发帖人：XXX
-												</span>
-												<span id="">
-													最后回复人：XXX
-												</span>
-												<div class="share">
-													分享：
-													<img class="share_icon" src="images/WeChat.png" />
-													<img class="share_icon" src="images/weibo.png" />
-												</div>
-											</div>
-										</div>
-									</li> -->
+									
 								</ul>
-								<!-- 通用分页 -->
-								<!-- <div class="fanye" style="text-align: left;">
-									<a href="#">上一页</a>
-									<div>
-										<a href="#" class="current">1</a>
-										<a href="#">2</a>
-										<a href="#">3</a>
-										<a href="#">4</a>
-										<a href="#">...</a>
-										<a href="#">10</a>
-									</div>
-									<a href="#">下一页</a>
-									<p>
-										<span>共20页</span>
-										<span>转到第<input type="text" name="" value="2">页</span>
-										<input type="submit" name="" value="确定">
-									</p>
-								</div> -->
-								<!-- 通用分页end -->
 							</div>
 							<center style="display:flex;flex-direction:row;align-items:center;justify-content: space-around;">
 								<button style="background-color: #0084FF;width: 90px;height: 40px;color: #fff;border-radius: 6px;" onclick="toPost()">去发帖</button>
@@ -1285,13 +1131,12 @@
 
 						} else {
 							for (var i = 0; i < data.length; i++) {
-								post += "<li><img src='" + data[i].post_img + "'/><div class='blog_list'>";
+								post += "<li><img src='" + data[i].post_img + "'/><div class='blog_list' style='width: 710px !important;'>";
 								post += "<div class='news_title'><a href='questionDetail.html?postid=" + data[i]['id'] + "&plate=" + json.plate +
 									"&plate_two=" + json.two + "''>" + data[i]['post_title'] + "</a>";
 								post += "<i class='red_news'>[" + data[i]['post_label'] + "]</i></div>";
 								post += "<div class='news_time news_other'><span>发布于：" + data[i]['post_releasetime'] + "</span>";
-								post += "<span id=''>阅读数：" + data[i]['post_readnum'] + " </span><span id=''>点赞：" + data[i]['post_upnum'] +
-									"</span></div>";
+								post += "<span id=''>阅读数：" + data[i]['post_readnum'] + " </span><span id=''>点赞：" + data[i]['post_upnum'] + 	"</span></div>";
 								post += "<div class='news_owner news_other'><span id=''>发帖人：" + data[i]['post_user_name'] + "</span>";
 								post += "<span id=''>最后回复人：" + data[i]['last_user_name'] + "</span><div class='share bdsharebuttonbox'>分享：";
 								post +=
@@ -1361,6 +1206,26 @@
 					$("#hotPost").html(info)
 				},
 			})
+			
+			
+			function tabber(e){
+				document.getElementById("postlist").innerHTML = "";
+				post(e);
+				switch(e) {
+					case 0:
+						$(".selection1").removeClass("selection1")
+						$(".biaoti")[0].classList.add("selection1")
+					break;
+					case 1:
+						$(".selection1").removeClass("selection1")
+						$(".biaoti")[1].classList.add("selection1")
+					break;
+					case 2:
+						$(".selection1").removeClass("selection1")
+						$(".biaoti")[2].classList.add("selection1")
+					break;
+				}
+			}
 
 			function h2() {
 				var menu = document.getElementById('menu');
