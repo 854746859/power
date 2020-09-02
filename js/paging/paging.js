@@ -275,8 +275,8 @@
 						})
 						// 我的文章分页
 					} else if (ele.option.pages == 'infopost') {
-                        console.error(ele.option)
-                        console.log(s2)
+                        // console.error(ele.option)
+                        // console.log(s2)
 						$.ajax({
 							url: sever_url + 'my/article',
 							type: 'post',
@@ -298,7 +298,7 @@
 							success: function(res) {
 								// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
 								// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
-                                console.log(res)
+                                // console.log(res)
 								var postdata = res.data;
 								var post = '';
 								var postlist = document.getElementById("postlist");
@@ -327,6 +327,67 @@
                                             "' class='bds_weixin' data-cmd='weixin'></a><a url='forum.html?postid=" + postdata[i]['id'] +
                                             "' class='bds_tsina' data-cmd='tsina'></a></div></div></div><img style='width: 20px;height: 20px;' src='images/write.png' /><img style='width: 20px;height: 20px;' src='images/delete.png' /></li>";
 										postlist.innerHTML = post;
+									}
+									$('.bdsharebuttonbox a').on('mousemove', function() {
+										var title = $(this).attr('title');
+										var Url = $(this).attr('url');
+										$("#share_url").val(title + "||" + Url);
+									})
+									window._bd_share_main.init();
+								}
+							},
+						})
+					}// 我的问答分页
+					 else if (ele.option.pages == 'question') {
+                        // console.error(ele.option)
+                        // console.log(s2)
+						$.ajax({
+							url: sever_url + 'my/article',
+							type: 'post',
+							data: {
+								token: infodata.token,
+								article_type: '1',
+								rows: ele.option.showRecordNum,
+								page: ele.option.currentPage,
+								state: '1',
+                                order: '0',
+								star_time: '2020-1-1',
+								end_time: s2,
+							},
+							// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+							dataType: 'json',
+							success: function(res) {
+								// 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
+								// 客户端会主观认为服务端返回的就是 JSON 格式的字符串
+                                // console.log(res)
+								var postdata = res.data;
+								var post = '';
+								var qusetionlist = document.getElementById("qusetionlist");
+								if (postdata.length === 0) {
+                                    // follows += "<h3>暂无数据</h3>";
+                                    // content.innerHTML = follows;
+								} else {
+									for (var i = 0; i < postdata.length; i++) {
+										post += "<li><img src='" + postdata[i].post_img + "'/><div class='blog_list'>";
+										post += "<div class='news_title'><a href='forum.html?postid=" + postdata[i]['id'] + "'>" + postdata[i]
+											[
+												'post_title'
+											] + "</a>";
+										post += "<i class='red_news'>[" + postdata[i]['post_label'] + "]</i></div>";
+										post += "<div class='news_time news_other'><span>发布于：" + postdata[i]['post_releasetime'] + "</span>";
+										post += "<span id=''>阅读数：" + postdata[i]['post_readnum'] + " </span><span id=''>点赞：" + postdata[i][
+												'post_upnum'
+											] +
+											"</span></div>";
+										post += "<div class='news_owner news_other'><span id=''>发帖人：" + postdata[i]['post_user_name'] +
+											"</span>";
+										post += "<span id=''>最后回复人：" + postdata[i]['last_user_name'] +
+											"</span><div class='share bdsharebuttonbox'>分享：";
+										post +=
+                                            "<a url='forum.html?postid=" + postdata[i]['id'] +
+                                            "' class='bds_weixin' data-cmd='weixin'></a><a url='forum.html?postid=" + postdata[i]['id'] +
+                                            "' class='bds_tsina' data-cmd='tsina'></a></div></div></div><img style='width: 20px;height: 20px;' src='images/write.png' /><img style='width: 20px;height: 20px;' src='images/delete.png' /></li>";
+										qusetionlist.innerHTML = post;
 									}
 									$('.bdsharebuttonbox a').on('mousemove', function() {
 										var title = $(this).attr('title');
@@ -476,7 +537,7 @@
                             // 用于设置响应体的类型 注意 跟 data 参数没关系！！！
                             dataType: 'json',
                             success: function (data) {
-                                // console.log(data)
+                                console.log(data)
                                 var length = data.data.length;
                                 $(function () {
                                     var a = {
@@ -494,7 +555,7 @@
                                 $("#listBody").empty();
                                 for (var i = 0; i < length; i++) {
                                     var obj = data.data[i];
-                                    $("#listBody").append('<li><ul class="list_body"><li>' + obj.business_time + '</li><li>' + obj.business_type +
+                                    $("#listBody").append('<li><ul class="list_body"><li>' + obj.business_time + '</li><li>' + obj.business_content +
                                         '</li><li>' + obj.business_money + '</li><li>' + obj.business_coin + '</li><li>' + obj.pay_user +
                                         '</li></ul></li>');
                                 }
