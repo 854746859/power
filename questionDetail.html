@@ -1096,7 +1096,7 @@
 								</div>
 								<form action="">
 									<div class="txt-fld">
-										<p>当前可用丁当：0</p>
+										<p id="user_coin"></p>
 										<div style="margin: 16px 0 16px 0; display: flex;" class="signup-list">
 											<div id="" class="signup-btn">
 												2论坛币
@@ -1402,8 +1402,9 @@
 			
 			})
 			// 获取我的信息
-			var data = sessionStorage.getItem("data");
+			var data = sessionStorage.getItem("data");			
 			var infodata = eval('(' + data + ')');
+			$("#user_coin").html(`当前论坛币：${JSON.parse(data).user_coin}`)
 			// console.log(infodata.token);
 			//回复编辑方式
 			$("#comment_content").hide();
@@ -1947,11 +1948,12 @@
 						var reward_money = "";
 						console.log(name)
 						if (name == "reward") {
+							console.log("sfafas")
 							$(".signup-btn").click(function(e){
 								$("#reset").show()
 								$('#reward_coinnum').hide()
 								$('.signup-list').find(".signup-btn").removeClass("signup-btn-active")
-								let index = $('.signup-btn').index(this)
+								let index = $('.signup-btn').index(this)								
 								$(this).addClass("signup-btn-active")
 							})
 							$("#reset").click(function() {
