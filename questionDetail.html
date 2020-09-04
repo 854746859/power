@@ -337,7 +337,7 @@
 			
 			.content_box .visitor {
 				display: flex;
-				flex-direction: row;
+				flex-direction: column;
 				justify-content: space-between;
 			}
 			
@@ -347,6 +347,21 @@
 				display: flex;
 				flex-direction: row;
 				align-items: center;
+			}
+			
+			.other_visitor{
+				margin-top: 6px;
+				margin-left: 56px;
+				margin-bottom: 12px;
+			}
+			
+			.other_visitor a span,.other_visitor span span{
+				display: inline-block;
+				color: #666;
+				font-size: 13px;
+				text-align: center;
+				border-radius: 16px;
+				cursor: pointer;
 			}
 			
 			.other_visitor img {
@@ -365,24 +380,33 @@
 			}
 			
 			.content_box .visitor .visitor_pic img {
-				width: 50px;
-				height: 50px;
-				border-radius: 25px;
-				margin-right: 5px;
+				width: 44px;
+				height: 44px;
+				object-fit: cover;
+				vertical-align: bottom;
+				border-radius: 50%;
+				margin-right: 12px;
+			}
+			.visitor_pic span{
+				font-size: 14px;
+				color: #333;
+				font-weight: 600;
 			}
 			
 			.commet_time {
 				margin-left: 10px;
+				color: #999;
+				font-size: 13px;
 			}
 			
 			.comment_text {
-				padding: 10px 30px 10px 10px;
+				padding: 8px 0 0 56px;
 				margin-bottom: 5px;
 			}
 			
 			.comment_text p {
-				text-align: justify;
-				text-indent: 2em;
+				text-align: left;
+				/* text-indent: 2em; */
 				color: #333;
 				line-height: 1.6;
 				margin-top: 5px;
@@ -529,22 +553,21 @@
 				font-size: 16px;
 				line-height: 1.5;
 			}
-			.signup-btn{
+			.signup-btn,.signup-btn1{
 				cursor:pointer;
-				width: 95px;
-				height: 40px;
 				display: flex;
 				align-items: center;
 				justify-content: center;
 				margin-right: 12px;
 				color: #0084ff;
-				font-size: 16px;
-				line-height: 40px;
+				font-size: 14px;
 				background: #fff;
 				border: 1px solid #0084ff;
-				border-radius: 20px;
+				border-radius: 44px;
+				padding: 8px 16px;
+				margin-bottom: 12px;
 			}
-			.signup-btn-active{
+			.signup-btn-active,.signup-btn1-active{
 				color: #fff;
 				background: #0084ff;
 			}
@@ -1071,7 +1094,7 @@
 								<a rel="leanModal" name="Report" href="#Report"><img id="report" src="images/report.png" /><span>举报</span></a>
 							</div>
 						</div>
-						<div id="Report">
+						<div id="Report" style="width: 608px;">
 							<div id="signup-ct">
 								<div id="signup-header">
 									<h2>举报</h2>
@@ -1079,9 +1102,29 @@
 								</div>
 								<form action="">
 									<div class="txt-fld">
-										<p>当前可用丁当：0</p>
-										<label for="">举报内容</label>
-										<textarea id="report_text" name="" rows="" cols=""></textarea>
+										<p>请选择原因</p>
+										<div style="margin: 16px 0 16px 0; display: flex;flex-wrap: wrap;" class="signup-list1">
+											<div id="" class="signup-btn1">
+												广告宣传推广
+											</div>
+											<div id="" class="signup-btn1">
+												政治敏感、违法虚假信息
+											</div>
+											<div id="" class="signup-btn1">
+												恶意灌水、重复发帖
+											</div>
+											<div id="" class="signup-btn1">
+												违规侵权、站友争执
+											</div>
+											<div id="" class="signup-btn1">
+												附件异常、链接失效
+											</div>
+											<div id="" class="signup-btn1">
+												其他
+											</div>
+										</div>
+										<!-- <label for="">举报内容</label> -->
+										<textarea id="report_text" name="" rows="" cols="" style="display: none;" ></textarea>
 									</div>
 									<div class="submit">
 										<input type="button" name="" id="edit" value="确认" />
@@ -1096,7 +1139,7 @@
 								</div>
 								<form action="">
 									<div class="txt-fld">
-										<p id="user_coin"></p>
+										<!-- <p id="user_coin"></p> -->
 										<div style="margin: 16px 0 16px 0; display: flex;" class="signup-list">
 											<div id="" class="signup-btn">
 												2论坛币
@@ -1404,7 +1447,10 @@
 			// 获取我的信息
 			var data = sessionStorage.getItem("data");			
 			var infodata = eval('(' + data + ')');
-			$("#user_coin").html(`当前论坛币：${JSON.parse(data).user_coin}`)
+			// if(data != null){
+			// 	$("#user_coin").html(`当前论坛币：${JSON.parse(data).user_coin}`)
+			// }
+			
 			// console.log(infodata.token);
 			//回复编辑方式
 			$("#comment_content").hide();
@@ -1496,7 +1542,7 @@
 			// 举报
 			function Reported(commentId) {
 				console.log(commentId);
-				$("#edit").click(function() {
+				$("#edit").off("click").on("click", function() {
 					reprot_content = $("#report_text").val();
 					console.log(reprot_content);
 					doSomething(reprot_content)
@@ -1895,18 +1941,7 @@
 							for (var i = 0; i < length; i++) {
 								var obj = data.data[i];
 								$("#comment_box").append(
-									'<div class="content_box"><div class="visitor"><div class="visitor_info"><div class="visitor_pic"><img id="' +
-									obj.id + '" src="' + obj.user_head + '"/><span >' + obj.user_name +
-									'</span></div><div class="commet_time"><span>' + obj.comment_time + '</span><span>【' + obj.comment_layernum +
-									'楼】</span></div></div><div class="other_visitor"><a><span onclick=adopt(' +
-									obj.id + ')>采纳</span></a><a href="#editor"><span onclick=reply(' + obj.id +
-									',"' + obj.user_name +
-									'")>回复</span></a><a rel="leanModal" name="Report" href="#Report"><span onclick=Reported(' +
-									obj.id + ')>举报</span></a><a href="#editor"><span onclick=reply(' + obj.id +
-									',"' + obj.user_name +
-									'")>回复</span></a><span style="display:flex;align-items: center;"><img onclick=commentSupport(' +
-									obj.id + ') src="images/support.png"/><span id="comment' + obj.id + '">' + Number(obj.comment_upnum) +
-									'</span></span></div></div><div class="comment_text"><p>' + obj.comment_content + '</p></div></div>');
+									'<div class="content_box"><div class="visitor"><div class="visitor_info"><div class="visitor_pic"><img id="' + obj.id + '" src="' + obj.user_head + '"/><span >' + obj.user_name + '</span></div><div class="commet_time"><span>' + obj.comment_time + '</span><span>【' + obj.comment_layernum + '楼】</span></div></div><div class="comment_text"><p>' + obj.comment_content + '</p></div><div class="other_visitor"><a><span onclick=adopt(' + obj.id + ')>采纳</span></a><a href="#editor"><span onclick=reply(' + obj.id + ',"' + obj.user_name + '")>回复</span></a><a rel="leanModal" name="Report" href="#Report"><span onclick=Reported(' + obj.id + ')>举报</span></a><a href="#editor"><span onclick=reply(' + obj.id + ',"' + obj.user_name + '")>回复</span></a><span style="display:flex;align-items: center;"><img onclick=commentSupport(' + obj.id + ') src="images/support.png"/><span id="comment' + obj.id + '">' + Number(obj.comment_upnum) + '</span></span></div></div></div>');
 							}
 							$('a[rel*=leanModal]').leanModal({
 								top: 200,
@@ -1939,6 +1974,7 @@
 							}
 						});
 					} else {
+						var reward_number = ""
 						var obj = sessionStorage.getItem("data");
 						obj = JSON.parse(obj);
 						var token = obj.token;
@@ -1946,35 +1982,68 @@
 						var reprot_content = "";
 						var reward_coinnum = "";
 						var reward_money = "";
-						console.log(name)
+						// console.log(name)
 						if (name == "reward") {
-							console.log("sfafas")
+							console.log(name)
+							// 选择按钮添加样式
 							$(".signup-btn").click(function(e){
 								$("#reset").show()
 								$('#reward_coinnum').hide()
 								$('.signup-list').find(".signup-btn").removeClass("signup-btn-active")
-								let index = $('.signup-btn').index(this)								
+								let index = $('.signup-btn').index(this)	
+								console.log(index)
 								$(this).addClass("signup-btn-active")
+								if(index == 0) {
+									reward_number = 2
+								}else if(index == 1) {
+									reward_number = 5
+								}else if(index == 2) {
+									reward_number = 8
+								}else{
+									reward_number = ''
+								}
 							})
+							
+							// 重置按钮
 							$("#reset").click(function() {
 								$("#reset").hide()
 								$('#reward_coinnum').show()
 							})
-							$("#check").click(function() {
-								reward_coinnum = $("#reward_coinnum").val();
+							
+							// 确定打赏
+							$("#check").off("click").on("click", function() {
+								if(reward_number == ''){
+									reward_coinnum = $("#reward_coinnum").val();
+								}else{
+									reward_coinnum = reward_number
+								}
+								
 								reward_money = $("#reward_money").val();
-								doSomething(token, post_id, comment_id, reprot_content, reward_coinnum, reward_money);
+								doSomething1(token, post_id, comment_id, reprot_content, reward_coinnum, reward_money);
+								$("#lean_overlay").hide()
+								$("#test").hide()
 							})
 						} else if (name == "report") {
-							$("#edit").click(function() {
+							$(".signup-btn1").click(function(e){
+								$('.signup-list1').find(".signup-btn1").removeClass("signup-btn1-active")
+								let index = $('.signup-btn1').index(this)
+								 $("#report_text").val($(this).context.textContent);
+								$(this).addClass("signup-btn1-active")
+								
+							})
+							
+							$("#edit").off("click").on("click", function() {
+								
 								reprot_content = $("#report_text").val();
-								doSomething(token, post_id, comment_id, reprot_content, reward_coinnum, reward_money);
+								doSomething1(token, post_id, comment_id, reprot_content, reward_coinnum, reward_money);
+								$("#Report").hide()
+								$("#lean_overlay").hide()
 							})
 						} else {
-							doSomething(token, post_id, comment_id, reprot_content, reward_coinnum, reward_money);
+							doSomething1(token, post_id, comment_id, reprot_content, reward_coinnum, reward_money);
 						}
 
-						function doSomething(token, post_id, comment_id, reprot_content, reward_coinnum, reward_money) {
+						function doSomething1(token, post_id, comment_id, reprot_content, reward_coinnum, reward_money) {
 							$.ajax({
 								type: "post",
 								url: sever_url + "post/" + name,
@@ -1988,6 +2057,10 @@
 									reward_money: reward_money
 								},
 								success: function(data) {
+									reward_number = ''
+									$("#reset").hide()
+									$('#reward_coinnum').show()
+									$("#reward_coinnum").val('')
 									var upNumber = parseInt($("#postUpnum").html().substring(1).substring(1).substring(1));
 									var coNumber = parseInt($("#postCollectionnum").html().substring(1).substring(1).substring(1));
 									var fwNumber = parseInt($("#postForwardnum").html().substring(1).substring(1).substring(1));
