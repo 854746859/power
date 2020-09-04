@@ -41,7 +41,7 @@
 		</script>
 		<style>
 			body{
-				font-family: -apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+				font-family: -apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol !important;
 			}
 			.headLink {
 				display: flex;
@@ -470,12 +470,12 @@
 			}
 			
 			.attention_title div:first-child {
-				font-size: 20px;
-				font-weight: 600;
+				font-weight: 500;
+				font-size: 14px;
 			}
 			
 			.icon_radius {
-				border-radius: 45px;
+				border-radius: 50%;
 			}
 			
 			.about_att {
@@ -487,11 +487,19 @@
 				align-items: flex-end;
 			}
 			.about_att .cansel{
+				width: auto;
+				height: 24px;
+				padding: 0 12px;
+				font-size: 12px;
+				line-height: 24px;
 				cursor: pointer;
-				margin-top: 24px;
-				margin-right: 54px;
 				position: absolute;
-				right: 12px;
+				color: #999!important;
+				background-color: #f2f2f2!important;
+				border-color: transparent!important;
+				border-radius: 16px;
+				cursor: pointer;
+				right: 28px;
 			}
 			.about_att a {
 				font-size: 14px;
@@ -1057,7 +1065,7 @@
 				flex-direction: column;
 				justify-content: space-between;
 				margin-left: 10px;
-				width: 668px !important;
+				width: 720px !important;
 				overflow: hidden;
 				text-overflow: ellipsis;
 				white-space: nowrap;
@@ -1099,6 +1107,43 @@
 				margin-top: 2px;
 				color: #999 !important;
 				font-size: 12px;
+			}
+			
+			.fan,.look{
+				margin-right: 12px;
+			}
+			.fan:last-child,.look:last-child{
+				margin-right: 0px;
+			}
+			
+			#plate_fan_pic, #plate_look_pic{
+				margin-left: 6px;
+			}
+			
+			.info_box, .plate_fan_span{
+				text-align: center;
+			}
+			
+			.news_title1{
+				font-size: 16px;
+				font-weight: 700;
+				color: #333;
+			}
+			.red_news1{				
+				color: #f00;
+				display: inline-block;
+				margin-left: 5px;
+				font-style: normal;
+				font-size: 14px;
+			}
+			.fonts span{
+				color: #999;
+				font-size: 13px;
+			}
+			.news_other span{
+				color: #999;
+				font-size: 13px !important;
+				font-family: -apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol !important;
 			}
 			
 		</style>
@@ -2211,12 +2256,9 @@
 									'post_upnum'
 								] + "</span></div>";
 								post += "<div class='news_owner1 news_other'><span id=''>发帖人：" + postdata[i]['post_user_name'] + "</span>";
-								post +=
-									`<span id='' style='margin-left: 24px'>最后回复人：${postdata[i]['last_user_name']=='' ? '暂无回复人' :postdata[i]['last_user_name']}</span>`;
-								post +=
-									"</div></div><div class='share_right share bdsharebuttonbox'><div><img style='width: 20px;height: 20px;' src='images/write.png' />";
-								post += "<img style='width: 20px;height: 20px;' onclick = 'Delete(" + postdata[i]['id'] +
-									")' src='images/delete.png' /></div><div style='display:flex;flex-direction:row;align-items:center;margin-top: 28px'><p style='float:left;width: 60px;'>分享：</p>";
+								post +=`<span id='' style='margin-left: 24px'>最后回复人：${postdata[i]['last_user_name']=='' ? '暂无回复人' :postdata[i]['last_user_name']}</span>`;
+								post +="</div></div><div class='share_right share bdsharebuttonbox'><div>";
+								post += "<img style='width: 20px;height: 20px;position: absolute;right: 6px;' onclick = 'Delete(" + postdata[i]['id'] +")' src='images/delete.png' /></div><div style='display:flex;flex-direction:row;justify-content: flex-end;align-items:center;margin-top: 68px;margin-left: 12px;'><p style='float:left;width: 48px;'>分享：</p>";
 								post += "<a url='forum.html?postid=" + postdata[i]['id'] +
 									"' class='bds_weixin' data-cmd='weixin'></a><a url='forum.html?postid=" + postdata[i]['id'] +
 									"' class='bds_tsina' data-cmd='tsina'></a></div></div></li>";
@@ -2393,15 +2435,8 @@
 								post += "<div class='news_owner2 news_other'><span id=''>发帖人：" + postdata[i]['post_user_name'] +
 									"</span>";
 								post +=
-									`<span id=''>最后回复人：${postdata[i]['last_user_name']=='' ?'暂无回复' :postdata[i]['last_user_name']}</span><div class='share bdsharebuttonbox'>分享：`;
-								post +=
-									"<a url='questionDetail.html?postid=" + postdata[i]['id'] + "&plate=" + postdata[i].post_plate +
-									"&plate_two=" + postdata[i].post_plate_two +
-									"' class='bds_weixin' data-cmd='weixin'></a><a url='questionDetail.html?postid=" + postdata[i]['id'] +
-									"&plate=" + postdata[i].post_plate +
-									"&plate_two=" + postdata[i].post_plate_two +
-									"' class='bds_tsina' data-cmd='tsina'></a></div></div></div><img style='width: 20px;height: 20px;position: absolute;right: 92px;' src='images/write.png' /><img style='width: 20px;height: 20px;position: absolute;right: 70px;' onclick = 'Delete(" +
-									postdata[i]['id'] + ")' src='images/delete.png' /></li>";
+									`<span id=''>最后回复人：${postdata[i]['last_user_name']=='' ?'暂无回复' :postdata[i]['last_user_name']}</span><div class='share bdsharebuttonbox' style='display: flex;justify-content: flex-end;'>分享：`;
+								post += "<a url='questionDetail.html?postid=" + postdata[i]['id'] + "&plate=" + postdata[i].post_plate + "&plate_two=" + postdata[i].post_plate_two + "' class='bds_weixin' data-cmd='weixin'></a><a url='questionDetail.html?postid=" + postdata[i]['id'] + "&plate=" + postdata[i].post_plate + "&plate_two=" + postdata[i].post_plate_two + "' class='bds_tsina' data-cmd='tsina'></a></div></div></div><img style='width: 20px;height: 20px;position: absolute;right: 28px;' onclick = 'Delete(" + postdata[i]['id'] + ")' src='images/delete.png' /></li>";
 								qusetionlist.innerHTML = post;
 							}
 							$('.bdsharebuttonbox a').on('mousemove', function() {
@@ -2570,29 +2605,19 @@
 
 						} else {
 							for (var i = 0; i < collectiondata.length; i++) {
-								post += "<li><img src='" + collectiondata[i].post_img + "'/><div class='blog_list1'>";
-								post += "<div class='news_title'><a href='forum.html?postid=" + collectiondata[i]['id'] + "'>" +
+								post += "<li style='padding: 12px 32px'><img src='" + collectiondata[i].post_photo + "' style='width: 66px;height: 66px;'/><div class='blog_list1'>";
+								post += "<div class='news_title1'><a href='forum.html?postid=" + collectiondata[i]['id'] + "'>" +
 									collectiondata[i][
 										'post_title'
 									] + "</a>";
-								post += "<i class='red_news'>[" + collectiondata[i]['post_label'] + "]</i></div>";
-								post += "<div class='news_time news_other'><span>发布于：" + collectiondata[i]['post_releasetime'] +
-									"</span>";
-								post += "<span id=''>阅读数：" + collectiondata[i]['post_readnum'] + " </span><span id=''>点赞：" +
-									collectiondata[i][
-										'post_upnum'
-									] +
-									"</span></div>";
-								post += "<div class='news_owner news_other'><span id=''>发帖人：" + collectiondata[i]['post_user_name'] +
-									"</span>";
+								post += "<i class='red_news1'>[" + collectiondata[i]['post_label'] + "]</i></div>";
+								// post += "<div class='news_time news_other fonts'>";
+								// post += "<span id=''>阅读数：" + collectiondata[i]['post_readnum'] + " </span><span id=''>点赞："+collectiondata[i]['post_upnum']+"</span></div>";
+								post += "<div class='news_owner news_other'><span id=''>作者：" + collectiondata[i]['post_user_name'] +
+									"</span> <span>发布：" + collectiondata[i]['post_releasetime'] + "</span>";
 
-								post +=
-									`<span id=''>最后回复人：${collectiondata[i]['last_user_name']=='' ?'暂无回复' :collectiondata[i]['last_user_name']}</span><div class='share bdsharebuttonbox'>分享：`;
-								post +=
-									"<a url='forum.html?postid=" + collectiondata[i]['id'] +
-									"' class='bds_weixin' data-cmd='weixin'></a><a url='forum.html?postid=" + collectiondata[i]['id'] +
-									"' class='bds_tsina' data-cmd='tsina'></a></div></div></div><img style='width: 20px;height: 20px;position: absolute;right: 92px;' src='images/write.png' /><img style='width: 20px;height: 20px;position: absolute;right: 70px;' onclick = 'Delete(" +
-									collectiondata[i]['id'] + ")' src='images/delete.png' /></li>";
+								// post +=	`<div class='share bdsharebuttonbox' style='display: flex; justify-content: flex-end;'>分享：`;
+								post += "</li>";
 								collectionlist.innerHTML = post;
 							}
 							$('.bdsharebuttonbox a').on('mousemove', function() {
@@ -2613,7 +2638,7 @@
 					type: 'post',
 					data: {
 						token: infodata.token,
-						rows: '8',
+						rows: '10',
 						page: '1',
 						order: '0',
 						star_time: '',
@@ -2660,21 +2685,11 @@
 
 						} else {
 							for (var i = 0; i < followsdata.length; i++) {
-								follows += "<li><img class='icon_radius' src='" + followsdata[i].user_head +
-									" ' /><div class='blog_list1'>";
-								follows += "<div class='attention_title'><div>" + followsdata[i]['user_name'] + "</div><div>ID:" +
-									followsdata[i][
-										'id'
-									] + "</div><div>关注时间：" + followsdata[i]['follow_time'] + "</div>";
-								follows += "</div><div class='news_time news_other'><span>个人简介：</span><p>" + followsdata[i][
-										'user_profile'
-									] +
-									"</p>";
-								follows += "</div><div class='news_owner news_other'><span id=''>关注：" + followsdata[i]['user_follow_sum'] +
-									"|粉丝：" + followsdata[i]['user_fans_sum'] + "</span>";
-								follows +=
-									"</div></div><div class='about_att'><div class='cansel' onclick='deleteIt(" + followsdata[i]['id'] +
-									")'>取消关注</div><div class='hispage'></div></div></li>";
+								follows += "<li style='padding: 12px 32px;'><img class='icon_radius' style='width: 44px;height: 44px;' src='" + followsdata[i].user_head + " ' /><div class='blog_list1'>";
+								follows += "<div class='attention_title'><div>" + followsdata[i]['user_name'] + "</div>";
+								// follows += "</div><div class='news_time news_other'><span>个人简介：</span><p>" + followsdata[i]['user_profile'] +"</p>";
+								follows += "</div><div class='news_owner news_other'><span id='' style='color: #999999;font-size: 13px;'>关注时间：" + followsdata[i]['follow_time'] +"</span>";
+								follows +="</div></div><div class='about_att'><div class='cansel' onclick='deleteIt(" + followsdata[i]['id'] +")'>已关注</div><div class='hispage'></div></div></li>";
 								followslist.innerHTML = follows;
 							}
 						}

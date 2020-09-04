@@ -486,21 +486,18 @@
 				-moz-box-shadow: 0 0px 4px rgba(0, 0, 0, 0.7); */
 			}
 			#signup-header {
-				/* background: url(LeanModal/css/img/hd-bg.png); */
-				padding: 8px 18px 8px 12px;
-				background: #0084ff;
-				border-top-left-radius: 6px;
-				-moz-border-radius-topleft: 6px;
-				-webkit-border-top-left-radius: 6px;
-				border-top-right-radius: 6px;
-				-moz-border-radius-topright: 6px;
-				-webkit-border-top-right-radius: 6px;
+				padding: 16px 24px;
+				color: #333;
+				background: #fff;
+				border-bottom: 1px solid #e8e8e8;
+				border-radius: 4px 4px 0 0;
 			}
 			#signup-header h2 {
-				font-size:24px;
-				font-family:PingFangSC-Regular,PingFang SC;
-				font-weight:400;
-				color:#fff;
+				margin: 0;
+				color: rgba(0,0,0,.85);
+				font-weight: 500;
+				font-size: 16px;
+				line-height: 22px;
 			}
 			#signup-header p {
 				color: #444;
@@ -527,13 +524,29 @@
 				text-shadow: none;
 			}
 			.txt-fld {
+				padding: 24px;
+				color: #666;
+				font-size: 16px;
+				line-height: 1.5;
+			}
+			.signup-btn{
+				cursor:pointer;
+				width: 95px;
+				height: 40px;
 				display: flex;
 				align-items: center;
-				position: relative;
-				width: 364px;
-				padding: 14px 20px;
-				border-bottom: 1px solid #EEE;
-				text-align: right;
+				justify-content: center;
+				margin-right: 12px;
+				color: #0084ff;
+				font-size: 16px;
+				line-height: 40px;
+				background: #fff;
+				border: 1px solid #0084ff;
+				border-radius: 20px;
+			}
+			.signup-btn-active{
+				color: #fff;
+				background: #0084ff;
 			}
 			.btn-fld {
 				width: 254px;
@@ -558,14 +571,15 @@
 				border-radius: 4px;
 				-moz-border-radius: 4px;
 				-webkit-border-radius: 4px;
-				font-size: 1.2em;
+				background-color: #FFFFFF;
+				font-size: 14px;
 				color: #222;
-				background: #F7F7F7;
-				font-family: "Helvetica Neue";
+				/* background: #F7F7F7; */
+				font-family: "-apple-system,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Microsoft YaHei,Source Han Sans SC,Noto Sans CJK SC,WenQuanYi Micro Hei,sans-serif;";
 				outline: none;
-				border-top: 1px solid #CCC;
+				/* border-top: 1px solid #CCC;
 				border-left: 1px solid #CCC;
-				border-right: 1px solid #E7E6E6;
+				border-right: 1px solid #E7E6E6; */
 				border-bottom: 1px solid #E7E6E6;
 			}
 			
@@ -574,7 +588,7 @@
 			}
 			.txt-fld input:focus,
 			.txt-fld textarea:focus {
-				background-color: #FAF9DC;
+				/* background-color: #FAF9DC; */
 			}
 			#lean_overlay {
 			    position: fixed;
@@ -1065,6 +1079,7 @@
 								</div>
 								<form action="">
 									<div class="txt-fld">
+										<p>当前可用丁当：0</p>
 										<label for="">举报内容</label>
 										<textarea id="report_text" name="" rows="" cols=""></textarea>
 									</div>
@@ -1081,8 +1096,23 @@
 								</div>
 								<form action="">
 									<div class="txt-fld">
-										<label for="">论坛币</label>
-										<input id="reward_coinnum" name="" type="text" placeholder="请输入打赏的论坛币" />
+										<p>当前可用丁当：0</p>
+										<div style="margin: 16px 0 16px 0; display: flex;" class="signup-list">
+											<div id="" class="signup-btn">
+												2论坛币
+											</div>
+											<div id="" class="signup-btn">
+												5论坛币
+											</div>
+											<div id="" class="signup-btn">
+												8论坛币
+											</div>
+											<div id="reset" class="signup-btn" style="display: none;">
+												重置
+											</div>
+										</div>
+										<!-- <label for="">论坛币</label> -->
+										<input id="reward_coinnum" name="" type="text" placeholder="自定义论坛币" />
 									</div>
 									
 									<div class="submit">
@@ -1917,6 +1947,17 @@
 						var reward_money = "";
 						console.log(name)
 						if (name == "reward") {
+							$(".signup-btn").click(function(e){
+								$("#reset").show()
+								$('#reward_coinnum').hide()
+								$('.signup-list').find(".signup-btn").removeClass("signup-btn-active")
+								let index = $('.signup-btn').index(this)
+								$(this).addClass("signup-btn-active")
+							})
+							$("#reset").click(function() {
+								$("#reset").hide()
+								$('#reward_coinnum').show()
+							})
 							$("#check").click(function() {
 								reward_coinnum = $("#reward_coinnum").val();
 								reward_money = $("#reward_money").val();
@@ -1945,9 +1986,9 @@
 									reward_money: reward_money
 								},
 								success: function(data) {
-									var upNumber = parseInt($("#postUpnum").html());
-									var coNumber = parseInt($("#postCollectionnum").html());
-									var fwNumber = parseInt($("#postForwardnum").html());
+									var upNumber = parseInt($("#postUpnum").html().substring(1).substring(1).substring(1));
+									var coNumber = parseInt($("#postCollectionnum").html().substring(1).substring(1).substring(1));
+									var fwNumber = parseInt($("#postForwardnum").html().substring(1).substring(1).substring(1));
 									if (data.code == "200") {
 										Dialog.success("操作成功！")
 										if (name == "support" || name == "collection") {
@@ -1955,9 +1996,9 @@
 											$(that).attr("name", name + "del");
 											$("#" + name).attr("id", name + "del");
 											if (name == "support") {
-												$("#postUpnum").html(upNumber + 1);
+												$("#postUpnum").html(`点赞(${Number(upNumber)+ 1})`);
 											} else if (name == "collection") {
-												$("#postCollectionnum").html(coNumber + 1);
+												$("#postCollectionnum").html(`收藏(${Number(coNumber)+ 1})`);
 											}
 										} else if (name == "supportdel" || name == "collectiondel") {
 											var named = name.substr(0, name.length - 3);
@@ -1965,12 +2006,12 @@
 											$(that).attr("name", named);
 											$("#" + name).attr("id", named);
 											if (name == "supportdel") {
-												$("#postUpnum").html(upNumber - 1);
+												$("#postUpnum").html(`点赞(${Number(upNumber)- 1})`);
 											} else if (name == "collectiondel") {
-												$("#postCollectionnum").html(coNumber - 1);
+												$("#postCollectionnum").html(`收藏(${Number(coNumber)-1})`);
 											}
 										} else if (name == "forword") {
-											$("#postForwardnum").html(fwNumber + 1)
+											$("#postForwardnum").html(`转发(${Number(fwNumber)+ 1})`)
 										}
 
 									} else if (data.code == "2") {

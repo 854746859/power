@@ -1886,8 +1886,8 @@
 									reward_money: reward_money
 								},
 								success: function(data) {
-									var upNumber = parseInt($("#postUpnum").html());
-									var coNumber = parseInt($("#postCollectionnum").html());
+									var upNumber = parseInt($("#postUpnum").html().substring(1).substring(1).substring(1));
+									var coNumber = parseInt($("#postCollectionnum").html().substring(1).substring(1).substring(1));
 									var fwNumber = parseInt($("#postForwardnum").html());
 									if (data.code == "200") {
 										Dialog.success("操作成功！")
@@ -1896,9 +1896,9 @@
 											$(that).attr("name", name + "del");
 											$("#" + name).attr("id", name + "del");
 											if (name == "support") {
-												$("#postUpnum").html(upNumber + 1);
+												$("#postUpnum").html(`点赞(${Number(upNumber)+ 1})`);
 											} else if (name == "collection") {
-												$("#postCollectionnum").html(coNumber + 1);
+												$("#postCollectionnum").html(`收藏(${Number(coNumber)+ 1})`);
 											}
 										} else if (name == "supportdel" || name == "collectiondel") {
 											var named = name.substr(0, name.length - 3);
@@ -1906,12 +1906,16 @@
 											$(that).attr("name", named);
 											$("#" + name).attr("id", named);
 											if (name == "supportdel") {
-												$("#postUpnum").html(upNumber - 1);
+												console.log((upNumber))
+												// if(upNumber == ''){
+													$("#postUpnum").html(`点赞(${Number(upNumber)- 1})`);
+												// }
+												
 											} else if (name == "collectiondel") {
-												$("#postCollectionnum").html(coNumber - 1);
+												$("#postCollectionnum").html(`收藏(${Number(coNumber)-1})`);
 											}
 										} else if (name == "forword") {
-											$("#postForwardnum").html(fwNumber + 1)
+											$("#postForwardnum").html(`转发(${Number(fwNumber)+ 1})`)
 										}
 
 									} else if (data.code == "2") {
