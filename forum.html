@@ -184,6 +184,50 @@
 				font-weight: 400;
 			}
 			
+			/* 采纳弹出 */
+			.blog_left .info_box{
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				padding: 10px;
+				margin-top: 66px;
+				position: absolute;
+				z-index: 999;
+				background-color: #fff;
+				/* margin: 0px 0px 0 0px; */
+				border-radius: 6px;
+				box-shadow: 0px 0px 6px 6px rgba(0,0,0,0.1);			
+			}
+			.blog_left .info_box .user_name {
+				width: 240px;
+				display: flex;
+				flex-direction: column;
+				text-overflow: ellipsis;
+				overflow: hidden;
+				background-color: #fff;
+				border-radius: 5px;
+			}
+			.blog_left .info_box:before{
+				content: '';
+				width: 0;
+				height: 0;
+				border-style: solid;
+				border-color: transparent transparent #fff transparent; 
+				position: relative;
+				margin-left: 10px;
+				z-index: 9999;
+			}
+			
+			.blog_left .user_name .user_intro { 
+				margin-left: 8px;
+				width: 100%;
+				color: #333;
+				font-size: 14px;
+				font-family: -apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+				font-weight: 400;
+			}
+			/* 弹出end */
+			
 			.attention {
 				display: flex;
 				flex-direction: column;
@@ -337,7 +381,7 @@
 			
 			.content_box .visitor {
 				display: flex;
-				flex-direction: row;
+				flex-direction: column;
 				justify-content: space-between;
 			}
 			
@@ -347,6 +391,21 @@
 				display: flex;
 				flex-direction: row;
 				align-items: center;
+			}
+			
+			.other_visitor{
+				margin-top: 6px;
+				margin-left: 56px;
+				margin-bottom: 12px;
+			}
+			
+			.other_visitor a span,.other_visitor span span{
+				display: inline-block;
+				color: #666;
+				font-size: 13px;
+				text-align: center;
+				border-radius: 16px;
+				cursor: pointer;
 			}
 			
 			.other_visitor img {
@@ -365,24 +424,34 @@
 			}
 			
 			.content_box .visitor .visitor_pic img {
-				width: 50px;
-				height: 50px;
-				border-radius: 25px;
-				margin-right: 5px;
+				width: 44px;
+				height: 44px;
+				object-fit: cover;
+				vertical-align: bottom;
+				border-radius: 50%;
+				margin-right: 12px;
+			}
+			
+			.visitor_pic span{
+				font-size: 14px;
+				color: #333;
+				font-weight: 600;
 			}
 			
 			.commet_time {
 				margin-left: 10px;
+				color: #999;
+				font-size: 13px;
 			}
 			
 			.comment_text {
-				padding: 10px 30px 10px 10px;
+				padding: 8px 0 0 56px;
 				margin-bottom: 5px;
 			}
 			
 			.comment_text p {
-				text-align: justify;
-				text-indent: 2em;
+				text-align: left;
+				/* text-indent: 2em; */
 				color: #333;
 				line-height: 1.6;
 				margin-top: 5px;
@@ -1808,20 +1877,53 @@
 							for (var i = 0; i < length; i++) {
 								var obj = data.data[i];
 								$("#comment_box").append(
-									'<div class="content_box"><div class="visitor"><div class="visitor_info"><div class="visitor_pic"><img id="' +
+									'<div class="content_box"><div class="visitor"><div class="visitor_info' + i +
+									'"><div class="visitor_pic"><img class="showimg" id="' +
 									obj.id + '" src="' + obj.user_head + '"/><span >' + obj.user_name +
 									'</span></div><div class="commet_time"><span>' + obj.comment_time + '</span><span>【' + obj.comment_layernum +
-									'楼】</span></div></div><div class="other_visitor"><a rel="leanModal" name="Report" href="#Report"><span onclick=Reported(' +
-									obj.id + ')>举报</span></a><a href="#editor"><span onclick=reply(' + obj.id +
-									',"' + obj.user_name +
-									'")>回复</span></a><span style="display:flex;align-items: center;"><img onclick=commentSupport(' +
-									obj.id + ') src="images/support.png"/><span id="comment' + obj.id + '">' + Number(obj.comment_upnum) +
-									'</span></span></div></div><div class="comment_text"><p>' + obj.comment_content + '</p></div></div>');
+									'楼】</span></div><div class="info_box" id="info_box' +
+									obj.id +
+									'" style="margin-top: 0px;"><div class="user_name"><div style="display: flex;align-items: center;margin-bottom: 10px;"><img style="width: 60px;height: 60px;border-radius: 30px;" id="user_heads" src="' +
+									obj.user_head +
+									'" /><h3 id="user_name" style="width: 240px;display: flex;flex-direction: column;text-overflow: ellipsis;overflow: hidden;background-color: #fff;border-radius: 5px;min-height: 25px;margin: 0;padding-bottom: 0px; padding-left: 10px;">' +
+									obj.user_name +
+									'</h3></div><div class="user_intro" id="user_profile"><p>' + obj.user_profile +
+									'</p></div><div class="trivial"><div><span class="spanTitle">发布</span><span class="spanInfo" id="user_release_sum">' +
+									obj.user_release_sum +
+									'</span></div><div><span class="spanTitle">粉丝</span><span class="spanInfo" id="user_fans_sum">' + obj.user_fans_sum +
+									'</span></div><div><span class="spanTitle">获赞</span><span class="spanInfo" id="post_upnum">' + obj.user_laid_sum +
+									'</span></div><div><span class="spanTitle">转发</span><span class="spanInfo" id="user_follow_sum">' + obj.user_follow_sum +
+									'</span></div><div><span style="font-size: 12px;color: #807979;">积分</span><span class="spanInfo" id="user_coin_sum">' +
+									obj.wallet_coin +
+									'</span></div></div><div style="margin-top: 10px;margin-left: 12px;"><button class="boxBtn" style="margin-right: 64x;" id="attention">+ 关注</button><button class="boxBtn1" style="margin-right: 64x; display: none;" id="attentioned">取消关注</button><button class="boxBtn"  onclick="toMinec(' +
+									obj.id + ')">个人主页</button><input type="text" name="' + obj.id + '" id="' + obj.id + '" value="' + obj.id +
+									'" hidden="hidden"/></div></div></div></div><div class="comment_text"><p>' +
+									obj.comment_content +
+									'</p></div><div class="other_visitor"><a><span onclick=adopt(' + obj.id +
+									')>采纳</span></a><a href="#editor"><span onclick=reply(' + obj.id + ',"' + obj.user_name +
+									'")>回复</span></a><a rel="leanModal" name="Report" href="#Report"><span onclick=Reported(' + obj.id +
+									')>举报</span></a><a href="#editor"><span onclick=reply(' + obj.id + ',"' + obj.user_name +
+									'")>回复</span></a><span style="display:flex;align-items: center;"><img onclick=commentSupport(' + obj.id +
+									') src="images/support.png"/><span id="comment' + obj.id + '">' + Number(obj.comment_upnum) +
+									'</span></span></div></div></div></div>');
+									
+									var info_boxs = "info_box" + obj.id
+									$("#" + info_boxs).hide();
 							}
 							$('a[rel*=leanModal]').leanModal({
 								top: 200,
 								closeButton: ".modal_close"
 							});
+							$(".showimg").mouseenter(function(id) {
+								var info_box = "info_box" + id.target.id
+								$("#" + info_box).show();
+								$("#info_box" + id.target.id).mouseleave(function() {
+									$("#info_box" + id.target.id).hide();
+								})
+								$(".visitor").mouseleave(function() {
+									$("#info_box" + id.target.id).hide();
+								})
+							})
 						},
 						error: function() {
 
