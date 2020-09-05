@@ -142,6 +142,7 @@
 				border-radius: 30px;
 			}
 			
+			/* 弹出 */
 			.info_box{
 				display: flex;
 				flex-direction: column;
@@ -183,6 +184,51 @@
 				font-family: -apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
 				font-weight: 400;
 			}
+			/* 弹出end */
+			
+			/* 采纳弹出 */
+			.blog_left .info_box{
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				padding: 10px;
+				margin-top: 66px;
+				position: absolute;
+				z-index: 999;
+				background-color: #fff;
+				/* margin: 0px 0px 0 0px; */
+				border-radius: 6px;
+				box-shadow: 0px 0px 6px 6px rgba(0,0,0,0.1);			
+			}
+			.blog_left .info_box .user_name {
+				width: 240px;
+				display: flex;
+				flex-direction: column;
+				text-overflow: ellipsis;
+				overflow: hidden;
+				background-color: #fff;
+				border-radius: 5px;
+			}
+			.blog_left .info_box:before{
+				content: '';
+				width: 0;
+				height: 0;
+				border-style: solid;
+				border-color: transparent transparent #fff transparent; 
+				position: relative;
+				margin-left: 10px;
+				z-index: 9999;
+			}
+			
+			.blog_left .user_name .user_intro { 
+				margin-left: 8px;
+				width: 100%;
+				color: #333;
+				font-size: 14px;
+				font-family: -apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+				font-weight: 400;
+			}
+			/* 弹出end */
 			
 			.attention {
 				display: flex;
@@ -667,6 +713,7 @@
 			}
 			#edui1{
 				width: 708px !important;
+				z-index: 20 !important;
 			}
 			#recommend{
 				margin-top: 16px;
@@ -919,7 +966,7 @@
 					</script>
 				</div>
 				<!--统计-->
-		        <div class="statistics">
+				<div class="statistics">
 					<div class="part">
 						<span id="" class="font18">
 							在线人数：
@@ -960,7 +1007,7 @@
 							xxx
 						</span>
 					</div>
-                </div>
+				</div>
 				<!-- 当前位置 -->
 				<div class="gonggao fix">
 					<div class="txtScroll-top l zy_cur">
@@ -984,33 +1031,34 @@
 							<div class="read_num">
 								<span>浏览：</span>
 								<span id="readNum">
-							
+
 								</span>
 							</div>
-							
+
 							<div class="read_num">
 								<span style="margin: 0 4px;">·</span>
 								<span>获赞：</span>
 								<span id="getUpnum">
-							
+
 								</span>
 							</div>
 						</div>
 						<div class="post_info">
 							<div class="user">
+								<!-- 显示层 -->
 								<div id="user_box">
 									<img id="user_head" src="images/manager.jpg" />
 									<div class="user_info">
 										<div>
-												<span id="user_name_head"></span>
-												<span class="authorTip">
-													楼主
-												</span>
+											<span id="user_name_head"></span>
+											<span class="authorTip">
+												楼主
+											</span>
 										</div>
 										<span id="time"></span>
 									</div>
 								</div>
-								
+								<!-- 弹出层 -->
 								<div class="info_box" id="info_box">
 									<div class="user_name">
 										<div style="display: flex;align-items: center;margin-bottom: 10px;">
@@ -1045,27 +1093,54 @@
 										<div style="margin-top: 10px;margin-left: 12px;">
 											<button class="boxBtn" style="margin-right: 64x;" id="attention">+ 关注</button>
 											<button class="boxBtn1" style="margin-right: 64x; display: none;" id="attentioned">取消关注</button>
-											<button class="boxBtn"  onclick="toMinec('admin_id')">个人主页</button>
-											<input type="text" name="admin_id" id="admin_id" value="" hidden="hidden"/>
+											<button class="boxBtn" onclick="toMinec('admin_id')">个人主页</button>
+											<input type="text" name="admin_id" id="admin_id" value="" hidden="hidden" />
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="post_text" id="postContent">
-							
+
 						</div>
+						<!-- 显示层 -->
 						<div class="annex_a" id="annex_a" style="border: 1px solid #dbdbdb; display: none">
 							<div style="position: relative;padding-top: 30px">
 								<img src="http://qny.spinternet.cn/adopt1.jpg" style="position: absolute;left: 0;top: 0">
 								<span style="font-size: 14px;position: absolute;top: 6px;left: 20px;color: #FFF">采纳答案</span>
 								<!-- 采纳答案区域 -->
 							</div>
+							<!-- 弹出层 -->
+							<div class="info_box" id="info_box_t">
+								<div class="user_name">
+									<div style="display: flex;align-items: center;margin-bottom: 10px;"><img style="width: 60px;height: 60px;border-radius: 30px;"
+										 id="user_heads_t" src="images/manager.jpg" />
+										<h3 id="user_name_t" style="width: 240px;display: flex;flex-direction: column;text-overflow: ellipsis;overflow: hidden;background-color: #fff;border-radius: 5px;min-height: 25px;margin: 0;padding-bottom: 0px; padding-left: 10px;">xx</h3>
+									</div>
+									<div class="user_intro" id="user_profile_t">
+										<p>ta比较懒还没有说明</p>
+									</div>
+									<div class="trivial">
+										<div><span class="spanTitle">发布</span><span class="spanInfo" id="user_release_sum_t">0</span></div>
+										<div><span class="spanTitle">粉丝</span><span class="spanInfo" id="user_fans_sum_t">0</span></div>
+										<div><span class="spanTitle">获赞</span><span class="spanInfo" id="post_upnum_t">0</span></div>
+										<div><span class="spanTitle">转发</span><span class="spanInfo" id="user_follow_sum_t">0</span></div>
+										<div><span style='font-size: 12px;color: #807979;'>积分</span><span class="spanInfo" id='user_coin_sum_t'>0</span></div>
+									</div>
+									<div style="margin-top: 10px;margin-left: 12px;"><button class="boxBtn" style="margin-right: 64x;" id="attention">+
+											关注</button><button class="boxBtn1" style="margin-right: 64x; display: none;" id="attentioned">取消关注</button><button
+										 class="boxBtn" onclick="toMinec('admin_id')">个人主页</button><input type="text" name="admin_id" id="admin_id"
+										 value="" hidden="hidden" /></div>
+								</div>
+							</div>
 						</div>
+
+
+
 						<div class="annex_d" id="annex_d" style="display: none;">
 							<div class="annex_info">
 								<h3 id="enclosureName">附件标题</h3>
-								
+
 								<div class="annex_spent" style="margin-top: 12px;" id="enclosureCoin">
 									所需：0积分/论坛币
 								</div>
@@ -1124,7 +1199,7 @@
 											</div>
 										</div>
 										<!-- <label for="">举报内容</label> -->
-										<textarea id="report_text" name="" rows="" cols="" style="display: none;" ></textarea>
+										<textarea id="report_text" name="" rows="" cols="" style="display: none;"></textarea>
 									</div>
 									<div class="submit">
 										<input type="button" name="" id="edit" value="确认" />
@@ -1135,7 +1210,7 @@
 						<div id="test">
 							<div id="signup-ct">
 								<div id="signup-header">
-									<h2>打赏金额</h2>									
+									<h2>打赏金额</h2>
 								</div>
 								<form action="">
 									<div class="txt-fld">
@@ -1157,14 +1232,14 @@
 										<!-- <label for="">论坛币</label> -->
 										<input id="reward_coinnum" name="" type="text" placeholder="自定义论坛币" />
 									</div>
-									
+
 									<div class="submit">
 										<input type="button" name="" id="check" value="确认" />
 									</div>
 								</form>
 							</div>
 						</div>
-						
+
 						<div></div>
 						<div class="commet">
 							<div class="edit_type">
@@ -1173,10 +1248,10 @@
 							<textarea name="" rows="" cols="" id="comment_content" placeholder="评论"></textarea>
 							<script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>
 							<script type="text/javascript">
-							//实例化编辑器
-							//建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
-							var ue = UE.getEditor('editor', {
-								toolbars: [
+								//实例化编辑器
+								//建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+								var ue = UE.getEditor('editor', {
+									toolbars: [
 										[
 											'undo', //撤销
 											'redo', //重做
@@ -1210,7 +1285,7 @@
 									autoHeightEnabled: true,
 									autoFloatEnabled: true
 								});
-							</script>							
+							</script>
 							<div class="push_bt">
 								<span id="">
 									最多输入1000个字
@@ -1225,6 +1300,7 @@
 							<div class="comment_box" id="comment_box">
 
 							</div>
+
 						</div>
 					</div>
 					<div class="blog_right">
@@ -1237,7 +1313,7 @@
 								<a href="coverchild.html" class="toMore">查看更多></a>
 							</div>
 							<ul id="recommend">
-								
+
 							</ul>
 						</div>
 						<!--轮播-->
@@ -1312,53 +1388,53 @@
 					</script>
 				</div>
 				<div class="partener">
-                	<div class="partener_title">
-                		友情链接
-                	</div>
-                	<div class="partener_block">
-                		<ul>
-                			<!--1-->
-                			<li><a href="https://www.shpgx.com/html/index.html">上海石油天然气交易中心</a></li>
-                		<!--</ul>
+					<div class="partener_title">
+						友情链接
+					</div>
+					<div class="partener_block">
+						<ul>
+							<!--1-->
+							<li><a href="https://www.shpgx.com/html/index.html">上海石油天然气交易中心</a></li>
+							<!--</ul>
                 		<ul>-->
-                			<!--2-->
-                			<li><a href="https://www.iea.org/">IEA</a></li>
-											<li><a href="https://www.igu.org/">IGU</a></li>
-											<li><a href="https://www.opec.org/opec_web/en/">OPEC</a></li>
-											<li><a href="https://www.ocimf.org/">OCIMF</a></li>
-											<!--3-->
-                			<li><a href="http://www.cnpc.com.cn/index.shtml">中国石油</a></li>
-                		</ul>
-                		<ul>
-											<li><a href="http://www.sinopecgroup.com/">中国石化</a></li>
-											<li><a href="https://www.cnooc.com.cn/">中国海油</a></li>
-											<li><a href="http://www.sinochem.com/">中国中化</a></li>
-											<!--4-->
-                			<li><a href="https://www.bp.com/">BP</a></li>
-											<li><a href="https://www.shell.com/">SHELL</a></li>
-											<li><a href="https://www.total.com/en">TOTAL</a></li>
-                		</ul>
-                		<ul>
-											<li><a href="https://www.tokyo-gas.co.jp/en/index.html">东京燃气</a></li>
-											<li><a href="http://www.kogas.or.kr/eng/index.do">KOGAS</a></li>
-											<!--5-->
-                			<li><a href="http://www.qatargas.com/english">Qatargas</a></li>
-											<li><a href="https://www.enn.cn/">新奥集团</a></li>
-											<li><a href="http://www.guanghui.com/">新疆广汇</a></li>
-											<li><a href="https://www.geg.com.cn/">广东能源</a></li>
-                		</ul>
-                		<ul>
-                			
-											<li><a href="http://www.bjgas.com/NewsCen2.aspx">北京燃气</a></li>
-                			<!--6-->
-                			<li><a href="http://trqgy.cn/">天然气工业</a></li>
-											<li><a href="http://www.syytrqhg.cn/ch/index.aspx">石油与天然气化工</a></li>
-                			<!--7-->
-                			<li><a href="https://www.jtsi.wa.gov.au/gasfund/introduction">中澳天然气基金</a></li>
-                		</ul>
-                	</div>
-                </div>
-							</div>
+							<!--2-->
+							<li><a href="https://www.iea.org/">IEA</a></li>
+							<li><a href="https://www.igu.org/">IGU</a></li>
+							<li><a href="https://www.opec.org/opec_web/en/">OPEC</a></li>
+							<li><a href="https://www.ocimf.org/">OCIMF</a></li>
+							<!--3-->
+							<li><a href="http://www.cnpc.com.cn/index.shtml">中国石油</a></li>
+						</ul>
+						<ul>
+							<li><a href="http://www.sinopecgroup.com/">中国石化</a></li>
+							<li><a href="https://www.cnooc.com.cn/">中国海油</a></li>
+							<li><a href="http://www.sinochem.com/">中国中化</a></li>
+							<!--4-->
+							<li><a href="https://www.bp.com/">BP</a></li>
+							<li><a href="https://www.shell.com/">SHELL</a></li>
+							<li><a href="https://www.total.com/en">TOTAL</a></li>
+						</ul>
+						<ul>
+							<li><a href="https://www.tokyo-gas.co.jp/en/index.html">东京燃气</a></li>
+							<li><a href="http://www.kogas.or.kr/eng/index.do">KOGAS</a></li>
+							<!--5-->
+							<li><a href="http://www.qatargas.com/english">Qatargas</a></li>
+							<li><a href="https://www.enn.cn/">新奥集团</a></li>
+							<li><a href="http://www.guanghui.com/">新疆广汇</a></li>
+							<li><a href="https://www.geg.com.cn/">广东能源</a></li>
+						</ul>
+						<ul>
+
+							<li><a href="http://www.bjgas.com/NewsCen2.aspx">北京燃气</a></li>
+							<!--6-->
+							<li><a href="http://trqgy.cn/">天然气工业</a></li>
+							<li><a href="http://www.syytrqhg.cn/ch/index.aspx">石油与天然气化工</a></li>
+							<!--7-->
+							<li><a href="https://www.jtsi.wa.gov.au/gasfund/introduction">中澳天然气基金</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
 
 			<style type="text/css">
 				.date_bg {
@@ -1390,27 +1466,54 @@
 		<script type="text/javascript" src="config.js"></script>
 		<script type="text/javascript" src="js/pop_ups/MiniDialog-es5.min.js"></script>
 		<script type="text/javascript">
-			
 			$(".info_box").hide();
-			$("#user_box").mouseenter(function(){
+			$("#user_box").mouseenter(function() {
 				$(this).next().show();
+				// console.log(this)
 			})
-			$(".user").mouseleave(function(){
+			$(".user").mouseleave(function() {
 				$("#user_box").next().hide();
 			})
-			
-			$("#plate_master_pic").mouseenter(function(){
+
+			// 采纳
+			$("#annex_a").mouseenter(function() {
+				$("#info_box_t").show();
+				// console.log(this)
+			})
+			$(".annex_a").mouseleave(function() {
+				$("#info_box_t").hide();
+			})
+
+			// 评论
+			$("#visitor_info").mouseenter(function() {
+				$("#info_box_t").show();
+				console.log(this)
+			})
+			$(".visitor_info").mouseleave(function() {
+				$("#info_box_t").hide();
+			})
+
+			$(".comment_box").mouseenter(function(id) {
+
+			})
+			$(".showimg").mouseenter(function(id) {
+				console.log('id')
+			})
+
+
+
+			$("#plate_master_pic").mouseenter(function() {
 				$(this).next().show();
 			})
-			$(".owner").mouseleave(function(){
+			$(".owner").mouseleave(function() {
 				$("#plate_master_pic").next().hide();
 			})
 			//头部统计
 			$.ajax({
-				type:"post",
-				url:`${sever_url}master/title`,
-				dataType:"json",
-				success:function(data){
+				type: "post",
+				url: `${sever_url}master/title`,
+				dataType: "json",
+				success: function(data) {
 					$("#user_count").html(data.data.user_count);
 					$("#post_count").html(data.data.post_count);
 					$("#user_loging").html(data.data.user_loging);
@@ -1418,7 +1521,7 @@
 					$("#end_reply_name").html(data.data.end_reply_name);
 				}
 			});
-			
+
 			// 获取当前分类
 			function GetRequest() {
 				var url = decodeURI(location.search); //获取url中"?"符后的字串
@@ -1434,36 +1537,36 @@
 			}
 			var json = GetRequest();
 			//快速发帖
-			function toPost(){
-				window.location.href="mine.html?fast=1&type="+json.type+"&plate="+json.plate+"&two="+json.plate_two; 
+			function toPost() {
+				window.location.href = "mine.html?fast=1&type=" + json.type + "&plate=" + json.plate + "&two=" + json.plate_two;
 			}
 			// 其他页面搜索
 			var search = document.getElementById("search");
 			var btn = document.getElementById("btn");
 			btn.addEventListener('click', function() {
-				window.location.href = "/power/index.html?type=0&plate=1&two=0&search=1&searchv="+ search.value;
-			
+				window.location.href = "/power/index.html?type=0&plate=1&two=0&search=1&searchv=" + search.value;
+
 			})
 			// 获取我的信息
-			var data = sessionStorage.getItem("data");			
+			var data = sessionStorage.getItem("data");
 			var infodata = eval('(' + data + ')');
 			// if(data != null){
 			// 	$("#user_coin").html(`当前论坛币：${JSON.parse(data).user_coin}`)
 			// }
-			
+
 			// console.log(infodata.token);
 			//回复编辑方式
 			$("#comment_content").hide();
 			$("#publish").hide();
 			$("#reply_push").hide();
-			$("#fast_edit").click(function(){
+			$("#fast_edit").click(function() {
 				$("#comment_content").show();
 				$("#publish").show();
 				$("#more_publish").hide();
 				$("#edui1").hide();
 				$("#reply_push").hide();
 			})
-			$("#more_edit").click(function(){
+			$("#more_edit").click(function() {
 				$("#comment_content").hide();
 				$("#publish").hide();
 				$("#more_publish").show();
@@ -1494,7 +1597,7 @@
 				}
 			});
 			//附件下载
-			$("#dowmload").click(function(){
+			$("#dowmload").click(function() {
 				if (sessionStorage.getItem("data") == null) {
 					Dialog({
 						title: "请登录！",
@@ -1512,25 +1615,26 @@
 					});
 				} else {
 					$.ajax({
-						type:"post",
-						url:sever_url+"file/dowmload",
-						async:true,
-						data:{
-							token:infodata.token,
-							post_id:$("#postTitle").attr("name")
+						type: "post",
+						url: sever_url + "file/dowmload",
+						async: true,
+						data: {
+							token: infodata.token,
+							post_id: $("#postTitle").attr("name")
 						},
-						dataType:"json",
-						success:function(data){
-//							console.log(data)
+						dataType: "json",
+						success: function(data) {
+							//							console.log(data)
 							var $eleForm = $("<form method='get'></form>");
-				            $eleForm.attr("action",data.file_url);
-				            $(document.body).append($eleForm);
-				            //提交表单，实现下载
-				            $eleForm.submit();
+							$eleForm.attr("action", data.file_url);
+							$(document.body).append($eleForm);
+							//提交表单，实现下载
+							$eleForm.submit();
 						}
 					});
 				}
 			})
+
 			function toMinec() {
 				window.location.href = `minec.html?user_id=${$("#admin_id").val()}`;
 			}
@@ -1578,9 +1682,9 @@
 							},
 							dataType: "json",
 							success: function(data) {
-								if(data.code==200){
+								if (data.code == 200) {
 									Dialog.success('操作成功');
-								}else{
+								} else {
 									Dialog.error(data.msg);
 								}
 							},
@@ -1595,11 +1699,11 @@
 			// 回复
 			function reply(commentId, user_name) {
 				// console.log(commentId,user_name);
-				UE.getEditor('editor').execCommand('insertHtml', "@" + user_name+"  ")
+				UE.getEditor('editor').execCommand('insertHtml', "@" + user_name + "  ")
 				$("#publish").hide();
 				$("#more_publish").hide();
 				$("#reply_push").show();
-				$("#fast_edit").attr("disabled","disabled");
+				$("#fast_edit").attr("disabled", "disabled");
 				$("#reply_push").click(function() {
 					var content = UE.getEditor('editor').getContent();
 					doSomething(content);
@@ -1645,7 +1749,7 @@
 				}
 			}
 			// 采纳
-			function adopt(id){
+			function adopt(id) {
 				if (sessionStorage.getItem("data") == null) {
 					Dialog({
 						title: "请登录！",
@@ -1675,10 +1779,10 @@
 						},
 						dataType: "json",
 						success: function(data) {
-							if(data.code==200){
+							if (data.code == 200) {
 								alert("采纳成功！")
 								location.reload();
-							}else{
+							} else {
 								Dialog.error(data.msg)
 							}
 						},
@@ -1734,23 +1838,23 @@
 				obj = JSON.parse(obj);
 				//关注
 				$("#attention").click(function() {
-					if(obj != null){
+					if (obj != null) {
 						$.ajax({
 							type: "post",
 							url: sever_url + "follow/add",
 							async: true,
 							data: {
-								token: obj!=null?obj.token:"",
+								token: obj != null ? obj.token : "",
 								user_id: $("#user_head").attr("name")
 							},
 							dataType: "json",
 							success: function(data) {
 								console.log(data)
 								if (data.code == "200") {
-									
+
 									$("#attention").hide();
 									$("#attentioned").show();
-								}else{
+								} else {
 									Dialog({
 										title: "提示",
 										content: data.msg,
@@ -1763,7 +1867,7 @@
 								}
 							}
 						});
-					}else{
+					} else {
 						Dialog({
 							title: "请登录！",
 							content: "您还未登录，是否登录？",
@@ -1782,13 +1886,13 @@
 				})
 				//取关
 				$("#attentioned").click(function() {
-					if(obj != null) {
+					if (obj != null) {
 						$.ajax({
 							type: "post",
 							url: sever_url + "my/follow/del",
 							async: true,
 							data: {
-								token: obj!=null?obj.token:"",
+								token: obj != null ? obj.token : "",
 								user_id: $("#user_head").attr("name")
 							},
 							dataType: "json",
@@ -1796,7 +1900,7 @@
 								if (data.code == "200") {
 									$("#attentioned").hide();
 									$("#attention").show();
-								}else{
+								} else {
 									Dialog({
 										title: "提示",
 										content: data.msg,
@@ -1814,7 +1918,7 @@
 								}
 							}
 						});
-					}else{
+					} else {
 						Dialog({
 							title: "提示",
 							content: "您还未登录，是否登录？",
@@ -1830,7 +1934,7 @@
 							}
 						});
 					}
-					
+
 				})
 				//获取URL传值
 				var post_id = getUrldata('postid'); //文章id
@@ -1848,7 +1952,7 @@
 						console.log(data)
 						if (data.code == 200) {
 							$("#postTitle").html(data.data.post_title); //文章标题
-							$("#postTitle").attr("name",data.data.id);
+							$("#postTitle").attr("name", data.data.id);
 							$("#postCopyright").html('<span>*</span>版权声明：' + data.data.post_copyright); //版权声明
 							$("#postContent").html("<p>" + data.data.post_content + "</p>"); //文章内容
 							var labels = new RegExp(",", "g"); //g,表示全部替换。
@@ -1856,26 +1960,27 @@
 							$("#postLabel").append('<span>' + label + '</span>'); //文章标签，多个“，”隔开
 							$("#post_plate").html(data.data.post_plate);
 							$("#post_plate_two").html(data.data.post_plate_two);
-							if (!data.data.revise_enclosure_name) {
-							}else{
+							if (!data.data.revise_enclosure_name) {} else {
 								$("#annex_d").css("display", "flex");
 								$("#enclosureName").html(data.data.revise_enclosure_name); //附件名称
 								$("#enclosureCoin").html('所需：' + data.data.revise_enclosure_coin + '积分/论坛币') //附件价格
 							}
 
-							$("#time").html('发布于：'+data.data.post_releasetime); //发布时间
+							$("#time").html('发布于：' + data.data.post_releasetime); //发布时间
 							$("#readNum").html(Number(data.data.post_readnum)); //阅读数
 							$("#getUpnum").html(Number(data.data.post_upnum)); //点赞数
-							$("#postUpnum").html('点赞('+Number(data.data.post_upnum)+')'); //点赞数
-							$("#postForwardnum").html('转发('+Number(data.data.post_forwardnum)+')'); //转发数
-							$("#postCollectionnum").html('收藏('+Number(data.data.post_collectionnum)+')'); //收藏数
+							$("#postUpnum").html('点赞(' + Number(data.data.post_upnum) + ')'); //点赞数
+							$("#postForwardnum").html('转发(' + Number(data.data.post_forwardnum) + ')'); //转发数
+							$("#postCollectionnum").html('收藏(' + Number(data.data.post_collectionnum) + ')'); //收藏数
 							$("#user_head").attr("src", data.data.user_head);
 							$("#user_heads").attr("src", data.data.user_head);
+							$("#user_heads_t").attr("src", data.data.adopd.user_head);
 							$("#user_head").attr("name", data.data.post_userid);
-							$("#user_name").html(data.data.user_name==null?"昵称":data.data.user_name);
-							$("#user_name_head").html(data.data.user_name==null?"昵称":data.data.user_name);
-							
-							$("#user_profile").html(data.data.user_profile==null?"ta比较懒没有说明":data.data.user_profile);
+							$("#user_name").html(data.data.user_name == null ? "昵称" : data.data.user_name);
+							$("#user_name_t").html(data.data.adopd.user_name == null ? "昵称" : data.data.user_name);
+							$("#user_name_head").html(data.data.user_name == null ? "昵称" : data.data.user_name);
+
+							$("#user_profile").html(data.data.user_profile == null ? "ta比较懒没有说明" : data.data.user_profile);
 							$("#user_release_sum").html(Number(data.data.user_release_sum));
 							$("#post_upnum").html(Number(data.data.post_upnum));
 							$("#user_follow_sum").html(Number(data.data.user_follow_sum));
@@ -1884,6 +1989,16 @@
 							$("#my_fans").html(data.data.user_fans_sum);
 							$("#my_support").html(data.data.post_upnum);
 							$("#my_focuse").html(data.data.user_follow_sum);
+
+							$("#user_profile_t").html(data.data.user_profile == null ? "ta比较懒没有说明" : data.data.user_profile);
+							$("#user_release_sum_t").html(Number(data.data.user_release_sum));
+							$("#post_upnum_t").html(Number(data.data.post_upnum));
+							$("#user_follow_sum_t").html(Number(data.data.user_follow_sum));
+							$("#user_fans_sum_t").html(Number(data.data.user_fans_sum));
+							$("#my_publish_t").html(data.data.user_release_sum);
+							$("#my_fans_t").html(data.data.user_fans_sum);
+							$("#my_support_t").html(data.data.post_upnum);
+							$("#my_focuse_t").html(data.data.user_follow_sum);
 
 							if (data.data.fabulous) {
 								$("#support").attr("src", "images/supported.png");
@@ -1903,15 +2018,18 @@
 							var num = data.data.recommend.length;
 							for (var i = 0; i < num; i++) {
 								var arr = data.data.recommend[i];
-								$("#recommend").append('<li><a id="' + arr.id + '" href="forum.html?postid=' + arr.id +	' " ><b style="margin-right: 8px;">·</b><span>' + arr.post_title + '</span></a></li>')
+								$("#recommend").append('<li><a id="' + arr.id + '" href="forum.html?postid=' + arr.id +
+									' " ><b style="margin-right: 8px;">·</b><span>' + arr.post_title + '</span></a></li>')
 							}
-							if(data.data.adopd){
+							if (data.data.adopd) {
 								$('#annex_a').show();
 								var html = '';
-								html += '<div style="margin:8px 12px 16px">';
-								html += '<img id="user_logo" src="'+data.data.adopd.user_head+'" style="width:50px;height: 50px;    border-radius: 50%;margin-right: 10px;margin-bottom: 10px" />';
-								html += '<span>'+data.data.adopd.user_name+'</span>';
-								html += '<p>'+data.data.adopd.comment_content+'</p></div>';
+								html += '<!-- 弹出层 --><div id="annex_t" style="margin:8px 12px 16px"><div >';
+								html += '<img id="user_logo" src="' + data.data.adopd.user_head +
+									'" style="width:50px;height: 50px;    border-radius: 50%;margin-right: 10px;margin-bottom: 10px" />';
+								html += '<span>' + data.data.adopd.user_name + '</span></div>';
+								html += '<p>' + data.data.adopd.comment_content + '</p></div>';
+								// html += '<div class="info_box" id="info_box"><div class="user_name"><div style="display: flex;align-items: center;margin-bottom: 10px;"><img id="user_heads" src="images/manager.jpg" /><h3 id="user_name" style="width: 240px;display: flex;flex-direction: column;text-overflow: ellipsis;overflow: hidden;background-color: #fff;border-radius: 5px;min-height: 25px;margin: 0;padding-bottom: 0px; padding-left: 10px;">xx</h3></div><div class="user_intro" id="user_profile"><p>ta比较懒还没有说明</p></div><div class="trivial"><div><span class="spanTitle">发布</span><span class="spanInfo" id="user_release_sum">0</span></div><div><span class="spanTitle">粉丝</span><span class="spanInfo" id="user_fans_sum">0</span></div><div><span class="spanTitle">获赞</span><span class="spanInfo" id="post_upnum">0</span></div><div><span class="spanTitle">转发</span><span class="spanInfo" id="user_follow_sum">0</span></div><div><span style="font-size: 12px;color: #807979;">积分</span><span class="spanInfo" id="user_coin_sum">0</span></div></div><div style="margin-top: 10px;margin-left: 12px;"><button class="boxBtn" style="margin-right: 64x;" id="attention">+ 关注</button><button class="boxBtn1" style="margin-right: 64x; display: none;" id="attentioned">取消关注</button><button class="boxBtn"  onclick="toMinec("admin_id")">个人主页</button><input type="text" name="admin_id" id="admin_id" value="" hidden="hidden"/></div></div></div>'
 								$('#annex_a').append(html);
 							}
 						}
@@ -1941,17 +2059,53 @@
 							for (var i = 0; i < length; i++) {
 								var obj = data.data[i];
 								$("#comment_box").append(
-									'<div class="content_box"><div class="visitor"><div class="visitor_info"><div class="visitor_pic"><img id="' + obj.id + '" src="' + obj.user_head + '"/><span >' + obj.user_name + '</span></div><div class="commet_time"><span>' + obj.comment_time + '</span><span>【' + obj.comment_layernum + '楼】</span></div></div><div class="comment_text"><p>' + obj.comment_content + '</p></div><div class="other_visitor"><a><span onclick=adopt(' + obj.id + ')>采纳</span></a><a href="#editor"><span onclick=reply(' + obj.id + ',"' + obj.user_name + '")>回复</span></a><a rel="leanModal" name="Report" href="#Report"><span onclick=Reported(' + obj.id + ')>举报</span></a><a href="#editor"><span onclick=reply(' + obj.id + ',"' + obj.user_name + '")>回复</span></a><span style="display:flex;align-items: center;"><img onclick=commentSupport(' + obj.id + ') src="images/support.png"/><span id="comment' + obj.id + '">' + Number(obj.comment_upnum) + '</span></span></div></div></div>');
+									'<div class="content_box"><div class="visitor"><div class="visitor_info' + i +
+									'"><div class="visitor_pic"><img class="showimg" id="' +
+									obj.id + '" src="' + obj.user_head + '"/><span >' + obj.user_name +
+									'</span></div><div class="commet_time"><span>' + obj.comment_time + '</span><span>【' + obj.comment_layernum +
+									'楼】</span></div><div class="info_box" id="info_box' +
+									obj.id +
+									'" style="margin-top: 0px;"><div class="user_name"><div style="display: flex;align-items: center;margin-bottom: 10px;"><img style="width: 60px;height: 60px;border-radius: 30px;" id="user_heads" src="' +
+									obj.user_head +
+									'" /><h3 id="user_name" style="width: 240px;display: flex;flex-direction: column;text-overflow: ellipsis;overflow: hidden;background-color: #fff;border-radius: 5px;min-height: 25px;margin: 0;padding-bottom: 0px; padding-left: 10px;">' +
+									obj.user_name +
+									'</h3></div><div class="user_intro" id="user_profile"><p>ta比较懒还没有说明</p></div><div class="trivial"><div><span class="spanTitle">发布</span><span class="spanInfo" id="user_release_sum">0</span></div><div><span class="spanTitle">粉丝</span><span class="spanInfo" id="user_fans_sum">0</span></div><div><span class="spanTitle">获赞</span><span class="spanInfo" id="post_upnum">0</span></div><div><span class="spanTitle">转发</span><span class="spanInfo" id="user_follow_sum">0</span></div><div><span style="font-size: 12px;color: #807979;">积分</span><span class="spanInfo" id="user_coin_sum">0</span></div></div><div style="margin-top: 10px;margin-left: 12px;"><button class="boxBtn" style="margin-right: 64x;" id="attention">+ 关注</button><button class="boxBtn1" style="margin-right: 64x; display: none;" id="attentioned">取消关注</button><button class="boxBtn"  onclick="toMinec("admin_id")">个人主页</button><input type="text" name="admin_id" id="admin_id" value="" hidden="hidden"/></div></div></div></div><div class="comment_text"><p>' +
+									obj.comment_content +
+									'</p></div><div class="other_visitor"><a><span onclick=adopt(' + obj.id +
+									')>采纳</span></a><a href="#editor"><span onclick=reply(' + obj.id + ',"' + obj.user_name +
+									'")>回复</span></a><a rel="leanModal" name="Report" href="#Report"><span onclick=Reported(' + obj.id +
+									')>举报</span></a><a href="#editor"><span onclick=reply(' + obj.id + ',"' + obj.user_name +
+									'")>回复</span></a><span style="display:flex;align-items: center;"><img onclick=commentSupport(' + obj.id +
+									') src="images/support.png"/><span id="comment' + obj.id + '">' + Number(obj.comment_upnum) +
+									'</span></span></div></div></div></div>');
+
+								var info_box = "info_box" + obj.id
+								$("#" + info_box).hide();
+
 							}
 							$('a[rel*=leanModal]').leanModal({
 								top: 200,
 								closeButton: ".modal_close"
 							});
+							$(".showimg").mouseenter(function(id) {
+								console.log(id.target.id)
+								$("#" + id.target.id).mouseenter(function() {
+									console.log('555')
+									console.log(info_box)
+									$("#" + info_box).show();
+								})
+
+								$("#" + id.target.id).mouseleave(function() {
+									$("#" + info_box).hide();
+								})
+							})
+
 						},
 						error: function() {
 
 						}
 					});
+
 				}
 
 				//点赞、转发、打赏、、、、
@@ -1986,54 +2140,54 @@
 						if (name == "reward") {
 							console.log(name)
 							// 选择按钮添加样式
-							$(".signup-btn").click(function(e){
+							$(".signup-btn").click(function(e) {
 								$("#reset").show()
 								$('#reward_coinnum').hide()
 								$('.signup-list').find(".signup-btn").removeClass("signup-btn-active")
-								let index = $('.signup-btn').index(this)	
+								let index = $('.signup-btn').index(this)
 								console.log(index)
 								$(this).addClass("signup-btn-active")
-								if(index == 0) {
+								if (index == 0) {
 									reward_number = 2
-								}else if(index == 1) {
+								} else if (index == 1) {
 									reward_number = 5
-								}else if(index == 2) {
+								} else if (index == 2) {
 									reward_number = 8
-								}else{
+								} else {
 									reward_number = ''
 								}
 							})
-							
+
 							// 重置按钮
 							$("#reset").click(function() {
 								$("#reset").hide()
 								$('#reward_coinnum').show()
 							})
-							
+
 							// 确定打赏
 							$("#check").off("click").on("click", function() {
-								if(reward_number == ''){
+								if (reward_number == '') {
 									reward_coinnum = $("#reward_coinnum").val();
-								}else{
+								} else {
 									reward_coinnum = reward_number
 								}
-								
+
 								reward_money = $("#reward_money").val();
 								doSomething1(token, post_id, comment_id, reprot_content, reward_coinnum, reward_money);
 								$("#lean_overlay").hide()
 								$("#test").hide()
 							})
 						} else if (name == "report") {
-							$(".signup-btn1").click(function(e){
+							$(".signup-btn1").click(function(e) {
 								$('.signup-list1').find(".signup-btn1").removeClass("signup-btn1-active")
 								let index = $('.signup-btn1').index(this)
-								 $("#report_text").val($(this).context.textContent);
+								$("#report_text").val($(this).context.textContent);
 								$(this).addClass("signup-btn1-active")
-								
+
 							})
-							
+
 							$("#edit").off("click").on("click", function() {
-								
+
 								reprot_content = $("#report_text").val();
 								doSomething1(token, post_id, comment_id, reprot_content, reward_coinnum, reward_money);
 								$("#Report").hide()
@@ -2104,7 +2258,7 @@
 												}
 											}
 										});
-									}else{
+									} else {
 										Dialog.error(data.msg);
 									}
 								}
@@ -2121,6 +2275,7 @@
 					var comment_content = UE.getEditor('editor').getContent();
 					DoAjax(comment_content);
 				})
+
 				function DoAjax(comment_content) {
 					var obj = sessionStorage.getItem("data");
 					obj = JSON.parse(obj);
