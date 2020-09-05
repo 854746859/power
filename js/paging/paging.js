@@ -531,7 +531,7 @@
                                 token: infodata.token,
                                 star_time: "",
                                 end_time: "",
-                                rows: 5,
+                                rows: 8,
                                 page: ele.option.currentPage,
                             },
                             // 用于设置响应体的类型 注意 跟 data 参数没关系！！！
@@ -555,9 +555,7 @@
                                 $("#listBody").empty();
                                 for (var i = 0; i < length; i++) {
                                     var obj = data.data[i];
-                                    $("#listBody").append('<li><ul class="list_body"><li>' + obj.business_time + '</li><li>' + obj.business_content +
-                                        '</li><li>' + obj.business_money + '</li><li>' + obj.business_coin + '</li><li>' + obj.pay_user +
-                                        '</li></ul></li>');
+									$("#listBody").append('<li style="padding: 8px; line-height: 18px;border-bottom: none;"><ul class="list_body"><li>' + obj.business_content + '</li><li>' + obj.business_coin + '</li><li>' + obj.business_time + '</li><li>' + obj.pay_user + '</li></ul></li>');
                                 }
                             }
                         });

@@ -501,26 +501,56 @@
 				cursor: pointer;
 				right: 28px;
 			}
+			.cansel1{
+				width: auto;
+				height: 24px;
+				padding: 0 12px;
+				font-size: 12px;
+				line-height: 24px;
+				cursor: pointer;
+				position: absolute;
+				color: #fff!important;
+				background-color: #0084ff!important;
+				border-color: transparent!important;
+				border-radius: 16px;
+				cursor: pointer;
+				right: 28px;
+			}
 			.about_att a {
 				font-size: 14px;
 			}
 			
-			.wallet_title,
-			.detail_title {
-				width: 740px;
+			.wallet_title, .detail_title {
+				width: 788px;
 				display: flex;
 				flex-direction: row;
 				justify-content: space-between;
-				padding: 0 10px;
-				margin-top: 10px;
+				padding: 10px;
 				border-bottom: 1px solid #eee;
-				height: 50px;
+				/* height: 50px; */
+			}
+			
+			.wallet_title h2, .detail_title h2{
+				font-family: -apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+				font-weight: bold;
+				color: rgba(0,0,0,0.85);
+				font-weight: 500;
+				font-size: 22px;
+				line-height: 26px;
 			}
 
 			.detail_title div{
-				display: flex;
 				flex-direction: row;
-				align-self: center;
+				display: flex;
+				-ms-flex-align: center;
+				align-items: center;
+				color: #999;
+				font-size: 13px;
+			}
+			.start_time{
+				color: rgba(0,0,0,0.85);
+				font-weight: 500;
+				font-size: 13px;
 			}
 			
 			.detail_box {
@@ -531,57 +561,67 @@
 				margin-top: 10px;
 			}
 			
-			.detail_box .yesterday,
-			.month,
-			.wallet {
+			.detail_box .yesterday,.month,.wallet {
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
 				align-items: center;
 				padding: 10px;
 				width: 28%;
-				height: 140px;
-				background-color: #eee;
+				border: 1px solid #EDEDED;
+				background-color: #fff;
 			}
 			
 			.detail_box .yesterday,
 			.month,
 			.wallet div {
-				font-size: 18px;
+				color: #333;
 				font-weight: 500;
+				font-size: 14px;
+			}
+			
+			.list_title{
+				border-bottom: 1px #EDEDED solid;
 			}
 			
 			.list_title,
 			.list_body {
-				width: 100%;
+				width: 92%;
 				display: flex;
 				flex-direction: row;
+				padding: 0 24px;
 			}
 			
 			.list_title li {
-				width: 20%;
 				display: flex;
 				flex-direction: row;
 				justify-content: center;
+				color: #999;
+				font-size: 13px;
+				line-height: 34px;
+				font-weight: bold;
+				border: none !important;
+			}
+			
+			.list_title li {
+				width: 25%;
 			}
 			
 			.list_body li {
-				width: 20%;
+				width: 25%;
+				color: #333;
+				font-size: 14px;
+				font-family: -apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+				justify-content: center;
+				padding: 0px !important;
+				padding-bottom: 8px !important;
 			}
 			
-			.list_title li:first-child {
-				width: 200px;
-			}
-			
-			.list_body li:first-child {
-				width: 200px;
-			}
-			
-			.list_body li:nth-child(n+2) {
+			/* .list_body li:nth-child(n+2) {
 				display: flex;
 				flex-direction: row;
 				justify-content: center;
-			}
+			} */
 			
 			.message {
 				display: flex;
@@ -614,11 +654,8 @@
 			
 			.post_title input {
 				width: 260px;
-				height: 40px;
-				background-color: #eee;
-				padding-left: 10px;
-				margin-left: 10px;
-				border-radius: 5px;
+				padding: 8px 10px;
+				border: 1px solid #EDEDED;
 			}
 			
 			.reward_money {
@@ -632,6 +669,13 @@
 				margin-left: 5px;
 			}
 			
+			.description_post_title {
+				width: 120px;
+				color: #333;
+				font-size: 14px;
+				font-family: Helvetica,Arial,sans-serif;
+			}
+			
 			.description_post,
 			.checkbox {
 				display: flex;
@@ -640,9 +684,9 @@
 			}
 			
 			.description_post select {
-				width: 80px;
-				height: 30px;
-				border: 1px solid #E0E0E0;
+				width: 282px;
+				border: 1px solid #EDEDED;
+				padding: 8px 4px;
 			}
 			
 			.description_post .checkbox input {
@@ -658,10 +702,17 @@
 			.annex input{
 				width: 180px;
 				height: 40px;
-				background-color: #eee;
+				/* background-color: #eee; */
 				padding-left: 10px;
-				margin-left: 10px;
+				margin-right: 12px;
 				border-radius: 5px;
+				border: 1px solid #EDEDED;
+			}
+			label{
+				font-size: 12px !important;
+			}
+			#file1{
+				border: none;
 			}
 			.button_box {
 				width: 500px;
@@ -691,6 +742,7 @@
 				display: flex;
 				flex-direction: row;
 				justify-content: space-around;
+				display: none;
 			}
 			
 			.rechange a {
@@ -700,6 +752,8 @@
 			
 			#post {
 				height: auto !important;
+				width: 94%;
+				padding: 12px 3%;
 			}
 			/*鼠标移入菜单*/
 			
@@ -1384,9 +1438,9 @@
 											<li>
 												<a name="vote">投票</a>
 											</li>
-											<li>
+											<!-- <li>
 												<a name="notice">系统通知</a>
-											</li>
+											</li> -->
 										</ul>
 									</div>
 								</nav>
@@ -1473,12 +1527,12 @@
 								</div>
 								<div class="detail_box">
 									<div class="yesterday">
-										<div>昨日收益 / 元</div>
+										<div>昨日收益(元)</div>
 										<div id="yesterday_money">0</div>
 										<div id="week_money">近7日收益 0 元</div>
 									</div>
 									<div class="month">
-										<div>本月收益 / 元</div>
+										<div>本月收益(元)</div>
 										<div id="month_money" style="margin-top: 6px;">0</div>
 										<div id="money_sum">总收益 0 元</div>
 									</div>
@@ -1494,7 +1548,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="detail_title">
+								<div class="detail_title" style="margin-top: 12px;">
 									<h2>收益明细</h2>
 									<div class="time">
 										<span>选择时间：</span>
@@ -1506,10 +1560,10 @@
 								</div>
 								<div class="detail_list">
 									<ul class="list_title">
-										<li>日期</li>
-										<li>交易描述</li>
-										<li>现金收益</li>
-										<li>论坛币收益</li>
+										<li>事件</li>
+										<li>数量</li>
+										<li>时间</li>
+										<!-- <li>论坛币收益</li> -->
 										<li>支付人</li>
 									</ul>
 									<ul id="listBody">
@@ -1519,117 +1573,120 @@
 							</div>
 							<!--快速发帖-->
 							<div class="news_list zy_listbox mine_box" id="post" hidden="hidden">
-								<div class="post_title">
-									<h4>文章标题：</h4><input type="text" name="" id="postTitle" value="" placeholder="请输入文章标题" />
+								<div class="description_post">
+									<span class="description_post_title">文章大类：</span>
+									<select id="post_Large">
+										<option value="1">原创</option>
+										<option value="2">编译</option>
+										<option value="3">技术评论</option>
+										<option value="4">一般</option>
+									</select>
+								</div>
+								<div class="description_post" style="margin-top: 12px;">
+									<span class="description_post_title">发布版块：</span>
+									<select id="Section">
+										<option value="3">煤炭</option>
+										<option value="2">石油&天然气</option>
+										<option value="1">液化天然气</option>
+										<option value="4">电力</option>
+										<option value="5">核能</option>
+										<option value="6">新能源</option>
+										<option value="7">化工</option>
+										<option value="8">项目管理</option>
+									</select>
+								</div>
+								<div class="description_post post_title" style="margin-top: 12px;">
+									<span class="description_post_title">文章标签：</span>
+									<input type="text" name="" id="Tag" value="" placeholder="请输入文章标签" />
 								</div>
 								<div class="description_post">
-									<h4>封面图上传：</h4><input type="file" name="" id="picFile" value="" />
+									<span class="description_post_title">文章类型：</span>
+									<select id="postType">
+										<option value="0">普通</option>
+										<option value="1">问答</option>
+										<option value="2">悬赏</option>
+									</select>
+									<div class="post_title reward_money" style="display: none;">
+										<input type="number" name="" id="rewardmoney" value="0" placeholder="悬赏额度" />
+										<span>*必填</span>
+									</div>
 								</div>
-								<h4>文章内容：</h4>
-								<script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>
+								
+								<div class="description_post"  style="margin-top: 12px;">
+									<span class="description_post_title">二级分类：</span>
+									<select id="Classification">
+										<option value="1">行业新闻-新闻速递</option>
+										<option value="2">行业新闻-国家政策</option>
+										<option value="3">行业新闻-行业法规</option>
+										<option value="11">技术前沿-学术论文</option>
+										<option value="12">技术前沿-标准规范</option>
+										<option value="13">技术前沿-研究报告</option>
+										<option value="14">技术前沿-会议论坛</option>
+										<option value="21">信息推广-展会论坛</option>
+										<option value="22">信息推广-招标采购</option>
+										<option value="23">信息推广-培训教育</option>
+										<option value="24">信息推广-销售信息</option>
+										<option value="25">信息推广-招聘求职</option>
+										<option value="31">资源市场-国外资源</option>
+										<option value="32">资源市场-国内资源</option>
+										<option value="33">资源市场-供需动态</option>
+										<option value="34">资源市场-价格速递</option>
+										<option value="41">天然气液化-项目信息</option>
+										<option value="42">天然气液化-工艺技术</option>
+										<option value="43">天然气液化-建设调试</option>
+										<option value="44">天然气液化-生产运营</option>
+										<option value="51">LNG接收站-项目信息</option>
+										<option value="52">LNG接收站-企业管理</option>
+										<option value="53">LNG接收站-工艺技术</option>
+										<option value="54">LNG接收站-生产运营</option>
+										<option value="55">LNG接收站-维保维修</option>
+										<option value="71">LNG运输-LNG船舶</option>
+										<option value="72">LNG运输-FSRU</option>
+										<option value="73">LNG运输-LNG过驳</option>
+										<option value="74">LNG运输-LNG槽车</option>
+										<option value="75">LNG运输-LNG加注船</option>
+										<option value="76">LNG运输-LNG罐箱</option>
+										<option value="81">LNG利用-燃气发电</option>
+										<option value="82">LNG利用-冷能利用</option>
+										<option value="83">LNG利用-调峰气化</option>
+										<option value="84">LNG利用-船舶加注</option>
+										<option value="85">LNG利用-车辆加注</option>
+										<option value="86">LNG利用-工业用气</option>
+										<option value="91">项目建设-选址决策</option>
+										<option value="92">项目建设-设计研究</option>
+										<option value="93">项目建设-设备采办</option>
+										<option value="94">项目建设-建设资源</option>
+										<option value="95">项目建设-施工技术</option>
+										<option value="96">项目建设-调试投产</option>
+										<option value="97">项目建设-项目管理</option>
+										<option value="101">专栏专题-LNG储罐</option>
+										<option value="102">专栏专题-数字化</option>
+										<option value="103">专栏专题-国家管网</option>
+										<option value="111">休闲广场-赏心悦目</option>
+										<option value="112">休闲广场-心情驿站</option>
+										<option value="113">休闲广场-休闲文学</option>
+										<option value="114">休闲广场-沙龙活动</option>
+										<option value="121">论坛管理-论坛版规</option>
+										<option value="122">论坛管理-用户体验</option>
+										<option value="123">论坛管理-投票区</option>
+										<option value="124">论坛管理-管委会</option>
+									</select>
+									<span style="color: #1a83da;margin-left: 5px;font-size: 12px;">*可不选</span>
+								
+								</div>
+								<div class="post_title">
+									<span class="description_post_title">文章标题：</span><input type="text" name="" id="postTitle" value="" placeholder="请输入文章标题" />
+								</div>
+								<div class="description_post" style="margin-bottom: 12px;">
+									<span class="description_post_title" >封面图上传：</span><input type="file" name="" id="picFile" value="" />
+								</div>
+								<span class="description_post_title" >文章内容：</span>
+								<script id="editor" type="text/plain" style="width:1024px;height:500px; margin-top: 12px;"></script>
 								<div id="btns">
-									<div class="description_post">
-										<h4>发布版块：</h4>
-										<select id="Section">
-											<option value="3">煤炭</option>
-											<option value="2">石油&天然气</option>
-											<option value="1">液化天然气</option>
-											<option value="4">电力</option>
-											<option value="5">核能</option>
-											<option value="6">新能源</option>
-											<option value="7">化工</option>
-											<option value="8">项目管理</option>
-										</select>
-									</div>
-									<div class="description_post post_title">
-										<h4>文章标签：</h4>
-										<input type="text" name="" id="Tag" value="" placeholder="标签" />
-									</div>
-									<div class="description_post">
-										<h4>文章类型：</h4>
-										<select id="postType">
-											<option value="0">普通</option>
-											<option value="1">问答</option>
-											<option value="2">悬赏</option>
-										</select>
-										<div class="post_title reward_money" style="display: none;">
-											<input type="number" name="" id="rewardmoney" value="0" placeholder="悬赏额度" />
-											<span>*必填</span>
-										</div>
-									</div>
-									<div class="description_post">
-										<h4>文章大类：</h4>
-										<select id="post_Large">
-											<option value="1">原创</option>
-											<option value="2">编译</option>
-											<option value="3">技术评论</option>
-											<option value="4">一般</option>
-										</select>
-									</div>
-									<div class="description_post">
-										<h4>二级分类：</h4>
-										<select id="Classification">
-											<option value="1">行业新闻-新闻速递</option>
-											<option value="2">行业新闻-国家政策</option>
-											<option value="3">行业新闻-行业法规</option>
-											<option value="11">技术前沿-学术论文</option>
-											<option value="12">技术前沿-标准规范</option>
-											<option value="13">技术前沿-研究报告</option>
-											<option value="14">技术前沿-会议论坛</option>
-											<option value="21">信息推广-展会论坛</option>
-											<option value="22">信息推广-招标采购</option>
-											<option value="23">信息推广-培训教育</option>
-											<option value="24">信息推广-销售信息</option>
-											<option value="25">信息推广-招聘求职</option>
-											<option value="31">资源市场-国外资源</option>
-											<option value="32">资源市场-国内资源</option>
-											<option value="33">资源市场-供需动态</option>
-											<option value="34">资源市场-价格速递</option>
-											<option value="41">天然气液化-项目信息</option>
-											<option value="42">天然气液化-工艺技术</option>
-											<option value="43">天然气液化-建设调试</option>
-											<option value="44">天然气液化-生产运营</option>
-											<option value="51">LNG接收站-项目信息</option>
-											<option value="52">LNG接收站-企业管理</option>
-											<option value="53">LNG接收站-工艺技术</option>
-											<option value="54">LNG接收站-生产运营</option>
-											<option value="55">LNG接收站-维保维修</option>
-											<option value="71">LNG运输-LNG船舶</option>
-											<option value="72">LNG运输-FSRU</option>
-											<option value="73">LNG运输-LNG过驳</option>
-											<option value="74">LNG运输-LNG槽车</option>
-											<option value="75">LNG运输-LNG加注船</option>
-											<option value="76">LNG运输-LNG罐箱</option>
-											<option value="81">LNG利用-燃气发电</option>
-											<option value="82">LNG利用-冷能利用</option>
-											<option value="83">LNG利用-调峰气化</option>
-											<option value="84">LNG利用-船舶加注</option>
-											<option value="85">LNG利用-车辆加注</option>
-											<option value="86">LNG利用-工业用气</option>
-											<option value="91">项目建设-选址决策</option>
-											<option value="92">项目建设-设计研究</option>
-											<option value="93">项目建设-设备采办</option>
-											<option value="94">项目建设-建设资源</option>
-											<option value="95">项目建设-施工技术</option>
-											<option value="96">项目建设-调试投产</option>
-											<option value="97">项目建设-项目管理</option>
-											<option value="101">专栏专题-LNG储罐</option>
-											<option value="102">专栏专题-数字化</option>
-											<option value="103">专栏专题-国家管网</option>
-											<option value="111">休闲广场-赏心悦目</option>
-											<option value="112">休闲广场-心情驿站</option>
-											<option value="113">休闲广场-休闲文学</option>
-											<option value="114">休闲广场-沙龙活动</option>
-											<option value="121">论坛管理-论坛版规</option>
-											<option value="122">论坛管理-用户体验</option>
-											<option value="123">论坛管理-投票区</option>
-											<option value="124">论坛管理-管委会</option>
-										</select>
-										<span style="color: #1a83da;margin-left: 5px;font-size: 12px;">*可不选</span>
-
-									</div>
-									<div class="description_post">
-										<h4>发布形式：</h4>
+									
+									
+									<div class="description_post" style="margin-top: 12px;">
+										<span class="description_post_title">发布形式：</span>
 										<div class="checkbox" id="Form">
 											<label>
 												<input type="radio" name="form" id="" value="0" checked="checked" /><span style="margin-left: 6px;margin-right: 12px;">公开</span>
@@ -1648,8 +1705,8 @@
 									<!-- <div class="description_post">
 										<h4>封面图上传：</h4><input type="file" name="" id="picFile" value="" />
 									</div> -->
-									<div class="description_post annex">
-										<h4>附件上传：</h4>
+									<div class="description_post annex"  style="margin-top: 12px; margin-bottom: 24px;">
+										<span class="description_post_title">附件上传：</span>
 										<input type="text" id="revise_enclosure_name" value="" placeholder="附件名称" />
 										<input type="number" id="revise_enclosure_coin" value="" placeholder="附件价格" />
 										<input type="file" name="" id="file1" value="" style="background-color: #fff;" />
@@ -1718,15 +1775,17 @@
 								</script>
 							</div>
 							<!--投票-->
-							<div class="news_list zy_listbox mine_box" id="vote" hidden="hidden">
-								<div class="description_post" style="margin: 10px 0;">
-									<!-- <h2>发起投票</h2>   -->
-								</div>
+							<div class="news_list zy_listbox mine_box" id="vote" hidden="hidden" style="padding: 12px 24px;">
+								<!-- <div class="description_post" style="margin: 10px 0;">
+									<h2>发起投票</h2>  
+								</div> -->
 								<div class="description_post" style="display: flex;flex-direction: row;align-items: flex-start;">
-									<h4 style="margin: 0;">投票内容：</h4><textarea name="" rows="" id="question_text" cols="" style="border: 1px solid #eee;height: 100px;font-size: 16PX;width: 600px"></textarea>
+									<span class="description_post_title">投票内容：</span>
+									
+									<textarea name="" rows="" id="question_text" cols="" placeholder="请输入发起投票内容" style="border: 1px solid #eee;height: 100px;font-size: 16PX;width: 600px"></textarea>
 								</div>
-								<div class="description_post">
-									<h4>所属版块：</h4>
+								<div class="description_post" style="margin-top: 24px; margin-bottom: 32px;">
+									<span class="description_post_title">所属版块：</span>
 									<select id="plate" style="width: 100px; width: 180px">
 										<option value="3">煤炭</option>
 										<option value="2">石油&天然气</option>
@@ -2113,7 +2172,7 @@
 					var new_fans_list = document.getElementById("new_fans_list");
 					for (var i = 0; i < new_fans.length; i++) {
 						new_fans_img +=
-							`<div  class='fan'><div id='plate_fan_box${i}'><img id='plate_fan_pic' style='width:44px; height:44px; border-radius:50%; margin-top:8px;cursor: pointer;' src='${new_fans[i].user_head}'><span class='plate_fan_span'>${new_fans[i].user_name}</span></div><div class='info_box' id='info_box'><div class='user_name'><div style='display: flex;align-items: center;margin-bottom: 10px;'><img id='plate_fan_pics' style='width:70px; height:70px; border-radius:50%;margin-top:8px;cursor: pointer;' src='${new_fans[i].user_head}'/><h3 id='user_name' style='min-height: 25px;margin: 0;padding-bottom: 0px;padding-left: 10px;'>${new_fans[i].user_name}</h3></div><div class='user_intro' id='user_profile'><p class="user_profile">${new_fans[i].user_profile}</p></div><div class='trivial' style='width: 100%;margin-top: 5px;'><div class="spanList"><span class="spanTitle">发布</span><span class="spanInfo">${new_fans[i].user_release_sum}</span></div><div class="spanList"><span class="spanTitle">粉丝</span><span class="spanInfo">${new_fans[i].user_fans_sum}</span></div><div class="spanList"><span class="spanTitle">获赞</span>	<span class="spanInfo">${new_fans[i].user_laid_sum}</span></div><div class="spanList"><span class="spanTitle">转发</span><span class="spanInfo">${new_fans[i].user_forward_sum}</span></div><div class="spanList"><span class="spanTitle">积分</span><span class="spanInfo">${new_fans[i].user_coin_sum}</span></div></div><div style='margin-top: 10px;margin-left: 12px;'><button class="boxBtn" onclick='attention(${new_fans[i].id})'>+关注</button></div></div></div></div>`;
+							`<div  class='fan'><div id='plate_fan_box${i}'><img id='plate_fan_pic' style='width:44px; height:44px; border-radius:50%; margin-top:8px;cursor: pointer;' src='${new_fans[i].user_head}'><span class='plate_fan_span'>${new_fans[i].user_name}</span></div><div class='info_box' id='info_box'><div class='user_name'><div style='display: flex;align-items: center;margin-bottom: 10px;'><img id='plate_fan_pics' style='width:70px; height:70px; border-radius:50%;margin-top:8px;cursor: pointer;' src='${new_fans[i].user_head}'/><h3 id='user_name' style='min-height: 25px;margin: 0;padding-bottom: 0px;padding-left: 10px;'>${new_fans[i].user_name}</h3></div><div class='user_intro' id='user_profile'><p class="user_profile">${new_fans[i].user_profile}</p></div><div class='trivial' style='width: 100%;margin-top: 5px;'><div class="spanList"><span class="spanTitle">发布</span><span class="spanInfo">${new_fans[i].user_release_sum}</span></div><div class="spanList"><span class="spanTitle">粉丝</span><span class="spanInfo">${new_fans[i].user_fans_sum}</span></div><div class="spanList"><span class="spanTitle">获赞</span>	<span class="spanInfo">${new_fans[i].user_laid_sum}</span></div><div class="spanList"><span class="spanTitle">转发</span><span class="spanInfo">${new_fans[i].user_forward_sum}</span></div><div class="spanList"><span class="spanTitle">积分</span><span class="spanInfo">${new_fans[i].user_coin_sum}</span></div></div><div style='display:flex;margin-top: 10px;margin-left: 12px;'><button class="boxBtn" onclick='attention(${new_fans[i].id})'>+关注</button></div></div></div></div>`;
 					}
 					new_fans_list.innerHTML = new_fans_img;
 					// 最近访客
@@ -2121,7 +2180,7 @@
 					var new_visitor_list = document.getElementById("new_visitor_list");
 					for (var i = 0; i < new_visitor.length; i++) {
 						new_visitor_img +=
-							`<div  class='look'><div id='plate_look_box${i}'><img id='plate_look_pic' style='width:44px; height:44px; border-radius:50%; margin-top:8px;cursor: pointer;' src='${new_visitor[i].user_head}'><span class='plate_fan_span'>${new_visitor[i].user_name}</span></div><div class='info_box' id='info_box'><div class='user_name'><div style='display: flex;align-items: center;margin-bottom: 10px;'><img id='plate_look_pics' style='width:70px; height:70px; border-radius:50%;margin-top:8px;cursor: pointer;' src='${new_visitor[i].user_head}'/><h3 id='user_name' style='min-height: 25px;margin: 0;padding-bottom: 0px;padding-left: 10px;'>${new_visitor[i].user_name}</h3></div><div class='user_intro' id='user_profile'><p class="user_profile">${new_visitor[i].user_profile}</p></div><div class='trivial' style='width: 100%;margin-top: 5px;'><div class="spanList"><span class="spanTitle">发布</span><span class="spanInfo">${new_visitor[i].user_release_sum}</span></div><div class="spanList"><span class="spanTitle">粉丝</span><span class="spanInfo">${new_visitor[i].user_fans_sum}</span></div><div class="spanList"><span class="spanTitle">获赞</span>	<span class="spanInfo">${new_visitor[i].user_laid_sum}</span></div><div class="spanList"><span class="spanTitle">转发</span><span class="spanInfo">${new_visitor[i].user_forward_sum}</span></div><div class="spanList"><span class="spanTitle">积分</span><span class="spanInfo">${new_visitor[i].user_coin_sum}</span></div></div><div style='margin-top: 10px;margin-left: 12px;'><button class="boxBtn" onclick='attention(${new_visitor[i].id})'>+关注</button></div></div></div></div>`;
+							`<div  class='look'><div id='plate_look_box${i}'><img id='plate_look_pic' style='width:44px; height:44px; border-radius:50%; margin-top:8px;cursor: pointer;' src='${new_visitor[i].user_head}'><span class='plate_fan_span'>${new_visitor[i].user_name}</span></div><div class='info_box' id='info_box'><div class='user_name'><div style='display: flex;align-items: center;margin-bottom: 10px;'><img id='plate_look_pics' style='width:70px; height:70px; border-radius:50%;margin-top:8px;cursor: pointer;' src='${new_visitor[i].user_head}'/><h3 id='user_name' style='min-height: 25px;margin: 0;padding-bottom: 0px;padding-left: 10px;'>${new_visitor[i].user_name}</h3></div><div class='user_intro' id='user_profile'><p class="user_profile">${new_visitor[i].user_profile}</p></div><div class='trivial' style='width: 100%;margin-top: 5px;'><div class="spanList"><span class="spanTitle">发布</span><span class="spanInfo">${new_visitor[i].user_release_sum}</span></div><div class="spanList"><span class="spanTitle">粉丝</span><span class="spanInfo">${new_visitor[i].user_fans_sum}</span></div><div class="spanList"><span class="spanTitle">获赞</span>	<span class="spanInfo">${new_visitor[i].user_laid_sum}</span></div><div class="spanList"><span class="spanTitle">转发</span><span class="spanInfo">${new_visitor[i].user_forward_sum}</span></div><div class="spanList"><span class="spanTitle">积分</span><span class="spanInfo">${new_visitor[i].user_coin_sum}</span></div></div><div style='display:flex;margin-top: 10px;margin-left: 12px;'><button class="boxBtn" onclick='attention(${new_visitor[i].id})'>+关注</button></div></div></div></div>`;
 						new_visitor_list.innerHTML = new_visitor_img;
 					}
 
@@ -2505,17 +2564,12 @@
 
 						} else {
 							for (var i = 0; i < fansdata.length; i++) {
-								fans += "<li><img class='icon_radius' src='" + fansdata[i].user_head + " ' /><div class='blog_list'>";
-								fans += "<div class='attention_title'><div>" + fansdata[i]['user_name'] + "</div><div>ID:" + fansdata[i]
-									[
-										'id'
-									] + "</div><div>关注时间：" + fansdata[i]['follow_time'] + "</div>";
-								fans += "</div><div class='news_time news_other'><span>个人简介：</span><p>" + fansdata[i]['user_profile'] +
-									"</p>";
+								fans += "<li style='padding: 12px 32px;'><img class='icon_radius' style='width: 44px;height: 44px;' src='" + fansdata[i].user_head + " ' /><div class='blog_list'>";
+								fans += "<div class='attention_title'><div>" + fansdata[i]['user_name'] + "</div>";
+								fans += "</div><div class='news_time news_other'>";
+								fans += `</div><div class='news_owner1 news_other'><span id=''>关注时间：${fansdata[i]['follow_time']}</span>	`;
 								fans +=
-									`</div><div class='news_owner1 news_other'><span id=''>关注：${fansdata[i]['user_follow_sum']} </span> <span style='margin-left: 24px'>粉丝：${fansdata[i]['user_fans_sum']}</span>`;
-								fans +=
-									"</div></div><div class='about_att'><div class='cansel' onclick='attention(" + fansdata[i]['id'] +
+									"</div></div><div class='about_att'><div class='cansel1' onclick='attention(" + fansdata[i]['id'] +
 									")'>关注+</div><div class='hispage'></div></div></li>";
 								fanslist.innerHTML = fans;
 							}
@@ -2713,7 +2767,7 @@
 						token: infodata.token,
 						star_time: start_time,
 						end_time: end_time,
-						rows: 5,
+						rows: 8,
 						page: 1
 					},
 					// 用于设置响应体的类型 注意 跟 data 参数没关系！！！
@@ -2747,10 +2801,10 @@
 						});
 
 						$("#listBody").empty();
-						for (var i = 0; i < length; i++) {
+						for (var i = 0; i < length; i++) { 
 							var obj = data.data[i];
-							$("#listBody").append('<li><ul class="list_body"><li>' + obj.business_time + '</li><li>' + obj.business_content +
-								'</li><li>' + obj.business_money + '</li><li>' + obj.business_coin + '</li><li>' + obj.pay_user +
+							$("#listBody").append('<li style="padding: 8px; line-height: 18px;border-bottom: none;"><ul class="list_body"><li>' + obj.business_content + '</li><li>' + obj.business_coin +
+								'</li><li>' + obj.business_time + '</li><li>' + obj.pay_user +
 								'</li></ul></li>');
 						}
 					}
@@ -2777,9 +2831,10 @@
 					alert("请输入文章标签");
 					return;
 				}
-
+				
 				var picfile = $("#picFile").get(0).files[0];
 				var file1 = $("#file1").get(0).files[0];
+				var file_size = file1.size
 				var formData = new FormData();
 				formData.append("imgFile", picfile);
 				formData.append("token", infodata.token);
@@ -2796,6 +2851,7 @@
 				formData.append("revise_enclosure_name", $("#revise_enclosure_name").val());
 				formData.append("revise_enclosure_coin", Number($("#revise_enclosure_coin").val()));
 				formData.append("file1", file1);
+				formData.append("file_size",file_size)
 				$.ajax({
 					url: sever_url + 'release',
 					type: 'post',
