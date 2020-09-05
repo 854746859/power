@@ -1485,21 +1485,13 @@
 			})
 
 			// 评论
-			$("#visitor_info").mouseenter(function() {
-				$("#info_box_t").show();
-				console.log(this)
-			})
-			$(".visitor_info").mouseleave(function() {
-				$("#info_box_t").hide();
-			})
-
-			$(".comment_box").mouseenter(function(id) {
-
-			})
-			$(".showimg").mouseenter(function(id) {
-				console.log('id')
-			})
-
+			// $("#visitor_info").mouseenter(function() {
+			// 	$("#info_box_t").show();
+			// 	console.log(this)
+			// })
+			// $(".visitor_info").mouseleave(function() {
+			// 	$("#info_box_t").hide();
+			// })
 
 
 			$("#plate_master_pic").mouseenter(function() {
@@ -2079,8 +2071,8 @@
 									') src="images/support.png"/><span id="comment' + obj.id + '">' + Number(obj.comment_upnum) +
 									'</span></span></div></div></div></div>');
 
-								var info_box = "info_box" + obj.id
-								$("#" + info_box).hide();
+								var info_boxs = "info_box" + obj.id
+								$("#" + info_boxs).hide();
 
 							}
 							$('a[rel*=leanModal]').leanModal({
@@ -2088,15 +2080,13 @@
 								closeButton: ".modal_close"
 							});
 							$(".showimg").mouseenter(function(id) {
-								console.log(id.target.id)
 								$("#" + id.target.id).mouseenter(function() {
-									console.log('555')
-									console.log(info_box)
+									var info_box = "info_box" + id.target.id
 									$("#" + info_box).show();
 								})
 
 								$("#" + id.target.id).mouseleave(function() {
-									$("#" + info_box).hide();
+									$("#info_box" + id.target.id).hide();
 								})
 							})
 
