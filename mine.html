@@ -1002,35 +1002,31 @@
 				flex-direction: column;
 				align-items: flex-start;
 				padding: 10px;
-				margin-top: -20px;
+				margin-top: 66px;
 				position: absolute;
 				z-index: 999;
 				background-color: #fff;
 				/* margin: 140px 0 0 80px; */
 				border-radius: 6px;
-				box-shadow: 0px 0px 6px 6px rgba(0,0,0,0.1);
+				box-shadow: 0px 0px 6px 6px rgba(0,0,0,0.1);	
 			}
 			.info_box .user_name {
 				width: 240px;
 				display: flex;
 				flex-direction: column;
-				/*height: 60px;*/
 				text-overflow: ellipsis;
 				overflow: hidden;
 				background-color: #fff;
-				/* padding: 10px; */
 				border-radius: 5px;
 			}
 			.info_box:before{
 				content: '';
 				width: 0;
 				height: 0;
-				border-width: 16px 8px;
-				/* border-style: solid; */
+				border-style: solid;
 				border-color: transparent transparent #fff transparent; 
 				position: relative;
 				margin-left: 10px;
-				top: -40px;
 				z-index: 999;
 			}
 			
@@ -1042,6 +1038,50 @@
 				padding-bottom: 5px;
 				border-bottom: #eee solid 1px;
 			}
+			
+			/* 采纳弹出 */
+			.blog_left .info_box{
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				padding: 10px;
+				margin-top: 66px;
+				position: absolute;
+				z-index: 999;
+				background-color: #fff;
+				/* margin: 0px 0px 0 0px; */
+				border-radius: 6px;
+				box-shadow: 0px 0px 6px 6px rgba(0,0,0,0.1);			
+			}
+			.blog_left .info_box .user_name {
+				width: 240px;
+				display: flex;
+				flex-direction: column;
+				text-overflow: ellipsis;
+				overflow: hidden;
+				background-color: #fff;
+				border-radius: 5px;
+			}
+			.blog_left .info_box:before{
+				content: '';
+				width: 0;
+				height: 0;
+				border-style: solid;
+				border-color: transparent transparent #fff transparent; 
+				position: relative;
+				margin-left: 10px;
+				z-index: 9999;
+			}
+			
+			.blog_left .user_name .user_intro { 
+				margin-left: 8px;
+				width: 100%;
+				color: #333;
+				font-size: 14px;
+				font-family: -apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+				font-weight: 400;
+			}
+			/* 弹出end */
 			
 			.attention {
 				display: flex;
@@ -1071,8 +1111,9 @@
 				display: flex;
 				flex-flow: row wrap;
 				align-content: flex-start;
-				width: 40%;
 				border-top: 1px solid #eee;
+				width: 100%;
+				margin-top: 5px;
 			}
 			
 			.trivial div {
@@ -1106,6 +1147,18 @@
 				text-align: center;
 				background-color: #0084ff;
 				border: 0;
+				border-radius: 16px;
+				cursor: pointer;
+			}
+			.boxBtn1{
+				display: inline-block;
+				height: 32px;
+				padding: 0 16px;
+				color: #0084ff;
+				line-height: 32px;
+				text-align: center;
+				background-color: #fff;
+				border: 1px solid #0084ff;
 				border-radius: 16px;
 				cursor: pointer;
 			}
@@ -1611,8 +1664,8 @@
 										<span>*必填</span>
 									</div>
 								</div>
-								
-								<div class="description_post"  style="margin-top: 12px;">
+
+								<div class="description_post" style="margin-top: 12px;">
 									<span class="description_post_title">二级分类：</span>
 									<select id="Classification">
 										<option value="1">行业新闻-新闻速递</option>
@@ -1672,19 +1725,20 @@
 										<option value="124">论坛管理-管委会</option>
 									</select>
 									<span style="color: #1a83da;margin-left: 5px;font-size: 12px;">*可不选</span>
-								
+
 								</div>
 								<div class="post_title">
-									<span class="description_post_title">文章标题：</span><input type="text" name="" id="postTitle" value="" placeholder="请输入文章标题" />
+									<span class="description_post_title">文章标题：</span><input type="text" name="" id="postTitle" value=""
+									 placeholder="请输入文章标题" />
 								</div>
 								<div class="description_post" style="margin-bottom: 12px;">
-									<span class="description_post_title" >封面图上传：</span><input type="file" name="" id="picFile" value="" />
+									<span class="description_post_title">封面图上传：</span><input type="file" name="" id="picFile" value="" />
 								</div>
-								<span class="description_post_title" >文章内容：</span>
+								<span class="description_post_title">文章内容：</span>
 								<script id="editor" type="text/plain" style="width:1024px;height:500px; margin-top: 12px;"></script>
 								<div id="btns">
-									
-									
+
+
 									<div class="description_post" style="margin-top: 12px;">
 										<span class="description_post_title">发布形式：</span>
 										<div class="checkbox" id="Form">
@@ -1705,7 +1759,7 @@
 									<!-- <div class="description_post">
 										<h4>封面图上传：</h4><input type="file" name="" id="picFile" value="" />
 									</div> -->
-									<div class="description_post annex"  style="margin-top: 12px; margin-bottom: 24px;">
+									<div class="description_post annex" style="margin-top: 12px; margin-bottom: 24px;">
 										<span class="description_post_title">附件上传：</span>
 										<input type="text" id="revise_enclosure_name" value="" placeholder="附件名称" />
 										<input type="number" id="revise_enclosure_coin" value="" placeholder="附件价格" />
@@ -1781,7 +1835,7 @@
 								</div> -->
 								<div class="description_post" style="display: flex;flex-direction: row;align-items: flex-start;">
 									<span class="description_post_title">投票内容：</span>
-									
+
 									<textarea name="" rows="" id="question_text" cols="" placeholder="请输入发起投票内容" style="border: 1px solid #eee;height: 100px;font-size: 16PX;width: 600px"></textarea>
 								</div>
 								<div class="description_post" style="margin-top: 24px; margin-bottom: 32px;">
@@ -2315,9 +2369,12 @@
 									'post_upnum'
 								] + "</span></div>";
 								post += "<div class='news_owner1 news_other'><span id=''>发帖人：" + postdata[i]['post_user_name'] + "</span>";
-								post +=`<span id='' style='margin-left: 24px'>最后回复人：${postdata[i]['last_user_name']=='' ? '暂无回复人' :postdata[i]['last_user_name']}</span>`;
-								post +="</div></div><div class='share_right share bdsharebuttonbox'><div>";
-								post += "<img style='width: 20px;height: 20px;position: absolute;right: 6px;' onclick = 'Delete(" + postdata[i]['id'] +")' src='images/delete.png' /></div><div style='display:flex;flex-direction:row;justify-content: flex-end;align-items:center;margin-top: 68px;margin-left: 12px;'><p style='float:left;width: 48px;'>分享：</p>";
+								post +=
+									`<span id='' style='margin-left: 24px'>最后回复人：${postdata[i]['last_user_name']=='' ? '暂无回复人' :postdata[i]['last_user_name']}</span>`;
+								post += "</div></div><div class='share_right share bdsharebuttonbox'><div>";
+								post += "<img style='width: 20px;height: 20px;position: absolute;right: 6px;' onclick = 'Delete(" + postdata[
+										i]['id'] +
+									")' src='images/delete.png' /></div><div style='display:flex;flex-direction:row;justify-content: flex-end;align-items:center;margin-top: 68px;margin-left: 12px;'><p style='float:left;width: 48px;'>分享：</p>";
 								post += "<a url='forum.html?postid=" + postdata[i]['id'] +
 									"' class='bds_weixin' data-cmd='weixin'></a><a url='forum.html?postid=" + postdata[i]['id'] +
 									"' class='bds_tsina' data-cmd='tsina'></a></div></div></li>";
@@ -2419,7 +2476,7 @@
 			}
 			// 获取我的问答
 			function question(state) {
-								console.log(state)
+				console.log(state)
 				if (document.getElementById("postlist")) {
 					//存在
 					// postlist.remove();
@@ -2495,7 +2552,12 @@
 									"</span>";
 								post +=
 									`<span id=''>最后回复人：${postdata[i]['last_user_name']=='' ?'暂无回复' :postdata[i]['last_user_name']}</span><div class='share bdsharebuttonbox' style='display: flex;justify-content: flex-end;'>分享：`;
-								post += "<a url='questionDetail.html?postid=" + postdata[i]['id'] + "&plate=" + postdata[i].post_plate + "&plate_two=" + postdata[i].post_plate_two + "' class='bds_weixin' data-cmd='weixin'></a><a url='questionDetail.html?postid=" + postdata[i]['id'] + "&plate=" + postdata[i].post_plate + "&plate_two=" + postdata[i].post_plate_two + "' class='bds_tsina' data-cmd='tsina'></a></div></div></div><img style='width: 20px;height: 20px;position: absolute;right: 28px;' onclick = 'Delete(" + postdata[i]['id'] + ")' src='images/delete.png' /></li>";
+								post += "<a url='questionDetail.html?postid=" + postdata[i]['id'] + "&plate=" + postdata[i].post_plate +
+									"&plate_two=" + postdata[i].post_plate_two +
+									"' class='bds_weixin' data-cmd='weixin'></a><a url='questionDetail.html?postid=" + postdata[i]['id'] +
+									"&plate=" + postdata[i].post_plate + "&plate_two=" + postdata[i].post_plate_two +
+									"' class='bds_tsina' data-cmd='tsina'></a></div></div></div><img style='width: 20px;height: 20px;position: absolute;right: 28px;' onclick = 'Delete(" +
+									postdata[i]['id'] + ")' src='images/delete.png' /></li>";
 								qusetionlist.innerHTML = post;
 							}
 							$('.bdsharebuttonbox a').on('mousemove', function() {
@@ -2564,15 +2626,39 @@
 
 						} else {
 							for (var i = 0; i < fansdata.length; i++) {
-								fans += "<li style='padding: 12px 32px;'><img class='icon_radius' style='width: 44px;height: 44px;' src='" + fansdata[i].user_head + " ' /><div class='blog_list'>";
-								fans += "<div class='attention_title'><div>" + fansdata[i]['user_name'] + "</div>";
-								fans += "</div><div class='news_time news_other'>";
-								fans += `</div><div class='news_owner1 news_other'><span id=''>关注时间：${fansdata[i]['follow_time']}</span>	`;
+
+								fans += "<li style='padding: 12px 32px;'><img class='icon_radius' id='" + fansdata[i].id +
+									"' style='width: 44px;height: 44px;' src='" + fansdata[i].user_head + " ' />";
+								fans += "<div class='info_box' id='info_box_fan" + fansdata[i].id +
+									"'style='display: none;'><div class='user_name'><div style='display: flex;align-items: center;margin-bottom: 10px;'><img style='width: 60px;height: 60px;border-radius: 30px;' id='user_heads' src='" +
+									fansdata[i].user_head +
+									" ' /><h3 id='user_name' style='min-height: 25px;margin: 0;padding-bottom: 0px;padding-left: 10px;'>" +
+									fansdata[i].user_name +
+									" </h3></div><div class='user_intro' id='user_profile'><p>ta比较懒还没有说明</p></div><div class='trivial'><div class='spanList'><span class='spanTitle'>发布</span><span class='spanInfo' id='user_release_sum'>0</span></div><div class='spanList'><span class='spanTitle'>粉丝</span><span class='spanInfo' id='user_fans_sum'>0</span></div><div class='spanList'><span class='spanTitle'>获赞</span><span class='spanInfo' id='post_upnum'>0</span></div><div class='spanList'><span class='spanTitle'>转发</span><span class='spanInfo' id='user_follow_sum'>0</span></div><div class='spanList'><span class='spanTitle'>积分</span><span class='spanInfo' id='user_coin_sum'>0</span></div></div><div style='margin-top: 10px;margin-left: 12px;'><button class='boxBtn' style='margin-right: 64x;' id='attention'>+ 关注</button><button class='boxBtn1' style='margin-right: 64x; display: none;' id='attentioned'>取消关注</button><button class='boxBtn'  onclick='toMinec('admin_id')'>个人主页</button><input type='text' name='admin_id' id='admin_id' value='' hidden='hidden'/></div></div></div>";
+								fans += "<div class='blog_list1'><div class='attention_title'><div>" + fansdata[i]['user_name'] +
+									"</div>";
 								fans +=
-									"</div></div><div class='about_att'><div class='cansel1' onclick='attention(" + fansdata[i]['id'] +
-									")'>关注+</div><div class='hispage'></div></div></li>";
+									"</div><div class='news_owner news_other'><span id='' style='color: #999999;font-size: 13px;'>关注时间：" +
+									fansdata[i]['follow_time'] + "</span>";
+								fans += "</li>";
+
 								fanslist.innerHTML = fans;
+
 							}
+							
+							$(".icon_radius").mouseenter(function(id) {
+								console.log(id.target.id)
+								var info_box_fan = "info_box_fan" + id.target.id
+								$("#" + info_box_fan).show();
+							
+								$("#info_box_fan" + id.target.id).mouseleave(function() {
+									$("#info_box_fan" + id.target.id).hide();
+								})
+								$(".icon_radius").mouseleave(function() {
+									$("#info_box_fan" + id.target.id).hide();
+								})
+							
+							})
 						}
 					},
 				})
@@ -2659,7 +2745,8 @@
 
 						} else {
 							for (var i = 0; i < collectiondata.length; i++) {
-								post += "<li style='padding: 12px 32px'><img src='" + collectiondata[i].post_photo + "' style='width: 66px;height: 66px;'/><div class='blog_list1'>";
+								post += "<li style='padding: 12px 32px'><img src='" + collectiondata[i].post_photo +
+									"' style='width: 66px;height: 66px;'/><div class='blog_list1'>";
 								post += "<div class='news_title1'><a href='forum.html?postid=" + collectiondata[i]['id'] + "'>" +
 									collectiondata[i][
 										'post_title'
@@ -2730,7 +2817,7 @@
 							});
 
 						});
-						// console.log(fansdata)
+						console.log(followsdata)
 						var follows = '';
 						var followslist = document.getElementById("followslist");
 						if (followsdata.length === 0) {
@@ -2739,13 +2826,39 @@
 
 						} else {
 							for (var i = 0; i < followsdata.length; i++) {
-								follows += "<li style='padding: 12px 32px;'><img class='icon_radius' style='width: 44px;height: 44px;' src='" + followsdata[i].user_head + " ' /><div class='blog_list1'>";
-								follows += "<div class='attention_title'><div>" + followsdata[i]['user_name'] + "</div>";
-								// follows += "</div><div class='news_time news_other'><span>个人简介：</span><p>" + followsdata[i]['user_profile'] +"</p>";
-								follows += "</div><div class='news_owner news_other'><span id='' style='color: #999999;font-size: 13px;'>关注时间：" + followsdata[i]['follow_time'] +"</span>";
-								follows +="</div></div><div class='about_att'><div class='cansel' onclick='deleteIt(" + followsdata[i]['id'] +")'>已关注</div><div class='hispage'></div></div></li>";
+								follows += "<li style='padding: 12px 32px;'><img class='icon_radius' id='" + followsdata[i].id +
+									"' style='width: 44px;height: 44px;' src='" + followsdata[i].user_head + " ' />";
+								follows += "<div class='info_box' id='info_box" + followsdata[i].id +
+									"'style='display: none;'><div class='user_name'><div style='display: flex;align-items: center;margin-bottom: 10px;'><img style='width: 60px;height: 60px;border-radius: 30px;' id='user_heads' src='" +
+									followsdata[i].user_head +
+									" ' /><h3 id='user_name' style='min-height: 25px;margin: 0;padding-bottom: 0px;padding-left: 10px;'>" +
+									followsdata[i].user_name +
+									" </h3></div><div class='user_intro' id='user_profile'><p>ta比较懒还没有说明</p></div><div class='trivial'><div class='spanList'><span class='spanTitle'>发布</span><span class='spanInfo' id='user_release_sum'>0</span></div><div class='spanList'><span class='spanTitle'>粉丝</span><span class='spanInfo' id='user_fans_sum'>0</span></div><div class='spanList'><span class='spanTitle'>获赞</span><span class='spanInfo' id='post_upnum'>0</span></div><div class='spanList'><span class='spanTitle'>转发</span><span class='spanInfo' id='user_follow_sum'>0</span></div><div class='spanList'><span class='spanTitle'>积分</span><span class='spanInfo' id='user_coin_sum'>0</span></div></div><div style='margin-top: 10px;margin-left: 12px;'><button class='boxBtn' style='margin-right: 64x;' id='attention'>+ 关注</button><button class='boxBtn1' style='margin-right: 64x; display: none;' id='attentioned'>取消关注</button><button class='boxBtn'  onclick='toMinec('admin_id')'>个人主页</button><input type='text' name='admin_id' id='admin_id' value='' hidden='hidden'/></div></div></div>";
+								follows += "<div class='blog_list1'><div class='attention_title'><div>" + followsdata[i]['user_name'] +
+									"</div>";
+								follows +=
+									"</div><div class='news_owner news_other'><span id='' style='color: #999999;font-size: 13px;'>关注时间：" +
+									followsdata[i]['follow_time'] + "</span>";
+								follows += "</li>";
+
 								followslist.innerHTML = follows;
 							}
+							$('a[rel*=leanModal]').leanModal({
+								top: 200,
+								closeButton: ".modal_close"
+							});
+							$(".icon_radius").mouseenter(function(id) {
+								var info_box = "info_box" + id.target.id
+								$("#" + info_box).show();
+
+								$("#info_box" + id.target.id).mouseleave(function() {
+									$("#info_box" + id.target.id).hide();
+								})
+								$(".icon_radius").mouseleave(function() {
+									$("#info_box" + id.target.id).hide();
+								})
+
+							})
 						}
 					},
 				})
@@ -2801,9 +2914,11 @@
 						});
 
 						$("#listBody").empty();
-						for (var i = 0; i < length; i++) { 
+						for (var i = 0; i < length; i++) {
 							var obj = data.data[i];
-							$("#listBody").append('<li style="padding: 8px; line-height: 18px;border-bottom: none;"><ul class="list_body"><li>' + obj.business_content + '</li><li>' + obj.business_coin +
+							$("#listBody").append(
+								'<li style="padding: 8px; line-height: 18px;border-bottom: none;"><ul class="list_body"><li>' + obj.business_content +
+								'</li><li>' + obj.business_coin +
 								'</li><li>' + obj.business_time + '</li><li>' + obj.pay_user +
 								'</li></ul></li>');
 						}
@@ -2831,7 +2946,7 @@
 					alert("请输入文章标签");
 					return;
 				}
-				
+
 				var picfile = $("#picFile").get(0).files[0];
 				var file1 = $("#file1").get(0).files[0];
 				var file_size = file1.size
@@ -2851,7 +2966,7 @@
 				formData.append("revise_enclosure_name", $("#revise_enclosure_name").val());
 				formData.append("revise_enclosure_coin", Number($("#revise_enclosure_coin").val()));
 				formData.append("file1", file1);
-				formData.append("file_size",file_size)
+				formData.append("file_size", file_size)
 				$.ajax({
 					url: sever_url + 'release',
 					type: 'post',
@@ -2915,7 +3030,7 @@
 						}
 						$(li_arr[i]).removeAttr("class");
 					}
-										console.log(nav_id)
+					console.log(nav_id)
 					$("#" + nav_id).removeAttr("hidden");
 					$(this).attr("class", "select");
 					// 原创
