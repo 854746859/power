@@ -594,7 +594,7 @@
 				text-shadow: none;
 			}
 			.txt-fld {
-				padding: 24px;
+				padding: 24px 12px;
 				color: #666;
 				font-size: 16px;
 				line-height: 1.5;
@@ -1974,23 +1974,24 @@
 
 							$("#user_profile").html(data.data.user_profile == null ? "ta比较懒没有说明" : data.data.user_profile);
 							$("#user_release_sum").html(Number(data.data.user_release_sum));
-							$("#post_upnum").html(Number(data.data.post_upnum));
+							$("#post_upnum").html(Number(data.data.adopd.user_laid_sum));
 							$("#user_follow_sum").html(Number(data.data.user_follow_sum));
 							$("#user_fans_sum").html(Number(data.data.user_fans_sum));
 							$("#my_publish").html(data.data.user_release_sum);
 							$("#my_fans").html(data.data.user_fans_sum);
-							$("#my_support").html(data.data.post_upnum);
+							$("#my_support").html(data.data.adopd.user_laid_sum);
 							$("#my_focuse").html(data.data.user_follow_sum);
 
-							$("#user_profile_t").html(data.data.user_profile == null ? "ta比较懒没有说明" : data.data.user_profile);
-							$("#user_release_sum_t").html(Number(data.data.user_release_sum));
-							$("#post_upnum_t").html(Number(data.data.post_upnum));
-							$("#user_follow_sum_t").html(Number(data.data.user_follow_sum));
-							$("#user_fans_sum_t").html(Number(data.data.user_fans_sum));
-							$("#my_publish_t").html(data.data.user_release_sum);
-							$("#my_fans_t").html(data.data.user_fans_sum);
-							$("#my_support_t").html(data.data.post_upnum);
-							$("#my_focuse_t").html(data.data.user_follow_sum);
+							$("#user_profile_t").html(data.data.adopd.user_profile == null ? "ta比较懒没有说明" : data.data.adopd.user_profile);
+							$("#user_release_sum_t").html(Number(data.data.adopd.user_release_sum));
+							$("#post_upnum_t").html(Number(data.data.adopd.user_laid_sum));
+							$("#user_follow_sum_t").html(Number(data.data.adopd.user_follow_sum));
+							$("#user_coin_sum_t").html(Number(data.data.adopd.wallet_coin));
+							$("#user_fans_sum_t").html(Number(data.data.adopd.user_fans_sum));
+							$("#my_publish_t").html(data.data.adopd.user_release_sum);
+							$("#my_fans_t").html(data.data.adopd.user_fans_sum);
+							$("#my_support_t").html(data.data.adopd.user_laid_sum);
+							$("#my_focuse_t").html(data.data.adopd.user_follow_sum);
 
 							if (data.data.fabulous) {
 								$("#support").attr("src", "images/supported.png");
