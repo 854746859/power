@@ -2627,14 +2627,14 @@
 						} else {
 							for (var i = 0; i < fansdata.length; i++) {
 
-								fans += "<li style='padding: 12px 32px;'><img class='icon_radius' id='" + fansdata[i].id +
+								fans += "<li class='fanli' style='padding: 12px 32px;'><img class='icon_radius' id='" + fansdata[i].id +
 									"' style='width: 44px;height: 44px;' src='" + fansdata[i].user_head + " ' />";
 								fans += "<div class='info_box' id='info_box_fan" + fansdata[i].id +
 									"'style='display: none;'><div class='user_name'><div style='display: flex;align-items: center;margin-bottom: 10px;'><img style='width: 60px;height: 60px;border-radius: 30px;' id='user_heads' src='" +
 									fansdata[i].user_head +
 									" ' /><h3 id='user_name' style='min-height: 25px;margin: 0;padding-bottom: 0px;padding-left: 10px;'>" +
 									fansdata[i].user_name +
-									" </h3></div><div class='user_intro' id='user_profile'><p>ta比较懒还没有说明</p></div><div class='trivial'><div class='spanList'><span class='spanTitle'>发布</span><span class='spanInfo' id='user_release_sum'>0</span></div><div class='spanList'><span class='spanTitle'>粉丝</span><span class='spanInfo' id='user_fans_sum'>0</span></div><div class='spanList'><span class='spanTitle'>获赞</span><span class='spanInfo' id='post_upnum'>0</span></div><div class='spanList'><span class='spanTitle'>转发</span><span class='spanInfo' id='user_follow_sum'>0</span></div><div class='spanList'><span class='spanTitle'>积分</span><span class='spanInfo' id='user_coin_sum'>0</span></div></div><div style='margin-top: 10px;margin-left: 12px;'><button class='boxBtn' style='margin-right: 64x;' id='attention'>+ 关注</button><button class='boxBtn1' style='margin-right: 64x; display: none;' id='attentioned'>取消关注</button><button class='boxBtn'  onclick='toMinec('admin_id')'>个人主页</button><input type='text' name='admin_id' id='admin_id' value='' hidden='hidden'/></div></div></div>";
+									" </h3></div><div class='user_intro' id='user_profile'><p>" + fansdata[i]['user_profile'] +"</p></div><div class='trivial'><div class='spanList'><span class='spanTitle'>发布</span><span class='spanInfo' id='user_release_sum'>" + fansdata[i]['user_release_sum'] +"</span></div><div class='spanList'><span class='spanTitle'>粉丝</span><span class='spanInfo' id='user_fans_sum'>" + fansdata[i]['user_fans_sum'] +"</span></div><div class='spanList'><span class='spanTitle'>获赞</span><span class='spanInfo' id='post_upnum'>" + fansdata[i]['user_laid_sum'] +"</span></div><div class='spanList'><span class='spanTitle'>转发</span><span class='spanInfo' id='user_follow_sum'>" + fansdata[i]['user_follow_sum'] +"</span></div><div class='spanList'><span class='spanTitle'>积分</span><span class='spanInfo' id='user_coin_sum'>" + fansdata[i]['wallet_coin'] +"</span></div></div><div style='margin-top: 10px;margin-left: 12px;'><button class='boxBtn' style='margin-right: 64x;' id='attention'>+ 关注</button><button class='boxBtn1' style='margin-right: 64x; display: none;' id='attentioned'>取消关注</button><button class='boxBtn'  onclick='toMinec('admin_id')'>个人主页</button><input type='text' name='admin_id' id='admin_id' value='' hidden='hidden'/></div></div></div>";
 								fans += "<div class='blog_list1'><div class='attention_title'><div>" + fansdata[i]['user_name'] +
 									"</div>";
 								fans +=
@@ -2654,7 +2654,7 @@
 								$("#info_box_fan" + id.target.id).mouseleave(function() {
 									$("#info_box_fan" + id.target.id).hide();
 								})
-								$(".icon_radius").mouseleave(function() {
+								$(".fanli").mouseleave(function() {
 									$("#info_box_fan" + id.target.id).hide();
 								})
 							
@@ -2736,7 +2736,7 @@
 							});
 
 						});
-						// console.log(followdata)
+
 						var post = '';
 						var collectionlist = document.getElementById("collectionlist");
 						if (collectiondata.length === 0) {
@@ -2826,16 +2826,15 @@
 
 						} else {
 							for (var i = 0; i < followsdata.length; i++) {
-								follows += "<li style='padding: 12px 32px;'><img class='icon_radius' id='" + followsdata[i].id +
+								follows += "<li class='fanli' style='padding: 12px 32px;'><img class='icon_radius' id='" + followsdata[i].id +
 									"' style='width: 44px;height: 44px;' src='" + followsdata[i].user_head + " ' />";
 								follows += "<div class='info_box' id='info_box" + followsdata[i].id +
 									"'style='display: none;'><div class='user_name'><div style='display: flex;align-items: center;margin-bottom: 10px;'><img style='width: 60px;height: 60px;border-radius: 30px;' id='user_heads' src='" +
 									followsdata[i].user_head +
 									" ' /><h3 id='user_name' style='min-height: 25px;margin: 0;padding-bottom: 0px;padding-left: 10px;'>" +
 									followsdata[i].user_name +
-									" </h3></div><div class='user_intro' id='user_profile'><p>ta比较懒还没有说明</p></div><div class='trivial'><div class='spanList'><span class='spanTitle'>发布</span><span class='spanInfo' id='user_release_sum'>0</span></div><div class='spanList'><span class='spanTitle'>粉丝</span><span class='spanInfo' id='user_fans_sum'>0</span></div><div class='spanList'><span class='spanTitle'>获赞</span><span class='spanInfo' id='post_upnum'>0</span></div><div class='spanList'><span class='spanTitle'>转发</span><span class='spanInfo' id='user_follow_sum'>0</span></div><div class='spanList'><span class='spanTitle'>积分</span><span class='spanInfo' id='user_coin_sum'>0</span></div></div><div style='margin-top: 10px;margin-left: 12px;'><button class='boxBtn' style='margin-right: 64x;' id='attention'>+ 关注</button><button class='boxBtn1' style='margin-right: 64x; display: none;' id='attentioned'>取消关注</button><button class='boxBtn'  onclick='toMinec('admin_id')'>个人主页</button><input type='text' name='admin_id' id='admin_id' value='' hidden='hidden'/></div></div></div>";
-								follows += "<div class='blog_list1'><div class='attention_title'><div>" + followsdata[i]['user_name'] +
-									"</div>";
+									" </h3></div><div class='user_intro' id='user_profile'><p>" + followsdata[i]['user_profile'] +"</p></div><div class='trivial'><div class='spanList'><span class='spanTitle'>发布</span><span class='spanInfo' id='user_release_sum'>" + followsdata[i]['user_release_sum'] +"</span></div><div class='spanList'><span class='spanTitle'>粉丝</span><span class='spanInfo' id='user_fans_sum'>" + followsdata[i]['user_fans_sum'] +"</span></div><div class='spanList'><span class='spanTitle'>获赞</span><span class='spanInfo' id='post_upnum'>" + followsdata[i]['user_laid_sum'] +"</span></div><div class='spanList'><span class='spanTitle'>转发</span><span class='spanInfo' id='user_follow_sum'>" + followsdata[i]['user_follow_sum'] +"</span></div><div class='spanList'><span class='spanTitle'>积分</span><span class='spanInfo' id='user_coin_sum'>" + followsdata[i]['wallet_coin'] +"</span></div></div><div style='margin-top: 10px;margin-left: 12px;'><button class='boxBtn' style='margin-right: 64x;' id='attention'>+ 关注</button><button class='boxBtn1' style='margin-right: 64x; display: none;' id='attentioned'>取消关注</button><button class='boxBtn'  onclick='toMinec('admin_id')'>个人主页</button><input type='text' name='admin_id' id='admin_id' value='' hidden='hidden'/></div></div></div>";
+								follows += "<div class='blog_list1'><div class='attention_title'><div>" + followsdata[i]['user_name'] +"</div>";
 								follows +=
 									"</div><div class='news_owner news_other'><span id='' style='color: #999999;font-size: 13px;'>关注时间：" +
 									followsdata[i]['follow_time'] + "</span>";
@@ -2854,7 +2853,7 @@
 								$("#info_box" + id.target.id).mouseleave(function() {
 									$("#info_box" + id.target.id).hide();
 								})
-								$(".icon_radius").mouseleave(function() {
+								$(".fanli").mouseleave(function() {
 									$("#info_box" + id.target.id).hide();
 								})
 
