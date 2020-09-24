@@ -1096,7 +1096,7 @@
 								</div>
 							</div>
 							<div class="annex_bt">
-								<span>
+								<span id="file_size">
 									大小：0M
 								</span>
 								<input type="button" name="" style="margin-top: 12px;" id="dowmload" value="立即下载" />
@@ -1394,6 +1394,7 @@
 			$(".owner").mouseleave(function(){
 				$("#plate_master_pic").next().hide();
 			})
+			var cont_coin = 0;
 			//头部统计
 			$.ajax({
 				type:"post",
@@ -1498,7 +1499,7 @@
 				} else {
 					$.ajax({
 						type:"post",
-						url:sever_url+"file/dowmload",
+						url:sever_url+"file/isDowmload",
 						async:true,
 						data:{
 							token:infodata.token,
@@ -1506,16 +1507,53 @@
 						},
 						dataType:"json",
 						success:function(data){
-//							console.log(data)
-							var $eleForm = $("<form method='get'></form>");
-				            $eleForm.attr("action",data.file_url);
-				            $(document.body).append($eleForm);
-				            //提交表单，实现下载
-				            $eleForm.submit();
+							// console.log(data)
+							if(data.code==200){
+								var $eleForm = $("<form method='get'></form>");
+								$eleForm.attr("action",data.file_url);
+								$(document.body).append($eleForm);
+								//提交表单，实现下载
+								$eleForm.submit();
+							}else{
+								dowmloadShow()
+							}
 						}
 					});
 				}
 			})
+			function dowmloadShow(){
+				Dialog({
+					title: "提示",
+					content: "下载此附件需消耗"+cont_coin+"论坛币，是否继续",
+					ok: {
+						callback: function() {
+							$.ajax({
+								type:"post",
+								url:sever_url+"file/dowmload",
+								async:true,
+								data:{
+									token:infodata.token,
+									post_id:$("#postTitle").attr("name")
+								},
+								dataType:"json",
+								success:function(data){
+		//							console.log(data)
+									var $eleForm = $("<form method='get'></form>");
+									$eleForm.attr("action",data.file_url);
+									$(document.body).append($eleForm);
+									//提交表单，实现下载
+									$eleForm.submit();
+								}
+							});
+						}
+					},
+					cancel: {
+						callback: function() {
+							Dialog.close();
+						}
+					}
+				});
+			}
 			function toMinec() {
 				window.location.href = `minec.html?user_id=${$("#admin_id").val()}`;
 			}
@@ -1779,6 +1817,7 @@
 				})
 				//获取URL传值
 				var post_id = getUrldata('postid'); //文章id
+
 				//文章
 				$.ajax({
 					type: "post",
@@ -1805,7 +1844,9 @@
 							}else{
 								$("#annex_d").css("display", "flex");
 								$("#enclosureName").html(data.data.revise_enclosure_name); //附件名称
+								cont_coin = data.data.revise_enclosure_coin
 								$("#enclosureCoin").html('所需：' + data.data.revise_enclosure_coin + '积分/论坛币') //附件价格
+								$("#file_size").html((data.data.file_size/1024/1024).toFixed(2)+'M')
 							}
 
 							$("#time").html('发布于：'+data.data.post_releasetime); //发布时间
