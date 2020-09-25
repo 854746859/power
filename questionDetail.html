@@ -1483,7 +1483,9 @@
 			$(".annex_a").mouseleave(function() {
 				$("#info_box_t").hide();
 			})
-
+			
+			// 采纳状态
+			var is_adopt = false;
 			// 评论
 			// $("#visitor_info").mouseenter(function() {
 			// 	$("#info_box_t").show();
@@ -1941,8 +1943,12 @@
 						token: obj ? obj.token : ""
 					},
 					success: function(data) {
-						console.log(data)
 						if (data.code == 200) {
+							if(data.data.adopt_comment){
+								is_adopt  =true;
+							}
+							//评论
+							GetComment();
 							$("#postTitle").html(data.data.post_title); //文章标题
 							$("#postTitle").attr("name", data.data.id);
 							$("#postCopyright").html('<span>*</span>版权声明：' + data.data.post_copyright); //版权声明
@@ -2031,8 +2037,6 @@
 						console.log("error!");
 					}
 				});
-				//评论
-				GetComment();
 
 				function GetComment() {
 					$.ajax({
@@ -2049,33 +2053,62 @@
 							console.log(data)
 							var length = data.data.length;
 							$("#comment_box").empty();
-							for (var i = 0; i < length; i++) {
-								var obj = data.data[i];
-								$("#comment_box").append(
-									'<div class="content_box"><div class="visitor"><div class="visitor_info' + i +
-									'"><div class="visitor_pic"><img class="showimg" id="' +
-									obj.id + '" src="' + obj.user_head + '"/><span >' + obj.user_name +
-									'</span></div><div class="commet_time"><span>' + obj.comment_time + '</span><span>【' + obj.comment_layernum +
-									'楼】</span></div><div class="info_box" id="info_box' +
-									obj.id +
-									'" style="margin-top: 0px;"><div class="user_name"><div style="display: flex;align-items: center;margin-bottom: 10px;"><img style="width: 60px;height: 60px;border-radius: 30px;" id="user_heads" src="' +
-									obj.user_head +
-									'" /><h3 id="user_name" style="width: 240px;display: flex;flex-direction: column;text-overflow: ellipsis;overflow: hidden;background-color: #fff;border-radius: 5px;min-height: 25px;margin: 0;padding-bottom: 0px; padding-left: 10px;">' +
-									obj.user_name +
-									'</h3></div><div class="user_intro" id="user_profile"><p>' + obj.user_profile + '</p></div><div class="trivial"><div><span class="spanTitle">发布</span><span class="spanInfo" id="user_release_sum">' + obj.user_release_sum + '</span></div><div><span class="spanTitle">粉丝</span><span class="spanInfo" id="user_fans_sum">' + obj.user_fans_sum + '</span></div><div><span class="spanTitle">获赞</span><span class="spanInfo" id="post_upnum">' + obj.user_laid_sum + '</span></div><div><span class="spanTitle">转发</span><span class="spanInfo" id="user_follow_sum">' + obj.user_follow_sum + '</span></div><div><span style="font-size: 12px;color: #807979;">积分</span><span class="spanInfo" id="user_coin_sum">' + obj.wallet_coin + '</span></div></div><div style="margin-top: 10px;margin-left: 12px;"><button class="boxBtn" style="margin-right: 64x;" id="attention">+ 关注</button><button class="boxBtn1" style="margin-right: 64x; display: none;" id="attentioned">取消关注</button><button class="boxBtn"  onclick="toMinec(' +obj.id + ')">个人主页</button><input type="text" name="' +obj.id + '" id="' +obj.id + '" value="' +obj.id + '" hidden="hidden"/></div></div></div></div><div class="comment_text"><p>' +
-									obj.comment_content +
-									'</p></div><div class="other_visitor"><a><span onclick=adopt(' + obj.id +
-									')>采纳</span></a><a href="#editor"><span onclick=reply(' + obj.id + ',"' + obj.user_name +
-									'")>回复</span></a><a rel="leanModal" name="Report" href="#Report"><span onclick=Reported(' + obj.id +
-									')>举报</span></a><a href="#editor"><span onclick=reply(' + obj.id + ',"' + obj.user_name +
-									'")>回复</span></a><span style="display:flex;align-items: center;"><img onclick=commentSupport(' + obj.id +
-									') src="images/support.png"/><span id="comment' + obj.id + '">' + Number(obj.comment_upnum) +
-									'</span></span></div></div></div></div>');
-
-								var info_boxs = "info_box" + obj.id
-								$("#" + info_boxs).hide();
-
+							console.log(is_adopt)
+							if(is_adopt){
+								for (var i = 0; i < length; i++) {
+									var obj = data.data[i];
+									$("#comment_box").append(
+										'<div class="content_box"><div class="visitor"><div class="visitor_info' + i +
+										'"><div class="visitor_pic"><img class="showimg" id="' +
+										obj.id + '" src="' + obj.user_head + '"/><span >' + obj.user_name +
+										'</span></div><div class="commet_time"><span>' + obj.comment_time + '</span><span>【' + obj.comment_layernum +
+										'楼】</span></div><div class="info_box" id="info_box' +
+										obj.id +
+										'" style="margin-top: 0px;"><div class="user_name"><div style="display: flex;align-items: center;margin-bottom: 10px;"><img style="width: 60px;height: 60px;border-radius: 30px;" id="user_heads" src="' +
+										obj.user_head +
+										'" /><h3 id="user_name" style="width: 240px;display: flex;flex-direction: column;text-overflow: ellipsis;overflow: hidden;background-color: #fff;border-radius: 5px;min-height: 25px;margin: 0;padding-bottom: 0px; padding-left: 10px;">' +
+										obj.user_name +
+										'</h3></div><div class="user_intro" id="user_profile"><p>' + obj.user_profile + '</p></div><div class="trivial"><div><span class="spanTitle">发布</span><span class="spanInfo" id="user_release_sum">' + obj.user_release_sum + '</span></div><div><span class="spanTitle">粉丝</span><span class="spanInfo" id="user_fans_sum">' + obj.user_fans_sum + '</span></div><div><span class="spanTitle">获赞</span><span class="spanInfo" id="post_upnum">' + obj.user_laid_sum + '</span></div><div><span class="spanTitle">转发</span><span class="spanInfo" id="user_follow_sum">' + obj.user_follow_sum + '</span></div><div><span style="font-size: 12px;color: #807979;">积分</span><span class="spanInfo" id="user_coin_sum">' + obj.wallet_coin + '</span></div></div><div style="margin-top: 10px;margin-left: 12px;"><button class="boxBtn" style="margin-right: 64x;" id="attention">+ 关注</button><button class="boxBtn1" style="margin-right: 64x; display: none;" id="attentioned">取消关注</button><button class="boxBtn"  onclick="toMinec(' +obj.id + ')">个人主页</button><input type="text" name="' +obj.id + '" id="' +obj.id + '" value="' +obj.id + '" hidden="hidden"/></div></div></div></div><div class="comment_text"><p>' +
+										obj.comment_content +
+										'</p></div><div class="other_visitor"><a href="#editor"><span onclick=reply(' + obj.id + ',"' + obj.user_name +
+										'")>回复</span></a><a rel="leanModal" name="Report" href="#Report"><span onclick=Reported(' + obj.id +
+										')>举报</span></a><span style="display:flex;align-items: center;"><img onclick=commentSupport(' + obj.id +
+										') src="images/support.png"/><span id="comment' + obj.id + '">' + Number(obj.comment_upnum) +
+										'</span></span></div></div></div></div>');
+								
+									var info_boxs = "info_box" + obj.id
+									$("#" + info_boxs).hide();
+								
+								}
+							}else{
+								for (var i = 0; i < length; i++) {
+									var obj = data.data[i];
+									$("#comment_box").append(
+										'<div class="content_box"><div class="visitor"><div class="visitor_info' + i +
+										'"><div class="visitor_pic"><img class="showimg" id="' +
+										obj.id + '" src="' + obj.user_head + '"/><span >' + obj.user_name +
+										'</span></div><div class="commet_time"><span>' + obj.comment_time + '</span><span>【' + obj.comment_layernum +
+										'楼】</span></div><div class="info_box" id="info_box' +
+										obj.id +
+										'" style="margin-top: 0px;"><div class="user_name"><div style="display: flex;align-items: center;margin-bottom: 10px;"><img style="width: 60px;height: 60px;border-radius: 30px;" id="user_heads" src="' +
+										obj.user_head +
+										'" /><h3 id="user_name" style="width: 240px;display: flex;flex-direction: column;text-overflow: ellipsis;overflow: hidden;background-color: #fff;border-radius: 5px;min-height: 25px;margin: 0;padding-bottom: 0px; padding-left: 10px;">' +
+										obj.user_name +
+										'</h3></div><div class="user_intro" id="user_profile"><p>' + obj.user_profile + '</p></div><div class="trivial"><div><span class="spanTitle">发布</span><span class="spanInfo" id="user_release_sum">' + obj.user_release_sum + '</span></div><div><span class="spanTitle">粉丝</span><span class="spanInfo" id="user_fans_sum">' + obj.user_fans_sum + '</span></div><div><span class="spanTitle">获赞</span><span class="spanInfo" id="post_upnum">' + obj.user_laid_sum + '</span></div><div><span class="spanTitle">转发</span><span class="spanInfo" id="user_follow_sum">' + obj.user_follow_sum + '</span></div><div><span style="font-size: 12px;color: #807979;">积分</span><span class="spanInfo" id="user_coin_sum">' + obj.wallet_coin + '</span></div></div><div style="margin-top: 10px;margin-left: 12px;"><button class="boxBtn" style="margin-right: 64x;" id="attention">+ 关注</button><button class="boxBtn1" style="margin-right: 64x; display: none;" id="attentioned">取消关注</button><button class="boxBtn"  onclick="toMinec(' +obj.id + ')">个人主页</button><input type="text" name="' +obj.id + '" id="' +obj.id + '" value="' +obj.id + '" hidden="hidden"/></div></div></div></div><div class="comment_text"><p>' +
+										obj.comment_content +
+										'</p></div><div class="other_visitor"><a><span onclick=adopt(' + obj.id +
+										')>采纳</span></a><a href="#editor"><span onclick=reply(' + obj.id + ',"' + obj.user_name +
+										'")>回复</span></a><a rel="leanModal" name="Report" href="#Report"><span onclick=Reported(' + obj.id +
+										')>举报</span></a><span style="display:flex;align-items: center;"><img onclick=commentSupport(' + obj.id +
+										') src="images/support.png"/><span id="comment' + obj.id + '">' + Number(obj.comment_upnum) +
+										'</span></span></div></div></div></div>');
+								
+									var info_boxs = "info_box" + obj.id
+									$("#" + info_boxs).hide();
+								
+								}
 							}
+							
 							$('a[rel*=leanModal]').leanModal({
 								top: 200,
 								closeButton: ".modal_close"

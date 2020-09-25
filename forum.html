@@ -1940,11 +1940,9 @@
 									obj.id + ')">个人主页</button><input type="text" name="' + obj.id + '" id="' + obj.id + '" value="' + obj.id +
 									'" hidden="hidden"/></div></div></div></div><div class="comment_text"><p>' +
 									obj.comment_content +
-									'</p></div><div class="other_visitor"><a><span onclick=adopt(' + obj.id +
-									')>采纳</span></a><a href="#editor"><span onclick=reply(' + obj.id + ',"' + obj.user_name +
+									'</p></div><div class="other_visitor"><a href="#editor"><span onclick=reply(' + obj.id + ',"' + obj.user_name +
 									'")>回复</span></a><a rel="leanModal" name="Report" href="#Report"><span onclick=Reported(' + obj.id +
-									')>举报</span></a><a href="#editor"><span onclick=reply(' + obj.id + ',"' + obj.user_name +
-									'")>回复</span></a><span style="display:flex;align-items: center;"><img onclick=commentSupport(' + obj.id +
+									')>举报</span></a><span style="display:flex;align-items: center;"><img onclick=commentSupport(' + obj.id +
 									') src="images/support.png"/><span id="comment' + obj.id + '">' + Number(obj.comment_upnum) +
 									'</span></span></div></div></div></div>');
 									
